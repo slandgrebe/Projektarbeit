@@ -5,7 +5,6 @@
 #include "AssimpModel.h"
 #include "GraphicEngine.h"
 #include <map>
-#include "SafeQueue.h"
 
 namespace visual {
 	class Manager {
