@@ -19,6 +19,15 @@
     <Filter Include="Source Files\model">
       <UniqueIdentifier>{3dc5b2d8-206b-42b1-8039-d5ba1e4f691e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Resource Files\models">
+      <UniqueIdentifier>{4f4e91af-94c2-4d3e-b098-f349c025681c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\models\shuttle">
+      <UniqueIdentifier>{a8c3e5c5-aa99-4860-8221-428d6c03c967}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\textures">
+      <UniqueIdentifier>{92206687-fd33-4d26-b3f7-8cc8d1cec35f}</UniqueIdentifier>
+    </Filter>
     <Filter Include="Resource Files\shader">
       <UniqueIdentifier>{dbc55cf1-a00a-42da-9694-a29c910b90c6}</UniqueIdentifier>
     </Filter>
@@ -87,13 +96,43 @@
     <Image Include="app.ico">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="data\models\shuttle\spstob_1.bmp">
+      <Filter>Resource Files\models\shuttle</Filter>
+    </Image>
+    <Image Include="data\models\shuttle\spstob_2.bmp">
+      <Filter>Resource Files\models\shuttle</Filter>
+    </Image>
+    <Image Include="data\models\shuttle\spstob_3.bmp">
+      <Filter>Resource Files\models\shuttle</Filter>
+    </Image>
+    <Image Include="data\models\shuttle\spstob_4.bmp">
+      <Filter>Resource Files\models\shuttle</Filter>
+    </Image>
+    <Image Include="data\models\shuttle\spstob_e.bmp">
+      <Filter>Resource Files\models\shuttle</Filter>
+    </Image>
+    <Image Include="data\textures\red.jpg">
+      <Filter>Resource Files\textures</Filter>
+    </Image>
+    <Image Include="data\textures\sample.png">
+      <Filter>Resource Files\textures</Filter>
+    </Image>
+    <Image Include="data\textures\test.png">
+      <Filter>Resource Files\textures</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
-    <None Include="SimpleVertexShader.vertexshader">
+    <None Include="data\shader\SimpleFragmentShader.fragmentshader">
       <Filter>Resource Files\shader</Filter>
     </None>
-    <None Include="SimpleFragmentShader.fragmentshader">
+    <None Include="data\shader\SimpleVertexShader.vertexshader">
       <Filter>Resource Files\shader</Filter>
+    </None>
+    <None Include="data\models\shuttle\SpaceShuttleOrbiter.3ds">
+      <Filter>Resource Files\models\shuttle</Filter>
+    </None>
+    <None Include="Assimp32.dll">
+      <Filter>Resource Files</Filter>
     </None>
   </ItemGroup>
 </Project>

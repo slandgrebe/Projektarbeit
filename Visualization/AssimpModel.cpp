@@ -197,7 +197,7 @@ bool AssimpModel::initMaterials(const aiScene* scene, const std::string& filenam
 		// Load a white texture in case the model does not include its own texture
 		if (!textureList[i]) {
 			textureList[i] = new TextureSoil();
-			returnValue = textureList[i]->load("./red.jpg");
+			returnValue = textureList[i]->load("data/textures/red.jpg");
 
 			std::cout << "  Benutze Fallback Textur" << std::endl;
 		}

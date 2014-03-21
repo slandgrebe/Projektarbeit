@@ -75,7 +75,7 @@ GLboolean Square::loadModel(void) {
 
 	// texture
 	texture = new TextureSoil;
-	if (!texture->load("sample.png")) {
+	if (!texture->load("data/textures/sample.png")) {
 		return false;
 	}
 	

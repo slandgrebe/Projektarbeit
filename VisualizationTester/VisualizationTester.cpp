@@ -206,7 +206,7 @@ namespace testModel {
 
 bool shuttle() {
 	unsigned int modelId = 0;
-	System::String^ filename = "models/shuttle/SpaceShuttleOrbiter.3ds";
+	System::String^ filename = "data/models/shuttle/SpaceShuttleOrbiter.3ds";
 	//System::String^ filename = "textures/SpaceShuttleOrbiter.3ds";
 
 	modelId = visual::Visualization::addModel(filename);

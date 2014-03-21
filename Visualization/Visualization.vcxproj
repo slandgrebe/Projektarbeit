@@ -117,10 +117,42 @@
   </ItemGroup>
   <ItemGroup>
     <Image Include="app.ico" />
+    <Image Include="data\models\shuttle\spstob_1.bmp" />
+    <Image Include="data\models\shuttle\spstob_2.bmp" />
+    <Image Include="data\models\shuttle\spstob_3.bmp" />
+    <Image Include="data\models\shuttle\spstob_4.bmp" />
+    <Image Include="data\models\shuttle\spstob_e.bmp" />
+    <Image Include="data\textures\red.jpg" />
+    <Image Include="data\textures\sample.png" />
+    <Image Include="data\textures\test.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="SimpleFragmentShader.fragmentshader" />
-    <None Include="SimpleVertexShader.vertexshader" />
+    <None Include="Assimp32.dll">
+      <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</DeploymentContent>
+    </None>
+    <None Include="data\models\shuttle\SpaceShuttleOrbiter.3ds" />
+    <None Include="data\shader\SimpleFragmentShader.fragmentshader" />
+    <None Include="data\shader\SimpleVertexShader.vertexshader" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="data\shader\*">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\models\*">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+	<Content Include="data\models\shuttle\*">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\*">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\*">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+	<Content Include="Assimp32.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
