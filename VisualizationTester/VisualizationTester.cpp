@@ -239,7 +239,5 @@ int main(int argc, char* argv[]) {
 	//testModel::testModel();
 	shuttle();
 
-	//test3
-
     return 0;
 }
