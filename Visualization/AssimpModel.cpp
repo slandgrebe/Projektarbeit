@@ -272,7 +272,7 @@ void AssimpModel::draw() {
 		glm::mat4 mvp = getTransformedMatrix();
 		glUniformMatrix4fv(uniMvp, 1, GL_FALSE, glm::value_ptr(mvp));
 
-		glDrawElements(GL_LINES, meshList[i].numIndices, GL_UNSIGNED_INT, 0);
+		glDrawElements(GL_TRIANGLES, meshList[i].numIndices, GL_UNSIGNED_INT, 0);
 	}
 
 	// Vertex Shader Attribute Array deaktivieren

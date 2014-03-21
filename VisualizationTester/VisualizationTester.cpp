@@ -204,13 +204,40 @@ namespace testModel {
 	}
 }
 
+bool shuttle() {
+	unsigned int modelId = 0;
+	System::String^ filename = "models/shuttle/SpaceShuttleOrbiter.3ds";
+	//System::String^ filename = "textures/SpaceShuttleOrbiter.3ds";
+
+	modelId = visual::Visualization::addModel(filename);
+
+	if (modelId) {
+		clock_t begin = clock();
+
+		while (true) {
+			if (visual::Visualization::isModelCreated(modelId)) {
+				//bool b = visual::Visualization::positionModel(modelId, 0.25f, 0.25f, -0.75f);
+				bool b = visual::Visualization::scaleModel(modelId, 0.001f, 0.001f, 0.001f);
+				//b = visual::Visualization::rotateModel(modelId, 30.0f, -1.0f, 1.0f, -1.0f);
+				return b;
+			}
+
+			if (double(clock() - begin) / CLOCKS_PER_SEC > 10) {
+				break;
+			}
+		}
+	}
+
+	return false;
+}
+
 int main(int argc, char* argv[]) {	
 	cout << "VisualizationTest" << endl;
 
 	test();
 	//testPoint::testPoint();
-	testModel::testModel();
-	testModel::testModel();
+	//testModel::testModel();
+	shuttle();
 
     return 0;
 }

@@ -13,6 +13,7 @@
 
 #include <string>
 #include <vector>
+#include <iostream>
 
 namespace visual {
 	/** Der Model Namespace beinhaltet das Model Interface sowie dessen Implementierungen
