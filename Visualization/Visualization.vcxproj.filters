@@ -134,5 +134,8 @@
     <None Include="Assimp32.dll">
       <Filter>Resource Files</Filter>
     </None>
+    <None Include="data\models\cube.obj">
+      <Filter>Resource Files\models</Filter>
+    </None>
   </ItemGroup>
 </Project>
