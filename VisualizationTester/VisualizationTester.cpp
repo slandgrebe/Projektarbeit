@@ -234,7 +234,7 @@ bool shuttle() {
 int main(int argc, char* argv[]) {	
 	cout << "VisualizationTest" << endl;
 
-	test();
+	//test();
 	//testPoint::testPoint();
 	//testModel::testModel();
 	shuttle();
