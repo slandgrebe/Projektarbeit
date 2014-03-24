@@ -4,4 +4,6 @@
 #define VISUALIZATIONLIBRARY_API __declspec(dllimport) 
 #endif
 
-extern "C" VISUALIZATIONLIBRARY_API void APIENTRY doSomething(int n);
+
+
+extern "C" VISUALIZATIONLIBRARY_API void WINAPI doSomething(int n);

@@ -1,9 +1,9 @@
 // VisualizationImpl.h
 
-
-
 #ifndef VISUALIZATION_H
 #define VISUALIZATION_H
+
+#include "Visualization.h"
 
 // Include GLEW - muss vor GLFW inkludiert werden!!!
 #include <GL/glew.h>
@@ -32,7 +32,7 @@ namespace visual {
 	};
 }
 
-extern "C" VISUALIZATIONLIBRARY_API void APIENTRY doSomething(int n) {
+VISUALIZATIONLIBRARY_API void APIENTRY doSomething(int n) {
 	visual::VisualizationImpl::doSomething(n);
 }
 

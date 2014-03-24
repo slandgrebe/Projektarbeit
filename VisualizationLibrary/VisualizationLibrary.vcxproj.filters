@@ -1,0 +1,160 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Header Files\model">
+      <UniqueIdentifier>{2282a4f1-e238-40f1-b6ba-6f6ab79ed4da}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\gui">
+      <UniqueIdentifier>{2b4c46a4-a6bc-40d1-af8d-036ef98722ed}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\models">
+      <UniqueIdentifier>{913d7ea2-34b1-48f7-acc8-90aef2f69f3b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\models\shuttle">
+      <UniqueIdentifier>{03f6c1c7-7235-4123-8fba-5f6e162771c4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\shader">
+      <UniqueIdentifier>{d57757f9-e083-484c-96e7-9bac711894f0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\textures">
+      <UniqueIdentifier>{48de10bd-c183-4f28-ab5b-c4bda2d0af4a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\model">
+      <UniqueIdentifier>{daad9996-19f6-4cb3-b424-fec614fd3937}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\gui">
+      <UniqueIdentifier>{574646f8-ae9e-4094-9656-ff700bfa296d}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="stdafx.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Visualization.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="VisualizationImpl.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GraphicEngine.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Manager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="AssimpModel.h">
+      <Filter>Header Files\model</Filter>
+    </ClInclude>
+    <ClInclude Include="Model.h">
+      <Filter>Header Files\model</Filter>
+    </ClInclude>
+    <ClInclude Include="Square.h">
+      <Filter>Header Files\model</Filter>
+    </ClInclude>
+    <ClInclude Include="Texture.h">
+      <Filter>Header Files\model</Filter>
+    </ClInclude>
+    <ClInclude Include="TextureSoil.h">
+      <Filter>Header Files\model</Filter>
+    </ClInclude>
+    <ClInclude Include="Label.h">
+      <Filter>Header Files\gui</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="dllmain.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="VisualizationImpl.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GraphicEngine.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Manager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AssimpModel.cpp">
+      <Filter>Source Files\model</Filter>
+    </ClCompile>
+    <ClCompile Include="Square.cpp">
+      <Filter>Source Files\model</Filter>
+    </ClCompile>
+    <ClCompile Include="TextureSoil.cpp">
+      <Filter>Source Files\model</Filter>
+    </ClCompile>
+    <ClCompile Include="Label.cpp">
+      <Filter>Source Files\gui</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assimp32.dll">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="data\models\shuttle\SpaceShuttleOrbiter.3ds">
+      <Filter>Resource Files\models\shuttle</Filter>
+    </None>
+    <None Include="data\shader\SimpleFragmentShader.fragmentshader">
+      <Filter>Resource Files\shader</Filter>
+    </None>
+    <None Include="data\shader\SimpleVertexShader.vertexshader">
+      <Filter>Resource Files\shader</Filter>
+    </None>
+    <None Include="data\shader\text.fragmentshader">
+      <Filter>Resource Files\shader</Filter>
+    </None>
+    <None Include="data\shader\text.vertexshader">
+      <Filter>Resource Files\shader</Filter>
+    </None>
+    <None Include="data\models\cube.obj">
+      <Filter>Resource Files\models</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="data\models\shuttle\spstob_1.bmp">
+      <Filter>Resource Files\models\shuttle</Filter>
+    </Image>
+    <Image Include="data\models\shuttle\spstob_2.bmp">
+      <Filter>Resource Files\models\shuttle</Filter>
+    </Image>
+    <Image Include="data\models\shuttle\spstob_3.bmp">
+      <Filter>Resource Files\models\shuttle</Filter>
+    </Image>
+    <Image Include="data\models\shuttle\spstob_4.bmp">
+      <Filter>Resource Files\models\shuttle</Filter>
+    </Image>
+    <Image Include="data\models\shuttle\spstob_e.bmp">
+      <Filter>Resource Files\models\shuttle</Filter>
+    </Image>
+    <Image Include="data\textures\red.jpg">
+      <Filter>Resource Files\textures</Filter>
+    </Image>
+    <Image Include="data\textures\sample.png">
+      <Filter>Resource Files\textures</Filter>
+    </Image>
+    <Image Include="data\textures\test.png">
+      <Filter>Resource Files\textures</Filter>
+    </Image>
+  </ItemGroup>
+</Project>
