@@ -2,25 +2,6 @@
 #define VISUALIZATIONIMPL_H
 
 #include "stdafx.h"
-/*#include "Visualization.h"
-
-class VisualizationImpl {
-public:
-	static void hello();
-};
-
-#if !defined(_WIN64)
-// This pragma is required only for 32-bit builds. In a 64-bit environment,
-// C functions are not decorated.
-#pragma comment(linker, "/export:hello=_hello@0")
-#endif  // _WIN64
-
-
-DLL_API void WINAPI hello(void) {
-	VisualizationImpl::hello();
-}*/
-
-
 
 #include "Visualization.h"
 
@@ -56,5 +37,33 @@ DLL_API void APIENTRY doSomething(const char* text) {
 	std::string s = text;
 	visual::VisualizationImpl::doSomething(s);
 }
+
+DLL_API unsigned int APIENTRY addModel(const char* filename) {
+	std::string s = filename;
+	return visual::VisualizationImpl::addModel(s);
+}
+
+DLL_API unsigned int APIENTRY addPoint(const char* filename) {
+	std::string s = filename;
+	return visual::VisualizationImpl::addPoint(s);
+}
+
+DLL_API bool APIENTRY isModelCreated(const unsigned int modelId) {
+	return visual::VisualizationImpl::isModelCreated(modelId);
+}
+
+DLL_API bool APIENTRY positionModel(const unsigned int modelId, const float x, const float y, const float z) {
+	return visual::VisualizationImpl::positionModel(modelId, x, y, z);
+}
+
+DLL_API bool APIENTRY rotateModel(const unsigned int modelId, const float degrees, const float x, const float y, const float z) {
+	return visual::VisualizationImpl::rotateModel(modelId, degrees, x, y, z);
+}
+
+DLL_API bool APIENTRY scaleModel(const unsigned int modelId, const float x, const float y, const float z) {
+	return visual::VisualizationImpl::scaleModel(modelId, x, y, z);
+}
+
+
 
 #endif

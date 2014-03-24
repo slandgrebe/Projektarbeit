@@ -87,9 +87,11 @@ GLboolean Manager::isModelCreated(GLuint modelId) {
 }
 
 void Manager::addToModelList(GLuint modelId, model::AssimpModel* model) {
+	std::cout << " adding Model to List: " << modelId << std::endl;
 	assimpModelList.insert(std::make_pair(modelId, model));
 }
 void Manager::addToSquareList(GLuint modelId, model::Square* model) {
+	std::cout << " adding Square to List: " << modelId << std::endl;
 	squareList.insert(std::make_pair(modelId, model));
 }
 

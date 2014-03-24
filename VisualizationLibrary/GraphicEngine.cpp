@@ -217,8 +217,10 @@ void GraphicEngine::worker(void) {
 	****************/
 	while (!glfwWindowShouldClose(window))
 	{
-		if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
+		if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS) {
 			glfwSetWindowShouldClose(window, GL_TRUE);
+			break;
+		}
 
 		glfwSwapBuffers(window);
 		glfwPollEvents();
@@ -249,12 +251,16 @@ void GraphicEngine::worker(void) {
 }
 
 void GraphicEngine::enqueueSquare(GLuint modelId, std::string filename) {
+	std::cout << "enqueueSquare modelId[" << modelId << "] filename[" << filename << "]" << std::endl;
+	
 	modelQueueEntry e;
 	e.modelId = modelId;
 	e.filename = filename;
 	squareQueue->enqueue(e);
 }
 void GraphicEngine::enqueueModel(GLuint modelId, std::string filename) {
+	std::cout << "enqueueSquare modelId[" << modelId << "] filename[" << filename << "]" << std::endl;
+
 	modelQueueEntry e;
 	e.modelId = modelId;
 	e.filename = filename;

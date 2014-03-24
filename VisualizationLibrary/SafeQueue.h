@@ -17,13 +17,11 @@ private:
 
 public:
 	void enqueue(const T entry) {
-		cout << "SafeQueue::enqueue" << endl;
 		m_mutex.lock();
 		m_queue.push(entry);
 		m_mutex.unlock();
 	}
 	T dequeue() {
-		cout << "SafeQueue::dequeue" << endl;
 		T returnValue;
 		m_mutex.lock();
 		if (!m_queue.empty()) {
