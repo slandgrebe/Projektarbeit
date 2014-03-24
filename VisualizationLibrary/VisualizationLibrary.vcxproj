@@ -90,7 +90,6 @@
   <ItemGroup>
     <ClInclude Include="AssimpModel.h" />
     <ClInclude Include="GraphicEngine.h" />
-    <ClInclude Include="Label.h" />
     <ClInclude Include="Manager.h" />
     <ClInclude Include="Model.h" />
     <ClInclude Include="Square.h" />
@@ -112,7 +111,6 @@
       </PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="GraphicEngine.cpp" />
-    <ClCompile Include="Label.cpp" />
     <ClCompile Include="Manager.cpp" />
     <ClCompile Include="Square.cpp" />
     <ClCompile Include="stdafx.cpp">
@@ -144,6 +142,26 @@
     <Image Include="data\textures\red.jpg" />
     <Image Include="data\textures\sample.png" />
     <Image Include="data\textures\test.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="data\shader\*">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\models\*">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\models\shuttle\*">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\*">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\*">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assimp32.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

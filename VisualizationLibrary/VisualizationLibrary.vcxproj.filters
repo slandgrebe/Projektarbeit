@@ -75,9 +75,6 @@
     <ClInclude Include="TextureSoil.h">
       <Filter>Header Files\model</Filter>
     </ClInclude>
-    <ClInclude Include="Label.h">
-      <Filter>Header Files\gui</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -103,9 +100,6 @@
     </ClCompile>
     <ClCompile Include="TextureSoil.cpp">
       <Filter>Source Files\model</Filter>
-    </ClCompile>
-    <ClCompile Include="Label.cpp">
-      <Filter>Source Files\gui</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

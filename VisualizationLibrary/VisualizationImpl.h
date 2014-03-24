@@ -35,7 +35,7 @@ DLL_API void WINAPI hello(void) {
 namespace visual {
 	class VisualizationImpl {
 	public:
-		static int doSomething(int n);
+		static void doSomething(std::string s);
 		static unsigned int addModel(std::string/*System::String^*/);
 
 		static unsigned int addPoint(void); // default values mit managed code ist so eine sache ... http://stackoverflow.com/questions/15454394/why-c-cli-has-no-default-argument-on-managed-types
@@ -52,8 +52,9 @@ namespace visual {
 
 
 // exportierte funktionen
-DLL_API void APIENTRY doSomething(int n) {
-	visual::VisualizationImpl::doSomething(n);
+DLL_API void APIENTRY doSomething(const char* text) {
+	std::string s = text;
+	visual::VisualizationImpl::doSomething(s);
 }
 
 #endif

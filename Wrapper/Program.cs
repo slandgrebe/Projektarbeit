@@ -5,13 +5,13 @@ namespace Wrapper
 {
     class Program
     {
-        [DllImport("Visualization.dll", EntryPoint = "hello")]
-        extern static void hello();
+        [DllImport("Visualization.dll", EntryPoint = "doSomething")]
+        extern static void doSomething(string text);
 
         static void Main(string[] args)
         {
             Console.WriteLine("hallo");
-            hello();
+            doSomething("blabla");
 
             Console.ReadLine();
         }

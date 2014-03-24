@@ -13,7 +13,7 @@ namespace visual {
 
 		void processQueue(void);
 
-		GLint doSomething(GLint n);
+		void doSomething(std::string s);
 		GLuint addModel(const ::std::string filename);
 		GLuint addPoint(const ::std::string textureFilename = "sample.png");
 

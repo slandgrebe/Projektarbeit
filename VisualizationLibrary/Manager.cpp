@@ -58,14 +58,15 @@ void Manager::processQueue(void) {
 	}*/
 }
 
-GLint Manager::doSomething(GLint n) {
+void Manager::doSomething(std::string s) {
 	/*for (int i = 0; i < 100; i++) {
 		std::cout << i;
 	}
 
 	std::cout << std::endl;*/
 
-	return n + 1;
+	std::cout << "doSomething: " << s << std::endl;
+	addModel("data/models/shuttle/SpaceShuttleOrbiter.3ds");
 }
 
 GLuint Manager::addModel(const std::string filename) {

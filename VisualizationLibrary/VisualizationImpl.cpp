@@ -2,9 +2,8 @@
 #include "VisualizationImpl.h"
 
 namespace visual {
-	int VisualizationImpl::doSomething(int n) {
-		unsigned int result = Manager::getInstance()->doSomething(n);
-		return result;
+	void VisualizationImpl::doSomething(std::string s) {
+		Manager::getInstance()->doSomething(s);
 	}
 
 	unsigned int VisualizationImpl::addModel(std::string/*System::String^*/ filename) {
