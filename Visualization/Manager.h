@@ -1,6 +1,6 @@
 #ifndef MANAGER_H
 #define MANAGER_H
-#include "msclr\marshal_cppstd.h"
+//#include "msclr\marshal_cppstd.h"
 #include "Square.h"
 #include "AssimpModel.h"
 #include "GraphicEngine.h"
@@ -39,7 +39,7 @@ namespace visual {
 
 		GLboolean isRunning(void);
 	};
-
+	/*
 	// da man mutex in einem Projekt mit managed code nicht verwenden darf, muss man auf die .Net Lösung zurückgreifen
 	// die .Net Lösung kann nur in managed code verwendet werden
 	// damit man aus unmanaged code auf managed code zugreifen kann, muss man mit static methoden arbeiten
@@ -54,10 +54,6 @@ namespace visual {
 	private:
 		// A queue that is protected by Monitor.
 		static Queue<unsigned int>^ m_inputQueue = gcnew Queue<unsigned int>();
-
-		/*SafeQueue()	{
-		m_inputQueue = gcnew Queue<unsigned int>();
-		};*/
 
 	public:
 		// Lock the queue and add an element. 
@@ -119,9 +115,6 @@ namespace visual {
 		//static Queue<unsigned int>^ m_inputQueue = gcnew Queue<unsigned int>();
 
 		static Dictionary<GLuint, String^>^ m_queue = gcnew Dictionary<GLuint, String^>();
-		/*SafeQueue()	{
-		m_inputQueue = gcnew Queue<unsigned int>();
-		};*/
 
 	public:
 		// Lock the queue and add an element. 
@@ -184,7 +177,7 @@ namespace visual {
 			return retval;
 		}
 
-	};
+	};*/
 }
 
 #endif

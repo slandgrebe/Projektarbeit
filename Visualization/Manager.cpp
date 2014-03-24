@@ -38,7 +38,7 @@ void Manager::processQueue(void) {
 		return;
 	}
 
-	while (ModelQueue::hasMore()) {
+	/*while (ModelQueue::hasMore()) {
 		std::string filename;
 		GLuint modelId = ModelQueue::dequeue(filename);
 		model::AssimpModel* model = new model::AssimpModel;
@@ -54,7 +54,7 @@ void Manager::processQueue(void) {
 		if (model->loadModel()) {
 			squareList.insert(std::make_pair(modelId, model));
 		}
-	}
+	}*/
 }
 
 GLint Manager::doSomething(GLint n) {
@@ -74,7 +74,7 @@ GLuint Manager::addModel(const std::string filename) {
 		std::cout << " adding Model to Queue: " << modelInstantiationCounter << std::endl;
 
 		// Queue für Thread Sicherheit
-		ModelQueue::enqueue(modelInstantiationCounter, filename);
+		/*ModelQueue::enqueue(modelInstantiationCounter, filename);*/
 
 		return modelInstantiationCounter;
 	}
@@ -89,7 +89,7 @@ GLuint Manager::addPoint(const std::string textureFilename) {
 		std::cout << " adding Point to Queue: " << modelInstantiationCounter << std::endl;
 		
 		// Queue für Thread Sicherheit
-		SquareQueue::enqueue(modelInstantiationCounter);
+		/*SquareQueue::enqueue(modelInstantiationCounter);*/
 
 		return modelInstantiationCounter;
 	}

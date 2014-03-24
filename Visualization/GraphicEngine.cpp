@@ -12,7 +12,7 @@
 //#include <thread> //<thread> is not supported when compiling with /clr or /clr:pure.
 
 using namespace visual::graphics;
-using namespace System::Threading;
+//using namespace System::Threading;
 
 // Shader sources
 const GLchar* vertexSource =
@@ -54,9 +54,9 @@ GraphicEngine* GraphicEngine::getInstance() {
 
 		// http://www.codeproject.com/Articles/12740/Threads-with-Windows-Forms-Controls-in-Managed-C
 		//GraphicEngine^ objclass = gcnew GraphicEngine;
-		ThreadStart^ mThread = gcnew ThreadStart(&GraphicEngine::worker);
+		/*ThreadStart^ mThread = gcnew ThreadStart(&GraphicEngine::worker);
 		Thread^ uiThread = gcnew Thread(mThread);
-		uiThread->Start();
+		uiThread->Start();*/
 	}
 
 	return singleInstance;

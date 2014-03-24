@@ -6,7 +6,7 @@
 
 
 using namespace std;
-
+/*
 bool test() {
 	int n = 4;
 	if (visual::Visualization::doSomething(n) == n + 1) {
@@ -16,11 +16,11 @@ bool test() {
 	
 	cout << "test not ok" << endl;
 	return false;
-}
+}*/
 /*
 	POINT
 */
-namespace testPoint {
+/*namespace testPoint {
 	bool testPoint_CreateObject(unsigned int& modelId) {
 		modelId = 0;
 		modelId = visual::Visualization::addPoint();
@@ -104,11 +104,11 @@ namespace testPoint {
 
 		return false;
 	}
-}
+}*/
 /*
 	MODEL
 */
-namespace testModel {
+/*namespace testModel {
 	bool testModel_CreateObject(unsigned int& modelId) {
 		modelId = 0;
 		//std::string filename = "cube.obj";
@@ -202,9 +202,9 @@ namespace testModel {
 
 		return false;
 	}
-}
+}*/
 
-bool shuttle() {
+/*bool shuttle() {
 	unsigned int modelId = 0;
 	System::String^ filename = "data/models/shuttle/SpaceShuttleOrbiter.3ds";
 	//System::String^ filename = "textures/SpaceShuttleOrbiter.3ds";
@@ -229,7 +229,7 @@ bool shuttle() {
 	}
 
 	return false;
-}
+}*/
 
 int main(int argc, char* argv[]) {	
 	cout << "VisualizationTest" << endl;
@@ -237,7 +237,7 @@ int main(int argc, char* argv[]) {
 	//test();
 	//testPoint::testPoint();
 	//testModel::testModel();
-	shuttle();
+	//shuttle();
 
     return 0;
 }
