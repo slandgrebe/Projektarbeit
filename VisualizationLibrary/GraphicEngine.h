@@ -5,6 +5,7 @@
 #include <GLFW/glfw3.h>
 #include <iostream>
 #include <SOIL.h>
+#include "SafeQueue.h"
 
 namespace visual {
 	namespace graphics {
@@ -13,6 +14,8 @@ namespace visual {
 			static GraphicEngine* getInstance();
 			GLuint getShaderProgramId(void);
 			static bool isRunning(void) { return running; }
+			static void enqueueSquare(GLuint modelId, std::string filename);
+			static void enqueueModel(GLuint modelId, std::string filename);
 
 		private:
 			static bool running;
@@ -23,6 +26,14 @@ namespace visual {
 			static int width;
 			static int height;
 
+			struct modelQueueEntry {
+				GLuint modelId;
+				std::string filename;
+			};
+
+			static SafeQueue<modelQueueEntry>* squareQueue;
+			static SafeQueue<modelQueueEntry>* modelQueue;
+
 			static GLuint shaderProgramId;
 
 			enum shaderType {VERTEX, FRAGMENT, GEOMETRY};
@@ -31,6 +42,7 @@ namespace visual {
 			~GraphicEngine();
 
 			static void worker();
+			void processQueue();
 
 			int createWindow(const std::string title, int width, int height);
 			int createOpenGLContext(void);

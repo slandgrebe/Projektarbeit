@@ -11,8 +11,6 @@ namespace visual {
 	public:
 		static Manager* getInstance(void);
 
-		void processQueue(void);
-
 		void doSomething(std::string s);
 		GLuint addModel(const ::std::string filename);
 		GLuint addPoint(const ::std::string textureFilename = "sample.png");
@@ -23,6 +21,9 @@ namespace visual {
 		GLboolean rotateModel(GLuint modelId, GLfloat degrees, glm::vec3 axis);
 		GLboolean scaleModel(GLuint modelId, glm::vec3 scale);
 
+		void addToModelList(GLuint modelId, model::AssimpModel* model);
+		void addToSquareList(GLuint modelId, model::Square* model);
+
 		void draw(void);
 	private:
 		static Manager* instance;
@@ -30,7 +31,6 @@ namespace visual {
 		GLuint modelInstantiationCounter = 0;
 		::std::map<GLuint, model::AssimpModel*> assimpModelList;
 		::std::map<GLuint, model::Square*> squareList;
-		::std::vector<GLuint> squareQueue;
 
 		model::Square* square = 0;
 		model::AssimpModel* assimpModel = 0;

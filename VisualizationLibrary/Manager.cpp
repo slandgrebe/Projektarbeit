@@ -34,30 +34,6 @@ GLboolean Manager::isRunning(void) {
 	return false;
 }
 
-void Manager::processQueue(void) {
-	if (!isRunning()) {
-		return;
-	}
-
-	/*while (ModelQueue::hasMore()) {
-		std::string filename;
-		GLuint modelId = ModelQueue::dequeue(filename);
-		model::AssimpModel* model = new model::AssimpModel;
-		if (model->loadModel(filename)) {
-			assimpModelList.insert(std::make_pair(modelId, model));
-			std::cout << "added model to list: " << modelId << std::endl;
-		}
-	}
-
-	while (SquareQueue::hasMore()) {
-		GLuint modelId = SquareQueue::dequeue();
-		model::Square* model = new model::Square;
-		if (model->loadModel()) {
-			squareList.insert(std::make_pair(modelId, model));
-		}
-	}*/
-}
-
 void Manager::doSomething(std::string s) {
 	/*for (int i = 0; i < 100; i++) {
 		std::cout << i;
@@ -76,7 +52,7 @@ GLuint Manager::addModel(const std::string filename) {
 		std::cout << " adding Model to Queue: " << modelInstantiationCounter << std::endl;
 
 		// Queue für Thread Sicherheit
-		/*ModelQueue::enqueue(modelInstantiationCounter, filename);*/
+		graphics::GraphicEngine::getInstance()->enqueueModel(modelInstantiationCounter, filename);
 
 		return modelInstantiationCounter;
 	}
@@ -91,7 +67,7 @@ GLuint Manager::addPoint(const std::string textureFilename) {
 		std::cout << " adding Point to Queue: " << modelInstantiationCounter << std::endl;
 		
 		// Queue für Thread Sicherheit
-		/*SquareQueue::enqueue(modelInstantiationCounter);*/
+		graphics::GraphicEngine::getInstance()->enqueueSquare(modelInstantiationCounter, textureFilename);
 
 		return modelInstantiationCounter;
 	}
@@ -108,6 +84,13 @@ GLboolean Manager::isModelCreated(GLuint modelId) {
 	}
 
 	return GL_FALSE;
+}
+
+void Manager::addToModelList(GLuint modelId, model::AssimpModel* model) {
+	assimpModelList.insert(std::make_pair(modelId, model));
+}
+void Manager::addToSquareList(GLuint modelId, model::Square* model) {
+	squareList.insert(std::make_pair(modelId, model));
 }
 
 GLboolean Manager::positionModel(GLuint modelId, glm::vec3 position) {

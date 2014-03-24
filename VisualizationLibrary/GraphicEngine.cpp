@@ -11,6 +11,8 @@
 
 #include "Manager.h"
 
+#include <future>
+
 //#include <thread> //<thread> is not supported when compiling with /clr or /clr:pure.
 
 using namespace visual::graphics;
@@ -48,6 +50,9 @@ int GraphicEngine::width = 640;
 int GraphicEngine::height = 480;
 bool GraphicEngine::running = false;
 GLuint GraphicEngine::shaderProgramId = 0;
+SafeQueue<GraphicEngine::modelQueueEntry>* GraphicEngine::squareQueue = new SafeQueue<modelQueueEntry>;
+SafeQueue<GraphicEngine::modelQueueEntry>* GraphicEngine::modelQueue = new SafeQueue<modelQueueEntry>;
+
 
 
 GraphicEngine* GraphicEngine::getInstance() {
@@ -59,6 +64,8 @@ GraphicEngine* GraphicEngine::getInstance() {
 		/*ThreadStart^ mThread = gcnew ThreadStart(&GraphicEngine::worker);
 		Thread^ uiThread = gcnew Thread(mThread);
 		uiThread->Start();*/
+
+		std::async(worker);
 	}
 
 	return singleInstance;
@@ -216,7 +223,7 @@ void GraphicEngine::worker(void) {
 		glfwSwapBuffers(window);
 		glfwPollEvents();
 
-		Manager::getInstance()->processQueue();
+		GraphicEngine::getInstance()->processQueue();
 
 		// Clear the screen to black
 		glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
@@ -239,6 +246,36 @@ void GraphicEngine::worker(void) {
 	glDeleteBuffers(1, &vertexBufferId);
 
 	glDeleteVertexArrays(1, &vao);*/
+}
+
+void GraphicEngine::enqueueSquare(GLuint modelId, std::string filename) {
+	modelQueueEntry e;
+	e.modelId = modelId;
+	e.filename = filename;
+	squareQueue->enqueue(e);
+}
+void GraphicEngine::enqueueModel(GLuint modelId, std::string filename) {
+	modelQueueEntry e;
+	e.modelId = modelId;
+	e.filename = filename;
+	modelQueue->enqueue(e);
+}
+void GraphicEngine::processQueue() {
+	while (modelQueue->hasMore()) {
+		modelQueueEntry e = modelQueue->dequeue();
+		model::AssimpModel* model = new model::AssimpModel;
+		if (model->loadModel(e.filename)) {
+			Manager::getInstance()->addToModelList(e.modelId, model);
+		}
+	}
+
+	while (squareQueue->hasMore()) {		
+		modelQueueEntry e = squareQueue->dequeue();
+		model::Square* model = new model::Square;
+		if (model->loadModel()) {
+			Manager::getInstance()->addToSquareList(e.modelId, model);
+		}
+	}
 }
 
 int GraphicEngine::createWindow(const std::string title, int width, int height) {
