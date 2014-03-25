@@ -12,12 +12,12 @@ namespace visual {
 		return result;
 	}
 
-	unsigned int VisualizationImpl::addPoint(void) {
-		unsigned int result = Manager::getInstance()->addPoint();
-		return result;
-	}
 	unsigned int VisualizationImpl::addPoint(const std::string textureFilename) {
 		unsigned int result = Manager::getInstance()->addPoint(textureFilename);
+		return result;
+	}
+	unsigned int VisualizationImpl::addText(const std::string text) {
+		unsigned int result = Manager::getInstance()->addText(text);
 		return result;
 	}
 

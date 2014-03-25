@@ -12,7 +12,8 @@ namespace visual {
 			TextureSoil();
 			~TextureSoil();
 
-			bool load(const std::string& filename);
+			bool load(const int width, const int height, const unsigned char* image, GLint internalFormat = GL_RGB, GLenum format = GL_RGB);
+			bool loadFromFile(const std::string& filename);
 			void bind(GLenum textureUnit = GL_TEXTURE0);
 
 		private:

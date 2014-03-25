@@ -19,8 +19,10 @@ namespace visual {
 		static void doSomething(std::string s);
 		static unsigned int addModel(std::string/*System::String^*/);
 
-		static unsigned int addPoint(void); // default values mit managed code ist so eine sache ... http://stackoverflow.com/questions/15454394/why-c-cli-has-no-default-argument-on-managed-types
-		static unsigned int addPoint(const std::string textureFilename);
+		//static unsigned int addPoint(void); // default values mit managed code ist so eine sache ... http://stackoverflow.com/questions/15454394/why-c-cli-has-no-default-argument-on-managed-types
+		static unsigned int addPoint(const std::string textureFilename = "data/textures/sample.png");
+
+		static unsigned int addText(std::string text);
 
 		static bool isModelCreated(const unsigned int modelId);
 
@@ -34,18 +36,15 @@ namespace visual {
 
 // exportierte funktionen
 DLL_API void APIENTRY doSomething(const char* text) {
-	std::string s = text;
-	visual::VisualizationImpl::doSomething(s);
+	visual::VisualizationImpl::doSomething(text);
 }
 
 DLL_API unsigned int APIENTRY addModel(const char* filename) {
-	std::string s = filename;
-	return visual::VisualizationImpl::addModel(s);
+	return visual::VisualizationImpl::addModel(filename);
 }
 
 DLL_API unsigned int APIENTRY addPoint(const char* filename) {
-	std::string s = filename;
-	return visual::VisualizationImpl::addPoint(s);
+	return visual::VisualizationImpl::addPoint(filename);
 }
 
 DLL_API bool APIENTRY isModelCreated(const unsigned int modelId) {
@@ -64,6 +63,9 @@ DLL_API bool APIENTRY scaleModel(const unsigned int modelId, const float x, cons
 	return visual::VisualizationImpl::scaleModel(modelId, x, y, z);
 }
 
+DLL_API unsigned int APIENTRY addText(const char* text) {
+	return visual::VisualizationImpl::addText(text);
+}
 
 
 #endif

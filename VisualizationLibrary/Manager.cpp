@@ -3,6 +3,8 @@
 #include <iostream>
 #include <time.h>
 
+#include "Text.h"
+
 using namespace visual;
 
 Manager* Manager::instance = 0;
@@ -35,14 +37,7 @@ GLboolean Manager::isRunning(void) {
 }
 
 void Manager::doSomething(std::string s) {
-	/*for (int i = 0; i < 100; i++) {
-		std::cout << i;
-	}
-
-	std::cout << std::endl;*/
-
-	std::cout << "doSomething: " << s << std::endl;
-	addModel("data/models/shuttle/SpaceShuttleOrbiter.3ds");
+	addText(s);
 }
 
 GLuint Manager::addModel(const std::string filename) {
@@ -75,6 +70,21 @@ GLuint Manager::addPoint(const std::string textureFilename) {
 	return 0;
 }
 
+GLuint Manager::addText(const std::string text) {
+	if (isRunning()) {
+		modelInstantiationCounter++;
+
+		std::cout << " adding Text to Queue: " << modelInstantiationCounter << std::endl;
+
+		// Queue für Thread Sicherheit
+		graphics::GraphicEngine::getInstance()->enqueueText(modelInstantiationCounter, text);
+
+		return modelInstantiationCounter;
+	}
+
+	return 0;
+}
+
 GLboolean Manager::isModelCreated(GLuint modelId) {
 	if (assimpModelList.find(modelId) != assimpModelList.end()) {
 		return GL_TRUE;
@@ -93,6 +103,10 @@ void Manager::addToModelList(GLuint modelId, model::AssimpModel* model) {
 void Manager::addToSquareList(GLuint modelId, model::Square* model) {
 	std::cout << " adding Square to List: " << modelId << std::endl;
 	squareList.insert(std::make_pair(modelId, model));
+}
+void Manager::addToTextList(GLuint modelId, gui::Text* text) {
+	std::cout << " adding Text to List: " << modelId << std::endl;
+	textList.insert(std::make_pair(modelId, text));
 }
 
 GLboolean Manager::positionModel(GLuint modelId, glm::vec3 position) {
@@ -182,6 +196,12 @@ void Manager::draw(void) {
 		model->draw();
 	}
 	
+	// Texte zeichnen
+	std::map<GLuint, gui::Text*>::iterator it3;
+	for (it3 = textList.begin(); it3 != textList.end(); it3++) {
+		gui::Text* text = (*it3).second;
+		text->draw();
+	}
 	
 	/*if (isRunning()) {
 		if (!square) {

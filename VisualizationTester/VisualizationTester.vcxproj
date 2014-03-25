@@ -93,11 +93,6 @@
   <ItemGroup>
     <Image Include="app.ico" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Visualization\Visualization.vcxproj">
-      <Project>{cf0d0e3e-a785-40e9-9851-d17002f3bc30}</Project>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

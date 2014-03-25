@@ -16,11 +16,14 @@ namespace visual {
 
 			TextureSoil* texture;
 
+			bool loadModel(void);
+
 		public:
 			Square();
 			~Square();
 
-			GLboolean loadModel(void);
+			bool loadFromFile(const std::string filename = "data/textures/sample.png");
+			bool loadImage(const int width, const int height, const unsigned char* image, GLint internalFormat = GL_RGB, GLenum format = GL_RGB);
 
 			/** Zeichnet das Modell
 			* @author Stefan Landgrebe

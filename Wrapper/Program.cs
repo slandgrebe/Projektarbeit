@@ -9,7 +9,7 @@ namespace Wrapper
         extern static void doSomething(string text);*/
         [DllImport("Visualization.dll")]
         extern static void doSomething(string text);
-        
+
         [DllImport("Visualization.dll")]
         extern static uint addModel(string filename);
 
@@ -28,17 +28,28 @@ namespace Wrapper
         [DllImport("Visualization.dll")]
         extern static bool scaleModel(uint modelId, float x, float y, float z);
 
+        [DllImport("Visualization.dll")]
+        extern static bool addText(string text);
 
         static void Main(string[] args)
         {
+            //addText("hallo");
+
             Console.WriteLine("hallo");
 
-            uint modelId = addModel("data/models/shuttle/SpaceShuttleOrbiter.3ds");
+            uint modelId = addPoint("data/textures/sample.png");
             while (!isModelCreated(modelId)) { }
-            scaleModel(modelId, 0.001f, 0.001f, 0.001f);
+            positionModel(modelId, 0.5f, 0.5f, -0.5f);
 
+            uint modelId2 = addModel("data/models/shuttle/SpaceShuttleOrbiter.3ds");
+            while (!isModelCreated(modelId2)) { }
+            scaleModel(modelId2, 0.0005f, 0.0005f, 0.0005f);
+            rotateModel(modelId2, -45.0f, 0.0f, 0.0f, 1.0f);
+            positionModel(modelId2, -0.5f, -0.5f, -0.5f);
 
             Console.WriteLine("zurück in c#");
+
+            //addText("hallo");
 
             Console.ReadLine();
         }

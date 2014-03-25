@@ -23,8 +23,8 @@ Square::~Square() {
 	glDeleteVertexArrays(1, &vertexArrayId);
 }
 
-GLboolean Square::loadModel(void) {
-	std::cout <<  " [Square] glewExperimentalddd: " << (glewExperimental == GL_TRUE) << std::endl;
+bool Square::loadModel(void) {
+	std::cout <<  " [Square] glewExperimental: " << (glewExperimental == GL_TRUE) << std::endl;
 	
 	// Create Vertex Array Object
 	glGenVertexArrays(1, &vertexArrayId);
@@ -35,13 +35,13 @@ GLboolean Square::loadModel(void) {
 	// positions
 	glGenBuffers(1, &positionBufferId);
 	GLfloat positions[] = {
-		-0.5f, 0.5f,  // Top-left
-		0.5f, 0.5f,  // Top-right
-		0.5f, -0.5f,  // Bottom-right
+		-0.5f, 0.5f, 0.0f,  // Top-left
+		0.5f, 0.5f, 0.0f,  // Top-right
+		0.5f, -0.5f, 0.0f,  // Bottom-right
 
-		0.5f, -0.5f,  // Bottom-right
-		-0.5f, -0.5f,   // Bottom-left
-		-0.5f, 0.5f,  // Top-left
+		0.5f, -0.5f, 0.0f,  // Bottom-right
+		-0.5f, -0.5f, 0.0f,   // Bottom-left
+		-0.5f, 0.5f, 0.0f,  // Top-left
 	};
 	glBindBuffer(GL_ARRAY_BUFFER, positionBufferId);
 	glBufferData(GL_ARRAY_BUFFER, sizeof(positions), positions, GL_STATIC_DRAW);
@@ -74,11 +74,7 @@ GLboolean Square::loadModel(void) {
 	glBindBuffer(GL_ARRAY_BUFFER, textureBufferId);
 	glBufferData(GL_ARRAY_BUFFER, sizeof(textureCoordinates), textureCoordinates, GL_STATIC_DRAW);
 
-	// texture
-	texture = new TextureSoil;
-	if (!texture->load("data/textures/sample.png")) {
-		return false;
-	}
+	
 	
 	// Create an element array
 	/*GLuint ebo;
@@ -91,9 +87,40 @@ GLboolean Square::loadModel(void) {
 	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(elements), elements, GL_STATIC_DRAW);*/
 
 
+	
+	
+	return true;
+}
+
+bool Square::loadFromFile(const std::string filename) {
+	if (!loadModel()) {
+		return false;
+	}
+	// texture
+	texture = new TextureSoil;
+	if (!texture->loadFromFile(filename)) {
+		return false;
+	}
+
 	// Make sure the VAO is not changed from outside code
 	glBindVertexArray(0);
-	
+
+	return true;
+}
+
+bool Square::loadImage(const int width, const int height, const unsigned char* image, GLint internalFormat, GLenum format) {
+	if (!loadModel()) {
+		return false;
+	}
+	// texture
+	texture = new TextureSoil;
+	if (!texture->load(width, height, image, internalFormat, format)) {
+		return false;
+	}
+
+	// Make sure the VAO is not changed from outside code
+	glBindVertexArray(0);
+
 	return true;
 }
 
@@ -109,7 +136,7 @@ void Square::draw(void) {
 	glBindBuffer(GL_ARRAY_BUFFER, positionBufferId);
 	glVertexAttribPointer(
 		posAttrib,          // layout Attribut im Vertex Shader
-		2,                  // Grösse
+		3,                  // Grösse
 		GL_FLOAT,           // Datentyp
 		GL_FALSE,           // normalisiert?
 		0,                  // Stride
