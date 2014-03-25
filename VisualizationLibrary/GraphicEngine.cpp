@@ -89,7 +89,7 @@ void GraphicEngine::worker(void) {
 
 	// Shader
 	
-	GLuint shaderProgramId = GraphicEngine::getInstance()->createShaderProgram("SimpleVertexShader.vertexshader", "SimpleFragmentShader.fragmentshader");
+	GLuint shaderProgramId = GraphicEngine::getInstance()->createShaderProgram("data/shader/SimpleVertexShader.vertexshader", "data/shader/SimpleFragmentShader.fragmentshader");
 	if (0 == shaderProgramId) {
 		return;
 	}

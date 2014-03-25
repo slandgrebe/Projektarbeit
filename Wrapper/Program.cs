@@ -32,9 +32,6 @@ namespace Wrapper
         static void Main(string[] args)
         {
             Console.WriteLine("hallo");
-            //doSomething("blabla");
-
-            Console.WriteLine("zurück in c#");
 
             uint modelId = addModel("data/models/shuttle/SpaceShuttleOrbiter.3ds");
             while (!isModelCreated(modelId)) { }
