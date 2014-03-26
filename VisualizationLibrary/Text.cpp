@@ -7,7 +7,7 @@ using namespace visual::gui;
 
 // http://nehe.gamedev.net/tutorial/freetype_fonts_in_opengl/24001/
 Text::Text() {
-	std::cout << "Consturctor" << std::endl;
+	m_text = "";
 	/*FT_Error error = FT_Init_FreeType(&ftLibrary);
 	if (error) {
 		std::cout << "FreeType Bibliothek konnte nicht initialisiert werden." << std::endl;
@@ -88,6 +88,10 @@ Text::Text() {
 Text::~Text() {
 	FT_Done_Face(face);
 	FT_Done_FreeType(library);
+}
+
+void Text::setText(std::string text) {
+	m_text = text;
 }
 
 bool Text::init(int pixelSize) {
@@ -267,7 +271,7 @@ void Text::draw(void) {
 	glUniform1i(TextureID, 0);
 	*/
 	fontOpt(visual::gui::Text::fontOptions::FONT_SIZE, 12);
-	write("hallo", 0.0f, 0.0f, ALIGN_CENTER);
+	write(m_text, 0.0f, 0.0f, ALIGN_CENTER);
 }
 
 void Text::fontOpt(Text::fontOptions opt, int value) {

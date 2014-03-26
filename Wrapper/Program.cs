@@ -35,7 +35,7 @@ namespace Wrapper
         {
             //addText("hallo");
 
-            Console.WriteLine("hallo");
+            Console.WriteLine("Start");
 
             /*
             uint modelId = addPoint("data/textures/sample.png");
@@ -50,7 +50,7 @@ namespace Wrapper
 
             Console.WriteLine("zurück in c#");
             */
-            addText("hallo");
+            addText("Toller Text");
 
             Console.ReadLine();
         }

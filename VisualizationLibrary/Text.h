@@ -11,6 +11,8 @@ namespace visual {
 	namespace gui {
 		class Text {
 		private:
+			std::string m_text;
+			
 			FT_Library		library;	/* handle to library     */
 			FT_Face			face;		/* handle to face object */
 			FT_GlyphSlot	glyphSlot;
@@ -54,7 +56,7 @@ namespace visual {
 			bool init(int pixelSize);
 			void write(std::string text, float x, float y, int align);
 
-			void setText(std::string text, float x, float y);
+			void setText(std::string text);
 
 			void fontOpt(fontOptions opt, int value);
 
