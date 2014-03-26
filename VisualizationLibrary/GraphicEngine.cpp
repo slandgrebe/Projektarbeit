@@ -215,6 +215,15 @@ void GraphicEngine::worker(void) {
 	/***************
 		LOOP
 	****************/
+
+	// Enable depth test
+	glEnable(GL_DEPTH_TEST);
+	// Accept fragment if it closer to the camera than the former one
+	glDepthFunc(GL_LESS);
+
+	glEnable(GL_BLEND);
+	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+
 	while (!glfwWindowShouldClose(window))
 	{
 		if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS) {
@@ -229,7 +238,7 @@ void GraphicEngine::worker(void) {
 
 		// Clear the screen to black
 		glClearColor(0.3f, 0.5f, 0.9f, 1.0f);
-		glClear(GL_COLOR_BUFFER_BIT);
+		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 		// Draw a rectangle from the 2 triangles using 6 indices
 		//glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
@@ -248,6 +257,8 @@ void GraphicEngine::worker(void) {
 	glDeleteBuffers(1, &vertexBufferId);
 
 	glDeleteVertexArrays(1, &vao);*/
+
+	glfwTerminate();
 }
 
 void GraphicEngine::enqueueSquare(GLuint modelId, std::string filename) {
@@ -295,7 +306,9 @@ void GraphicEngine::processQueue() {
 	while (textQueue->hasMore()) {
 		modelQueueEntry e = textQueue->dequeue();
 		gui::Text* text = new gui::Text;
-		Manager::getInstance()->addToTextList(e.modelId, text);
+		if (text->init(60)) {
+			Manager::getInstance()->addToTextList(e.modelId, text);
+		}
 	}
 }
 

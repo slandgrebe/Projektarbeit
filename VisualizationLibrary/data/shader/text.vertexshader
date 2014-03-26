@@ -1,9 +1,16 @@
 #version 150
+
+in vec4 fontCoords; // glyph position and texture coordinates
  
-attribute vec4 coord;
-varying vec2 texcoord;
+uniform vec4 color; // text color
  
-void main(void) {
-  gl_Position = vec4(coord.xy, 0, 1);
-  texcoord = coord.zw;
+out vec4 fragColor; // textcolor variable for fragment shader
+out vec2 fontTexCoords; // texture coord variable for fragment shader
+ 
+void main() {
+    fragColor = color; // tell fragment shader about 'color'
+    fontTexCoords = fontCoords.zw; // set fragment shader's 'fonttexCoords' variable to the last half of fontCoords
+     
+    // set gl_position's x and y equal to fontCoord's first half
+    gl_Position = vec4(fontCoords.xy, 0.0, 1.0);
 }

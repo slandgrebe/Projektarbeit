@@ -37,6 +37,7 @@ namespace Wrapper
 
             Console.WriteLine("hallo");
 
+            /*
             uint modelId = addPoint("data/textures/sample.png");
             while (!isModelCreated(modelId)) { }
             positionModel(modelId, 0.5f, 0.5f, -0.5f);
@@ -48,8 +49,8 @@ namespace Wrapper
             positionModel(modelId2, -0.5f, -0.5f, -0.5f);
 
             Console.WriteLine("zurück in c#");
-
-            //addText("hallo");
+            */
+            addText("hallo");
 
             Console.ReadLine();
         }

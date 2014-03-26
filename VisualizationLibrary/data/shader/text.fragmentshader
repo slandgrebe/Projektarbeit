@@ -1,9 +1,15 @@
 #version 150
+
+in vec4 fragColor; // fragment color
+in vec2 fontTexCoords; // texture coords for th glyph
+
+out vec4 outColor;
+
+uniform sampler2D tex; // texture id
  
-varying vec2 texcoord;
-uniform sampler2D tex;
-uniform vec4 color;
- 
-void main(void) {
-  gl_FragColor = vec4(1, 1, 1, texture2D(tex, texcoord).a) * color;
+void main() {
+    // draw pixel with fragColor's red, green and blue, and texture's alpha
+    outColor = vec4(1.0, 1.0, 1.0, texture2D(tex, fontTexCoords).a) * fragColor;
+	//outColor = vec4(fragColor.rgb, texture2D(tex, fontTexCoords).a);
+	//outColor = vec4(fragColor.rgb, 0.3);
 }
