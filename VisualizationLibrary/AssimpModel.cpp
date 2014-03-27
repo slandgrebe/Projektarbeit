@@ -225,6 +225,8 @@ void AssimpModel::draw() {
 	// get Shader Program Reference
 	GLuint shaderProgramId = graphics::GraphicEngine::getInstance()->getShaderProgramId();
 
+	glUseProgram(shaderProgramId);
+
 	// positions
 	GLint posAttrib = glGetAttribLocation(shaderProgramId, "position");
 	glEnableVertexAttribArray(posAttrib);

@@ -48,8 +48,6 @@ namespace Wrapper
 
         static void Main(string[] args)
         {
-            //addText("hallo");
-
             Console.WriteLine("Start");
 
             
@@ -61,19 +59,19 @@ namespace Wrapper
             while (!isModelCreated(pointId2)) { }
             positionModel(pointId2, 0.4f, 0.4f, -0.5f);
 
-            /*uint modelId = addModel("data/models/shuttle/SpaceShuttleOrbiter.3ds");
+
+            uint modelId = addModel("data/models/shuttle/SpaceShuttleOrbiter.3ds");
             while (!isModelCreated(modelId)) { }
             scaleModel(modelId, 0.0005f, 0.0005f, 0.0005f);
-            rotateModel(modelId, -45.0f, 0.0f, 0.0f, 1.0f);
-            positionModel(modelId, -0.5f, -0.5f, -0.5f);
+            rotateModel(modelId, -45.0f, 1.0f, 0.0f, 1.0f);
+            positionModel(modelId, -0.6f, -0.5f, -0.5f);
 
             uint modelId2 = addModel("data/models/shuttle/SpaceShuttleOrbiter.3ds");
             while (!isModelCreated(modelId2)) { }
             scaleModel(modelId2, 0.0005f, 0.0005f, 0.0005f);
-            rotateModel(modelId2, -45.0f, 0.0f, 0.0f, 1.0f);
-            positionModel(modelId2, -0.4f, -0.4f, -0.5f);
+            rotateModel(modelId2, -45.0f, 0.0f, 1.0f, 1.0f);
+            positionModel(modelId2, -0.3f, -0.4f, -0.5f);
 
-            Console.WriteLine("zurück in c#");*/
             
             uint textId = addText("Toller Text");
             while (!isModelCreated(textId)) { }
@@ -85,9 +83,12 @@ namespace Wrapper
             uint textId2 = addText("Toller Text");
             while (!isModelCreated(textId2)) { }
             setText(textId2, "noch viel mehr Text!");
-            setTextPosition(textId2, 100, 50);
+            setTextPosition(textId2, 200, 50);
             setTextSize(textId2, 24);
             setTextColor(textId2, 1.0f, 0.5f, 0.0f, 1.0f);
+
+
+            Console.WriteLine("zurück in c#");
 
             while (isRunning()) { }
         }
