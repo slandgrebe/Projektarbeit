@@ -12,10 +12,11 @@ namespace visual {
 	public:
 		static Manager* getInstance(void);
 
+		bool isRunning(void);
+
 		void doSomething(std::string s);
 		GLuint addModel(const ::std::string filename);
 		GLuint addPoint(const ::std::string textureFilename = "sample.png");
-		GLuint addText(const std::string text);
 
 		GLboolean isModelCreated(GLuint modelId);
 
@@ -26,6 +27,15 @@ namespace visual {
 		void addToModelList(GLuint modelId, model::AssimpModel* model);
 		void addToSquareList(GLuint modelId, model::Square* model);
 		void addToTextList(GLuint modelId, gui::Text* text);
+
+
+		GLuint addText(const std::string text);
+		
+		void setText(const GLuint textId, const std::string text);
+		void setTextPosition(const GLuint textId, const int x, const int y);
+		bool setTextSize(const GLuint textId, const int points);
+		void setTextColor(const GLuint textId, const glm::vec4 color);
+		bool setFontFamily(const GLuint textId, const std::string filename);
 
 		void draw(void);
 	private:
@@ -41,7 +51,7 @@ namespace visual {
 
 		Manager(void);
 
-		GLboolean isRunning(void);
+		visual::gui::Text* getTextFromList(GLuint textId);
 	};
 }
 

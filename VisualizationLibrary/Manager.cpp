@@ -21,7 +21,7 @@ Manager::Manager() {
 	isRunning();
 }
 
-GLboolean Manager::isRunning(void) {
+bool Manager::isRunning(void) {
 	clock_t begin = clock();
 	while (true) {
 		if (graphics::GraphicEngine::getInstance()->isRunning()) {
@@ -70,26 +70,14 @@ GLuint Manager::addPoint(const std::string textureFilename) {
 	return 0;
 }
 
-GLuint Manager::addText(const std::string text) {
-	if (isRunning()) {
-		modelInstantiationCounter++;
-
-		std::cout << " adding Text to Queue: " << modelInstantiationCounter << std::endl;
-
-		// Queue für Thread Sicherheit
-		graphics::GraphicEngine::getInstance()->enqueueText(modelInstantiationCounter, text);
-
-		return modelInstantiationCounter;
-	}
-
-	return 0;
-}
-
 GLboolean Manager::isModelCreated(GLuint modelId) {
 	if (assimpModelList.find(modelId) != assimpModelList.end()) {
 		return GL_TRUE;
 	}
 	else if (squareList.find(modelId) != squareList.end()) {
+		return GL_TRUE;
+	}
+	else if (textList.find(modelId) != textList.end()) {
 		return GL_TRUE;
 	}
 
@@ -175,6 +163,53 @@ GLboolean Manager::scaleModel(GLuint modelId, glm::vec3 scale) {
 
 	return GL_FALSE;
 }
+
+
+GLuint Manager::addText(const std::string text) {
+	if (isRunning()) {
+		modelInstantiationCounter++;
+
+		std::cout << " adding Text to Queue: " << modelInstantiationCounter << std::endl;
+
+		// Queue für Thread Sicherheit
+		graphics::GraphicEngine::getInstance()->enqueueText(modelInstantiationCounter, text);
+
+		return modelInstantiationCounter;
+	}
+
+	return 0;
+}
+
+visual::gui::Text* Manager::getTextFromList(GLuint textId) {
+	visual::gui::Text* text = NULL;
+
+	if (textList.find(textId) != textList.end()) {
+		text = textList.find(textId)->second;
+	}
+
+	return text;
+}
+void Manager::setText(const GLuint textId, const std::string text) {
+	visual::gui::Text* textObj = getTextFromList(textId);
+	textObj->setText(text);
+}
+void Manager::setTextPosition(const GLuint textId, const int x, const int y) {
+	visual::gui::Text* textObj = getTextFromList(textId);
+	textObj->setPosition(x, y);
+}
+bool Manager::setTextSize(const GLuint textId, const int points) {
+	visual::gui::Text* textObj = getTextFromList(textId);
+	return textObj->setSize(points);
+}
+void Manager::setTextColor(const GLuint textId, const glm::vec4 color) {
+	visual::gui::Text* textObj = getTextFromList(textId);
+	textObj->setColor(color);
+}
+bool Manager::setFontFamily(const GLuint textId, const std::string filename) {
+	visual::gui::Text* textObj = getTextFromList(textId);
+	return textObj->setFontFamily(filename);
+}
+
 
 void Manager::draw(void) {
 	if (!isRunning()) {

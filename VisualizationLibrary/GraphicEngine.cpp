@@ -258,6 +258,8 @@ void GraphicEngine::worker(void) {
 
 	glDeleteVertexArrays(1, &vao);*/
 
+	running = false;
+
 	glfwTerminate();
 }
 

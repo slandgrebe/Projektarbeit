@@ -1,6 +1,8 @@
 #pragma once
 
 #include <GL/glew.h>
+#include <glm/glm.hpp>
+#include "GraphicEngine.h"
 #include "ShaderProgram.h"
 #include <vector>
 
@@ -12,12 +14,15 @@ namespace visual {
 		class Text {
 		private:
 			std::string m_text;
-			
+			unsigned int x;
+			unsigned int y;
+			int currentTextSize;
+			glm::vec4 color;
+			std::string fontFamily;
+
 			FT_Library		library;	/* handle to library     */
 			FT_Face			face;		/* handle to face object */
 			FT_GlyphSlot	glyphSlot;
-
-			int currentTextSize;
 
 			void getGlyph(char c);
 
@@ -31,7 +36,7 @@ namespace visual {
 			enum alignment {
 				ALIGN_LEFT, ALIGN_CENTER, ALIGN_RIGHT
 			};
-			enum fontOptions {FONT_SIZE};
+			enum fontOptions {FONT_SIZE, FONT_COLOR, FONT_FAMILY};
 
 			struct GlyphData {
 				char c;
@@ -56,9 +61,13 @@ namespace visual {
 			bool init(int pixelSize);
 			void write(std::string text, float x, float y, int align);
 
-			void setText(std::string text);
+			void setText(const std::string text);
+			void setPosition(const unsigned int x, const unsigned int y);
+			bool setSize(const int points);
+			void setColor(const glm::vec4 color);
+			bool setFontFamily(const std::string filename = "data/fonts/arial.ttf");
 
-			void fontOpt(fontOptions opt, int value);
+			//void fontOpt(fontOptions opt, int value);
 
 			void draw(void);
 		};

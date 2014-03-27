@@ -8,81 +8,11 @@ using namespace visual::gui;
 // http://nehe.gamedev.net/tutorial/freetype_fonts_in_opengl/24001/
 Text::Text() {
 	m_text = "";
-	/*FT_Error error = FT_Init_FreeType(&ftLibrary);
-	if (error) {
-		std::cout << "FreeType Bibliothek konnte nicht initialisiert werden." << std::endl;
-	}
-
-	error = FT_New_Face(ftLibrary,	// handle to library
-		"data/fonts/arial.ttf",		// filename
-		0,							// face_index (0 geht immer)
-		&ftFace);					// handel to face
-	if (error == FT_Err_Unknown_File_Format) {
-		std::cout << "Die Schrift wird nicht unterstützt." << std::endl;
-	}
-	else if (error) {
-		std::cout << "Fehler beim Öffnen der Schrift." << std::endl;
-	}
-
-	error = FT_Set_Pixel_Sizes(
-		ftFace,   // handle to face object
-		0,      // pixel_width          
-		12);   // pixel_height        
-
-	error = FT_Select_Charmap(
-		ftFace,               // target face object 
-		FT_ENCODING_UNICODE); // encoding          
-	if (error) {
-		std::cout << "Charactermap konnte nicht geladen werden." << std::endl;
-	}
-
-
-	//FT_ULong charcode = 0x00000021;
-	char * text = "!";
-	FT_UInt glyph_index = FT_Get_Char_Index(ftFace, 077);
-
-	std::cout << "glyph index: " << glyph_index << std::endl;
-
-	error = FT_Load_Glyph(
-		ftFace,          // handle to face object 
-		glyph_index,   // glyph index           
-		FT_LOAD_DEFAULT);  // load flags, see below 
-
-	error = FT_Render_Glyph(ftFace->glyph,   // glyph slot  
-		FT_RENDER_MODE_NORMAL); // render mode 
-
-	FT_Bitmap& bitmap = ftFace->glyph->bitmap;
-
-	int width = nextPowerOf2(bitmap.width);
-	int height = nextPowerOf2(bitmap.rows);
-
-	std::cout << "width: " << width << " bitmap.width: " << bitmap.width << std::endl;
-
-	GLubyte* expandedData = new GLubyte[width * height];
-
-	std::cout << "*********************************" << std::endl;
-	for (int j = 0; j < height; j++) {
-		for (int i = 0; i < width; i++) {
-			expandedData[(i + j * width)] =
-				(i >= bitmap.width || j >= bitmap.rows) ? 0 : bitmap.buffer[i + bitmap.width * j];
-
-			std::cout << expandedData[(i + j * width)];
-		}
-		std::cout << std::endl;
-	}
-	std::cout << "*********************************" << std::endl; 
-
-	square = new visual::model::Square;
-	square->loadImage(width, height, expandedData);
-
-	delete[] expandedData;
-
-	// We Don't Need The Face Information Now That The Display
-	// Lists Have Been Created, So We Free The Assosiated Resources.
-	FT_Done_Face(ftFace);
-
-	// Ditto For The Font Library.
-	FT_Done_FreeType(ftLibrary);*/
+	x = 0;
+	y = 0;
+	currentTextSize = 12;
+	color = glm::vec4(0.0f, 0.0f, 0.0f, 1.0f);
+	fontFamily = "data/fonts/arial.ttf";
 }
 
 Text::~Text() {
@@ -90,8 +20,36 @@ Text::~Text() {
 	FT_Done_FreeType(library);
 }
 
-void Text::setText(std::string text) {
+void Text::setText(const std::string text) {
+	std::cout << "Wechsle Text von '" << m_text << "' zu '" << text << "'." << std::endl;
 	m_text = text;
+}
+void Text::setPosition(const unsigned int x, const unsigned int y) {
+	this->x = x;
+	this->y = y;
+}
+bool Text::setSize(const int pixelSize) {
+	// set the font's pixel size
+	if (FT_Set_Pixel_Sizes(face, 0, pixelSize)) {
+		std::cout << "Schriftgrösse konnte nicht auf " << pixelSize << " gesetzt werden." << std::endl;
+		return false;
+	}
+
+	std::cout << "Schriftgrösse auf " << pixelSize << " gesetzt." << std::endl;
+
+	currentTextSize = pixelSize; // set current font size equal to 'value' parameter
+	return true;
+}
+void Text::setColor(const glm::vec4 color) {
+	this->color = color;
+}
+bool Text::setFontFamily(const std::string filename) {
+	if (FT_New_Face(library, filename.c_str(), 0, &face)) {
+		std::cout << "Schrift '" << filename << "' konnte nicht geladen werden." << std::endl;
+		return false;
+	}
+	this->fontFamily = filename;
+	return true;
 }
 
 bool Text::init(int pixelSize) {
@@ -107,7 +65,9 @@ bool Text::init(int pixelSize) {
 		return false;
 	}
 
-	FT_Set_Pixel_Sizes(face, 0, pixelSize);
+	if (!setSize(pixelSize)) {
+		return false;
+	}
 
 	glyphSlot = face->glyph;
 
@@ -118,11 +78,9 @@ bool Text::init(int pixelSize) {
 	glBindVertexArray(vao);
 
 	glGenBuffers(1, &vbo);
-	glBindBuffer(GL_ARRAY_BUFFER, vbo);
+	//glBindBuffer(GL_ARRAY_BUFFER, vbo);
 
-	fontCoordinates = glGetAttribLocation(shaderProgram->getShaderProgramId(), "fontCoords");
-	glEnableVertexAttribArray(fontCoordinates);
-	glVertexAttribPointer(fontCoordinates, 4, GL_FLOAT, GL_FALSE, 0, 0);
+	glBindVertexArray(0);
 
 	return true;
 }
@@ -130,12 +88,29 @@ bool Text::init(int pixelSize) {
 void Text::write(std::string text, float x, float y, int align) {
 	glBindVertexArray(vao);
 	glBindBuffer(GL_ARRAY_BUFFER, vbo);
+	//glActiveTexture(GL_TEXTURE0);
+	//glBindTexture(GL_TEXTURE_2D, textTexture);
+
+	fontCoordinates = glGetAttribLocation(shaderProgram->getShaderProgramId(), "fontCoords");
+	glEnableVertexAttribArray(fontCoordinates);
+	glVertexAttribPointer(fontCoordinates, 4, GL_FLOAT, GL_FALSE, 0, 0);
+
+	
+
 	glActiveTexture(GL_TEXTURE0);
+	glGenTextures(1, &textTexture);
 	glBindTexture(GL_TEXTURE_2D, textTexture);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+	glPixelStorei(GL_UNPACK_ALIGNMENT, 1);
 
 	glUseProgram(shaderProgram->getShaderProgramId());
 
-	float screenx = 2.0f / 640, screeny = 2.0f / 480;
+	int windowWidth = visual::graphics::GraphicEngine::getInstance()->getWindowWidth();
+	int windowHeight = visual::graphics::GraphicEngine::getInstance()->getWindowHeight();
+	float screenx = 2.0f / windowWidth, screeny = 2.0f / windowHeight;
 	float totalWidth = 0.0f;
 
 	int index = 0;
@@ -148,36 +123,25 @@ void Text::write(std::string text, float x, float y, int align) {
 	for (char c = text[index++]; c != 0; c = text[index++]) {
 		getGlyph(c);
 		
-		glActiveTexture(GL_TEXTURE0);
-		glGenTextures(1, &textTexture);
-		glBindTexture(GL_TEXTURE_2D, textTexture);
-		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
-		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
-		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-		glPixelStorei(GL_UNPACK_ALIGNMENT, 1);
-		
-		GLenum error = glGetError();
-
 		//glTexImage2D(GL_TEXTURE_2D, 0, GL_ALPHA, currentGlyph.bitmapWidth, currentGlyph.bitmapRows, 0, GL_ALPHA, GL_UNSIGNED_BYTE, currentGlyph.bitmapBuffer);
 		// GL_ALPHA ist deprecated http://stackoverflow.com/questions/15618343/gl-alpha-gl-luminance
-		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, currentGlyph.bitmapWidth, currentGlyph.bitmapRows, 0, GL_RGBA, GL_UNSIGNED_BYTE, currentGlyph.bitmapBuffer);
-
-		error = glGetError();
-		if (error != GL_NO_ERROR) {
-			std::cout << "---------------------------------------------------------" << std::endl;
-			std::cout << "OpenGL Error: " << error << ": " << gluErrorString(error) << std::endl;
-			std::cout << "---------------------------------------------------------" << std::endl;
-		}
+		// ... und hier steht die Lösung: http://en.wikibooks.org/wiki/Talk:OpenGL_Programming/Modern_OpenGL_Tutorial_Text_Rendering_01
+		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, currentGlyph.bitmapWidth, currentGlyph.bitmapRows, 0, GL_RED, GL_UNSIGNED_BYTE, currentGlyph.bitmapBuffer);
 
 		// Get a handle for our "myTextureSampler" uniform
 		/*GLuint texture = glGetUniformLocation(shaderProgram->getShaderProgramId(), "tex");
-		glUniform1i(texture, 0);*/
+		glUniform1i(texture, 0);*/		
+
+		//std::cout << "bitmapLeft: " << currentGlyph.bitmapLeft << " advance.x: " << currentGlyph.advance.x << std::endl;
+		
 
 		float x2 = x + currentGlyph.bitmapLeft * screenx;
 		float y2 = -y - currentGlyph.bitmapTop * screeny;
 		float w = currentGlyph.bitmapWidth * screenx;
 		float h = currentGlyph.bitmapRows * screeny;
+
+		/*std::cout << x2 << " " << y2 << " " << w << " " << h << std::endl;
+		system("Pause");*/
 
 		if (align == ALIGN_CENTER) {
 			x2 -= totalWidth / 2;
@@ -186,11 +150,17 @@ void Text::write(std::string text, float x, float y, int align) {
 			x2 -= totalWidth;
 		}
 
-		GLfloat box[4][4] = {
+		/*GLfloat box[4][4] = {
 			{x2,	-y2,	0, 0},
 			{x2+w,	-y2,	1, 0},
 			{x2,	-y2-h,	0, 1},
 			{x2+w,	-y2-h,	1, 1}
+		};*/
+		GLfloat box[4][4] = {
+			{ x2, -y2 - h, 0, 1 },
+			{ x2 + w, -y2 - h, 1, 1 },
+			{ x2, -y2, 0, 0 },
+			{ x2 + w, -y2, 1, 0 }
 		};
 
 		glBufferData(GL_ARRAY_BUFFER, sizeof box, box, GL_DYNAMIC_DRAW);
@@ -198,10 +168,10 @@ void Text::write(std::string text, float x, float y, int align) {
 
 		x += (currentGlyph.advance.x >> 6) * screenx;
 		y += (currentGlyph.advance.y >> 6) * screeny;
-
-		glDeleteTextures(1, &textTexture);
 	}
 
+	glDeleteTextures(1, &textTexture);
+	glDisableVertexAttribArray(fontCoordinates);
 	glBindVertexArray(0);
 }
 
@@ -239,14 +209,14 @@ void Text::getGlyph(char c) {
 
 	glyphs.push_back(glyphData);
 
-	std::cout << "*********************************" << std::endl;
+	/*std::cout << "*********************************" << std::endl;
 	for (int j = 0; j < glyphData.bitmapRows; j++) {
 		for (int i = 0; i < glyphData.bitmapWidth; i++) {
 			std::cout << glyphData.bitmapBuffer[(i + j * glyphData.bitmapWidth)];
 		}
 		std::cout << std::endl;
 	}
-	std::cout << "*********************************" << std::endl;
+	std::cout << "*********************************" << std::endl;*/
 
 }
 
@@ -255,8 +225,13 @@ void Text::draw(void) {
 
 	glUseProgram(shaderProgram->getShaderProgramId());
 
-	GLint color = glGetUniformLocation(shaderProgram->getShaderProgramId(), "color");
-	glUniform4f(color, 0.0f, 1.0f, 0.0f, 1.0f);
+	GLint colorAttribute = glGetUniformLocation(shaderProgram->getShaderProgramId(), "color");
+	
+	GLfloat r = color.r;
+	GLfloat g = color.g;
+	GLfloat b = color.b;
+	GLfloat a = color.a;
+	glUniform4f(colorAttribute, r, g, b, a);
 	//std::cout << "color: " << color << std::endl;
 
 	// Get a handle for our "myTextureSampler" uniform
@@ -270,16 +245,16 @@ void Text::draw(void) {
 	// Set our "myTextureSampler" sampler to user Texture Unit 0
 	glUniform1i(TextureID, 0);
 	*/
-	fontOpt(visual::gui::Text::fontOptions::FONT_SIZE, 12);
-	write(m_text, 0.0f, 0.0f, ALIGN_CENTER);
-}
+	int windowWidth = visual::graphics::GraphicEngine::getInstance()->getWindowWidth();
+	int windowHeight = visual::graphics::GraphicEngine::getInstance()->getWindowHeight();
+	float screenx = 2.0f / windowWidth, screeny = 2.0f / windowHeight;
 
-void Text::fontOpt(Text::fontOptions opt, int value) {
-	if (FONT_SIZE) {
-		// set the font's pixel size
-		FT_Set_Pixel_Sizes(face, 0, value);
-		currentTextSize = value; // set current font size equal to 'value' parameter
-	}
+	float relativeX = x * screenx * 2.0f - 1;
+	float relativeY = y * screeny * 2.0f - 1;
+
+	write(m_text, relativeX, relativeY, ALIGN_CENTER);
+
+	//glUseProgram(0);
 }
 
 int Text::nextPowerOf2(int n) {

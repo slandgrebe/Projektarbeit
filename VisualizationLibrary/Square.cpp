@@ -85,9 +85,6 @@ bool Square::loadModel(void) {
 	};
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ebo);
 	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(elements), elements, GL_STATIC_DRAW);*/
-
-
-	
 	
 	return true;
 }
@@ -130,6 +127,8 @@ void Square::draw(void) {
 	// get Shader Program Reference
 	GLuint shaderProgramId = graphics::GraphicEngine::getInstance()->getShaderProgramId();
 	
+	glUseProgram(shaderProgramId);
+
 	// positions
 	GLint posAttrib = glGetAttribLocation(shaderProgramId, "position");
 	glEnableVertexAttribArray(posAttrib);

@@ -9,7 +9,8 @@ uniform sampler2D tex; // texture id
  
 void main() {
     // draw pixel with fragColor's red, green and blue, and texture's alpha
-    outColor = vec4(1.0, 1.0, 1.0, texture2D(tex, fontTexCoords).a) * fragColor;
+    //outColor = vec4(1.0, 1.0, 1.0, texture2D(tex, fontTexCoords).a) * fragColor;
 	//outColor = vec4(fragColor.rgb, texture2D(tex, fontTexCoords).a);
 	//outColor = vec4(fragColor.rgb, 0.3);
+	outColor = vec4(1.0, 1.0, 1.0, texture2D(tex, fontTexCoords).r) * fragColor;
 }
