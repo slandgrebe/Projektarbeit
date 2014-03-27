@@ -26,12 +26,14 @@ namespace visual {
 		class Texture {
 		public:
 
+			virtual bool load(const int width, const int height, const unsigned char* image, GLint internalFormat, GLenum format) = 0;
+
 			/** laedt die Textur in den Speicher
 			* @author Stefan Landgrebe
 			* @param filename Dateiname der zu ladenden Textur
 			* @return bool
 			*/
-			virtual bool load(	const std::string& filename) = 0;
+			virtual bool loadFromFile(const std::string& filename) = 0;
 
 			/** Bindet diese Textur als die aktuelle Textur
 			* @author Stefan Landgrebe

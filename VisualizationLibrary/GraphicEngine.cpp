@@ -52,7 +52,7 @@ bool GraphicEngine::running = false;
 GLuint GraphicEngine::shaderProgramId = 0;
 SafeQueue<GraphicEngine::modelQueueEntry>* GraphicEngine::squareQueue = new SafeQueue<modelQueueEntry>;
 SafeQueue<GraphicEngine::modelQueueEntry>* GraphicEngine::modelQueue = new SafeQueue<modelQueueEntry>;
-
+SafeQueue<GraphicEngine::modelQueueEntry>* GraphicEngine::textQueue = new SafeQueue<modelQueueEntry>;
 
 
 GraphicEngine* GraphicEngine::getInstance() {
@@ -215,6 +215,15 @@ void GraphicEngine::worker(void) {
 	/***************
 		LOOP
 	****************/
+
+	// Enable depth test
+	glEnable(GL_DEPTH_TEST);
+	// Accept fragment if it closer to the camera than the former one
+	glDepthFunc(GL_LESS);
+
+	glEnable(GL_BLEND);
+	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+
 	while (!glfwWindowShouldClose(window))
 	{
 		if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS) {
@@ -228,8 +237,8 @@ void GraphicEngine::worker(void) {
 		GraphicEngine::getInstance()->processQueue();
 
 		// Clear the screen to black
-		glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
-		glClear(GL_COLOR_BUFFER_BIT);
+		glClearColor(0.3f, 0.5f, 0.9f, 1.0f);
+		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 		// Draw a rectangle from the 2 triangles using 6 indices
 		//glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
@@ -248,6 +257,10 @@ void GraphicEngine::worker(void) {
 	glDeleteBuffers(1, &vertexBufferId);
 
 	glDeleteVertexArrays(1, &vao);*/
+
+	running = false;
+
+	glfwTerminate();
 }
 
 void GraphicEngine::enqueueSquare(GLuint modelId, std::string filename) {
@@ -266,6 +279,15 @@ void GraphicEngine::enqueueModel(GLuint modelId, std::string filename) {
 	e.filename = filename;
 	modelQueue->enqueue(e);
 }
+void GraphicEngine::enqueueText(GLuint modelId, std::string text) {
+	std::cout << "enqueueText modelId[" << modelId << "] text[" << text << "]" << std::endl;
+
+	modelQueueEntry e;
+	e.modelId = modelId;
+	e.filename = text;
+	textQueue->enqueue(e);
+}
+
 void GraphicEngine::processQueue() {
 	while (modelQueue->hasMore()) {
 		modelQueueEntry e = modelQueue->dequeue();
@@ -278,8 +300,17 @@ void GraphicEngine::processQueue() {
 	while (squareQueue->hasMore()) {		
 		modelQueueEntry e = squareQueue->dequeue();
 		model::Square* model = new model::Square;
-		if (model->loadModel()) {
+		if (model->loadFromFile(e.filename)) {
 			Manager::getInstance()->addToSquareList(e.modelId, model);
+		}
+	}
+
+	while (textQueue->hasMore()) {
+		modelQueueEntry e = textQueue->dequeue();
+		gui::Text* text = new gui::Text;
+		if (text->init(60)) {
+			text->setText(e.filename);
+			Manager::getInstance()->addToTextList(e.modelId, text);
 		}
 	}
 }

@@ -3,6 +3,8 @@
 #include <iostream>
 #include <time.h>
 
+#include "Text.h"
+
 using namespace visual;
 
 Manager* Manager::instance = 0;
@@ -19,7 +21,7 @@ Manager::Manager() {
 	isRunning();
 }
 
-GLboolean Manager::isRunning(void) {
+bool Manager::isRunning(void) {
 	clock_t begin = clock();
 	while (true) {
 		if (graphics::GraphicEngine::getInstance()->isRunning()) {
@@ -35,14 +37,7 @@ GLboolean Manager::isRunning(void) {
 }
 
 void Manager::doSomething(std::string s) {
-	/*for (int i = 0; i < 100; i++) {
-		std::cout << i;
-	}
-
-	std::cout << std::endl;*/
-
-	std::cout << "doSomething: " << s << std::endl;
-	addModel("data/models/shuttle/SpaceShuttleOrbiter.3ds");
+	addText(s);
 }
 
 GLuint Manager::addModel(const std::string filename) {
@@ -82,6 +77,9 @@ GLboolean Manager::isModelCreated(GLuint modelId) {
 	else if (squareList.find(modelId) != squareList.end()) {
 		return GL_TRUE;
 	}
+	else if (textList.find(modelId) != textList.end()) {
+		return GL_TRUE;
+	}
 
 	return GL_FALSE;
 }
@@ -93,6 +91,10 @@ void Manager::addToModelList(GLuint modelId, model::AssimpModel* model) {
 void Manager::addToSquareList(GLuint modelId, model::Square* model) {
 	std::cout << " adding Square to List: " << modelId << std::endl;
 	squareList.insert(std::make_pair(modelId, model));
+}
+void Manager::addToTextList(GLuint modelId, gui::Text* text) {
+	std::cout << " adding Text to List: " << modelId << std::endl;
+	textList.insert(std::make_pair(modelId, text));
 }
 
 GLboolean Manager::positionModel(GLuint modelId, glm::vec3 position) {
@@ -162,6 +164,53 @@ GLboolean Manager::scaleModel(GLuint modelId, glm::vec3 scale) {
 	return GL_FALSE;
 }
 
+
+GLuint Manager::addText(const std::string text) {
+	if (isRunning()) {
+		modelInstantiationCounter++;
+
+		std::cout << " adding Text to Queue: " << modelInstantiationCounter << std::endl;
+
+		// Queue für Thread Sicherheit
+		graphics::GraphicEngine::getInstance()->enqueueText(modelInstantiationCounter, text);
+
+		return modelInstantiationCounter;
+	}
+
+	return 0;
+}
+
+visual::gui::Text* Manager::getTextFromList(GLuint textId) {
+	visual::gui::Text* text = NULL;
+
+	if (textList.find(textId) != textList.end()) {
+		text = textList.find(textId)->second;
+	}
+
+	return text;
+}
+void Manager::setText(const GLuint textId, const std::string text) {
+	visual::gui::Text* textObj = getTextFromList(textId);
+	textObj->setText(text);
+}
+void Manager::setTextPosition(const GLuint textId, const int x, const int y) {
+	visual::gui::Text* textObj = getTextFromList(textId);
+	textObj->setPosition(x, y);
+}
+bool Manager::setTextSize(const GLuint textId, const int points) {
+	visual::gui::Text* textObj = getTextFromList(textId);
+	return textObj->setSize(points);
+}
+void Manager::setTextColor(const GLuint textId, const glm::vec4 color) {
+	visual::gui::Text* textObj = getTextFromList(textId);
+	textObj->setColor(color);
+}
+bool Manager::setFontFamily(const GLuint textId, const std::string filename) {
+	visual::gui::Text* textObj = getTextFromList(textId);
+	return textObj->setFontFamily(filename);
+}
+
+
 void Manager::draw(void) {
 	if (!isRunning()) {
 		std::cout << "Manager: GraphicsEngine ist nicht in einem laufenden Zustand. Neuzeichnen abgebrochen." << std::endl;
@@ -182,6 +231,12 @@ void Manager::draw(void) {
 		model->draw();
 	}
 	
+	// Texte zeichnen
+	std::map<GLuint, gui::Text*>::iterator it3;
+	for (it3 = textList.begin(); it3 != textList.end(); it3++) {
+		gui::Text* text = (*it3).second;
+		text->draw();
+	}
 	
 	/*if (isRunning()) {
 		if (!square) {

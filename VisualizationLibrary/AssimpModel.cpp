@@ -183,7 +183,7 @@ bool AssimpModel::initMaterials(const aiScene* scene, const std::string& filenam
 
 				std::cout << "  Textur #" << i << "; Pfad: " << fullPath << std::endl;
 
-				if (!textureList[i]->load(fullPath.c_str())) {
+				if (!textureList[i]->loadFromFile(fullPath.c_str())) {
 					printf("Error loading texture '%s'\n", fullPath.c_str());
 					delete textureList[i];
 					textureList[i] = NULL;
@@ -198,7 +198,7 @@ bool AssimpModel::initMaterials(const aiScene* scene, const std::string& filenam
 		// Load a white texture in case the model does not include its own texture
 		if (!textureList[i]) {
 			textureList[i] = new TextureSoil();
-			returnValue = textureList[i]->load("data/textures/red.jpg");
+			returnValue = textureList[i]->loadFromFile("data/textures/red.jpg");
 
 			std::cout << "  Benutze Fallback Textur" << std::endl;
 		}
@@ -224,6 +224,8 @@ void AssimpModel::draw() {
 
 	// get Shader Program Reference
 	GLuint shaderProgramId = graphics::GraphicEngine::getInstance()->getShaderProgramId();
+
+	glUseProgram(shaderProgramId);
 
 	// positions
 	GLint posAttrib = glGetAttribLocation(shaderProgramId, "position");

@@ -16,6 +16,10 @@ namespace visual {
 			static bool isRunning(void) { return running; }
 			static void enqueueSquare(GLuint modelId, std::string filename);
 			static void enqueueModel(GLuint modelId, std::string filename);
+			static void enqueueText(GLuint modelId, std::string text);
+
+			int getWindowHeight(void) { return height; }
+			int getWindowWidth(void) { return width; }
 
 		private:
 			static bool running;
@@ -33,6 +37,7 @@ namespace visual {
 
 			static SafeQueue<modelQueueEntry>* squareQueue;
 			static SafeQueue<modelQueueEntry>* modelQueue;
+			static SafeQueue<modelQueueEntry>* textQueue;
 
 			static GLuint shaderProgramId;
 
