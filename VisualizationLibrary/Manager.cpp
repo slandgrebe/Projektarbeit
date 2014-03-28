@@ -31,18 +31,6 @@ Manager::Manager() {
 }
 
 bool Manager::isRunning(void) {
-	/*clock_t begin = clock();
-	while (true) {
-		if (graphics::GraphicEngine::getInstance()->isRunning()) {
-			return true;
-		}
-
-		if (double(clock() - begin) / CLOCKS_PER_SEC > 5) {
-			break;
-		}
-	}
-
-	return false;*/
 	return graphics::GraphicEngine::getInstance()->isRunning();
 }
 

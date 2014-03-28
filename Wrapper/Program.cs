@@ -86,6 +86,7 @@ namespace Wrapper
             setTextPosition(textId2, 200, 200);
             setTextSize(textId2, 24);
             setTextColor(textId2, 1.0f, 0.5f, 0.0f, 1.0f);
+            setFontFamily(textId2, "data/fonts/KBZipaDeeDooDah.ttf");
 
 
             Console.WriteLine("zurück in c#");

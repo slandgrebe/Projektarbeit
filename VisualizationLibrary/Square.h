@@ -3,6 +3,7 @@
 
 #include "Model.h"
 #include "TextureSoil.h"
+#include "ShaderProgram.h"
 
 namespace visual {
 	namespace model {
@@ -14,6 +15,7 @@ namespace visual {
 			GLuint textureBufferId; /** Referenz auf den Buffer für die Textur */
 			GLuint textureId;
 
+			graphics::ShaderProgram* shaderProgram;
 			TextureSoil* texture;
 
 			bool loadModel(void);

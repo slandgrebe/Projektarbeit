@@ -12,6 +12,8 @@ Square::Square() {
 	m_rotationAngle = 0.0f;
 	m_rotationAxis = glm::vec3(0.0f, 0.0f, 1.0f);
 	m_scalingVector = glm::vec3(1.0f, 1.0f, 1.0f);
+
+	
 }
 
 Square::~Square() {
@@ -31,6 +33,10 @@ bool Square::loadModel(void) {
 	glBindVertexArray(vertexArrayId);
 
 	std::cout << " [Square] square vao: " << vertexArrayId << std::endl;
+
+	// shader
+	shaderProgram = new graphics::ShaderProgram;
+	shaderProgram->createShaderProgram("data/shader/SimpleVertexShader.vertexshader", "data/shader/SimpleFragmentShader.fragmentshader");
 
 	// positions
 	glGenBuffers(1, &positionBufferId);
@@ -74,8 +80,6 @@ bool Square::loadModel(void) {
 	glBindBuffer(GL_ARRAY_BUFFER, textureBufferId);
 	glBufferData(GL_ARRAY_BUFFER, sizeof(textureCoordinates), textureCoordinates, GL_STATIC_DRAW);
 
-	
-	
 	// Create an element array
 	/*GLuint ebo;
 	glGenBuffers(1, &ebo);
@@ -123,14 +127,12 @@ bool Square::loadImage(const int width, const int height, const unsigned char* i
 
 void Square::draw(void) {
 	glBindVertexArray(vertexArrayId);
-	
-	// get Shader Program Reference
-	GLuint shaderProgramId = graphics::GraphicEngine::getInstance()->getShaderProgramId();
-	
-	glUseProgram(shaderProgramId);
+
+	// shader
+	shaderProgram->use();
 
 	// positions
-	GLint posAttrib = glGetAttribLocation(shaderProgramId, "position");
+	GLint posAttrib = shaderProgram->getAttribute("position");
 	glEnableVertexAttribArray(posAttrib);
 	glBindBuffer(GL_ARRAY_BUFFER, positionBufferId);
 	glVertexAttribPointer(
@@ -143,7 +145,7 @@ void Square::draw(void) {
 	);
 
 	// colors
-	GLint colAttrib = glGetAttribLocation(shaderProgramId, "color");
+	GLint colAttrib = shaderProgram->getAttribute("color");
 	glEnableVertexAttribArray(colAttrib);
 	glBindBuffer(GL_ARRAY_BUFFER, colorBufferId);
 	glVertexAttribPointer(
@@ -156,7 +158,7 @@ void Square::draw(void) {
 	);
 
 	// texture
-	GLint texAttrib = glGetAttribLocation(shaderProgramId, "texcoord");
+	GLint texAttrib = shaderProgram->getAttribute("texcoord");
 	glEnableVertexAttribArray(texAttrib);
 	glBindBuffer(GL_ARRAY_BUFFER, textureBufferId);
 	glVertexAttribPointer(
@@ -172,7 +174,7 @@ void Square::draw(void) {
 	texture->bind();
 
 	// transformations
-	GLint uniMvp = glGetUniformLocation(shaderProgramId, "mvp");
+	GLint uniMvp = shaderProgram->getUniform("mvp");
 	glm::mat4 mvp = getTransformedMatrix();
 	glUniformMatrix4fv(uniMvp, 1, GL_FALSE, glm::value_ptr(mvp)); 
 

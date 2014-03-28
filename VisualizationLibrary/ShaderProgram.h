@@ -20,7 +20,9 @@ namespace visual {
 			GLuint createShaderProgram(const GLuint vertexShaderId, const GLuint fragmentShaderId);
 			GLuint createShaderProgram(const std::string vertexShaderFilename, const std::string fragmentShaderfilename);
 			GLuint getShaderProgramId(void);
-			
+			inline void use(void) { glUseProgram(shaderProgramId); }
+			inline GLuint getAttribute(std::string name) { return glGetAttribLocation(shaderProgramId, name.c_str()); }
+			inline GLuint getUniform(std::string name) { return glGetUniformLocation(shaderProgramId, name.c_str()); }
 		};
 	}
 }
