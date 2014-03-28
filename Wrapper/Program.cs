@@ -53,11 +53,11 @@ namespace Wrapper
             
             uint pointId = addPoint("data/textures/sample.png");
             while (!isModelCreated(pointId)) { }
-            positionModel(pointId, 0.5f, 0.5f, -0.5f);
+            positionModel(pointId, -0.5f, 0.5f, -0.5f);
 
-            uint pointId2 = addPoint("data/textures/sample.png");
+            uint pointId2 = addPoint("data/textures/test.png");
             while (!isModelCreated(pointId2)) { }
-            positionModel(pointId2, 0.4f, 0.4f, -0.5f);
+            positionModel(pointId2, 0.5f, 0.5f, -0.9f);
 
 
             uint modelId = addModel("data/models/shuttle/SpaceShuttleOrbiter.3ds");
@@ -83,14 +83,16 @@ namespace Wrapper
             uint textId2 = addText("Toller Text");
             while (!isModelCreated(textId2)) { }
             setText(textId2, "noch viel mehr Text!");
-            setTextPosition(textId2, 200, 50);
+            setTextPosition(textId2, 200, 200);
             setTextSize(textId2, 24);
             setTextColor(textId2, 1.0f, 0.5f, 0.0f, 1.0f);
 
 
             Console.WriteLine("zurück in c#");
 
-            while (isRunning()) { }
+            while (isRunning()) {
+                // do Something
+            }
         }
     }
 }

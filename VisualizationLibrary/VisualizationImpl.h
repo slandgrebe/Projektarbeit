@@ -34,8 +34,9 @@ namespace visual {
 
 
 // exportierte funktionen
-DLL_API bool APIENTRY isRunning() {
-	return visual::Manager::getInstance()->isRunning();
+DLL_API int APIENTRY isRunning() {
+	// c++ bool in int umwandeln, damit c# bool damit umgehen kann
+	return (int)visual::Manager::getInstance()->isRunning();
 }
 
 DLL_API void APIENTRY doSomething(const char* text) {

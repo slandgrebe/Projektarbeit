@@ -18,11 +18,20 @@ Manager* Manager::getInstance(void) {
 }
 
 Manager::Manager() {
-	isRunning();
+	clock_t begin = clock();
+	while (true) {
+		if (isRunning()) {
+			return;
+		}
+
+		if (double(clock() - begin) / CLOCKS_PER_SEC > 5) {
+			break;
+		}
+	}
 }
 
 bool Manager::isRunning(void) {
-	clock_t begin = clock();
+	/*clock_t begin = clock();
 	while (true) {
 		if (graphics::GraphicEngine::getInstance()->isRunning()) {
 			return true;
@@ -33,7 +42,8 @@ bool Manager::isRunning(void) {
 		}
 	}
 
-	return false;
+	return false;*/
+	return graphics::GraphicEngine::getInstance()->isRunning();
 }
 
 void Manager::doSomething(std::string s) {
@@ -230,6 +240,9 @@ void Manager::draw(void) {
 		model::Square* model = (*it2).second;
 		model->draw();
 	}
+
+	// Texte immer zuoberst
+	glClear(GL_DEPTH_BUFFER_BIT);
 	
 	// Texte zeichnen
 	std::map<GLuint, gui::Text*>::iterator it3;

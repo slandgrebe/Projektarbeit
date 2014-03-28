@@ -10,7 +10,7 @@
 
 
 // exportierte funktionen
-extern "C" DLL_API bool APIENTRY isRunning(void);
+extern "C" DLL_API int APIENTRY isRunning(void);
 
 extern "C" DLL_API void APIENTRY doSomething(const char* text);
 

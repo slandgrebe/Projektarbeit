@@ -224,15 +224,17 @@ void GraphicEngine::worker(void) {
 	glEnable(GL_BLEND);
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
-	while (!glfwWindowShouldClose(window))
-	{
+	// measure time
+	clock_t begin = clock();
+	clock_t now = clock();
+
+	while (!glfwWindowShouldClose(window)) {		
 		if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS) {
 			glfwSetWindowShouldClose(window, GL_TRUE);
 			break;
 		}
 
-		glfwSwapBuffers(window);
-		glfwPollEvents();
+		
 
 		GraphicEngine::getInstance()->processQueue();
 
@@ -245,6 +247,13 @@ void GraphicEngine::worker(void) {
 		Manager::getInstance()->draw();
 
 		// Swap buffers
+		glfwSwapBuffers(window);
+		glfwPollEvents();
+
+		// measure time
+		now = clock();
+		//std::cout << "Bild gezeichnet in " << int(now - begin) / CLOCKS_PER_SEC << "ms. Das entspricht " << 1000 / (now - begin) << " FPS." << std::endl;
+		begin = now;
 	}
 
 	//glDeleteTextures(1, &tex);
