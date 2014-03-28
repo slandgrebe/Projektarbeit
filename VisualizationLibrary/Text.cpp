@@ -7,7 +7,7 @@ using namespace visual::gui;
 
 // http://nehe.gamedev.net/tutorial/freetype_fonts_in_opengl/24001/
 Text::Text() {
-	m_text = "";
+	m_text = "Text";
 	x = 0;
 	y = 0;
 	currentTextSize = 12;
@@ -43,33 +43,54 @@ bool Text::setSize(const int pixelSize) {
 void Text::setColor(const glm::vec4 color) {
 	this->color = color;
 }
-bool Text::setFontFamily(const std::string filename) {
+/*bool Text::setFontFamily(const std::string filename) {
+	FT_Done_Face(face);
+
 	if (FT_New_Face(library, filename.c_str(), 0, &face)) {
 		std::cout << "Schrift '" << filename << "' konnte nicht geladen werden." << std::endl;
 		return false;
 	}
+
+	setSize(this->currentTextSize);
+
+	glyphSlot = face->glyph;
+
+	std::cout << "Schrift auf '" << filename << "' gesetzt." << std::endl;
+
 	this->fontFamily = filename;
 	return true;
-}
+}*/
 
-bool Text::init(int pixelSize) {
+bool Text::init(std::string filename) {
 	std::cout << "init" << std::endl;
 
 	if (FT_Init_FreeType(&library)) {
 		std::cout << "FreeType Bibliothek konnte nicht initialisiert werden." << std::endl;
+		library = NULL;
 		return false;
 	}
 
-	if (FT_New_Face(library, "data/fonts/arial.ttf", 0, &face)) {
-		std::cout << "Schrift konnte nicht geladen werden." << std::endl;
-		return false;
+	if (FT_New_Face(library, filename.c_str(), 0, &face)) {
+		std::cout << "Schrift '" << filename << "' konnte nicht geladen werden." << std::endl;
+
+		if (FT_New_Face(library, fontFamily.c_str(), 0, &face)) {
+			std::cout << "Es kann keine Schrift gefunden werden!" << std::endl;
+			return false;
+		}
+		else {
+			std::cout << "Verwende Fallback Schrift: '" << fontFamily << "'." << std::endl;
+		}
+	}
+	else {
+		fontFamily = filename;
 	}
 
-	if (!setSize(pixelSize)) {
+	if (!setSize(currentTextSize)) {
 		return false;
 	}
 
 	glyphSlot = face->glyph;
+
 
 	shaderProgram = new visual::graphics::ShaderProgram;
 	shaderProgram->createShaderProgram("data/shader/text.vertexshader", "data/shader/text.fragmentshader");

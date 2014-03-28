@@ -317,8 +317,7 @@ void GraphicEngine::processQueue() {
 	while (textQueue->hasMore()) {
 		modelQueueEntry e = textQueue->dequeue();
 		gui::Text* text = new gui::Text;
-		if (text->init(60)) {
-			text->setText(e.filename);
+		if (text->init(e.filename)) {
 			Manager::getInstance()->addToTextList(e.modelId, text);
 		}
 	}

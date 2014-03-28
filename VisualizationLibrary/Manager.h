@@ -31,11 +31,11 @@ namespace visual {
 
 		GLuint addText(const std::string text);
 		
-		void setText(const GLuint textId, const std::string text);
+		void setText(const GLuint textId, const std::string filename);
 		void setTextPosition(const GLuint textId, const int x, const int y);
 		bool setTextSize(const GLuint textId, const int points);
 		void setTextColor(const GLuint textId, const glm::vec4 color);
-		bool setFontFamily(const GLuint textId, const std::string filename);
+		//bool setFontFamily(const GLuint textId, const std::string filename);
 
 		void draw(void);
 	private:

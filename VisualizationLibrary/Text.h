@@ -58,14 +58,14 @@ namespace visual {
 			Text();
 			~Text();
 
-			bool init(int pixelSize);
+			bool init(std::string filename);
 			void write(std::string text, float x, float y, int align);
 
 			void setText(const std::string text);
 			void setPosition(const unsigned int x, const unsigned int y);
 			bool setSize(const int points);
 			void setColor(const glm::vec4 color);
-			bool setFontFamily(const std::string filename = "data/fonts/arial.ttf");
+			//bool setFontFamily(const std::string filename = "data/fonts/arial.ttf");
 
 			//void fontOpt(fontOptions opt, int value);
 

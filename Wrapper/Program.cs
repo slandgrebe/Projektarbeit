@@ -33,7 +33,7 @@ namespace Wrapper
 
 
         [DllImport("Visualization.dll")]
-        extern static uint addText(string text);
+        extern static uint addText(string fontFilename);
 
         [DllImport("Visualization.dll")]
         extern static void setText(uint textId, string text);
@@ -43,8 +43,6 @@ namespace Wrapper
 		extern static bool setTextSize(uint textId, int points);
         [DllImport("Visualization.dll")]
 		extern static void setTextColor(uint textId, float r, float g, float b, float a);
-        [DllImport("Visualization.dll")]
-		extern static bool setFontFamily(uint textId, string filename);
 
         static void Main(string[] args)
         {
@@ -73,20 +71,20 @@ namespace Wrapper
             positionModel(modelId2, -0.3f, -0.4f, -0.5f);
 
             
-            uint textId = addText("Toller Text");
+            uint textId = addText("");
             while (!isModelCreated(textId)) { }
             setText(textId, "Es geht!");
             setTextPosition(textId, 100, 100);
             setTextSize(textId, 36);
             setTextColor(textId, 0.92f, 0.95f, 0.16f, 1.0f);
 
-            uint textId2 = addText("Toller Text");
+            uint textId2 = addText("data/fonts/KBZipaDeeDooDah.ttf");
             while (!isModelCreated(textId2)) { }
             setText(textId2, "noch viel mehr Text!");
             setTextPosition(textId2, 200, 200);
-            setTextSize(textId2, 24);
+            setTextSize(textId2, 60);
             setTextColor(textId2, 1.0f, 0.5f, 0.0f, 1.0f);
-            setFontFamily(textId2, "data/fonts/KBZipaDeeDooDah.ttf");
+            //setFontFamily(textId2, );
 
 
             Console.WriteLine("zurück in c#");

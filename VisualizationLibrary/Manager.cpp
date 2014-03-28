@@ -163,14 +163,14 @@ GLboolean Manager::scaleModel(GLuint modelId, glm::vec3 scale) {
 }
 
 
-GLuint Manager::addText(const std::string text) {
+GLuint Manager::addText(const std::string filename) {
 	if (isRunning()) {
 		modelInstantiationCounter++;
 
 		std::cout << " adding Text to Queue: " << modelInstantiationCounter << std::endl;
 
 		// Queue für Thread Sicherheit
-		graphics::GraphicEngine::getInstance()->enqueueText(modelInstantiationCounter, text);
+		graphics::GraphicEngine::getInstance()->enqueueText(modelInstantiationCounter, filename);
 
 		return modelInstantiationCounter;
 	}
@@ -203,10 +203,10 @@ void Manager::setTextColor(const GLuint textId, const glm::vec4 color) {
 	visual::gui::Text* textObj = getTextFromList(textId);
 	textObj->setColor(color);
 }
-bool Manager::setFontFamily(const GLuint textId, const std::string filename) {
+/*bool Manager::setFontFamily(const GLuint textId, const std::string filename) {
 	visual::gui::Text* textObj = getTextFromList(textId);
 	return textObj->setFontFamily(filename);
-}
+}*/
 
 
 void Manager::draw(void) {
