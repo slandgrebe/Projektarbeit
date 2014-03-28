@@ -27,14 +27,8 @@ namespace visual {
 		class AssimpModel : public Model {
 		private:
 			GLuint vertexArrayId; /** Referenz auf das VAO (Vertex Array Object) */
-			//GLuint positionBufferId; /** Referenz auf den Buffer für die Positionen */
-			//GLuint colorBufferId; /** Referenz auf den Buffer für die Farben */
-			//GLuint textureBufferId; /** Referenz auf den Buffer für die Textur */
-			//GLuint textureId;
 
-			//TextureSoil* texture;
 
-			// Mesh
 			
 			bool initAllMeshes(const aiScene* scene, const std::string& filename);
 			bool initSingleMesh(const int meshIndex, const aiMesh* mesh);

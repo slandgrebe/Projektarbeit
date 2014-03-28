@@ -13,7 +13,8 @@ Square::Square() {
 	m_rotationAxis = glm::vec3(0.0f, 0.0f, 1.0f);
 	m_scalingVector = glm::vec3(1.0f, 1.0f, 1.0f);
 
-	
+	highlightColor = glm::vec4(1.0f, 0.0f, 0.0f, 1.0f);
+	m_isHighlighted = false;
 }
 
 Square::~Square() {
@@ -172,6 +173,17 @@ void Square::draw(void) {
 
 	// texture
 	texture->bind();
+
+	// highlight color
+	GLint highlightAttribute = shaderProgram->getUniform("highlightColor");
+	GLfloat r = 1.0f, g = 1.0f, b = 1.0f, a = 1.0f; // standard: weiss
+	if (m_isHighlighted) {
+		r = highlightColor.r;
+		g = highlightColor.g;
+		b = highlightColor.b;
+		a = highlightColor.a;
+	}
+	glUniform4f(highlightAttribute, r, g, b, a);
 
 	// transformations
 	GLint uniMvp = shaderProgram->getUniform("mvp");

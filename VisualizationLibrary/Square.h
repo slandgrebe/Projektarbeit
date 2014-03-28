@@ -16,6 +16,7 @@ namespace visual {
 			GLuint textureId;
 
 			graphics::ShaderProgram* shaderProgram;
+			
 			TextureSoil* texture;
 
 			bool loadModel(void);

@@ -11,6 +11,8 @@
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 
+#include "ShaderProgram.h"
+
 #include <string>
 #include <vector>
 #include <iostream>
@@ -32,6 +34,11 @@ namespace visual {
 			glm::vec3 m_rotationAxis;
 			glm::vec3 m_scalingVector; /** Vektor für die Skalierung des Modells */
 			glm::mat4 m_modelMatrix; /** Matrix des Modells */
+
+			glm::vec4 highlightColor;
+			bool m_isHighlighted;
+
+			graphics::ShaderProgram* shaderProgram;
 
 		public:
 
@@ -97,6 +104,14 @@ namespace visual {
 				transformedMatrix = glm::scale(transformedMatrix, m_scalingVector);
 				return transformedMatrix;
 			};
+
+			virtual void setHighlightColor(glm::vec4 color) {
+				highlightColor = color;
+			}
+
+			virtual void isHighlighted(bool choice) {
+				m_isHighlighted = choice;
+			}
 
 			/** Zeichnet das Modell
 			* @author Stefan Landgrebe

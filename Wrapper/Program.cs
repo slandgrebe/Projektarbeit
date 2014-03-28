@@ -31,6 +31,12 @@ namespace Wrapper
         [DllImport("Visualization.dll")]
         extern static bool scaleModel(uint modelId, float x, float y, float z);
 
+        [DllImport("Visualization.dll")]
+        extern static bool setModelHighlightColor(uint modelId, float r, float g, float b, float a);
+
+        [DllImport("Visualization.dll")]
+        extern static bool isModelHighlighted(uint modelId, bool choice);
+
 
         [DllImport("Visualization.dll")]
         extern static uint addText(string fontFilename);
@@ -63,12 +69,16 @@ namespace Wrapper
             scaleModel(modelId, 0.0005f, 0.0005f, 0.0005f);
             rotateModel(modelId, -45.0f, 1.0f, 0.0f, 1.0f);
             positionModel(modelId, -0.6f, -0.5f, -0.5f);
+            setModelHighlightColor(modelId, 0.0f, 1.0f, 0.0f, 1.0f);
+            isModelHighlighted(modelId, true);
 
             uint modelId2 = addModel("data/models/shuttle/SpaceShuttleOrbiter.3ds");
             while (!isModelCreated(modelId2)) { }
             scaleModel(modelId2, 0.0005f, 0.0005f, 0.0005f);
             rotateModel(modelId2, -45.0f, 0.0f, 1.0f, 1.0f);
             positionModel(modelId2, -0.3f, -0.4f, -0.5f);
+            setModelHighlightColor(modelId2, 0.0f, 1.0f, 0.0f, 0.5f);
+            isModelHighlighted(modelId2, false);
 
             
             uint textId = addText("");
@@ -81,7 +91,7 @@ namespace Wrapper
             uint textId2 = addText("data/fonts/KBZipaDeeDooDah.ttf");
             while (!isModelCreated(textId2)) { }
             setText(textId2, "noch viel mehr Text!");
-            setTextPosition(textId2, 200, 200);
+            setTextPosition(textId2, 150, 200);
             setTextSize(textId2, 60);
             setTextColor(textId2, 1.0f, 0.5f, 0.0f, 1.0f);
             //setFontFamily(textId2, );

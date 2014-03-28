@@ -47,8 +47,6 @@ void AssimpModel::MeshEntry::init(	const std::vector<Vertex>& vertices,
 
 
 AssimpModel::AssimpModel() {
-	
-
 	// Matrizen
 	m_modelMatrix = glm::mat4(1.0f);
 	m_positionVector = glm::vec3(0.0f, 0.0f, 0.0f);
@@ -56,8 +54,8 @@ AssimpModel::AssimpModel() {
 	m_rotationAxis = glm::vec3(1.0f, 0.0f, 0.0f);
 	m_scalingVector = glm::vec3(1.0f, 1.0f, 1.0f);
 
-	// .obj Datei lesen
-	//bool result = loadModel("TexturedPlane_ImageUv_248.blend");
+	highlightColor = glm::vec4(1.0f, 0.0f, 0.0f, 1.0f);
+	m_isHighlighted = false;
 }
 
 
@@ -75,6 +73,10 @@ bool AssimpModel::loadModel(const std::string filename) {
 
 	std::cout << "assimp vao: " << vertexArrayId << std::endl;
 	
+	// shader
+	shaderProgram = new graphics::ShaderProgram;
+	shaderProgram->createShaderProgram("data/shader/SimpleVertexShader.vertexshader", "data/shader/SimpleFragmentShader.fragmentshader");
+
 	// Release the previously loaded mesh (if it exists)
 	clear();
 
@@ -225,14 +227,14 @@ void AssimpModel::draw() {
 	// get Shader Program Reference
 	GLuint shaderProgramId = graphics::GraphicEngine::getInstance()->getShaderProgramId();
 
-	glUseProgram(shaderProgramId);
+	shaderProgram->use();
 
 	// positions
-	GLint posAttrib = glGetAttribLocation(shaderProgramId, "position");
+	GLint posAttrib = shaderProgram->getAttribute("position");
 	glEnableVertexAttribArray(posAttrib);
 
 	// texture
-	GLint texAttrib = glGetAttribLocation(shaderProgramId, "texcoord");
+	GLint texAttrib = shaderProgram->getAttribute("texcoord");
 	glEnableVertexAttribArray(texAttrib);
 
 	for (unsigned int i = 0; i < meshList.size(); i++) {
@@ -270,8 +272,19 @@ void AssimpModel::draw() {
 			textureList[MaterialIndex]->bind(GL_TEXTURE0);
 		}
 
+		// highlight color
+		GLint highlightAttribute = shaderProgram->getUniform("highlightColor");
+		GLfloat r = 1.0f, g = 1.0f, b = 1.0f, a = 1.0f; // standard: weiss
+		if (m_isHighlighted) {
+			r = highlightColor.r;
+			g = highlightColor.g;
+			b = highlightColor.b;
+			a = highlightColor.a;
+		}
+		glUniform4f(highlightAttribute, r, g, b, a);
+
 		// transformations
-		GLint uniMvp = glGetUniformLocation(shaderProgramId, "mvp");
+		GLint uniMvp = shaderProgram->getUniform("mvp");
 		glm::mat4 mvp = getTransformedMatrix();
 		glUniformMatrix4fv(uniMvp, 1, GL_FALSE, glm::value_ptr(mvp));
 

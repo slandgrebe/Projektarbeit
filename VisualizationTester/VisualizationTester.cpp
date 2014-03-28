@@ -233,11 +233,14 @@ bool test() {
 
 int main(int argc, char* argv[]) {	
 	cout << "VisualizationTest" << endl;
+	cout << "Zum Testen der Applikation im Moment auf das 'Wrapper' Projekt zurueckgreifen." << endl;
 
 	//test();
 	//testPoint::testPoint();
 	//testModel::testModel();
 	//shuttle();
+
+	system("Pause");
 
     return 0;
 }

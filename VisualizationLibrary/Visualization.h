@@ -21,7 +21,8 @@ extern "C" DLL_API int APIENTRY isModelCreated(const unsigned int modelId);
 extern "C" DLL_API int APIENTRY positionModel(const unsigned int modelId, const float x, const float y, const float z);
 extern "C" DLL_API int APIENTRY rotateModel(const unsigned int modelId, const float degrees, const float x, const float y, const float z);
 extern "C" DLL_API int APIENTRY scaleModel(const unsigned int modelId, const float x, const float y, const float z);
-
+extern "C" DLL_API int APIENTRY setModelHighlightColor(const unsigned int modelId, const float r, const float g, const float b, const float a);
+extern "C" DLL_API int APIENTRY isModelHighlighted(const unsigned int modelId, const bool choice);
 
 extern "C" DLL_API unsigned int APIENTRY addText(const char* filename);
 extern "C" DLL_API void APIENTRY setText(const unsigned int textId, const char* text);

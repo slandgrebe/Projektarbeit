@@ -23,6 +23,9 @@ namespace visual {
 		GLboolean positionModel(GLuint modelId, glm::vec3 position);
 		GLboolean rotateModel(GLuint modelId, GLfloat degrees, glm::vec3 axis);
 		GLboolean scaleModel(GLuint modelId, glm::vec3 scale);
+		
+		bool setModelHighlightColor(GLuint modelId, glm::vec4 color);
+		bool isModelHighlighted(GLuint modelId, bool choice);
 
 		void addToModelList(GLuint modelId, model::AssimpModel* model);
 		void addToSquareList(GLuint modelId, model::Square* model);

@@ -67,6 +67,13 @@ DLL_API int APIENTRY scaleModel(const unsigned int modelId, const float x, const
 	return (int)visual::VisualizationImpl::scaleModel(modelId, x, y, z);
 }
 
+DLL_API int APIENTRY setModelHighlightColor(const unsigned int modelId, const float r, const float g, const float b, const float a) {
+	return (int)visual::Manager::getInstance()->setModelHighlightColor(modelId, glm::vec4(r, g, b, a));
+}
+DLL_API int APIENTRY isModelHighlighted(const unsigned int modelId, const bool choice) {
+	return (int)visual::Manager::getInstance()->isModelHighlighted(modelId, choice);
+}
+
 
 DLL_API unsigned int APIENTRY addText(const char* filename) {
 	return visual::Manager::getInstance()->addText(filename);

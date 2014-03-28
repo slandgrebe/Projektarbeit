@@ -163,6 +163,46 @@ GLboolean Manager::scaleModel(GLuint modelId, glm::vec3 scale) {
 }
 
 
+bool Manager::setModelHighlightColor(GLuint modelId, glm::vec4 color) {
+	if (assimpModelList.find(modelId) != assimpModelList.end()) {
+		model::AssimpModel* model = assimpModelList.find(modelId)->second;
+		model->setHighlightColor(color);
+
+		return true;
+	}
+	else if (squareList.find(modelId) != squareList.end()) {
+		model::Square* model = squareList.find(modelId)->second;
+		model->setHighlightColor(color);
+
+		return true;
+	}
+	else {
+		std::cout << "Das Model mit der modelId '" << modelId << "' konnte waehrend dem Versuch dessen Highlight Farbe zu setzen nicht gefunden werden." << std::endl;
+	}
+
+	return false;
+}
+bool Manager::isModelHighlighted(GLuint modelId, bool choice) {
+	if (assimpModelList.find(modelId) != assimpModelList.end()) {
+		model::AssimpModel* model = assimpModelList.find(modelId)->second;
+		model->isHighlighted(choice);
+
+		return true;
+	}
+	else if (squareList.find(modelId) != squareList.end()) {
+		model::Square* model = squareList.find(modelId)->second;
+		model->isHighlighted(choice);
+
+		return true;
+	}
+	else {
+		std::cout << "Das Model mit der modelId '" << modelId << "' konnte waehrend dem Versuch den Highlight Modus zu aendern nicht gefunden werden." << std::endl;
+	}
+
+	return false;
+}
+
+
 GLuint Manager::addText(const std::string filename) {
 	if (isRunning()) {
 		modelInstantiationCounter++;
