@@ -8,7 +8,7 @@ namespace Wrapper
         /*[DllImport("Visualization.dll", EntryPoint = "doSomething")]
         extern static void doSomething(string text);*/
         [DllImport("Visualization.dll")]
-        extern static bool isRunning();
+        public extern static bool isRunning();
 
         [DllImport("Visualization.dll")]
         extern static void doSomething(string text);
