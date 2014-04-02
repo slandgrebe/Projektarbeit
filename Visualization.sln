@@ -9,11 +9,11 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "VisualizationLibrary", "Vis
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wrapper", "Wrapper\Wrapper.csproj", "{5335B503-6E79-439E-B405-FECB3EB3C5B5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Model", "..\..\..\Documents\Visual Studio 2013\Projects\JumpAndRun\Model\Model.csproj", "{6B9546B2-205E-4D02-9B29-A9FE9308D20C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Model", "Model\Model.csproj", "{6B9546B2-205E-4D02-9B29-A9FE9308D20C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "View", "..\..\..\Documents\Visual Studio 2013\Projects\JumpAndRun\View\View.csproj", "{B31D7DB9-2918-4102-AB0C-D2CF7ED48261}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "View", "View\View.csproj", "{B31D7DB9-2918-4102-AB0C-D2CF7ED48261}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Controller", "..\..\..\Documents\Visual Studio 2013\Projects\JumpAndRun\Controller\Controller.csproj", "{88EE6FBB-4DB9-4F30-BC26-152CFAC6D1E5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Controller", "Controller\Controller.csproj", "{88EE6FBB-4DB9-4F30-BC26-152CFAC6D1E5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
