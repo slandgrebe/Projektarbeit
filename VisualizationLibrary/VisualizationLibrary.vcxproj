@@ -93,6 +93,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AssimpModel.h" />
+    <ClInclude Include="Button.h" />
     <ClInclude Include="GraphicEngine.h" />
     <ClInclude Include="Manager.h" />
     <ClInclude Include="Model.h" />
@@ -109,6 +110,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AssimpModel.cpp" />
+    <ClCompile Include="Button.cpp" />
     <ClCompile Include="dllmain.cpp">
       <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</CompileAsManaged>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -165,7 +167,7 @@
     <Content Include="data\textures\*">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-	<Content Include="data\fonts\*">
+    <Content Include="data\fonts\*">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="data\*">
