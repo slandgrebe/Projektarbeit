@@ -51,14 +51,14 @@ namespace Wrapper
 		extern static void setTextColor(uint textId, float r, float g, float b, float a);
 
 
-        [DllImport("Visualization.dll")]
+        /*[DllImport("Visualization.dll")]
         extern static uint addButton(string filename);
         [DllImport("Visualization.dll")]
         extern static void setButtonText(uint buttonId, string text);
         [DllImport("Visualization.dll")]
         extern static void setButtonHighlightColor(uint buttonId, float r, float g, float b, float a);
         [DllImport("Visualization.dll")]
-        extern static void isButtonHighlighted(uint buttonId, bool choice);
+        extern static void isButtonHighlighted(uint buttonId, bool choice);*/
 
 
 
