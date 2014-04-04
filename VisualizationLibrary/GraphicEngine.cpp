@@ -13,34 +13,7 @@
 
 #include <future>
 
-//#include <thread> //<thread> is not supported when compiling with /clr or /clr:pure.
-
 using namespace visual::graphics;
-//using namespace System::Threading;
-
-// Shader sources
-const GLchar* vertexSource =
-"#version 150 core\n"
-"in vec2 position;"
-"in vec3 color;"
-"in vec2 texcoord;"
-"out vec3 Color;"
-"out vec2 Texcoord;"
-"void main() {"
-"   Color = color;"
-"   Texcoord = texcoord;"
-"   gl_Position = vec4(position, 0.0, 1.0);"
-"}";
-const GLchar* fragmentSource =
-"#version 150 core\n"
-"in vec3 Color;"
-"in vec2 Texcoord;"
-"out vec4 outColor;"
-"uniform sampler2D tex;"
-"void main() {"
-"   outColor = texture(tex, Texcoord) * vec4(Color, 1.0);"
-"}";
-
 
 // static attributes
 GraphicEngine* GraphicEngine::singleInstance = 0;
@@ -59,12 +32,6 @@ GraphicEngine* GraphicEngine::getInstance() {
 	if (singleInstance == 0) {
 		singleInstance = new GraphicEngine;
 
-		// http://www.codeproject.com/Articles/12740/Threads-with-Windows-Forms-Controls-in-Managed-C
-		//GraphicEngine^ objclass = gcnew GraphicEngine;
-		/*ThreadStart^ mThread = gcnew ThreadStart(&GraphicEngine::worker);
-		Thread^ uiThread = gcnew Thread(mThread);
-		uiThread->Start();*/
-
 		std::async(worker);
 	}
 
@@ -73,9 +40,19 @@ GraphicEngine* GraphicEngine::getInstance() {
 
 
 GraphicEngine::GraphicEngine() {
+	camera = new Camera;
+	projectionMatrix = glm::perspective(60.0f, (float)width/height, 0.1f, 100.0f);
+	orthographicMatrix = glm::ortho(0, width, 0, height);
 }
 
 GraphicEngine::~GraphicEngine() {
+}
+
+glm::mat4 GraphicEngine::getViewProjectionMatrix() {
+	return viewProjectionMatrix;
+}
+glm::mat4 GraphicEngine::getViewOrthographicMatrix() {
+	return viewOrthographicMatrix;
 }
 
 void GraphicEngine::worker(void) {
@@ -97,120 +74,6 @@ void GraphicEngine::worker(void) {
 	running = true;
 
 	glBindFragDataLocation(shaderProgramId, 0, "outColor");
-	/**************
-		BUFFER
-	***************/
-	/*// Create Vertex Array Object
-	GLuint vao;
-	glGenVertexArrays(1, &vao);
-	glBindVertexArray(vao);
-
-	// Create a Vertex Buffer Object and copy the vertex data to it
-	GLuint vertexBufferId;
-	glGenBuffers(1, &vertexBufferId);
-	GLfloat vertices[] = {
-		//  Position				Color			Texcoords
-		-0.5f, 0.5f,  // Top-left
-		0.5f, 0.5f,  // Top-right
-		0.5f, -0.5f,  // Bottom-right
-		-0.5f, -0.5f,   // Bottom-left
-	};
-	glBindBuffer(GL_ARRAY_BUFFER, vertexBufferId);
-	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
-	GLint posAttrib = glGetAttribLocation(shaderProgramId, "position");
-	glEnableVertexAttribArray(posAttrib);
-	glVertexAttribPointer(
-		posAttrib,          // layout Attribut im Vertex Shader
-		2,                  // Grösse
-		GL_FLOAT,           // Datentyp
-		GL_FALSE,           // normalisiert?
-		0,                  // Stride
-		(void*)0            // Offset
-		);
-
-	GLuint colorBufferId;
-	glGenBuffers(1, &colorBufferId);
-	GLfloat colors[] = {
-		1.0f, 0.0f, 0.0f,
-		0.0f, 1.0f, 0.0f,
-		0.0f, 0.0f, 1.0f,
-		1.0f, 1.0f, 1.0f,
-	};
-	glBindBuffer(GL_ARRAY_BUFFER, colorBufferId);
-	glBufferData(GL_ARRAY_BUFFER, sizeof(colors), colors, GL_STATIC_DRAW);
-	GLint colAttrib = glGetAttribLocation(shaderProgramId, "color");
-	glEnableVertexAttribArray(colAttrib);
-	glVertexAttribPointer(
-		colAttrib,          // layout Attribut im Vertex Shader
-		3,                  // Grösse
-		GL_FLOAT,           // Datentyp
-		GL_FALSE,           // normalisiert?
-		0,                  // Stride
-		(void*)0            // Offset
-		);
-
-	GLuint uvsBufferId;
-	glGenBuffers(1, &uvsBufferId);
-	GLfloat uvs[] = {
-		0.0f, 0.0f,
-		1.0f, 0.0f,
-		1.0f, 1.0f,
-		0.0f, 1.0f
-	};
-	glBindBuffer(GL_ARRAY_BUFFER, uvsBufferId);
-	glBufferData(GL_ARRAY_BUFFER, sizeof(uvs), uvs, GL_STATIC_DRAW);
-	GLint texAttrib = glGetAttribLocation(shaderProgramId, "texcoord");
-	glEnableVertexAttribArray(texAttrib);
-	glVertexAttribPointer(
-		texAttrib,          // layout Attribut im Vertex Shader
-		2,                  // Grösse
-		GL_FLOAT,           // Datentyp
-		GL_FALSE,           // normalisiert?
-		0,                  // Stride
-		(void*)0            // Offset
-		);
-
-	// Create an element array
-	GLuint ebo;
-	glGenBuffers(1, &ebo);
-
-	GLuint elements[] = {
-		0, 1, 2,
-		2, 3, 0
-	};
-
-	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ebo);
-	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(elements), elements, GL_STATIC_DRAW);
-	*/
-
-
-	/**************
-		TEXTURE
-	***************/
-
-	// Load texture
-	/*GLuint tex;
-	glGenTextures(1, &tex);
-
-	int width, height;
-	//"E:/dev/opengl/ProjektarbeitTest/TextureTest/Debug/test.png"
-	unsigned char* image = SOIL_load_image("sample.png", &width, &height, NULL, SOIL_LOAD_RGB);
-	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, image);
-	GLenum error = glGetError();
-
-	std::cout << "---------------------------------------------------------" << std::endl;
-	std::cout << "SOIL Error: " << error << ": " << gluErrorString(error) << std::endl;
-	std::cout << width << " " << height << std::endl;
-	std::cout << SOIL_last_result() << std::endl;
-	std::cout << "---------------------------------------------------------" << std::endl;
-
-	SOIL_free_image_data(image);
-
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-	*/
 
 	/***************
 		LOOP
@@ -227,23 +90,28 @@ void GraphicEngine::worker(void) {
 	// measure time
 	clock_t begin = clock();
 	clock_t now = clock();
+	float timeDifference = 0.0f;
 
-	while (!glfwWindowShouldClose(window)) {		
+	while (!glfwWindowShouldClose(window)) {
+		timeDifference = (float)(now - begin) / 1000.0f;
+
 		if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS) {
 			glfwSetWindowShouldClose(window, GL_TRUE);
 			break;
 		}
 
-		
+		// camera
+		GraphicEngine::getInstance()->camera->advance(timeDifference);
+		GraphicEngine::getInstance()->viewProjectionMatrix = GraphicEngine::getInstance()->projectionMatrix * GraphicEngine::getInstance()->camera->getViewMatrix();
 
+		// create new objects
 		GraphicEngine::getInstance()->processQueue();
 
 		// Clear the screen to black
 		glClearColor(0.3f, 0.5f, 0.9f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-		// Draw a rectangle from the 2 triangles using 6 indices
-		//glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
+		// Draw objects
 		Manager::getInstance()->draw();
 
 		// Swap buffers

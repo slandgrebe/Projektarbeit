@@ -126,6 +126,17 @@ bool Square::loadImage(const int width, const int height, const unsigned char* i
 	return true;
 }
 
+bool Square::load(void) {
+	if (!loadModel()) {
+		return false;
+	}
+
+	// Make sure the VAO is not changed from outside code
+	glBindVertexArray(0);
+
+	return true;
+}
+
 void Square::draw(void) {
 	glBindVertexArray(vertexArrayId);
 

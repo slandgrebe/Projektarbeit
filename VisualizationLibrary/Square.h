@@ -24,9 +24,10 @@ namespace visual {
 		public:
 			Square();
 			~Square();
-
+			
 			bool loadFromFile(const std::string filename = "data/textures/sample.png");
 			bool loadImage(const int width, const int height, const unsigned char* image, GLint internalFormat = GL_RGB, GLenum format = GL_RGB);
+			bool load(void);
 
 			/** Zeichnet das Modell
 			* @author Stefan Landgrebe

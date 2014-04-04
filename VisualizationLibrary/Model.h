@@ -11,6 +11,7 @@
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 
+#include "GraphicEngine.h"
 #include "ShaderProgram.h"
 
 #include <string>
@@ -107,6 +108,10 @@ namespace visual {
 				glm::mat4 transformedMatrix = glm::translate(m_modelMatrix, m_positionVector);
 				transformedMatrix = glm::rotate(transformedMatrix, m_rotationAngle, m_rotationAxis);
 				transformedMatrix = glm::scale(transformedMatrix, m_scalingVector);
+
+				// Model View Projection Matrix => verkehrte Reihenfolge
+				transformedMatrix = graphics::GraphicEngine::getInstance()->getViewProjectionMatrix() * transformedMatrix;
+
 				return transformedMatrix;
 			};
 

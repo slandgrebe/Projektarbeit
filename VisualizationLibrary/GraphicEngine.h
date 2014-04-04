@@ -6,6 +6,7 @@
 #include <iostream>
 #include <SOIL.h>
 #include "SafeQueue.h"
+#include "Camera.h"
 
 namespace visual {
 	namespace graphics {
@@ -21,6 +22,9 @@ namespace visual {
 			int getWindowHeight(void) { return height; }
 			int getWindowWidth(void) { return width; }
 
+			glm::mat4 getViewProjectionMatrix();
+			glm::mat4 getViewOrthographicMatrix();
+
 		private:
 			static bool running;
 
@@ -29,6 +33,12 @@ namespace visual {
 			static std::string title;
 			static int width;
 			static int height;
+
+			glm::mat4 projectionMatrix;
+			glm::mat4 viewProjectionMatrix;
+			glm::mat4 orthographicMatrix;
+			glm::mat4 viewOrthographicMatrix;
+			Camera* camera;
 
 			struct modelQueueEntry {
 				GLuint modelId;
