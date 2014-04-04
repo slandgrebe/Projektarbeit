@@ -50,20 +50,32 @@ namespace Wrapper
         [DllImport("Visualization.dll")]
 		extern static void setTextColor(uint textId, float r, float g, float b, float a);
 
+
+        [DllImport("Visualization.dll")]
+        extern static uint addButton(string filename);
+        [DllImport("Visualization.dll")]
+        extern static void setButtonText(uint buttonId, string text);
+        [DllImport("Visualization.dll")]
+        extern static void setButtonHighlightColor(uint buttonId, float r, float g, float b, float a);
+        [DllImport("Visualization.dll")]
+        extern static void isButtonHighlighted(uint buttonId, bool choice);
+
+
+
         static void Main(string[] args)
         {
             Console.WriteLine("Start");
-             
+
             
             uint pointId = addPoint("data/textures/sample.png");
             while (!isModelCreated(pointId)) { }
             positionModel(pointId, -0.5f, 0.5f, -5f);
-            
+
             uint pointId2 = addPoint("data/textures/test.png");
             while (!isModelCreated(pointId2)) { }
             positionModel(pointId2, 0.5f, 0.5f, -3f);
 
-            
+
             uint modelId = addModel("data/models/shuttle/SpaceShuttleOrbiter.3ds");
             while (!isModelCreated(modelId)) { }
             scaleModel(modelId, 0.0005f, 0.0005f, 0.0005f);
@@ -71,7 +83,7 @@ namespace Wrapper
             positionModel(modelId, -2f, -0.5f, -4.5f);
             setModelHighlightColor(modelId, 0.0f, 1.0f, 0.0f, 1.0f);
             isModelHighlighted(modelId, true);
-            
+
             uint modelId2 = addModel("data/models/shuttle/SpaceShuttleOrbiter.3ds");
             while (!isModelCreated(modelId2)) { }
             scaleModel(modelId2, 0.0005f, 0.0005f, 0.0005f);
@@ -95,7 +107,7 @@ namespace Wrapper
             setTextSize(textId2, 60);
             setTextColor(textId2, 1.0f, 0.5f, 0.0f, 1.0f);
 
-            
+
             Console.WriteLine("zurück in c#");
 
             while (isRunning()) {

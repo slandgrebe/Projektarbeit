@@ -26,6 +26,7 @@ GLuint GraphicEngine::shaderProgramId = 0;
 SafeQueue<GraphicEngine::modelQueueEntry>* GraphicEngine::squareQueue = new SafeQueue<modelQueueEntry>;
 SafeQueue<GraphicEngine::modelQueueEntry>* GraphicEngine::modelQueue = new SafeQueue<modelQueueEntry>;
 SafeQueue<GraphicEngine::modelQueueEntry>* GraphicEngine::textQueue = new SafeQueue<modelQueueEntry>;
+SafeQueue<GraphicEngine::modelQueueEntry>* GraphicEngine::buttonQueue = new SafeQueue<modelQueueEntry>;
 
 
 GraphicEngine* GraphicEngine::getInstance() {
@@ -164,6 +165,14 @@ void GraphicEngine::enqueueText(GLuint modelId, std::string text) {
 	e.filename = text;
 	textQueue->enqueue(e);
 }
+void GraphicEngine::enqueueButton(GLuint modelId, std::string filename) {
+	std::cout << "enqueueButton modelId[" << modelId << "] text[" << filename << "]" << std::endl;
+
+	modelQueueEntry e;
+	e.modelId = modelId;
+	e.filename = filename;
+	buttonQueue->enqueue(e);
+}
 
 void GraphicEngine::processQueue() {
 	while (modelQueue->hasMore()) {
@@ -171,6 +180,9 @@ void GraphicEngine::processQueue() {
 		model::AssimpModel* model = new model::AssimpModel;
 		if (model->loadModel(e.filename)) {
 			Manager::getInstance()->addToModelList(e.modelId, model);
+		}
+		else {
+			std::cout << "Could not create model. id[" << e.modelId << "] filename[" << e.filename << "]" << std::endl;
 		}
 	}
 
@@ -180,6 +192,9 @@ void GraphicEngine::processQueue() {
 		if (model->loadFromFile(e.filename)) {
 			Manager::getInstance()->addToSquareList(e.modelId, model);
 		}
+		else {
+			std::cout << "Could not create square. id[" << e.modelId << "] filename[" << e.filename << "]" << std::endl;
+		}
 	}
 
 	while (textQueue->hasMore()) {
@@ -187,6 +202,20 @@ void GraphicEngine::processQueue() {
 		gui::Text* text = new gui::Text;
 		if (text->init(e.filename)) {
 			Manager::getInstance()->addToTextList(e.modelId, text);
+		}
+		else {
+			std::cout << "Could not create text. id[" << e.modelId << "] text[" << e.filename << "]" << std::endl;
+		}
+	}
+
+	while (buttonQueue->hasMore()) {
+		modelQueueEntry e = buttonQueue->dequeue();
+		gui::Button* button = new gui::Button;
+		if (button->init(e.filename)) {
+			Manager::getInstance()->addToButtonList(e.modelId, button);
+		}
+		else {
+			std::cout << "Could not create button. id[" << e.modelId << "] filename[" << e.filename << "]" << std::endl;
 		}
 	}
 }
