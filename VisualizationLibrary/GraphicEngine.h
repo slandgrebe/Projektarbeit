@@ -17,8 +17,8 @@ namespace visual {
 			static bool isRunning(void) { return running; }
 			static void enqueueSquare(GLuint modelId, std::string filename);
 			static void enqueueModel(GLuint modelId, std::string filename);
-			static void enqueueText(GLuint modelId, std::string text);
-			static void enqueueButton(GLuint modelId, std::string filename);
+			static void enqueueText(GLuint modelId, std::string filename);
+			static void enqueueButton(GLuint modelId);
 
 			int getWindowHeight(void) { return height; }
 			int getWindowWidth(void) { return width; }

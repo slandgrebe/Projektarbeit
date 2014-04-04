@@ -256,14 +256,14 @@ void Manager::setTextColor(const GLuint textId, const glm::vec4 color) {
 }*/
 
 
-GLuint Manager::addButton(const std::string filename) {
+GLuint Manager::addButton() {
 	if (isRunning()) {
 		modelInstantiationCounter++;
 
 		std::cout << " adding Button to Queue: " << modelInstantiationCounter << std::endl;
 
 		// Queue für Thread Sicherheit
-		graphics::GraphicEngine::getInstance()->enqueueButton(modelInstantiationCounter, filename);
+		graphics::GraphicEngine::getInstance()->enqueueButton(modelInstantiationCounter);
 
 		return modelInstantiationCounter;
 	}

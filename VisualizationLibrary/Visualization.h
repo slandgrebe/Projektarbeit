@@ -31,7 +31,7 @@ extern "C" DLL_API int APIENTRY setTextSize(const unsigned int textId, const int
 extern "C" DLL_API void APIENTRY setTextColor(const unsigned int textId, const float r, const float g, const float b, const float a);
 //extern "C" DLL_API bool APIENTRY setFontFamily(const unsigned int textId, const char* filename);
 
-extern "C" DLL_API unsigned int APIENTRY addButton(const char* filename);
+extern "C" DLL_API unsigned int APIENTRY addButton(void);
 extern "C" DLL_API void APIENTRY setButtonText(const unsigned int buttonId, const char* text);
 extern "C" DLL_API void APIENTRY setButtonHighlightColor(const unsigned int buttonId, const float r, const float g, const float b, const float a);
 extern "C" DLL_API void APIENTRY isButtonHighlighted(const unsigned int buttonId, const bool choice);

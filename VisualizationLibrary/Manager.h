@@ -38,7 +38,7 @@ namespace visual {
 		void setTextColor(const GLuint textId, const glm::vec4 color);
 		//bool setFontFamily(const GLuint textId, const std::string filename);
 
-		GLuint addButton(const std::string filename);
+		GLuint addButton(void);
 		void setButtonText(const GLuint buttonId, const std::string text);
 		void setButtonHighlightColor(GLuint buttonId, glm::vec4 color);
 		void isButtonHighlighted(GLuint buttonId, bool choice);

@@ -17,7 +17,7 @@ namespace visual {
 			Button();
 			~Button();
 
-			bool init(const std::string filename);
+			bool init(void);
 			void setText(const std::string text);
 			void setHighlightColor(glm::vec4 color);
 			void isHighlighted(bool choice);

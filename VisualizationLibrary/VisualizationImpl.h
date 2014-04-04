@@ -96,8 +96,8 @@ DLL_API void APIENTRY setTextColor(const unsigned int textId, const float r, con
 }*/
 
 
-DLL_API unsigned int APIENTRY addButton(const char* filename) {
-	return visual::Manager::getInstance()->addButton(filename);
+DLL_API unsigned int APIENTRY addButton(void) {
+	return visual::Manager::getInstance()->addButton();
 }
 DLL_API void APIENTRY setButtonText(const unsigned int buttonId, const char* text) {
 	visual::Manager::getInstance()->setButtonText(buttonId, text);

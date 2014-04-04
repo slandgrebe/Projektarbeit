@@ -131,6 +131,8 @@ bool Square::load(void) {
 		return false;
 	}
 
+	texture = 0;
+
 	// Make sure the VAO is not changed from outside code
 	glBindVertexArray(0);
 
@@ -154,7 +156,7 @@ void Square::draw(void) {
 		GL_FALSE,           // normalisiert?
 		0,                  // Stride
 		(void*)0            // Offset
-	);
+		);
 
 	// colors
 	GLint colAttrib = shaderProgram->getAttribute("color");
@@ -167,7 +169,7 @@ void Square::draw(void) {
 		GL_FALSE,           // normalisiert?
 		0,                  // Stride
 		(void*)0            // Offset
-	);
+		);
 
 	// texture
 	GLint texAttrib = shaderProgram->getAttribute("texcoord");
@@ -180,10 +182,12 @@ void Square::draw(void) {
 		GL_FALSE,           // normalisiert?
 		0,                  // Stride
 		(void*)0            // Offset
-	);
+		);
 
 	// texture
-	texture->bind();
+	if (texture) {
+		texture->bind();
+	}
 
 	// highlight color
 	GLint highlightAttribute = shaderProgram->getUniform("highlightColor");

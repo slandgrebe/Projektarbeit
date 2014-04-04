@@ -52,7 +52,7 @@ namespace Wrapper
 
 
         [DllImport("Visualization.dll")]
-        extern static uint addButton(string filename);
+        extern static uint addButton();
         [DllImport("Visualization.dll")]
         extern static void setButtonText(uint buttonId, string text);
         [DllImport("Visualization.dll")]
@@ -107,6 +107,8 @@ namespace Wrapper
             setTextSize(textId2, 60);
             setTextColor(textId2, 1.0f, 0.5f, 0.0f, 1.0f);
 
+
+            uint buttonId = addButton();
 
             Console.WriteLine("zurück in c#");
 
