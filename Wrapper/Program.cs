@@ -92,7 +92,17 @@ namespace Wrapper
             setModelHighlightColor(modelId2, 0.0f, 1.0f, 0.0f, 0.5f);
             isModelHighlighted(modelId2, false);
 
-            
+            float w = 0f;
+            float x = 0.000000001f;
+            while (true)
+            {
+                w = (float)w + 0.005f;
+                x = x *2;
+                rotateModel(modelId2, 0, 0, 0, 0);
+                Console.WriteLine("fertig");
+            }
+
+
             uint textId = addText("");
             while (!isModelCreated(textId)) { }
             setText(textId, "Es geht!");
