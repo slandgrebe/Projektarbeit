@@ -64,6 +64,11 @@ namespace visual {
 			* @param axis: Rotationsachse
 			*/
 			virtual void rotate(GLfloat degrees, glm::vec3 axis) {
+				if (axis.x == 0 && axis.y == 0 && axis.z == 0) {
+					std::cout << "Nullvektor ist keine zulaessige Rotationsachse" << std::endl;
+					return;
+				}
+
 				m_rotationAngle = degrees;
 				m_rotationAxis = axis;
 			};
