@@ -95,4 +95,18 @@ DLL_API void APIENTRY setTextColor(const unsigned int textId, const float r, con
 	return visual::Manager::getInstance()->setFontFamily(textId, filename);
 }*/
 
+
+DLL_API unsigned int APIENTRY addButton(const char* filename) {
+	return visual::Manager::getInstance()->addButton(filename);
+}
+DLL_API void APIENTRY setButtonText(const unsigned int buttonId, const char* text) {
+	visual::Manager::getInstance()->setButtonText(buttonId, text);
+}
+DLL_API void APIENTRY setButtonHighlightColor(const unsigned int buttonId, const float r, const float g, const float b, const float a) {
+	visual::Manager::getInstance()->setButtonHighlightColor(buttonId, glm::vec4(r, g, b, a));
+}
+DLL_API void APIENTRY isButtonHighlighted(const unsigned int buttonId, const bool choice) {
+	visual::Manager::getInstance()->isButtonHighlighted(buttonId, choice);
+}
+
 #endif

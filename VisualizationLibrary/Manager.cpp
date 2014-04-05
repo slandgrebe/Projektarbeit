@@ -78,6 +78,9 @@ GLboolean Manager::isModelCreated(GLuint modelId) {
 	else if (textList.find(modelId) != textList.end()) {
 		return GL_TRUE;
 	}
+	else if (buttonList.find(modelId) != buttonList.end()) {
+		return GL_TRUE;
+	}
 
 	return GL_FALSE;
 }
@@ -93,6 +96,10 @@ void Manager::addToSquareList(GLuint modelId, model::Square* model) {
 void Manager::addToTextList(GLuint modelId, gui::Text* text) {
 	std::cout << " adding Text to List: " << modelId << std::endl;
 	textList.insert(std::make_pair(modelId, text));
+}
+void Manager::addToButtonList(GLuint buttonId, gui::Button* button) {
+	std::cout << " adding Button to List: " << buttonId << std::endl;
+	buttonList.insert(std::make_pair(buttonId, button));
 }
 
 GLboolean Manager::positionModel(GLuint modelId, glm::vec3 position) {
@@ -249,6 +256,43 @@ void Manager::setTextColor(const GLuint textId, const glm::vec4 color) {
 }*/
 
 
+GLuint Manager::addButton(const std::string filename) {
+	if (isRunning()) {
+		modelInstantiationCounter++;
+
+		std::cout << " adding Button to Queue: " << modelInstantiationCounter << std::endl;
+
+		// Queue für Thread Sicherheit
+		graphics::GraphicEngine::getInstance()->enqueueButton(modelInstantiationCounter, filename);
+
+		return modelInstantiationCounter;
+	}
+
+	return 0;
+}
+gui::Button* Manager::getButtonFromList(GLuint buttonId) {
+	gui::Button* button = NULL;
+
+	if (buttonList.find(buttonId) != buttonList.end()) {
+		button = buttonList.find(buttonId)->second;
+	}
+
+	return button;
+}
+void Manager::setButtonText(const GLuint buttonId, const std::string text) {
+	gui::Button* button = getButtonFromList(buttonId);
+	button->setText(text);
+}
+void Manager::setButtonHighlightColor(GLuint buttonId, glm::vec4 color) {
+	gui::Button* button = getButtonFromList(buttonId);
+	button->setHighlightColor(color);
+}
+void Manager::isButtonHighlighted(GLuint buttonId, bool choice) {
+	gui::Button* button = getButtonFromList(buttonId);
+	button->isHighlighted(choice);
+}
+
+
 void Manager::draw(void) {
 	if (!isRunning()) {
 		std::cout << "Manager: GraphicsEngine ist nicht in einem laufenden Zustand. Neuzeichnen abgebrochen." << std::endl;
@@ -269,7 +313,7 @@ void Manager::draw(void) {
 		model->draw();
 	}
 
-	// Texte immer zuoberst
+	// GUI immer zuoberst
 	glClear(GL_DEPTH_BUFFER_BIT);
 	
 	// Texte zeichnen
@@ -277,6 +321,13 @@ void Manager::draw(void) {
 	for (it3 = textList.begin(); it3 != textList.end(); it3++) {
 		gui::Text* text = (*it3).second;
 		text->draw();
+	}
+
+	// Buttons zeichnen
+	std::map<GLuint, gui::Button*>::iterator it4;
+	for (it4 = buttonList.begin(); it4 != buttonList.end(); it4++) {
+		gui::Button* button = (*it4).second;
+		button->draw();
 	}
 	
 	/*if (isRunning()) {

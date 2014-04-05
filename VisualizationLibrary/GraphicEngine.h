@@ -6,6 +6,7 @@
 #include <iostream>
 #include <SOIL.h>
 #include "SafeQueue.h"
+#include "Camera.h"
 
 namespace visual {
 	namespace graphics {
@@ -17,9 +18,13 @@ namespace visual {
 			static void enqueueSquare(GLuint modelId, std::string filename);
 			static void enqueueModel(GLuint modelId, std::string filename);
 			static void enqueueText(GLuint modelId, std::string text);
+			static void enqueueButton(GLuint modelId, std::string filename);
 
 			int getWindowHeight(void) { return height; }
 			int getWindowWidth(void) { return width; }
+
+			glm::mat4 getViewProjectionMatrix();
+			glm::mat4 getViewOrthographicMatrix();
 
 		private:
 			static bool running;
@@ -30,6 +35,12 @@ namespace visual {
 			static int width;
 			static int height;
 
+			glm::mat4 projectionMatrix;
+			glm::mat4 viewProjectionMatrix;
+			glm::mat4 orthographicMatrix;
+			glm::mat4 viewOrthographicMatrix;
+			Camera* camera;
+
 			struct modelQueueEntry {
 				GLuint modelId;
 				std::string filename;
@@ -38,6 +49,7 @@ namespace visual {
 			static SafeQueue<modelQueueEntry>* squareQueue;
 			static SafeQueue<modelQueueEntry>* modelQueue;
 			static SafeQueue<modelQueueEntry>* textQueue;
+			static SafeQueue<modelQueueEntry>* buttonQueue;
 
 			static GLuint shaderProgramId;
 

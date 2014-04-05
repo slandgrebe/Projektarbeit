@@ -11,6 +11,7 @@
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 
+#include "GraphicEngine.h"
 #include "ShaderProgram.h"
 
 #include <string>
@@ -64,6 +65,11 @@ namespace visual {
 			* @param axis: Rotationsachse
 			*/
 			virtual void rotate(GLfloat degrees, glm::vec3 axis) {
+				if (axis.x == 0 && axis.y == 0 && axis.z == 0) {
+					std::cout << "Nullvektor ist keine zulaessige Rotationsachse" << std::endl;
+					return;
+				}
+
 				m_rotationAngle = degrees;
 				m_rotationAxis = axis;
 			};
@@ -102,6 +108,10 @@ namespace visual {
 				glm::mat4 transformedMatrix = glm::translate(m_modelMatrix, m_positionVector);
 				transformedMatrix = glm::rotate(transformedMatrix, m_rotationAngle, m_rotationAxis);
 				transformedMatrix = glm::scale(transformedMatrix, m_scalingVector);
+
+				// Model View Projection Matrix => verkehrte Reihenfolge
+				transformedMatrix = graphics::GraphicEngine::getInstance()->getViewProjectionMatrix() * transformedMatrix;
+
 				return transformedMatrix;
 			};
 
