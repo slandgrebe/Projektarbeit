@@ -285,7 +285,7 @@ void AssimpModel::draw() {
 
 		// transformations
 		GLint uniMvp = shaderProgram->getUniform("mvp");
-		glm::mat4 mvp = getTransformedMatrix();
+		glm::mat4 mvp = getModelViewMatrix();
 		glUniformMatrix4fv(uniMvp, 1, GL_FALSE, glm::value_ptr(mvp));
 
 		glDrawElements(GL_TRIANGLES, meshList[i].numIndices, GL_UNSIGNED_INT, 0);

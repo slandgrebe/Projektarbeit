@@ -4,14 +4,14 @@
 #include <glm/glm.hpp>
 #include <string>
 
-#include "Square.h"
+#include "ColoredSquare.h"
 #include "Text.h"
 
 namespace visual {
 	namespace gui {
 		class Button {
 		private:
-			model::Square* square;
+			model::ColoredSquare* square;
 			Text* text;
 		public:
 			Button();

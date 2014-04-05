@@ -96,6 +96,9 @@
     <ClInclude Include="Camera.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="ColoredSquare.h">
+      <Filter>Header Files\model</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -134,6 +137,9 @@
     <ClCompile Include="Camera.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="ColoredSquare.cpp">
+      <Filter>Source Files\model</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="Assimp32.dll">
@@ -156,6 +162,12 @@
     </None>
     <None Include="data\models\cube.obj">
       <Filter>Resource Files\models</Filter>
+    </None>
+    <None Include="data\shader\colored.fragmentshader">
+      <Filter>Resource Files\shader</Filter>
+    </None>
+    <None Include="data\shader\colored.vertexshader">
+      <Filter>Resource Files\shader</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>

@@ -202,7 +202,7 @@ void Square::draw(void) {
 
 	// transformations
 	GLint uniMvp = shaderProgram->getUniform("mvp");
-	glm::mat4 mvp = getTransformedMatrix();
+	glm::mat4 mvp = getModelViewMatrix();
 	glUniformMatrix4fv(uniMvp, 1, GL_FALSE, glm::value_ptr(mvp)); 
 
 	// Effektives zeichnen des Modells

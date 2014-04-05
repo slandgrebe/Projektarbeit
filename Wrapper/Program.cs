@@ -67,7 +67,7 @@ namespace Wrapper
             Console.WriteLine("Start");
 
             
-            uint pointId = addPoint("data/textures/sample.png");
+            /*uint pointId = addPoint("data/textures/sample.png");
             while (!isModelCreated(pointId)) { }
             positionModel(pointId, -0.5f, 0.5f, -5f);
 
@@ -105,10 +105,13 @@ namespace Wrapper
             setText(textId2, "noch viel mehr Text!");
             setTextPosition(textId2, 150, 200);
             setTextSize(textId2, 60);
-            setTextColor(textId2, 1.0f, 0.5f, 0.0f, 1.0f);
+            setTextColor(textId2, 1.0f, 0.5f, 0.0f, 1.0f);*/
 
 
             uint buttonId = addButton();
+            while (!isModelCreated(buttonId)) { }
+            //setButtonHighlightColor(buttonId, 1f, 0f, 0f, 1f);
+            //isButtonHighlighted(buttonId, true);
 
             Console.WriteLine("zurück in c#");
 

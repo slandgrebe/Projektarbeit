@@ -14,8 +14,8 @@ Button::~Button() {
 bool Button::init(void) {
 	std::cout << "button init " << std::endl;
 
-	square = new model::Square;
-	if (!square->load()) {
+	square = new model::ColoredSquare;
+	if (!square->loadModel()) {
 		std::cout << "Could not create background for button." << std::endl;
 		return false;
 	}
@@ -26,7 +26,7 @@ bool Button::init(void) {
 		std::cout << "Could not create text for button" << std::endl;
 	}
 	text->setText("Klick mich");
-
+	text->setPosition(100, 100);
 
 	return true;
 }
@@ -34,6 +34,7 @@ void Button::setText(const std::string text) {
 	this->text->setText(text);
 }
 void Button::setHighlightColor(glm::vec4 color) {
+	std::cout << "highlightcolor: " << color.r << "/" << color.g << "/" << color.b << "/" << color.a << std::endl;
 	square->setHighlightColor(color);
 }
 void Button::isHighlighted(bool choice) {
@@ -42,9 +43,6 @@ void Button::isHighlighted(bool choice) {
 
 
 void Button::draw() {
-	std::cout << "button draw 1 " << std::endl;
 	square->draw();
-	std::cout << "button draw 2 " << std::endl;
 	text->draw();
-	std::cout << "button draw 3" << std::endl;
 }
