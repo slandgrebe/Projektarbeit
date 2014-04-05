@@ -5,6 +5,7 @@ namespace Wrapper
 {
     class Program
     {
+        
         /*[DllImport("Visualization.dll", EntryPoint = "doSomething")]
         extern static void doSomething(string text);*/
         [DllImport("Visualization.dll")]
@@ -96,12 +97,55 @@ namespace Wrapper
             setTextColor(textId2, 1.0f, 0.5f, 0.0f, 1.0f);
             //setFontFamily(textId2, );
 
+            //Vector v1 = new Vector(1, 2, 3);
+
 
             Console.WriteLine("zurück in c#");
 
             while (isRunning()) {
                 // do Something
             }
+        }
+
+        public void rotate(float x1, float y1, float z1, float x2, float y2, float z2)
+        {
+            //Vector aus p1 und p2
+            float xv = x2 - x1;
+            float yv = y2 - y1;
+            float zv = z2 - z1;
+
+            //länge berechnen
+            float lenght = (float)Math.Sqrt(System.Convert.ToDouble(xv * xv + yv * yv + zv * zv));
+            
+
+            //Vector normalisieren
+            float xvn = xv / lenght;
+            float yvn = yv / lenght;
+            float zvn = zv / lenght;
+
+            //Standard Vector definieren
+            float xs = 1;
+            float ys = 0;
+            float zs = 0;
+
+            //berechnung der Rotationsachse
+            float xa = yvn * zs - zvn * ys;
+            float ya = zvn * xs - xvn * zs;
+            float za = xvn * ys - yvn * xs;
+
+            //berechnung cosinus des rotationswinkels
+            float cosw = xvn * xs + yvn * ys + zvn * zs;
+
+            //rotationswinkel in radian berechnen
+            float w = Math.Acos(cosw);
+
+            //radian in Grad umrechnen
+            w = w * 180 / Math.PI;
+
+            //rotate(id, w, xa,ya,za)
+            //scale(id, lenght, 1,1);
+            //position(id, (x1+x2)/2 , (y1+y2)/2, (z1+z2)/2);
+
         }
     }
 }

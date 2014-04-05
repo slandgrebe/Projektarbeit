@@ -10,27 +10,27 @@ namespace Controller
 {
     class Movement
     {
-        /*/// <summary>Punkt ID Fuss links</summary>
-        private int pointFootLeft = 0;
+        /// <summary>Punkt ID Fuss links</summary>
+        private uint pointFootLeft = 0;
         /// <summary>Punkt ID Fuss rechts</summary>
-        private int pointFootRight = 0;
+        private uint pointFootRight = 0;
         /// <summary>Punkt ID Hand links</summary>
-        private int pointHandLeft = 0;
+        private uint pointHandLeft = 0;
         /// <summary>Punkt ID Hand rechts</summary>
-        private int pointHandRight = 0;
+        private uint pointHandRight = 0;
         /// <summary>Punkt ID Kopf</summary>
-        private int pointHead = 0;
-
+        private uint pointHead = 0;
+        
         /// <summary>Linien ID Unterarm links</summary>
-        private int lineForearmLeft = 0;
+        //private int lineForearmLeft = 0;
         /// <summary>Linien ID Unterarm ¨rechts</summary>
-        private int lineForearmRight = 0;
+        private uint lineForearmRight = 0;
         /// <summary>Linien ID Oberarm links</summary>
-        private int lineUpperarmLeft = 0;
+        //private int lineUpperarmLeft = 0;
         /// <summary>Linien ID Oberarm rechts</summary>
-        private int lineUpperarmRight = 0;
+        private uint lineUpperarmRight = 0;
         /// <summary>Linien ID Oberschenkel links</summary>
-        private int lineThighLeft = 0;
+        /*private int lineThighLeft = 0;
         /// <summary>Linien ID Oberschenkel rechts</summary>
         private int lineThighRight = 0;
         /// <summary>Linien ID Unterschenkel links</summary>
@@ -85,17 +85,20 @@ namespace Controller
         /// </summary>
         private void Initialize()
         {
-            /*pointFootLeft = Visualization.addPoint();
-            pointFootRight = Visualization.addPoint();
-            pointHandLeft = Visualization.addPoint();
-            pointHandRight = Visualization.addPoint();
-            pointHead = Visualization.addPoint();
+            pointFootLeft = Visualization.addModel("data/models/cube.obj");
+            pointFootRight = Visualization.addModel("data/models/cube.obj");
+            pointHandLeft = Visualization.addModel("data/models/cube.obj");
+            pointHandRight = Visualization.addModel("data/models/cube.obj");
+            pointHead = Visualization.addModel("data/models/cube.obj");
+            
 
-            lineForearmLeft = Visualization.addLine();
-            lineForearmRight = Visualization.addLine();
-            lineUpperarmLeft = Visualization.addLine();
-            lineUpperarmRight = Visualization.addLine();
-            lineThighLeft = Visualization.addLine();
+            //lineForearmLeft = Visualization.addLine();
+            lineForearmRight = Visualization.addModel("data/models/cube.obj");
+            while (!Visualization.isModelCreated(lineForearmRight)) { }
+            //lineUpperarmLeft = Visualization.addLine();
+            lineUpperarmRight = Visualization.addModel("data/models/cube.obj");
+            while (!Visualization.isModelCreated(lineUpperarmRight)) { }
+            /*lineThighLeft = Visualization.addLine();
             lineThighRight = Visualization.addLine();
             lineLowerlegLeft = Visualization.addLine();
             lineLowerlegRight = Visualization.addLine();
@@ -105,8 +108,8 @@ namespace Controller
             lineBreastLeft = Visualization.addLine();
             lineBreastRight = Visualization.addLine();
             lineBreastCenter = Visualization.addLine();*/
-            hand = Wrapper.addPoint("data/textures/hand.jpg");
-            start = Wrapper.addPoint("data/textures/start.png");
+            //hand = Wrapper.addPoint("data/textures/hand.jpg");
+            //start = Wrapper.addPoint("data/textures/start.png");
             Wrapper.positionModel(start, 0, 0, 0);
             
         }
@@ -116,20 +119,25 @@ namespace Controller
         /// </summary>
         public void Update()
         {
-            body.ZModifikator(body.Spine.Z);
+            body.ZModifikator(body.Spine.Z *-1);
             //body.Scale(3);
-            /*
-            Visualization.updatePoint(pointFootLeft, body.FootLeft.X, body.FootLeft.Y, body.FootLeft.Z * -1);
-            Visualization.updatePoint(pointFootRight, body.FootRight.X, body.FootRight.Y, body.FootRight.Z * -1);
-            Visualization.updatePoint(pointHandLeft, body.HandLeft.X, body.HandLeft.Y, body.HandLeft.Z * -1);
-            Visualization.updatePoint(pointHandRight, body.HandRight.X, body.HandRight.Y, body.HandRight.Z * -1);
-            Visualization.updatePoint(pointHead, body.Head.X, body.Head.Y, body.Head.Z * -1);
 
-            Visualization.updateLine(lineForearmLeft, body.WristLeft.X, body.WristLeft.Y, body.WristLeft.Z * -1, body.ElbowLeft.X, body.ElbowLeft.Y, body.ElbowLeft.Z * -1);
-            Visualization.updateLine(lineForearmRight, body.WristRight.X, body.WristRight.Y, body.WristRight.Z * -1, body.ElbowRight.X, body.ElbowRight.Y, body.ElbowRight.Z * -1);
-            Visualization.updateLine(lineUpperarmLeft, body.ElbowLeft.X, body.ElbowLeft.Y, body.ElbowLeft.Z * -1, body.ShoulderLeft.X, body.ShoulderLeft.Y, body.ShoulderLeft.Z * -1);
-            Visualization.updateLine(lineUpperarmRight, body.ElbowRight.X, body.ElbowRight.Y, body.ElbowRight.Z * -1, body.ShoulderRight.X, body.ShoulderRight.Y, body.ShoulderRight.Z * -1);
-            Visualization.updateLine(lineLowerlegLeft, body.AnkleLeft.X, body.AnkleLeft.Y, body.AnkleLeft.Z * -1, body.KneeLeft.X, body.KneeLeft.Y, body.KneeLeft.Z * -1);
+            Visualization.positionModel(pointFootLeft, body.FootLeft.X, body.FootLeft.Y, body.FootLeft.Z * -1);
+            Visualization.positionModel(pointFootRight, body.FootRight.X, body.FootRight.Y, body.FootRight.Z * -1);
+            Visualization.positionModel(pointHandLeft, body.HandLeft.X, body.HandLeft.Y, body.HandLeft.Z * -1);
+            Visualization.positionModel(pointHandRight, body.HandRight.X, body.HandRight.Y, body.HandRight.Z * -1);
+            Visualization.positionModel(pointHead, body.Head.X, body.Head.Y, body.Head.Z * -1);
+            Visualization.scaleModel(pointFootLeft, 0.05f, 0.05f, 0.05f);
+            Visualization.scaleModel(pointFootRight, 0.05f, 0.05f, 0.05f);
+            Visualization.scaleModel(pointHandLeft, 0.05f, 0.05f, 0.05f);
+            Visualization.scaleModel(pointHandRight, 0.05f, 0.05f, 0.05f);
+            Visualization.scaleModel(pointHead, 0.1f, 0.1f, 0.1f);
+            
+            //Visualization.updateLine(lineForearmLeft, body.WristLeft.X, body.WristLeft.Y, body.WristLeft.Z * -1, body.ElbowLeft.X, body.ElbowLeft.Y, body.ElbowLeft.Z * -1);
+            Visualization.drawLine(lineForearmRight, body.WristRight.X, body.WristRight.Y, body.WristRight.Z * -1, body.ElbowRight.X, body.ElbowRight.Y, body.ElbowRight.Z * -1);
+            //Visualization.updateLine(lineUpperarmLeft, body.ElbowLeft.X, body.ElbowLeft.Y, body.ElbowLeft.Z * -1, body.ShoulderLeft.X, body.ShoulderLeft.Y, body.ShoulderLeft.Z * -1);
+            Visualization.drawLine(lineUpperarmRight, body.ElbowRight.X, body.ElbowRight.Y, body.ElbowRight.Z * -1, body.ShoulderRight.X, body.ShoulderRight.Y, body.ShoulderRight.Z * -1);
+            /*Visualization.updateLine(lineLowerlegLeft, body.AnkleLeft.X, body.AnkleLeft.Y, body.AnkleLeft.Z * -1, body.KneeLeft.X, body.KneeLeft.Y, body.KneeLeft.Z * -1);
             Visualization.updateLine(lineLowerlegRight, body.AnkleRight.X, body.AnkleRight.Y, body.AnkleRight.Z * -1, body.KneeRight.X, body.KneeRight.Y, body.KneeRight.Z * -1);
             Visualization.updateLine(lineThighLeft, body.KneeLeft.X, body.KneeLeft.Y, body.KneeLeft.Z * -1, body.HipLeft.X, body.HipLeft.Y, body.HipLeft.Z * -1);
             Visualization.updateLine(lineThighRight, body.KneeRight.X, body.KneeRight.Y, body.KneeRight.Z * -1, body.HipRight.X, body.HipRight.Y, body.HipRight.Z * -1);
@@ -141,9 +149,9 @@ namespace Controller
             Visualization.updateLine(lineBreastCenter, body.ShoulderLeft.X, body.ShoulderLeft.Y, body.ShoulderLeft.Z * -1, body.ShoulderRight.X, body.ShoulderRight.Y, body.ShoulderRight.Z * -1);
             */
 
-            Wrapper.positionModel(hand, body.HandRight.X, body.HandRight.Y, 0);
-            Wrapper.scaleModel(hand, 0.2f, 0.2f, 0.2f);
-            Wrapper.scaleModel(start, 0.8f, 1, 1);
+            //Wrapper.positionModel(hand, body.HandRight.X, body.HandRight.Y, 0);
+            //Wrapper.scaleModel(hand, 0.2f, 0.2f, 0.2f);
+            //Wrapper.scaleModel(start, 0.8f, 1, 1);
             //Visualization.draw();
         }
 

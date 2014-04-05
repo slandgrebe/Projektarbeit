@@ -18,7 +18,7 @@ namespace Controller
         {
             try
             {
-                bool kinect = false;
+                bool kinect = true;
                 if (kinect)
                 {
                     Movement move = new Movement();

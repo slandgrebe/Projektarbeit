@@ -96,7 +96,7 @@ namespace Model
         }
 
         public void ZModifikator(float mod){
-            if (mod >= 0)
+            if (mod <= 0)
             {
                 AnkleLeft.Z += mod;
                 AnkleRight.Z += mod;
