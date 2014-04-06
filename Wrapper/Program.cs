@@ -43,8 +43,6 @@ namespace Wrapper
 
         [DllImport("Visualization.dll")]
         extern static void setText(uint textId, string text);
-		[DllImport("Visualization.dll")]
-        extern static void setTextPosition(uint textId, int x, int y);
         [DllImport("Visualization.dll")]
 		extern static bool setTextSize(uint textId, int points);
         [DllImport("Visualization.dll")]
@@ -69,7 +67,7 @@ namespace Wrapper
             Console.WriteLine("Start");
 
             
-            /*uint pointId = addPoint("data/textures/sample.png");
+            uint pointId = addPoint("data/textures/sample.png");
             while (!isModelCreated(pointId)) { }
             positionModel(pointId, -0.5f, 0.5f, -5f);
 
@@ -98,25 +96,30 @@ namespace Wrapper
             uint textId = addText("");
             while (!isModelCreated(textId)) { }
             setText(textId, "Es geht!");
-            setTextPosition(textId, 100, 100);
+            positionModel(textId, 0.7f, 0.5f, 1.0f);
             setTextSize(textId, 36);
             setTextColor(textId, 0.92f, 0.95f, 0.16f, 1.0f);
 
             uint textId2 = addText("data/fonts/KBZipaDeeDooDah.ttf");
             while (!isModelCreated(textId2)) { }
             setText(textId2, "noch viel mehr Text!");
-            setTextPosition(textId2, 150, 200);
             setTextSize(textId2, 60);
-            setTextColor(textId2, 1.0f, 0.5f, 0.0f, 1.0f);*/
+            setTextColor(textId2, 1.0f, 0.5f, 0.0f, 1.0f);
 
 
             uint buttonId = addButton("data/fonts/arial.ttf");
             while (!isModelCreated(buttonId)) { }
-            setModelHighlightColor(buttonId, 1f, 0f, 0f, 1f);
-            isModelHighlighted(buttonId, true);
-            setButtonText(buttonId, "anderer text");
-            positionModel(buttonId, 0.5f, -0.5f, 1); // Z-Koordinate wird ignoriert, da es sich beim Button um ein GUI Element handelt
-            scaleModel(buttonId, 0.5f, 0.5f, 1); // Skalierung in z-Richtung wird ignoriert, da es sich beim Button um ein GUI Element handelt
+
+            uint buttonId2 = addButton("data/fonts/arial.ttf");
+            while (!isModelCreated(buttonId2)) { }
+            setModelHighlightColor(buttonId2, 0.5f, 0f, 0f, 1f);
+            isModelHighlighted(buttonId2, true);
+            positionModel(buttonId2, 0.5f, -0.5f, 1); // Z-Koordinate wird ignoriert, da es sich beim Button um ein GUI Element handelt
+            scaleModel(buttonId2, 0.5f, 0.5f, 1); // Skalierung in z-Richtung wird ignoriert, da es sich beim Button um ein GUI Element handelt
+            setText(buttonId2, "anderer text");
+            setTextColor(buttonId2, 0.1f, 0.1f, 0.0f, 1.0f);
+            setTextSize(buttonId2, 24);
+            
 
             Console.WriteLine("zurück in c#");
 

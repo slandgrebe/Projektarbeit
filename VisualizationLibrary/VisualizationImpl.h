@@ -82,9 +82,9 @@ DLL_API unsigned int APIENTRY addText(const char* filename) {
 DLL_API void APIENTRY setText(const unsigned int textId, const char* text) {
 	visual::Manager::getInstance()->setText(textId, text);
 }
-DLL_API void APIENTRY setTextPosition(const unsigned int textId, const float x, const float y) {
+/*DLL_API void APIENTRY setTextPosition(const unsigned int textId, const float x, const float y) {
 	visual::Manager::getInstance()->setTextPosition(textId, x, y);
-}
+}*/
 DLL_API int APIENTRY setTextSize(const unsigned int textId, const int points) {
 	return (int)visual::Manager::getInstance()->setTextSize(textId, points);
 }

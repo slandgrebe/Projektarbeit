@@ -232,6 +232,7 @@ int GraphicEngine::createWindow(const std::string title, int width, int height) 
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3); // OpenGL Version 3.3
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
 	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE); // Core Profile (keine veralteten Funktionen)
+	glfwWindowHint(GLFW_RESIZABLE, GL_FALSE); // Fenstergrösse kann nicht verändert werden
 
 	// OpenGL Kontext erstellen und Fenster öffnen
 	window = glfwCreateWindow(width, height, title.c_str(), 0, 0);
@@ -241,7 +242,6 @@ int GraphicEngine::createWindow(const std::string title, int width, int height) 
 		return 2;
 	}
 	glfwMakeContextCurrent(window);
-
 
 	std::cout << "Fenster erstellt" << std::endl;
 

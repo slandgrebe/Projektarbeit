@@ -37,9 +37,17 @@ bool Button::init(const std::string fontname) {
 
 	return true;
 }
+
 void Button::setText(const std::string text) {
 	this->text->setText(text);
 }
+bool Button::setTextSize(const int points) {
+	return text->setSize(points);
+}
+void Button::setTextColor(const glm::vec4 color) {
+	text->setColor(color);
+}
+
 void Button::setHighlightColor(glm::vec4 color) {
 	std::cout << "highlightcolor: " << color.r << "/" << color.g << "/" << color.b << "/" << color.a << std::endl;
 	square->setHighlightColor(color);
@@ -50,13 +58,10 @@ void Button::isHighlighted(bool choice) {
 void Button::scale(glm::vec2 scale) {
 	square->scale(glm::vec3(scale, 1.0f));
 }
-
 void Button::position(glm::vec2 position) {
 	square->position(glm::vec3(position, zSquare));
 	text->setPosition(position.x, position.y);
 }
-
-
 
 void Button::draw() {
 	square->draw();

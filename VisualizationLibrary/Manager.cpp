@@ -264,21 +264,57 @@ visual::gui::Text* Manager::getTextFromList(GLuint textId) {
 
 	return text;
 }
-void Manager::setText(const GLuint textId, const std::string text) {
+bool Manager::setText(const GLuint textId, const std::string text) {
 	visual::gui::Text* textObj = getTextFromList(textId);
-	textObj->setText(text);
+	if (textObj) {
+		textObj->setText(text);
+		return true;
+	}
+	
+	gui::Button* button = getButtonFromList(textId);
+	if (button) {
+		button->setText(text);
+		return true;
+	}
+
+	return false;
 }
-void Manager::setTextPosition(const GLuint textId, const float x, const float y) {
+/*bool Manager::setTextPosition(const GLuint textId, const float x, const float y) {
 	visual::gui::Text* textObj = getTextFromList(textId);
-	textObj->setPosition(x, y);
-}
+	if (textObj) {
+		textObj->setPosition(x, y);
+		return true;
+	}
+
+	return false;
+}*/
 bool Manager::setTextSize(const GLuint textId, const int points) {
 	visual::gui::Text* textObj = getTextFromList(textId);
-	return textObj->setSize(points);
+	if (textObj) {
+		return textObj->setSize(points);
+	}
+	
+	gui::Button* button = getButtonFromList(textId);
+	if (button) {
+		return button->setTextSize(points);
+	}
+
+	return false;
 }
-void Manager::setTextColor(const GLuint textId, const glm::vec4 color) {
+bool Manager::setTextColor(const GLuint textId, const glm::vec4 color) {
 	visual::gui::Text* textObj = getTextFromList(textId);
-	textObj->setColor(color);
+	if (textObj) {
+		textObj->setColor(color);
+		return true;
+	}
+
+	gui::Button* button = getButtonFromList(textId);
+	if (button) {
+		button->setTextColor(color);
+		return true;
+	}
+
+	return false;
 }
 /*bool Manager::setFontFamily(const GLuint textId, const std::string filename) {
 	visual::gui::Text* textObj = getTextFromList(textId);
@@ -309,7 +345,7 @@ gui::Button* Manager::getButtonFromList(GLuint buttonId) {
 
 	return button;
 }
-void Manager::setButtonText(const GLuint buttonId, const std::string text) {
+/*void Manager::setButtonText(const GLuint buttonId, const std::string text) {
 	gui::Button* button = getButtonFromList(buttonId);
 	button->setText(text);
 }
@@ -320,7 +356,7 @@ void Manager::setButtonHighlightColor(GLuint buttonId, glm::vec4 color) {
 void Manager::isButtonHighlighted(GLuint buttonId, bool choice) {
 	gui::Button* button = getButtonFromList(buttonId);
 	button->isHighlighted(choice);
-}
+}*/
 
 
 void Manager::draw(void) {

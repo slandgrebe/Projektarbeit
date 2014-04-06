@@ -19,12 +19,14 @@ namespace visual {
 			~Button();
 
 			bool init(const std::string fontname);
+			
 			void setText(const std::string text);
+			bool setTextSize(const int points);
+			void setTextColor(const glm::vec4 color);
 			
 			void setHighlightColor(glm::vec4 color);
 			void isHighlighted(bool choice);
 			void scale(glm::vec2 scale);
-
 			void position(glm::vec2);
 
 			void draw();
