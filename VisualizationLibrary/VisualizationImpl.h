@@ -82,9 +82,9 @@ DLL_API unsigned int APIENTRY addText(const char* filename) {
 DLL_API void APIENTRY setText(const unsigned int textId, const char* text) {
 	visual::Manager::getInstance()->setText(textId, text);
 }
-DLL_API void APIENTRY setTextPosition(const unsigned int textId, const int x, const int y) {
+/*DLL_API void APIENTRY setTextPosition(const unsigned int textId, const float x, const float y) {
 	visual::Manager::getInstance()->setTextPosition(textId, x, y);
-}
+}*/
 DLL_API int APIENTRY setTextSize(const unsigned int textId, const int points) {
 	return (int)visual::Manager::getInstance()->setTextSize(textId, points);
 }
@@ -96,10 +96,10 @@ DLL_API void APIENTRY setTextColor(const unsigned int textId, const float r, con
 }*/
 
 
-DLL_API unsigned int APIENTRY addButton(const char* filename) {
-	return visual::Manager::getInstance()->addButton(filename);
+DLL_API unsigned int APIENTRY addButton(const char* fontname) {
+	return visual::Manager::getInstance()->addButton(fontname);
 }
-DLL_API void APIENTRY setButtonText(const unsigned int buttonId, const char* text) {
+/*DLL_API void APIENTRY setButtonText(const unsigned int buttonId, const char* text) {
 	visual::Manager::getInstance()->setButtonText(buttonId, text);
 }
 DLL_API void APIENTRY setButtonHighlightColor(const unsigned int buttonId, const float r, const float g, const float b, const float a) {
@@ -107,6 +107,6 @@ DLL_API void APIENTRY setButtonHighlightColor(const unsigned int buttonId, const
 }
 DLL_API void APIENTRY isButtonHighlighted(const unsigned int buttonId, const bool choice) {
 	visual::Manager::getInstance()->isButtonHighlighted(buttonId, choice);
-}
+}*/
 
 #endif

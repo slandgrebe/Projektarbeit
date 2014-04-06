@@ -27,8 +27,6 @@ namespace visual {
 		class AssimpModel : public Model {
 		private:
 			GLuint vertexArrayId; /** Referenz auf das VAO (Vertex Array Object) */
-
-
 			
 			bool initAllMeshes(const aiScene* scene, const std::string& filename);
 			bool initSingleMesh(const int meshIndex, const aiMesh* mesh);
