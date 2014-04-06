@@ -225,7 +225,7 @@ void AssimpModel::draw() {
 	glBindVertexArray(vertexArrayId);
 
 	// get Shader Program Reference
-	GLuint shaderProgramId = graphics::GraphicEngine::getInstance()->getShaderProgramId();
+	//GLuint shaderProgramId = graphics::GraphicEngine::getInstance()->getShaderProgramId();
 
 	shaderProgram->use();
 

@@ -122,8 +122,20 @@ GLboolean Manager::positionModel(GLuint modelId, glm::vec3 position) {
 
 		return GL_TRUE;
 	}
+	else if (textList.find(modelId) != textList.end()) {
+		gui::Text* model = textList.find(modelId)->second;
+		model->setPosition(position.x, position.y);
+
+		return GL_TRUE;
+	}
+	else if (buttonList.find(modelId) != buttonList.end()) {
+		gui::Button* model = buttonList.find(modelId)->second;
+		model->position(glm::vec2(position));
+
+		return GL_TRUE;
+	}
 	else {
-		//std::cout << "Das Model mit der modelId '" << modelId << "' konnte waehrend dem Versuch es neu zu positionieren nicht gefunden werden." << std::endl;
+		std::cout << "Das Model mit der modelId '" << modelId << "' konnte waehrend dem Versuch es neu zu positionieren nicht gefunden werden." << std::endl;
 	}
 
 	return GL_FALSE;
@@ -162,6 +174,12 @@ GLboolean Manager::scaleModel(GLuint modelId, glm::vec3 scale) {
 
 		return GL_TRUE;
 	}
+	else if (buttonList.find(modelId) != buttonList.end()) {
+		gui::Button* model = buttonList.find(modelId)->second;
+		model->scale(glm::vec2(scale));
+
+		return GL_TRUE;
+	}
 	else {
 		std::cout << "Das Model mit der modelId '" << modelId << "' konnte waehrend dem Versuch es neu zu skalieren nicht gefunden werden." << std::endl;
 	}
@@ -183,6 +201,12 @@ bool Manager::setModelHighlightColor(GLuint modelId, glm::vec4 color) {
 
 		return true;
 	}
+	else if (buttonList.find(modelId) != buttonList.end()) {
+		gui::Button* model = buttonList.find(modelId)->second;
+		model->setHighlightColor(color);
+
+		return true;
+	}
 	else {
 		std::cout << "Das Model mit der modelId '" << modelId << "' konnte waehrend dem Versuch dessen Highlight Farbe zu setzen nicht gefunden werden." << std::endl;
 	}
@@ -198,6 +222,12 @@ bool Manager::isModelHighlighted(GLuint modelId, bool choice) {
 	}
 	else if (squareList.find(modelId) != squareList.end()) {
 		model::Square* model = squareList.find(modelId)->second;
+		model->isHighlighted(choice);
+
+		return true;
+	}
+	else if (buttonList.find(modelId) != buttonList.end()) {
+		gui::Button* model = buttonList.find(modelId)->second;
 		model->isHighlighted(choice);
 
 		return true;
@@ -238,7 +268,7 @@ void Manager::setText(const GLuint textId, const std::string text) {
 	visual::gui::Text* textObj = getTextFromList(textId);
 	textObj->setText(text);
 }
-void Manager::setTextPosition(const GLuint textId, const int x, const int y) {
+void Manager::setTextPosition(const GLuint textId, const float x, const float y) {
 	visual::gui::Text* textObj = getTextFromList(textId);
 	textObj->setPosition(x, y);
 }
@@ -256,14 +286,14 @@ void Manager::setTextColor(const GLuint textId, const glm::vec4 color) {
 }*/
 
 
-GLuint Manager::addButton() {
+GLuint Manager::addButton(const std::string filename) {
 	if (isRunning()) {
 		modelInstantiationCounter++;
 
 		std::cout << " adding Button to Queue: " << modelInstantiationCounter << std::endl;
 
 		// Queue für Thread Sicherheit
-		graphics::GraphicEngine::getInstance()->enqueueButton(modelInstantiationCounter);
+		graphics::GraphicEngine::getInstance()->enqueueButton(modelInstantiationCounter, filename);
 
 		return modelInstantiationCounter;
 	}

@@ -13,14 +13,19 @@ namespace visual {
 		private:
 			model::ColoredSquare* square;
 			Text* text;
+			float zSquare;
 		public:
 			Button();
 			~Button();
 
-			bool init(void);
+			bool init(const std::string fontname);
 			void setText(const std::string text);
+			
 			void setHighlightColor(glm::vec4 color);
 			void isHighlighted(bool choice);
+			void scale(glm::vec2 scale);
+
+			void position(glm::vec2);
 
 			void draw();
 		};

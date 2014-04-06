@@ -24,7 +24,7 @@ void Text::setText(const std::string text) {
 	std::cout << "Wechsle Text von '" << m_text << "' zu '" << text << "'." << std::endl;
 	m_text = text;
 }
-void Text::setPosition(const unsigned int x, const unsigned int y) {
+void Text::setPosition(const float x, const float y) {
 	this->x = x;
 	this->y = y;
 }
@@ -112,11 +112,10 @@ void Text::write(std::string text, float x, float y, int align) {
 	//glActiveTexture(GL_TEXTURE0);
 	//glBindTexture(GL_TEXTURE_2D, textTexture);
 
-	fontCoordinates = glGetAttribLocation(shaderProgram->getShaderProgramId(), "fontCoords");
+	//fontCoordinates = glGetAttribLocation(shaderProgram->getShaderProgramId(), "fontCoords");
+	fontCoordinates = shaderProgram->getAttribute("fontCoords");
 	glEnableVertexAttribArray(fontCoordinates);
 	glVertexAttribPointer(fontCoordinates, 4, GL_FLOAT, GL_FALSE, 0, 0);
-
-	
 
 	glActiveTexture(GL_TEXTURE0);
 	glGenTextures(1, &textTexture);
@@ -127,7 +126,8 @@ void Text::write(std::string text, float x, float y, int align) {
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 	glPixelStorei(GL_UNPACK_ALIGNMENT, 1);
 
-	glUseProgram(shaderProgram->getShaderProgramId());
+	//glUseProgram(shaderProgram->getShaderProgramId());
+	shaderProgram->use();
 
 	int windowWidth = visual::graphics::GraphicEngine::getInstance()->getWindowWidth();
 	int windowHeight = visual::graphics::GraphicEngine::getInstance()->getWindowHeight();
@@ -153,8 +153,9 @@ void Text::write(std::string text, float x, float y, int align) {
 		/*GLuint texture = glGetUniformLocation(shaderProgram->getShaderProgramId(), "tex");
 		glUniform1i(texture, 0);*/		
 
-		//std::cout << "bitmapLeft: " << currentGlyph.bitmapLeft << " advance.x: " << currentGlyph.advance.x << std::endl;
-		
+		/*std::cout << "char: " << c << " x: " << x << " y: " << y << std::endl;
+		std::cout << "bitmapLeft: " << currentGlyph.bitmapLeft << " advance.x: " << currentGlyph.advance.x << std::endl;
+		std::cout << "top: " << currentGlyph.bitmapTop << " width: " << currentGlyph.bitmapWidth << " rows: " << currentGlyph.bitmapRows << std::endl;*/
 
 		float x2 = x + currentGlyph.bitmapLeft * screenx;
 		float y2 = -y - currentGlyph.bitmapTop * screeny;
@@ -171,18 +172,18 @@ void Text::write(std::string text, float x, float y, int align) {
 			x2 -= totalWidth;
 		}
 
-		/*GLfloat box[4][4] = {
+		GLfloat box[4][4] = {
 			{x2,	-y2,	0, 0},
 			{x2+w,	-y2,	1, 0},
 			{x2,	-y2-h,	0, 1},
 			{x2+w,	-y2-h,	1, 1}
-		};*/
-		GLfloat box[4][4] = {
+		};
+		/*GLfloat box[4][4] = {
 			{ x2, -y2 - h, 0, 1 },
 			{ x2 + w, -y2 - h, 1, 1 },
 			{ x2, -y2, 0, 0 },
 			{ x2 + w, -y2, 1, 0 }
-		};
+		};*/
 
 		glBufferData(GL_ARRAY_BUFFER, sizeof box, box, GL_DYNAMIC_DRAW);
 		glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
@@ -246,8 +247,9 @@ void Text::draw(void) {
 
 	glUseProgram(shaderProgram->getShaderProgramId());
 
-	GLint colorAttribute = glGetUniformLocation(shaderProgram->getShaderProgramId(), "color");
-	
+	//GLint colorAttribute = glGetUniformLocation(shaderProgram->getShaderProgramId(), "color");
+	GLint colorAttribute = shaderProgram->getUniform("color");
+
 	GLfloat r = color.r;
 	GLfloat g = color.g;
 	GLfloat b = color.b;
@@ -256,7 +258,8 @@ void Text::draw(void) {
 	//std::cout << "color: " << color << std::endl;
 
 	// Get a handle for our "myTextureSampler" uniform
-	GLuint texture = glGetUniformLocation(shaderProgram->getShaderProgramId(), "tex");
+	//GLuint texture = glGetUniformLocation(shaderProgram->getShaderProgramId(), "tex");
+	//GLuint texture = shaderProgram->getUniform("tex");
 	//std::cout << "texture: " << texture << std::endl;
 
 	/*
@@ -266,14 +269,17 @@ void Text::draw(void) {
 	// Set our "myTextureSampler" sampler to user Texture Unit 0
 	glUniform1i(TextureID, 0);
 	*/
-	int windowWidth = visual::graphics::GraphicEngine::getInstance()->getWindowWidth();
+	/*int windowWidth = visual::graphics::GraphicEngine::getInstance()->getWindowWidth();
 	int windowHeight = visual::graphics::GraphicEngine::getInstance()->getWindowHeight();
 	float screenx = 2.0f / windowWidth, screeny = 2.0f / windowHeight;
 
-	float relativeX = x * screenx * 2.0f - 1;
-	float relativeY = y * screeny * 2.0f - 1;
+	x = 0.5;
+	y = 0.5;
 
-	write(m_text, relativeX, relativeY, ALIGN_CENTER);
+	float relativeX = x * screenx * 2.0f - 1;
+	float relativeY = y * screeny * 2.0f - 1;*/
+
+	write(m_text, x, y, ALIGN_CENTER);
 
 	//glUseProgram(0);
 }

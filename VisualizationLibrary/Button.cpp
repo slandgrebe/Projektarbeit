@@ -5,13 +5,14 @@
 using namespace visual::gui;
 
 Button::Button() {
+	zSquare = -2.0f;
 }
 
 Button::~Button() {
 }
 
 
-bool Button::init(void) {
+bool Button::init(const std::string fontname) {
 	std::cout << "button init " << std::endl;
 
 	square = new model::ColoredSquare;
@@ -19,14 +20,20 @@ bool Button::init(void) {
 		std::cout << "Could not create background for button." << std::endl;
 		return false;
 	}
-	square->position(glm::vec3(0, 0, -2));
+	//square->position(glm::vec3(0.5f, 0.5f, zSquare));
+	//square->scale(glm::vec3(0.5f, 0.5f, 1.0f));
 
 	text = new Text;
-	if (!text->init("data/fonts/MADAVE.TTF")) {
+	if (!text->init(fontname/*"data/fonts/MADAVE.TTF"*/)) {
 		std::cout << "Could not create text for button" << std::endl;
 	}
-	text->setText("Klick mich");
-	text->setPosition(100, 100);
+	text->setSize(20);
+	//text->setText("Klick mich");
+	//text->setPosition(0.5f, 0.5f);
+
+	this->position(glm::vec2(-0.5f, 0.5f));
+	this->scale(glm::vec2(0.5f));
+	this->setText("Klick mich");
 
 	return true;
 }
@@ -40,6 +47,15 @@ void Button::setHighlightColor(glm::vec4 color) {
 void Button::isHighlighted(bool choice) {
 	square->isHighlighted(choice);
 }
+void Button::scale(glm::vec2 scale) {
+	square->scale(glm::vec3(scale, 1.0f));
+}
+
+void Button::position(glm::vec2 position) {
+	square->position(glm::vec3(position, zSquare));
+	text->setPosition(position.x, position.y);
+}
+
 
 
 void Button::draw() {

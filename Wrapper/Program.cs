@@ -52,13 +52,15 @@ namespace Wrapper
 
 
         [DllImport("Visualization.dll")]
-        extern static uint addButton();
+        extern static uint addButton(string fontname);
         [DllImport("Visualization.dll")]
         extern static void setButtonText(uint buttonId, string text);
+        /*
+        // Normale highlight Methoden verwenden
         [DllImport("Visualization.dll")]
         extern static void setButtonHighlightColor(uint buttonId, float r, float g, float b, float a);
         [DllImport("Visualization.dll")]
-        extern static void isButtonHighlighted(uint buttonId, bool choice);
+        extern static void isButtonHighlighted(uint buttonId, bool choice);*/
 
 
 
@@ -108,10 +110,13 @@ namespace Wrapper
             setTextColor(textId2, 1.0f, 0.5f, 0.0f, 1.0f);*/
 
 
-            uint buttonId = addButton();
+            uint buttonId = addButton("data/fonts/arial.ttf");
             while (!isModelCreated(buttonId)) { }
-            //setButtonHighlightColor(buttonId, 1f, 0f, 0f, 1f);
-            //isButtonHighlighted(buttonId, true);
+            setModelHighlightColor(buttonId, 1f, 0f, 0f, 1f);
+            isModelHighlighted(buttonId, true);
+            setButtonText(buttonId, "anderer text");
+            positionModel(buttonId, 0.5f, -0.5f, 1); // Z-Koordinate wird ignoriert, da es sich beim Button um ein GUI Element handelt
+            scaleModel(buttonId, 0.5f, 0.5f, 1); // Skalierung in z-Richtung wird ignoriert, da es sich beim Button um ein GUI Element handelt
 
             Console.WriteLine("zurück in c#");
 
