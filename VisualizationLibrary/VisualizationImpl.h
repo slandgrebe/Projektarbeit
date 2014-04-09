@@ -91,8 +91,8 @@ DLL_API int APIENTRY cameraPosition(float x, float y, float z) {
 DLL_API int APIENTRY cameraPosition(void) {
 	return (int)false;
 }
-DLL_API void APIENTRY setCameraInMotion(float orientationX, float orientationY, float orientationZ, float speed) {
-	visual::Manager::getInstance()->setCameraInMotion(glm::vec3(orientationX, orientationY, orientationZ), speed);
+DLL_API int APIENTRY setCameraInMotion(float orientationX, float orientationY, float orientationZ, float speed) {
+	return (int)visual::Manager::getInstance()->setCameraInMotion(glm::vec3(orientationX, orientationY, orientationZ), speed);
 }
 
 #endif
