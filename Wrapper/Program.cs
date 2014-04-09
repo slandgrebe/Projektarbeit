@@ -117,7 +117,7 @@ namespace Wrapper
                 // do Something
             }
         }
-
+        /*
         public void rotate(float x1, float y1, float z1, float x2, float y2, float z2)
         {
             //Vector aus p1 und p2
@@ -157,6 +157,6 @@ namespace Wrapper
             //scale(id, lenght, 1,1);
             //position(id, (x1+x2)/2 , (y1+y2)/2, (z1+z2)/2);
 
-        }
+        }*/
     }
 }
