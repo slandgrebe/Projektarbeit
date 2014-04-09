@@ -133,7 +133,6 @@
     </ClCompile>
     <ClCompile Include="Text.cpp" />
     <ClCompile Include="TextureSoil.cpp" />
-    <ClCompile Include="VisualizationImpl.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assimp32.dll" />
