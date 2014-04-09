@@ -32,16 +32,16 @@ namespace visual {
 		bool isModelHighlighted(GLuint modelId, bool choice);
 
 		GLuint addText(const std::string text);
-		void setText(const GLuint textId, const std::string filename);
-		void setTextPosition(const GLuint textId, const int x, const int y);
+		bool setText(const GLuint textId, const std::string filename);
+		//bool setTextPosition(const GLuint textId, const float x, const float y);
 		bool setTextSize(const GLuint textId, const int points);
-		void setTextColor(const GLuint textId, const glm::vec4 color);
+		bool setTextColor(const GLuint textId, const glm::vec4 color);
 		//bool setFontFamily(const GLuint textId, const std::string filename);
 
-		GLuint addButton(const std::string filename);
-		void setButtonText(const GLuint buttonId, const std::string text);
-		void setButtonHighlightColor(GLuint buttonId, glm::vec4 color);
-		void isButtonHighlighted(GLuint buttonId, bool choice);
+		GLuint addButton(const std::string fontname);
+		//void setButtonText(const GLuint buttonId, const std::string text);
+		//void setButtonHighlightColor(GLuint buttonId, glm::vec4 color);
+		//void isButtonHighlighted(GLuint buttonId, bool choice);
 
 		void draw(void);
 	private:

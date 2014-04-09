@@ -40,37 +40,44 @@ DLL_API int APIENTRY isRunning() {
 }
 
 DLL_API void APIENTRY doSomething(const char* text) {
-	visual::VisualizationImpl::doSomething(text);
+	//visual::VisualizationImpl::doSomething(text);
+	visual::Manager::getInstance()->doSomething(text);
 }
 
 DLL_API unsigned int APIENTRY addModel(const char* filename) {
-	return visual::VisualizationImpl::addModel(filename);
+	//return visual::VisualizationImpl::addModel(filename);
+	return visual::Manager::getInstance()->addModel(filename);
 }
 
 DLL_API unsigned int APIENTRY addPoint(const char* filename) {
-	return visual::VisualizationImpl::addPoint(filename);
+	//return visual::VisualizationImpl::addPoint(filename);
+	return visual::Manager::getInstance()->addPoint(filename);
 }
 
-DLL_API int APIENTRY isModelCreated(const unsigned int modelId) {
-	return (int)visual::VisualizationImpl::isModelCreated(modelId);
+DLL_API int APIENTRY isCreated(const unsigned int modelId) {
+	//return (int)visual::VisualizationImpl::isModelCreated(modelId);
+	return visual::Manager::getInstance()->isModelCreated(modelId);
 }
 
-DLL_API int APIENTRY positionModel(const unsigned int modelId, const float x, const float y, const float z) {
-	return (int)visual::VisualizationImpl::positionModel(modelId, x, y, z);
+DLL_API int APIENTRY position(const unsigned int modelId, const float x, const float y, const float z) {
+	//return (int)visual::VisualizationImpl::positionModel(modelId, x, y, z);
+	return (int)visual::Manager::getInstance()->positionModel(modelId, glm::vec3(x, y, z));
 }
 
-DLL_API int APIENTRY rotateModel(const unsigned int modelId, const float degrees, const float x, const float y, const float z) {
-	return (int)visual::VisualizationImpl::rotateModel(modelId, degrees, x, y, z);
+DLL_API int APIENTRY rotate(const unsigned int modelId, const float degrees, const float x, const float y, const float z) {
+	//return (int)visual::VisualizationImpl::rotateModel(modelId, degrees, x, y, z);
+	return (int)visual::Manager::getInstance()->rotateModel(modelId, degrees, glm::vec3(x, y, z));
 }
 
-DLL_API int APIENTRY scaleModel(const unsigned int modelId, const float x, const float y, const float z) {
-	return (int)visual::VisualizationImpl::scaleModel(modelId, x, y, z);
+DLL_API int APIENTRY scale(const unsigned int modelId, const float x, const float y, const float z) {
+	//return (int)visual::VisualizationImpl::scaleModel(modelId, x, y, z);
+	return (int)visual::Manager::getInstance()->scaleModel(modelId, glm::vec3(x, y, z));
 }
 
-DLL_API int APIENTRY setModelHighlightColor(const unsigned int modelId, const float r, const float g, const float b, const float a) {
+DLL_API int APIENTRY highlightColor(const unsigned int modelId, const float r, const float g, const float b, const float a) {
 	return (int)visual::Manager::getInstance()->setModelHighlightColor(modelId, glm::vec4(r, g, b, a));
 }
-DLL_API int APIENTRY isModelHighlighted(const unsigned int modelId, const bool choice) {
+DLL_API int APIENTRY isHighlighted(const unsigned int modelId, const bool choice) {
 	return (int)visual::Manager::getInstance()->isModelHighlighted(modelId, choice);
 }
 
@@ -79,16 +86,16 @@ DLL_API unsigned int APIENTRY addText(const char* filename) {
 	return visual::Manager::getInstance()->addText(filename);
 }
 
-DLL_API void APIENTRY setText(const unsigned int textId, const char* text) {
+DLL_API void APIENTRY text(const unsigned int textId, const char* text) {
 	visual::Manager::getInstance()->setText(textId, text);
 }
-DLL_API void APIENTRY setTextPosition(const unsigned int textId, const int x, const int y) {
+/*DLL_API void APIENTRY setTextPosition(const unsigned int textId, const float x, const float y) {
 	visual::Manager::getInstance()->setTextPosition(textId, x, y);
-}
-DLL_API int APIENTRY setTextSize(const unsigned int textId, const int points) {
+}*/
+DLL_API int APIENTRY textSize(const unsigned int textId, const int points) {
 	return (int)visual::Manager::getInstance()->setTextSize(textId, points);
 }
-DLL_API void APIENTRY setTextColor(const unsigned int textId, const float r, const float g, const float b, const float a) {
+DLL_API void APIENTRY textColor(const unsigned int textId, const float r, const float g, const float b, const float a) {
 	visual::Manager::getInstance()->setTextColor(textId, glm::vec4(r, g, b, a));
 }
 /*DLL_API bool APIENTRY setFontFamily(const unsigned int textId, const char* filename) {
@@ -96,10 +103,10 @@ DLL_API void APIENTRY setTextColor(const unsigned int textId, const float r, con
 }*/
 
 
-DLL_API unsigned int APIENTRY addButton(const char* filename) {
-	return visual::Manager::getInstance()->addButton(filename);
+DLL_API unsigned int APIENTRY addButton(const char* fontname) {
+	return visual::Manager::getInstance()->addButton(fontname);
 }
-DLL_API void APIENTRY setButtonText(const unsigned int buttonId, const char* text) {
+/*DLL_API void APIENTRY setButtonText(const unsigned int buttonId, const char* text) {
 	visual::Manager::getInstance()->setButtonText(buttonId, text);
 }
 DLL_API void APIENTRY setButtonHighlightColor(const unsigned int buttonId, const float r, const float g, const float b, const float a) {
@@ -107,6 +114,6 @@ DLL_API void APIENTRY setButtonHighlightColor(const unsigned int buttonId, const
 }
 DLL_API void APIENTRY isButtonHighlighted(const unsigned int buttonId, const bool choice) {
 	visual::Manager::getInstance()->isButtonHighlighted(buttonId, choice);
-}
+}*/
 
 #endif

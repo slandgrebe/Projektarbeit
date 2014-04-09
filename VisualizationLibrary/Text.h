@@ -14,8 +14,8 @@ namespace visual {
 		class Text {
 		private:
 			std::string m_text;
-			unsigned int x;
-			unsigned int y;
+			float x;
+			float y;
 			int currentTextSize;
 			glm::vec4 color;
 			std::string fontFamily;
@@ -62,7 +62,7 @@ namespace visual {
 			void write(std::string text, float x, float y, int align);
 
 			void setText(const std::string text);
-			void setPosition(const unsigned int x, const unsigned int y);
+			void setPosition(const float x, const float y);
 			bool setSize(const int points);
 			void setColor(const glm::vec4 color);
 			//bool setFontFamily(const std::string filename = "data/fonts/arial.ttf");

@@ -22,7 +22,7 @@ std::string GraphicEngine::title = "Projektarbeit";
 int GraphicEngine::width = 640;
 int GraphicEngine::height = 480;
 bool GraphicEngine::running = false;
-GLuint GraphicEngine::shaderProgramId = 0;
+//GLuint GraphicEngine::shaderProgramId = 0;
 SafeQueue<GraphicEngine::modelQueueEntry>* GraphicEngine::squareQueue = new SafeQueue<modelQueueEntry>;
 SafeQueue<GraphicEngine::modelQueueEntry>* GraphicEngine::modelQueue = new SafeQueue<modelQueueEntry>;
 SafeQueue<GraphicEngine::modelQueueEntry>* GraphicEngine::textQueue = new SafeQueue<modelQueueEntry>;
@@ -43,7 +43,8 @@ GraphicEngine* GraphicEngine::getInstance() {
 GraphicEngine::GraphicEngine() {
 	camera = new Camera;
 	projectionMatrix = glm::perspective(60.0f, (float)width/height, 0.1f, 100.0f);
-	orthographicMatrix = glm::ortho(0, width, 0, height);
+	orthographicMatrix = glm::ortho(-1.0f, 1.0f, -1.0f, 1.0f, -5.0f, 5.0f);
+	viewOrthographicMatrix = orthographicMatrix;
 }
 
 GraphicEngine::~GraphicEngine() {
@@ -67,14 +68,14 @@ void GraphicEngine::worker(void) {
 
 	// Shader
 	
-	GLuint shaderProgramId = GraphicEngine::getInstance()->createShaderProgram("data/shader/SimpleVertexShader.vertexshader", "data/shader/SimpleFragmentShader.fragmentshader");
+	/*GLuint shaderProgramId = GraphicEngine::getInstance()->createShaderProgram("data/shader/SimpleVertexShader.vertexshader", "data/shader/SimpleFragmentShader.fragmentshader");
 	if (0 == shaderProgramId) {
 		return;
-	}
+	}*/
 	
 	running = true;
 
-	glBindFragDataLocation(shaderProgramId, 0, "outColor");
+	//glBindFragDataLocation(shaderProgramId, 0, "outColor");
 
 	/***************
 		LOOP
@@ -127,7 +128,7 @@ void GraphicEngine::worker(void) {
 
 	//glDeleteTextures(1, &tex);
 
-	glDeleteProgram(GraphicEngine::getInstance()->shaderProgramId);
+	//glDeleteProgram(GraphicEngine::getInstance()->shaderProgramId);
 	//glDeleteShader(fragmentShader);
 	//glDeleteShader(vertexShader);
 
@@ -157,16 +158,16 @@ void GraphicEngine::enqueueModel(GLuint modelId, std::string filename) {
 	e.filename = filename;
 	modelQueue->enqueue(e);
 }
-void GraphicEngine::enqueueText(GLuint modelId, std::string text) {
-	std::cout << "enqueueText modelId[" << modelId << "] text[" << text << "]" << std::endl;
+void GraphicEngine::enqueueText(GLuint modelId, std::string filename) {
+	std::cout << "enqueueText modelId[" << modelId << "] filename[" << filename << "]" << std::endl;
 
 	modelQueueEntry e;
 	e.modelId = modelId;
-	e.filename = text;
+	e.filename = filename;
 	textQueue->enqueue(e);
 }
 void GraphicEngine::enqueueButton(GLuint modelId, std::string filename) {
-	std::cout << "enqueueButton modelId[" << modelId << "] text[" << filename << "]" << std::endl;
+	std::cout << "enqueueButton modelId[" << modelId << "] filename[" << filename << "]" << std::endl;
 
 	modelQueueEntry e;
 	e.modelId = modelId;
@@ -215,7 +216,7 @@ void GraphicEngine::processQueue() {
 			Manager::getInstance()->addToButtonList(e.modelId, button);
 		}
 		else {
-			std::cout << "Could not create button. id[" << e.modelId << "] filename[" << e.filename << "]" << std::endl;
+			std::cout << "Could not create button. id[" << e.modelId << "] fontname[" << e.filename << "]" << std::endl;
 		}
 	}
 }
@@ -231,6 +232,7 @@ int GraphicEngine::createWindow(const std::string title, int width, int height) 
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3); // OpenGL Version 3.3
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
 	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE); // Core Profile (keine veralteten Funktionen)
+	glfwWindowHint(GLFW_RESIZABLE, GL_FALSE); // Fenstergrösse kann nicht verändert werden
 
 	// OpenGL Kontext erstellen und Fenster öffnen
 	window = glfwCreateWindow(width, height, title.c_str(), 0, 0);
@@ -240,7 +242,6 @@ int GraphicEngine::createWindow(const std::string title, int width, int height) 
 		return 2;
 	}
 	glfwMakeContextCurrent(window);
-
 
 	std::cout << "Fenster erstellt" << std::endl;
 
@@ -261,7 +262,7 @@ int GraphicEngine::createOpenGLContext(void) {
 
 	return 0;
 }
-
+/*
 GLuint GraphicEngine::createShader(const std::string filename, GraphicEngine::shaderType m_shaderType) {
 	// Shader erstellen
 	GLuint shaderId;
@@ -286,9 +287,6 @@ GLuint GraphicEngine::createShader(const std::string filename, GraphicEngine::sh
 		}
 		shaderStream.close();
 
-		/*std::cout << "-- Shader Source -------------------------------------" << std::endl;
-		std::cout << shaderCode << std::endl;
-		std::cout << "------------------------------------------------------" << std::endl;*/
 	}
 	else {
 		printf("Shader Datei kann nicht gelesen werden. Datei: %s.\n", filename.c_str());
@@ -359,4 +357,4 @@ GLuint GraphicEngine::getShaderProgramId(void) {
 
 void GraphicEngine::deleteShaderProgram(const GLuint shaderProgramId) {
 	glDeleteProgram(shaderProgramId);
-}
+}*/

@@ -13,11 +13,11 @@ namespace visual {
 		class GraphicEngine {
 		public:
 			static GraphicEngine* getInstance();
-			GLuint getShaderProgramId(void);
+			//GLuint getShaderProgramId(void);
 			static bool isRunning(void) { return running; }
 			static void enqueueSquare(GLuint modelId, std::string filename);
 			static void enqueueModel(GLuint modelId, std::string filename);
-			static void enqueueText(GLuint modelId, std::string text);
+			static void enqueueText(GLuint modelId, std::string filename);
 			static void enqueueButton(GLuint modelId, std::string filename);
 
 			int getWindowHeight(void) { return height; }
@@ -51,7 +51,7 @@ namespace visual {
 			static SafeQueue<modelQueueEntry>* textQueue;
 			static SafeQueue<modelQueueEntry>* buttonQueue;
 
-			static GLuint shaderProgramId;
+			//static GLuint shaderProgramId;
 
 			enum shaderType {VERTEX, FRAGMENT, GEOMETRY};
 
@@ -64,10 +64,10 @@ namespace visual {
 			int createWindow(const std::string title, int width, int height);
 			int createOpenGLContext(void);
 			
-			static GLuint createShader(const std::string filename, const shaderType);
+			/*static GLuint createShader(const std::string filename, const shaderType);
 			static GLuint createShaderProgram(const GLuint vertexShaderId, const GLuint fragmentShaderId);
 			static GLuint createShaderProgram(const std::string vertexShaderFilename, const std::string fragmentShaderfilename);
-			static void deleteShaderProgram(const GLuint shaderProgramId);
+			static void deleteShaderProgram(const GLuint shaderProgramId);*/
 		};
 	}
 }

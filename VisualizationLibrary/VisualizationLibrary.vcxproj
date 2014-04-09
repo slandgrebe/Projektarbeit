@@ -95,6 +95,7 @@
     <ClInclude Include="AssimpModel.h" />
     <ClInclude Include="Button.h" />
     <ClInclude Include="Camera.h" />
+    <ClInclude Include="ColoredSquare.h" />
     <ClInclude Include="GraphicEngine.h" />
     <ClInclude Include="Manager.h" />
     <ClInclude Include="Model.h" />
@@ -113,6 +114,7 @@
     <ClCompile Include="AssimpModel.cpp" />
     <ClCompile Include="Button.cpp" />
     <ClCompile Include="Camera.cpp" />
+    <ClCompile Include="ColoredSquare.cpp" />
     <ClCompile Include="dllmain.cpp">
       <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</CompileAsManaged>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -136,6 +138,8 @@
   <ItemGroup>
     <None Include="Assimp32.dll" />
     <None Include="data\models\shuttle\SpaceShuttleOrbiter.3ds" />
+    <None Include="data\shader\colored.fragmentshader" />
+    <None Include="data\shader\colored.vertexshader" />
     <None Include="data\shader\SimpleFragmentShader.fragmentshader" />
     <None Include="data\shader\SimpleVertexShader.vertexshader" />
     <None Include="data\shader\text.fragmentshader" />
@@ -169,7 +173,7 @@
     <Content Include="data\textures\*">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-	<Content Include="data\fonts\*">
+    <Content Include="data\fonts\*">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="data\*">

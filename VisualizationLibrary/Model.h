@@ -41,6 +41,22 @@ namespace visual {
 
 			graphics::ShaderProgram* shaderProgram;
 
+			/** Liefert die transformierte Matrix des Modells zurück
+			* @author Stefan Landgrebe
+			* @return die transformierte Matrix
+			*/
+			virtual glm::mat4 getTransformedModelMatrix(void) {
+				// 1. skalieren
+				// 2. rotieren
+				// 3. verschieben
+				// ModelMatrix = Translation * Rotation * Scale * Position;
+				glm::mat4 transformedModelMatrix = glm::translate(m_modelMatrix, m_positionVector);
+				transformedModelMatrix = glm::rotate(transformedModelMatrix, m_rotationAngle, m_rotationAxis);
+				transformedModelMatrix = glm::scale(transformedModelMatrix, m_scalingVector);
+
+				return transformedModelMatrix;
+			};
+
 		public:
 
 			virtual ~Model(void) {};
@@ -96,23 +112,14 @@ namespace visual {
 				return m_scalingVector;
 			};
 
-			/** Liefert die transformierte Matrix des Modells zurück
-			* @author Stefan Landgrebe
-			* @return die transformierte Matrix
-			*/
-			virtual glm::mat4 getTransformedMatrix(void) {
-				// 1. skalieren
-				// 2. rotieren
-				// 3. verschieben
-				// ModelMatrix = Translation * Rotation * Scale * Position;
-				glm::mat4 transformedMatrix = glm::translate(m_modelMatrix, m_positionVector);
-				transformedMatrix = glm::rotate(transformedMatrix, m_rotationAngle, m_rotationAxis);
-				transformedMatrix = glm::scale(transformedMatrix, m_scalingVector);
-
+			virtual glm::mat4 getModelViewMatrix(void) {
 				// Model View Projection Matrix => verkehrte Reihenfolge
-				transformedMatrix = graphics::GraphicEngine::getInstance()->getViewProjectionMatrix() * transformedMatrix;
+				return graphics::GraphicEngine::getInstance()->getViewProjectionMatrix() * getTransformedModelMatrix();
+			};
 
-				return transformedMatrix;
+			virtual glm::mat4 getOrthographicModelViewMatrix(void) {
+				// Model View Projection Matrix => verkehrte Reihenfolge
+				return graphics::GraphicEngine::getInstance()->getViewOrthographicMatrix() * getTransformedModelMatrix();
 			};
 
 			virtual void setHighlightColor(glm::vec4 color) {

@@ -4,23 +4,30 @@
 #include <glm/glm.hpp>
 #include <string>
 
-#include "Square.h"
+#include "ColoredSquare.h"
 #include "Text.h"
 
 namespace visual {
 	namespace gui {
 		class Button {
 		private:
-			model::Square* square;
+			model::ColoredSquare* square;
 			Text* text;
+			float zSquare;
 		public:
 			Button();
 			~Button();
 
-			bool init(const std::string filename);
+			bool init(const std::string fontname);
+			
 			void setText(const std::string text);
+			bool setTextSize(const int points);
+			void setTextColor(const glm::vec4 color);
+			
 			void setHighlightColor(glm::vec4 color);
 			void isHighlighted(bool choice);
+			void scale(glm::vec2 scale);
+			void position(glm::vec2);
 
 			void draw();
 		};
