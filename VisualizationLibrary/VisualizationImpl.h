@@ -28,15 +28,24 @@ DLL_API unsigned int APIENTRY addModel(const char* filename) {
 	//return visual::VisualizationImpl::addModel(filename);
 	return visual::Manager::getInstance()->addModel(filename);
 }
-
 DLL_API unsigned int APIENTRY addPoint(const char* filename) {
 	//return visual::VisualizationImpl::addPoint(filename);
 	return visual::Manager::getInstance()->addPoint(filename);
+}
+DLL_API unsigned int APIENTRY addText(const char* filename) {
+	return visual::Manager::getInstance()->addText(filename);
+}
+DLL_API unsigned int APIENTRY addButton(const char* fontname) {
+	return visual::Manager::getInstance()->addButton(fontname);
 }
 
 DLL_API int APIENTRY isCreated(const unsigned int modelId) {
 	//return (int)visual::VisualizationImpl::isModelCreated(modelId);
 	return visual::Manager::getInstance()->isModelCreated(modelId);
+}
+
+DLL_API int APIENTRY remove(const unsigned int modelId) {
+	return (int)visual::Manager::getInstance()->remove(modelId);
 }
 
 DLL_API int APIENTRY position(const unsigned int modelId, const float x, const float y, const float z) {
@@ -62,9 +71,7 @@ DLL_API int APIENTRY isHighlighted(const unsigned int modelId, const bool choice
 }
 
 
-DLL_API unsigned int APIENTRY addText(const char* filename) {
-	return visual::Manager::getInstance()->addText(filename);
-}
+
 
 DLL_API void APIENTRY text(const unsigned int textId, const char* text) {
 	visual::Manager::getInstance()->setText(textId, text);
@@ -77,9 +84,15 @@ DLL_API void APIENTRY textColor(const unsigned int textId, const float r, const 
 }
 
 
-DLL_API unsigned int APIENTRY addButton(const char* fontname) {
-	return visual::Manager::getInstance()->addButton(fontname);
-}
 
+DLL_API int APIENTRY cameraPosition(float x, float y, float z) {
+	return (int)false;
+}
+DLL_API int APIENTRY cameraPosition(void) {
+	return (int)false;
+}
+DLL_API void APIENTRY setCameraInMotion(float orientationX, float orientationY, float orientationZ, float speed) {
+	visual::Manager::getInstance()->setCameraInMotion(glm::vec3(orientationX, orientationY, orientationZ), speed);
+}
 
 #endif

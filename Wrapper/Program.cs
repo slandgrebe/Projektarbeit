@@ -8,57 +8,46 @@ namespace Wrapper
         /*[DllImport("Visualization.dll", EntryPoint = "doSomething")]
         extern static void doSomething(string text);*/
         [DllImport("Visualization.dll")]
-        extern static bool isRunning();
-
-        [DllImport("Visualization.dll")]
-        extern static void doSomething(string text);
-
-        [DllImport("Visualization.dll")]
-        extern static uint addModel(string filename);
-
-        [DllImport("Visualization.dll")]
-        extern static uint addPoint(string textureFilename);
-
-        [DllImport("Visualization.dll")]
-        extern static bool isCreated(uint modelId);
-
-        [DllImport("Visualization.dll")]
-        extern static bool position(uint modelId, float x, float y, float z);
-
-        [DllImport("Visualization.dll")]
-        extern static bool rotate(uint modelId, float degrees, float x, float y, float z);
-
-        [DllImport("Visualization.dll")]
-        extern static bool scale(uint modelId, float x, float y, float z);
-
-        [DllImport("Visualization.dll")]
-        extern static bool highlightColor(uint modelId, float r, float g, float b, float a);
-
-        [DllImport("Visualization.dll")]
-        extern static bool isHighlighted(uint modelId, bool choice);
+        public extern static bool isRunning();
 
 
         [DllImport("Visualization.dll")]
-        extern static uint addText(string fontFilename);
+        public extern static void doSomething(string text);
+
 
         [DllImport("Visualization.dll")]
-        extern static void text(uint textId, string text);
+        public extern static uint addModel(string filename);
+        [DllImport("Visualization.dll")]
+        public extern static uint addPoint(string textureFilename);
+        [DllImport("Visualization.dll")]
+        public extern static uint addButton(string fontname);
+        [DllImport("Visualization.dll")]
+        public extern static uint addText(string fontFilename);
+
+        [DllImport("Visualization.dll")]
+        public extern static bool isCreated(uint modelId);
+
+        [DllImport("Visualization.dll")]
+        public extern static bool remove(uint modelId);
+
+
+        [DllImport("Visualization.dll")]
+        public extern static bool position(uint modelId, float x, float y, float z);
+        [DllImport("Visualization.dll")]
+        public extern static bool rotate(uint modelId, float degrees, float x, float y, float z);
+        [DllImport("Visualization.dll")]
+        public extern static bool scale(uint modelId, float x, float y, float z);
+        [DllImport("Visualization.dll")]
+        public extern static bool highlightColor(uint modelId, float r, float g, float b, float a);
+        [DllImport("Visualization.dll")]
+        public extern static bool isHighlighted(uint modelId, bool choice);
+
+        [DllImport("Visualization.dll")]
+        public extern static void text(uint textId, string text);
 		[DllImport("Visualization.dll")]
-		extern static bool textSize(uint textId, int points);
+        public extern static bool textSize(uint textId, int points);
         [DllImport("Visualization.dll")]
-		extern static void textColor(uint textId, float r, float g, float b, float a);
-
-
-        [DllImport("Visualization.dll")]
-        extern static uint addButton(string fontname);
-        /*[DllImport("Visualization.dll")]
-        extern static void setButtonText(uint buttonId, string text);
-        
-        // Normale highlight Methoden verwenden
-        [DllImport("Visualization.dll")]
-        extern static void setButtonHighlightColor(uint buttonId, float r, float g, float b, float a);
-        [DllImport("Visualization.dll")]
-        extern static void isButtonHighlighted(uint buttonId, bool choice);*/
+        public extern static void textColor(uint textId, float r, float g, float b, float a);
 
 
 

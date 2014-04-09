@@ -85,6 +85,18 @@ GLboolean Manager::isModelCreated(GLuint modelId) {
 	return GL_FALSE;
 }
 
+bool Manager::remove(GLuint modelId) {
+	/*if (buttonList.find(modelId) != buttonList.end()) {
+		gui::Button* model = buttonList.find(modelId)->second;
+		delete model;
+		buttonList.erase();
+
+		return GL_TRUE;
+	}*/
+	std::cout << "noch nicht erledigt" << std::endl;
+	return false;
+}
+
 void Manager::addToModelList(GLuint modelId, model::AssimpModel* model) {
 	std::cout << " adding Model to List: " << modelId << std::endl;
 	assimpModelList.insert(std::make_pair(modelId, model));
@@ -279,15 +291,6 @@ bool Manager::setText(const GLuint textId, const std::string text) {
 
 	return false;
 }
-/*bool Manager::setTextPosition(const GLuint textId, const float x, const float y) {
-	visual::gui::Text* textObj = getTextFromList(textId);
-	if (textObj) {
-		textObj->setPosition(x, y);
-		return true;
-	}
-
-	return false;
-}*/
 bool Manager::setTextSize(const GLuint textId, const int points) {
 	visual::gui::Text* textObj = getTextFromList(textId);
 	if (textObj) {
@@ -316,10 +319,6 @@ bool Manager::setTextColor(const GLuint textId, const glm::vec4 color) {
 
 	return false;
 }
-/*bool Manager::setFontFamily(const GLuint textId, const std::string filename) {
-	visual::gui::Text* textObj = getTextFromList(textId);
-	return textObj->setFontFamily(filename);
-}*/
 
 
 GLuint Manager::addButton(const std::string filename) {
@@ -345,18 +344,11 @@ gui::Button* Manager::getButtonFromList(GLuint buttonId) {
 
 	return button;
 }
-/*void Manager::setButtonText(const GLuint buttonId, const std::string text) {
-	gui::Button* button = getButtonFromList(buttonId);
-	button->setText(text);
+
+bool Manager::setCameraInMotion(glm::vec3 orientation, float speed) {
+	std::cout << "noch nicht erledigt" << std::endl;
+	return false;
 }
-void Manager::setButtonHighlightColor(GLuint buttonId, glm::vec4 color) {
-	gui::Button* button = getButtonFromList(buttonId);
-	button->setHighlightColor(color);
-}
-void Manager::isButtonHighlighted(GLuint buttonId, bool choice) {
-	gui::Button* button = getButtonFromList(buttonId);
-	button->isHighlighted(choice);
-}*/
 
 
 void Manager::draw(void) {
