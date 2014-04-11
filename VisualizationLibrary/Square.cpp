@@ -18,8 +18,10 @@ Square::Square() {
 }
 
 Square::~Square() {
-	// VBOs und VAO entfernen
+	delete shaderProgram;
 	delete texture;
+
+	// VBOs und VAO entfernen
 	glDeleteBuffers(1, &positionBufferId);
 	glDeleteBuffers(1, &colorBufferId);
 	glDeleteBuffers(1, &textureBufferId);
@@ -27,13 +29,13 @@ Square::~Square() {
 }
 
 bool Square::loadModel(void) {
-	Log().Get(logDEBUG) <<  " [Square] glewExperimental: " << (glewExperimental == GL_TRUE) ;
+	Log().debug() <<  " [Square] glewExperimental: " << (glewExperimental == GL_TRUE) ;
 	
 	// Create Vertex Array Object
 	glGenVertexArrays(1, &vertexArrayId);
 	glBindVertexArray(vertexArrayId);
 
-	Log().Get(logDEBUG) << " [Square] square vao: " << vertexArrayId ;
+	Log().debug() << " [Square] square vao: " << vertexArrayId ;
 
 	// shader
 	shaderProgram = new graphics::ShaderProgram;

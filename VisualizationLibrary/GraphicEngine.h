@@ -19,6 +19,7 @@ namespace visual {
 			static void enqueueModel(GLuint modelId, std::string filename);
 			static void enqueueText(GLuint modelId, std::string filename);
 			static void enqueueButton(GLuint modelId, std::string filename);
+			void enqueueDispose(GLuint modelId);
 
 			int getWindowHeight(void) { return height; }
 			int getWindowWidth(void) { return width; }
@@ -50,6 +51,7 @@ namespace visual {
 			static SafeQueue<modelQueueEntry>* modelQueue;
 			static SafeQueue<modelQueueEntry>* textQueue;
 			static SafeQueue<modelQueueEntry>* buttonQueue;
+			SafeQueue<GLuint> disposeQueue;
 
 			//static GLuint shaderProgramId;
 

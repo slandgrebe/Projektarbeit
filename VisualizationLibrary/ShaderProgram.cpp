@@ -26,7 +26,7 @@ GLuint ShaderProgram::createShader(const std::string filename, ShaderProgram::sh
 		shaderId = glCreateShader(GL_FRAGMENT_SHADER);
 	}
 	else {
-		Log().Get(logERROR) << "Unknown Shader Type." ;
+		Log().error() << "Unknown Shader Type." ;
 		return 0;
 	}
 	// Vertex Shader Code aus der Datei auslesen
@@ -39,13 +39,13 @@ GLuint ShaderProgram::createShader(const std::string filename, ShaderProgram::sh
 		}
 		shaderStream.close();
 
-		/*Log().Get(logDEBUG) << "-- Shader Source -------------------------------------" ;
-		Log().Get(logDEBUG) << shaderCode ;
-		Log().Get(logDEBUG) << "------------------------------------------------------" ;*/
+		/*Log().debug() << "-- Shader Source -------------------------------------" ;
+		Log().debug() << shaderCode ;
+		Log().debug() << "------------------------------------------------------" ;*/
 	}
 	else {
 		//printf("Shader Datei kann nicht gelesen werden. Datei: %s.\n", filename.c_str());
-		Log().Get(logERROR) << "Shader Datei kann nicht gelesen werden. Datei: " << filename.c_str();
+		Log().error() << "Shader Datei kann nicht gelesen werden. Datei: " << filename.c_str();
 		return 0;
 	}
 
@@ -66,7 +66,7 @@ GLuint ShaderProgram::createShader(const std::string filename, ShaderProgram::sh
 		std::vector<char> vertexShaderErrorMessage(infoLogLength + 1);
 		glGetShaderInfoLog(shaderId, infoLogLength, NULL, &vertexShaderErrorMessage[0]);
 		//printf("Der Vertex Shader konnte nicht kompiliert werden.\nFehlermeldung: [%s]\n", &vertexShaderErrorMessage[0]);
-		Log().Get(logERROR) << "Der Vertex Shader konnte nicht kompiliert werden.\nFehlermeldung: [" << &vertexShaderErrorMessage[0] << "]";
+		Log().error() << "Der Vertex Shader konnte nicht kompiliert werden.\nFehlermeldung: [" << &vertexShaderErrorMessage[0] << "]";
 	}
 
 	return shaderId;
@@ -90,7 +90,7 @@ GLuint ShaderProgram::createShaderProgram(GLuint vertexShaderId, GLuint fragment
 		std::vector<char> programErrorMessage(infoLogLength + 1);
 		glGetProgramInfoLog(programId, infoLogLength, NULL, &programErrorMessage[0]);
 		printf("Das Shader Programm konnte nicht erstellt werden.\nFehlermeldung: [%s]\n", &programErrorMessage[0]);
-		Log().Get(logERROR) << "Das Shader Programm konnte nicht erstellt werden.\nFehlermeldung: [" << &programErrorMessage[0] << "]";
+		Log().error() << "Das Shader Programm konnte nicht erstellt werden.\nFehlermeldung: [" << &programErrorMessage[0] << "]";
 	}
 
 	// Vertex und Fragment Shader werden nicht mehr benötigt, da wir ja jetzt das fertige Shader Programm haben.

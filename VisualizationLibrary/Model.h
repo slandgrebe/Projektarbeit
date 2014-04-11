@@ -82,7 +82,7 @@ namespace visual {
 			*/
 			virtual void rotate(GLfloat degrees, glm::vec3 axis) {
 				if (axis.x == 0 && axis.y == 0 && axis.z == 0) {
-					Log().Get(logDEBUG) << "Nullvektor ist keine zulaessige Rotationsachse" ;;
+					Log().debug() << "Nullvektor ist keine zulaessige Rotationsachse" ;;
 					return;
 				}
 

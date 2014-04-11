@@ -112,7 +112,7 @@ void GraphicEngine::worker(void) {
 
 		// measure time
 		now = clock();
-		//Log().Get(logDEBUG) << "Bild gezeichnet in " << int(now - begin) / CLOCKS_PER_SEC << "ms. Das entspricht " << 1000 / (now - begin) << " FPS." ;
+		//Log().debug() << "Bild gezeichnet in " << int(now - begin) / CLOCKS_PER_SEC << "ms. Das entspricht " << 1000 / (now - begin) << " FPS." ;
 		begin = now;
 	}
 
@@ -122,7 +122,7 @@ void GraphicEngine::worker(void) {
 }
 
 void GraphicEngine::enqueueSquare(GLuint modelId, std::string filename) {
-	Log().Get(logDEBUG) << "enqueueSquare modelId[" << modelId << "] filename[" << filename << "]" ;
+	Log().debug() << "enqueueSquare modelId[" << modelId << "] filename[" << filename << "]" ;
 	
 	modelQueueEntry e;
 	e.modelId = modelId;
@@ -130,7 +130,7 @@ void GraphicEngine::enqueueSquare(GLuint modelId, std::string filename) {
 	squareQueue->enqueue(e);
 }
 void GraphicEngine::enqueueModel(GLuint modelId, std::string filename) {
-	Log().Get(logDEBUG) << "enqueueSquare modelId[" << modelId << "] filename[" << filename << "]" ;
+	Log().debug() << "enqueueSquare modelId[" << modelId << "] filename[" << filename << "]" ;
 
 	modelQueueEntry e;
 	e.modelId = modelId;
@@ -138,7 +138,7 @@ void GraphicEngine::enqueueModel(GLuint modelId, std::string filename) {
 	modelQueue->enqueue(e);
 }
 void GraphicEngine::enqueueText(GLuint modelId, std::string filename) {
-	Log().Get(logDEBUG) << "enqueueText modelId[" << modelId << "] filename[" << filename << "]" ;
+	Log().debug() << "enqueueText modelId[" << modelId << "] filename[" << filename << "]" ;
 
 	modelQueueEntry e;
 	e.modelId = modelId;
@@ -146,13 +146,19 @@ void GraphicEngine::enqueueText(GLuint modelId, std::string filename) {
 	textQueue->enqueue(e);
 }
 void GraphicEngine::enqueueButton(GLuint modelId, std::string filename) {
-	Log().Get(logDEBUG) << "enqueueButton modelId[" << modelId << "] filename[" << filename << "]" ;
+	Log().debug() << "enqueueButton modelId[" << modelId << "] filename[" << filename << "]" ;
 
 	modelQueueEntry e;
 	e.modelId = modelId;
 	e.filename = filename;
 	buttonQueue->enqueue(e);
 }
+void GraphicEngine::enqueueDispose(GLuint modelId) {
+	disposeQueue.enqueue(modelId);
+}
+/*void GraphicsEngine::disposeModel(GLuint modelId) {
+
+}*/
 
 void GraphicEngine::processQueue() {
 	while (modelQueue->hasMore()) {
@@ -162,7 +168,7 @@ void GraphicEngine::processQueue() {
 			Manager::getInstance()->addToModelList(e.modelId, model);
 		}
 		else {
-			Log().Get(logERROR) << "Could not create model. id[" << e.modelId << "] filename[" << e.filename << "]" ;
+			Log().error() << "Could not create model. id[" << e.modelId << "] filename[" << e.filename << "]" ;
 		}
 	}
 
@@ -173,7 +179,7 @@ void GraphicEngine::processQueue() {
 			Manager::getInstance()->addToSquareList(e.modelId, model);
 		}
 		else {
-			Log().Get(logERROR) << "Could not create square. id[" << e.modelId << "] filename[" << e.filename << "]";
+			Log().error() << "Could not create square. id[" << e.modelId << "] filename[" << e.filename << "]";
 		}
 	}
 
@@ -184,7 +190,7 @@ void GraphicEngine::processQueue() {
 			Manager::getInstance()->addToTextList(e.modelId, text);
 		}
 		else {
-			Log().Get(logERROR) << "Could not create text. id[" << e.modelId << "] text[" << e.filename << "]";
+			Log().error() << "Could not create text. id[" << e.modelId << "] text[" << e.filename << "]";
 		}
 	}
 
@@ -195,8 +201,13 @@ void GraphicEngine::processQueue() {
 			Manager::getInstance()->addToButtonList(e.modelId, button);
 		}
 		else {
-			Log().Get(logERROR) << "Could not create button. id[" << e.modelId << "] fontname[" << e.filename << "]";
+			Log().error() << "Could not create button. id[" << e.modelId << "] fontname[" << e.filename << "]";
 		}
+	}
+
+	while (disposeQueue.hasMore()) {
+		GLuint modelId = disposeQueue.dequeue();
+		Manager::getInstance()->remove(modelId);
 	}
 }
 
@@ -204,7 +215,7 @@ int GraphicEngine::createWindow(const std::string title, int width, int height) 
 	// Initialisiere GLFW
 	if (!glfwInit()) {
 		//fprintf(stderr, "GLFW Library konnte nicht initialisiert werden.\n");
-		Log().Get(logERROR) << "GLFW Library konnte nicht initialisiert werden.";
+		Log().error() << "GLFW Library konnte nicht initialisiert werden.";
 		return 1;
 	}
 
@@ -218,13 +229,14 @@ int GraphicEngine::createWindow(const std::string title, int width, int height) 
 	window = glfwCreateWindow(width, height, title.c_str(), 0, 0);
 	if (!window) {
 		//fprintf(stderr, "GLFW Fenster konnte nicht geoeffnet werden. OpenGL Version 3.3 wird vorausgesetzt.\n");
-		Log().Get(logERROR) << "GLFW Fenster konnte nicht geoeffnet werden. OpenGL Version 3.3 wird vorausgesetzt.";
+		Log().error() << "GLFW Fenster konnte nicht geoeffnet werden. OpenGL Version 3.3 wird vorausgesetzt.";
 		glfwTerminate();
 		return 2;
 	}
 	glfwMakeContextCurrent(window);
 
-	Log().Get(logINFO) << "Fenster erstellt" ;
+	//Log().info() << "Fenster erstellt" ;
+	Log().info() << "Fenster erstellt";
 
 	return 0;
 }
@@ -236,11 +248,11 @@ int GraphicEngine::createOpenGLContext(void) {
 	if (GLEW_OK != err) {
 		// glewInit ist fehlgeschlagen
 		//fprintf(stderr, "GLEW Initialisierungsfehler: %s\n", glewGetErrorString(err));
-		Log().Get(logERROR) << "GLEW Initialisierungsfehler: " << glewGetErrorString(err);
+		Log().error() << "GLEW Initialisierungsfehler: " << glewGetErrorString(err);
 		return 3;
 	}
 
-	Log().Get(logINFO) << "GLEW initialisiert" ;
+	Log().info() << "GLEW initialisiert" ;
 
 	return 0;
 }

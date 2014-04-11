@@ -1,6 +1,6 @@
 #pragma once
 
-#include "stdafx.h"
+//#include "stdafx.h"
 
 #ifdef DLL_EXPORTS
 #define DLL_API __declspec(dllexport) 
@@ -21,7 +21,7 @@ extern "C" DLL_API unsigned int APIENTRY addButton(const char* fontname);
 
 extern "C" DLL_API int APIENTRY isCreated(const unsigned int modelId);
 
-extern "C" DLL_API int APIENTRY dispose(const unsigned int modelId);
+extern "C" DLL_API void APIENTRY dispose(const unsigned int modelId);
 
 extern "C" DLL_API int APIENTRY position(const unsigned int modelId, const float x, const float y, const float z);
 extern "C" DLL_API int APIENTRY rotate(const unsigned int modelId, const float degrees, const float x, const float y, const float z);

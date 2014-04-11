@@ -9,13 +9,20 @@
 
 inline std::string NowTime();
 
-enum TLogLevel { logOFF = 0, logERROR, logWARNING, logINFO, logDEBUG };
+enum TLogLevel { logOFF = 0, logFATAL, logERROR, logWARNING, logINFO, logDEBUG, logTRACE };
 
 class Log {
 public:
 	Log();
 	virtual ~Log();
 	std::ostringstream& Get(TLogLevel level = logINFO);
+
+	std::ostringstream& fatal();
+	std::ostringstream& error();
+	std::ostringstream& warning();
+	std::ostringstream& info();
+	std::ostringstream& debug();
+	std::ostringstream& trace();
 public:
 	static TLogLevel& ReportingLevel();
 	static std::string ToString(TLogLevel level);
@@ -44,9 +51,28 @@ inline std::ostringstream& Log::Get(TLogLevel level)
 	return os;
 }
 
+inline std::ostringstream& Log::fatal() {
+	return this->Get(logFATAL);
+}
+inline std::ostringstream& Log::error() {
+	return this->Get(logERROR);
+}
+inline std::ostringstream& Log::warning() {
+	return this->Get(logWARNING);
+}
+inline std::ostringstream& Log::info() {
+	return this->Get(logINFO);
+}
+inline std::ostringstream& Log::debug() {
+	return this->Get(logDEBUG);
+}
+inline std::ostringstream& Log::trace() {
+	return this->Get(logTRACE);
+}
+
 inline Log::~Log()
 {
-	if (level <= Log::ReportingLevel()) {
+	if (level <= Log::ReportingLevel() && os.str().length() > 0) {
 		os << std::endl;
 		fprintf(stderr, "%s", os.str().c_str());
 		fflush(stderr);
@@ -61,12 +87,14 @@ inline TLogLevel& Log::ReportingLevel()
 
 inline std::string Log::ToString(TLogLevel level)
 {
-	static const char* const buffer[] = { "OFF", "ERROR", "WARNING", "INFO", "DEBUG" };
+	static const char* const buffer[] = { "OFF", "FATAL", "ERROR", "WARNING", "INFO", "DEBUG", "TRACE" };
 	return buffer[level];
 }
 
 inline TLogLevel Log::FromString(const std::string& level)
 {
+	if (level == "TRACE")
+		return logTRACE;
 	if (level == "DEBUG")
 		return logDEBUG;
 	if (level == "INFO")
@@ -75,9 +103,11 @@ inline TLogLevel Log::FromString(const std::string& level)
 		return logWARNING;
 	if (level == "ERROR")
 		return logERROR;
+	if (level == "FATAL")
+		return logFATAL;
 	if (level == "OFF")
 		return logOFF;
-	Log().Get(logWARNING) << "Unknown logging level '" << level << "'. Using INFO level as default.";
+	Log().warning() << "Unknown logging level '" << level << "'. Using INFO level as default.";
 	return logINFO;
 }
 

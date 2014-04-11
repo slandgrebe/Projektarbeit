@@ -28,8 +28,9 @@ namespace visual {
 
 		GLboolean isModelCreated(GLuint modelId);
 
-		bool dispose(GLuint modelId);
-		
+		void dispose(GLuint modelId);
+		void remove(GLuint modelId);
+
 		GLboolean positionModel(GLuint modelId, glm::vec3 position);
 		GLboolean rotateModel(GLuint modelId, GLfloat degrees, glm::vec3 axis);
 		GLboolean scaleModel(GLuint modelId, glm::vec3 scale);

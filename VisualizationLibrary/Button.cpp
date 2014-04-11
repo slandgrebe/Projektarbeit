@@ -9,15 +9,17 @@ Button::Button() {
 }
 
 Button::~Button() {
+	delete square;
+	delete text;
 }
 
 
 bool Button::init(const std::string fontname) {
-	Log().Get(logDEBUG) << "button init " ;
+	Log().debug() << "button init " ;
 
 	square = new model::ColoredSquare;
 	if (!square->loadModel()) {
-		Log().Get(logERROR) << "Could not create background for button." ;
+		Log().error() << "Could not create background for button." ;
 		return false;
 	}
 	//square->position(glm::vec3(0.5f, 0.5f, zSquare));
@@ -25,7 +27,7 @@ bool Button::init(const std::string fontname) {
 
 	text = new Text;
 	if (!text->init(fontname/*"data/fonts/MADAVE.TTF"*/)) {
-		Log().Get(logERROR) << "Could not create text for button";
+		Log().error() << "Could not create text for button";
 	}
 	text->setSize(20);
 	//text->setText("Klick mich");
@@ -49,7 +51,7 @@ void Button::setTextColor(const glm::vec4 color) {
 }
 
 void Button::setHighlightColor(glm::vec4 color) {
-	Log().Get(logDEBUG) << "highlightcolor: " << color.r << "/" << color.g << "/" << color.b << "/" << color.a ;
+	Log().debug() << "highlightcolor: " << color.r << "/" << color.g << "/" << color.b << "/" << color.a ;
 	square->setHighlightColor(color);
 }
 void Button::isHighlighted(bool choice) {

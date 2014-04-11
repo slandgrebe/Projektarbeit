@@ -28,7 +28,7 @@ namespace Wrapper
         public extern static bool isCreated(uint modelId);
 
         [DllImport("Visualization.dll")]
-        public extern static bool dispose(uint modelId);
+        public extern static void dispose(uint modelId);
 
 
         [DllImport("Visualization.dll")]
@@ -111,6 +111,12 @@ namespace Wrapper
             
 
             Console.WriteLine("zurück in c#");
+            Console.ReadLine();
+
+            dispose(buttonId);
+            dispose(pointId);
+            dispose(modelId);
+            dispose(textId);
 
             while (isRunning()) {
                 // do Something

@@ -19,6 +19,8 @@ ColoredSquare::ColoredSquare() {
 
 
 ColoredSquare::~ColoredSquare() {
+	delete shaderProgram;
+
 	// VBOs und VAO entfernen
 	glDeleteBuffers(1, &vertexBufferId);
 	//glDeleteBuffers(1, &colorBufferId);
@@ -31,7 +33,7 @@ bool ColoredSquare::loadModel(void) {
 	glGenVertexArrays(1, &vertexArrayId);
 	glBindVertexArray(vertexArrayId);
 
-	Log().Get(logDEBUG) << " [ColoredSquare] square vao: " << vertexArrayId ;
+	Log().debug() << " [ColoredSquare] square vao: " << vertexArrayId ;
 
 	// shader
 	shaderProgram = new graphics::ShaderProgram;

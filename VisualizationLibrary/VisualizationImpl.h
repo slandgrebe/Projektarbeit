@@ -1,7 +1,7 @@
 #ifndef VISUALIZATIONIMPL_H
 #define VISUALIZATIONIMPL_H
 
-#include "stdafx.h"
+//#include "stdafx.h"
 
 #include "Visualization.h"
 
@@ -44,8 +44,8 @@ DLL_API int APIENTRY isCreated(const unsigned int modelId) {
 	return visual::Manager::getInstance()->isModelCreated(modelId);
 }
 
-DLL_API int APIENTRY dispose(const unsigned int modelId) {
-	return (int)visual::Manager::getInstance()->dispose(modelId);
+DLL_API void APIENTRY dispose(const unsigned int modelId) {
+	visual::Manager::getInstance()->dispose(modelId);
 }
 
 DLL_API int APIENTRY position(const unsigned int modelId, const float x, const float y, const float z) {

@@ -16,12 +16,19 @@ Text::Text() {
 }
 
 Text::~Text() {
+	delete shaderProgram;
+
+	for (std::vector<GlyphData>::iterator it = glyphs.begin(); it != glyphs.end(); ++it) {
+		delete it->bitmapBuffer;
+	}
+	glyphs.clear();
+
 	FT_Done_Face(face);
 	FT_Done_FreeType(library);
 }
 
 void Text::setText(const std::string text) {
-	Log().Get(logDEBUG) << "Wechsle Text von '" << m_text << "' zu '" << text << "'." ;
+	Log().debug() << "Wechsle Text von '" << m_text << "' zu '" << text << "'." ;
 	m_text = text;
 }
 void Text::setPosition(const float x, const float y) {
@@ -31,11 +38,11 @@ void Text::setPosition(const float x, const float y) {
 bool Text::setSize(const int pixelSize) {
 	// set the font's pixel size
 	if (FT_Set_Pixel_Sizes(face, 0, pixelSize)) {
-		Log().Get(logERROR) << "Schriftgrösse konnte nicht auf " << pixelSize << " gesetzt werden." ;
+		Log().error() << "Schriftgrösse konnte nicht auf " << pixelSize << " gesetzt werden." ;
 		return false;
 	}
 
-	Log().Get(logDEBUG) << "Schriftgrösse auf " << pixelSize << " gesetzt." ;
+	Log().debug() << "Schriftgrösse auf " << pixelSize << " gesetzt." ;
 
 	currentTextSize = pixelSize; // set current font size equal to 'value' parameter
 	return true;
@@ -43,42 +50,25 @@ bool Text::setSize(const int pixelSize) {
 void Text::setColor(const glm::vec4 color) {
 	this->color = color;
 }
-/*bool Text::setFontFamily(const std::string filename) {
-	FT_Done_Face(face);
-
-	if (FT_New_Face(library, filename.c_str(), 0, &face)) {
-		Log().Get(logDEBUG) << "Schrift '" << filename << "' konnte nicht geladen werden." ;
-		return false;
-	}
-
-	setSize(this->currentTextSize);
-
-	glyphSlot = face->glyph;
-
-	Log().Get(logDEBUG) << "Schrift auf '" << filename << "' gesetzt." ;
-
-	this->fontFamily = filename;
-	return true;
-}*/
 
 bool Text::init(std::string filename) {
-	Log().Get(logDEBUG) << "init" ;
+	Log().debug() << "init" ;
 
 	if (FT_Init_FreeType(&library)) {
-		Log().Get(logERROR) << "FreeType Bibliothek konnte nicht initialisiert werden.";
+		Log().error() << "FreeType Bibliothek konnte nicht initialisiert werden.";
 		library = NULL;
 		return false;
 	}
 
 	if (FT_New_Face(library, filename.c_str(), 0, &face)) {
-		Log().Get(logWARNING) << "Schrift '" << filename << "' konnte nicht geladen werden.";
+		Log().warning() << "Schrift '" << filename << "' konnte nicht geladen werden.";
 
 		if (FT_New_Face(library, fontFamily.c_str(), 0, &face)) {
-			Log().Get(logERROR) << "Es kann keine Schrift gefunden werden!";
+			Log().error() << "Es kann keine Schrift gefunden werden!";
 			return false;
 		}
 		else {
-			Log().Get(logWARNING) << "Verwende Fallback Schrift: '" << fontFamily << "'." ;
+			Log().warning() << "Verwende Fallback Schrift: '" << fontFamily << "'." ;
 		}
 	}
 	else {
@@ -153,16 +143,16 @@ void Text::write(std::string text, float x, float y, int align) {
 		/*GLuint texture = glGetUniformLocation(shaderProgram->getShaderProgramId(), "tex");
 		glUniform1i(texture, 0);*/		
 
-		/*Log().Get(logDEBUG) << "char: " << c << " x: " << x << " y: " << y ;
-		Log().Get(logDEBUG) << "bitmapLeft: " << currentGlyph.bitmapLeft << " advance.x: " << currentGlyph.advance.x ;
-		Log().Get(logDEBUG) << "top: " << currentGlyph.bitmapTop << " width: " << currentGlyph.bitmapWidth << " rows: " << currentGlyph.bitmapRows ;*/
+		/*Log().debug() << "char: " << c << " x: " << x << " y: " << y ;
+		Log().debug() << "bitmapLeft: " << currentGlyph.bitmapLeft << " advance.x: " << currentGlyph.advance.x ;
+		Log().debug() << "top: " << currentGlyph.bitmapTop << " width: " << currentGlyph.bitmapWidth << " rows: " << currentGlyph.bitmapRows ;*/
 
 		float x2 = x + currentGlyph.bitmapLeft * screenx;
 		float y2 = -y - currentGlyph.bitmapTop * screeny;
 		float w = currentGlyph.bitmapWidth * screenx;
 		float h = currentGlyph.bitmapRows * screeny;
 
-		/*Log().Get(logDEBUG) << x2 << " " << y2 << " " << w << " " << h ;
+		/*Log().debug() << x2 << " " << y2 << " " << w << " " << h ;
 		system("Pause");*/
 
 		if (align == ALIGN_CENTER) {
@@ -210,7 +200,7 @@ void Text::getGlyph(char c) {
 	}
 
 	if (FT_Load_Char(face, c, FT_LOAD_RENDER)) {
-		Log().Get(logERROR) << "FreeType kann das Zeichen " << c << " nicht laden.";
+		Log().error() << "FreeType kann das Zeichen " << c << " nicht laden.";
 	}
 
 	GlyphData glyphData;
@@ -231,14 +221,14 @@ void Text::getGlyph(char c) {
 
 	glyphs.push_back(glyphData);
 
-	/*Log().Get(logDEBUG) << "*********************************" ;
+	/*Log().debug() << "*********************************" ;
 	for (int j = 0; j < glyphData.bitmapRows; j++) {
 		for (int i = 0; i < glyphData.bitmapWidth; i++) {
-			Log().Get(logDEBUG) << glyphData.bitmapBuffer[(i + j * glyphData.bitmapWidth)];
+			Log().debug() << glyphData.bitmapBuffer[(i + j * glyphData.bitmapWidth)];
 		}
-		Log().Get(logDEBUG) ;
+		Log().debug() ;
 	}
-	Log().Get(logDEBUG) << "*********************************" ;*/
+	Log().debug() << "*********************************" ;*/
 
 }
 
@@ -255,12 +245,12 @@ void Text::draw(void) {
 	GLfloat b = color.b;
 	GLfloat a = color.a;
 	glUniform4f(colorAttribute, r, g, b, a);
-	//Log().Get(logDEBUG) << "color: " << color ;
+	//Log().debug() << "color: " << color ;
 
 	// Get a handle for our "myTextureSampler" uniform
 	//GLuint texture = glGetUniformLocation(shaderProgram->getShaderProgramId(), "tex");
 	//GLuint texture = shaderProgram->getUniform("tex");
-	//Log().Get(logDEBUG) << "texture: " << texture ;
+	//Log().debug() << "texture: " << texture ;
 
 	/*
 	// Bind our texture in Texture Unit 0
