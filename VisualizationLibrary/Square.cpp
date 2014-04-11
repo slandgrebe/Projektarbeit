@@ -15,6 +15,7 @@ Square::Square() {
 
 	highlightColor = glm::vec4(1.0f, 0.0f, 0.0f, 1.0f);
 	m_isHighlighted = false;
+	m_isAttachedToCamera = false;
 }
 
 Square::~Square() {

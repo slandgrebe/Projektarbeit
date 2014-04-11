@@ -39,6 +39,8 @@ namespace visual {
 			glm::vec4 highlightColor;
 			bool m_isHighlighted;
 
+			bool m_isAttachedToCamera;
+
 			graphics::ShaderProgram* shaderProgram;
 
 			/** Liefert die transformierte Matrix des Modells zurück
@@ -82,7 +84,7 @@ namespace visual {
 			*/
 			virtual void rotate(GLfloat degrees, glm::vec3 axis) {
 				if (axis.x == 0 && axis.y == 0 && axis.z == 0) {
-					Log().debug() << "Nullvektor ist keine zulaessige Rotationsachse" ;;
+					Log().debug() << "Nullvektor ist keine zulaessige Rotationsachse";
 					return;
 				}
 
@@ -113,6 +115,9 @@ namespace visual {
 			};
 
 			virtual glm::mat4 getModelViewMatrix(void) {
+				if (m_isAttachedToCamera) {
+					return getTransformedModelMatrix();
+				}
 				// Model View Projection Matrix => verkehrte Reihenfolge
 				return graphics::GraphicEngine::getInstance()->getViewProjectionMatrix() * getTransformedModelMatrix();
 			};
@@ -128,6 +133,11 @@ namespace visual {
 
 			virtual void isHighlighted(bool choice) {
 				m_isHighlighted = choice;
+			}
+
+
+			virtual void attachToCamera(bool choice) {
+				m_isAttachedToCamera = choice;
 			}
 
 			/** Zeichnet das Modell

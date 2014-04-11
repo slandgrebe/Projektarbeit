@@ -40,6 +40,8 @@ namespace VisualizationExample
         public extern static bool highlightColor(uint modelId, float r, float g, float b, float a);
         [DllImport("Visualization.dll")]
         public extern static bool isHighlighted(uint modelId, bool choice);
+        [DllImport("Visualization.dll")]
+        public extern static bool attachToCamera(uint modelId, bool choice);
 
         [DllImport("Visualization.dll")]
         public extern static void text(uint textId, string text);
@@ -119,19 +121,28 @@ namespace VisualizationExample
             
 
             Console.WriteLine("zurück in c#");
-            Console.WriteLine("Taste drücken damit es weiter geht.");
-            Console.ReadLine();
+            System.Threading.Thread.Sleep(2000);
 
             dispose(buttonId);
             dispose(pointId);
             dispose(modelId);
             dispose(textId);
 
-            positionCamera(0, 0, 2);
+            positionCamera(0, 0, 5);
             changeCameraSpeed(0.2f);
+
+            uint modelId3 = addModel("data/models/shuttle/SpaceShuttleOrbiter.3ds");
+            while (!isCreated(modelId3)) { }
+            scale(modelId3, 0.0005f, 0.0005f, 0.0005f);
+            rotate(modelId3, -90.0f, 1.0f, 0.0f, 0.0f);
+            position(modelId3, 0.3f, 0.4f, 0.0f);
+            highlightColor(modelId3, 0.0f, 0.0f, 1.0f, 1.0f);
+            isHighlighted(modelId3, true);
+            attachToCamera(modelId3, true);
 
             while (isRunning()) {
                 // do Something
+                System.Threading.Thread.Sleep(1); // senkt die CPU Auslastung drastisch
             }
         }
     }

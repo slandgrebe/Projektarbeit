@@ -28,6 +28,7 @@ extern "C" DLL_API int APIENTRY rotate(const unsigned int modelId, const float d
 extern "C" DLL_API int APIENTRY scale(const unsigned int modelId, const float x, const float y, const float z);
 extern "C" DLL_API int APIENTRY highlightColor(const unsigned int modelId, const float r, const float g, const float b, const float a);
 extern "C" DLL_API int APIENTRY isHighlighted(const unsigned int modelId, const bool choice);
+extern "C" DLL_API int APIENTRY attachToCamera(const unsigned int modelId, const bool choice);
 
 extern "C" DLL_API void APIENTRY text(const unsigned int textId, const char* text);
 extern "C" DLL_API int APIENTRY textSize(const unsigned int textId, const int points);

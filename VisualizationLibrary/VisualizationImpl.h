@@ -70,6 +70,9 @@ DLL_API int APIENTRY isHighlighted(const unsigned int modelId, const bool choice
 	return (int)visual::Manager::getInstance()->isModelHighlighted(modelId, choice);
 }
 
+DLL_API int APIENTRY attachToCamera(const unsigned int modelId, const bool choice) {
+	return (int)visual::Manager::getInstance()->attachModelToCamera(modelId, choice);
+}
 
 
 

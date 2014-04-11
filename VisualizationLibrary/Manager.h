@@ -36,6 +36,7 @@ namespace visual {
 		GLboolean scaleModel(GLuint modelId, glm::vec3 scale);
 		bool setModelHighlightColor(GLuint modelId, glm::vec4 color);
 		bool isModelHighlighted(GLuint modelId, bool choice);
+		bool attachModelToCamera(GLuint modelId, bool choice);
 
 		bool setText(const GLuint textId, const std::string filename);
 		bool setTextSize(const GLuint textId, const int points);

@@ -275,6 +275,25 @@ bool Manager::isModelHighlighted(GLuint modelId, bool choice) {
 	return false;
 }
 
+bool Manager::attachModelToCamera(GLuint modelId, bool choice) {
+	if (assimpModelList.find(modelId) != assimpModelList.end()) {
+		model::AssimpModel* model = assimpModelList.find(modelId)->second;
+		model->attachToCamera(choice);
+
+		return true;
+	}
+	else if (squareList.find(modelId) != squareList.end()) {
+		model::Square* model = squareList.find(modelId)->second;
+		model->attachToCamera(choice);
+
+		return true;
+	}
+	else {
+		Log().error() << "Das Model mit der modelId '" << modelId << "' konnte waehrend dem Versuch es an die Kamera anzubinden nicht gefunden werden.";
+	}
+
+	return false;
+}
 
 GLuint Manager::addText(const std::string filename) {
 	if (isRunning()) {
