@@ -93,8 +93,8 @@ void GraphicEngine::worker(void) {
 		}
 
 		// camera
-		//GraphicEngine::getInstance()->m_camera->advance(timeDifference);
-		//GraphicEngine::getInstance()->viewProjectionMatrix = GraphicEngine::getInstance()->projectionMatrix * GraphicEngine::getInstance()->m_camera->getViewMatrix();
+		GraphicEngine::getInstance()->m_camera->advance(timeDifference);
+		GraphicEngine::getInstance()->viewProjectionMatrix = GraphicEngine::getInstance()->projectionMatrix * GraphicEngine::getInstance()->m_camera->getViewMatrix();
 
 		// create new objects
 		GraphicEngine::getInstance()->processQueue();
@@ -111,9 +111,9 @@ void GraphicEngine::worker(void) {
 		glfwPollEvents();
 
 		// measure time
+		begin = now;
 		now = clock();
 		//Log().debug() << "Bild gezeichnet in " << int(now - begin) / CLOCKS_PER_SEC << "ms. Das entspricht " << 1000 / (now - begin) << " FPS." ;
-		begin = now;
 	}
 
 	GraphicEngine::getInstance()->running = false;

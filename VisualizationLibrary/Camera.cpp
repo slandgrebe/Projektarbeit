@@ -11,6 +11,7 @@ Camera::Camera() {
 	m_position = glm::vec3(0.0f, 0.0f, 0.0f);
 	m_rotation = 180.0f;
 	m_tilt = 0.0f;
+	m_speed = 0.0f;
 }
 
 Camera::~Camera() {
@@ -51,6 +52,10 @@ void Camera::advance(float time) {
 	// oben
 	glm::vec3 up = glm::cross(right, direction);
 
+	// bewegen
+	float distance = m_speed * time;
+	m_position = m_position + glm::normalize(direction) * distance;
+	
 	// Camera Matrix
 	viewMatrix = glm::lookAt(
 		m_position,
