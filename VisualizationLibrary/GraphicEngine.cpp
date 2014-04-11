@@ -18,15 +18,6 @@ using namespace visual::graphics;
 // static attributes
 GraphicEngine* GraphicEngine::singleInstance = 0;
 GLFWwindow* GraphicEngine::window = 0;
-std::string GraphicEngine::title = "Projektarbeit";
-int GraphicEngine::width = 640;
-int GraphicEngine::height = 480;
-bool GraphicEngine::running = false;
-SafeQueue<GraphicEngine::modelQueueEntry>* GraphicEngine::squareQueue = new SafeQueue<modelQueueEntry>;
-SafeQueue<GraphicEngine::modelQueueEntry>* GraphicEngine::modelQueue = new SafeQueue<modelQueueEntry>;
-SafeQueue<GraphicEngine::modelQueueEntry>* GraphicEngine::textQueue = new SafeQueue<modelQueueEntry>;
-SafeQueue<GraphicEngine::modelQueueEntry>* GraphicEngine::buttonQueue = new SafeQueue<modelQueueEntry>;
-
 
 GraphicEngine* GraphicEngine::getInstance() {
 	if (singleInstance == 0) {
@@ -44,9 +35,15 @@ GraphicEngine::GraphicEngine() {
 	projectionMatrix = glm::perspective(60.0f, (float)width/height, 0.1f, 100.0f);
 	orthographicMatrix = glm::ortho(-1.0f, 1.0f, -1.0f, 1.0f, -5.0f, 5.0f);
 	viewOrthographicMatrix = orthographicMatrix;
+
+	running = false;
+	title = "Projektarbeit";
+	width = 640;
+	height = 480;
 }
 
 GraphicEngine::~GraphicEngine() {
+	delete camera;
 }
 
 glm::mat4 GraphicEngine::getViewProjectionMatrix() {
@@ -57,7 +54,7 @@ glm::mat4 GraphicEngine::getViewOrthographicMatrix() {
 }
 
 void GraphicEngine::worker(void) {
-	if (0 != GraphicEngine::getInstance()->createWindow(title, width, height)) {
+	if (0 != GraphicEngine::getInstance()->createWindow()) {
 		return;
 	}
 
@@ -65,7 +62,7 @@ void GraphicEngine::worker(void) {
 		return;
 	}
 	
-	running = true;
+	GraphicEngine::getInstance()->running = true;
 
 	/***************
 		LOOP
@@ -116,7 +113,7 @@ void GraphicEngine::worker(void) {
 		begin = now;
 	}
 
-	running = false;
+	GraphicEngine::getInstance()->running = false;
 
 	glfwTerminate();
 }
@@ -127,7 +124,7 @@ void GraphicEngine::enqueueSquare(GLuint modelId, std::string filename) {
 	modelQueueEntry e;
 	e.modelId = modelId;
 	e.filename = filename;
-	squareQueue->enqueue(e);
+	squareQueue.enqueue(e);
 }
 void GraphicEngine::enqueueModel(GLuint modelId, std::string filename) {
 	Log().debug() << "enqueueSquare modelId[" << modelId << "] filename[" << filename << "]" ;
@@ -135,7 +132,7 @@ void GraphicEngine::enqueueModel(GLuint modelId, std::string filename) {
 	modelQueueEntry e;
 	e.modelId = modelId;
 	e.filename = filename;
-	modelQueue->enqueue(e);
+	modelQueue.enqueue(e);
 }
 void GraphicEngine::enqueueText(GLuint modelId, std::string filename) {
 	Log().debug() << "enqueueText modelId[" << modelId << "] filename[" << filename << "]" ;
@@ -143,7 +140,7 @@ void GraphicEngine::enqueueText(GLuint modelId, std::string filename) {
 	modelQueueEntry e;
 	e.modelId = modelId;
 	e.filename = filename;
-	textQueue->enqueue(e);
+	textQueue.enqueue(e);
 }
 void GraphicEngine::enqueueButton(GLuint modelId, std::string filename) {
 	Log().debug() << "enqueueButton modelId[" << modelId << "] filename[" << filename << "]" ;
@@ -151,7 +148,7 @@ void GraphicEngine::enqueueButton(GLuint modelId, std::string filename) {
 	modelQueueEntry e;
 	e.modelId = modelId;
 	e.filename = filename;
-	buttonQueue->enqueue(e);
+	buttonQueue.enqueue(e);
 }
 void GraphicEngine::enqueueDispose(GLuint modelId) {
 	disposeQueue.enqueue(modelId);
@@ -161,8 +158,8 @@ void GraphicEngine::enqueueDispose(GLuint modelId) {
 }*/
 
 void GraphicEngine::processQueue() {
-	while (modelQueue->hasMore()) {
-		modelQueueEntry e = modelQueue->dequeue();
+	while (modelQueue.hasMore()) {
+		modelQueueEntry e = modelQueue.dequeue();
 		model::AssimpModel* model = new model::AssimpModel;
 		if (model->loadModel(e.filename)) {
 			Manager::getInstance()->addToModelList(e.modelId, model);
@@ -172,8 +169,8 @@ void GraphicEngine::processQueue() {
 		}
 	}
 
-	while (squareQueue->hasMore()) {		
-		modelQueueEntry e = squareQueue->dequeue();
+	while (squareQueue.hasMore()) {		
+		modelQueueEntry e = squareQueue.dequeue();
 		model::Square* model = new model::Square;
 		if (model->loadFromFile(e.filename)) {
 			Manager::getInstance()->addToSquareList(e.modelId, model);
@@ -183,8 +180,8 @@ void GraphicEngine::processQueue() {
 		}
 	}
 
-	while (textQueue->hasMore()) {
-		modelQueueEntry e = textQueue->dequeue();
+	while (textQueue.hasMore()) {
+		modelQueueEntry e = textQueue.dequeue();
 		gui::Text* text = new gui::Text;
 		if (text->init(e.filename)) {
 			Manager::getInstance()->addToTextList(e.modelId, text);
@@ -194,8 +191,8 @@ void GraphicEngine::processQueue() {
 		}
 	}
 
-	while (buttonQueue->hasMore()) {
-		modelQueueEntry e = buttonQueue->dequeue();
+	while (buttonQueue.hasMore()) {
+		modelQueueEntry e = buttonQueue.dequeue();
 		gui::Button* button = new gui::Button;
 		if (button->init(e.filename)) {
 			Manager::getInstance()->addToButtonList(e.modelId, button);
@@ -211,7 +208,7 @@ void GraphicEngine::processQueue() {
 	}
 }
 
-int GraphicEngine::createWindow(const std::string title, int width, int height) {
+int GraphicEngine::createWindow() {
 	// Initialisiere GLFW
 	if (!glfwInit()) {
 		//fprintf(stderr, "GLFW Library konnte nicht initialisiert werden.\n");

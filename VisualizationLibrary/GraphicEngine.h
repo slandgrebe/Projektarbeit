@@ -13,12 +13,11 @@ namespace visual {
 		class GraphicEngine {
 		public:
 			static GraphicEngine* getInstance();
-			//GLuint getShaderProgramId(void);
-			static bool isRunning(void) { return running; }
-			static void enqueueSquare(GLuint modelId, std::string filename);
-			static void enqueueModel(GLuint modelId, std::string filename);
-			static void enqueueText(GLuint modelId, std::string filename);
-			static void enqueueButton(GLuint modelId, std::string filename);
+			bool isRunning(void) { return running; }
+			void enqueueSquare(GLuint modelId, std::string filename);
+			void enqueueModel(GLuint modelId, std::string filename);
+			void enqueueText(GLuint modelId, std::string filename);
+			void enqueueButton(GLuint modelId, std::string filename);
 			void enqueueDispose(GLuint modelId);
 
 			int getWindowHeight(void) { return height; }
@@ -28,13 +27,13 @@ namespace visual {
 			glm::mat4 getViewOrthographicMatrix();
 
 		private:
-			static bool running;
+			bool running;
 
 			static GraphicEngine* singleInstance;
 			static GLFWwindow* window;
-			static std::string title;
-			static int width;
-			static int height;
+			std::string title;
+			int width;
+			int height;
 
 			glm::mat4 projectionMatrix;
 			glm::mat4 viewProjectionMatrix;
@@ -47,13 +46,11 @@ namespace visual {
 				std::string filename;
 			};
 
-			static SafeQueue<modelQueueEntry>* squareQueue;
-			static SafeQueue<modelQueueEntry>* modelQueue;
-			static SafeQueue<modelQueueEntry>* textQueue;
-			static SafeQueue<modelQueueEntry>* buttonQueue;
+			SafeQueue<modelQueueEntry> squareQueue;
+			SafeQueue<modelQueueEntry> modelQueue;
+			SafeQueue<modelQueueEntry> textQueue;
+			SafeQueue<modelQueueEntry> buttonQueue;
 			SafeQueue<GLuint> disposeQueue;
-
-			//static GLuint shaderProgramId;
 
 			enum shaderType {VERTEX, FRAGMENT, GEOMETRY};
 
@@ -63,13 +60,8 @@ namespace visual {
 			static void worker();
 			void processQueue();
 
-			int createWindow(const std::string title, int width, int height);
+			int createWindow();
 			int createOpenGLContext(void);
-			
-			/*static GLuint createShader(const std::string filename, const shaderType);
-			static GLuint createShaderProgram(const GLuint vertexShaderId, const GLuint fragmentShaderId);
-			static GLuint createShaderProgram(const std::string vertexShaderFilename, const std::string fragmentShaderfilename);
-			static void deleteShaderProgram(const GLuint shaderProgramId);*/
 		};
 	}
 }
