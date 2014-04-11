@@ -111,6 +111,7 @@ namespace Wrapper
             
 
             Console.WriteLine("zurück in c#");
+            Console.WriteLine("Taste drücken um einige Modelle zu entfernen.");
             Console.ReadLine();
 
             dispose(buttonId);

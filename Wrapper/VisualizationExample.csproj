@@ -7,8 +7,8 @@
     <ProjectGuid>{5335B503-6E79-439E-B405-FECB3EB3C5B5}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Wrapper</RootNamespace>
-    <AssemblyName>Wrapper</AssemblyName>
+    <RootNamespace>VisualizationExample</RootNamespace>
+    <AssemblyName>VisualizationExample</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>

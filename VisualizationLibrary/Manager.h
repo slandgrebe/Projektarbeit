@@ -54,9 +54,6 @@ namespace visual {
 		std::map<GLuint, gui::Text*> textList;
 		std::map<GLuint, gui::Button*> buttonList;
 
-		model::Square* square = 0;
-		model::AssimpModel* assimpModel = 0;
-
 		Manager(void);
 
 		gui::Text* getTextFromList(GLuint textId);
