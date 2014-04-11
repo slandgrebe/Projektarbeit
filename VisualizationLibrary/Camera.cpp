@@ -8,14 +8,26 @@
 using namespace visual::graphics;
 
 Camera::Camera() {
-	position = glm::vec3(0.0f, 0.0f, 0.0f);
-	rotation = 180.0f;
-	tilt = 0.0f;
+	m_position = glm::vec3(0.0f, 0.0f, 0.0f);
+	m_rotation = 180.0f;
+	m_tilt = 0.0f;
 }
 
 Camera::~Camera() {
 }
 
+void Camera::position(glm::vec3 position) {
+	m_position = position;
+}
+void Camera::rotate(float degrees) {
+	m_rotation = degrees;
+}
+void Camera::tilt(float degrees) {
+	m_tilt = degrees;
+}
+void Camera::changeSpeed(float speed) {
+	m_speed = speed;
+}
 
 glm::mat4 Camera::getViewMatrix() {
 	return viewMatrix;
@@ -24,16 +36,16 @@ glm::mat4 Camera::getViewMatrix() {
 void Camera::advance(float time) {
 	// sphärische koordinaten in kartesische koordinaten umwandeln
 	glm::vec3 direction(	
-		cos(degreesToRadian(tilt)) * sin(degreesToRadian(rotation)),
-		sin(degreesToRadian(tilt)),
-		cos(degreesToRadian(tilt)) * cos(degreesToRadian(rotation))
+		cos(degreesToRadian(m_tilt)) * sin(degreesToRadian(m_rotation)),
+		sin(degreesToRadian(m_tilt)),
+		cos(degreesToRadian(m_tilt)) * cos(degreesToRadian(m_rotation))
 	);
 
 	// rechts
 	glm::vec3 right(
-		sin(degreesToRadian(rotation - 90)),
+		sin(degreesToRadian(m_rotation - 90)),
 		0,
-		cos(degreesToRadian(rotation - 90))
+		cos(degreesToRadian(m_rotation - 90))
 	);
 
 	// oben
@@ -41,8 +53,8 @@ void Camera::advance(float time) {
 
 	// Camera Matrix
 	viewMatrix = glm::lookAt(
-		position,
-		position + direction,
+		m_position,
+		m_position + direction,
 		up
 	);
 }

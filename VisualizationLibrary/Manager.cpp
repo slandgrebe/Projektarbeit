@@ -369,9 +369,17 @@ gui::Button* Manager::getButtonFromList(GLuint buttonId) {
 	return button;
 }
 
-bool Manager::setCameraInMotion(glm::vec3 orientation, float speed) {
-	Log().info() << "noch nicht erledigt" ;
-	return false;
+void Manager::positionCamera(glm::vec3 position) {
+	graphics::GraphicEngine::getInstance()->camera()->position(position);
+}
+void Manager::rotateCamera(float degrees) {
+	graphics::GraphicEngine::getInstance()->camera()->rotate(degrees);
+}
+void Manager::tiltCamera(float degrees) {
+	graphics::GraphicEngine::getInstance()->camera()->tilt(degrees);
+}
+void Manager::changeCameraSpeed(float speed) {
+	graphics::GraphicEngine::getInstance()->camera()->changeSpeed(speed);
 }
 
 

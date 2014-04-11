@@ -85,14 +85,17 @@ DLL_API void APIENTRY textColor(const unsigned int textId, const float r, const 
 
 
 
-DLL_API int APIENTRY cameraPosition(float x, float y, float z) {
-	return (int)false;
+DLL_API void APIENTRY positionCamera(float x, float y, float z) {
+	visual::Manager::getInstance()->positionCamera(glm::vec3(x, y, z));
 }
-/*DLL_API int APIENTRY cameraPosition(void) {
-	return (int)false;
-}*/
-DLL_API int APIENTRY setCameraInMotion(float orientationX, float orientationY, float orientationZ, float speed) {
-	return (int)visual::Manager::getInstance()->setCameraInMotion(glm::vec3(orientationX, orientationY, orientationZ), speed);
+DLL_API void APIENTRY rotateCamera(float degrees) {
+	visual::Manager::getInstance()->rotateCamera(degrees);
+}
+DLL_API void APIENTRY tiltCamera(float degrees) {
+	visual::Manager::getInstance()->tiltCamera(degrees);
+}
+DLL_API void APIENTRY changeCameraSpeed(float speed) {
+	visual::Manager::getInstance()->changeCameraSpeed(speed);
 }
 
 #endif

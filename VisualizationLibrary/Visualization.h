@@ -33,6 +33,7 @@ extern "C" DLL_API void APIENTRY text(const unsigned int textId, const char* tex
 extern "C" DLL_API int APIENTRY textSize(const unsigned int textId, const int points);
 extern "C" DLL_API void APIENTRY textColor(const unsigned int textId, const float r, const float g, const float b, const float a);
 
-extern "C" DLL_API int APIENTRY cameraPosition(float x, float y, float z);
-//extern "C" DLL_API int APIENTRY cameraPosition(void);
-extern "C" DLL_API int APIENTRY setCameraInMotion(float orientationX, float orientationY, float orientationZ, float speed);
+extern "C" DLL_API void APIENTRY positionCamera(float x, float y, float z);
+extern "C" DLL_API void APIENTRY rotateCamera(float degrees);
+extern "C" DLL_API void APIENTRY tiltCamera(float degrees);
+extern "C" DLL_API void APIENTRY changeCameraSpeed(float speed);

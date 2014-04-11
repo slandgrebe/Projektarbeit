@@ -31,7 +31,7 @@ GraphicEngine* GraphicEngine::getInstance() {
 
 
 GraphicEngine::GraphicEngine() {
-	camera = new Camera;
+	m_camera = new Camera;
 	projectionMatrix = glm::perspective(60.0f, (float)width/height, 0.1f, 100.0f);
 	orthographicMatrix = glm::ortho(-1.0f, 1.0f, -1.0f, 1.0f, -5.0f, 5.0f);
 	viewOrthographicMatrix = orthographicMatrix;
@@ -43,9 +43,12 @@ GraphicEngine::GraphicEngine() {
 }
 
 GraphicEngine::~GraphicEngine() {
-	delete camera;
+	delete m_camera;
 }
 
+Camera* GraphicEngine::camera(void) {
+	return m_camera;
+}
 glm::mat4 GraphicEngine::getViewProjectionMatrix() {
 	return viewProjectionMatrix;
 }
@@ -90,8 +93,8 @@ void GraphicEngine::worker(void) {
 		}
 
 		// camera
-		GraphicEngine::getInstance()->camera->advance(timeDifference);
-		GraphicEngine::getInstance()->viewProjectionMatrix = GraphicEngine::getInstance()->projectionMatrix * GraphicEngine::getInstance()->camera->getViewMatrix();
+		//GraphicEngine::getInstance()->m_camera->advance(timeDifference);
+		//GraphicEngine::getInstance()->viewProjectionMatrix = GraphicEngine::getInstance()->projectionMatrix * GraphicEngine::getInstance()->m_camera->getViewMatrix();
 
 		// create new objects
 		GraphicEngine::getInstance()->processQueue();

@@ -41,7 +41,10 @@ namespace visual {
 		bool setTextSize(const GLuint textId, const int points);
 		bool setTextColor(const GLuint textId, const glm::vec4 color);
 
-		bool setCameraInMotion(glm::vec3 orientation, float speed);
+		void positionCamera(glm::vec3 position);
+		void rotateCamera(float degrees);
+		void tiltCamera(float degrees);
+		void changeCameraSpeed(float speed);
 
 		void draw(void);
 

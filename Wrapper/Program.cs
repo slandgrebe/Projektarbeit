@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Runtime.InteropServices;
 
-namespace Wrapper
+namespace VisualizationExample
 {
     class Program
     {
@@ -26,7 +26,6 @@ namespace Wrapper
 
         [DllImport("Visualization.dll")]
         public extern static bool isCreated(uint modelId);
-
         [DllImport("Visualization.dll")]
         public extern static void dispose(uint modelId);
 
@@ -49,6 +48,14 @@ namespace Wrapper
         [DllImport("Visualization.dll")]
         public extern static void textColor(uint textId, float r, float g, float b, float a);
 
+        [DllImport("Visualization.dll")]
+        public extern static void positionCamera(float x, float y, float z);
+        [DllImport("Visualization.dll")]
+        public extern static void rotateCamera(float degrees);
+        [DllImport("Visualization.dll")]
+        public extern static void tiltCamera(float degrees);
+        [DllImport("Visualization.dll")]
+        public extern static void changeCameraSpeed(float speed);
 
 
         static void Main(string[] args)
@@ -111,13 +118,16 @@ namespace Wrapper
             
 
             Console.WriteLine("zurück in c#");
-            Console.WriteLine("Taste drücken um einige Modelle zu entfernen.");
+            Console.WriteLine("Taste drücken damit es weiter geht.");
             Console.ReadLine();
 
             dispose(buttonId);
             dispose(pointId);
             dispose(modelId);
             dispose(textId);
+
+            positionCamera(0, 0, 2);
+            changeCameraSpeed(0.2f);
 
             while (isRunning()) {
                 // do Something

@@ -23,6 +23,8 @@ namespace visual {
 			int getWindowHeight(void) { return height; }
 			int getWindowWidth(void) { return width; }
 
+			Camera* camera(void);
+
 			glm::mat4 getViewProjectionMatrix();
 			glm::mat4 getViewOrthographicMatrix();
 
@@ -39,7 +41,7 @@ namespace visual {
 			glm::mat4 viewProjectionMatrix;
 			glm::mat4 orthographicMatrix;
 			glm::mat4 viewOrthographicMatrix;
-			Camera* camera;
+			Camera* m_camera;
 
 			struct modelQueueEntry {
 				GLuint modelId;
