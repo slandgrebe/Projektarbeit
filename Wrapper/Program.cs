@@ -60,8 +60,9 @@ namespace VisualizationExample
 
         static void Main(string[] args)
         {
-            Console.WriteLine("Start");
-
+            Console.WriteLine("Mit <Esc> kann das Programm beendet werden.");
+            Console.WriteLine("Press any key to continue");
+            Console.ReadLine();
             
             uint pointId = addPoint("data/textures/sample.png");
             while (!isCreated(pointId)) { }

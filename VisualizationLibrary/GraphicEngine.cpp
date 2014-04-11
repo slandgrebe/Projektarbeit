@@ -215,7 +215,7 @@ int GraphicEngine::createWindow() {
 	// Initialisiere GLFW
 	if (!glfwInit()) {
 		//fprintf(stderr, "GLFW Library konnte nicht initialisiert werden.\n");
-		Log().error() << "GLFW Library konnte nicht initialisiert werden.";
+		Log().fatal() << "GLFW Library konnte nicht initialisiert werden.";
 		return 1;
 	}
 
@@ -225,11 +225,16 @@ int GraphicEngine::createWindow() {
 	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE); // Core Profile (keine veralteten Funktionen)
 	glfwWindowHint(GLFW_RESIZABLE, GL_FALSE); // Fenstergrösse kann nicht verändert werden
 
+	// Bildschirmauflösung auslesen
+	const GLFWvidmode * mode = glfwGetVideoMode(glfwGetPrimaryMonitor());
+	width = mode->width;
+	height = mode->height;
+
 	// OpenGL Kontext erstellen und Fenster öffnen
-	window = glfwCreateWindow(width, height, title.c_str(), 0, 0);
+	window = glfwCreateWindow(width, height, title.c_str(), glfwGetPrimaryMonitor(), 0);
 	if (!window) {
 		//fprintf(stderr, "GLFW Fenster konnte nicht geoeffnet werden. OpenGL Version 3.3 wird vorausgesetzt.\n");
-		Log().error() << "GLFW Fenster konnte nicht geoeffnet werden. OpenGL Version 3.3 wird vorausgesetzt.";
+		Log().fatal() << "GLFW Fenster konnte nicht geoeffnet werden. OpenGL Version 3.3 wird vorausgesetzt.";
 		glfwTerminate();
 		return 2;
 	}
@@ -248,7 +253,7 @@ int GraphicEngine::createOpenGLContext(void) {
 	if (GLEW_OK != err) {
 		// glewInit ist fehlgeschlagen
 		//fprintf(stderr, "GLEW Initialisierungsfehler: %s\n", glewGetErrorString(err));
-		Log().error() << "GLEW Initialisierungsfehler: " << glewGetErrorString(err);
+		Log().fatal() << "GLEW Initialisierungsfehler: " << glewGetErrorString(err);
 		return 3;
 	}
 
