@@ -44,7 +44,7 @@ DLL_API int APIENTRY isCreated(const unsigned int modelId) {
 	return visual::Manager::getInstance()->isModelCreated(modelId);
 }
 
-DLL_API int APIENTRY remove(const unsigned int modelId) {
+DLL_API int APIENTRY dispose(const unsigned int modelId) {
 	return (int)visual::Manager::getInstance()->remove(modelId);
 }
 
@@ -88,9 +88,9 @@ DLL_API void APIENTRY textColor(const unsigned int textId, const float r, const 
 DLL_API int APIENTRY cameraPosition(float x, float y, float z) {
 	return (int)false;
 }
-DLL_API int APIENTRY cameraPosition(void) {
+/*DLL_API int APIENTRY cameraPosition(void) {
 	return (int)false;
-}
+}*/
 DLL_API int APIENTRY setCameraInMotion(float orientationX, float orientationY, float orientationZ, float speed) {
 	return (int)visual::Manager::getInstance()->setCameraInMotion(glm::vec3(orientationX, orientationY, orientationZ), speed);
 }

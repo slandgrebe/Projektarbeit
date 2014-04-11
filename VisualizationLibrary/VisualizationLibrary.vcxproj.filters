@@ -137,6 +137,9 @@
     <ClCompile Include="ColoredSquare.cpp">
       <Filter>Source Files\model</Filter>
     </ClCompile>
+    <ClCompile Include="VisualizationImpl.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="Assimp32.dll">

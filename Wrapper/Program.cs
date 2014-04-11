@@ -28,7 +28,7 @@ namespace Wrapper
         public extern static bool isCreated(uint modelId);
 
         [DllImport("Visualization.dll")]
-        public extern static bool remove(uint modelId);
+        public extern static bool dispose(uint modelId);
 
 
         [DllImport("Visualization.dll")]
