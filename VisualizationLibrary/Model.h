@@ -30,6 +30,9 @@ namespace visual {
 		*/
 		class Model {
 		protected:
+			float m_boundingSphereRadius;
+			float m_scalingNormalizationFactor;
+
 			glm::vec3 m_positionVector; /** Vektor für die Verschiebung des Modells */
 			GLfloat m_rotationAngle;
 			glm::vec3 m_rotationAxis;
@@ -60,7 +63,21 @@ namespace visual {
 			};
 
 		public:
+			Model() {
+				m_boundingSphereRadius = 0.0f;
+				m_scalingNormalizationFactor = 1.0f;
 
+				// Matrizen
+				m_modelMatrix = glm::mat4(1.0f);
+				m_positionVector = glm::vec3(0.0f, 0.0f, 0.0f);
+				m_rotationAngle = 0.0f;
+				m_rotationAxis = glm::vec3(1.0f, 0.0f, 0.0f);
+				m_scalingVector = glm::vec3(1.0f, 1.0f, 1.0f);
+
+				highlightColor = glm::vec4(1.0f, 0.0f, 0.0f, 1.0f);
+				m_isHighlighted = false;
+				m_isAttachedToCamera = false;
+			};
 			virtual ~Model(void) {};
 
 			/** Verschieben des Modells an die angegebene Position.
@@ -107,7 +124,8 @@ namespace visual {
 			* @param z: Skalierung in z Richtung
 			*/
 			virtual void scale(glm::vec3 scale) {
-				m_scalingVector = scale;
+				m_scalingVector = scale * m_scalingNormalizationFactor;
+				Log().info() << "m_scalingVector: " << m_scalingVector.x << "/" << m_scalingVector.y << "/" << m_scalingVector.z;
 			};
 
 			virtual glm::vec3 scale(void) {

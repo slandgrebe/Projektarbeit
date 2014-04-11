@@ -5,19 +5,7 @@
 
 using namespace visual::model;
 
-ColoredSquare::ColoredSquare() {
-	// Transformationen
-	m_modelMatrix = glm::mat4(1.0f);
-	m_positionVector = glm::vec3(0.0f, 0.0f, 0.0f);
-	m_rotationAngle = 0.0f;
-	m_rotationAxis = glm::vec3(0.0f, 0.0f, 1.0f);
-	m_scalingVector = glm::vec3(1.0f, 1.0f, 1.0f);
-
-	highlightColor = glm::vec4(1.0f, 0.0f, 0.0f, 1.0f);
-	m_isHighlighted = false;
-	m_isAttachedToCamera = false;
-}
-
+ColoredSquare::ColoredSquare() {}
 
 ColoredSquare::~ColoredSquare() {
 	delete shaderProgram;

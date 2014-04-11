@@ -66,6 +66,7 @@ namespace VisualizationExample
             Console.WriteLine("Press any key to continue");
             Console.ReadLine();
             
+            // POINTS
             uint pointId = addPoint("data/textures/sample.png");
             while (!isCreated(pointId)) { }
             position(pointId, -0.5f, 0.5f, -5f);
@@ -74,10 +75,10 @@ namespace VisualizationExample
             while (!isCreated(pointId2)) { }
             position(pointId2, 0.5f, 0.5f, -3f);
 
-
+            // MODELS
             uint modelId = addModel("data/models/shuttle/SpaceShuttleOrbiter.3ds");
             while (!isCreated(modelId)) { }
-            scale(modelId, 0.0005f, 0.0005f, 0.0005f);
+            scale(modelId, 2.0f, 0.5f, 1f);
             rotate(modelId, -45.0f, 1.0f, 0.0f, 1.0f);
             position(modelId, -2f, -0.5f, -4.5f);
             highlightColor(modelId, 0.0f, 1.0f, 0.0f, 1.0f);
@@ -85,13 +86,13 @@ namespace VisualizationExample
 
             uint modelId2 = addModel("data/models/shuttle/SpaceShuttleOrbiter.3ds");
             while (!isCreated(modelId2)) { }
-            scale(modelId2, 0.0005f, 0.0005f, 0.0005f);
+            scale(modelId2, 0.5f, 0.5f, 0.5f);
             rotate(modelId2, -45.0f, 0.0f, 1.0f, 1.0f);
             position(modelId2, -0.3f, -0.4f, -1.5f);
             highlightColor(modelId2, 0.0f, 1.0f, 0.0f, 0.5f);
             isHighlighted(modelId2, false);
 
-            
+            // TEXT
             uint textId = addText("");
             while (!isCreated(textId)) { }
             text(textId, "Es geht!");
@@ -105,7 +106,7 @@ namespace VisualizationExample
             textSize(textId2, 60);
             textColor(textId2, 1.0f, 0.5f, 0.0f, 1.0f);
 
-
+            // BUTTON
             uint buttonId = addButton("data/fonts/arial.ttf");
             while (!isCreated(buttonId)) { }
 
@@ -123,25 +124,28 @@ namespace VisualizationExample
             Console.WriteLine("zurück in c#");
             System.Threading.Thread.Sleep(2000);
 
+            // DISPOSE
             dispose(buttonId);
             dispose(pointId);
             dispose(modelId);
             dispose(textId);
 
+            // CAMERA
             positionCamera(0, 0, 5);
             changeCameraSpeed(0.2f);
 
+            // ATTACH MODEL TO CAMERA
             uint modelId3 = addModel("data/models/shuttle/SpaceShuttleOrbiter.3ds");
             while (!isCreated(modelId3)) { }
-            scale(modelId3, 0.0005f, 0.0005f, 0.0005f);
+            //scale(modelId3, 0.0005f, 0.0005f, 0.0005f);
             rotate(modelId3, -90.0f, 1.0f, 0.0f, 0.0f);
             position(modelId3, 0.3f, 0.4f, 0.0f);
             highlightColor(modelId3, 0.0f, 0.0f, 1.0f, 1.0f);
             isHighlighted(modelId3, true);
             attachToCamera(modelId3, true);
 
+            // RUNNING
             while (isRunning()) {
-                // do Something
                 System.Threading.Thread.Sleep(1); // senkt die CPU Auslastung drastisch
             }
         }
