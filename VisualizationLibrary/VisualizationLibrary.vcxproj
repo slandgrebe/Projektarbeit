@@ -97,6 +97,7 @@
     <ClInclude Include="Camera.h" />
     <ClInclude Include="ColoredSquare.h" />
     <ClInclude Include="GraphicEngine.h" />
+    <ClInclude Include="Log.h" />
     <ClInclude Include="Manager.h" />
     <ClInclude Include="Model.h" />
     <ClInclude Include="SafeQueue.h" />

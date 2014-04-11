@@ -27,13 +27,13 @@ Square::~Square() {
 }
 
 bool Square::loadModel(void) {
-	std::cout <<  " [Square] glewExperimental: " << (glewExperimental == GL_TRUE) << std::endl;
+	Log().Get(logDEBUG) <<  " [Square] glewExperimental: " << (glewExperimental == GL_TRUE) ;
 	
 	// Create Vertex Array Object
 	glGenVertexArrays(1, &vertexArrayId);
 	glBindVertexArray(vertexArrayId);
 
-	std::cout << " [Square] square vao: " << vertexArrayId << std::endl;
+	Log().Get(logDEBUG) << " [Square] square vao: " << vertexArrayId ;
 
 	// shader
 	shaderProgram = new graphics::ShaderProgram;

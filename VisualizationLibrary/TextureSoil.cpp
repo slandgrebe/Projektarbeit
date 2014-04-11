@@ -22,7 +22,7 @@ bool TextureSoil::load(const int width, const int height, const unsigned char* i
 	glTexImage2D(GL_TEXTURE_2D, 0, internalFormat, width, height, 0, format, GL_UNSIGNED_BYTE, image);
 	GLenum error = glGetError();
 	if (error != GL_TRUE && error != 0 && error != 1280) { // http://www.opengl.org/wiki/OpenGL_Loading_Library - GL_INVALID_ENUM ignorieren
-		std::cout << "OpenGL Error: Loading Texture: " << error << ": " << gluErrorString(error) << std::endl;
+		Log().Get(logERROR) << "OpenGL Error: Loading Texture: " << error << ": " << gluErrorString(error) ;
 		
 		return false;
 	}
@@ -44,7 +44,7 @@ bool TextureSoil::loadFromFile(const std::string& filename) {
 	//"E:/dev/opengl/ProjektarbeitTest/TextureTest/Debug/test.png"
 	image = SOIL_load_image(filename.c_str(), &width, &height, NULL, SOIL_LOAD_RGB);
 	if (image == 0) {
-		std::cout << "Soil Error Message: " << SOIL_last_result() << std::endl;
+		Log().Get(logERROR) << "Soil Error Message: " << SOIL_last_result();
 
 		return false;
 	}
@@ -57,10 +57,10 @@ bool TextureSoil::loadFromFile(const std::string& filename) {
 }
 
 void TextureSoil::bind(GLenum textureUnit) {
-	//std::cout << "bind texture. textureId[" << textureId << "]" << std::endl;
+	//Log().Get(logDEBUG) << "bind texture. textureId[" << textureId << "]" ;
 
 	glActiveTexture(GL_TEXTURE0);
 	glBindTexture(GL_TEXTURE_2D, textureId);
 
-	//std::cout << " Error" << glGetError() << std::endl;
+	//Log().Get(logERROR) << " Error" << glGetError() ;
 }

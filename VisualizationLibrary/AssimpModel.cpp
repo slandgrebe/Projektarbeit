@@ -39,9 +39,9 @@ void AssimpModel::MeshEntry::init(	const std::vector<Vertex>& vertices,
 	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(unsigned int)* numIndices, &indices[0], GL_STATIC_DRAW);
 
 	/*for (std::vector<unsigned int>::const_iterator i = indices.begin(); i != indices.end(); ++i)
-		std::cout << *i << ' ';
+		Log().Get(logDEBUG) << *i << ' ';
 
-	std::cout << std::endl;*/
+	Log().Get(logDEBUG) ;*/
 }
 
 
@@ -63,7 +63,7 @@ AssimpModel::~AssimpModel() {
 }
 
 bool AssimpModel::loadModel(const std::string filename) {
-	std::cout << "loadModel[" << filename << "]" << std::endl;
+	Log().Get(logDEBUG) << "loadModel[" << filename << "]" ;
 
 	bool returnValue = false;
 
@@ -71,7 +71,7 @@ bool AssimpModel::loadModel(const std::string filename) {
 	glGenVertexArrays(1, &vertexArrayId);
 	glBindVertexArray(vertexArrayId);
 
-	std::cout << "assimp vao: " << vertexArrayId << std::endl;
+	Log().Get(logDEBUG) << "assimp vao: " << vertexArrayId ;
 	
 	// shader
 	shaderProgram = new graphics::ShaderProgram;
@@ -87,7 +87,7 @@ bool AssimpModel::loadModel(const std::string filename) {
 														aiProcess_SortByPType);
 
 	if (scene) {
-		std::cout << " Anzahl der Meshes in dieser Datei: " << scene->mNumMeshes << std::endl;
+		Log().Get(logDEBUG) << " Anzahl der Meshes in dieser Datei: " << scene->mNumMeshes ;
 		returnValue = this->initAllMeshes(scene, filename);
 	}
 	else {
@@ -116,7 +116,7 @@ bool AssimpModel::initAllMeshes(const aiScene* scene, const std::string& filenam
 }
 
 bool AssimpModel::initSingleMesh(const int meshIndex, const aiMesh* mesh) {
-	std::cout << "  Mesh #" << meshIndex << "; Anzahl Seiten: " << mesh->mNumFaces << std::endl;
+	Log().Get(logDEBUG) << "  Mesh #" << meshIndex << "; Anzahl Seiten: " << mesh->mNumFaces ;
 
 	meshList[meshIndex].materialIndex = mesh->mMaterialIndex;
 
@@ -169,7 +169,7 @@ bool AssimpModel::initMaterials(const aiScene* scene, const std::string& filenam
 
 	bool returnValue = true;
 
-	std::cout << " Anzahl der Texturen: " << scene->mNumMaterials << std::endl;
+	Log().Get(logDEBUG) << " Anzahl der Texturen: " << scene->mNumMaterials ;
 
 	for (unsigned int i = 0; i < scene->mNumMaterials; i++) {
 		const aiMaterial* material = scene->mMaterials[i];
@@ -183,16 +183,16 @@ bool AssimpModel::initMaterials(const aiScene* scene, const std::string& filenam
 				std::string fullPath = dir + "/" + path.data;
 				textureList[i] = new TextureSoil();
 
-				std::cout << "  Textur #" << i << "; Pfad: " << fullPath << std::endl;
+				Log().Get(logDEBUG) << "  Textur #" << i << "; Pfad: " << fullPath ;
 
 				if (!textureList[i]->loadFromFile(fullPath.c_str())) {
-					printf("Error loading texture '%s'\n", fullPath.c_str());
+					Log().Get(logERROR) << "Error loading texture '" << fullPath.c_str() << "'";
 					delete textureList[i];
 					textureList[i] = NULL;
 					returnValue = false;
 				}
 				else {
-					printf("Loaded texture '%s'\n", fullPath.c_str());
+					Log().Get(logDEBUG) << "Loaded texture '" << fullPath.c_str() << "'";
 				}
 			}
 		}
@@ -202,7 +202,7 @@ bool AssimpModel::initMaterials(const aiScene* scene, const std::string& filenam
 			textureList[i] = new TextureSoil();
 			returnValue = textureList[i]->loadFromFile("data/textures/red.jpg");
 
-			std::cout << "  Benutze Fallback Textur" << std::endl;
+			Log().Get(logWARNING) << "  Benutze Fallback Textur" ;
 		}
 	}
 
@@ -219,8 +219,8 @@ void AssimpModel::clear() {
 }
 
 void AssimpModel::draw() {
-	//std::cout << "draw AssimpModel" << std::endl;
-	//std::cout << " Anzahl Meshes: " << meshList.size() << std::endl;
+	//Log().Get(logDEBUG) << "draw AssimpModel" ;
+	//Log().Get(logDEBUG) << " Anzahl Meshes: " << meshList.size() ;
 	
 	glBindVertexArray(vertexArrayId);
 

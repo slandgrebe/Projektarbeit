@@ -31,7 +31,7 @@ bool ColoredSquare::loadModel(void) {
 	glGenVertexArrays(1, &vertexArrayId);
 	glBindVertexArray(vertexArrayId);
 
-	std::cout << " [ColoredSquare] square vao: " << vertexArrayId << std::endl;
+	Log().Get(logDEBUG) << " [ColoredSquare] square vao: " << vertexArrayId ;
 
 	// shader
 	shaderProgram = new graphics::ShaderProgram;

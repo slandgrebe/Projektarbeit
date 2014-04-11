@@ -22,7 +22,6 @@ std::string GraphicEngine::title = "Projektarbeit";
 int GraphicEngine::width = 640;
 int GraphicEngine::height = 480;
 bool GraphicEngine::running = false;
-//GLuint GraphicEngine::shaderProgramId = 0;
 SafeQueue<GraphicEngine::modelQueueEntry>* GraphicEngine::squareQueue = new SafeQueue<modelQueueEntry>;
 SafeQueue<GraphicEngine::modelQueueEntry>* GraphicEngine::modelQueue = new SafeQueue<modelQueueEntry>;
 SafeQueue<GraphicEngine::modelQueueEntry>* GraphicEngine::textQueue = new SafeQueue<modelQueueEntry>;
@@ -65,17 +64,8 @@ void GraphicEngine::worker(void) {
 	if (0 != GraphicEngine::getInstance()->createOpenGLContext()) {
 		return;
 	}
-
-	// Shader
-	
-	/*GLuint shaderProgramId = GraphicEngine::getInstance()->createShaderProgram("data/shader/SimpleVertexShader.vertexshader", "data/shader/SimpleFragmentShader.fragmentshader");
-	if (0 == shaderProgramId) {
-		return;
-	}*/
 	
 	running = true;
-
-	//glBindFragDataLocation(shaderProgramId, 0, "outColor");
 
 	/***************
 		LOOP
@@ -122,20 +112,9 @@ void GraphicEngine::worker(void) {
 
 		// measure time
 		now = clock();
-		//std::cout << "Bild gezeichnet in " << int(now - begin) / CLOCKS_PER_SEC << "ms. Das entspricht " << 1000 / (now - begin) << " FPS." << std::endl;
+		//Log().Get(logDEBUG) << "Bild gezeichnet in " << int(now - begin) / CLOCKS_PER_SEC << "ms. Das entspricht " << 1000 / (now - begin) << " FPS." ;
 		begin = now;
 	}
-
-	//glDeleteTextures(1, &tex);
-
-	//glDeleteProgram(GraphicEngine::getInstance()->shaderProgramId);
-	//glDeleteShader(fragmentShader);
-	//glDeleteShader(vertexShader);
-
-	/*glDeleteBuffers(1, &ebo);
-	glDeleteBuffers(1, &vertexBufferId);
-
-	glDeleteVertexArrays(1, &vao);*/
 
 	running = false;
 
@@ -143,7 +122,7 @@ void GraphicEngine::worker(void) {
 }
 
 void GraphicEngine::enqueueSquare(GLuint modelId, std::string filename) {
-	std::cout << "enqueueSquare modelId[" << modelId << "] filename[" << filename << "]" << std::endl;
+	Log().Get(logDEBUG) << "enqueueSquare modelId[" << modelId << "] filename[" << filename << "]" ;
 	
 	modelQueueEntry e;
 	e.modelId = modelId;
@@ -151,7 +130,7 @@ void GraphicEngine::enqueueSquare(GLuint modelId, std::string filename) {
 	squareQueue->enqueue(e);
 }
 void GraphicEngine::enqueueModel(GLuint modelId, std::string filename) {
-	std::cout << "enqueueSquare modelId[" << modelId << "] filename[" << filename << "]" << std::endl;
+	Log().Get(logDEBUG) << "enqueueSquare modelId[" << modelId << "] filename[" << filename << "]" ;
 
 	modelQueueEntry e;
 	e.modelId = modelId;
@@ -159,7 +138,7 @@ void GraphicEngine::enqueueModel(GLuint modelId, std::string filename) {
 	modelQueue->enqueue(e);
 }
 void GraphicEngine::enqueueText(GLuint modelId, std::string filename) {
-	std::cout << "enqueueText modelId[" << modelId << "] filename[" << filename << "]" << std::endl;
+	Log().Get(logDEBUG) << "enqueueText modelId[" << modelId << "] filename[" << filename << "]" ;
 
 	modelQueueEntry e;
 	e.modelId = modelId;
@@ -167,7 +146,7 @@ void GraphicEngine::enqueueText(GLuint modelId, std::string filename) {
 	textQueue->enqueue(e);
 }
 void GraphicEngine::enqueueButton(GLuint modelId, std::string filename) {
-	std::cout << "enqueueButton modelId[" << modelId << "] filename[" << filename << "]" << std::endl;
+	Log().Get(logDEBUG) << "enqueueButton modelId[" << modelId << "] filename[" << filename << "]" ;
 
 	modelQueueEntry e;
 	e.modelId = modelId;
@@ -183,7 +162,7 @@ void GraphicEngine::processQueue() {
 			Manager::getInstance()->addToModelList(e.modelId, model);
 		}
 		else {
-			std::cout << "Could not create model. id[" << e.modelId << "] filename[" << e.filename << "]" << std::endl;
+			Log().Get(logERROR) << "Could not create model. id[" << e.modelId << "] filename[" << e.filename << "]" ;
 		}
 	}
 
@@ -194,7 +173,7 @@ void GraphicEngine::processQueue() {
 			Manager::getInstance()->addToSquareList(e.modelId, model);
 		}
 		else {
-			std::cout << "Could not create square. id[" << e.modelId << "] filename[" << e.filename << "]" << std::endl;
+			Log().Get(logERROR) << "Could not create square. id[" << e.modelId << "] filename[" << e.filename << "]";
 		}
 	}
 
@@ -205,7 +184,7 @@ void GraphicEngine::processQueue() {
 			Manager::getInstance()->addToTextList(e.modelId, text);
 		}
 		else {
-			std::cout << "Could not create text. id[" << e.modelId << "] text[" << e.filename << "]" << std::endl;
+			Log().Get(logERROR) << "Could not create text. id[" << e.modelId << "] text[" << e.filename << "]";
 		}
 	}
 
@@ -216,7 +195,7 @@ void GraphicEngine::processQueue() {
 			Manager::getInstance()->addToButtonList(e.modelId, button);
 		}
 		else {
-			std::cout << "Could not create button. id[" << e.modelId << "] fontname[" << e.filename << "]" << std::endl;
+			Log().Get(logERROR) << "Could not create button. id[" << e.modelId << "] fontname[" << e.filename << "]";
 		}
 	}
 }
@@ -224,7 +203,8 @@ void GraphicEngine::processQueue() {
 int GraphicEngine::createWindow(const std::string title, int width, int height) {
 	// Initialisiere GLFW
 	if (!glfwInit()) {
-		fprintf(stderr, "GLFW Library konnte nicht initialisiert werden.\n");
+		//fprintf(stderr, "GLFW Library konnte nicht initialisiert werden.\n");
+		Log().Get(logERROR) << "GLFW Library konnte nicht initialisiert werden.";
 		return 1;
 	}
 
@@ -237,13 +217,14 @@ int GraphicEngine::createWindow(const std::string title, int width, int height) 
 	// OpenGL Kontext erstellen und Fenster öffnen
 	window = glfwCreateWindow(width, height, title.c_str(), 0, 0);
 	if (!window) {
-		fprintf(stderr, "GLFW Fenster konnte nicht geoeffnet werden. OpenGL Version 3.3 wird vorausgesetzt.\n");
+		//fprintf(stderr, "GLFW Fenster konnte nicht geoeffnet werden. OpenGL Version 3.3 wird vorausgesetzt.\n");
+		Log().Get(logERROR) << "GLFW Fenster konnte nicht geoeffnet werden. OpenGL Version 3.3 wird vorausgesetzt.";
 		glfwTerminate();
 		return 2;
 	}
 	glfwMakeContextCurrent(window);
 
-	std::cout << "Fenster erstellt" << std::endl;
+	Log().Get(logINFO) << "Fenster erstellt" ;
 
 	return 0;
 }
@@ -254,107 +235,12 @@ int GraphicEngine::createOpenGLContext(void) {
 	GLenum err = glewInit();
 	if (GLEW_OK != err) {
 		// glewInit ist fehlgeschlagen
-		fprintf(stderr, "GLEW Initialisierungsfehler: %s\n", glewGetErrorString(err));
+		//fprintf(stderr, "GLEW Initialisierungsfehler: %s\n", glewGetErrorString(err));
+		Log().Get(logERROR) << "GLEW Initialisierungsfehler: " << glewGetErrorString(err);
 		return 3;
 	}
 
-	std::cout << "GLEW initialisiert" << std::endl;
+	Log().Get(logINFO) << "GLEW initialisiert" ;
 
 	return 0;
 }
-/*
-GLuint GraphicEngine::createShader(const std::string filename, GraphicEngine::shaderType m_shaderType) {
-	// Shader erstellen
-	GLuint shaderId;
-	
-	if (m_shaderType == shaderType::VERTEX) {
-		shaderId = glCreateShader(GL_VERTEX_SHADER);
-	}
-	else if (m_shaderType == shaderType::FRAGMENT) {
-		shaderId = glCreateShader(GL_FRAGMENT_SHADER);
-	}
-	else {
-		std::cout << "Unknown Shader Type." << std::endl;
-		return 0;
-	}
-	// Vertex Shader Code aus der Datei auslesen
-	std::string shaderCode;
-	std::ifstream shaderStream(filename.c_str(), std::ios::in);
-	if (shaderStream.is_open()){
-		std::string line = "";
-		while (getline(shaderStream, line)) {
-			shaderCode += "\n" + line;
-		}
-		shaderStream.close();
-
-	}
-	else {
-		printf("Shader Datei kann nicht gelesen werden. Datei: %s.\n", filename.c_str());
-		return 0;
-	}
-
-	// Variablen für die Prüfung der kompilierten Shader
-	GLint result = GL_FALSE;
-	int infoLogLength = 0;
-
-	// Vertex Shader kompilieren
-	const GLchar* sourcePointer = shaderCode.c_str();
-
-	glShaderSource(shaderId, 1, &sourcePointer, NULL);
-	glCompileShader(shaderId);
-
-	// Vertex Shader prüfen
-	glGetShaderiv(shaderId, GL_COMPILE_STATUS, &result);
-	glGetShaderiv(shaderId, GL_INFO_LOG_LENGTH, &infoLogLength);
-	if (infoLogLength > 1) { // Da ging etwas schief
-		std::vector<char> vertexShaderErrorMessage(infoLogLength + 1);
-		glGetShaderInfoLog(shaderId, infoLogLength, NULL, &vertexShaderErrorMessage[0]);
-		printf("Der Vertex Shader konnte nicht kompiliert werden.\nFehlermeldung: [%s]\n", &vertexShaderErrorMessage[0]);
-	}
-
-	return shaderId;
-}
-GLuint GraphicEngine::createShaderProgram(GLuint vertexShaderId, GLuint fragmentShaderId) {
-	// Shader Programm linken
-	GLuint programId = glCreateProgram();
-	glAttachShader(programId, vertexShaderId);
-	glAttachShader(programId, fragmentShaderId);
-	//glBindFragDataLocation(programId, 0, "outColor");
-	glLinkProgram(programId);
-
-	// Variablen für die Prüfung der kompilierten Shader
-	GLint result = GL_FALSE;
-	int infoLogLength = 0;
-
-	// Shader Programm prüfen
-	glGetProgramiv(programId, GL_LINK_STATUS, &result);
-	glGetProgramiv(programId, GL_INFO_LOG_LENGTH, &infoLogLength);
-	if (infoLogLength > 1) { // da ging etwas schief
-		std::vector<char> programErrorMessage(infoLogLength + 1);
-		glGetProgramInfoLog(programId, infoLogLength, NULL, &programErrorMessage[0]);
-		printf("Das Shader Programm konnte nicht erstellt werden.\nFehlermeldung: [%s]\n", &programErrorMessage[0]);
-	}
-
-	// Vertex und Fragment Shader werden nicht mehr benötigt, da wir ja jetzt das fertige Shader Programm haben.
-	//glDeleteShader(vertexShaderId);
-	//glDeleteShader(fragmentShaderId);
-
-	return programId;
-}
-
-GLuint GraphicEngine::createShaderProgram(const std::string vertexShaderFilename, const std::string fragmentShaderfilename) {
-	GLuint vertexShaderId = createShader(vertexShaderFilename, shaderType::VERTEX);
-	GLuint fragmentShaderId = createShader(fragmentShaderfilename, shaderType::FRAGMENT);
-	shaderProgramId = createShaderProgram(vertexShaderId, fragmentShaderId);
-	glUseProgram(shaderProgramId);
-
-	return shaderProgramId;
-}
-
-GLuint GraphicEngine::getShaderProgramId(void) {
-	return shaderProgramId;
-}
-
-void GraphicEngine::deleteShaderProgram(const GLuint shaderProgramId) {
-	glDeleteProgram(shaderProgramId);
-}*/

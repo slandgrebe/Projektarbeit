@@ -45,7 +45,7 @@ DLL_API int APIENTRY isCreated(const unsigned int modelId) {
 }
 
 DLL_API int APIENTRY dispose(const unsigned int modelId) {
-	return (int)visual::Manager::getInstance()->remove(modelId);
+	return (int)visual::Manager::getInstance()->dispose(modelId);
 }
 
 DLL_API int APIENTRY position(const unsigned int modelId, const float x, const float y, const float z) {

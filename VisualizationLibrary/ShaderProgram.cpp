@@ -26,7 +26,7 @@ GLuint ShaderProgram::createShader(const std::string filename, ShaderProgram::sh
 		shaderId = glCreateShader(GL_FRAGMENT_SHADER);
 	}
 	else {
-		std::cout << "Unknown Shader Type." << std::endl;
+		Log().Get(logERROR) << "Unknown Shader Type." ;
 		return 0;
 	}
 	// Vertex Shader Code aus der Datei auslesen
@@ -39,12 +39,13 @@ GLuint ShaderProgram::createShader(const std::string filename, ShaderProgram::sh
 		}
 		shaderStream.close();
 
-		/*std::cout << "-- Shader Source -------------------------------------" << std::endl;
-		std::cout << shaderCode << std::endl;
-		std::cout << "------------------------------------------------------" << std::endl;*/
+		/*Log().Get(logDEBUG) << "-- Shader Source -------------------------------------" ;
+		Log().Get(logDEBUG) << shaderCode ;
+		Log().Get(logDEBUG) << "------------------------------------------------------" ;*/
 	}
 	else {
-		printf("Shader Datei kann nicht gelesen werden. Datei: %s.\n", filename.c_str());
+		//printf("Shader Datei kann nicht gelesen werden. Datei: %s.\n", filename.c_str());
+		Log().Get(logERROR) << "Shader Datei kann nicht gelesen werden. Datei: " << filename.c_str();
 		return 0;
 	}
 
@@ -64,7 +65,8 @@ GLuint ShaderProgram::createShader(const std::string filename, ShaderProgram::sh
 	if (infoLogLength > 1) { // Da ging etwas schief
 		std::vector<char> vertexShaderErrorMessage(infoLogLength + 1);
 		glGetShaderInfoLog(shaderId, infoLogLength, NULL, &vertexShaderErrorMessage[0]);
-		printf("Der Vertex Shader konnte nicht kompiliert werden.\nFehlermeldung: [%s]\n", &vertexShaderErrorMessage[0]);
+		//printf("Der Vertex Shader konnte nicht kompiliert werden.\nFehlermeldung: [%s]\n", &vertexShaderErrorMessage[0]);
+		Log().Get(logERROR) << "Der Vertex Shader konnte nicht kompiliert werden.\nFehlermeldung: [" << &vertexShaderErrorMessage[0] << "]";
 	}
 
 	return shaderId;
@@ -88,6 +90,7 @@ GLuint ShaderProgram::createShaderProgram(GLuint vertexShaderId, GLuint fragment
 		std::vector<char> programErrorMessage(infoLogLength + 1);
 		glGetProgramInfoLog(programId, infoLogLength, NULL, &programErrorMessage[0]);
 		printf("Das Shader Programm konnte nicht erstellt werden.\nFehlermeldung: [%s]\n", &programErrorMessage[0]);
+		Log().Get(logERROR) << "Das Shader Programm konnte nicht erstellt werden.\nFehlermeldung: [" << &programErrorMessage[0] << "]";
 	}
 
 	// Vertex und Fragment Shader werden nicht mehr benötigt, da wir ja jetzt das fertige Shader Programm haben.

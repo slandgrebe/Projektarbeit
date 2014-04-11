@@ -18,6 +18,8 @@ Manager* Manager::getInstance(void) {
 }
 
 Manager::Manager() {
+	Log::ReportingLevel() = logINFO;
+
 	clock_t begin = clock();
 	while (true) {
 		if (isRunning()) {
@@ -42,7 +44,7 @@ GLuint Manager::addModel(const std::string filename) {
 	if (isRunning()) {
 		modelInstantiationCounter++;
 
-		std::cout << " adding Model to Queue: " << modelInstantiationCounter << std::endl;
+		Log().Get(logDEBUG) << " adding Model to Queue: " << modelInstantiationCounter ;
 
 		// Queue für Thread Sicherheit
 		graphics::GraphicEngine::getInstance()->enqueueModel(modelInstantiationCounter, filename);
@@ -57,7 +59,7 @@ GLuint Manager::addPoint(const std::string textureFilename) {
 	if (isRunning()) {
 		modelInstantiationCounter++;
 
-		std::cout << " adding Point to Queue: " << modelInstantiationCounter << std::endl;
+		Log().Get(logDEBUG) << " adding Point to Queue: " << modelInstantiationCounter ;
 		
 		// Queue für Thread Sicherheit
 		graphics::GraphicEngine::getInstance()->enqueueSquare(modelInstantiationCounter, textureFilename);
@@ -85,32 +87,62 @@ GLboolean Manager::isModelCreated(GLuint modelId) {
 	return GL_FALSE;
 }
 
-bool Manager::remove(GLuint modelId) {
-	/*if (buttonList.find(modelId) != buttonList.end()) {
-		gui::Button* model = buttonList.find(modelId)->second;
+bool Manager::dispose(GLuint modelId) {
+	std::map<GLuint, visual::model::AssimpModel*>::iterator modelIterator = assimpModelList.find(modelId);
+	if (modelIterator != assimpModelList.end()) {
+		model::AssimpModel* model = modelIterator->second;
 		delete model;
-		buttonList.erase();
+		assimpModelList.erase(modelIterator);
 
-		return GL_TRUE;
-	}*/
-	std::cout << "noch nicht erledigt" << std::endl;
+		return true;
+	}
+
+	std::map<GLuint, visual::model::Square*>::iterator squareIterator = squareList.find(modelId);
+	if (squareIterator != squareList.end()) {
+		model::Square* model = squareIterator->second;
+		delete model;
+		squareList.erase(squareIterator);
+
+		return true;
+	}
+
+	std::map<GLuint, visual::gui::Text*>::iterator textIterator = textList.find(modelId);
+	if (textIterator != textList.end()) {
+		gui::Text* model = textIterator->second;
+		delete model;
+		textList.erase(textIterator);
+
+		return true;
+	}
+
+	std::map<GLuint, visual::gui::Button*>::iterator buttonIterator = buttonList.find(modelId);
+	if (buttonIterator != buttonList.end()) {
+		gui::Button* model = buttonIterator->second;
+		delete model;
+		buttonList.erase(buttonIterator);
+
+		return true;
+	}
+
+
+	Log().Get(logINFO) << "noch nicht erledigt" ;
 	return false;
 }
 
 void Manager::addToModelList(GLuint modelId, model::AssimpModel* model) {
-	std::cout << " adding Model to List: " << modelId << std::endl;
+	Log().Get(logDEBUG) << " adding Model to List: " << modelId ;
 	assimpModelList.insert(std::make_pair(modelId, model));
 }
 void Manager::addToSquareList(GLuint modelId, model::Square* model) {
-	std::cout << " adding Square to List: " << modelId << std::endl;
+	Log().Get(logDEBUG) << " adding Square to List: " << modelId ;
 	squareList.insert(std::make_pair(modelId, model));
 }
 void Manager::addToTextList(GLuint modelId, gui::Text* text) {
-	std::cout << " adding Text to List: " << modelId << std::endl;
+	Log().Get(logDEBUG) << " adding Text to List: " << modelId ;
 	textList.insert(std::make_pair(modelId, text));
 }
 void Manager::addToButtonList(GLuint buttonId, gui::Button* button) {
-	std::cout << " adding Button to List: " << buttonId << std::endl;
+	Log().Get(logDEBUG) << " adding Button to List: " << buttonId ;
 	buttonList.insert(std::make_pair(buttonId, button));
 }
 
@@ -119,7 +151,7 @@ GLboolean Manager::positionModel(GLuint modelId, glm::vec3 position) {
 	
 	for (auto it = assimpModelList.cbegin(); it != assimpModelList.cend(); ++it)
 	{
-		//std::cout << it->first << " " << it->second << " " << "\n";
+		//Log().Get(logDEBUG) << it->first << " " << it->second << " " << "\n";
 	}
 
 	if (assimpModelList.find(modelId) != assimpModelList.end()) {
@@ -147,7 +179,7 @@ GLboolean Manager::positionModel(GLuint modelId, glm::vec3 position) {
 		return GL_TRUE;
 	}
 	else {
-		std::cout << "Das Model mit der modelId '" << modelId << "' konnte waehrend dem Versuch es neu zu positionieren nicht gefunden werden." << std::endl;
+		Log().Get(logERROR) << "Das Model mit der modelId '" << modelId << "' konnte waehrend dem Versuch es neu zu positionieren nicht gefunden werden." ;
 	}
 
 	return GL_FALSE;
@@ -167,7 +199,7 @@ GLboolean Manager::rotateModel(GLuint modelId, GLfloat degrees, glm::vec3 axis) 
 		return GL_TRUE;
 	}
 	else {
-		std::cout << "Das Model mit der modelId '" << modelId << "' konnte waehrend dem Versuch es neu zu rotieren nicht gefunden werden." << std::endl;
+		Log().Get(logERROR) << "Das Model mit der modelId '" << modelId << "' konnte waehrend dem Versuch es neu zu rotieren nicht gefunden werden." ;
 	}
 
 	return GL_FALSE;
@@ -193,7 +225,7 @@ GLboolean Manager::scaleModel(GLuint modelId, glm::vec3 scale) {
 		return GL_TRUE;
 	}
 	else {
-		std::cout << "Das Model mit der modelId '" << modelId << "' konnte waehrend dem Versuch es neu zu skalieren nicht gefunden werden." << std::endl;
+		Log().Get(logERROR) << "Das Model mit der modelId '" << modelId << "' konnte waehrend dem Versuch es neu zu skalieren nicht gefunden werden." ;
 	}
 
 	return GL_FALSE;
@@ -220,7 +252,7 @@ bool Manager::setModelHighlightColor(GLuint modelId, glm::vec4 color) {
 		return true;
 	}
 	else {
-		std::cout << "Das Model mit der modelId '" << modelId << "' konnte waehrend dem Versuch dessen Highlight Farbe zu setzen nicht gefunden werden." << std::endl;
+		Log().Get(logERROR) << "Das Model mit der modelId '" << modelId << "' konnte waehrend dem Versuch dessen Highlight Farbe zu setzen nicht gefunden werden." ;
 	}
 
 	return false;
@@ -245,7 +277,7 @@ bool Manager::isModelHighlighted(GLuint modelId, bool choice) {
 		return true;
 	}
 	else {
-		std::cout << "Das Model mit der modelId '" << modelId << "' konnte waehrend dem Versuch den Highlight Modus zu aendern nicht gefunden werden." << std::endl;
+		Log().Get(logERROR) << "Das Model mit der modelId '" << modelId << "' konnte waehrend dem Versuch den Highlight Modus zu aendern nicht gefunden werden." ;
 	}
 
 	return false;
@@ -256,7 +288,7 @@ GLuint Manager::addText(const std::string filename) {
 	if (isRunning()) {
 		modelInstantiationCounter++;
 
-		std::cout << " adding Text to Queue: " << modelInstantiationCounter << std::endl;
+		Log().Get(logDEBUG) << " adding Text to Queue: " << modelInstantiationCounter ;
 
 		// Queue für Thread Sicherheit
 		graphics::GraphicEngine::getInstance()->enqueueText(modelInstantiationCounter, filename);
@@ -325,7 +357,7 @@ GLuint Manager::addButton(const std::string filename) {
 	if (isRunning()) {
 		modelInstantiationCounter++;
 
-		std::cout << " adding Button to Queue: " << modelInstantiationCounter << std::endl;
+		Log().Get(logDEBUG) << " adding Button to Queue: " << modelInstantiationCounter ;
 
 		// Queue für Thread Sicherheit
 		graphics::GraphicEngine::getInstance()->enqueueButton(modelInstantiationCounter, filename);
@@ -346,14 +378,14 @@ gui::Button* Manager::getButtonFromList(GLuint buttonId) {
 }
 
 bool Manager::setCameraInMotion(glm::vec3 orientation, float speed) {
-	std::cout << "noch nicht erledigt" << std::endl;
+	Log().Get(logINFO) << "noch nicht erledigt" ;
 	return false;
 }
 
 
 void Manager::draw(void) {
 	if (!isRunning()) {
-		std::cout << "Manager: GraphicsEngine ist nicht in einem laufenden Zustand. Neuzeichnen abgebrochen." << std::endl;
+		Log().Get(logERROR) << "Manager: GraphicsEngine ist nicht in einem laufenden Zustand. Neuzeichnen abgebrochen." ;
 		return;
 	}
 	
