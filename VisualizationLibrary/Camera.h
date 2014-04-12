@@ -19,6 +19,7 @@ namespace visual {
 			~Camera();
 
 			void position(glm::vec3 position);
+			glm::vec3 position(void);
 			void rotate(float degrees);
 			void tilt(float degrees);
 			void changeSpeed(float speed);

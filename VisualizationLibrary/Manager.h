@@ -7,6 +7,7 @@
 #include "Button.h"
 #include "GraphicEngine.h"
 #include <map>
+#include <mutex>
 
 namespace visual {
 	class Manager {
@@ -47,16 +48,25 @@ namespace visual {
 		void tiltCamera(float degrees);
 		void changeCameraSpeed(float speed);
 
+		void doCollisionDetection(void);
+		unsigned int collisionsTextLength(void);
+		std::string collisionsText(void);
+
 		void draw(void);
 
 	private:
 		static Manager* instance;
+
+		std::mutex m_mutex;
 
 		GLuint modelInstantiationCounter = 0;
 		std::map<GLuint, model::AssimpModel*> assimpModelList;
 		std::map<GLuint, model::Square*> squareList;
 		std::map<GLuint, gui::Text*> textList;
 		std::map<GLuint, gui::Button*> buttonList;
+
+		std::string m_collisions;
+		std::string m_collisionsCache;
 
 		Manager(void);
 

@@ -5,18 +5,7 @@
 
 using namespace visual::model;
 
-Square::Square() {
-	// Transformationen
-	m_modelMatrix = glm::mat4(1.0f);
-	m_positionVector = glm::vec3(0.0f, 0.0f, 0.0f);
-	m_rotationAngle = 0.0f;
-	m_rotationAxis = glm::vec3(0.0f, 0.0f, 1.0f);
-	m_scalingVector = glm::vec3(1.0f, 1.0f, 1.0f);
-
-	highlightColor = glm::vec4(1.0f, 0.0f, 0.0f, 1.0f);
-	m_isHighlighted = false;
-	m_isAttachedToCamera = false;
-}
+Square::Square() {}
 
 Square::~Square() {
 	delete shaderProgram;
@@ -41,6 +30,12 @@ bool Square::loadModel(void) {
 	// shader
 	shaderProgram = new graphics::ShaderProgram;
 	shaderProgram->createShaderProgram("data/shader/SimpleVertexShader.vertexshader", "data/shader/SimpleFragmentShader.fragmentshader");
+
+	m_boundingSphereRadius = 0.5f;
+	if (m_boundingSphereRadius > 0) {
+		m_scalingNormalizationFactor = 1 / (2 * m_boundingSphereRadius);
+		scale(m_scalingVector);
+	}
 
 	// positions
 	glGenBuffers(1, &positionBufferId);

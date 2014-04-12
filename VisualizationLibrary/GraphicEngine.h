@@ -25,6 +25,7 @@ namespace visual {
 
 			Camera* camera(void);
 
+			glm::mat4 getProjectionMatrix();
 			glm::mat4 getViewProjectionMatrix();
 			glm::mat4 getViewOrthographicMatrix();
 

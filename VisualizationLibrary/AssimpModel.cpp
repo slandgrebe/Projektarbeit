@@ -46,18 +46,7 @@ void AssimpModel::MeshEntry::init(	const std::vector<Vertex>& vertices,
 
 
 
-AssimpModel::AssimpModel() {
-	// Matrizen
-	m_modelMatrix = glm::mat4(1.0f);
-	m_positionVector = glm::vec3(0.0f, 0.0f, 0.0f);
-	m_rotationAngle = 0.0f;
-	m_rotationAxis = glm::vec3(1.0f, 0.0f, 0.0f);
-	m_scalingVector = glm::vec3(1.0f, 1.0f, 1.0f);
-
-	highlightColor = glm::vec4(1.0f, 0.0f, 0.0f, 1.0f);
-	m_isHighlighted = false;
-	m_isAttachedToCamera = false;
-}
+AssimpModel::AssimpModel() {}
 
 
 AssimpModel::~AssimpModel() {
@@ -94,7 +83,12 @@ bool AssimpModel::loadModel(const std::string filename) {
 		returnValue = this->initAllMeshes(scene, filename);
 	}
 	else {
-		printf("Fehler beim parsen der Datei '%s': '%s'\n", filename.c_str(), importer.GetErrorString());
+		Log().error() << "Fehler beim parsen der Datei '" << filename.c_str() << " ': '" << importer.GetErrorString() << "'\n";
+	}
+
+	if (m_boundingSphereRadius > 0) {
+		m_scalingNormalizationFactor = 1 / (2 * m_boundingSphereRadius);
+		scale(m_scalingVector);
 	}
 
 	// Make sure the VAO is not changed from outside code
@@ -137,6 +131,11 @@ bool AssimpModel::initSingleMesh(const int meshIndex, const aiMesh* mesh) {
 		Vertex v(	glm::vec3(pos->x, pos->y, pos->z),
 					glm::vec2(texCoord->x, texCoord->y),
 					glm::vec3(normal->x, normal->y, normal->z));
+
+		// bounding Sphere
+		if (std::abs(pos->x) > m_boundingSphereRadius) m_boundingSphereRadius = std::abs(pos->x);
+		if (std::abs(pos->y) > m_boundingSphereRadius) m_boundingSphereRadius = std::abs(pos->y);
+		if (std::abs(pos->z) > m_boundingSphereRadius) m_boundingSphereRadius = std::abs(pos->z);
 
 		vertices.push_back(v);
 	}
@@ -278,6 +277,7 @@ void AssimpModel::draw() {
 		// highlight color
 		GLint highlightAttribute = shaderProgram->getUniform("highlightColor");
 		GLfloat r = 1.0f, g = 1.0f, b = 1.0f, a = 1.0f; // standard: weiss
+
 		if (m_isHighlighted) {
 			r = highlightColor.r;
 			g = highlightColor.g;

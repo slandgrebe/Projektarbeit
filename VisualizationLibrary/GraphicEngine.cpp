@@ -25,7 +25,7 @@ GraphicEngine* GraphicEngine::getInstance() {
 
 		std::async(worker);
 	}
-
+	
 	return singleInstance;
 }
 
@@ -48,6 +48,9 @@ GraphicEngine::~GraphicEngine() {
 
 Camera* GraphicEngine::camera(void) {
 	return m_camera;
+}
+glm::mat4 GraphicEngine::getProjectionMatrix() {
+	return projectionMatrix;
 }
 glm::mat4 GraphicEngine::getViewProjectionMatrix() {
 	return viewProjectionMatrix;
@@ -98,6 +101,9 @@ void GraphicEngine::worker(void) {
 
 		// create new objects
 		GraphicEngine::getInstance()->processQueue();
+
+		// collision detection
+		Manager::getInstance()->doCollisionDetection();
 
 		// Clear the screen to black
 		glClearColor(0.3f, 0.5f, 0.9f, 1.0f);
@@ -240,7 +246,6 @@ int GraphicEngine::createWindow() {
 	}
 	glfwMakeContextCurrent(window);
 
-	//Log().info() << "Fenster erstellt" ;
 	Log().info() << "Fenster erstellt";
 
 	return 0;

@@ -19,6 +19,7 @@ Manager* Manager::getInstance(void) {
 
 Manager::Manager() {
 	Log::ReportingLevel() = logINFO;
+	m_collisions = "";
 
 	clock_t begin = clock();
 	while (true) {
@@ -278,13 +279,13 @@ bool Manager::isModelHighlighted(GLuint modelId, bool choice) {
 bool Manager::attachModelToCamera(GLuint modelId, bool choice) {
 	if (assimpModelList.find(modelId) != assimpModelList.end()) {
 		model::AssimpModel* model = assimpModelList.find(modelId)->second;
-		model->attachToCamera(choice);
+		model->attachedToCamera(choice);
 
 		return true;
 	}
 	else if (squareList.find(modelId) != squareList.end()) {
 		model::Square* model = squareList.find(modelId)->second;
-		model->attachToCamera(choice);
+		model->attachedToCamera(choice);
 
 		return true;
 	}
@@ -401,6 +402,61 @@ void Manager::changeCameraSpeed(float speed) {
 	graphics::GraphicEngine::getInstance()->camera()->changeSpeed(speed);
 }
 
+void Manager::doCollisionDetection(void) {
+	//{ 1:{2, 3}, 2 : {1, 2} }
+	//1:2,3;2:1,2
+	std::stringstream collisions;
+	const char* separator1 = "";
+	const char* separator2 = "";
+	glm::vec3 cameraPosition = graphics::GraphicEngine::getInstance()->camera()->position();
+	
+	// Modelle
+	std::map<GLuint, model::AssimpModel*>::iterator it;
+	for (it = assimpModelList.begin(); it != assimpModelList.end(); it++) {
+		model::AssimpModel* modelA = (*it).second;
+		collisions << separator1 << it->first << ":";
+		separator1 = ";";
+
+		glm::vec3 a = modelA->position();
+		if (modelA->attachedToCamera()) {
+			a += cameraPosition;
+		}
+		float ar = modelA->boundingSphereRadius();
+
+		std::map<GLuint, model::AssimpModel*>::iterator it2;
+		for (it2 = assimpModelList.begin(); it2 != assimpModelList.end(); it2++) {
+			model::AssimpModel* modelB = (*it2).second;
+
+			if (modelA == modelB) {
+				continue;
+			}
+
+			
+			glm::vec3 b = modelB->position();
+			if (modelB->attachedToCamera()) {
+				b += cameraPosition;
+			}
+
+			float br = modelB->boundingSphereRadius();
+
+			if (pow(a.x - b.x, 2) + pow(a.y - b.y, 2) + pow(a.z - b.z, 2) < pow(ar + br, 2)) {
+				collisions << separator2 << it2->first;
+				separator2 = ",";
+			}
+		}
+
+		separator2 = "";
+	}
+
+	this->m_collisions = collisions.str();
+}
+unsigned int Manager::collisionsTextLength(void) {
+	m_collisionsCache = m_collisions;
+	return m_collisionsCache.length();
+}
+std::string Manager::collisionsText(void) {
+	return m_collisionsCache;
+}
 
 void Manager::draw(void) {
 	if (!isRunning()) {
@@ -438,35 +494,4 @@ void Manager::draw(void) {
 		gui::Button* button = (*it4).second;
 		button->draw();
 	}
-	
-	/*if (isRunning()) {
-		if (!square) {
-			square = new model::Square;
-			if (square->loadModel()) {
-				square->position(glm::vec3(0.25f, 0.25f, 0.5f));
-				square->rotate(30.0f, glm::vec3(0.0f, 1.0f, 0.0f));
-				square->scale(glm::vec3(0.5f, 0.5f, 0.5f));
-			}
-			else {
-				delete square;
-				square = 0;
-			}
-		}
-
-		if (!assimpModel) {
-			assimpModel = new model::AssimpModel;
-			if (assimpModel->loadModel("earth.q3o")) {
-				assimpModel->position(glm::vec3(-0.25f, -0.25f, -0.5f));
-				assimpModel->rotate(20.0f, glm::vec3(0.0f, 1.0f, 0.0f));
-				assimpModel->scale(glm::vec3(0.005f, 0.005f, 0.005f));
-			}
-			else {
-				delete assimpModel;
-				assimpModel = 0;
-			}
-		}
-	}*/
-
-	/*if (square) square->draw();
-	if (assimpModel) assimpModel->draw();*/
 }

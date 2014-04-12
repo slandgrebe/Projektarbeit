@@ -30,6 +30,9 @@ namespace visual {
 		*/
 		class Model {
 		protected:
+			float m_boundingSphereRadius;
+			float m_scalingNormalizationFactor;
+
 			glm::vec3 m_positionVector; /** Vektor für die Verschiebung des Modells */
 			GLfloat m_rotationAngle;
 			glm::vec3 m_rotationAxis;
@@ -60,8 +63,37 @@ namespace visual {
 			};
 
 		public:
+			Model() {
+				m_boundingSphereRadius = 0.0f;
+				m_scalingNormalizationFactor = 1.0f;
 
+				// Matrizen
+				m_modelMatrix = glm::mat4(1.0f);
+				m_positionVector = glm::vec3(0.0f, 0.0f, 0.0f);
+				m_rotationAngle = 0.0f;
+				m_rotationAxis = glm::vec3(1.0f, 0.0f, 0.0f);
+				m_scalingVector = glm::vec3(1.0f, 1.0f, 1.0f);
+
+				highlightColor = glm::vec4(1.0f, 0.0f, 0.0f, 1.0f);
+				m_isHighlighted = false;
+				m_isAttachedToCamera = false;
+			};
 			virtual ~Model(void) {};
+
+			virtual float boundingSphereRadius(void) {
+				float x = m_scalingVector.x;
+				float y = m_scalingVector.y;
+				float z = m_scalingVector.z;
+
+				if (x > y && x > z) {
+					return m_boundingSphereRadius * x;
+				}
+				else if (y > x && y > z) {
+					return m_boundingSphereRadius * y;
+				}
+
+				return m_boundingSphereRadius * z;
+			}
 
 			/** Verschieben des Modells an die angegebene Position.
 			* @author Stefan Landgrebe
@@ -84,7 +116,7 @@ namespace visual {
 			*/
 			virtual void rotate(GLfloat degrees, glm::vec3 axis) {
 				if (axis.x == 0 && axis.y == 0 && axis.z == 0) {
-					Log().debug() << "Nullvektor ist keine zulaessige Rotationsachse";
+					Log().warning() << "Nullvektor ist keine zulaessige Rotationsachse";
 					return;
 				}
 
@@ -107,7 +139,7 @@ namespace visual {
 			* @param z: Skalierung in z Richtung
 			*/
 			virtual void scale(glm::vec3 scale) {
-				m_scalingVector = scale;
+				m_scalingVector = scale * m_scalingNormalizationFactor;
 			};
 
 			virtual glm::vec3 scale(void) {
@@ -116,7 +148,7 @@ namespace visual {
 
 			virtual glm::mat4 getModelViewMatrix(void) {
 				if (m_isAttachedToCamera) {
-					return getTransformedModelMatrix();
+					return graphics::GraphicEngine::getInstance()->getProjectionMatrix() * getTransformedModelMatrix();
 				}
 				// Model View Projection Matrix => verkehrte Reihenfolge
 				return graphics::GraphicEngine::getInstance()->getViewProjectionMatrix() * getTransformedModelMatrix();
@@ -136,8 +168,11 @@ namespace visual {
 			}
 
 
-			virtual void attachToCamera(bool choice) {
+			virtual void attachedToCamera(bool choice) {
 				m_isAttachedToCamera = choice;
+			}
+			virtual bool attachedToCamera(void) {
+				return m_isAttachedToCamera;
 			}
 
 			/** Zeichnet das Modell
