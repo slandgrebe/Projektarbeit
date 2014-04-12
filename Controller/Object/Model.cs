@@ -9,22 +9,22 @@ namespace Controller
 {
     class Model
     {
-        uint Id { get; set; }
+        public uint Id { get; set; }
 
         public Model(string path)
         {
             Id = Visualization.addModel(path);
-            while (!Visualization.isModelCreated(Id)) { }
+            while (!Visualization.isCreated(Id)) { }
         }
 
         public void Scale(float scale)
         {
-            Visualization.scaleModel(Id, scale, scale, scale);
+            Visualization.scale(Id, scale, scale, scale);
         }
 
         public void Rotate(float degrees, float x, float y, float z)
         {
-            Visualization.rotateModel(Id, degrees, x, y, z);
+            Visualization.rotate(Id, degrees, x, y, z);
         }
 
         public void Alignment(float fromX, float fromY, float fromZ, float toX, float toY, float toZ)
@@ -34,7 +34,7 @@ namespace Controller
 
         public void Position(float x, float y, float z)
         {
-            Visualization.positionModel(Id, x, y, z);
+            Visualization.position(Id, x, y, z);
         }
 
     }

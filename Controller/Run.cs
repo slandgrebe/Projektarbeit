@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,20 +7,29 @@ using Model;
 
 namespace Controller
 {
-    class Movement
+    class Run
     {
-        private SkeletonTracker sensor = null;
+        private SkeletonTracker Sensor = null;
         public Player Player { get; private set; }
-
+        /// <summary>Instanz des Positionobjektes</summary>
+        private static Run instance;
         private int init = 0;
+        
 
         /// <summary>
-        /// Startet Kinect und registriert die Punkte und Linien des Körper in der Ausgabe
+        /// stellt sicher, dass diese Klasse nur einmal Instanziert wird.
         /// </summary>
-        public Movement()
+        /// <returns>instance der Klasse Position</returns>
+        public static Run Instance
         {
-            // Sensor starten
-            Start();
+            get
+            {
+                if (instance == null)
+                {
+                    instance = new Run();
+                }
+                return instance;
+            }
         }
 
         /// <summary>
@@ -29,9 +37,9 @@ namespace Controller
         /// </summary>
         public void Start()
         {
-            sensor = new SkeletonTracker();
-            sensor.Start();
-            sensor.SkeletonEvent += new SkeletonTrackerEvent(GetEvent);
+            Sensor = new SkeletonTracker();
+            Sensor.Start();
+            Sensor.SkeletonEvent += new SkeletonTrackerEvent(GetEvent);
         }
 
         /// <summary>
@@ -48,7 +56,7 @@ namespace Controller
         /// </summary>
         public void Update()
         {
-            Player.Instance.Update();
+            Player.Update();
         }
 
         /// <summary>
@@ -56,8 +64,7 @@ namespace Controller
         /// </summary>
         public void End()
         {
-            //Visualization.close();
-            sensor.Stop();
+            Sensor.Stop();
         }
 
         public void GetEvent()

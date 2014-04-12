@@ -11,16 +11,16 @@ namespace Controller
     {
         public float Scale {private get; set;}
         
-        private Model Head = new Model("Resource Files/Models/Player/Head.obj");
-        private Model Torso = new Model("Resource Files/Models/Player/Torso.obj");
-        private Model UpperarmLeft = new Model("Resource Files/Models/Player/UpperArm.obj");
-        private Model UpperarmRight = new Model("Resource Files/Models/Player/UpperArm.obj");
-        private Model ForearmLeft = new Model("Resource Files/Models/Player/ForeArm.obj");
-        private Model ForearmRight = new Model("Resource Files/Models/Player/ForeArm.obj");
-        private Model ThighlegLeft = new Model("Resource Files/Models/Player/ThighLeg.obj");
-        private Model ThighlegRight = new Model("Resource Files/Models/Player/ThighLeg.obj");
-        private Model LowerlegLeft = new Model("Resource Files/Models/Player/LowerLeg.obj");
-        private Model LowerlegRight = new Model("Resource Files/Models/Player/LowerLeg.obj");
+        private Model Head = new Model("Resource Files/Models/Player/Head.3ds");
+        private Model Torso = new Model("Resource Files/Models/Player/Torso.3ds");
+        private Model UpperarmLeft = new Model("Resource Files/Models/Player/UpperArm.3ds");
+        private Model UpperarmRight = new Model("Resource Files/Models/Player/UpperArm.3ds");
+        private Model ForearmLeft = new Model("Resource Files/Models/Player/ForeArm.3ds");
+        private Model ForearmRight = new Model("Resource Files/Models/Player/ForeArm.3ds");
+        private Model ThighlegLeft = new Model("Resource Files/Models/Player/ThighLeg.3ds");
+        private Model ThighlegRight = new Model("Resource Files/Models/Player/ThighLeg.3ds");
+        private Model LowerlegLeft = new Model("Resource Files/Models/Player/LowerLeg.3ds");
+        private Model LowerlegRight = new Model("Resource Files/Models/Player/LowerLeg.3ds");
 
         public void Update()
         {
@@ -45,6 +45,17 @@ namespace Controller
                 Body.Instance.AnkleLeft.X, Body.Instance.AnkleLeft.Y, Body.Instance.AnkleLeft.Z);
             LowerlegRight.Alignment(Body.Instance.KneeRight.X, Body.Instance.KneeRight.Y, Body.Instance.KneeRight.Z,
                 Body.Instance.AnkleRight.X, Body.Instance.AnkleRight.Y, Body.Instance.AnkleRight.Z);
+
+            Head.Scale(Scale);
+            Torso.Scale(Scale);
+            UpperarmLeft.Scale(Scale);
+            UpperarmRight.Scale(Scale);
+            ForearmLeft.Scale(Scale);
+            ForearmRight.Scale(Scale);
+            ThighlegLeft.Scale(Scale);
+            ThighlegRight.Scale(Scale);
+            LowerlegLeft.Scale(Scale);
+            LowerlegRight.Scale(Scale);
         }
     }
 }

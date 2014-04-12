@@ -21,9 +21,8 @@ namespace Controller
                 bool kinect = true;
                 if (kinect)
                 {
-                    Movement move = new Movement();
+                    Run.Instance.Start();
                 }
-
                 Console.Read();
 
             }
