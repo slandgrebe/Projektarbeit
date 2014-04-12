@@ -86,12 +86,10 @@ bool AssimpModel::loadModel(const std::string filename) {
 		Log().error() << "Fehler beim parsen der Datei '" << filename.c_str() << " ': '" << importer.GetErrorString() << "'\n";
 	}
 
-	Log().info() << "Bounding Sphere Radius: " << m_boundingSphereRadius;
 	if (m_boundingSphereRadius > 0) {
 		m_scalingNormalizationFactor = 1 / (2 * m_boundingSphereRadius);
 		scale(m_scalingVector);
 	}
-	Log().info() << "scaling Normalization Factor: " << m_scalingNormalizationFactor;
 
 	// Make sure the VAO is not changed from outside code
 	glBindVertexArray(0);
@@ -135,9 +133,9 @@ bool AssimpModel::initSingleMesh(const int meshIndex, const aiMesh* mesh) {
 					glm::vec3(normal->x, normal->y, normal->z));
 
 		// bounding Sphere
-		if (pos->x > m_boundingSphereRadius) m_boundingSphereRadius = pos->x;
-		if (pos->y > m_boundingSphereRadius) m_boundingSphereRadius = pos->y;
-		if (pos->z > m_boundingSphereRadius) m_boundingSphereRadius = pos->z;
+		if (std::abs(pos->x) > m_boundingSphereRadius) m_boundingSphereRadius = std::abs(pos->x);
+		if (std::abs(pos->y) > m_boundingSphereRadius) m_boundingSphereRadius = std::abs(pos->y);
+		if (std::abs(pos->z) > m_boundingSphereRadius) m_boundingSphereRadius = std::abs(pos->z);
 
 		vertices.push_back(v);
 	}
@@ -279,6 +277,7 @@ void AssimpModel::draw() {
 		// highlight color
 		GLint highlightAttribute = shaderProgram->getUniform("highlightColor");
 		GLfloat r = 1.0f, g = 1.0f, b = 1.0f, a = 1.0f; // standard: weiss
+
 		if (m_isHighlighted) {
 			r = highlightColor.r;
 			g = highlightColor.g;

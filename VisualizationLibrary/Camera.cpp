@@ -20,6 +20,9 @@ Camera::~Camera() {
 void Camera::position(glm::vec3 position) {
 	m_position = position;
 }
+glm::vec3 Camera::position(void) {
+	return m_position;
+}
 void Camera::rotate(float degrees) {
 	m_rotation = degrees;
 }

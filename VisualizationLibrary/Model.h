@@ -80,6 +80,21 @@ namespace visual {
 			};
 			virtual ~Model(void) {};
 
+			virtual float boundingSphereRadius(void) {
+				float x = m_scalingVector.x;
+				float y = m_scalingVector.y;
+				float z = m_scalingVector.z;
+
+				if (x > y && x > z) {
+					return m_boundingSphereRadius * x;
+				}
+				else if (y > x && y > z) {
+					return m_boundingSphereRadius * y;
+				}
+
+				return m_boundingSphereRadius * z;
+			}
+
 			/** Verschieben des Modells an die angegebene Position.
 			* @author Stefan Landgrebe
 			* @param x
@@ -101,7 +116,7 @@ namespace visual {
 			*/
 			virtual void rotate(GLfloat degrees, glm::vec3 axis) {
 				if (axis.x == 0 && axis.y == 0 && axis.z == 0) {
-					Log().debug() << "Nullvektor ist keine zulaessige Rotationsachse";
+					Log().warning() << "Nullvektor ist keine zulaessige Rotationsachse";
 					return;
 				}
 
@@ -125,7 +140,6 @@ namespace visual {
 			*/
 			virtual void scale(glm::vec3 scale) {
 				m_scalingVector = scale * m_scalingNormalizationFactor;
-				Log().info() << "m_scalingVector: " << m_scalingVector.x << "/" << m_scalingVector.y << "/" << m_scalingVector.z;
 			};
 
 			virtual glm::vec3 scale(void) {
@@ -154,8 +168,11 @@ namespace visual {
 			}
 
 
-			virtual void attachToCamera(bool choice) {
+			virtual void attachedToCamera(bool choice) {
 				m_isAttachedToCamera = choice;
+			}
+			virtual bool attachedToCamera(void) {
+				return m_isAttachedToCamera;
 			}
 
 			/** Zeichnet das Modell

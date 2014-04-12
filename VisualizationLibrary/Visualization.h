@@ -38,3 +38,6 @@ extern "C" DLL_API void APIENTRY positionCamera(float x, float y, float z);
 extern "C" DLL_API void APIENTRY rotateCamera(float degrees);
 extern "C" DLL_API void APIENTRY tiltCamera(float degrees);
 extern "C" DLL_API void APIENTRY changeCameraSpeed(float speed);
+
+extern "C" DLL_API unsigned int APIENTRY collisionsTextLength(void);
+extern "C" DLL_API void APIENTRY collisionsText(char* string, int length);

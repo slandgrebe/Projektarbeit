@@ -101,4 +101,13 @@ DLL_API void APIENTRY changeCameraSpeed(float speed) {
 	visual::Manager::getInstance()->changeCameraSpeed(speed);
 }
 
+DLL_API unsigned int APIENTRY collisionsTextLength(void) {
+	return visual::Manager::getInstance()->collisionsTextLength();
+}
+DLL_API void APIENTRY collisionsText(char* string, int length) {
+	std::string collisions = visual::Manager::getInstance()->collisionsText().c_str();
+	strcpy_s(string, length, collisions.c_str());
+	//return visual::Manager::getInstance()->collisions().c_str();
+}
+
 #endif
