@@ -14,7 +14,10 @@ namespace Controller
         /// <summary>Instanz des Positionobjektes</summary>
         private static Run instance;
         private int init = 0;
-        
+
+        private Model Wagon = new Model("Resource Files/Models/Wagon/Wagon.3ds");
+        private Model WagonCam = new Model("Resource Files/Models/Wagon/Wagon.3ds");
+        private Model Rail = new Model("Resource Files/Models/Rail/Rail.3ds");
 
         /// <summary>
         /// stellt sicher, dass diese Klasse nur einmal Instanziert wird.
@@ -37,6 +40,14 @@ namespace Controller
         /// </summary>
         public void Start()
         {
+            Visualization.positionCamera(0, 0, 0);
+            Wagon.Position(0, -1f, -3.5f);
+            Wagon.Scale(0.5f);
+            Visualization.attachToCamera(WagonCam.Id, true);
+            WagonCam.Position(0, 0.5f, 1f);
+            WagonCam.Scale(0.5f);
+            Rail.Position(0, -1.4f, -3f);
+            Rail.Scale(0.5f);
             Sensor = new SkeletonTracker();
             Sensor.Start();
             Sensor.SkeletonEvent += new SkeletonTrackerEvent(GetEvent);
@@ -47,6 +58,9 @@ namespace Controller
         /// </summary>
         private void Initialize()
         {
+            
+           
+            
             Player = new Player();
             Player.Scale = 0.5f;
         }
@@ -57,6 +71,7 @@ namespace Controller
         public void Update()
         {
             Player.Update();
+            
         }
 
         /// <summary>
