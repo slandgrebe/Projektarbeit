@@ -137,9 +137,10 @@ namespace VisualizationExample
             changeCameraSpeed(1f);
 
             // ATTACH MODEL TO CAMERA
-            uint modelId_attachedToCamera = addModel("data/models/shuttle/SpaceShuttleOrbiter.3ds");
+            uint modelId_attachedToCamera = addModel("data/models/cube.obj");
             while (!isCreated(modelId_attachedToCamera)) { }
-            //scale(modelId3, 0.0005f, 0.0005f, 0.0005f);
+            scale(modelId_attachedToCamera, 0.5f, 0.5f, 0.5f);
+            position(modelId_attachedToCamera, 0f, 1f, -5f);
             rotate(modelId_attachedToCamera, -90.0f, 1.0f, 0.0f, 0.0f);
             highlightColor(modelId_attachedToCamera, 0.0f, 0.0f, 1.0f, 1.0f);
             isHighlighted(modelId_attachedToCamera, true);
@@ -148,7 +149,7 @@ namespace VisualizationExample
             // MODEL TO COLLIDE
             uint modelId_collision = addModel("data/models/shuttle/SpaceShuttleOrbiter.3ds");
             while (!isCreated(modelId_collision)) { }
-            //scale(modelId3, 0.0005f, 0.0005f, 0.0005f);
+            //scale(modelId_collision, 0.5, 0.5, 0.5);
             rotate(modelId_collision, -90.0f, 1.0f, 0.0f, 0.0f);
             highlightColor(modelId_collision, 0.0f, 1.0f, 1.0f, 1.0f);
             isHighlighted(modelId_collision, true);

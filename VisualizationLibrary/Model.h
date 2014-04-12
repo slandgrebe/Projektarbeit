@@ -148,7 +148,7 @@ namespace visual {
 
 			virtual glm::mat4 getModelViewMatrix(void) {
 				if (m_isAttachedToCamera) {
-					return getTransformedModelMatrix();
+					return graphics::GraphicEngine::getInstance()->getProjectionMatrix() * getTransformedModelMatrix();
 				}
 				// Model View Projection Matrix => verkehrte Reihenfolge
 				return graphics::GraphicEngine::getInstance()->getViewProjectionMatrix() * getTransformedModelMatrix();

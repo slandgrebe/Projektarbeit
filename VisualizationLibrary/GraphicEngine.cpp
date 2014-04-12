@@ -49,6 +49,9 @@ GraphicEngine::~GraphicEngine() {
 Camera* GraphicEngine::camera(void) {
 	return m_camera;
 }
+glm::mat4 GraphicEngine::getProjectionMatrix() {
+	return projectionMatrix;
+}
 glm::mat4 GraphicEngine::getViewProjectionMatrix() {
 	return viewProjectionMatrix;
 }
