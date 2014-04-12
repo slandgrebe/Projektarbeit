@@ -153,11 +153,14 @@ namespace VisualizationExample
             highlightColor(modelId_collision, 0.0f, 1.0f, 1.0f, 1.0f);
             isHighlighted(modelId_collision, true);
 
+            float rotation = 0f;
             // RUNNING
             while (isRunning()) {
                 System.Threading.Thread.Sleep(1); // senkt die CPU Auslastung drastisch
 
                 handleCollisions(modelId_attachedToCamera);
+
+                rotate(modelId_attachedToCamera, rotation++, 0f, 1f, 0f);
             }
         }
 
