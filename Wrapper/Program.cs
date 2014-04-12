@@ -161,6 +161,7 @@ namespace VisualizationExample
                 handleCollisions(modelId_attachedToCamera);
 
                 rotate(modelId_attachedToCamera, rotation++, 0f, 1f, 0f);
+                //tiltCamera(rotation / 5);
             }
         }
 
