@@ -132,7 +132,7 @@ inline std::string NowTime()
 	char result[100] = { 0 };
 	static DWORD first = GetTickCount();
 	//std::sprintf(result, "%s.%03ld", buffer, (long)(GetTickCount() - first) % 1000);
-	sprintf_s(result, "%s.%03ld", buffer, (long)(GetTickCount() - first) % 1000);
+	sprintf_s(result, "%s.%03ld", buffer, (long)(GetTickCount64() - first) % 1000);
 	return result;
 }
 
