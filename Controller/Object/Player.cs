@@ -24,18 +24,8 @@ namespace Controller
 
         public void Update()
         {
-            Head.Scale(Scale);
-            Torso.Scale(Scale);
-            UpperarmLeft.Scale(Scale);
-            UpperarmRight.Scale(Scale);
-            ForearmLeft.Scale(Scale);
-            ForearmRight.Scale(Scale);
-            ThighlegLeft.Scale(Scale);
-            ThighlegRight.Scale(Scale);
-            LowerlegLeft.Scale(Scale);
-            LowerlegRight.Scale(Scale);
-            
-            Body.Instance.ZModifikator(Body.Instance.Spine.Z * -1 - 2); //Kamera Position mit einrechnen
+            Body.Instance.ZModifikator(Body.Instance.Spine.Z + 3);
+            Body.Instance.YModifikator(Body.Instance.Spine.Y -1.4f);
             Body.Instance.Scale(Scale);
             Head.Position(Body.Instance.Head.X,Body.Instance.Head.Y,Body.Instance.Head.Z);
             Torso.Alignment(Body.Instance.HipCenter.X, Body.Instance.HipCenter.Y, Body.Instance.HipCenter.Z,
@@ -57,7 +47,27 @@ namespace Controller
             LowerlegRight.Alignment(Body.Instance.KneeRight.X, Body.Instance.KneeRight.Y, Body.Instance.KneeRight.Z,
                 Body.Instance.AnkleRight.X, Body.Instance.AnkleRight.Y, Body.Instance.AnkleRight.Z);
 
-            
+            Head.Scale(Scale/3.333f);
+            Torso.Scale(Scale);
+            UpperarmLeft.Scale(Scale/1.333f);
+            UpperarmRight.Scale(Scale/1.333f);
+            ForearmLeft.Scale(Scale/1.1f);
+            ForearmRight.Scale(Scale/1.1f);
+            ThighlegLeft.Scale(Scale);
+            ThighlegRight.Scale(Scale);
+            LowerlegLeft.Scale(Scale);
+            LowerlegRight.Scale(Scale);
+
+            View.Visualization.attachToCamera(Head.Id, true);
+            View.Visualization.attachToCamera(UpperarmLeft.Id, true);
+            View.Visualization.attachToCamera(UpperarmRight.Id, true);
+            View.Visualization.attachToCamera(ForearmLeft.Id, true);
+            View.Visualization.attachToCamera(ForearmRight.Id, true);
+            View.Visualization.attachToCamera(Torso.Id, true);
+            View.Visualization.attachToCamera(ThighlegLeft.Id, true);
+            View.Visualization.attachToCamera(ThighlegRight.Id, true);
+            View.Visualization.attachToCamera(LowerlegLeft.Id, true);
+            View.Visualization.attachToCamera(LowerlegRight.Id, true);
         }
     }
 }

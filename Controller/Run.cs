@@ -16,8 +16,7 @@ namespace Controller
         private int init = 0;
 
         private Model Wagon = new Model("Resource Files/Models/Wagon/Wagon.3ds");
-        private Model WagonCam = new Model("Resource Files/Models/Wagon/Wagon.3ds");
-        private Model Rail = new Model("Resource Files/Models/Rail/Rail.3ds");
+        private Model[] Rails = new Model[200];
 
         /// <summary>
         /// stellt sicher, dass diese Klasse nur einmal Instanziert wird.
@@ -40,14 +39,26 @@ namespace Controller
         /// </summary>
         public void Start()
         {
-            Visualization.positionCamera(0, 0, 0);
-            Wagon.Position(0, -1f, -3.5f);
-            Wagon.Scale(0.5f);
-            Visualization.attachToCamera(WagonCam.Id, true);
-            WagonCam.Position(0, 0.5f, -1f);
-            WagonCam.Scale(0.5f);
-            Rail.Position(0, -1.4f, -3f);
-            Rail.Scale(0.5f);
+            float distance = 0;
+            Visualization.positionCamera(0, 1.5f, 0);
+            for (int i = 0; i < 20; i++)
+            {
+                Rails[i] = new Model("Resource Files/Models/Rail/Rail.3ds");
+                Rails[i].Scale(20f);
+                distance = (23f/3.333f*i)*-1;
+                Rails[i].Position(0, 0, distance);
+            }
+
+            
+            Wagon.Position(0, -1.3f, -3.5f);
+            Wagon.Scale(1);
+            Visualization.attachToCamera(Wagon.Id, true);
+
+
+            Visualization.changeCameraSpeed(5f);
+
+            //WagonCam.Position(0, 0.5f, -1f);
+            //WagonCam.Scale(0.5f);
             Sensor = new SkeletonTracker();
             Sensor.Start();
             Sensor.SkeletonEvent += new SkeletonTrackerEvent(GetEvent);

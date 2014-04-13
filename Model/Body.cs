@@ -144,6 +144,57 @@ namespace Model
             }
         }
 
+        public void YModifikator(float mod)
+        {
+            if (mod <= 0)
+            {
+                AnkleLeft.Y += mod;
+                AnkleRight.Y += mod;
+                ElbowLeft.Y += mod;
+                ElbowRight.Y += mod;
+                FootLeft.Y += mod;
+                FootRight.Y += mod;
+                HandLeft.Y += mod;
+                HandRight.Y += mod;
+                Head.Y += mod;
+                HipCenter.Y += mod;
+                HipLeft.Y += mod;
+                HipRight.Y += mod;
+                KneeLeft.Y += mod;
+                KneeRight.Y += mod;
+                ShoulderCenter.Y += mod;
+                ShoulderLeft.Y += mod;
+                ShoulderRight.Y += mod;
+                Spine.Y += mod;
+                WristLeft.Y += mod;
+                WristRight.Y += mod;
+            }
+            else
+            {
+                AnkleLeft.Y -= mod;
+                AnkleRight.Y -= mod;
+                ElbowLeft.Y -= mod;
+                ElbowRight.Y -= mod;
+                FootLeft.Y -= mod;
+                FootRight.Y -= mod;
+                HandLeft.Y -= mod;
+                HandRight.Y -= mod;
+                Head.Y -= mod;
+                HipCenter.Y -= mod;
+                HipLeft.Y -= mod;
+                HipRight.Y -= mod;
+                KneeLeft.Y -= mod;
+                KneeRight.Y -= mod;
+                ShoulderCenter.Y -= mod;
+                ShoulderLeft.Y -= mod;
+                ShoulderRight.Y -= mod;
+                Spine.Y -= mod;
+                WristLeft.Y -= mod;
+                WristRight.Y -= mod;
+            }
+        }
+
+
         public void Scale(float scale)
         {
             AnkleLeft.X *= scale;
