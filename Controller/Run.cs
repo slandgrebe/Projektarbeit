@@ -44,7 +44,7 @@ namespace Controller
             Wagon.Position(0, -1f, -3.5f);
             Wagon.Scale(0.5f);
             Visualization.attachToCamera(WagonCam.Id, true);
-            WagonCam.Position(0, 0.5f, 1f);
+            WagonCam.Position(0, 0.5f, -1f);
             WagonCam.Scale(0.5f);
             Rail.Position(0, -1.4f, -3f);
             Rail.Scale(0.5f);

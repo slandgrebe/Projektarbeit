@@ -24,6 +24,17 @@ namespace Controller
 
         public void Update()
         {
+            Head.Scale(Scale);
+            Torso.Scale(Scale);
+            UpperarmLeft.Scale(Scale);
+            UpperarmRight.Scale(Scale);
+            ForearmLeft.Scale(Scale);
+            ForearmRight.Scale(Scale);
+            ThighlegLeft.Scale(Scale);
+            ThighlegRight.Scale(Scale);
+            LowerlegLeft.Scale(Scale);
+            LowerlegRight.Scale(Scale);
+            
             Body.Instance.ZModifikator(Body.Instance.Spine.Z * -1 - 2); //Kamera Position mit einrechnen
             Body.Instance.Scale(Scale);
             Head.Position(Body.Instance.Head.X,Body.Instance.Head.Y,Body.Instance.Head.Z);
@@ -46,16 +57,7 @@ namespace Controller
             LowerlegRight.Alignment(Body.Instance.KneeRight.X, Body.Instance.KneeRight.Y, Body.Instance.KneeRight.Z,
                 Body.Instance.AnkleRight.X, Body.Instance.AnkleRight.Y, Body.Instance.AnkleRight.Z);
 
-            Head.Scale(Scale);
-            Torso.Scale(Scale);
-            UpperarmLeft.Scale(Scale);
-            UpperarmRight.Scale(Scale);
-            ForearmLeft.Scale(Scale);
-            ForearmRight.Scale(Scale);
-            ThighlegLeft.Scale(Scale);
-            ThighlegRight.Scale(Scale);
-            LowerlegLeft.Scale(Scale);
-            LowerlegRight.Scale(Scale);
+            
         }
     }
 }
