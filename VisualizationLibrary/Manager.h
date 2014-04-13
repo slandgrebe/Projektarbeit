@@ -10,11 +10,13 @@
 #include <mutex>
 
 /** Der visual Namespace behinhaltet das ganze Projekt (ausgenommen des API)
+* @author Stefan Landgrebe
 */
 namespace visual {
 
 	/** Managet die ganze Bibliothek.
 	* Es handelt sich hierbei um einen Singleton.
+	* @author Stefan Landgrebe
 	*/
 	class Manager {
 	public:

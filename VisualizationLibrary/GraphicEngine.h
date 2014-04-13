@@ -11,12 +11,14 @@
 namespace visual {
 
 	/** Der Graphics Namespace beinhaltet alle Klassen, welche vor allem direkt mit OpenGL kommunizieren
+	* @author Stefan Landgrebe
 	*/
 	namespace graphics {
 
 		/** Verantwortlich für den OpenGL Kontext, das Fenster und den kontrollierten und kontinuierlichen Ablauf der Bibliothek.
 		Die Abarbeitung und somit das Fenster, laufen sich in einem separaten Thread.
 		Es handelt sich hierbei um einen Singleton.
+		* @author Stefan Landgrebe
 		*/
 		class GraphicEngine {
 		public:
