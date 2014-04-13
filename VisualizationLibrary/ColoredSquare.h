@@ -8,8 +8,8 @@ namespace visual {
 		class ColoredSquare : public Model {
 		private:
 			GLuint vertexArrayId; /** Referenz auf das VAO (Vertex Array Object) */
-			GLuint vertexBufferId; /** Referenz auf den Buffer für die Positionen */
-			//GLuint colorBufferId; /** Referenz auf den Buffer für die Farben */
+			GLuint vertexBufferId; /** Referenz auf den Buffer fÃ¼r die Positionen */
+			//GLuint colorBufferId; /** Referenz auf den Buffer fÃ¼r die Farben */
 
 			graphics::ShaderProgram* shaderProgram;
 

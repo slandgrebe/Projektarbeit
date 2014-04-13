@@ -91,7 +91,7 @@ $(document).ready(function(){initNavTree('_assimp_model_8cpp_source.html','');})
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Macros</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -240,175 +240,177 @@ $(document).ready(function(){initNavTree('_assimp_model_8cpp_source.html','');})
 <div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;                    glm::vec3(normal-&gt;x, normal-&gt;y, normal-&gt;z));</div>
 <div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;</div>
 <div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;        <span class="comment">// bounding Sphere</span></div>
-<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;        <span class="keywordflow">if</span> (std::abs(pos-&gt;x) &gt; <a class="code" href="classvisual_1_1model_1_1_model.html#a541fb35799a5dba89296d556e676ae3b">m_boundingSphereRadius</a>) <a class="code" href="classvisual_1_1model_1_1_model.html#a541fb35799a5dba89296d556e676ae3b">m_boundingSphereRadius</a> = std::abs(pos-&gt;x);</div>
-<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;        <span class="keywordflow">if</span> (std::abs(pos-&gt;y) &gt; <a class="code" href="classvisual_1_1model_1_1_model.html#a541fb35799a5dba89296d556e676ae3b">m_boundingSphereRadius</a>) <a class="code" href="classvisual_1_1model_1_1_model.html#a541fb35799a5dba89296d556e676ae3b">m_boundingSphereRadius</a> = std::abs(pos-&gt;y);</div>
-<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;        <span class="keywordflow">if</span> (std::abs(pos-&gt;z) &gt; <a class="code" href="classvisual_1_1model_1_1_model.html#a541fb35799a5dba89296d556e676ae3b">m_boundingSphereRadius</a>) <a class="code" href="classvisual_1_1model_1_1_model.html#a541fb35799a5dba89296d556e676ae3b">m_boundingSphereRadius</a> = std::abs(pos-&gt;z);</div>
-<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;</div>
-<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;        vertices.push_back(v);</div>
-<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;    }</div>
-<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;</div>
-<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;    <span class="comment">// Faces</span></div>
-<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> i = 0; i &lt; mesh-&gt;mNumFaces; i++) {</div>
-<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;        <span class="keyword">const</span> aiFace&amp; face = mesh-&gt;mFaces[i];</div>
-<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;        assert(face.mNumIndices == 3);</div>
-<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;        indices.push_back(face.mIndices[0]);</div>
-<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;        indices.push_back(face.mIndices[1]);</div>
-<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;        indices.push_back(face.mIndices[2]);</div>
-<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;    }</div>
-<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;</div>
-<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;    meshList[meshIndex].init(vertices, indices);</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;        <span class="keywordtype">float</span> radius = sqrt(pos-&gt;x * pos-&gt;x + pos-&gt;y * pos-&gt;y + pos-&gt;z * pos-&gt;z); <span class="comment">// pythagoras</span></div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;        <span class="keywordflow">if</span> (radius &gt; <a class="code" href="classvisual_1_1model_1_1_model.html#a541fb35799a5dba89296d556e676ae3b">m_boundingSphereRadius</a>) <a class="code" href="classvisual_1_1model_1_1_model.html#a541fb35799a5dba89296d556e676ae3b">m_boundingSphereRadius</a> = radius;</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;        <span class="comment">//if (std::abs(pos-&gt;x) &gt; m_boundingSphereRadius) m_boundingSphereRadius = std::abs(pos-&gt;x);</span></div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;        <span class="comment">//if (std::abs(pos-&gt;y) &gt; m_boundingSphereRadius) m_boundingSphereRadius = std::abs(pos-&gt;y);</span></div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;        <span class="comment">//if (std::abs(pos-&gt;z) &gt; m_boundingSphereRadius) m_boundingSphereRadius = std::abs(pos-&gt;z);</span></div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;        vertices.push_back(v);</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;    }</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;    <span class="comment">// Faces</span></div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> i = 0; i &lt; mesh-&gt;mNumFaces; i++) {</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;        <span class="keyword">const</span> aiFace&amp; face = mesh-&gt;mFaces[i];</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;        assert(face.mNumIndices == 3);</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;        indices.push_back(face.mIndices[0]);</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;        indices.push_back(face.mIndices[1]);</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;        indices.push_back(face.mIndices[2]);</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;    }</div>
 <div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;</div>
-<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;}</div>
-<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;</div>
-<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;<span class="keywordtype">bool</span> AssimpModel::initMaterials(<span class="keyword">const</span> aiScene* scene, <span class="keyword">const</span> std::string&amp; filename) {</div>
-<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;    <span class="comment">// Extract the directory part from the file name</span></div>
-<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;    std::string::size_type slashIndex = filename.find_last_of(<span class="stringliteral">&quot;/&quot;</span>);</div>
-<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;    std::string dir;</div>
-<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;</div>
-<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;    <span class="keywordflow">if</span> (slashIndex == std::string::npos) {</div>
-<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;        dir = <span class="stringliteral">&quot;.&quot;</span>;</div>
-<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;    }</div>
-<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (slashIndex == 0) {</div>
-<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;        dir = <span class="stringliteral">&quot;/&quot;</span>;</div>
-<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;    }</div>
-<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;    <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;        dir = filename.substr(0, slashIndex);</div>
-<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;    }</div>
-<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;</div>
-<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;    <span class="keywordtype">bool</span> returnValue = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;    meshList[meshIndex].init(vertices, indices);</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;}</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;<span class="keywordtype">bool</span> AssimpModel::initMaterials(<span class="keyword">const</span> aiScene* scene, <span class="keyword">const</span> std::string&amp; filename) {</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;    <span class="comment">// Extract the directory part from the file name</span></div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;    std::string::size_type slashIndex = filename.find_last_of(<span class="stringliteral">&quot;/&quot;</span>);</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;    std::string dir;</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;    <span class="keywordflow">if</span> (slashIndex == std::string::npos) {</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;        dir = <span class="stringliteral">&quot;.&quot;</span>;</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;    }</div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (slashIndex == 0) {</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;        dir = <span class="stringliteral">&quot;/&quot;</span>;</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;    }</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;    <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;        dir = filename.substr(0, slashIndex);</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;    }</div>
 <div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;</div>
-<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;    <a class="code" href="class_log.html">Log</a>().<a class="code" href="class_log.html#aef7936d0fd59e391abd42f967be091f8">debug</a>() &lt;&lt; <span class="stringliteral">&quot; Anzahl der Texturen: &quot;</span> &lt;&lt; scene-&gt;mNumMaterials ;</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;    <span class="keywordtype">bool</span> returnValue = <span class="keyword">true</span>;</div>
 <div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;</div>
-<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> i = 0; i &lt; scene-&gt;mNumMaterials; i++) {</div>
-<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;        <span class="keyword">const</span> aiMaterial* material = scene-&gt;mMaterials[i];</div>
-<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;</div>
-<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;        textureList[i] = NULL;</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;    <a class="code" href="class_log.html">Log</a>().<a class="code" href="class_log.html#aef7936d0fd59e391abd42f967be091f8">debug</a>() &lt;&lt; <span class="stringliteral">&quot; Anzahl der Texturen: &quot;</span> &lt;&lt; scene-&gt;mNumMaterials ;</div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> i = 0; i &lt; scene-&gt;mNumMaterials; i++) {</div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;        <span class="keyword">const</span> aiMaterial* material = scene-&gt;mMaterials[i];</div>
 <div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;</div>
-<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;        <span class="keywordflow">if</span> (material-&gt;GetTextureCount(aiTextureType_DIFFUSE) &gt; 0) {</div>
-<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;            aiString path;</div>
-<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;</div>
-<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;            <span class="keywordflow">if</span> (material-&gt;GetTexture(aiTextureType_DIFFUSE, 0, &amp;path, NULL, NULL, NULL, NULL, NULL) == AI_SUCCESS) {</div>
-<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;                std::string fullPath = dir + <span class="stringliteral">&quot;/&quot;</span> + path.data;</div>
-<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;                textureList[i] = <span class="keyword">new</span> <a class="code" href="classvisual_1_1model_1_1_texture_soil.html">TextureSoil</a>();</div>
-<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;</div>
-<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;                <a class="code" href="class_log.html">Log</a>().<a class="code" href="class_log.html#aef7936d0fd59e391abd42f967be091f8">debug</a>() &lt;&lt; <span class="stringliteral">&quot;  Textur #&quot;</span> &lt;&lt; i &lt;&lt; <span class="stringliteral">&quot;; Pfad: &quot;</span> &lt;&lt; fullPath ;</div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;        textureList[i] = NULL;</div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;</div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;        <span class="keywordflow">if</span> (material-&gt;GetTextureCount(aiTextureType_DIFFUSE) &gt; 0) {</div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;            aiString path;</div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;</div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;            <span class="keywordflow">if</span> (material-&gt;GetTexture(aiTextureType_DIFFUSE, 0, &amp;path, NULL, NULL, NULL, NULL, NULL) == AI_SUCCESS) {</div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;                std::string fullPath = dir + <span class="stringliteral">&quot;/&quot;</span> + path.data;</div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;                textureList[i] = <span class="keyword">new</span> <a class="code" href="classvisual_1_1model_1_1_texture_soil.html">TextureSoil</a>();</div>
 <div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;</div>
-<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;                <span class="keywordflow">if</span> (!textureList[i]-&gt;loadFromFile(fullPath.c_str())) {</div>
-<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;                    <a class="code" href="class_log.html">Log</a>().<a class="code" href="class_log.html#a195a4d3479eb8b9b602e08a1cdaba78c">error</a>() &lt;&lt; <span class="stringliteral">&quot;Error loading texture &#39;&quot;</span> &lt;&lt; fullPath.c_str() &lt;&lt; <span class="stringliteral">&quot;&#39;&quot;</span>;</div>
-<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;                    <span class="keyword">delete</span> textureList[i];</div>
-<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;                    textureList[i] = NULL;</div>
-<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;                    returnValue = <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;                }</div>
-<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;                <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;                    <a class="code" href="class_log.html">Log</a>().<a class="code" href="class_log.html#aef7936d0fd59e391abd42f967be091f8">debug</a>() &lt;&lt; <span class="stringliteral">&quot;Loaded texture &#39;&quot;</span> &lt;&lt; fullPath.c_str() &lt;&lt; <span class="stringliteral">&quot;&#39;&quot;</span>;</div>
-<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;                }</div>
-<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;            }</div>
-<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;        }</div>
-<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;</div>
-<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;        <span class="comment">// Load a white texture in case the model does not include its own texture</span></div>
-<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;        <span class="keywordflow">if</span> (!textureList[i]) {</div>
-<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;            textureList[i] = <span class="keyword">new</span> <a class="code" href="classvisual_1_1model_1_1_texture_soil.html">TextureSoil</a>();</div>
-<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;            returnValue = textureList[i]-&gt;loadFromFile(<span class="stringliteral">&quot;data/textures/red.jpg&quot;</span>);</div>
-<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;</div>
-<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;            <a class="code" href="class_log.html">Log</a>().<a class="code" href="class_log.html#ad95b181bb1a7f5b4be3c62f4de9862d7">warning</a>() &lt;&lt; <span class="stringliteral">&quot;  Benutze Fallback Textur&quot;</span> ;</div>
-<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;        }</div>
-<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;    }</div>
-<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;</div>
-<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;    <span class="keywordflow">return</span> returnValue;</div>
-<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;}</div>
-<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;</div>
-<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;<span class="keywordtype">void</span> AssimpModel::clear() {</div>
-<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> i = 0; i &lt; textureList.size(); i++) {</div>
-<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;        <span class="keywordflow">if</span> (textureList[i]) { </div>
-<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;            <span class="keyword">delete</span> textureList[i];</div>
-<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;            textureList[i] = NULL;</div>
-<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;        }</div>
-<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;    }</div>
-<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;}</div>
-<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;</div>
-<div class="line"><a name="l00223"></a><span class="lineno"><a class="line" href="classvisual_1_1model_1_1_assimp_model.html#a20e9bce930948ff94fbd426cab0862b9">  223</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classvisual_1_1model_1_1_assimp_model.html#a20e9bce930948ff94fbd426cab0862b9">AssimpModel::draw</a>() {</div>
-<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;    <span class="comment">//Log().debug() &lt;&lt; &quot;draw AssimpModel&quot; ;</span></div>
-<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;    <span class="comment">//Log().debug() &lt;&lt; &quot; Anzahl Meshes: &quot; &lt;&lt; meshList.size() ;</span></div>
-<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;    </div>
-<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;    glBindVertexArray(vertexArrayId);</div>
-<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;</div>
-<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;    <span class="comment">// get Shader Program Reference</span></div>
-<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;    <span class="comment">//GLuint shaderProgramId = graphics::GraphicEngine::getInstance()-&gt;getShaderProgramId();</span></div>
-<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;</div>
-<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;    <a class="code" href="classvisual_1_1model_1_1_model.html#ac12119d9906a688f3506c5970c168bf4">shaderProgram</a>-&gt;<a class="code" href="classvisual_1_1graphics_1_1_shader_program.html#ad7fdc266c094be41afeb37fc265a4f17">use</a>();</div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;                <a class="code" href="class_log.html">Log</a>().<a class="code" href="class_log.html#aef7936d0fd59e391abd42f967be091f8">debug</a>() &lt;&lt; <span class="stringliteral">&quot;  Textur #&quot;</span> &lt;&lt; i &lt;&lt; <span class="stringliteral">&quot;; Pfad: &quot;</span> &lt;&lt; fullPath ;</div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;</div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;                <span class="keywordflow">if</span> (!textureList[i]-&gt;loadFromFile(fullPath.c_str())) {</div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;                    <a class="code" href="class_log.html">Log</a>().<a class="code" href="class_log.html#a195a4d3479eb8b9b602e08a1cdaba78c">error</a>() &lt;&lt; <span class="stringliteral">&quot;Error loading texture &#39;&quot;</span> &lt;&lt; fullPath.c_str() &lt;&lt; <span class="stringliteral">&quot;&#39;&quot;</span>;</div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;                    <span class="keyword">delete</span> textureList[i];</div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;                    textureList[i] = NULL;</div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;                    returnValue = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;                }</div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;                <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;                    <a class="code" href="class_log.html">Log</a>().<a class="code" href="class_log.html#aef7936d0fd59e391abd42f967be091f8">debug</a>() &lt;&lt; <span class="stringliteral">&quot;Loaded texture &#39;&quot;</span> &lt;&lt; fullPath.c_str() &lt;&lt; <span class="stringliteral">&quot;&#39;&quot;</span>;</div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;                }</div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;            }</div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;        }</div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;</div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;        <span class="comment">// Load a white texture in case the model does not include its own texture</span></div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;        <span class="keywordflow">if</span> (!textureList[i]) {</div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;            textureList[i] = <span class="keyword">new</span> <a class="code" href="classvisual_1_1model_1_1_texture_soil.html">TextureSoil</a>();</div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;            returnValue = textureList[i]-&gt;loadFromFile(<span class="stringliteral">&quot;data/textures/red.jpg&quot;</span>);</div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;</div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;            <a class="code" href="class_log.html">Log</a>().<a class="code" href="class_log.html#ad95b181bb1a7f5b4be3c62f4de9862d7">warning</a>() &lt;&lt; <span class="stringliteral">&quot;  Benutze Fallback Textur&quot;</span> ;</div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;        }</div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;    }</div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;</div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;    <span class="keywordflow">return</span> returnValue;</div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;}</div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;</div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;<span class="keywordtype">void</span> AssimpModel::clear() {</div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> i = 0; i &lt; textureList.size(); i++) {</div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;        <span class="keywordflow">if</span> (textureList[i]) { </div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;            <span class="keyword">delete</span> textureList[i];</div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;            textureList[i] = NULL;</div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;        }</div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;    }</div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;}</div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;</div>
+<div class="line"><a name="l00225"></a><span class="lineno"><a class="line" href="classvisual_1_1model_1_1_assimp_model.html#a20e9bce930948ff94fbd426cab0862b9">  225</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classvisual_1_1model_1_1_assimp_model.html#a20e9bce930948ff94fbd426cab0862b9">AssimpModel::draw</a>() {</div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;    <span class="comment">//Log().debug() &lt;&lt; &quot;draw AssimpModel&quot; ;</span></div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;    <span class="comment">//Log().debug() &lt;&lt; &quot; Anzahl Meshes: &quot; &lt;&lt; meshList.size() ;</span></div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;    </div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;    glBindVertexArray(vertexArrayId);</div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;</div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;    <span class="comment">// get Shader Program Reference</span></div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;    <span class="comment">//GLuint shaderProgramId = graphics::GraphicEngine::getInstance()-&gt;getShaderProgramId();</span></div>
 <div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;</div>
-<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;    <span class="comment">// positions</span></div>
-<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;    GLint posAttrib = <a class="code" href="classvisual_1_1model_1_1_model.html#ac12119d9906a688f3506c5970c168bf4">shaderProgram</a>-&gt;<a class="code" href="classvisual_1_1graphics_1_1_shader_program.html#a3d7826fa79290b01c3857954dbc2a941">getAttribute</a>(<span class="stringliteral">&quot;position&quot;</span>);</div>
-<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;    glEnableVertexAttribArray(posAttrib);</div>
-<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;</div>
-<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;    <span class="comment">// texture</span></div>
-<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;    GLint texAttrib = <a class="code" href="classvisual_1_1model_1_1_model.html#ac12119d9906a688f3506c5970c168bf4">shaderProgram</a>-&gt;<a class="code" href="classvisual_1_1graphics_1_1_shader_program.html#a3d7826fa79290b01c3857954dbc2a941">getAttribute</a>(<span class="stringliteral">&quot;texcoord&quot;</span>);</div>
-<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;    glEnableVertexAttribArray(texAttrib);</div>
-<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;</div>
-<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> i = 0; i &lt; meshList.size(); i++) {</div>
-<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;        glBindBuffer(GL_ARRAY_BUFFER, meshList[i].vertexBufferId);</div>
-<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;        </div>
-<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;        <span class="comment">// Position</span></div>
-<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;        glVertexAttribPointer(</div>
-<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;            posAttrib,          <span class="comment">// layout Attribut im Vertex Shader</span></div>
-<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;            3,                  <span class="comment">// Grösse</span></div>
-<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;            GL_FLOAT,           <span class="comment">// Datentyp</span></div>
-<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;            GL_FALSE,           <span class="comment">// normalisiert?</span></div>
-<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;            <span class="keyword">sizeof</span>(Vertex),     <span class="comment">// Stride</span></div>
-<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;            (<span class="keywordtype">void</span>*)0            <span class="comment">// Offset</span></div>
-<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;        );</div>
-<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;        </div>
-<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;        <span class="comment">// Texture</span></div>
-<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;        glVertexAttribPointer(</div>
-<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;            texAttrib,          <span class="comment">// layout Attribut im Vertex Shader</span></div>
-<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;            2,                  <span class="comment">// Grösse</span></div>
-<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;            GL_FLOAT,           <span class="comment">// Datentyp</span></div>
-<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;            GL_FALSE,           <span class="comment">// normalisiert?</span></div>
-<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;            <span class="keyword">sizeof</span>(Vertex),     <span class="comment">// Stride</span></div>
-<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;            (<span class="keyword">const</span> GLvoid*)12   <span class="comment">// Offset</span></div>
-<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;        );</div>
-<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;</div>
-<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;        <span class="comment">/*glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), 0);</span></div>
-<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;<span class="comment">        glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, sizeof(Vertex), (const GLvoid*)12);</span></div>
-<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;<span class="comment">        glVertexAttribPointer(2, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (const GLvoid*)20);*/</span></div>
-<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;</div>
-<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;        glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, meshList[i].indexBufferId);</div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;    <a class="code" href="classvisual_1_1model_1_1_model.html#ac12119d9906a688f3506c5970c168bf4">shaderProgram</a>-&gt;<a class="code" href="classvisual_1_1graphics_1_1_shader_program.html#ad7fdc266c094be41afeb37fc265a4f17">use</a>();</div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;</div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;    <span class="comment">// positions</span></div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;    GLint posAttrib = <a class="code" href="classvisual_1_1model_1_1_model.html#ac12119d9906a688f3506c5970c168bf4">shaderProgram</a>-&gt;<a class="code" href="classvisual_1_1graphics_1_1_shader_program.html#a3d7826fa79290b01c3857954dbc2a941">getAttribute</a>(<span class="stringliteral">&quot;position&quot;</span>);</div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;    glEnableVertexAttribArray(posAttrib);</div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;</div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;    <span class="comment">// texture</span></div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;    GLint texAttrib = <a class="code" href="classvisual_1_1model_1_1_model.html#ac12119d9906a688f3506c5970c168bf4">shaderProgram</a>-&gt;<a class="code" href="classvisual_1_1graphics_1_1_shader_program.html#a3d7826fa79290b01c3857954dbc2a941">getAttribute</a>(<span class="stringliteral">&quot;texcoord&quot;</span>);</div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;    glEnableVertexAttribArray(texAttrib);</div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;</div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> i = 0; i &lt; meshList.size(); i++) {</div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;        glBindBuffer(GL_ARRAY_BUFFER, meshList[i].vertexBufferId);</div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;        </div>
+<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;        <span class="comment">// Position</span></div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;        glVertexAttribPointer(</div>
+<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;            posAttrib,          <span class="comment">// layout Attribut im Vertex Shader</span></div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;            3,                  <span class="comment">// Grösse</span></div>
+<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;            GL_FLOAT,           <span class="comment">// Datentyp</span></div>
+<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;            GL_FALSE,           <span class="comment">// normalisiert?</span></div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;            <span class="keyword">sizeof</span>(Vertex),     <span class="comment">// Stride</span></div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;            (<span class="keywordtype">void</span>*)0            <span class="comment">// Offset</span></div>
+<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;        );</div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;        </div>
+<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;        <span class="comment">// Texture</span></div>
+<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;        glVertexAttribPointer(</div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;            texAttrib,          <span class="comment">// layout Attribut im Vertex Shader</span></div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;            2,                  <span class="comment">// Grösse</span></div>
+<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;            GL_FLOAT,           <span class="comment">// Datentyp</span></div>
+<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;            GL_FALSE,           <span class="comment">// normalisiert?</span></div>
+<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;            <span class="keyword">sizeof</span>(Vertex),     <span class="comment">// Stride</span></div>
+<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;            (<span class="keyword">const</span> GLvoid*)12   <span class="comment">// Offset</span></div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;        );</div>
+<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;</div>
+<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;        <span class="comment">/*glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), 0);</span></div>
+<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;<span class="comment">        glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, sizeof(Vertex), (const GLvoid*)12);</span></div>
+<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;<span class="comment">        glVertexAttribPointer(2, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (const GLvoid*)20);*/</span></div>
 <div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;</div>
-<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;        <span class="keyword">const</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> MaterialIndex = meshList[i].materialIndex;</div>
+<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;        glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, meshList[i].indexBufferId);</div>
 <div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;</div>
-<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;        <span class="keywordflow">if</span> (MaterialIndex &lt; textureList.size() &amp;&amp; textureList[MaterialIndex]) {</div>
-<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;            textureList[MaterialIndex]-&gt;bind(GL_TEXTURE0);</div>
-<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;        }</div>
-<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;</div>
-<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;        <span class="comment">// highlight color</span></div>
-<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;        GLint highlightAttribute = <a class="code" href="classvisual_1_1model_1_1_model.html#ac12119d9906a688f3506c5970c168bf4">shaderProgram</a>-&gt;<a class="code" href="classvisual_1_1graphics_1_1_shader_program.html#a25b1620289e542355c01c0903b9488ad">getUniform</a>(<span class="stringliteral">&quot;highlightColor&quot;</span>);</div>
-<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;        GLfloat r = 1.0f, g = 1.0f, b = 1.0f, a = 1.0f; <span class="comment">// standard: weiss</span></div>
-<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;</div>
-<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="classvisual_1_1model_1_1_model.html#afc9f68f6e4bf97e7e1125deffc686c22">m_isHighlighted</a>) {</div>
-<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;            r = <a class="code" href="classvisual_1_1model_1_1_model.html#a353ab65e6e0d6baa69e7963cc0e581ab">highlightColor</a>.r;</div>
-<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;            g = <a class="code" href="classvisual_1_1model_1_1_model.html#a353ab65e6e0d6baa69e7963cc0e581ab">highlightColor</a>.g;</div>
-<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;            b = <a class="code" href="classvisual_1_1model_1_1_model.html#a353ab65e6e0d6baa69e7963cc0e581ab">highlightColor</a>.b;</div>
-<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;            a = <a class="code" href="classvisual_1_1model_1_1_model.html#a353ab65e6e0d6baa69e7963cc0e581ab">highlightColor</a>.a;</div>
-<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;        }</div>
-<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;        glUniform4f(highlightAttribute, r, g, b, a);</div>
-<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;</div>
-<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;        <span class="comment">// transformations</span></div>
-<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;        GLint uniMvp = <a class="code" href="classvisual_1_1model_1_1_model.html#ac12119d9906a688f3506c5970c168bf4">shaderProgram</a>-&gt;<a class="code" href="classvisual_1_1graphics_1_1_shader_program.html#a25b1620289e542355c01c0903b9488ad">getUniform</a>(<span class="stringliteral">&quot;mvp&quot;</span>);</div>
-<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;        glm::mat4 mvp = <a class="code" href="classvisual_1_1model_1_1_model.html#a35a7ec0210e00cb95e2d7ac98e6bc318">getModelViewMatrix</a>();</div>
-<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;        glUniformMatrix4fv(uniMvp, 1, GL_FALSE, glm::value_ptr(mvp));</div>
-<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;</div>
-<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;        glDrawElements(GL_TRIANGLES, meshList[i].numIndices, GL_UNSIGNED_INT, 0);</div>
-<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;    }</div>
-<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;</div>
-<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;    <span class="comment">// Vertex Shader Attribute Array deaktivieren</span></div>
-<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;    glDisableVertexAttribArray(posAttrib);</div>
-<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;    <span class="comment">//glDisableVertexAttribArray(colAttrib);</span></div>
-<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;    glDisableVertexAttribArray(texAttrib);</div>
-<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;</div>
-<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;    <span class="comment">// Make sure the VAO is not changed from the outside </span></div>
-<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;    glBindVertexArray(0);</div>
-<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;}</div>
+<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;        <span class="keyword">const</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> MaterialIndex = meshList[i].materialIndex;</div>
+<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;</div>
+<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;        <span class="keywordflow">if</span> (MaterialIndex &lt; textureList.size() &amp;&amp; textureList[MaterialIndex]) {</div>
+<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;            textureList[MaterialIndex]-&gt;bind(GL_TEXTURE0);</div>
+<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;        }</div>
+<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;</div>
+<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;        <span class="comment">// highlight color</span></div>
+<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;        GLint highlightAttribute = <a class="code" href="classvisual_1_1model_1_1_model.html#ac12119d9906a688f3506c5970c168bf4">shaderProgram</a>-&gt;<a class="code" href="classvisual_1_1graphics_1_1_shader_program.html#a25b1620289e542355c01c0903b9488ad">getUniform</a>(<span class="stringliteral">&quot;highlightColor&quot;</span>);</div>
+<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;        GLfloat r = 1.0f, g = 1.0f, b = 1.0f, a = 1.0f; <span class="comment">// standard: weiss</span></div>
+<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;</div>
+<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="classvisual_1_1model_1_1_model.html#afc9f68f6e4bf97e7e1125deffc686c22">m_isHighlighted</a>) {</div>
+<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;            r = <a class="code" href="classvisual_1_1model_1_1_model.html#a353ab65e6e0d6baa69e7963cc0e581ab">highlightColor</a>.r;</div>
+<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;            g = <a class="code" href="classvisual_1_1model_1_1_model.html#a353ab65e6e0d6baa69e7963cc0e581ab">highlightColor</a>.g;</div>
+<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;            b = <a class="code" href="classvisual_1_1model_1_1_model.html#a353ab65e6e0d6baa69e7963cc0e581ab">highlightColor</a>.b;</div>
+<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;            a = <a class="code" href="classvisual_1_1model_1_1_model.html#a353ab65e6e0d6baa69e7963cc0e581ab">highlightColor</a>.a;</div>
+<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;        }</div>
+<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;        glUniform4f(highlightAttribute, r, g, b, a);</div>
+<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;</div>
+<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;        <span class="comment">// transformations</span></div>
+<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;        GLint uniMvp = <a class="code" href="classvisual_1_1model_1_1_model.html#ac12119d9906a688f3506c5970c168bf4">shaderProgram</a>-&gt;<a class="code" href="classvisual_1_1graphics_1_1_shader_program.html#a25b1620289e542355c01c0903b9488ad">getUniform</a>(<span class="stringliteral">&quot;mvp&quot;</span>);</div>
+<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;        glm::mat4 mvp = <a class="code" href="classvisual_1_1model_1_1_model.html#a35a7ec0210e00cb95e2d7ac98e6bc318">getModelViewMatrix</a>();</div>
+<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;        glUniformMatrix4fv(uniMvp, 1, GL_FALSE, glm::value_ptr(mvp));</div>
+<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;</div>
+<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;        glDrawElements(GL_TRIANGLES, meshList[i].numIndices, GL_UNSIGNED_INT, 0);</div>
+<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;    }</div>
+<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;</div>
+<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;    <span class="comment">// Vertex Shader Attribute Array deaktivieren</span></div>
+<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;    glDisableVertexAttribArray(posAttrib);</div>
+<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;    <span class="comment">//glDisableVertexAttribArray(colAttrib);</span></div>
+<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;    glDisableVertexAttribArray(texAttrib);</div>
+<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;</div>
+<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;    <span class="comment">// Make sure the VAO is not changed from the outside </span></div>
+<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;    glBindVertexArray(0);</div>
+<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;}</div>
 <div class="ttc" id="classvisual_1_1model_1_1_assimp_model_html_a2e331ac1e5b947f8059041708f81977b"><div class="ttname"><a href="classvisual_1_1model_1_1_assimp_model.html#a2e331ac1e5b947f8059041708f81977b">visual::model::AssimpModel::~AssimpModel</a></div><div class="ttdeci">~AssimpModel()</div><div class="ttdef"><b>Definition:</b> <a href="_assimp_model_8cpp_source.html#l00052">AssimpModel.cpp:52</a></div></div>
 <div class="ttc" id="class_log_html_a195a4d3479eb8b9b602e08a1cdaba78c"><div class="ttname"><a href="class_log.html#a195a4d3479eb8b9b602e08a1cdaba78c">Log::error</a></div><div class="ttdeci">std::ostringstream &amp; error()</div><div class="ttdef"><b>Definition:</b> <a href="_log_8h_source.html#l00057">Log.h:57</a></div></div>
 <div class="ttc" id="_assimp_model_8h_html"><div class="ttname"><a href="_assimp_model_8h.html">AssimpModel.h</a></div></div>
@@ -432,7 +434,7 @@ $(document).ready(function(){initNavTree('_assimp_model_8cpp_source.html','');})
 <div class="ttc" id="classvisual_1_1graphics_1_1_shader_program_html"><div class="ttname"><a href="classvisual_1_1graphics_1_1_shader_program.html">visual::graphics::ShaderProgram</a></div><div class="ttdef"><b>Definition:</b> <a href="_shader_program_8h_source.html#l00008">ShaderProgram.h:8</a></div></div>
 <div class="ttc" id="class_log_html"><div class="ttname"><a href="class_log.html">Log</a></div><div class="ttdef"><b>Definition:</b> <a href="_log_8h_source.html#l00014">Log.h:14</a></div></div>
 <div class="ttc" id="classvisual_1_1model_1_1_model_html_afc9f68f6e4bf97e7e1125deffc686c22"><div class="ttname"><a href="classvisual_1_1model_1_1_model.html#afc9f68f6e4bf97e7e1125deffc686c22">visual::model::Model::m_isHighlighted</a></div><div class="ttdeci">bool m_isHighlighted</div><div class="ttdef"><b>Definition:</b> <a href="_model_8h_source.html#l00043">Model.h:43</a></div></div>
-<div class="ttc" id="classvisual_1_1model_1_1_assimp_model_html_a20e9bce930948ff94fbd426cab0862b9"><div class="ttname"><a href="classvisual_1_1model_1_1_assimp_model.html#a20e9bce930948ff94fbd426cab0862b9">visual::model::AssimpModel::draw</a></div><div class="ttdeci">void draw(void)</div><div class="ttdef"><b>Definition:</b> <a href="_assimp_model_8cpp_source.html#l00223">AssimpModel.cpp:223</a></div></div>
+<div class="ttc" id="classvisual_1_1model_1_1_assimp_model_html_a20e9bce930948ff94fbd426cab0862b9"><div class="ttname"><a href="classvisual_1_1model_1_1_assimp_model.html#a20e9bce930948ff94fbd426cab0862b9">visual::model::AssimpModel::draw</a></div><div class="ttdeci">void draw(void)</div><div class="ttdef"><b>Definition:</b> <a href="_assimp_model_8cpp_source.html#l00225">AssimpModel.cpp:225</a></div></div>
 <div class="ttc" id="classvisual_1_1model_1_1_model_html_a353ab65e6e0d6baa69e7963cc0e581ab"><div class="ttname"><a href="classvisual_1_1model_1_1_model.html#a353ab65e6e0d6baa69e7963cc0e581ab">visual::model::Model::highlightColor</a></div><div class="ttdeci">glm::vec4 highlightColor</div><div class="ttdef"><b>Definition:</b> <a href="_model_8h_source.html#l00042">Model.h:42</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
@@ -440,7 +442,7 @@ $(document).ready(function(){initNavTree('_assimp_model_8cpp_source.html','');})
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_d092fe6f644d08052abf42c12a28702c.html">VisualizationLibrary</a></li><li class="navelem"><a class="el" href="_assimp_model_8cpp.html">AssimpModel.cpp</a></li>
-    <li class="footer">Generated on Sun Apr 13 2014 14:33:55 for Projektarbeit - VisualizationLibrary by
+    <li class="footer">Generated on Sun Apr 13 2014 17:24:07 for Projektarbeit - VisualizationLibrary by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

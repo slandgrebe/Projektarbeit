@@ -93,7 +93,7 @@ $(document).ready(function(){initNavTree('classvisual_1_1_manager.html','');});
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Macros</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -183,8 +183,9 @@ Static Public Member Functions</h2></td></tr>
 <tr class="separator:af8199921090229c4215cdcfefa57a046"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p>Definition at line <a class="el" href="_manager_8h_source.html#l00013">13</a> of file <a class="el" href="_manager_8h_source.html">Manager.h</a>.</p>
+<div class="textblock"><p>Managet die ganze Bibliothek. Es handelt sich hierbei um einen Singleton. </p>
+
+<p>Definition at line <a class="el" href="_manager_8h_source.html#l00016">16</a> of file <a class="el" href="_manager_8h_source.html">Manager.h</a>.</p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
 <a class="anchor" id="a2f176f2366f0cd3782a53b4124d45b4e"></a>
 <div class="memitem">
@@ -199,8 +200,17 @@ Static Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Fügt ein Button Objekt hinzu. </p>
+<dl class="section author"><dt>Author</dt><dd>Stefan Landgrebe </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">filename</td><td>Dateipfad zur Schriftart. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Liefert die modelId zurück. </dd></dl>
 
-<p>Definition at line <a class="el" href="_manager_8cpp_source.html#l00368">368</a> of file <a class="el" href="_manager_8cpp_source.html">Manager.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_manager_8cpp_source.html#l00389">389</a> of file <a class="el" href="_manager_8cpp_source.html">Manager.cpp</a>.</p>
 
 </div>
 </div>
@@ -217,8 +227,17 @@ Static Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Fügt ein 3D Modell hinzu </p>
+<dl class="section author"><dt>Author</dt><dd>Stefan Landgrebe </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">filename</td><td>Dateipfad des 3D Modells </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>ID des Modells. Diese wird für die weitere Arbeit mit diesem Modell benötigt. </dd></dl>
 
-<p>Definition at line <a class="el" href="_manager_8cpp_source.html#l00044">44</a> of file <a class="el" href="_manager_8cpp_source.html">Manager.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_manager_8cpp_source.html#l00047">47</a> of file <a class="el" href="_manager_8cpp_source.html">Manager.cpp</a>.</p>
 
 </div>
 </div>
@@ -235,8 +254,17 @@ Static Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Fügt eine Fläche welche von einem Bild ausgefüllt wird hinzu. </p>
+<dl class="section author"><dt>Author</dt><dd>Stefan Landgrebe </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">textureFilename</td><td>Dateipfad des Bildes </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>ID des Modells </dd></dl>
 
-<p>Definition at line <a class="el" href="_manager_8cpp_source.html#l00059">59</a> of file <a class="el" href="_manager_8cpp_source.html">Manager.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_manager_8cpp_source.html#l00063">63</a> of file <a class="el" href="_manager_8cpp_source.html">Manager.cpp</a>.</p>
 
 </div>
 </div>
@@ -253,8 +281,22 @@ Static Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Fügt ein Textelement hinzu. Hierbei handelt sich um ein GUI Element. </p>
+<dl class="section author"><dt>Author</dt><dd>Stefan Landgrebe </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">filename</td><td>Dateipfad der Schriftart. Es werden Truetype und Opentype Schriften unterstützt. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>ID des Text Objektes </dd></dl>
+<dl class="section see"><dt>See Also</dt><dd><a class="el" href="classvisual_1_1_manager.html#a47d8ee06c66ead8aa11097baf4f3e9b9">setText()</a> </dd>
+<dd>
+<a class="el" href="classvisual_1_1_manager.html#a9813423f2d2080ce91f53c481df78efe">setTextSize()</a> </dd>
+<dd>
+<a class="el" href="classvisual_1_1_manager.html#aab5ddb031956862dba4c2ba337e6a3e7">setTextColor()</a> </dd></dl>
 
-<p>Definition at line <a class="el" href="_manager_8cpp_source.html#l00299">299</a> of file <a class="el" href="_manager_8cpp_source.html">Manager.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_manager_8cpp_source.html#l00317">317</a> of file <a class="el" href="_manager_8cpp_source.html">Manager.cpp</a>.</p>
 
 </div>
 </div>
@@ -281,8 +323,24 @@ Static Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Fügt Modell zur Liste aller Buttons hinzu. Diese Methode wird von GraphicEngine nach der Erstellung des Objektes aufgerufen. </p>
+<dl class="section author"><dt>Author</dt><dd>Stefan Landgrebe </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">buttonId</td><td>ID des Modells </td></tr>
+    <tr><td class="paramname">button</td><td>Button Objekt </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section see"><dt>See Also</dt><dd><a class="el" href="classvisual_1_1gui_1_1_button.html">gui::Button</a> </dd>
+<dd>
+<a class="el" href="classvisual_1_1graphics_1_1_graphic_engine.html">graphics::GraphicEngine</a> </dd>
+<dd>
+<a class="el" href="classvisual_1_1_manager.html#a9376c5fba7eb53ba360231c409794992">addModel()</a> </dd>
+<dd>
+<a class="el" href="classvisual_1_1_manager.html#aab514e916c78a1ff737ac3796bd2257b">isModelCreated()</a> </dd></dl>
 
-<p>Definition at line <a class="el" href="_manager_8cpp_source.html#l00137">137</a> of file <a class="el" href="_manager_8cpp_source.html">Manager.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_manager_8cpp_source.html#l00149">149</a> of file <a class="el" href="_manager_8cpp_source.html">Manager.cpp</a>.</p>
 
 </div>
 </div>
@@ -309,8 +367,24 @@ Static Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Fügt Modell zur Liste aller Models hinzu. Diese Methode wird von GraphicEngine nach der Erstellung des Objektes aufgerufen. </p>
+<dl class="section author"><dt>Author</dt><dd>Stefan Landgrebe </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">modelId</td><td>ID des Modells </td></tr>
+    <tr><td class="paramname">model</td><td>AssimpModel Objekt </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section see"><dt>See Also</dt><dd><a class="el" href="classvisual_1_1model_1_1_assimp_model.html">model::AssimpModel</a> </dd>
+<dd>
+<a class="el" href="classvisual_1_1graphics_1_1_graphic_engine.html">graphics::GraphicEngine</a> </dd>
+<dd>
+<a class="el" href="classvisual_1_1_manager.html#a9376c5fba7eb53ba360231c409794992">addModel()</a> </dd>
+<dd>
+<a class="el" href="classvisual_1_1_manager.html#aab514e916c78a1ff737ac3796bd2257b">isModelCreated()</a> </dd></dl>
 
-<p>Definition at line <a class="el" href="_manager_8cpp_source.html#l00125">125</a> of file <a class="el" href="_manager_8cpp_source.html">Manager.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_manager_8cpp_source.html#l00134">134</a> of file <a class="el" href="_manager_8cpp_source.html">Manager.cpp</a>.</p>
 
 </div>
 </div>
@@ -337,8 +411,24 @@ Static Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Fügt Modell zur Liste aller Squares hinzu. Diese Methode wird von GraphicEngine nach der Erstellung des Objektes aufgerufen. </p>
+<dl class="section author"><dt>Author</dt><dd>Stefan Landgrebe </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">modelId</td><td>ID des Modells </td></tr>
+    <tr><td class="paramname">model</td><td>Square Objekt </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section see"><dt>See Also</dt><dd><a class="el" href="classvisual_1_1model_1_1_square.html">model::Square</a> </dd>
+<dd>
+<a class="el" href="classvisual_1_1graphics_1_1_graphic_engine.html">graphics::GraphicEngine</a> </dd>
+<dd>
+<a class="el" href="classvisual_1_1_manager.html#a7c9bf7d60b03fcea6a31e0a0ab2340f0">addPoint()</a> </dd>
+<dd>
+<a class="el" href="classvisual_1_1_manager.html#aab514e916c78a1ff737ac3796bd2257b">isModelCreated()</a> </dd></dl>
 
-<p>Definition at line <a class="el" href="_manager_8cpp_source.html#l00129">129</a> of file <a class="el" href="_manager_8cpp_source.html">Manager.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_manager_8cpp_source.html#l00139">139</a> of file <a class="el" href="_manager_8cpp_source.html">Manager.cpp</a>.</p>
 
 </div>
 </div>
@@ -365,8 +455,24 @@ Static Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Fügt Modell zur Liste aller Texte hinzu. Diese Methode wird von GraphicEngine nach der Erstellung des Objektes aufgerufen. </p>
+<dl class="section author"><dt>Author</dt><dd>Stefan Landgrebe </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">modelId</td><td>ID des Modells </td></tr>
+    <tr><td class="paramname">text</td><td>Text Objekt </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section see"><dt>See Also</dt><dd><a class="el" href="classvisual_1_1gui_1_1_text.html">gui::Text</a> </dd>
+<dd>
+<a class="el" href="classvisual_1_1graphics_1_1_graphic_engine.html">graphics::GraphicEngine</a> </dd>
+<dd>
+<a class="el" href="classvisual_1_1_manager.html#a3541da25878a3335445b6c22dc516671">addText()</a> </dd>
+<dd>
+<a class="el" href="classvisual_1_1_manager.html#aab514e916c78a1ff737ac3796bd2257b">isModelCreated()</a> </dd></dl>
 
-<p>Definition at line <a class="el" href="_manager_8cpp_source.html#l00133">133</a> of file <a class="el" href="_manager_8cpp_source.html">Manager.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_manager_8cpp_source.html#l00144">144</a> of file <a class="el" href="_manager_8cpp_source.html">Manager.cpp</a>.</p>
 
 </div>
 </div>
@@ -393,8 +499,23 @@ Static Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Hängt ein Modell an die Kamera an. Dies hat zur Folge, dass dieses Objekt relativ zur Kamera positioniert wird. Diese Methode kann nur für Modelle und Punkte verwendet werden. </p>
+<dl class="section author"><dt>Author</dt><dd>Stefan Landgrebe </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">modelId</td><td>ID des Modells </td></tr>
+    <tr><td class="paramname">choice</td><td>True aktiviert und False deaktiviert die Anhängung an die Kamera. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Prüfung ob die Operation durchgeführt werden konnte </dd></dl>
+<dl class="section see"><dt>See Also</dt><dd><a class="el" href="classvisual_1_1_manager.html#a2e147d3cbcefb6eac6f7c76c3e3ef71a">positionModel()</a> </dd>
+<dd>
+<a class="el" href="classvisual_1_1_manager.html#a9376c5fba7eb53ba360231c409794992">addModel()</a> </dd>
+<dd>
+<a class="el" href="classvisual_1_1_manager.html#a7c9bf7d60b03fcea6a31e0a0ab2340f0">addPoint()</a> </dd></dl>
 
-<p>Definition at line <a class="el" href="_manager_8cpp_source.html#l00279">279</a> of file <a class="el" href="_manager_8cpp_source.html">Manager.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_manager_8cpp_source.html#l00296">296</a> of file <a class="el" href="_manager_8cpp_source.html">Manager.cpp</a>.</p>
 
 </div>
 </div>
@@ -411,8 +532,16 @@ Static Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Ändert die Geschwindikeit </p>
+<dl class="section author"><dt>Author</dt><dd>Stefan Landgrebe </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">speed</td><td>Geschwindigkeit in m/s </td></tr>
+  </table>
+  </dd>
+</dl>
 
-<p>Definition at line <a class="el" href="_manager_8cpp_source.html#l00401">401</a> of file <a class="el" href="_manager_8cpp_source.html">Manager.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_manager_8cpp_source.html#l00422">422</a> of file <a class="el" href="_manager_8cpp_source.html">Manager.cpp</a>.</p>
 
 </div>
 </div>
@@ -429,8 +558,12 @@ Static Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Text mit allen Kollisionen. Format: 1:2,3;2:1;3:1;4: Bedeutung: Objekt mit der ID 1 kollidiert mit Objekt 2 und 3 Objekt 2 kollidiert mit Objekt 1 Objekt 3 kollidiert mit Objekt 1 Objekt 4 kollidiert mit nichts. </p>
+<dl class="section author"><dt>Author</dt><dd>Stefan Landgrebe </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Text </dd></dl>
+<dl class="section see"><dt>See Also</dt><dd><a class="el" href="classvisual_1_1_manager.html#a0bb723d77e5c61d441349341a7748caf">collisionsTextLength()</a> </dd></dl>
 
-<p>Definition at line <a class="el" href="_manager_8cpp_source.html#l00457">457</a> of file <a class="el" href="_manager_8cpp_source.html">Manager.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_manager_8cpp_source.html#l00478">478</a> of file <a class="el" href="_manager_8cpp_source.html">Manager.cpp</a>.</p>
 
 </div>
 </div>
@@ -447,8 +580,12 @@ Static Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Länge des Textes mit allen erkannten Kollisionen </p>
+<dl class="section author"><dt>Author</dt><dd>Stefan Landgrebe </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Länge des Textes </dd></dl>
+<dl class="section see"><dt>See Also</dt><dd><a class="el" href="classvisual_1_1_manager.html#a0d9165ccde8a3e2faacba134032deaf7">collisionsText()</a> </dd></dl>
 
-<p>Definition at line <a class="el" href="_manager_8cpp_source.html#l00453">453</a> of file <a class="el" href="_manager_8cpp_source.html">Manager.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_manager_8cpp_source.html#l00474">474</a> of file <a class="el" href="_manager_8cpp_source.html">Manager.cpp</a>.</p>
 
 </div>
 </div>
@@ -465,8 +602,16 @@ Static Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Markiert ein Modell zur Entfernung. Diese Methode kann für alle Arten von Modellen verwendet werden (Model, Point, Text, Button). </p>
+<dl class="section author"><dt>Author</dt><dd>Stefan Landgrebe </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">modelId</td><td>ID des zu entfernenden Modells </td></tr>
+  </table>
+  </dd>
+</dl>
 
-<p>Definition at line <a class="el" href="_manager_8cpp_source.html#l00091">91</a> of file <a class="el" href="_manager_8cpp_source.html">Manager.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_manager_8cpp_source.html#l00097">97</a> of file <a class="el" href="_manager_8cpp_source.html">Manager.cpp</a>.</p>
 
 </div>
 </div>
@@ -483,8 +628,10 @@ Static Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Führt die Kollisions Erkennung von Modellen durch </p>
+<dl class="section author"><dt>Author</dt><dd>Stefan Landgrebe </dd></dl>
 
-<p>Definition at line <a class="el" href="_manager_8cpp_source.html#l00405">405</a> of file <a class="el" href="_manager_8cpp_source.html">Manager.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_manager_8cpp_source.html#l00426">426</a> of file <a class="el" href="_manager_8cpp_source.html">Manager.cpp</a>.</p>
 
 </div>
 </div>
@@ -501,8 +648,16 @@ Static Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Test Methode, welche nicht für den produktiven Einsatz gedacht ist. </p>
+<dl class="section author"><dt>Author</dt><dd>Stefan Landgrebe </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">s</td><td>Ein String </td></tr>
+  </table>
+  </dd>
+</dl>
 
-<p>Definition at line <a class="el" href="_manager_8cpp_source.html#l00040">40</a> of file <a class="el" href="_manager_8cpp_source.html">Manager.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_manager_8cpp_source.html#l00042">42</a> of file <a class="el" href="_manager_8cpp_source.html">Manager.cpp</a>.</p>
 
 </div>
 </div>
@@ -519,8 +674,11 @@ Static Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Sorgt dafür dass alle Objekte neu gezeichnet werden. Diese Methode wird von GraphicEngine aufgerufen </p>
+<dl class="section author"><dt>Author</dt><dd>Stefan Landgrebe </dd></dl>
+<dl class="section see"><dt>See Also</dt><dd><a class="el" href="classvisual_1_1graphics_1_1_graphic_engine.html">graphics::GraphicEngine</a> </dd></dl>
 
-<p>Definition at line <a class="el" href="_manager_8cpp_source.html#l00461">461</a> of file <a class="el" href="_manager_8cpp_source.html">Manager.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_manager_8cpp_source.html#l00482">482</a> of file <a class="el" href="_manager_8cpp_source.html">Manager.cpp</a>.</p>
 
 </div>
 </div>
@@ -545,6 +703,9 @@ Static Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Factory Method des Singleton </p>
+<dl class="section author"><dt>Author</dt><dd>Stefan Landgrebe </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Instanz der <a class="el" href="classvisual_1_1_manager.html">Manager</a> Klasse </dd></dl>
 
 <p>Definition at line <a class="el" href="_manager_8cpp_source.html#l00012">12</a> of file <a class="el" href="_manager_8cpp_source.html">Manager.cpp</a>.</p>
 
@@ -563,8 +724,17 @@ Static Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Prüft ob ein Modell existiert. Diese Methode kann für alle Arten von Modellen verwendet werden (Model, Point, Text, Button). Bevor ein Modell bearbeitet wird, sollte sichergestellt werden, dass das Modell existiert. Dies hat den Hintergrund, dass die Modelle effektiv in einem separaten Thread erstellt werden. </p>
+<dl class="section author"><dt>Author</dt><dd>Stefan Landgrebe </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">modelId</td><td>ID des zu prüfenden Modells </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Resultat der Prüfung </dd></dl>
 
-<p>Definition at line <a class="el" href="_manager_8cpp_source.html#l00074">74</a> of file <a class="el" href="_manager_8cpp_source.html">Manager.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_manager_8cpp_source.html#l00079">79</a> of file <a class="el" href="_manager_8cpp_source.html">Manager.cpp</a>.</p>
 
 </div>
 </div>
@@ -591,8 +761,19 @@ Static Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Ändert den Status der Hervorhebung dieses Objektes. Zur Hervorhebung wird die Hervorhebungsfarbe verwendet. </p>
+<dl class="section author"><dt>Author</dt><dd>Stefan Landgrebe </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">modelId</td><td>ID des Modells </td></tr>
+    <tr><td class="paramname">choice</td><td>True aktiviert und False deaktiviert die Hervorhebung. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Prüfung ob die Operation durchgeführt werden konnte </dd></dl>
+<dl class="section see"><dt>See Also</dt><dd><a class="el" href="classvisual_1_1_manager.html#a817293e18dad0c6f72184d3b53519a15">setModelHighlightColor()</a> </dd></dl>
 
-<p>Definition at line <a class="el" href="_manager_8cpp_source.html#l00253">253</a> of file <a class="el" href="_manager_8cpp_source.html">Manager.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_manager_8cpp_source.html#l00269">269</a> of file <a class="el" href="_manager_8cpp_source.html">Manager.cpp</a>.</p>
 
 </div>
 </div>
@@ -609,8 +790,11 @@ Static Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Prüft den Zustand der Bibliothek und ob das Fenster offen ist </p>
+<dl class="section author"><dt>Author</dt><dd>Stefan Landgrebe </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>True wenn das Fenster offen ist, ansonsten False. </dd></dl>
 
-<p>Definition at line <a class="el" href="_manager_8cpp_source.html#l00036">36</a> of file <a class="el" href="_manager_8cpp_source.html">Manager.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_manager_8cpp_source.html#l00037">37</a> of file <a class="el" href="_manager_8cpp_source.html">Manager.cpp</a>.</p>
 
 </div>
 </div>
@@ -627,8 +811,16 @@ Static Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Positioniert die Kamera </p>
+<dl class="section author"><dt>Author</dt><dd>Stefan Landgrebe </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">position</td><td>Positionsvektor </td></tr>
+  </table>
+  </dd>
+</dl>
 
-<p>Definition at line <a class="el" href="_manager_8cpp_source.html#l00392">392</a> of file <a class="el" href="_manager_8cpp_source.html">Manager.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_manager_8cpp_source.html#l00413">413</a> of file <a class="el" href="_manager_8cpp_source.html">Manager.cpp</a>.</p>
 
 </div>
 </div>
@@ -655,8 +847,18 @@ Static Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Positioniert ein Modell. Kann mit allen Arten von Modellen umgehen, allerdings werden diese unterschiedlich behandelt. Model und Point werden relativ zum Ursprung in einem normalen, dreidimensionalem, kartesischem Koordinatensystem positioniert. Bei Text und Button handelt es sich um GUI Elemente, weswegen hier die z-Koordinate ignoriert wird. X- und Y-Koordinaten gehen von -1 bis +1 wobei -1 dem linken bzw. unteren Rand und +1 dem rechten bzw. oberen Rand entspricht. </p>
+<dl class="section author"><dt>Author</dt><dd>Stefan Landgrebe </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">modelId</td><td>ID des Modells </td></tr>
+    <tr><td class="paramname">position</td><td>Vektor der Position </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Prüfung ob die Operation durchgeführt werden konnte </dd></dl>
 
-<p>Definition at line <a class="el" href="_manager_8cpp_source.html#l00142">142</a> of file <a class="el" href="_manager_8cpp_source.html">Manager.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_manager_8cpp_source.html#l00155">155</a> of file <a class="el" href="_manager_8cpp_source.html">Manager.cpp</a>.</p>
 
 </div>
 </div>
@@ -673,8 +875,19 @@ Static Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Entfernt die zur Entfernung markierten Modelle. Diese Methode wird von der GraphicEngine aus angestossen. </p>
+<dl class="section author"><dt>Author</dt><dd>Stefan Landgrebe </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">modelId</td><td>ID des zu entfernenden Modells </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section see"><dt>See Also</dt><dd><a class="el" href="classvisual_1_1_manager.html#a0c62f26820d9a53e414ac2305c76a1c6">dispose()</a> </dd>
+<dd>
+<a class="el" href="classvisual_1_1graphics_1_1_graphic_engine.html">graphics::GraphicEngine</a> </dd></dl>
 
-<p>Definition at line <a class="el" href="_manager_8cpp_source.html#l00094">94</a> of file <a class="el" href="_manager_8cpp_source.html">Manager.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_manager_8cpp_source.html#l00102">102</a> of file <a class="el" href="_manager_8cpp_source.html">Manager.cpp</a>.</p>
 
 </div>
 </div>
@@ -691,8 +904,16 @@ Static Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Rotiert die Kamera um die Y-Achse. </p>
+<dl class="section author"><dt>Author</dt><dd>Stefan Landgrebe </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">degrees</td><td>Rotationswinkel </td></tr>
+  </table>
+  </dd>
+</dl>
 
-<p>Definition at line <a class="el" href="_manager_8cpp_source.html#l00395">395</a> of file <a class="el" href="_manager_8cpp_source.html">Manager.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_manager_8cpp_source.html#l00416">416</a> of file <a class="el" href="_manager_8cpp_source.html">Manager.cpp</a>.</p>
 
 </div>
 </div>
@@ -725,8 +946,18 @@ Static Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Positioniert ein Modell. Kann mit allen Arten von Modellen umgehen, allerdings werden diese unterschiedlich behandelt. Model und Point werden relativ zum Ursprung in einem normalen, dreidimensionalem, kartesischem Koordinatensystem positioniert. Bei Text und Button handelt es sich um GUI Elemente, weswegen hier die z-Koordinate ignoriert wird. X- und Y-Koordinaten gehen von -1 bis +1 wobei -1 dem linken bzw. unteren Rand und +1 dem rechten bzw. oberen Rand entspricht. </p>
+<dl class="section author"><dt>Author</dt><dd>Stefan Landgrebe </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">modelId</td><td>ID des Modells </td></tr>
+    <tr><td class="paramname">position</td><td>Vektor der Position </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Prüfung ob die Operation durchgeführt werden konnte </dd></dl>
 
-<p>Definition at line <a class="el" href="_manager_8cpp_source.html#l00181">181</a> of file <a class="el" href="_manager_8cpp_source.html">Manager.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_manager_8cpp_source.html#l00195">195</a> of file <a class="el" href="_manager_8cpp_source.html">Manager.cpp</a>.</p>
 
 </div>
 </div>
@@ -753,8 +984,19 @@ Static Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>skaliert das Modell auf die angegebene Grösse Diese Methode kann nicht für Text Modelle verwendet werden. Für Texte kann die <a class="el" href="classvisual_1_1_manager.html#a9813423f2d2080ce91f53c481df78efe">setTextSize</a> Methode verwendet werden. </p>
+<dl class="section author"><dt>Author</dt><dd>Stefan Landgrebe </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">modelId</td><td>ID des Modells </td></tr>
+    <tr><td class="paramname">scale</td><td>Skalierungsvektor </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Prüfung ob die Operation durchgeführt werden konnte </dd></dl>
+<dl class="section see"><dt>See Also</dt><dd><a class="el" href="classvisual_1_1_manager.html#a9813423f2d2080ce91f53c481df78efe">setTextSize()</a> </dd></dl>
 
-<p>Definition at line <a class="el" href="_manager_8cpp_source.html#l00201">201</a> of file <a class="el" href="_manager_8cpp_source.html">Manager.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_manager_8cpp_source.html#l00216">216</a> of file <a class="el" href="_manager_8cpp_source.html">Manager.cpp</a>.</p>
 
 </div>
 </div>
@@ -781,8 +1023,19 @@ Static Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Setzt die Hervorhebungsfarbe für dieses Objekt. Diese Methode kann nicht für Text Objekte verwendet werden. </p>
+<dl class="section author"><dt>Author</dt><dd>Stefan Landgrebe </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">modelId</td><td>ID des Modells </td></tr>
+    <tr><td class="paramname">color</td><td>Farbe (r,g,b,a) </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Prüfung ob die Operation durchgeführt werden konnte </dd></dl>
+<dl class="section see"><dt>See Also</dt><dd><a class="el" href="classvisual_1_1_manager.html#aab5ddb031956862dba4c2ba337e6a3e7">setTextColor()</a> </dd></dl>
 
-<p>Definition at line <a class="el" href="_manager_8cpp_source.html#l00228">228</a> of file <a class="el" href="_manager_8cpp_source.html">Manager.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_manager_8cpp_source.html#l00243">243</a> of file <a class="el" href="_manager_8cpp_source.html">Manager.cpp</a>.</p>
 
 </div>
 </div>
@@ -809,8 +1062,18 @@ Static Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Ändert den darzustellenden Text Diese Methode kann für Text und Button Objekte verwendet werden. </p>
+<dl class="section author"><dt>Author</dt><dd>Stefan Landgrebe </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">textId</td><td>ID des Modells </td></tr>
+    <tr><td class="paramname">text</td><td>Der neu darzustellende Text </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Prüfung ob die Operation durchgeführt werden konnte </dd></dl>
 
-<p>Definition at line <a class="el" href="_manager_8cpp_source.html#l00323">323</a> of file <a class="el" href="_manager_8cpp_source.html">Manager.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_manager_8cpp_source.html#l00342">342</a> of file <a class="el" href="_manager_8cpp_source.html">Manager.cpp</a>.</p>
 
 </div>
 </div>
@@ -837,8 +1100,18 @@ Static Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Ändert die Farbe des Textes. Diese Methode kann für Text und Button Objekte verwendet werden. </p>
+<dl class="section author"><dt>Author</dt><dd>Stefan Landgrebe </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">textId</td><td>ID des Modells </td></tr>
+    <tr><td class="paramname">color</td><td>Farbe (r,g,b,a) </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Prüfung ob die Operation durchgeführt werden konnte </dd></dl>
 
-<p>Definition at line <a class="el" href="_manager_8cpp_source.html#l00351">351</a> of file <a class="el" href="_manager_8cpp_source.html">Manager.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_manager_8cpp_source.html#l00372">372</a> of file <a class="el" href="_manager_8cpp_source.html">Manager.cpp</a>.</p>
 
 </div>
 </div>
@@ -865,8 +1138,18 @@ Static Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Ändert die Grösse des Textes. Die Grössenangabe erfolgt in Punkten (<a class="el" href="">http://de.wikipedia.org/wiki/Schriftgrad</a>). Diese Methode kann für Text und Button Objekte verwendet werden. </p>
+<dl class="section author"><dt>Author</dt><dd>Stefan Landgrebe </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">modelId</td><td>ID des Modells </td></tr>
+    <tr><td class="paramname">points</td><td>Die neue Grösse. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Prüfung ob die Operation durchgeführt werden konnte </dd></dl>
 
-<p>Definition at line <a class="el" href="_manager_8cpp_source.html#l00338">338</a> of file <a class="el" href="_manager_8cpp_source.html">Manager.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_manager_8cpp_source.html#l00358">358</a> of file <a class="el" href="_manager_8cpp_source.html">Manager.cpp</a>.</p>
 
 </div>
 </div>
@@ -883,8 +1166,16 @@ Static Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Rotiert die Kamera um die x-Achse </p>
+<dl class="section author"><dt>Author</dt><dd>Stefan Landgrebe </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">degrees</td><td>Rotationswinkel </td></tr>
+  </table>
+  </dd>
+</dl>
 
-<p>Definition at line <a class="el" href="_manager_8cpp_source.html#l00398">398</a> of file <a class="el" href="_manager_8cpp_source.html">Manager.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_manager_8cpp_source.html#l00419">419</a> of file <a class="el" href="_manager_8cpp_source.html">Manager.cpp</a>.</p>
 
 </div>
 </div>
@@ -898,7 +1189,7 @@ Static Public Member Functions</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacevisual.html">visual</a></li><li class="navelem"><a class="el" href="classvisual_1_1_manager.html">Manager</a></li>
-    <li class="footer">Generated on Sun Apr 13 2014 14:33:55 for Projektarbeit - VisualizationLibrary by
+    <li class="footer">Generated on Sun Apr 13 2014 17:24:07 for Projektarbeit - VisualizationLibrary by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

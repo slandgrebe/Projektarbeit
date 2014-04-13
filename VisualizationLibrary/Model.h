@@ -25,7 +25,7 @@ namespace visual {
 	namespace model {
 
 		/**
-		* Das Model Interface repräsentiert ein 3D-Modell
+		* Das Model Interface reprÃ¤sentiert ein 3D-Modell
 		* @author Stefan Landgrebe
 		*/
 		class Model {
@@ -33,10 +33,10 @@ namespace visual {
 			float m_boundingSphereRadius;
 			float m_scalingNormalizationFactor;
 
-			glm::vec3 m_positionVector; /** Vektor für die Verschiebung des Modells */
+			glm::vec3 m_positionVector; /** Vektor fÃ¼r die Verschiebung des Modells */
 			GLfloat m_rotationAngle;
 			glm::vec3 m_rotationAxis;
-			glm::vec3 m_scalingVector; /** Vektor für die Skalierung des Modells */
+			glm::vec3 m_scalingVector; /** Vektor fÃ¼r die Skalierung des Modells */
 			glm::mat4 m_modelMatrix; /** Matrix des Modells */
 
 			glm::vec4 highlightColor;
@@ -46,7 +46,7 @@ namespace visual {
 
 			graphics::ShaderProgram* shaderProgram;
 
-			/** Liefert die transformierte Matrix des Modells zurück
+			/** Liefert die transformierte Matrix des Modells zurÃ¼ck
 			* @author Stefan Landgrebe
 			* @return die transformierte Matrix
 			*/

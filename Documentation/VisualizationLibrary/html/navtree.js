@@ -1,6 +1,7 @@
 var NAVTREE =
 [
   [ "Projektarbeit - VisualizationLibrary", "index.html", [
+    [ "VisualizationLibrary", "index.html", null ],
     [ "Namespaces", null, [
       [ "Namespace List", "namespaces.html", "namespaces" ]
     ] ],

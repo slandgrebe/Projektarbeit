@@ -1,5 +1,15 @@
 #pragma once
 
+/**
+@mainpage VisualizationLibrary
+
+Stefan Landgrebe
+
+VisualizationLibrary ist ein Teil der Projektarbeit der KTSI. Die Bibliothek ermöglicht es auf einfache Art und Weise 3D-Modelle 
+darzustellen sowie ein einfaches GUI zu erstellen. Diese Bibliothek baut auf OpenGL 3.3 auf.
+
+**/
+
 //#include "stdafx.h"
 
 #ifdef DLL_EXPORTS

@@ -16,7 +16,8 @@ var indexSectionsWithContent =
   6: "f",
   7: "t",
   8: "l",
-  9: "dglw"
+  9: "dglw",
+  10: "v"
 };
 
 var indexSectionNames =
@@ -30,7 +31,8 @@ var indexSectionNames =
   6: "typedefs",
   7: "enums",
   8: "enumvalues",
-  9: "defines"
+  9: "defines",
+  10: "pages"
 };
 
 function convertToId(search)

@@ -10,9 +10,9 @@ namespace visual {
 		class Square : public Model {
 		private:
 			GLuint vertexArrayId; /** Referenz auf das VAO (Vertex Array Object) */
-			GLuint positionBufferId; /** Referenz auf den Buffer für die Positionen */
-			GLuint colorBufferId; /** Referenz auf den Buffer für die Farben */
-			GLuint textureBufferId; /** Referenz auf den Buffer für die Textur */
+			GLuint positionBufferId; /** Referenz auf den Buffer fÃ¼r die Positionen */
+			GLuint colorBufferId; /** Referenz auf den Buffer fÃ¼r die Farben */
+			GLuint textureBufferId; /** Referenz auf den Buffer fÃ¼r die Textur */
 			GLuint textureId;
 
 			graphics::ShaderProgram* shaderProgram;

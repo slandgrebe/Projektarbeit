@@ -20,7 +20,7 @@ namespace visual {
 	namespace model {
 
 		/**
-		* Das Texture Interface repr‰sentiert eine Textur
+		* Das Texture Interface repr√§sentiert eine Textur
 		* @author Stefan Landgrebe
 		*/
 		class Texture {
