@@ -8,6 +8,11 @@
 #include "Text.h"
 
 namespace visual {
+
+	/** gui Namespace umfasst alle Elemente des GUIs. Alle Elemente werden orthographisch Projeziert und die Zeichnungsfläche umfasst das gesamte Fenster.
+	Die Zeichnungsfläche ist 2 Einheiten breit und hoch, wobei die untere, linke Ecke der Koordinate -1/-1 und die obere, rechte Ecke der Koordinate 1/1 entspricht.
+	* @author Stefan Landgrebe
+	*/
 	namespace gui {
 
 		/** Button Objekt bestehend aus einer farbenen Hintergrundfläche und einem Text. Ein Button ist ein GUI Element.
