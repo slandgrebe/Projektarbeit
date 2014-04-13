@@ -133,9 +133,11 @@ bool AssimpModel::initSingleMesh(const int meshIndex, const aiMesh* mesh) {
 					glm::vec3(normal->x, normal->y, normal->z));
 
 		// bounding Sphere
-		if (std::abs(pos->x) > m_boundingSphereRadius) m_boundingSphereRadius = std::abs(pos->x);
-		if (std::abs(pos->y) > m_boundingSphereRadius) m_boundingSphereRadius = std::abs(pos->y);
-		if (std::abs(pos->z) > m_boundingSphereRadius) m_boundingSphereRadius = std::abs(pos->z);
+		float radius = sqrt(pos->x * pos->x + pos->y * pos->y + pos->z * pos->z); // pythagoras
+		if (radius > m_boundingSphereRadius) m_boundingSphereRadius = radius;
+		//if (std::abs(pos->x) > m_boundingSphereRadius) m_boundingSphereRadius = std::abs(pos->x);
+		//if (std::abs(pos->y) > m_boundingSphereRadius) m_boundingSphereRadius = std::abs(pos->y);
+		//if (std::abs(pos->z) > m_boundingSphereRadius) m_boundingSphereRadius = std::abs(pos->z);
 
 		vertices.push_back(v);
 	}
