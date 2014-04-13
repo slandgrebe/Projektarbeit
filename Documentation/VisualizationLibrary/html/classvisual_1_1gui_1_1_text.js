@@ -7,6 +7,5 @@ var classvisual_1_1gui_1_1_text =
     [ "setColor", "classvisual_1_1gui_1_1_text.html#a16c0f5c67ae5939fa4010824da662635", null ],
     [ "setPosition", "classvisual_1_1gui_1_1_text.html#a2998d8f699544dd9c10e1f90986d30c6", null ],
     [ "setSize", "classvisual_1_1gui_1_1_text.html#a32405c9f6b422af27c0f283aff2590a3", null ],
-    [ "setText", "classvisual_1_1gui_1_1_text.html#ae74a8e040b8f9de03f1a3ecba3e9420d", null ],
-    [ "write", "classvisual_1_1gui_1_1_text.html#a8eb80ccb629d2ea6e7820aa27ddfebf4", null ]
+    [ "setText", "classvisual_1_1gui_1_1_text.html#ae74a8e040b8f9de03f1a3ecba3e9420d", null ]
 ];

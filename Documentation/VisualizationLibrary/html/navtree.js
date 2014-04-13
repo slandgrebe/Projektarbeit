@@ -2,28 +2,28 @@ var NAVTREE =
 [
   [ "Projektarbeit - VisualizationLibrary", "index.html", [
     [ "VisualizationLibrary", "index.html", null ],
-    [ "Namespaces", null, [
-      [ "Namespace List", "namespaces.html", "namespaces" ]
+    [ "Namensbereiche", null, [
+      [ "Liste aller Namensbereiche", "namespaces.html", "namespaces" ]
     ] ],
-    [ "Classes", null, [
-      [ "Class List", "annotated.html", "annotated" ],
-      [ "Class Index", "classes.html", null ],
-      [ "Class Hierarchy", "hierarchy.html", "hierarchy" ],
-      [ "Class Members", "functions.html", [
-        [ "All", "functions.html", null ],
-        [ "Functions", "functions_func.html", null ],
-        [ "Variables", "functions_vars.html", null ]
+    [ "Klassen", null, [
+      [ "Auflistung der Klassen", "annotated.html", "annotated" ],
+      [ "Klassen-Verzeichnis", "classes.html", null ],
+      [ "Klassenhierarchie", "hierarchy.html", "hierarchy" ],
+      [ "Klassen-Elemente", "functions.html", [
+        [ "Alle", "functions.html", null ],
+        [ "Funktionen", "functions_func.html", null ],
+        [ "Variablen", "functions_vars.html", null ]
       ] ]
     ] ],
-    [ "Files", null, [
-      [ "File List", "files.html", "files" ],
-      [ "File Members", "globals.html", [
-        [ "All", "globals.html", null ],
-        [ "Functions", "globals_func.html", null ],
-        [ "Typedefs", "globals_type.html", null ],
-        [ "Enumerations", "globals_enum.html", null ],
-        [ "Enumerator", "globals_eval.html", null ],
-        [ "Macros", "globals_defs.html", null ]
+    [ "Dateien", null, [
+      [ "Auflistung der Dateien", "files.html", "files" ],
+      [ "Datei-Elemente", "globals.html", [
+        [ "Alle", "globals.html", null ],
+        [ "Funktionen", "globals_func.html", null ],
+        [ "Typdefinitionen", "globals_type.html", null ],
+        [ "Aufzählungen", "globals_enum.html", null ],
+        [ "Aufzählungswerte", "globals_eval.html", null ],
+        [ "Makrodefinitionen", "globals_defs.html", null ]
       ] ]
     ] ]
   ] ]
@@ -32,11 +32,11 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "_assimp_model_8cpp.html",
-"classvisual_1_1model_1_1_model.html#ad1bca8d0225ef2246e30a9e299ca0fdc"
+"classvisual_1_1model_1_1_model.html#ad6383bce4d3b771e814feeef4c0707f0"
 ];
 
-var SYNCONMSG = 'click to disable panel synchronisation';
-var SYNCOFFMSG = 'click to enable panel synchronisation';
+var SYNCONMSG = 'Klicken um Panelsynchronisation auszuschalten';
+var SYNCOFFMSG = 'Klicken um Panelsynchronisation einzuschalten';
 var SYNCONMSG = 'click to disable panel synchronisation';
 var SYNCOFFMSG = 'click to enable panel synchronisation';
 var navTreeSubIndices = new Array();
