@@ -45,7 +45,7 @@ namespace visual {
 			*/
 			GLuint createShaderProgram(const GLuint vertexShaderId, const GLuint fragmentShaderId);
 
-			/** Erzeugt Shader anhand der übergebenen Dateien und linkt und kompiliert daraus ein Shader Programm
+			/** Erzeugt Shader anhand der Ã¼bergebenen Dateien und linkt und kompiliert daraus ein Shader Programm
 			* @author Stefan Landgrebe
 			* @param vertexShaderFilename Dateipfad des Vertexshader Sourccode
 			* @param fragmentShaderfilename Dateipfad des Fragmentshader Sourccode
