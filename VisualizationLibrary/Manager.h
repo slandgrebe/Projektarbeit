@@ -9,12 +9,16 @@
 #include <map>
 #include <mutex>
 
+/** Der visual Namespace behinhaltet das ganze Projekt (ausgenommen des API)
+*/
 namespace visual {
+
 	/** Managet die ganze Bibliothek.
 	* Es handelt sich hierbei um einen Singleton.
 	*/
 	class Manager {
 	public:
+
 		/** Factory Method des Singleton
 		* @author Stefan Landgrebe
 		* @return Instanz der Manager Klasse

@@ -9,24 +9,112 @@
 #include "Camera.h"
 
 namespace visual {
+
+	/** Der Graphics Namespace beinhaltet alle Klassen, welche vor allem direkt mit OpenGL kommunizieren
+	*/
 	namespace graphics {
+
+		/** Verantwortlich für den OpenGL Kontext, das Fenster und den kontrollierten und kontinuierlichen Ablauf der Bibliothek.
+		Die Abarbeitung und somit das Fenster, laufen sich in einem separaten Thread.
+		Es handelt sich hierbei um einen Singleton.
+		*/
 		class GraphicEngine {
 		public:
+			
+			/** Factory Method des Singleton
+			* @author Stefan Landgrebe
+			* @return Instanz der GraphicEngine Klasse
+			*/
 			static GraphicEngine* getInstance();
+
+			/** Prüft den Zustand des Fensters.
+			* @author Stefan Landgrebe
+			* @return True wenn das Fenster offen ist, ansonsten False
+			*/
 			bool isRunning(void) { return running; }
+
+			/** Warteschlange für neu zu erstellende Objekte der Klasse Square.
+			Dies ist aufgrund der Threadsicherheit notwendig.
+			* @author Stefan Landgrebe
+			* @param modelId ID des Modells
+			* @param filename Dateipfad des Bildes
+			* @see Manager::addPoint()
+			*/
 			void enqueueSquare(GLuint modelId, std::string filename);
+
+			/** Warteschlange für neu zu erstellende Objekte der Klasse AssimpModel.
+			Dies ist aufgrund der Threadsicherheit notwendig.
+			* @author Stefan Landgrebe
+			* @param modelId ID des Modells
+			* @param filename Dateipfad 3D Modells
+			* @see Manager::addModel()
+			*/
 			void enqueueModel(GLuint modelId, std::string filename);
+
+			/** Warteschlange für neu zu erstellende Objekte der Klasse Text.
+			Dies ist aufgrund der Threadsicherheit notwendig.
+			* @author Stefan Landgrebe
+			* @param modelId ID des Modells
+			* @param filename Dateipfad der Schriftart
+			* @see Manager::addText()
+			*/
 			void enqueueText(GLuint modelId, std::string filename);
+
+			/** Warteschlange für neu zu erstellende Objekte der Klasse Button.
+			Dies ist aufgrund der Threadsicherheit notwendig.
+			* @author Stefan Landgrebe
+			* @param modelId ID des Modells
+			* @param filename Dateipfad der Schriftart
+			* @see Manager::addButton()
+			*/
 			void enqueueButton(GLuint modelId, std::string filename);
+
+			/** Warteschlange zur Löschung von Objekten.
+			Dies ist aufgrund der Threadsicherheit notwendig.
+			* @author Stefan Landgrebe
+			* @param modelId ID des Modells
+			* @see Manager::dispose()
+			* @see Manager::remove()
+			*/
 			void enqueueDispose(GLuint modelId);
 
+
+			/** Liefert die Höhe des Fensters
+			* @author Stefan Landgrebe
+			* @return Höhe in Pixeln
+			*/
 			int getWindowHeight(void) { return height; }
+
+			/** Liefert die Breite des Fensters
+			* @author Stefan Landgrebe
+			* @return Breite in Pixeln
+			*/
 			int getWindowWidth(void) { return width; }
 
+			/** Liefert das Kamera Objekt zurück
+			* @author Stefan Landgrebe
+			* @return Kamera Objekt
+			* @see Camera
+			*/
 			Camera* camera(void);
 
+
+			/** Liefert die Projektsionsmatrix
+			* @author Stefan Landgrebe
+			* @return Projektsionsmatrix
+			*/
 			glm::mat4 getProjectionMatrix();
+
+			/** Liefert die View-Projektsionsmatrix
+			* @author Stefan Landgrebe
+			* @return View-Projektsionsmatrix
+			*/
 			glm::mat4 getViewProjectionMatrix();
+
+			/** Liefert die orthographische View-Projektsionsmatrix
+			* @author Stefan Landgrebe
+			* @return View-Projektsionsmatrix
+			*/
 			glm::mat4 getViewOrthographicMatrix();
 
 		private:

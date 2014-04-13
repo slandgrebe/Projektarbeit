@@ -148,8 +148,9 @@ Static Public Member Functions</h2></td></tr>
 <tr class="separator:a1675ee17a75ce754132b3bdd6c7b3424"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p>Definition at line <a class="el" href="_graphic_engine_8h_source.html#l00013">13</a> of file <a class="el" href="_graphic_engine_8h_source.html">GraphicEngine.h</a>.</p>
+<div class="textblock"><p>Verantwortlich für den OpenGL Kontext, das Fenster und den kontrollierten und kontinuierlichen Ablauf der Bibliothek. Die Abarbeitung und somit das Fenster, laufen sich in einem separaten Thread. Es handelt sich hierbei um einen Singleton. </p>
+
+<p>Definition at line <a class="el" href="_graphic_engine_8h_source.html#l00021">21</a> of file <a class="el" href="_graphic_engine_8h_source.html">GraphicEngine.h</a>.</p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
 <a class="anchor" id="a91f1c58d7d36cbd423b57992f94fe332"></a>
 <div class="memitem">
@@ -164,6 +165,10 @@ Static Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Liefert das Kamera Objekt zurück </p>
+<dl class="section author"><dt>Author</dt><dd>Stefan Landgrebe </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Kamera Objekt </dd></dl>
+<dl class="section see"><dt>See Also</dt><dd><a class="el" href="classvisual_1_1graphics_1_1_camera.html">Camera</a> </dd></dl>
 
 <p>Definition at line <a class="el" href="_graphic_engine_8cpp_source.html#l00049">49</a> of file <a class="el" href="_graphic_engine_8cpp_source.html">GraphicEngine.cpp</a>.</p>
 
@@ -192,6 +197,16 @@ Static Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Warteschlange für neu zu erstellende Objekte der Klasse Button. Dies ist aufgrund der Threadsicherheit notwendig. </p>
+<dl class="section author"><dt>Author</dt><dd>Stefan Landgrebe </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">modelId</td><td>ID des Modells </td></tr>
+    <tr><td class="paramname">filename</td><td>Dateipfad der Schriftart </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section see"><dt>See Also</dt><dd><a class="el" href="classvisual_1_1_manager.html#a2f176f2366f0cd3782a53b4124d45b4e">Manager::addButton()</a> </dd></dl>
 
 <p>Definition at line <a class="el" href="_graphic_engine_8cpp_source.html#l00154">154</a> of file <a class="el" href="_graphic_engine_8cpp_source.html">GraphicEngine.cpp</a>.</p>
 
@@ -210,6 +225,17 @@ Static Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Warteschlange zur Löschung von Objekten. Dies ist aufgrund der Threadsicherheit notwendig. </p>
+<dl class="section author"><dt>Author</dt><dd>Stefan Landgrebe </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">modelId</td><td>ID des Modells </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section see"><dt>See Also</dt><dd><a class="el" href="classvisual_1_1_manager.html#a0c62f26820d9a53e414ac2305c76a1c6">Manager::dispose()</a> </dd>
+<dd>
+<a class="el" href="classvisual_1_1_manager.html#a6d4c52011dac6da70f3bd6a2882092fb">Manager::remove()</a> </dd></dl>
 
 <p>Definition at line <a class="el" href="_graphic_engine_8cpp_source.html#l00162">162</a> of file <a class="el" href="_graphic_engine_8cpp_source.html">GraphicEngine.cpp</a>.</p>
 
@@ -238,6 +264,16 @@ Static Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Warteschlange für neu zu erstellende Objekte der Klasse AssimpModel. Dies ist aufgrund der Threadsicherheit notwendig. </p>
+<dl class="section author"><dt>Author</dt><dd>Stefan Landgrebe </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">modelId</td><td>ID des Modells </td></tr>
+    <tr><td class="paramname">filename</td><td>Dateipfad 3D Modells </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section see"><dt>See Also</dt><dd><a class="el" href="classvisual_1_1_manager.html#a9376c5fba7eb53ba360231c409794992">Manager::addModel()</a> </dd></dl>
 
 <p>Definition at line <a class="el" href="_graphic_engine_8cpp_source.html#l00138">138</a> of file <a class="el" href="_graphic_engine_8cpp_source.html">GraphicEngine.cpp</a>.</p>
 
@@ -266,6 +302,16 @@ Static Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Warteschlange für neu zu erstellende Objekte der Klasse Square. Dies ist aufgrund der Threadsicherheit notwendig. </p>
+<dl class="section author"><dt>Author</dt><dd>Stefan Landgrebe </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">modelId</td><td>ID des Modells </td></tr>
+    <tr><td class="paramname">filename</td><td>Dateipfad des Bildes </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section see"><dt>See Also</dt><dd><a class="el" href="classvisual_1_1_manager.html#a7c9bf7d60b03fcea6a31e0a0ab2340f0">Manager::addPoint()</a> </dd></dl>
 
 <p>Definition at line <a class="el" href="_graphic_engine_8cpp_source.html#l00130">130</a> of file <a class="el" href="_graphic_engine_8cpp_source.html">GraphicEngine.cpp</a>.</p>
 
@@ -294,6 +340,16 @@ Static Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Warteschlange für neu zu erstellende Objekte der Klasse Text. Dies ist aufgrund der Threadsicherheit notwendig. </p>
+<dl class="section author"><dt>Author</dt><dd>Stefan Landgrebe </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">modelId</td><td>ID des Modells </td></tr>
+    <tr><td class="paramname">filename</td><td>Dateipfad der Schriftart </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section see"><dt>See Also</dt><dd><a class="el" href="classvisual_1_1_manager.html#a3541da25878a3335445b6c22dc516671">Manager::addText()</a> </dd></dl>
 
 <p>Definition at line <a class="el" href="_graphic_engine_8cpp_source.html#l00146">146</a> of file <a class="el" href="_graphic_engine_8cpp_source.html">GraphicEngine.cpp</a>.</p>
 
@@ -319,6 +375,9 @@ Static Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Factory Method des Singleton </p>
+<dl class="section author"><dt>Author</dt><dd>Stefan Landgrebe </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Instanz der <a class="el" href="classvisual_1_1graphics_1_1_graphic_engine.html">GraphicEngine</a> Klasse </dd></dl>
 
 <p>Definition at line <a class="el" href="_graphic_engine_8cpp_source.html#l00022">22</a> of file <a class="el" href="_graphic_engine_8cpp_source.html">GraphicEngine.cpp</a>.</p>
 
@@ -396,8 +455,11 @@ Static Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Liefert die Höhe des Fensters </p>
+<dl class="section author"><dt>Author</dt><dd>Stefan Landgrebe </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Höhe in Pixeln </dd></dl>
 
-<p>Definition at line <a class="el" href="_graphic_engine_8h_source.html#l00023">23</a> of file <a class="el" href="_graphic_engine_8h_source.html">GraphicEngine.h</a>.</p>
+<p>Definition at line <a class="el" href="_graphic_engine_8h_source.html#l00086">86</a> of file <a class="el" href="_graphic_engine_8h_source.html">GraphicEngine.h</a>.</p>
 
 </div>
 </div>
@@ -422,8 +484,11 @@ Static Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Liefert die Breite des Fensters </p>
+<dl class="section author"><dt>Author</dt><dd>Stefan Landgrebe </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Breite in Pixeln </dd></dl>
 
-<p>Definition at line <a class="el" href="_graphic_engine_8h_source.html#l00024">24</a> of file <a class="el" href="_graphic_engine_8h_source.html">GraphicEngine.h</a>.</p>
+<p>Definition at line <a class="el" href="_graphic_engine_8h_source.html#l00092">92</a> of file <a class="el" href="_graphic_engine_8h_source.html">GraphicEngine.h</a>.</p>
 
 </div>
 </div>
@@ -448,8 +513,11 @@ Static Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Prüft den Zustand des Fensters. </p>
+<dl class="section author"><dt>Author</dt><dd>Stefan Landgrebe </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>True wenn das Fenster offen ist, ansonsten False </dd></dl>
 
-<p>Definition at line <a class="el" href="_graphic_engine_8h_source.html#l00016">16</a> of file <a class="el" href="_graphic_engine_8h_source.html">GraphicEngine.h</a>.</p>
+<p>Definition at line <a class="el" href="_graphic_engine_8h_source.html#l00034">34</a> of file <a class="el" href="_graphic_engine_8h_source.html">GraphicEngine.h</a>.</p>
 
 </div>
 </div>
@@ -463,7 +531,7 @@ Static Public Member Functions</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacevisual.html">visual</a></li><li class="navelem"><a class="el" href="namespacevisual_1_1graphics.html">graphics</a></li><li class="navelem"><a class="el" href="classvisual_1_1graphics_1_1_graphic_engine.html">GraphicEngine</a></li>
-    <li class="footer">Generated on Sun Apr 13 2014 17:24:07 for Projektarbeit - VisualizationLibrary by
+    <li class="footer">Generated on Sun Apr 13 2014 17:43:51 for Projektarbeit - VisualizationLibrary by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>
