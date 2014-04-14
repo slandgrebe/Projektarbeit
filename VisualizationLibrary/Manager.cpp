@@ -314,14 +314,14 @@ bool Manager::attachModelToCamera(GLuint modelId, bool choice) {
 }
 
 
-GLuint Manager::addText(const std::string filename) {
+GLuint Manager::addText(const std::string fontname) {
 	if (isRunning()) {
 		modelInstantiationCounter++;
 
 		Log().debug() << " adding Text to Queue: " << modelInstantiationCounter ;
 
 		// Queue für Thread Sicherheit
-		graphics::GraphicEngine::getInstance()->enqueueText(modelInstantiationCounter, filename);
+		graphics::GraphicEngine::getInstance()->enqueueText(modelInstantiationCounter, fontname);
 
 		return modelInstantiationCounter;
 	}

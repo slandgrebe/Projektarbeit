@@ -122,46 +122,43 @@ $(document).ready(function(){initNavTree('_square_8h_source.html','');});
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;            GLuint colorBufferId; </div>
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;            GLuint textureBufferId; </div>
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;            GLuint textureId;</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;            <a class="code" href="classvisual_1_1graphics_1_1_shader_program.html">graphics::ShaderProgram</a>* shaderProgram;</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;            </div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;            <a class="code" href="classvisual_1_1model_1_1_texture_soil.html">TextureSoil</a>* texture;</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;            </div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;            <a class="code" href="classvisual_1_1model_1_1_texture_soil.html">TextureSoil</a> texture;</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;            <span class="keywordtype">bool</span> loadModel(<span class="keywordtype">void</span>);</div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;            <span class="keywordtype">bool</span> loadModel(<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        <span class="keyword">public</span>:</div>
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;        <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;            <a class="code" href="classvisual_1_1model_1_1_square.html#a3dc7ff9aefc2725172b5d3153973d243">Square</a>();</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;            <a class="code" href="classvisual_1_1model_1_1_square.html#a90af7ce1060cff7b717ceddb333846b8">~Square</a>();</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;            </div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;            <span class="keywordtype">bool</span> <a class="code" href="classvisual_1_1model_1_1_square.html#afcbef44da245a568991539f9b10c1a5f">loadFromFile</a>(<span class="keyword">const</span> std::string filename = <span class="stringliteral">&quot;data/textures/sample.png&quot;</span>);</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;            <span class="keywordtype">bool</span> <a class="code" href="classvisual_1_1model_1_1_square.html#adaf8a6c6c622cfea4d7557bd3192500b">loadImage</a>(<span class="keyword">const</span> <span class="keywordtype">int</span> width, <span class="keyword">const</span> <span class="keywordtype">int</span> height, <span class="keyword">const</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span>* image, GLint internalFormat = GL_RGB, GLenum format = GL_RGB);</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;            <span class="keywordtype">bool</span> <a class="code" href="classvisual_1_1model_1_1_square.html#adfaf10ad75814a5493e2f2d1c138e957">load</a>(<span class="keywordtype">void</span>);</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;            <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classvisual_1_1model_1_1_square.html#a1250a4f4cc5bc7c68b52b9f89ccb3b7c">draw</a>(<span class="keywordtype">void</span>);</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        };</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    }</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;}</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;            <a class="code" href="classvisual_1_1model_1_1_square.html#a3dc7ff9aefc2725172b5d3153973d243">Square</a>();</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;            <a class="code" href="classvisual_1_1model_1_1_square.html#a90af7ce1060cff7b717ceddb333846b8">~Square</a>();</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;            </div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;            <span class="keywordtype">bool</span> <a class="code" href="classvisual_1_1model_1_1_square.html#afcbef44da245a568991539f9b10c1a5f">loadFromFile</a>(<span class="keyword">const</span> std::string filename = <span class="stringliteral">&quot;data/textures/sample.png&quot;</span>);</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;            <span class="keywordtype">bool</span> <a class="code" href="classvisual_1_1model_1_1_square.html#adaf8a6c6c622cfea4d7557bd3192500b">loadImage</a>(<span class="keyword">const</span> <span class="keywordtype">int</span> width, <span class="keyword">const</span> <span class="keywordtype">int</span> height, <span class="keyword">const</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span>* image, GLint internalFormat = GL_RGB, GLenum format = GL_RGB);</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;            <span class="keywordtype">bool</span> <a class="code" href="classvisual_1_1model_1_1_square.html#adfaf10ad75814a5493e2f2d1c138e957">load</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;            <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classvisual_1_1model_1_1_square.html#a1250a4f4cc5bc7c68b52b9f89ccb3b7c">draw</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        };</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    }</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;}</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="ttc" id="classvisual_1_1model_1_1_square_html_a3dc7ff9aefc2725172b5d3153973d243"><div class="ttname"><a href="classvisual_1_1model_1_1_square.html#a3dc7ff9aefc2725172b5d3153973d243">visual::model::Square::Square</a></div><div class="ttdeci">Square()</div><div class="ttdef"><b>Definition:</b> <a href="_square_8cpp_source.html#l00008">Square.cpp:8</a></div></div>
 <div class="ttc" id="_model_8h_html"><div class="ttname"><a href="_model_8h.html">Model.h</a></div></div>
 <div class="ttc" id="_shader_program_8h_html"><div class="ttname"><a href="_shader_program_8h.html">ShaderProgram.h</a></div></div>
-<div class="ttc" id="classvisual_1_1model_1_1_square_html_afcbef44da245a568991539f9b10c1a5f"><div class="ttname"><a href="classvisual_1_1model_1_1_square.html#afcbef44da245a568991539f9b10c1a5f">visual::model::Square::loadFromFile</a></div><div class="ttdeci">bool loadFromFile(const std::string filename=&quot;data/textures/sample.png&quot;)</div><div class="ttdef"><b>Definition:</b> <a href="_square_8cpp_source.html#l00095">Square.cpp:95</a></div></div>
+<div class="ttc" id="classvisual_1_1model_1_1_square_html_afcbef44da245a568991539f9b10c1a5f"><div class="ttname"><a href="classvisual_1_1model_1_1_square.html#afcbef44da245a568991539f9b10c1a5f">visual::model::Square::loadFromFile</a></div><div class="ttdeci">bool loadFromFile(const std::string filename=&quot;data/textures/sample.png&quot;)</div><div class="ttdef"><b>Definition:</b> <a href="_square_8cpp_source.html#l00092">Square.cpp:92</a></div></div>
 <div class="ttc" id="classvisual_1_1model_1_1_square_html_a90af7ce1060cff7b717ceddb333846b8"><div class="ttname"><a href="classvisual_1_1model_1_1_square.html#a90af7ce1060cff7b717ceddb333846b8">visual::model::Square::~Square</a></div><div class="ttdeci">~Square()</div><div class="ttdef"><b>Definition:</b> <a href="_square_8cpp_source.html#l00010">Square.cpp:10</a></div></div>
 <div class="ttc" id="_texture_soil_8h_html"><div class="ttname"><a href="_texture_soil_8h.html">TextureSoil.h</a></div></div>
 <div class="ttc" id="classvisual_1_1model_1_1_texture_soil_html"><div class="ttname"><a href="classvisual_1_1model_1_1_texture_soil.html">visual::model::TextureSoil</a></div><div class="ttdef"><b>Definition:</b> <a href="_texture_soil_8h_source.html#l00016">TextureSoil.h:16</a></div></div>
-<div class="ttc" id="classvisual_1_1model_1_1_square_html_adaf8a6c6c622cfea4d7557bd3192500b"><div class="ttname"><a href="classvisual_1_1model_1_1_square.html#adaf8a6c6c622cfea4d7557bd3192500b">visual::model::Square::loadImage</a></div><div class="ttdeci">bool loadImage(const int width, const int height, const unsigned char *image, GLint internalFormat=GL_RGB, GLenum format=GL_RGB)</div><div class="ttdef"><b>Definition:</b> <a href="_square_8cpp_source.html#l00111">Square.cpp:111</a></div></div>
+<div class="ttc" id="classvisual_1_1model_1_1_square_html_adaf8a6c6c622cfea4d7557bd3192500b"><div class="ttname"><a href="classvisual_1_1model_1_1_square.html#adaf8a6c6c622cfea4d7557bd3192500b">visual::model::Square::loadImage</a></div><div class="ttdeci">bool loadImage(const int width, const int height, const unsigned char *image, GLint internalFormat=GL_RGB, GLenum format=GL_RGB)</div><div class="ttdef"><b>Definition:</b> <a href="_square_8cpp_source.html#l00108">Square.cpp:108</a></div></div>
 <div class="ttc" id="classvisual_1_1model_1_1_model_html"><div class="ttname"><a href="classvisual_1_1model_1_1_model.html">visual::model::Model</a></div><div class="ttdef"><b>Definition:</b> <a href="_model_8h_source.html#l00033">Model.h:33</a></div></div>
-<div class="ttc" id="classvisual_1_1model_1_1_square_html_a1250a4f4cc5bc7c68b52b9f89ccb3b7c"><div class="ttname"><a href="classvisual_1_1model_1_1_square.html#a1250a4f4cc5bc7c68b52b9f89ccb3b7c">visual::model::Square::draw</a></div><div class="ttdeci">virtual void draw(void)</div><div class="ttdef"><b>Definition:</b> <a href="_square_8cpp_source.html#l00140">Square.cpp:140</a></div></div>
-<div class="ttc" id="classvisual_1_1graphics_1_1_shader_program_html"><div class="ttname"><a href="classvisual_1_1graphics_1_1_shader_program.html">visual::graphics::ShaderProgram</a></div><div class="ttdef"><b>Definition:</b> <a href="_shader_program_8h_source.html#l00012">ShaderProgram.h:12</a></div></div>
-<div class="ttc" id="classvisual_1_1model_1_1_square_html_adfaf10ad75814a5493e2f2d1c138e957"><div class="ttname"><a href="classvisual_1_1model_1_1_square.html#adfaf10ad75814a5493e2f2d1c138e957">visual::model::Square::load</a></div><div class="ttdeci">bool load(void)</div><div class="ttdef"><b>Definition:</b> <a href="_square_8cpp_source.html#l00127">Square.cpp:127</a></div></div>
+<div class="ttc" id="classvisual_1_1model_1_1_square_html_a1250a4f4cc5bc7c68b52b9f89ccb3b7c"><div class="ttname"><a href="classvisual_1_1model_1_1_square.html#a1250a4f4cc5bc7c68b52b9f89ccb3b7c">visual::model::Square::draw</a></div><div class="ttdeci">virtual void draw(void)</div><div class="ttdef"><b>Definition:</b> <a href="_square_8cpp_source.html#l00137">Square.cpp:137</a></div></div>
+<div class="ttc" id="classvisual_1_1model_1_1_square_html_adfaf10ad75814a5493e2f2d1c138e957"><div class="ttname"><a href="classvisual_1_1model_1_1_square.html#adfaf10ad75814a5493e2f2d1c138e957">visual::model::Square::load</a></div><div class="ttdeci">bool load(void)</div><div class="ttdef"><b>Definition:</b> <a href="_square_8cpp_source.html#l00124">Square.cpp:124</a></div></div>
 <div class="ttc" id="classvisual_1_1model_1_1_square_html"><div class="ttname"><a href="classvisual_1_1model_1_1_square.html">visual::model::Square</a></div><div class="ttdef"><b>Definition:</b> <a href="_square_8h_source.html#l00014">Square.h:14</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
@@ -169,7 +166,7 @@ $(document).ready(function(){initNavTree('_square_8h_source.html','');});
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_d092fe6f644d08052abf42c12a28702c.html">VisualizationLibrary</a></li><li class="navelem"><a class="el" href="_square_8h.html">Square.h</a></li>
-    <li class="footer">Erzeugt am Mon Apr 14 2014 14:52:01 für Projektarbeit - VisualizationLibrary von
+    <li class="footer">Erzeugt am Mon Apr 14 2014 20:11:04 für Projektarbeit - VisualizationLibrary von
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

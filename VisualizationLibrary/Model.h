@@ -200,7 +200,7 @@ namespace visual {
 			Die Farbe wird durch 4 Komponenten definiert: Rot, Grün, Blau, Alpha
 			Alle Komponenten Sollten einen Wert von 0 bis 1 haben, wobei der Wert 0 0% und der Wert 1 100% entspricht.
 			* @author Stefan Landgrebe
-			* @param position Positionsvektor
+			* @param color Farbe (r,g,b,a)
 			*/
 			virtual void setHighlightColor(glm::vec4 color) {
 				highlightColor = color;

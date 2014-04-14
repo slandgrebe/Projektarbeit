@@ -3,7 +3,7 @@ var classvisual_1_1_manager =
     [ "addButton", "classvisual_1_1_manager.html#a2f176f2366f0cd3782a53b4124d45b4e", null ],
     [ "addModel", "classvisual_1_1_manager.html#a9376c5fba7eb53ba360231c409794992", null ],
     [ "addPoint", "classvisual_1_1_manager.html#a7c9bf7d60b03fcea6a31e0a0ab2340f0", null ],
-    [ "addText", "classvisual_1_1_manager.html#a3541da25878a3335445b6c22dc516671", null ],
+    [ "addText", "classvisual_1_1_manager.html#ad018fbba8bdd90e1d17fac89dcd9d4d0", null ],
     [ "addToButtonList", "classvisual_1_1_manager.html#a15d9499c738f1111baf0d9bd8dafba89", null ],
     [ "addToModelList", "classvisual_1_1_manager.html#abb18c8e5a56f8d442bf22d021dbbd66f", null ],
     [ "addToSquareList", "classvisual_1_1_manager.html#acd75dcf722beff332e3333108ea651e8", null ],
@@ -26,7 +26,7 @@ var classvisual_1_1_manager =
     [ "rotateModel", "classvisual_1_1_manager.html#a913f51d118fe4d705ef196286f3f28df", null ],
     [ "scaleModel", "classvisual_1_1_manager.html#a392879eee02123f6d6278a969ccaf07a", null ],
     [ "setModelHighlightColor", "classvisual_1_1_manager.html#a817293e18dad0c6f72184d3b53519a15", null ],
-    [ "setText", "classvisual_1_1_manager.html#a47d8ee06c66ead8aa11097baf4f3e9b9", null ],
+    [ "setText", "classvisual_1_1_manager.html#a8b7f4f9b6ff27f3228a2276e463b81a7", null ],
     [ "setTextColor", "classvisual_1_1_manager.html#aab5ddb031956862dba4c2ba337e6a3e7", null ],
     [ "setTextSize", "classvisual_1_1_manager.html#a9813423f2d2080ce91f53c481df78efe", null ],
     [ "tiltCamera", "classvisual_1_1_manager.html#a78370636e261218fc199030d507c6a37", null ]

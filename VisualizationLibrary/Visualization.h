@@ -95,12 +95,13 @@ Text der Kollisionserkennung | @link collisionsText @endlink
 
 // exportierte funktionen
 
-/** Hier sind alle Funktionen der Bibliothek definiert.
+/* Hier sind alle Funktionen der Bibliothek definiert.
  * Aus Kompatibilitätsgründen muss für die Rückgabe von Bool Werten auf int ausgewichen werden.
  * Der Wert 0 entspricht dabei jeweils False und der Wert 1 entspricht True.
  */
 
-/** Prüft den Zustand der Bibliothek und ob das Fenster offen ist
+/** Prüft den Zustand der Bibliothek und ob das Fenster offen ist \n
+\n
 * Aus Kompatibilitätsgründen muss für die Rückgabe von Bool Werten auf int ausgewichen werden.
 * Der Wert 0 entspricht dabei jeweils False und der Wert 1 entspricht True.
 * @author Stefan Landgrebe
@@ -123,7 +124,7 @@ extern "C" DLL_API unsigned int APIENTRY addModel(const char* filename);
 
 /** Fügt eine Fläche welche von einem Bild ausgefüllt wird hinzu.
 * @author Stefan Landgrebe
-* @param textureFilename Dateipfad des Bildes
+* @param filename Dateipfad des Bildes
 * @return ID des Modells
 */
 extern "C" DLL_API unsigned int APIENTRY addPoint(const char* filename);
@@ -140,7 +141,7 @@ extern "C" DLL_API unsigned int APIENTRY addText(const char* filename);
 
 /** Fügt ein Button Objekt hinzu.
 * @author Stefan Landgrebe
-* @param filename Dateipfad zur Schriftart.
+* @param fontname Dateipfad zur Schriftart.
 * @return Liefert die modelId zurück.
 */
 extern "C" DLL_API unsigned int APIENTRY addButton(const char* fontname);
@@ -148,7 +149,8 @@ extern "C" DLL_API unsigned int APIENTRY addButton(const char* fontname);
 
 /** Prüft ob das Modell existiert. Diese Methode kann für alle Arten von Modellen verwendet werden (Model, Point, Text, Button).
 Bevor ein Modell bearbeitet wird, sollte sichergestellt werden, dass das Modell existiert. Dies hat den Hintergrund,
-dass die Modelle effektiv in einem separaten Thread erstellt werden.
+dass die Modelle effektiv in einem separaten Thread erstellt werden. \n
+\n
 
 * Aus Kompatibilitätsgründen muss für die Rückgabe von Bool Werten auf int ausgewichen werden.
 * Der Wert 0 entspricht dabei jeweils False und der Wert 1 entspricht True.
@@ -169,7 +171,8 @@ extern "C" DLL_API void APIENTRY dispose(const unsigned int modelId);
 /** Positioniert ein Modell. Kann mit allen Arten von Modellen umgehen, allerdings werden diese unterschiedlich behandelt.
 Model und Point werden relativ zum Ursprung in einem normalen, dreidimensionalem, kartesischem Koordinatensystem positioniert.
 Bei Text und Button handelt es sich um GUI Elemente, weswegen hier die z-Koordinate ignoriert wird.
-X- und Y-Koordinaten gehen von -1 bis +1 wobei -1 dem linken bzw. unteren Rand und +1 dem rechten bzw. oberen Rand entspricht.
+X- und Y-Koordinaten gehen von -1 bis +1 wobei -1 dem linken bzw. unteren Rand und +1 dem rechten bzw. oberen Rand entspricht. \n
+\n
 
 * Aus Kompatibilitätsgründen muss für die Rückgabe von Bool Werten auf int ausgewichen werden.
 * Der Wert 0 entspricht dabei jeweils False und der Wert 1 entspricht True.
@@ -183,7 +186,8 @@ X- und Y-Koordinaten gehen von -1 bis +1 wobei -1 dem linken bzw. unteren Rand u
 */
 extern "C" DLL_API int APIENTRY position(const unsigned int modelId, const float x, const float y, const float z);
 
-/** Rotiert ein Modell. Diese Methode kann nur für Model und Point verwendet werden.
+/** Rotiert ein Modell. Diese Methode kann nur für Model und Point verwendet werden. \n
+\n
 
 * Aus Kompatibilitätsgründen muss für die Rückgabe von Bool Werten auf int ausgewichen werden.
 * Der Wert 0 entspricht dabei jeweils False und der Wert 1 entspricht True.
@@ -199,7 +203,8 @@ extern "C" DLL_API int APIENTRY position(const unsigned int modelId, const float
 extern "C" DLL_API int APIENTRY rotate(const unsigned int modelId, const float degrees, const float x, const float y, const float z);
 
 /** skaliert das Modell auf die angegebene Grösse
-Diese Methode kann nicht für Text Modelle verwendet werden. Für Texte kann die @link textSize @endlink Methode verwendet werden.
+Diese Methode kann nicht für Text Modelle verwendet werden. Für Texte kann die @link textSize @endlink Methode verwendet werden. \n
+\n
 
 * Aus Kompatibilitätsgründen muss für die Rückgabe von Bool Werten auf int ausgewichen werden.
 * Der Wert 0 entspricht dabei jeweils False und der Wert 1 entspricht True.
@@ -215,8 +220,10 @@ Diese Methode kann nicht für Text Modelle verwendet werden. Für Texte kann die
 extern "C" DLL_API int APIENTRY scale(const unsigned int modelId, const float x, const float y, const float z);
 
 /** Setzt die Hervorhebungsfarbe für dieses Objekt. Diese Methode kann nicht für Text Objekte verwendet werden.
-Die Farbe wird durch 4 Komponenten definiert: Rot, Grün, Blau, Alpha
+\n
+Die Farbe wird durch 4 Komponenten definiert: Rot, Grün, Blau, Alpha \n
 Alle Komponenten Sollten einen Wert von 0 bis 1 haben, wobei der Wert 0 0% und der Wert 1 100% entspricht.
+\n
 
 * Aus Kompatibilitätsgründen muss für die Rückgabe von Bool Werten auf int ausgewichen werden.
 * Der Wert 0 entspricht dabei jeweils False und der Wert 1 entspricht True.
@@ -232,7 +239,8 @@ Alle Komponenten Sollten einen Wert von 0 bis 1 haben, wobei der Wert 0 0% und d
 */
 extern "C" DLL_API int APIENTRY highlightColor(const unsigned int modelId, const float r, const float g, const float b, const float a);
 
-/** Ändert den Status der Hervorhebung dieses Objektes. Zur Hervorhebung wird die Hervorhebungsfarbe verwendet.
+/** Ändert den Status der Hervorhebung dieses Objektes. Zur Hervorhebung wird die Hervorhebungsfarbe verwendet. \n
+\n
 
 * Aus Kompatibilitätsgründen muss für die Rückgabe von Bool Werten auf int ausgewichen werden.
 * Der Wert 0 entspricht dabei jeweils False und der Wert 1 entspricht True.
@@ -246,7 +254,8 @@ extern "C" DLL_API int APIENTRY highlightColor(const unsigned int modelId, const
 extern "C" DLL_API int APIENTRY isHighlighted(const unsigned int modelId, const bool choice);
 
 /** Hängt ein Modell an die Kamera an. Dies hat zur Folge, dass dieses Objekt relativ zur Kamera positioniert wird.
-Diese Methode kann nur für Modelle und Punkte verwendet werden.
+Diese Methode kann nur für Modelle und Punkte verwendet werden. \n
+\n
 
 * Aus Kompatibilitätsgründen muss für die Rückgabe von Bool Werten auf int ausgewichen werden.
 * Der Wert 0 entspricht dabei jeweils False und der Wert 1 entspricht True.
@@ -270,22 +279,24 @@ Diese Methode kann für Text und Button Objekte verwendet werden.
 */
 extern "C" DLL_API void APIENTRY text(const unsigned int textId, const char* text);
 
-/** Ändert die Grösse des Textes. Die Grössenangabe erfolgt in Punkten (@link http://de.wikipedia.org/wiki/Schriftgrad @endlink).
-Diese Methode kann für Text und Button Objekte verwendet werden.
+/** Ändert die Grösse des Textes. Die Grössenangabe erfolgt in Punkten (<a href="http://de.wikipedia.org/wiki/Schriftgrad">http://de.wikipedia.org/wiki/Schriftgrad</a>).
+Diese Methode kann für Text und Button Objekte verwendet werden. \n
+\n
 
 * Aus Kompatibilitätsgründen muss für die Rückgabe von Bool Werten auf int ausgewichen werden.
 * Der Wert 0 entspricht dabei jeweils False und der Wert 1 entspricht True.
 
 * @author Stefan Landgrebe
-* @param modelId ID des Modells
+* @param textId ID des Modells
 * @param points Die neue Grösse.
 * @return (Bool) Prüfung ob die Operation durchgeführt werden konnte
 */
 extern "C" DLL_API int APIENTRY textSize(const unsigned int textId, const int points);
 
 /** Ändert die Farbe des Textes.
-Diese Methode kann für Text und Button Objekte verwendet werden.
-Die Farbe wird durch 4 Komponenten definiert: Rot, Grün, Blau, Alpha
+Diese Methode kann für Text und Button Objekte verwendet werden. \n
+\n
+Die Farbe wird durch 4 Komponenten definiert: Rot, Grün, Blau, Alpha \n
 Alle Komponenten Sollten einen Wert von 0 bis 1 haben, wobei der Wert 0 0% und der Wert 1 100% entspricht.
 * @author Stefan Landgrebe
 * @param textId ID des Modells
@@ -299,7 +310,9 @@ extern "C" DLL_API void APIENTRY textColor(const unsigned int textId, const floa
 
 /** Positioniert die Kamera
 * @author Stefan Landgrebe
-* @param position Positionsvektor
+* @param x x Koordinate
+* @param y y Koordinate
+* @param z z Koordinate
 */
 extern "C" DLL_API void APIENTRY positionCamera(float x, float y, float z);
 

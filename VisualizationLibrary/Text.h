@@ -99,7 +99,7 @@ namespace visual {
 
 			/** Ändert die Grösse des Textes
 			* @author Stefan Landgrebe
-			* @points Grösse in Punkten
+			* @param points Grösse in Punkten
 			* @return Prüfung ob die Operation durchgeführt werden konnte
 			*/
 			bool setSize(const int points);

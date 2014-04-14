@@ -57,7 +57,7 @@ namespace visual {
 
 		/** Fügt Modell zur Liste aller Texte hinzu. Diese Methode wird von GraphicEngine nach der Erstellung des Objektes aufgerufen.
 		* @author Stefan Landgrebe
-		* @param modelId ID des Modells
+		* @param textId ID des Modells
 		* @param text Text Objekt
 		* @see gui::Text
 		* @see graphics::GraphicEngine
@@ -100,17 +100,17 @@ namespace visual {
 
 		/** Fügt ein Textelement hinzu. Hierbei handelt sich um ein GUI Element.
 		* @author Stefan Landgrebe
-		* @param filename Dateipfad der Schriftart. Es werden Truetype und Opentype Schriften unterstützt.
+		* @param fontname Dateipfad der Schriftart. Es werden Truetype und Opentype Schriften unterstützt.
 		* @return ID des Text Objektes
 		* @see setText()
 		* @see setTextSize()
 		* @see setTextColor()
 		*/
-		GLuint addText(const std::string text);
+		GLuint addText(const std::string fontname);
 
 		/** Fügt ein Button Objekt hinzu.
 		* @author Stefan Landgrebe
-		* @param filename Dateipfad zur Schriftart.
+		* @param fontname Dateipfad zur Schriftart.
 		* @return Liefert die modelId zurück.
 		*/
 		GLuint addButton(const std::string fontname);
@@ -208,12 +208,12 @@ namespace visual {
 		* @param text Der neu darzustellende Text
 		* @return Prüfung ob die Operation durchgeführt werden konnte
 		*/
-		bool setText(const GLuint textId, const std::string filename);
+		bool setText(const GLuint textId, const std::string text);
 
-		/** Ändert die Grösse des Textes. Die Grössenangabe erfolgt in Punkten (@link http://de.wikipedia.org/wiki/Schriftgrad @endlink).
+		/** Ändert die Grösse des Textes. Die Grössenangabe erfolgt in Punkten (<a href="http://de.wikipedia.org/wiki/Schriftgrad">http://de.wikipedia.org/wiki/Schriftgrad</a>).
 		Diese Methode kann für Text und Button Objekte verwendet werden.
 		* @author Stefan Landgrebe
-		* @param modelId ID des Modells
+		* @param textId ID des Modells
 		* @param points Die neue Grösse.
 		* @return Prüfung ob die Operation durchgeführt werden konnte
 		*/

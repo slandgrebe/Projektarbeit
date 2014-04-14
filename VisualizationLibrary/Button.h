@@ -88,9 +88,9 @@ namespace visual {
 			Die Zeichnungsfläche des GUIs ist 2 Einheiten breit und hoch (jeweils von -1 bis +1). Standardmässig befindet sich der Button an der Position 0/0 (dem Mittelpunkt).
 			Bsp.: Positioniert man den Button an die Position 0.5/-0.5 befindet er sich unten rechts im Fenster.
 			* @author Stefan Landgrebe
-			* @param scale Skalierungsvektor
+			* @param position Positionsvektor
 			*/
-			void position(glm::vec2);
+			void position(glm::vec2 position);
 
 
 			/** Zeichnet den Button neu.

@@ -132,8 +132,8 @@ $(document).ready(function(){initNavTree('classvisual_1_1_manager.html','');});
 <tr class="separator:a9376c5fba7eb53ba360231c409794992"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7c9bf7d60b03fcea6a31e0a0ab2340f0"><td class="memItemLeft" align="right" valign="top">GLuint&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvisual_1_1_manager.html#a7c9bf7d60b03fcea6a31e0a0ab2340f0">addPoint</a> (const ::std::string textureFilename)</td></tr>
 <tr class="separator:a7c9bf7d60b03fcea6a31e0a0ab2340f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3541da25878a3335445b6c22dc516671"><td class="memItemLeft" align="right" valign="top">GLuint&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvisual_1_1_manager.html#a3541da25878a3335445b6c22dc516671">addText</a> (const std::string <a class="el" href="_visualization_impl_8h.html#adf56317b9bb2c78a5a477702a84ded32">text</a>)</td></tr>
-<tr class="separator:a3541da25878a3335445b6c22dc516671"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad018fbba8bdd90e1d17fac89dcd9d4d0"><td class="memItemLeft" align="right" valign="top">GLuint&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvisual_1_1_manager.html#ad018fbba8bdd90e1d17fac89dcd9d4d0">addText</a> (const std::string fontname)</td></tr>
+<tr class="separator:ad018fbba8bdd90e1d17fac89dcd9d4d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2f176f2366f0cd3782a53b4124d45b4e"><td class="memItemLeft" align="right" valign="top">GLuint&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvisual_1_1_manager.html#a2f176f2366f0cd3782a53b4124d45b4e">addButton</a> (const std::string fontname)</td></tr>
 <tr class="separator:a2f176f2366f0cd3782a53b4124d45b4e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aab514e916c78a1ff737ac3796bd2257b"><td class="memItemLeft" align="right" valign="top">GLboolean&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvisual_1_1_manager.html#aab514e916c78a1ff737ac3796bd2257b">isModelCreated</a> (GLuint modelId)</td></tr>
@@ -154,8 +154,8 @@ $(document).ready(function(){initNavTree('classvisual_1_1_manager.html','');});
 <tr class="separator:aca24f480ad78e99ad1f1e7800b519d50"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a90f207cc68f619810d9131f87b629c8b"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvisual_1_1_manager.html#a90f207cc68f619810d9131f87b629c8b">attachModelToCamera</a> (GLuint modelId, bool choice)</td></tr>
 <tr class="separator:a90f207cc68f619810d9131f87b629c8b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a47d8ee06c66ead8aa11097baf4f3e9b9"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvisual_1_1_manager.html#a47d8ee06c66ead8aa11097baf4f3e9b9">setText</a> (const GLuint textId, const std::string filename)</td></tr>
-<tr class="separator:a47d8ee06c66ead8aa11097baf4f3e9b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8b7f4f9b6ff27f3228a2276e463b81a7"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvisual_1_1_manager.html#a8b7f4f9b6ff27f3228a2276e463b81a7">setText</a> (const GLuint textId, const std::string <a class="el" href="_visualization_impl_8h.html#adf56317b9bb2c78a5a477702a84ded32">text</a>)</td></tr>
+<tr class="separator:a8b7f4f9b6ff27f3228a2276e463b81a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9813423f2d2080ce91f53c481df78efe"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvisual_1_1_manager.html#a9813423f2d2080ce91f53c481df78efe">setTextSize</a> (const GLuint textId, const int points)</td></tr>
 <tr class="separator:a9813423f2d2080ce91f53c481df78efe"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aab5ddb031956862dba4c2ba337e6a3e7"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvisual_1_1_manager.html#aab5ddb031956862dba4c2ba337e6a3e7">setTextColor</a> (const GLuint textId, const glm::vec4 color)</td></tr>
@@ -205,7 +205,7 @@ $(document).ready(function(){initNavTree('classvisual_1_1_manager.html','');});
 <dl class="section author"><dt>Autor</dt><dd>Stefan Landgrebe </dd></dl>
 <dl class="params"><dt>Parameter</dt><dd>
   <table class="params">
-    <tr><td class="paramname">filename</td><td>Dateipfad zur Schriftart. </td></tr>
+    <tr><td class="paramname">fontname</td><td>Dateipfad zur Schriftart. </td></tr>
   </table>
   </dd>
 </dl>
@@ -269,7 +269,7 @@ $(document).ready(function(){initNavTree('classvisual_1_1_manager.html','');});
 
 </div>
 </div>
-<a class="anchor" id="a3541da25878a3335445b6c22dc516671"></a>
+<a class="anchor" id="ad018fbba8bdd90e1d17fac89dcd9d4d0"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -277,7 +277,7 @@ $(document).ready(function(){initNavTree('classvisual_1_1_manager.html','');});
           <td class="memname">GLuint Manager::addText </td>
           <td>(</td>
           <td class="paramtype">const std::string&#160;</td>
-          <td class="paramname"><em>text</em></td><td>)</td>
+          <td class="paramname"><em>fontname</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -286,12 +286,12 @@ $(document).ready(function(){initNavTree('classvisual_1_1_manager.html','');});
 <dl class="section author"><dt>Autor</dt><dd>Stefan Landgrebe </dd></dl>
 <dl class="params"><dt>Parameter</dt><dd>
   <table class="params">
-    <tr><td class="paramname">filename</td><td>Dateipfad der Schriftart. Es werden Truetype und Opentype Schriften unterstützt. </td></tr>
+    <tr><td class="paramname">fontname</td><td>Dateipfad der Schriftart. Es werden Truetype und Opentype Schriften unterstützt. </td></tr>
   </table>
   </dd>
 </dl>
 <dl class="section return"><dt>Rückgabe</dt><dd>ID des Text Objektes </dd></dl>
-<dl class="section see"><dt>Siehe auch</dt><dd><a class="el" href="classvisual_1_1_manager.html#a47d8ee06c66ead8aa11097baf4f3e9b9">setText()</a> </dd>
+<dl class="section see"><dt>Siehe auch</dt><dd><a class="el" href="classvisual_1_1_manager.html#a8b7f4f9b6ff27f3228a2276e463b81a7">setText()</a> </dd>
 <dd>
 <a class="el" href="classvisual_1_1_manager.html#a9813423f2d2080ce91f53c481df78efe">setTextSize()</a> </dd>
 <dd>
@@ -460,7 +460,7 @@ $(document).ready(function(){initNavTree('classvisual_1_1_manager.html','');});
 <dl class="section author"><dt>Autor</dt><dd>Stefan Landgrebe </dd></dl>
 <dl class="params"><dt>Parameter</dt><dd>
   <table class="params">
-    <tr><td class="paramname">modelId</td><td>ID des Modells </td></tr>
+    <tr><td class="paramname">textId</td><td>ID des Modells </td></tr>
     <tr><td class="paramname">text</td><td>Text Objekt </td></tr>
   </table>
   </dd>
@@ -469,7 +469,7 @@ $(document).ready(function(){initNavTree('classvisual_1_1_manager.html','');});
 <dd>
 <a class="el" href="classvisual_1_1graphics_1_1_graphic_engine.html">graphics::GraphicEngine</a> </dd>
 <dd>
-<a class="el" href="classvisual_1_1_manager.html#a3541da25878a3335445b6c22dc516671">addText()</a> </dd>
+<a class="el" href="classvisual_1_1_manager.html#ad018fbba8bdd90e1d17fac89dcd9d4d0">addText()</a> </dd>
 <dd>
 <a class="el" href="classvisual_1_1_manager.html#aab514e916c78a1ff737ac3796bd2257b">isModelCreated()</a> </dd></dl>
 
@@ -952,6 +952,7 @@ $(document).ready(function(){initNavTree('classvisual_1_1_manager.html','');});
 <dl class="params"><dt>Parameter</dt><dd>
   <table class="params">
     <tr><td class="paramname">modelId</td><td>ID des Modells </td></tr>
+    <tr><td class="paramname">degrees</td><td>Rotationswinkel in Grad </td></tr>
     <tr><td class="paramname">axis</td><td>Rotationsachse </td></tr>
   </table>
   </dd>
@@ -1040,7 +1041,7 @@ $(document).ready(function(){initNavTree('classvisual_1_1_manager.html','');});
 
 </div>
 </div>
-<a class="anchor" id="a47d8ee06c66ead8aa11097baf4f3e9b9"></a>
+<a class="anchor" id="a8b7f4f9b6ff27f3228a2276e463b81a7"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -1054,7 +1055,7 @@ $(document).ready(function(){initNavTree('classvisual_1_1_manager.html','');});
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">const std::string&#160;</td>
-          <td class="paramname"><em>filename</em>&#160;</td>
+          <td class="paramname"><em>text</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -1139,11 +1140,11 @@ $(document).ready(function(){initNavTree('classvisual_1_1_manager.html','');});
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Ändert die Grösse des Textes. Die Grössenangabe erfolgt in Punkten (<a class="el" href="">http://de.wikipedia.org/wiki/Schriftgrad</a>). Diese Methode kann für Text und Button Objekte verwendet werden. </p>
+<p>Ändert die Grösse des Textes. Die Grössenangabe erfolgt in Punkten (<a href="http://de.wikipedia.org/wiki/Schriftgrad">http://de.wikipedia.org/wiki/Schriftgrad</a>). Diese Methode kann für Text und Button Objekte verwendet werden. </p>
 <dl class="section author"><dt>Autor</dt><dd>Stefan Landgrebe </dd></dl>
 <dl class="params"><dt>Parameter</dt><dd>
   <table class="params">
-    <tr><td class="paramname">modelId</td><td>ID des Modells </td></tr>
+    <tr><td class="paramname">textId</td><td>ID des Modells </td></tr>
     <tr><td class="paramname">points</td><td>Die neue Grösse. </td></tr>
   </table>
   </dd>
@@ -1190,7 +1191,7 @@ $(document).ready(function(){initNavTree('classvisual_1_1_manager.html','');});
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacevisual.html">visual</a></li><li class="navelem"><a class="el" href="classvisual_1_1_manager.html">Manager</a></li>
-    <li class="footer">Erzeugt am Mon Apr 14 2014 14:52:01 für Projektarbeit - VisualizationLibrary von
+    <li class="footer">Erzeugt am Mon Apr 14 2014 20:11:04 für Projektarbeit - VisualizationLibrary von
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

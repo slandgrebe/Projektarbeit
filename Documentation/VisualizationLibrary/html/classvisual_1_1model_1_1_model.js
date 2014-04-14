@@ -28,5 +28,5 @@ var classvisual_1_1model_1_1_model =
     [ "m_rotationAxis", "classvisual_1_1model_1_1_model.html#a456696290a4eb49c31b0a347f46704d6", null ],
     [ "m_scalingNormalizationFactor", "classvisual_1_1model_1_1_model.html#a0c1e62fa405b7f1b8fd2e2d3fb13abd5", null ],
     [ "m_scalingVector", "classvisual_1_1model_1_1_model.html#a407144223933b287ea0496e508f0f5dc", null ],
-    [ "shaderProgram", "classvisual_1_1model_1_1_model.html#ac12119d9906a688f3506c5970c168bf4", null ]
+    [ "shaderProgram", "classvisual_1_1model_1_1_model.html#a74b5538f07c52ca06e7e84f8dbc9af40", null ]
 ];
