@@ -16,8 +16,6 @@ namespace visual {
 			GLuint vertexBufferId; /** Referenz auf den Buffer für die Positionen */
 			//GLuint colorBufferId; /** Referenz auf den Buffer für die Farben */
 
-			graphics::ShaderProgram* shaderProgram;
-
 		public:
 
 			/** Konstruktor

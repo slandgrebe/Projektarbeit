@@ -46,7 +46,7 @@ namespace visual {
 
 			bool m_isAttachedToCamera; /** Definiert ob das Modell an die Kamera angehängt wurde */
 
-			graphics::ShaderProgram* shaderProgram; /** Shader Programm */
+			graphics::ShaderProgram shaderProgram; /** Shader Programm */
 			 
 			/** Liefert die transformierte Matrix (Skalierung, Rotation, Positionierung) des Modells zurück
 			* @author Stefan Landgrebe

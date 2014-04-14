@@ -50,7 +50,7 @@ AssimpModel::AssimpModel() {}
 
 
 AssimpModel::~AssimpModel() {
-	delete shaderProgram;
+	//delete shaderProgram;
 	while (!textureList.empty()) delete textureList.back(), textureList.pop_back();
 }
 
@@ -66,8 +66,8 @@ bool AssimpModel::loadModel(const std::string filename) {
 	Log().debug() << "assimp vao: " << vertexArrayId ;
 	
 	// shader
-	shaderProgram = new graphics::ShaderProgram;
-	shaderProgram->createShaderProgram("data/shader/SimpleVertexShader.vertexshader", "data/shader/SimpleFragmentShader.fragmentshader");
+	//shaderProgram = new graphics::ShaderProgram;
+	shaderProgram.createShaderProgram("data/shader/SimpleVertexShader.vertexshader", "data/shader/SimpleFragmentShader.fragmentshader");
 
 	// Release the previously loaded mesh (if it exists)
 	clear();
@@ -231,14 +231,14 @@ void AssimpModel::draw() {
 	// get Shader Program Reference
 	//GLuint shaderProgramId = graphics::GraphicEngine::getInstance()->getShaderProgramId();
 
-	shaderProgram->use();
+	shaderProgram.use();
 
 	// positions
-	GLint posAttrib = shaderProgram->getAttribute("position");
+	GLint posAttrib = shaderProgram.getAttribute("position");
 	glEnableVertexAttribArray(posAttrib);
 
 	// texture
-	GLint texAttrib = shaderProgram->getAttribute("texcoord");
+	GLint texAttrib = shaderProgram.getAttribute("texcoord");
 	glEnableVertexAttribArray(texAttrib);
 
 	for (unsigned int i = 0; i < meshList.size(); i++) {
@@ -277,7 +277,7 @@ void AssimpModel::draw() {
 		}
 
 		// highlight color
-		GLint highlightAttribute = shaderProgram->getUniform("highlightColor");
+		GLint highlightAttribute = shaderProgram.getUniform("highlightColor");
 		GLfloat r = 1.0f, g = 1.0f, b = 1.0f, a = 1.0f; // standard: weiss
 
 		if (m_isHighlighted) {
@@ -289,7 +289,7 @@ void AssimpModel::draw() {
 		glUniform4f(highlightAttribute, r, g, b, a);
 
 		// transformations
-		GLint uniMvp = shaderProgram->getUniform("mvp");
+		GLint uniMvp = shaderProgram.getUniform("mvp");
 		glm::mat4 mvp = getModelViewMatrix();
 		glUniformMatrix4fv(uniMvp, 1, GL_FALSE, glm::value_ptr(mvp));
 

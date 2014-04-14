@@ -8,9 +8,6 @@ using namespace visual::model;
 Square::Square() {}
 
 Square::~Square() {
-	delete shaderProgram;
-	delete texture;
-
 	// VBOs und VAO entfernen
 	glDeleteBuffers(1, &positionBufferId);
 	glDeleteBuffers(1, &colorBufferId);
@@ -28,8 +25,8 @@ bool Square::loadModel(void) {
 	Log().debug() << " [Square] square vao: " << vertexArrayId ;
 
 	// shader
-	shaderProgram = new graphics::ShaderProgram;
-	shaderProgram->createShaderProgram("data/shader/SimpleVertexShader.vertexshader", "data/shader/SimpleFragmentShader.fragmentshader");
+	//shaderProgram = new graphics::ShaderProgram;
+	shaderProgram.createShaderProgram("data/shader/SimpleVertexShader.vertexshader", "data/shader/SimpleFragmentShader.fragmentshader");
 
 	m_boundingSphereRadius = 0.5f;
 	if (m_boundingSphereRadius > 0) {
@@ -97,8 +94,8 @@ bool Square::loadFromFile(const std::string filename) {
 		return false;
 	}
 	// texture
-	texture = new TextureSoil;
-	if (!texture->loadFromFile(filename)) {
+	//texture = new TextureSoil;
+	if (!texture.loadFromFile(filename)) {
 		return false;
 	}
 
@@ -113,8 +110,8 @@ bool Square::loadImage(const int width, const int height, const unsigned char* i
 		return false;
 	}
 	// texture
-	texture = new TextureSoil;
-	if (!texture->load(width, height, image, internalFormat, format)) {
+	//texture = new TextureSoil;
+	if (!texture.load(width, height, image, internalFormat, format)) {
 		return false;
 	}
 
@@ -129,7 +126,7 @@ bool Square::load(void) {
 		return false;
 	}
 
-	texture = 0;
+	//texture = 0;
 
 	// Make sure the VAO is not changed from outside code
 	glBindVertexArray(0);
@@ -141,10 +138,10 @@ void Square::draw(void) {
 	glBindVertexArray(vertexArrayId);
 
 	// shader
-	shaderProgram->use();
+	shaderProgram.use();
 
 	// positions
-	GLint posAttrib = shaderProgram->getAttribute("position");
+	GLint posAttrib = shaderProgram.getAttribute("position");
 	glEnableVertexAttribArray(posAttrib);
 	glBindBuffer(GL_ARRAY_BUFFER, positionBufferId);
 	glVertexAttribPointer(
@@ -157,7 +154,7 @@ void Square::draw(void) {
 		);
 
 	// colors
-	GLint colAttrib = shaderProgram->getAttribute("color");
+	GLint colAttrib = shaderProgram.getAttribute("color");
 	glEnableVertexAttribArray(colAttrib);
 	glBindBuffer(GL_ARRAY_BUFFER, colorBufferId);
 	glVertexAttribPointer(
@@ -170,7 +167,7 @@ void Square::draw(void) {
 		);
 
 	// texture
-	GLint texAttrib = shaderProgram->getAttribute("texcoord");
+	GLint texAttrib = shaderProgram.getAttribute("texcoord");
 	glEnableVertexAttribArray(texAttrib);
 	glBindBuffer(GL_ARRAY_BUFFER, textureBufferId);
 	glVertexAttribPointer(
@@ -183,12 +180,10 @@ void Square::draw(void) {
 		);
 
 	// texture
-	if (texture) {
-		texture->bind();
-	}
+	texture.bind();
 
 	// highlight color
-	GLint highlightAttribute = shaderProgram->getUniform("highlightColor");
+	GLint highlightAttribute = shaderProgram.getUniform("highlightColor");
 	GLfloat r = 1.0f, g = 1.0f, b = 1.0f, a = 1.0f; // standard: weiss
 	if (m_isHighlighted) {
 		r = highlightColor.r;
@@ -199,7 +194,7 @@ void Square::draw(void) {
 	glUniform4f(highlightAttribute, r, g, b, a);
 
 	// transformations
-	GLint uniMvp = shaderProgram->getUniform("mvp");
+	GLint uniMvp = shaderProgram.getUniform("mvp");
 	glm::mat4 mvp = getModelViewMatrix();
 	glUniformMatrix4fv(uniMvp, 1, GL_FALSE, glm::value_ptr(mvp)); 
 

@@ -37,7 +37,7 @@ namespace visual {
 			GLint fontCoordinates;
 			GLuint textTexture;
 
-			visual::graphics::ShaderProgram* shaderProgram;
+			visual::graphics::ShaderProgram shaderProgram;
 
 			enum alignment {
 				ALIGN_LEFT, ALIGN_CENTER, ALIGN_RIGHT

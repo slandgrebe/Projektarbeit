@@ -18,10 +18,8 @@ namespace visual {
 			GLuint colorBufferId; /** Referenz auf den Buffer für die Farben */
 			GLuint textureBufferId; /** Referenz auf den Buffer für die Textur */
 			GLuint textureId;
-
-			graphics::ShaderProgram* shaderProgram;
 			
-			TextureSoil* texture;
+			TextureSoil texture;
 
 			bool loadModel(void);
 
