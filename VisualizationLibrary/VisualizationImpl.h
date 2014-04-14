@@ -44,7 +44,6 @@ DLL_API int APIENTRY isCreated(const unsigned int modelId) {
 	//return (int)visual::VisualizationImpl::isModelCreated(modelId);
 	return visual::Manager::getInstance()->isModelCreated(modelId);
 }
-
 DLL_API void APIENTRY dispose(const unsigned int modelId) {
 	visual::Manager::getInstance()->dispose(modelId);
 }
@@ -53,24 +52,23 @@ DLL_API int APIENTRY position(const unsigned int modelId, const float x, const f
 	//return (int)visual::VisualizationImpl::positionModel(modelId, x, y, z);
 	return (int)visual::Manager::getInstance()->positionModel(modelId, glm::vec3(x, y, z));
 }
-
 DLL_API int APIENTRY rotate(const unsigned int modelId, const float degrees, const float x, const float y, const float z) {
 	//return (int)visual::VisualizationImpl::rotateModel(modelId, degrees, x, y, z);
 	return (int)visual::Manager::getInstance()->rotateModel(modelId, degrees, glm::vec3(x, y, z));
 }
-
 DLL_API int APIENTRY scale(const unsigned int modelId, const float x, const float y, const float z) {
 	//return (int)visual::VisualizationImpl::scaleModel(modelId, x, y, z);
 	return (int)visual::Manager::getInstance()->scaleModel(modelId, glm::vec3(x, y, z));
 }
-
+DLL_API int APIENTRY scalingIsNormalized(const unsigned int modelId, bool choice) {
+	return (int)visual::Manager::getInstance()->scalingIsNormalized(modelId, choice);
+}
 DLL_API int APIENTRY highlightColor(const unsigned int modelId, const float r, const float g, const float b, const float a) {
 	return (int)visual::Manager::getInstance()->setModelHighlightColor(modelId, glm::vec4(r, g, b, a));
 }
 DLL_API int APIENTRY isHighlighted(const unsigned int modelId, const bool choice) {
 	return (int)visual::Manager::getInstance()->isModelHighlighted(modelId, choice);
 }
-
 DLL_API int APIENTRY attachToCamera(const unsigned int modelId, const bool choice) {
 	return (int)visual::Manager::getInstance()->attachModelToCamera(modelId, choice);
 }

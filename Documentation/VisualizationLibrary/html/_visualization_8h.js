@@ -20,6 +20,7 @@ var _visualization_8h =
     [ "rotate", "_visualization_8h.html#ae270c1724205c0699558127781906c24", null ],
     [ "rotateCamera", "_visualization_8h.html#a53941f87d0d00e10bab64b20209c7cfa", null ],
     [ "scale", "_visualization_8h.html#aa0ca6c77068987654769e0aeca29719b", null ],
+    [ "scalingIsNormalized", "_visualization_8h.html#a64dcf0ee0be010c44c4b47b1b2d92aa6", null ],
     [ "text", "_visualization_8h.html#adf56317b9bb2c78a5a477702a84ded32", null ],
     [ "textColor", "_visualization_8h.html#ac17e08b37b55c834eb33276f1ea92d4b", null ],
     [ "textSize", "_visualization_8h.html#a7b3e7416812f4b5193f4faada9bd3b34", null ],

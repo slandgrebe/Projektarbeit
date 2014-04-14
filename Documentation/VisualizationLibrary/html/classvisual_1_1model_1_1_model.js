@@ -17,6 +17,7 @@ var classvisual_1_1model_1_1_model =
     [ "rotationAxis", "classvisual_1_1model_1_1_model.html#ad1bca8d0225ef2246e30a9e299ca0fdc", null ],
     [ "scale", "classvisual_1_1model_1_1_model.html#af2829e84aac62272c3116ad75c144d50", null ],
     [ "scale", "classvisual_1_1model_1_1_model.html#abd9ccc000a9c124b4389e67771cf87db", null ],
+    [ "scalingIsNormalized", "classvisual_1_1model_1_1_model.html#a2350840c1d7d30c9a042bbce66fc66c9", null ],
     [ "setHighlightColor", "classvisual_1_1model_1_1_model.html#aaa35c9cd9802539aa9d7d1feb30699e4", null ],
     [ "highlightColor", "classvisual_1_1model_1_1_model.html#a353ab65e6e0d6baa69e7963cc0e581ab", null ],
     [ "m_boundingSphereRadius", "classvisual_1_1model_1_1_model.html#a541fb35799a5dba89296d556e676ae3b", null ],
@@ -26,6 +27,7 @@ var classvisual_1_1model_1_1_model =
     [ "m_positionVector", "classvisual_1_1model_1_1_model.html#a88c7a7a528009c44fcd717d10d33cb76", null ],
     [ "m_rotationAngle", "classvisual_1_1model_1_1_model.html#ab043a0dda81677b660369acd28e9b565", null ],
     [ "m_rotationAxis", "classvisual_1_1model_1_1_model.html#a456696290a4eb49c31b0a347f46704d6", null ],
+    [ "m_scalingIsNormalized", "classvisual_1_1model_1_1_model.html#a8184e65c4697be24e2ed4295ef27b801", null ],
     [ "m_scalingNormalizationFactor", "classvisual_1_1model_1_1_model.html#a0c1e62fa405b7f1b8fd2e2d3fb13abd5", null ],
     [ "m_scalingVector", "classvisual_1_1model_1_1_model.html#a407144223933b287ea0496e508f0f5dc", null ],
     [ "shaderProgram", "classvisual_1_1model_1_1_model.html#a74b5538f07c52ca06e7e84f8dbc9af40", null ]

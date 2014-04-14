@@ -152,91 +152,103 @@ void Manager::addToButtonList(GLuint buttonId, gui::Button* button) {
 }
 
 
-GLboolean Manager::positionModel(GLuint modelId, glm::vec3 position) {
-	//processQueue();
-	
-	for (auto it = assimpModelList.cbegin(); it != assimpModelList.cend(); ++it)
-	{
-		//Log().debug() << it->first << " " << it->second << " " << "\n";
-	}
-
+bool Manager::positionModel(GLuint modelId, glm::vec3 position) {
 	if (assimpModelList.find(modelId) != assimpModelList.end()) {
 		model::AssimpModel* model = assimpModelList.find(modelId)->second;
 		model->position(position);
 		
-		return GL_TRUE;
+		return true;
 	}
 	else if (squareList.find(modelId) != squareList.end()) {
 		model::Square* model = squareList.find(modelId)->second;
 		model->position(position);
 
-		return GL_TRUE;
+		return true;
 	}
 	else if (textList.find(modelId) != textList.end()) {
 		gui::Text* model = textList.find(modelId)->second;
 		model->setPosition(position.x, position.y);
 
-		return GL_TRUE;
+		return true;
 	}
 	else if (buttonList.find(modelId) != buttonList.end()) {
 		gui::Button* model = buttonList.find(modelId)->second;
 		model->position(glm::vec2(position));
 
-		return GL_TRUE;
+		return true;
 	}
 	else {
 		Log().error() << "Das Model mit der modelId '" << modelId << "' konnte waehrend dem Versuch es neu zu positionieren nicht gefunden werden." ;
 	}
 
-	return GL_FALSE;
+	return false;
 }
 
 
-GLboolean Manager::rotateModel(GLuint modelId, GLfloat degrees, glm::vec3 axis) {
+bool Manager::rotateModel(GLuint modelId, GLfloat degrees, glm::vec3 axis) {
 	if (assimpModelList.find(modelId) != assimpModelList.end()) {
 		model::AssimpModel* model = assimpModelList.find(modelId)->second;
 		model->rotate(degrees, axis);
 
-		return GL_TRUE;
+		return true;
 	}
 	else if (squareList.find(modelId) != squareList.end()) {
 		model::Square* model = squareList.find(modelId)->second;
 		model->rotate(degrees, axis);
 
-		return GL_TRUE;
+		return true;
 	}
 	else {
 		Log().error() << "Das Model mit der modelId '" << modelId << "' konnte waehrend dem Versuch es neu zu rotieren nicht gefunden werden." ;
 	}
 
-	return GL_FALSE;
+	return false;
 }
 
 
-GLboolean Manager::scaleModel(GLuint modelId, glm::vec3 scale) {
+bool Manager::scaleModel(GLuint modelId, glm::vec3 scale) {
 	if (assimpModelList.find(modelId) != assimpModelList.end()) {
 		model::AssimpModel* model = assimpModelList.find(modelId)->second;
 		model->scale(scale);
 
-		return GL_TRUE;
+		return true;
 	}
 	else if (squareList.find(modelId) != squareList.end()) {
 		model::Square* model = squareList.find(modelId)->second;
 		model->scale(scale);
 
-		return GL_TRUE;
+		return true;
 	}
 	else if (buttonList.find(modelId) != buttonList.end()) {
 		gui::Button* model = buttonList.find(modelId)->second;
 		model->scale(glm::vec2(scale));
 
-		return GL_TRUE;
+		return true;
 	}
 	else {
 		Log().error() << "Das Model mit der modelId '" << modelId << "' konnte waehrend dem Versuch es neu zu skalieren nicht gefunden werden." ;
 	}
 
-	return GL_FALSE;
+	return false;
+}
+bool Manager::scalingIsNormalized(GLuint modelId, bool choice) {
+	if (assimpModelList.find(modelId) != assimpModelList.end()) {
+		model::AssimpModel* model = assimpModelList.find(modelId)->second;
+		model->scalingIsNormalized(choice);
+
+		return true;
+	}
+	else if (squareList.find(modelId) != squareList.end()) {
+		model::Square* model = squareList.find(modelId)->second;
+		model->scalingIsNormalized(choice);
+
+		return true;
+	}
+	else {
+		Log().error() << "Das Model mit der modelId '" << modelId << "' konnte waehrend dem Versuch den Zustand der Skalierungsnormalisierung zu ändern nicht gefunden werden.";
+	}
+
+	return false;
 }
 
 

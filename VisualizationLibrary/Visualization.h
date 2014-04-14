@@ -36,6 +36,7 @@ Beschreibung | Dokumentation
 Positionieren | @link position @endlink
 Rotation \n (Nur Model und Point) | @link rotate @endlink
 Skalierung \n (Nur Model, Point und Button) | @link scale @endlink
+Skalierungsnormalisierung \n (Nur Model und Point) | @link scalingIsNormalized @endlink
 Hervorhebungsfarbe definieren \n (Nur Model, Point und Button) | @link highlightColor @endlink
 Hervorhebung aktivieren und deaktivieren \n (Nur Model, Point und Button) | @link isHighlighted @endlink
 Modell an die Kamera anhängen \n (Nur Model und Point) | @link attachToCamera @endlink
@@ -189,7 +190,7 @@ extern "C" DLL_API int APIENTRY position(const unsigned int modelId, const float
 /** Rotiert ein Modell. Diese Methode kann nur für Model und Point verwendet werden. \n
 \n
 
-* Aus Kompatibilitätsgründen muss für die Rückgabe von Bool Werten auf int ausgewichen werden.
+* Aus Kompatibilitätsgründen muss für die Rückgabe von Bool Werten auf int ausgewichen werden.\n
 * Der Wert 0 entspricht dabei jeweils False und der Wert 1 entspricht True.
 
 * @author Stefan Landgrebe
@@ -206,7 +207,7 @@ extern "C" DLL_API int APIENTRY rotate(const unsigned int modelId, const float d
 Diese Methode kann nicht für Text Modelle verwendet werden. Für Texte kann die @link textSize @endlink Methode verwendet werden. \n
 \n
 
-* Aus Kompatibilitätsgründen muss für die Rückgabe von Bool Werten auf int ausgewichen werden.
+* Aus Kompatibilitätsgründen muss für die Rückgabe von Bool Werten auf int ausgewichen werden.\n
 * Der Wert 0 entspricht dabei jeweils False und der Wert 1 entspricht True.
 
 * @author Stefan Landgrebe
@@ -215,9 +216,28 @@ Diese Methode kann nicht für Text Modelle verwendet werden. Für Texte kann die
 * @param y Skalierung auf der y-Achse
 * @param z Skalierung auf der z-Achse
 * @return (Bool) Prüfung ob die Operation durchgeführt werden konnte
+* @see scalingIsNormalized()
 * @see textSize()
 */
 extern "C" DLL_API int APIENTRY scale(const unsigned int modelId, const float x, const float y, const float z);
+
+/** Definiert den Zustand der Skalierungsnormalisierung. \n
+Die Skalierungnormalisierung sorgt dafür, dass die Boundingsphere (kleinstmögliche Kugel welche denselben Ursprung wie das Modell hat und das gesamte Modell umschliesst)
+vor der Veränderung der Skalierung einen Durchmesser von 1m (bzw. 1 Einheit) hat. Dadurch kann mit der scale() Methode die Grösse des Modells in Metern angegeben werden. 
+Standardmässig ist dieses Verhalten deaktiviert. \n
+Diese Methode kann nur für Model und Point Objekte verwendet werden. \n
+\n
+
+* Aus Kompatibilitätsgründen muss für die Rückgabe von Bool Werten auf int ausgewichen werden.\n
+* Der Wert 0 entspricht dabei jeweils False und der Wert 1 entspricht True.
+
+* @author Stefan Landgrebe
+* @param modelId ID des Modells
+* @param choice True aktiviert und False deaktiviert die Skalierungsnormalisierung
+* @return (Bool) Prüfung ob die Operation durchgeführt werden konnte
+* @see scale()
+*/
+extern "C" DLL_API int APIENTRY scalingIsNormalized(const unsigned int modelId, bool choice);
 
 /** Setzt die Hervorhebungsfarbe für dieses Objekt. Diese Methode kann nicht für Text Objekte verwendet werden.
 \n

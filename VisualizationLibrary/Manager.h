@@ -149,7 +149,7 @@ namespace visual {
 		* @param position Vektor der Position
 		* @return Prüfung ob die Operation durchgeführt werden konnte
 		*/
-		GLboolean positionModel(GLuint modelId, glm::vec3 position);
+		bool positionModel(GLuint modelId, glm::vec3 position);
 		
 		/** Rotiert ein Modell. Diese Methode kann nur für Model und Point verwendet werden.
 		* @author Stefan Landgrebe
@@ -158,17 +158,28 @@ namespace visual {
 		* @param axis Rotationsachse
 		* @return Prüfung ob die Operation durchgeführt werden konnte
 		*/
-		GLboolean rotateModel(GLuint modelId, GLfloat degrees, glm::vec3 axis);
+		bool rotateModel(GLuint modelId, GLfloat degrees, glm::vec3 axis);
 
-		/** skaliert das Modell auf die angegebene Grösse
+		/** skaliert das Modell auf die angegebene Grösse. \n
 		Diese Methode kann nicht für Text Modelle verwendet werden. Für Texte kann die @link setTextSize @endlink Methode verwendet werden.
 		* @author Stefan Landgrebe
 		* @param modelId ID des Modells
 		* @param scale Skalierungsvektor
 		* @return Prüfung ob die Operation durchgeführt werden konnte
+		* @see scalingIsNoramlized()
 		* @see setTextSize()
 		*/
-		GLboolean scaleModel(GLuint modelId, glm::vec3 scale);
+		bool scaleModel(GLuint modelId, glm::vec3 scale);
+
+		/** Definiert den Zustand der Skalierungsnormalisierung. \n
+		Diese Methode kann nur für Model und Point Objekte verwendet werden.
+		* @author Stefan Landgrebe
+		* @param modelId ID des Modells
+		* @param choice Zustand der Skalierungsnormalisierung
+		* @return Prüfung ob die Operation durchgeführt werden konnte
+		* @see scaleModel()
+		*/
+		bool scalingIsNormalized(GLuint modelId, bool choice);
 
 		/** Setzt die Hervorhebungsfarbe für dieses Objekt. Diese Methode kann nicht für Text Objekte verwendet werden.
 		* @author Stefan Landgrebe

@@ -34,6 +34,7 @@ namespace visual {
 		protected:
 			float m_boundingSphereRadius; /** Radius der umgebenden Kugel, welche das gesamte Modell umspannt und u.a. für die Kollisionserkennung verwendet wird */
 			float m_scalingNormalizationFactor; /** Noramlisierungsvektor damit die Bounding Sphere einen Durchmesser von 1m (bzw. 1 Einheit) hat */
+			bool m_scalingIsNormalized; /** Definiert ob die Skalierungsnormalisierung verwendet wird */
 
 			glm::vec3 m_positionVector; /** Vektor für die Verschiebung des Modells */
 			GLfloat m_rotationAngle; /** Rotationswinkel */
@@ -73,6 +74,7 @@ namespace visual {
 			Model() {
 				m_boundingSphereRadius = 0.0f;
 				m_scalingNormalizationFactor = 1.0f;
+				m_scalingIsNormalized = false;
 
 				// Matrizen
 				m_modelMatrix = glm::mat4(1.0f);
@@ -108,6 +110,15 @@ namespace visual {
 				}
 
 				return m_boundingSphereRadius * z;
+			}
+
+			/** Definiert den Zustand der Skalierungsnormalisierung 
+			* @author Stefan Landgrebe
+			* @param choice Zustand der Skalierungsnormalisierung
+			*/
+			virtual void scalingIsNormalized(bool choice) {
+				m_scalingIsNormalized = choice;
+				scale(m_scalingVector); // Skalierung neu berechnen
 			}
 
 			/** Verschieben des Modells an die angegebene Position.
@@ -162,7 +173,12 @@ namespace visual {
 			* @param scale Skalierungsvektor
 			*/
 			virtual void scale(glm::vec3 scale) {
-				m_scalingVector = scale * m_scalingNormalizationFactor;
+				if (m_scalingIsNormalized) {
+					m_scalingVector = scale * m_scalingNormalizationFactor;
+				}
+				else {
+					m_scalingVector = scale;
+				}
 			};
 
 			/** Liefert die aktuelle Skalierung zurück.

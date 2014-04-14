@@ -7,6 +7,7 @@ var searchData=
   ['m_5fpositionvector',['m_positionVector',['../classvisual_1_1model_1_1_model.html#a88c7a7a528009c44fcd717d10d33cb76',1,'visual::model::Model']]],
   ['m_5frotationangle',['m_rotationAngle',['../classvisual_1_1model_1_1_model.html#ab043a0dda81677b660369acd28e9b565',1,'visual::model::Model']]],
   ['m_5frotationaxis',['m_rotationAxis',['../classvisual_1_1model_1_1_model.html#a456696290a4eb49c31b0a347f46704d6',1,'visual::model::Model']]],
+  ['m_5fscalingisnormalized',['m_scalingIsNormalized',['../classvisual_1_1model_1_1_model.html#a8184e65c4697be24e2ed4295ef27b801',1,'visual::model::Model']]],
   ['m_5fscalingnormalizationfactor',['m_scalingNormalizationFactor',['../classvisual_1_1model_1_1_model.html#a0c1e62fa405b7f1b8fd2e2d3fb13abd5',1,'visual::model::Model']]],
   ['m_5fscalingvector',['m_scalingVector',['../classvisual_1_1model_1_1_model.html#a407144223933b287ea0496e508f0f5dc',1,'visual::model::Model']]]
 ];
