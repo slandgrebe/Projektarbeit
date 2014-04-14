@@ -9,7 +9,8 @@ namespace Controller
 {
     class Player
     {
-        public float Scale {private get; set;}
+        public float Scale { private get; set; }
+        public bool Attach { private get; set; }
         
         private Model Head = new Model("Resource Files/Models/Player/Head.3ds");
         private Model Torso = new Model("Resource Files/Models/Player/Torso.3ds");
@@ -26,8 +27,14 @@ namespace Controller
         {
             Body.Instance.ZModifikator(Body.Instance.Spine.Z + 3);
             Body.Instance.YModifikator(Body.Instance.Spine.Y -1.4f);
-            Body.Instance.Scale(Scale);
-            Head.Position(Body.Instance.Head.X,Body.Instance.Head.Y,Body.Instance.Head.Z);
+            ScalePlayer();
+            Alignment();
+            AttachToCamera();
+        }
+
+        private void Alignment()
+        {
+            Head.Position(Body.Instance.Head.X, Body.Instance.Head.Y, Body.Instance.Head.Z);
             Torso.Alignment(Body.Instance.HipCenter.X, Body.Instance.HipCenter.Y, Body.Instance.HipCenter.Z,
                 Body.Instance.ShoulderCenter.X, Body.Instance.ShoulderCenter.Y, Body.Instance.ShoulderCenter.Z);
             UpperarmLeft.Alignment(Body.Instance.ShoulderLeft.X, Body.Instance.ShoulderLeft.Y, Body.Instance.ShoulderLeft.Z,
@@ -46,28 +53,37 @@ namespace Controller
                 Body.Instance.AnkleLeft.X, Body.Instance.AnkleLeft.Y, Body.Instance.AnkleLeft.Z);
             LowerlegRight.Alignment(Body.Instance.KneeRight.X, Body.Instance.KneeRight.Y, Body.Instance.KneeRight.Z,
                 Body.Instance.AnkleRight.X, Body.Instance.AnkleRight.Y, Body.Instance.AnkleRight.Z);
+        }
 
-            Head.Scale(Scale/3.333f);
+        private void ScalePlayer()
+        {
+            Body.Instance.Scale(Scale);
+
+
+            Head.Scale(Scale / 3.333f);
             Torso.Scale(Scale);
-            UpperarmLeft.Scale(Scale/1.333f);
-            UpperarmRight.Scale(Scale/1.333f);
-            ForearmLeft.Scale(Scale/1.1f);
-            ForearmRight.Scale(Scale/1.1f);
+            UpperarmLeft.Scale(Scale / 1.333f);
+            UpperarmRight.Scale(Scale / 1.333f);
+            ForearmLeft.Scale(Scale / 1.1f);
+            ForearmRight.Scale(Scale / 1.1f);
             ThighlegLeft.Scale(Scale);
             ThighlegRight.Scale(Scale);
             LowerlegLeft.Scale(Scale);
             LowerlegRight.Scale(Scale);
+        }
 
-            View.Visualization.attachToCamera(Head.Id, true);
-            View.Visualization.attachToCamera(UpperarmLeft.Id, true);
-            View.Visualization.attachToCamera(UpperarmRight.Id, true);
-            View.Visualization.attachToCamera(ForearmLeft.Id, true);
-            View.Visualization.attachToCamera(ForearmRight.Id, true);
-            View.Visualization.attachToCamera(Torso.Id, true);
-            View.Visualization.attachToCamera(ThighlegLeft.Id, true);
-            View.Visualization.attachToCamera(ThighlegRight.Id, true);
-            View.Visualization.attachToCamera(LowerlegLeft.Id, true);
-            View.Visualization.attachToCamera(LowerlegRight.Id, true);
+        private void AttachToCamera()
+        {
+            Head.AttachToCamera(Attach);
+            UpperarmLeft.AttachToCamera(Attach);
+            UpperarmRight.AttachToCamera(Attach);
+            ForearmLeft.AttachToCamera(Attach);
+            ForearmRight.AttachToCamera(Attach);
+            Torso.AttachToCamera(Attach);
+            ThighlegLeft.AttachToCamera(Attach);
+            ThighlegRight.AttachToCamera(Attach);
+            LowerlegLeft.AttachToCamera(Attach);
+            LowerlegRight.AttachToCamera(Attach);
         }
     }
 }

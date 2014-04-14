@@ -37,5 +37,9 @@ namespace Controller
             Visualization.position(Id, x, y, z);
         }
 
+        public void AttachToCamera(bool choice)
+        {
+            Visualization.attachToCamera(Id, choice);
+        }
     }
 }
