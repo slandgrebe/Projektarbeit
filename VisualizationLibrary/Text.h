@@ -12,8 +12,10 @@
 namespace visual {
 	namespace gui {
 
-		/** Text Elemente
+		/** Text Elemente.
+		Diese Klasse verwendet zum Auslesen der Schriftdateien die sehr weit verbreitete Bibliothek FreeType.
 		* @author Stefan Landgrebe
+		* @see <a href="http://www.freetype.org/">http://www.freetype.org/</a> 
 		*/
 		class Text {
 		private:
@@ -62,7 +64,9 @@ namespace visual {
 		public:
 
 			/** Konstruktor
+			Zum Laden des eigentlichen Textes muss zusätzlich die Methode init() aufgerufen werden.
 			* @author Stefan Landgrebe
+			* @see init()
 			*/
 			Text();
 

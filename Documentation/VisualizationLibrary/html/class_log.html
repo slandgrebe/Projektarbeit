@@ -151,8 +151,10 @@ Geschützte Attribute</h2></td></tr>
 <tr class="separator:aad14365bfb71db27b3e15ab78de0be94"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Ausführliche Beschreibung</h2>
-<div class="textblock">
-<p>Definiert in Zeile <a class="el" href="_log_8h_source.html#l00014">14</a> der Datei <a class="el" href="_log_8h_source.html">Log.h</a>.</p>
+<div class="textblock"><p><a class="el" href="class_log.html">Log</a> Klasse sollte als Alternative zu std::cout verwendet werden und erlaubt das selektive darstellen von unterschiedlich wichtigen Meldungen. Der Code stammt urspr�nglich von <a href="http://www.drdobbs.com/cpp/logging-in-c/201804215">http://www.drdobbs.com/cpp/logging-in-c/201804215</a> Verwendung: <a class="el" href="class_log.html#af6071a60aa52b6c1b511f99b4bc1b8fe">Log()</a>.<a class="el" href="class_log.html#a38cce0a6db52ac8fcde0a19874259c67">info()</a> &lt;&lt; "Dies ist eine Information"; Ausgabe: 13:26:17.172 [INFO] Dies ist eine Information </p>
+<dl class="section author"><dt>Autor</dt><dd>Stefan Landgrebe </dd></dl>
+
+<p>Definiert in Zeile <a class="el" href="_log_8h_source.html#l00038">38</a> der Datei <a class="el" href="_log_8h_source.html">Log.h</a>.</p>
 </div><h2 class="groupheader">Beschreibung der Konstruktoren und Destruktoren</h2>
 <a class="anchor" id="af6071a60aa52b6c1b511f99b4bc1b8fe"></a>
 <div class="memitem">
@@ -174,8 +176,10 @@ Geschützte Attribute</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Konstruktor </p>
+<dl class="section author"><dt>Autor</dt><dd>Stefan Landgrebe </dd></dl>
 
-<p>Definiert in Zeile <a class="el" href="_log_8h_source.html#l00039">39</a> der Datei <a class="el" href="_log_8h_source.html">Log.h</a>.</p>
+<p>Definiert in Zeile <a class="el" href="_log_8h_source.html#l00128">128</a> der Datei <a class="el" href="_log_8h_source.html">Log.h</a>.</p>
 
 </div>
 </div>
@@ -199,8 +203,10 @@ Geschützte Attribute</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Destruktor Schreibt die Logmeldung. </p>
+<dl class="section author"><dt>Autor</dt><dd>Stefan Landgrebe </dd></dl>
 
-<p>Definiert in Zeile <a class="el" href="_log_8h_source.html#l00073">73</a> der Datei <a class="el" href="_log_8h_source.html">Log.h</a>.</p>
+<p>Definiert in Zeile <a class="el" href="_log_8h_source.html#l00162">162</a> der Datei <a class="el" href="_log_8h_source.html">Log.h</a>.</p>
 
 </div>
 </div>
@@ -225,8 +231,11 @@ Geschützte Attribute</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Equival�nt zu <a class="el" href="class_log.html#af6071a60aa52b6c1b511f99b4bc1b8fe">Log()</a>.Get(logDEBUG) </p>
+<dl class="section author"><dt>Autor</dt><dd>Stefan Landgrebe </dd></dl>
+<dl class="section return"><dt>Rückgabe</dt><dd>Referenz auf den stringstream </dd></dl>
 
-<p>Definiert in Zeile <a class="el" href="_log_8h_source.html#l00066">66</a> der Datei <a class="el" href="_log_8h_source.html">Log.h</a>.</p>
+<p>Definiert in Zeile <a class="el" href="_log_8h_source.html#l00155">155</a> der Datei <a class="el" href="_log_8h_source.html">Log.h</a>.</p>
 
 </div>
 </div>
@@ -250,8 +259,11 @@ Geschützte Attribute</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Equival�nt zu <a class="el" href="class_log.html#af6071a60aa52b6c1b511f99b4bc1b8fe">Log()</a>.Get(logERROR) </p>
+<dl class="section author"><dt>Autor</dt><dd>Stefan Landgrebe </dd></dl>
+<dl class="section return"><dt>Rückgabe</dt><dd>Referenz auf den stringstream </dd></dl>
 
-<p>Definiert in Zeile <a class="el" href="_log_8h_source.html#l00057">57</a> der Datei <a class="el" href="_log_8h_source.html">Log.h</a>.</p>
+<p>Definiert in Zeile <a class="el" href="_log_8h_source.html#l00146">146</a> der Datei <a class="el" href="_log_8h_source.html">Log.h</a>.</p>
 
 </div>
 </div>
@@ -275,8 +287,11 @@ Geschützte Attribute</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Equival�nt zu <a class="el" href="class_log.html#af6071a60aa52b6c1b511f99b4bc1b8fe">Log()</a>.Get(logFATAL) </p>
+<dl class="section author"><dt>Autor</dt><dd>Stefan Landgrebe </dd></dl>
+<dl class="section return"><dt>Rückgabe</dt><dd>Referenz auf den stringstream </dd></dl>
 
-<p>Definiert in Zeile <a class="el" href="_log_8h_source.html#l00054">54</a> der Datei <a class="el" href="_log_8h_source.html">Log.h</a>.</p>
+<p>Definiert in Zeile <a class="el" href="_log_8h_source.html#l00143">143</a> der Datei <a class="el" href="_log_8h_source.html">Log.h</a>.</p>
 
 </div>
 </div>
@@ -301,8 +316,18 @@ Geschützte Attribute</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Liefert das entsprechende Loglevel zum mitgegebenen Loglevel zur�ck Umkehrung der <a class="el" href="class_log.html#ac8518398d37934ed15788c8203e840df">ToString()</a> Methode </p>
+<dl class="section author"><dt>Autor</dt><dd>Stefan Landgrebe </dd></dl>
+<dl class="params"><dt>Parameter</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">level</td><td>Loglevel als Text </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Rückgabe</dt><dd>Loglevel </dd></dl>
+<dl class="section see"><dt>Siehe auch</dt><dd><a class="el" href="class_log.html#ac8518398d37934ed15788c8203e840df">ToString()</a> </dd></dl>
 
-<p>Definiert in Zeile <a class="el" href="_log_8h_source.html#l00094">94</a> der Datei <a class="el" href="_log_8h_source.html">Log.h</a>.</p>
+<p>Definiert in Zeile <a class="el" href="_log_8h_source.html#l00183">183</a> der Datei <a class="el" href="_log_8h_source.html">Log.h</a>.</p>
 
 </div>
 </div>
@@ -327,8 +352,17 @@ Geschützte Attribute</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Wird zur Ausgabe ins <a class="el" href="class_log.html">Log</a> verwendet. Die Methode erwartet als Parameter das zu verwendende Loglevel. </p>
+<dl class="section author"><dt>Autor</dt><dd>Stefan Landgrebe </dd></dl>
+<dl class="params"><dt>Parameter</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">level</td><td>Das zu verwendende Loglevel </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Rückgabe</dt><dd>Referenz auf den stringstream </dd></dl>
 
-<p>Definiert in Zeile <a class="el" href="_log_8h_source.html#l00043">43</a> der Datei <a class="el" href="_log_8h_source.html">Log.h</a>.</p>
+<p>Definiert in Zeile <a class="el" href="_log_8h_source.html#l00132">132</a> der Datei <a class="el" href="_log_8h_source.html">Log.h</a>.</p>
 
 </div>
 </div>
@@ -352,8 +386,11 @@ Geschützte Attribute</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Equival�nt zu <a class="el" href="class_log.html#af6071a60aa52b6c1b511f99b4bc1b8fe">Log()</a>.Get(logINFO) </p>
+<dl class="section author"><dt>Autor</dt><dd>Stefan Landgrebe </dd></dl>
+<dl class="section return"><dt>Rückgabe</dt><dd>Referenz auf den stringstream </dd></dl>
 
-<p>Definiert in Zeile <a class="el" href="_log_8h_source.html#l00063">63</a> der Datei <a class="el" href="_log_8h_source.html">Log.h</a>.</p>
+<p>Definiert in Zeile <a class="el" href="_log_8h_source.html#l00152">152</a> der Datei <a class="el" href="_log_8h_source.html">Log.h</a>.</p>
 
 </div>
 </div>
@@ -377,8 +414,11 @@ Geschützte Attribute</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Definiert das aktuelle Loglevel. Nur Logmeldungen welche mindestens diesem Level entsprechen, werden ausgegeben. Verwendung: <a class="el" href="class_log.html#af6071a60aa52b6c1b511f99b4bc1b8fe">Log()</a>.<a class="el" href="class_log.html#aa4cfe92eb1c066161b1b06dfa2e8dc55">ReportingLevel()</a> = logINFO; </p>
+<dl class="section author"><dt>Autor</dt><dd>Stefan Landgrebe </dd></dl>
+<dl class="section return"><dt>Rückgabe</dt><dd>Referenz auf das Loglevel </dd></dl>
 
-<p>Definiert in Zeile <a class="el" href="_log_8h_source.html#l00082">82</a> der Datei <a class="el" href="_log_8h_source.html">Log.h</a>.</p>
+<p>Definiert in Zeile <a class="el" href="_log_8h_source.html#l00171">171</a> der Datei <a class="el" href="_log_8h_source.html">Log.h</a>.</p>
 
 </div>
 </div>
@@ -403,8 +443,17 @@ Geschützte Attribute</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Erzeugt den passenden Text zum mitgegebenen Loglevel </p>
+<dl class="section author"><dt>Autor</dt><dd>Stefan Landgrebe </dd></dl>
+<dl class="params"><dt>Parameter</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">level</td><td>Loglevel </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Rückgabe</dt><dd>Loglevel als Text </dd></dl>
 
-<p>Definiert in Zeile <a class="el" href="_log_8h_source.html#l00088">88</a> der Datei <a class="el" href="_log_8h_source.html">Log.h</a>.</p>
+<p>Definiert in Zeile <a class="el" href="_log_8h_source.html#l00177">177</a> der Datei <a class="el" href="_log_8h_source.html">Log.h</a>.</p>
 
 </div>
 </div>
@@ -428,8 +477,11 @@ Geschützte Attribute</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Equival�nt zu <a class="el" href="class_log.html#af6071a60aa52b6c1b511f99b4bc1b8fe">Log()</a>.Get(logTRACE) </p>
+<dl class="section author"><dt>Autor</dt><dd>Stefan Landgrebe </dd></dl>
+<dl class="section return"><dt>Rückgabe</dt><dd>Referenz auf den stringstream </dd></dl>
 
-<p>Definiert in Zeile <a class="el" href="_log_8h_source.html#l00069">69</a> der Datei <a class="el" href="_log_8h_source.html">Log.h</a>.</p>
+<p>Definiert in Zeile <a class="el" href="_log_8h_source.html#l00158">158</a> der Datei <a class="el" href="_log_8h_source.html">Log.h</a>.</p>
 
 </div>
 </div>
@@ -453,8 +505,11 @@ Geschützte Attribute</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Equival�nt zu <a class="el" href="class_log.html#af6071a60aa52b6c1b511f99b4bc1b8fe">Log()</a>.Get(logWARNING) </p>
+<dl class="section author"><dt>Autor</dt><dd>Stefan Landgrebe </dd></dl>
+<dl class="section return"><dt>Rückgabe</dt><dd>Referenz auf den stringstream </dd></dl>
 
-<p>Definiert in Zeile <a class="el" href="_log_8h_source.html#l00060">60</a> der Datei <a class="el" href="_log_8h_source.html">Log.h</a>.</p>
+<p>Definiert in Zeile <a class="el" href="_log_8h_source.html#l00149">149</a> der Datei <a class="el" href="_log_8h_source.html">Log.h</a>.</p>
 
 </div>
 </div>
@@ -477,7 +532,7 @@ Geschützte Attribute</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definiert in Zeile <a class="el" href="_log_8h_source.html#l00031">31</a> der Datei <a class="el" href="_log_8h_source.html">Log.h</a>.</p>
+<p>Definiert in Zeile <a class="el" href="_log_8h_source.html#l00120">120</a> der Datei <a class="el" href="_log_8h_source.html">Log.h</a>.</p>
 
 </div>
 </div>
@@ -490,7 +545,7 @@ Geschützte Attribute</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="class_log.html">Log</a></li>
-    <li class="footer">Erzeugt am Son Apr 13 2014 18:45:24 für Projektarbeit - VisualizationLibrary von
+    <li class="footer">Erzeugt am Mon Apr 14 2014 14:52:01 für Projektarbeit - VisualizationLibrary von
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

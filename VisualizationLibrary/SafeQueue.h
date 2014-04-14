@@ -9,6 +9,10 @@
 
 using namespace std;
 
+
+/** Threadsichere Warteschlange
+* @author Stefan Landgrebe
+*/
 template <typename T>
 class SafeQueue {
 private:
@@ -16,11 +20,21 @@ private:
 	mutex m_mutex;
 
 public:
+
+	/** Einreihen in die Warteschlange
+	* @author Stefan Landgrebe
+	* @param entry neu einzureihender Eintrag in die Warteschlange
+	*/
 	void enqueue(const T entry) {
 		m_mutex.lock();
 		m_queue.push(entry);
 		m_mutex.unlock();
 	}
+
+	/** Liefert den vordersten Eintrag der Warteschlange zurück
+	* @author Stefan Landgrebe
+	* @return vorderster Eintrag der Warteschlange
+	*/
 	T dequeue() {
 		T returnValue;
 		m_mutex.lock();
@@ -32,6 +46,11 @@ public:
 
 		return returnValue;
 	}
+
+	/** Prüft ob Elemente in der Warteschlange vorhanden sind
+	* @author Stefan Landgrebe
+	* @return Prüfung ob noch Elemente in der Warteschlange vorhanden sind
+	*/
 	bool hasMore() {
 		return !m_queue.empty();
 	}

@@ -131,65 +131,68 @@ $(document).ready(function(){initNavTree('_assimp_model_8h_source.html','');});
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;</div>
 <div class="line"><a name="l00025"></a><span class="lineno"><a class="line" href="namespacevisual.html">   25</a></span>&#160;<span class="keyword">namespace </span>visual {</div>
 <div class="line"><a name="l00026"></a><span class="lineno"><a class="line" href="namespacevisual_1_1model.html">   26</a></span>&#160;    <span class="keyword">namespace </span>model {</div>
-<div class="line"><a name="l00027"></a><span class="lineno"><a class="line" href="classvisual_1_1model_1_1_assimp_model.html">   27</a></span>&#160;        <span class="keyword">class </span><a class="code" href="classvisual_1_1model_1_1_assimp_model.html">AssimpModel</a> : <span class="keyword">public</span> <a class="code" href="classvisual_1_1model_1_1_model.html">Model</a> {</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;        <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;            GLuint vertexArrayId; </div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;            <span class="keywordtype">bool</span> initAllMeshes(<span class="keyword">const</span> aiScene* scene, <span class="keyword">const</span> std::string&amp; filename);</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;            <span class="keywordtype">bool</span> initSingleMesh(<span class="keyword">const</span> <span class="keywordtype">int</span> meshIndex, <span class="keyword">const</span> aiMesh* mesh);</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;            <span class="keywordtype">bool</span> initMaterials(<span class="keyword">const</span> aiScene* scene, <span class="keyword">const</span> std::string&amp; filename);</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;            <span class="comment">//bool initTexture() {};</span></div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;            <span class="keywordtype">void</span> clear();</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;            <span class="keyword">struct </span>Vertex {</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;                glm::vec3 <a class="code" href="classvisual_1_1model_1_1_model.html#acfabe08842ca514fc818fc5d300e48a0">position</a>;</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;                glm::vec2 textureCoordinate;</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;                glm::vec3 normal;</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;                Vertex() {}</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;                Vertex(<span class="keyword">const</span> glm::vec3&amp; <a class="code" href="classvisual_1_1model_1_1_model.html#acfabe08842ca514fc818fc5d300e48a0">position</a>, <span class="keyword">const</span> glm::vec2&amp; textureCoordinate, <span class="keyword">const</span> glm::vec3&amp; normal) {</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;                    this-&gt;position = <a class="code" href="classvisual_1_1model_1_1_model.html#acfabe08842ca514fc818fc5d300e48a0">position</a>;</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;                    this-&gt;textureCoordinate = textureCoordinate;</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;                    this-&gt;normal = normal;</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;                }</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;            };</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;            <span class="keyword">struct </span>MeshEntry {</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;                MeshEntry();</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;                ~MeshEntry();</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;                <span class="keywordtype">void</span> init(<span class="keyword">const</span> std::vector&lt;Vertex&gt;&amp; vertices,</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;                    <span class="keyword">const</span> std::vector&lt;unsigned int&gt;&amp; indices);</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;                GLuint vertexBufferId;</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;                GLuint indexBufferId;</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;                <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> numIndices;</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;                <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> materialIndex;</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;            };  </div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;</div>
+<div class="line"><a name="l00033"></a><span class="lineno"><a class="line" href="classvisual_1_1model_1_1_assimp_model.html">   33</a></span>&#160;        <span class="keyword">class </span><a class="code" href="classvisual_1_1model_1_1_assimp_model.html">AssimpModel</a> : <span class="keyword">public</span> <a class="code" href="classvisual_1_1model_1_1_model.html">Model</a> {</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;            GLuint vertexArrayId; </div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;            <span class="keywordtype">bool</span> initAllMeshes(<span class="keyword">const</span> aiScene* scene, <span class="keyword">const</span> std::string&amp; filename);</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;            <span class="keywordtype">bool</span> initSingleMesh(<span class="keyword">const</span> <span class="keywordtype">int</span> meshIndex, <span class="keyword">const</span> aiMesh* mesh);</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;            <span class="keywordtype">bool</span> initMaterials(<span class="keyword">const</span> aiScene* scene, <span class="keyword">const</span> std::string&amp; filename);</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;            <span class="comment">//bool initTexture() {};</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;            <span class="keywordtype">void</span> clear();</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;            <span class="keyword">struct </span>Vertex {</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;                glm::vec3 <a class="code" href="classvisual_1_1model_1_1_model.html#acfabe08842ca514fc818fc5d300e48a0">position</a>;</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;                glm::vec2 textureCoordinate;</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;                glm::vec3 normal;</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;                Vertex() {}</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;                Vertex(<span class="keyword">const</span> glm::vec3&amp; <a class="code" href="classvisual_1_1model_1_1_model.html#acfabe08842ca514fc818fc5d300e48a0">position</a>, <span class="keyword">const</span> glm::vec2&amp; textureCoordinate, <span class="keyword">const</span> glm::vec3&amp; normal) {</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;                    this-&gt;position = <a class="code" href="classvisual_1_1model_1_1_model.html#acfabe08842ca514fc818fc5d300e48a0">position</a>;</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;                    this-&gt;textureCoordinate = textureCoordinate;</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;                    this-&gt;normal = normal;</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;                }</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;            };</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;            <span class="keyword">struct </span>MeshEntry {</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;                MeshEntry();</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;                ~MeshEntry();</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;                <span class="keywordtype">void</span> init(<span class="keyword">const</span> std::vector&lt;Vertex&gt;&amp; vertices,</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;                    <span class="keyword">const</span> std::vector&lt;unsigned int&gt;&amp; indices);</div>
 <div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;            std::vector&lt;MeshEntry&gt; meshList;</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;            std::vector&lt;TextureSoil*&gt; textureList;</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;            <a class="code" href="classvisual_1_1model_1_1_assimp_model.html#a29f932eb1969f6ba6c21f7b740322740">AssimpModel</a>();</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;            <a class="code" href="classvisual_1_1model_1_1_assimp_model.html#a2e331ac1e5b947f8059041708f81977b">~AssimpModel</a>();</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;            <span class="keywordtype">bool</span> <a class="code" href="classvisual_1_1model_1_1_assimp_model.html#abe95ff7da2fb6c8817ee43e1765a1968">loadModel</a>(<span class="keyword">const</span> std::string filename);</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;                GLuint vertexBufferId;</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;                GLuint indexBufferId;</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;                <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> numIndices;</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;                <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> materialIndex;</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;            };  </div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;            std::vector&lt;MeshEntry&gt; meshList;</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;            std::vector&lt;TextureSoil*&gt; textureList;</div>
 <div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;            <span class="keywordtype">void</span> <a class="code" href="classvisual_1_1model_1_1_assimp_model.html#a20e9bce930948ff94fbd426cab0862b9">draw</a>(<span class="keywordtype">void</span>);</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;        };</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    }</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;}</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;            <a class="code" href="classvisual_1_1model_1_1_assimp_model.html#a29f932eb1969f6ba6c21f7b740322740">AssimpModel</a>();</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;            <a class="code" href="classvisual_1_1model_1_1_assimp_model.html#a2e331ac1e5b947f8059041708f81977b">~AssimpModel</a>();</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;            <span class="keywordtype">bool</span> <a class="code" href="classvisual_1_1model_1_1_assimp_model.html#abe95ff7da2fb6c8817ee43e1765a1968">loadModel</a>(<span class="keyword">const</span> std::string filename);</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;            <span class="keywordtype">void</span> <a class="code" href="classvisual_1_1model_1_1_assimp_model.html#a20e9bce930948ff94fbd426cab0862b9">draw</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;        };</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;    }</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;}</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="ttc" id="_model_8h_html"><div class="ttname"><a href="_model_8h.html">Model.h</a></div></div>
 <div class="ttc" id="classvisual_1_1model_1_1_assimp_model_html_a2e331ac1e5b947f8059041708f81977b"><div class="ttname"><a href="classvisual_1_1model_1_1_assimp_model.html#a2e331ac1e5b947f8059041708f81977b">visual::model::AssimpModel::~AssimpModel</a></div><div class="ttdeci">~AssimpModel()</div><div class="ttdef"><b>Definition:</b> <a href="_assimp_model_8cpp_source.html#l00052">AssimpModel.cpp:52</a></div></div>
 <div class="ttc" id="classvisual_1_1model_1_1_assimp_model_html_abe95ff7da2fb6c8817ee43e1765a1968"><div class="ttname"><a href="classvisual_1_1model_1_1_assimp_model.html#abe95ff7da2fb6c8817ee43e1765a1968">visual::model::AssimpModel::loadModel</a></div><div class="ttdeci">bool loadModel(const std::string filename)</div><div class="ttdef"><b>Definition:</b> <a href="_assimp_model_8cpp_source.html#l00057">AssimpModel.cpp:57</a></div></div>
 <div class="ttc" id="_texture_soil_8h_html"><div class="ttname"><a href="_texture_soil_8h.html">TextureSoil.h</a></div></div>
 <div class="ttc" id="classvisual_1_1model_1_1_assimp_model_html_a29f932eb1969f6ba6c21f7b740322740"><div class="ttname"><a href="classvisual_1_1model_1_1_assimp_model.html#a29f932eb1969f6ba6c21f7b740322740">visual::model::AssimpModel::AssimpModel</a></div><div class="ttdeci">AssimpModel()</div><div class="ttdef"><b>Definition:</b> <a href="_assimp_model_8cpp_source.html#l00049">AssimpModel.cpp:49</a></div></div>
-<div class="ttc" id="classvisual_1_1model_1_1_assimp_model_html"><div class="ttname"><a href="classvisual_1_1model_1_1_assimp_model.html">visual::model::AssimpModel</a></div><div class="ttdef"><b>Definition:</b> <a href="_assimp_model_8h_source.html#l00027">AssimpModel.h:27</a></div></div>
-<div class="ttc" id="classvisual_1_1model_1_1_model_html"><div class="ttname"><a href="classvisual_1_1model_1_1_model.html">visual::model::Model</a></div><div class="ttdef"><b>Definition:</b> <a href="_model_8h_source.html#l00031">Model.h:31</a></div></div>
-<div class="ttc" id="classvisual_1_1model_1_1_model_html_acfabe08842ca514fc818fc5d300e48a0"><div class="ttname"><a href="classvisual_1_1model_1_1_model.html#acfabe08842ca514fc818fc5d300e48a0">visual::model::Model::position</a></div><div class="ttdeci">virtual glm::vec3 position(void)</div><div class="ttdef"><b>Definition:</b> <a href="_model_8h_source.html#l00108">Model.h:108</a></div></div>
+<div class="ttc" id="classvisual_1_1model_1_1_assimp_model_html"><div class="ttname"><a href="classvisual_1_1model_1_1_assimp_model.html">visual::model::AssimpModel</a></div><div class="ttdef"><b>Definition:</b> <a href="_assimp_model_8h_source.html#l00033">AssimpModel.h:33</a></div></div>
+<div class="ttc" id="classvisual_1_1model_1_1_model_html"><div class="ttname"><a href="classvisual_1_1model_1_1_model.html">visual::model::Model</a></div><div class="ttdef"><b>Definition:</b> <a href="_model_8h_source.html#l00033">Model.h:33</a></div></div>
+<div class="ttc" id="classvisual_1_1model_1_1_model_html_acfabe08842ca514fc818fc5d300e48a0"><div class="ttname"><a href="classvisual_1_1model_1_1_model.html#acfabe08842ca514fc818fc5d300e48a0">visual::model::Model::position</a></div><div class="ttdeci">virtual glm::vec3 position(void)</div><div class="ttdef"><b>Definition:</b> <a href="_model_8h_source.html#l00125">Model.h:125</a></div></div>
 <div class="ttc" id="classvisual_1_1model_1_1_assimp_model_html_a20e9bce930948ff94fbd426cab0862b9"><div class="ttname"><a href="classvisual_1_1model_1_1_assimp_model.html#a20e9bce930948ff94fbd426cab0862b9">visual::model::AssimpModel::draw</a></div><div class="ttdeci">void draw(void)</div><div class="ttdef"><b>Definition:</b> <a href="_assimp_model_8cpp_source.html#l00225">AssimpModel.cpp:225</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
@@ -197,7 +200,7 @@ $(document).ready(function(){initNavTree('_assimp_model_8h_source.html','');});
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_d092fe6f644d08052abf42c12a28702c.html">VisualizationLibrary</a></li><li class="navelem"><a class="el" href="_assimp_model_8h.html">AssimpModel.h</a></li>
-    <li class="footer">Erzeugt am Son Apr 13 2014 18:45:24 für Projektarbeit - VisualizationLibrary von
+    <li class="footer">Erzeugt am Mon Apr 14 2014 14:52:01 für Projektarbeit - VisualizationLibrary von
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

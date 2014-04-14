@@ -14,6 +14,13 @@
 #include "Manager.h"
 
 // exportierte funktionen
+
+/** Hier sind alle Funktionen der Bibliothek definiert.
+* Aus Kompatibilitätsgründen muss für die Rückgabe von Bool Werten auf int ausgewichen werden.
+* Der Wert 0 entspricht dabei jeweils False und der Wert 1 entspricht True.
+*/
+
+
 DLL_API int APIENTRY isRunning() {
 	// c++ bool in int umwandeln, damit c# bool damit umgehen kann
 	return (int)visual::Manager::getInstance()->isRunning();

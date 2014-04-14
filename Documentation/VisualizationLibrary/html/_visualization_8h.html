@@ -176,7 +176,7 @@ Funktionen</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definiert in Zeile <a class="el" href="_visualization_8h_source.html#l00018">18</a> der Datei <a class="el" href="_visualization_8h_source.html">Visualization.h</a>.</p>
+<p>Definiert in Zeile <a class="el" href="_visualization_8h_source.html#l00092">92</a> der Datei <a class="el" href="_visualization_8h_source.html">Visualization.h</a>.</p>
 
 </div>
 </div>
@@ -194,8 +194,17 @@ Funktionen</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Fügt ein Button Objekt hinzu. </p>
+<dl class="section author"><dt>Autor</dt><dd>Stefan Landgrebe </dd></dl>
+<dl class="params"><dt>Parameter</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">filename</td><td>Dateipfad zur Schriftart. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Rückgabe</dt><dd>Liefert die modelId zurück. </dd></dl>
 
-<p>Definiert in Zeile <a class="el" href="_visualization_impl_8h_source.html#l00038">38</a> der Datei <a class="el" href="_visualization_impl_8h_source.html">VisualizationImpl.h</a>.</p>
+<p>Definiert in Zeile <a class="el" href="_visualization_impl_8h_source.html#l00045">45</a> der Datei <a class="el" href="_visualization_impl_8h_source.html">VisualizationImpl.h</a>.</p>
 
 </div>
 </div>
@@ -212,8 +221,17 @@ Funktionen</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Fügt ein 3D Modell hinzu </p>
+<dl class="section author"><dt>Autor</dt><dd>Stefan Landgrebe </dd></dl>
+<dl class="params"><dt>Parameter</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">filename</td><td>Dateipfad des 3D Modells </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Rückgabe</dt><dd>ID des Modells. Diese wird für die weitere Arbeit mit diesem Modell benötigt. </dd></dl>
 
-<p>Definiert in Zeile <a class="el" href="_visualization_impl_8h_source.html#l00027">27</a> der Datei <a class="el" href="_visualization_impl_8h_source.html">VisualizationImpl.h</a>.</p>
+<p>Definiert in Zeile <a class="el" href="_visualization_impl_8h_source.html#l00034">34</a> der Datei <a class="el" href="_visualization_impl_8h_source.html">VisualizationImpl.h</a>.</p>
 
 </div>
 </div>
@@ -230,8 +248,17 @@ Funktionen</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Fügt eine Fläche welche von einem Bild ausgefüllt wird hinzu. </p>
+<dl class="section author"><dt>Autor</dt><dd>Stefan Landgrebe </dd></dl>
+<dl class="params"><dt>Parameter</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">textureFilename</td><td>Dateipfad des Bildes </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Rückgabe</dt><dd>ID des Modells </dd></dl>
 
-<p>Definiert in Zeile <a class="el" href="_visualization_impl_8h_source.html#l00031">31</a> der Datei <a class="el" href="_visualization_impl_8h_source.html">VisualizationImpl.h</a>.</p>
+<p>Definiert in Zeile <a class="el" href="_visualization_impl_8h_source.html#l00038">38</a> der Datei <a class="el" href="_visualization_impl_8h_source.html">VisualizationImpl.h</a>.</p>
 
 </div>
 </div>
@@ -248,8 +275,22 @@ Funktionen</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Fügt ein Textelement hinzu. Hierbei handelt sich um ein GUI Element. </p>
+<dl class="section author"><dt>Autor</dt><dd>Stefan Landgrebe </dd></dl>
+<dl class="params"><dt>Parameter</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">filename</td><td>Dateipfad der Schriftart. Es werden Truetype und Opentype Schriften unterstützt. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Rückgabe</dt><dd>ID des Text Objektes </dd></dl>
+<dl class="section see"><dt>Siehe auch</dt><dd><a class="el" href="_visualization_8h.html#adf56317b9bb2c78a5a477702a84ded32">text()</a> </dd>
+<dd>
+<a class="el" href="_visualization_8h.html#a7b3e7416812f4b5193f4faada9bd3b34">textSize()</a> </dd>
+<dd>
+<a class="el" href="_visualization_8h.html#ac17e08b37b55c834eb33276f1ea92d4b">textColor()</a> </dd></dl>
 
-<p>Definiert in Zeile <a class="el" href="_visualization_impl_8h_source.html#l00035">35</a> der Datei <a class="el" href="_visualization_impl_8h_source.html">VisualizationImpl.h</a>.</p>
+<p>Definiert in Zeile <a class="el" href="_visualization_impl_8h_source.html#l00042">42</a> der Datei <a class="el" href="_visualization_impl_8h_source.html">VisualizationImpl.h</a>.</p>
 
 </div>
 </div>
@@ -276,8 +317,24 @@ Funktionen</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Hängt ein Modell an die Kamera an. Dies hat zur Folge, dass dieses Objekt relativ zur Kamera positioniert wird. Diese Methode kann nur für Modelle und Punkte verwendet werden.</p>
+<p>Aus Kompatibilitätsgründen muss für die Rückgabe von Bool Werten auf int ausgewichen werden. Der Wert 0 entspricht dabei jeweils False und der Wert 1 entspricht True.</p>
+<dl class="section author"><dt>Autor</dt><dd>Stefan Landgrebe </dd></dl>
+<dl class="params"><dt>Parameter</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">modelId</td><td>ID des Modells </td></tr>
+    <tr><td class="paramname">choice</td><td>True aktiviert und False deaktiviert die Anhängung an die Kamera. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Rückgabe</dt><dd>(Bool) Prüfung ob die Operation durchgeführt werden konnte </dd></dl>
+<dl class="section see"><dt>Siehe auch</dt><dd><a class="el" href="_visualization_8h.html#ab7ef3ae59da17b0f42783b4119efad69">position()</a> </dd>
+<dd>
+<a class="el" href="_visualization_8h.html#ae58a940dc8487d8e403f1a81ae6e153a">addModel()</a> </dd>
+<dd>
+<a class="el" href="_visualization_8h.html#ac64b7edd1fc7d999552d1745a203f74a">addPoint()</a> </dd></dl>
 
-<p>Definiert in Zeile <a class="el" href="_visualization_impl_8h_source.html#l00073">73</a> der Datei <a class="el" href="_visualization_impl_8h_source.html">VisualizationImpl.h</a>.</p>
+<p>Definiert in Zeile <a class="el" href="_visualization_impl_8h_source.html#l00080">80</a> der Datei <a class="el" href="_visualization_impl_8h_source.html">VisualizationImpl.h</a>.</p>
 
 </div>
 </div>
@@ -294,8 +351,16 @@ Funktionen</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Ändert die Geschwindikeit der Kamera </p>
+<dl class="section author"><dt>Autor</dt><dd>Stefan Landgrebe </dd></dl>
+<dl class="params"><dt>Parameter</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">speed</td><td>Geschwindigkeit in m/s (bzw. Einheiten/s) </td></tr>
+  </table>
+  </dd>
+</dl>
 
-<p>Definiert in Zeile <a class="el" href="_visualization_impl_8h_source.html#l00100">100</a> der Datei <a class="el" href="_visualization_impl_8h_source.html">VisualizationImpl.h</a>.</p>
+<p>Definiert in Zeile <a class="el" href="_visualization_impl_8h_source.html#l00107">107</a> der Datei <a class="el" href="_visualization_impl_8h_source.html">VisualizationImpl.h</a>.</p>
 
 </div>
 </div>
@@ -322,8 +387,18 @@ Funktionen</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Text mit allen Kollisionen. Format: 1:2,3;2:1;3:1;4: Bedeutung: Objekt mit der ID 1 kollidiert mit Objekt 2 und 3 Objekt 2 kollidiert mit Objekt 1 Objekt 3 kollidiert mit Objekt 1 Objekt 4 kollidiert mit nichts. </p>
+<dl class="section author"><dt>Autor</dt><dd>Stefan Landgrebe </dd></dl>
+<dl class="params"><dt>Parameter</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">string</td><td>Das zu beschreibende String Objekt </td></tr>
+    <tr><td class="paramname">length</td><td>Die Anzahl Zeichen welche in den String kopiert werden sollen </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section see"><dt>Siehe auch</dt><dd><a class="el" href="_visualization_8h.html#a28d55e6f6b8af143d419ebe3a822c82e">collisionsTextLength()</a> </dd></dl>
 
-<p>Definiert in Zeile <a class="el" href="_visualization_impl_8h_source.html#l00107">107</a> der Datei <a class="el" href="_visualization_impl_8h_source.html">VisualizationImpl.h</a>.</p>
+<p>Definiert in Zeile <a class="el" href="_visualization_impl_8h_source.html#l00114">114</a> der Datei <a class="el" href="_visualization_impl_8h_source.html">VisualizationImpl.h</a>.</p>
 
 </div>
 </div>
@@ -340,8 +415,12 @@ Funktionen</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Länge des Textes mit allen erkannten Kollisionen </p>
+<dl class="section author"><dt>Autor</dt><dd>Stefan Landgrebe </dd></dl>
+<dl class="section return"><dt>Rückgabe</dt><dd>Länge des Textes </dd></dl>
+<dl class="section see"><dt>Siehe auch</dt><dd><a class="el" href="_visualization_8h.html#a6c2122e68783421a79f4def79d159422">collisionsText()</a> </dd></dl>
 
-<p>Definiert in Zeile <a class="el" href="_visualization_impl_8h_source.html#l00104">104</a> der Datei <a class="el" href="_visualization_impl_8h_source.html">VisualizationImpl.h</a>.</p>
+<p>Definiert in Zeile <a class="el" href="_visualization_impl_8h_source.html#l00111">111</a> der Datei <a class="el" href="_visualization_impl_8h_source.html">VisualizationImpl.h</a>.</p>
 
 </div>
 </div>
@@ -358,8 +437,16 @@ Funktionen</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Markiert ein Modell zur Entfernung. Diese Methode kann für alle Arten von Modellen verwendet werden (Model, Point, Text, Button). </p>
+<dl class="section author"><dt>Autor</dt><dd>Stefan Landgrebe </dd></dl>
+<dl class="params"><dt>Parameter</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">modelId</td><td>ID des zu entfernenden Modells </td></tr>
+  </table>
+  </dd>
+</dl>
 
-<p>Definiert in Zeile <a class="el" href="_visualization_impl_8h_source.html#l00047">47</a> der Datei <a class="el" href="_visualization_impl_8h_source.html">VisualizationImpl.h</a>.</p>
+<p>Definiert in Zeile <a class="el" href="_visualization_impl_8h_source.html#l00054">54</a> der Datei <a class="el" href="_visualization_impl_8h_source.html">VisualizationImpl.h</a>.</p>
 
 </div>
 </div>
@@ -376,8 +463,10 @@ Funktionen</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Test Funktion welche nicht für den produktiven Einsatz gedacht ist. </p>
+<dl class="section author"><dt>Autor</dt><dd>Stefan Landgrebe </dd></dl>
 
-<p>Definiert in Zeile <a class="el" href="_visualization_impl_8h_source.html#l00022">22</a> der Datei <a class="el" href="_visualization_impl_8h_source.html">VisualizationImpl.h</a>.</p>
+<p>Definiert in Zeile <a class="el" href="_visualization_impl_8h_source.html#l00029">29</a> der Datei <a class="el" href="_visualization_impl_8h_source.html">VisualizationImpl.h</a>.</p>
 
 </div>
 </div>
@@ -422,8 +511,23 @@ Funktionen</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Setzt die Hervorhebungsfarbe für dieses Objekt. Diese Methode kann nicht für Text Objekte verwendet werden. Die Farbe wird durch 4 Komponenten definiert: Rot, Grün, Blau, Alpha Alle Komponenten Sollten einen Wert von 0 bis 1 haben, wobei der Wert 0 0% und der Wert 1 100% entspricht.</p>
+<p>Aus Kompatibilitätsgründen muss für die Rückgabe von Bool Werten auf int ausgewichen werden. Der Wert 0 entspricht dabei jeweils False und der Wert 1 entspricht True.</p>
+<dl class="section author"><dt>Autor</dt><dd>Stefan Landgrebe </dd></dl>
+<dl class="params"><dt>Parameter</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">modelId</td><td>ID des Modells </td></tr>
+    <tr><td class="paramname">r</td><td>Rot Komponente der Farbe </td></tr>
+    <tr><td class="paramname">g</td><td>Grün Komponente der Farbe </td></tr>
+    <tr><td class="paramname">b</td><td>Blau Komponente der Farbe </td></tr>
+    <tr><td class="paramname">a</td><td>Alpha Komponente (Undurchsichtigkeit) der Farbe </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Rückgabe</dt><dd>(Bool) Prüfung ob die Operation durchgeführt werden konnte </dd></dl>
+<dl class="section see"><dt>Siehe auch</dt><dd><a class="el" href="_visualization_8h.html#ac17e08b37b55c834eb33276f1ea92d4b">textColor()</a> </dd></dl>
 
-<p>Definiert in Zeile <a class="el" href="_visualization_impl_8h_source.html#l00066">66</a> der Datei <a class="el" href="_visualization_impl_8h_source.html">VisualizationImpl.h</a>.</p>
+<p>Definiert in Zeile <a class="el" href="_visualization_impl_8h_source.html#l00073">73</a> der Datei <a class="el" href="_visualization_impl_8h_source.html">VisualizationImpl.h</a>.</p>
 
 </div>
 </div>
@@ -440,8 +544,18 @@ Funktionen</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Prüft ob das Modell existiert. Diese Methode kann für alle Arten von Modellen verwendet werden (Model, Point, Text, Button). Bevor ein Modell bearbeitet wird, sollte sichergestellt werden, dass das Modell existiert. Dies hat den Hintergrund, dass die Modelle effektiv in einem separaten Thread erstellt werden.</p>
+<p>Aus Kompatibilitätsgründen muss für die Rückgabe von Bool Werten auf int ausgewichen werden. Der Wert 0 entspricht dabei jeweils False und der Wert 1 entspricht True.</p>
+<dl class="section author"><dt>Autor</dt><dd>Stefan Landgrebe </dd></dl>
+<dl class="params"><dt>Parameter</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">modelId</td><td>ID des zu prüfenden Modells </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Rückgabe</dt><dd>(Bool) Liefert True wenn das Objekt existiert, ansonsten False </dd></dl>
 
-<p>Definiert in Zeile <a class="el" href="_visualization_impl_8h_source.html#l00042">42</a> der Datei <a class="el" href="_visualization_impl_8h_source.html">VisualizationImpl.h</a>.</p>
+<p>Definiert in Zeile <a class="el" href="_visualization_impl_8h_source.html#l00049">49</a> der Datei <a class="el" href="_visualization_impl_8h_source.html">VisualizationImpl.h</a>.</p>
 
 </div>
 </div>
@@ -468,8 +582,20 @@ Funktionen</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Ändert den Status der Hervorhebung dieses Objektes. Zur Hervorhebung wird die Hervorhebungsfarbe verwendet.</p>
+<p>Aus Kompatibilitätsgründen muss für die Rückgabe von Bool Werten auf int ausgewichen werden. Der Wert 0 entspricht dabei jeweils False und der Wert 1 entspricht True.</p>
+<dl class="section author"><dt>Autor</dt><dd>Stefan Landgrebe </dd></dl>
+<dl class="params"><dt>Parameter</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">modelId</td><td>ID des Modells </td></tr>
+    <tr><td class="paramname">choice</td><td>True aktiviert und False deaktiviert die Hervorhebung. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Rückgabe</dt><dd>(Bool) Prüfung ob die Operation durchgeführt werden konnte </dd></dl>
+<dl class="section see"><dt>Siehe auch</dt><dd><a class="el" href="_visualization_8h.html#a0d17e3989d3b2209fd3e96be2da86d09">highlightColor()</a> </dd></dl>
 
-<p>Definiert in Zeile <a class="el" href="_visualization_impl_8h_source.html#l00069">69</a> der Datei <a class="el" href="_visualization_impl_8h_source.html">VisualizationImpl.h</a>.</p>
+<p>Definiert in Zeile <a class="el" href="_visualization_impl_8h_source.html#l00076">76</a> der Datei <a class="el" href="_visualization_impl_8h_source.html">VisualizationImpl.h</a>.</p>
 
 </div>
 </div>
@@ -486,8 +612,12 @@ Funktionen</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Hier sind alle Funktionen der Bibliothek definiert. Aus Kompatibilitätsgründen muss für die Rückgabe von Bool Werten auf int ausgewichen werden. Der Wert 0 entspricht dabei jeweils False und der Wert 1 entspricht True. Prüft den Zustand der Bibliothek und ob das Fenster offen ist Aus Kompatibilitätsgründen muss für die Rückgabe von Bool Werten auf int ausgewichen werden. Der Wert 0 entspricht dabei jeweils False und der Wert 1 entspricht True. </p>
+<dl class="section author"><dt>Autor</dt><dd>Stefan Landgrebe </dd></dl>
+<dl class="section return"><dt>Rückgabe</dt><dd>(Bool) True wenn das Fenster offen ist, ansonsten False.</dd></dl>
+<p>Hier sind alle Funktionen der Bibliothek definiert. Aus Kompatibilitätsgründen muss für die Rückgabe von Bool Werten auf int ausgewichen werden. Der Wert 0 entspricht dabei jeweils False und der Wert 1 entspricht True. </p>
 
-<p>Definiert in Zeile <a class="el" href="_visualization_impl_8h_source.html#l00017">17</a> der Datei <a class="el" href="_visualization_impl_8h_source.html">VisualizationImpl.h</a>.</p>
+<p>Definiert in Zeile <a class="el" href="_visualization_impl_8h_source.html#l00024">24</a> der Datei <a class="el" href="_visualization_impl_8h_source.html">VisualizationImpl.h</a>.</p>
 
 </div>
 </div>
@@ -526,8 +656,21 @@ Funktionen</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Positioniert ein Modell. Kann mit allen Arten von Modellen umgehen, allerdings werden diese unterschiedlich behandelt. Model und Point werden relativ zum Ursprung in einem normalen, dreidimensionalem, kartesischem Koordinatensystem positioniert. Bei Text und Button handelt es sich um GUI Elemente, weswegen hier die z-Koordinate ignoriert wird. X- und Y-Koordinaten gehen von -1 bis +1 wobei -1 dem linken bzw. unteren Rand und +1 dem rechten bzw. oberen Rand entspricht.</p>
+<p>Aus Kompatibilitätsgründen muss für die Rückgabe von Bool Werten auf int ausgewichen werden. Der Wert 0 entspricht dabei jeweils False und der Wert 1 entspricht True.</p>
+<dl class="section author"><dt>Autor</dt><dd>Stefan Landgrebe </dd></dl>
+<dl class="params"><dt>Parameter</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">modelId</td><td>ID des Modells </td></tr>
+    <tr><td class="paramname">x</td><td>x Koordinate </td></tr>
+    <tr><td class="paramname">y</td><td>y Koordinate </td></tr>
+    <tr><td class="paramname">z</td><td>z Koordinate </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Rückgabe</dt><dd>(Bool) Prüfung ob die Operation durchgeführt werden konnte </dd></dl>
 
-<p>Definiert in Zeile <a class="el" href="_visualization_impl_8h_source.html#l00051">51</a> der Datei <a class="el" href="_visualization_impl_8h_source.html">VisualizationImpl.h</a>.</p>
+<p>Definiert in Zeile <a class="el" href="_visualization_impl_8h_source.html#l00058">58</a> der Datei <a class="el" href="_visualization_impl_8h_source.html">VisualizationImpl.h</a>.</p>
 
 </div>
 </div>
@@ -560,8 +703,16 @@ Funktionen</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Positioniert die Kamera </p>
+<dl class="section author"><dt>Autor</dt><dd>Stefan Landgrebe </dd></dl>
+<dl class="params"><dt>Parameter</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">position</td><td>Positionsvektor </td></tr>
+  </table>
+  </dd>
+</dl>
 
-<p>Definiert in Zeile <a class="el" href="_visualization_impl_8h_source.html#l00091">91</a> der Datei <a class="el" href="_visualization_impl_8h_source.html">VisualizationImpl.h</a>.</p>
+<p>Definiert in Zeile <a class="el" href="_visualization_impl_8h_source.html#l00098">98</a> der Datei <a class="el" href="_visualization_impl_8h_source.html">VisualizationImpl.h</a>.</p>
 
 </div>
 </div>
@@ -606,8 +757,22 @@ Funktionen</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Rotiert ein Modell. Diese Methode kann nur für Model und Point verwendet werden.</p>
+<p>Aus Kompatibilitätsgründen muss für die Rückgabe von Bool Werten auf int ausgewichen werden. Der Wert 0 entspricht dabei jeweils False und der Wert 1 entspricht True.</p>
+<dl class="section author"><dt>Autor</dt><dd>Stefan Landgrebe </dd></dl>
+<dl class="params"><dt>Parameter</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">modelId</td><td>ID des Modells </td></tr>
+    <tr><td class="paramname">degrees</td><td>Rotationswinkel in Grad </td></tr>
+    <tr><td class="paramname">x</td><td>x Komponente der Rotationsachse </td></tr>
+    <tr><td class="paramname">y</td><td>y Komponente der Rotationsachse </td></tr>
+    <tr><td class="paramname">z</td><td>z Komponente der Rotationsachse </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Rückgabe</dt><dd>(Bool) Prüfung ob die Operation durchgeführt werden konnte </dd></dl>
 
-<p>Definiert in Zeile <a class="el" href="_visualization_impl_8h_source.html#l00056">56</a> der Datei <a class="el" href="_visualization_impl_8h_source.html">VisualizationImpl.h</a>.</p>
+<p>Definiert in Zeile <a class="el" href="_visualization_impl_8h_source.html#l00063">63</a> der Datei <a class="el" href="_visualization_impl_8h_source.html">VisualizationImpl.h</a>.</p>
 
 </div>
 </div>
@@ -624,8 +789,16 @@ Funktionen</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Rotiert die Kamera um die Y-Achse. </p>
+<dl class="section author"><dt>Autor</dt><dd>Stefan Landgrebe </dd></dl>
+<dl class="params"><dt>Parameter</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">degrees</td><td>Rotationswinkel in Grad </td></tr>
+  </table>
+  </dd>
+</dl>
 
-<p>Definiert in Zeile <a class="el" href="_visualization_impl_8h_source.html#l00094">94</a> der Datei <a class="el" href="_visualization_impl_8h_source.html">VisualizationImpl.h</a>.</p>
+<p>Definiert in Zeile <a class="el" href="_visualization_impl_8h_source.html#l00101">101</a> der Datei <a class="el" href="_visualization_impl_8h_source.html">VisualizationImpl.h</a>.</p>
 
 </div>
 </div>
@@ -664,8 +837,22 @@ Funktionen</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>skaliert das Modell auf die angegebene Grösse Diese Methode kann nicht für Text Modelle verwendet werden. Für Texte kann die <a class="el" href="_visualization_impl_8h.html#a7b3e7416812f4b5193f4faada9bd3b34">textSize</a> Methode verwendet werden.</p>
+<p>Aus Kompatibilitätsgründen muss für die Rückgabe von Bool Werten auf int ausgewichen werden. Der Wert 0 entspricht dabei jeweils False und der Wert 1 entspricht True.</p>
+<dl class="section author"><dt>Autor</dt><dd>Stefan Landgrebe </dd></dl>
+<dl class="params"><dt>Parameter</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">modelId</td><td>ID des Modells </td></tr>
+    <tr><td class="paramname">x</td><td>Skalierung auf der x-Achse </td></tr>
+    <tr><td class="paramname">y</td><td>Skalierung auf der y-Achse </td></tr>
+    <tr><td class="paramname">z</td><td>Skalierung auf der z-Achse </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Rückgabe</dt><dd>(Bool) Prüfung ob die Operation durchgeführt werden konnte </dd></dl>
+<dl class="section see"><dt>Siehe auch</dt><dd><a class="el" href="_visualization_8h.html#a7b3e7416812f4b5193f4faada9bd3b34">textSize()</a> </dd></dl>
 
-<p>Definiert in Zeile <a class="el" href="_visualization_impl_8h_source.html#l00061">61</a> der Datei <a class="el" href="_visualization_impl_8h_source.html">VisualizationImpl.h</a>.</p>
+<p>Definiert in Zeile <a class="el" href="_visualization_impl_8h_source.html#l00068">68</a> der Datei <a class="el" href="_visualization_impl_8h_source.html">VisualizationImpl.h</a>.</p>
 
 </div>
 </div>
@@ -692,8 +879,17 @@ Funktionen</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Ändert den darzustellenden Text Diese Methode kann für Text und Button Objekte verwendet werden. </p>
+<dl class="section author"><dt>Autor</dt><dd>Stefan Landgrebe </dd></dl>
+<dl class="params"><dt>Parameter</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">textId</td><td>ID des Modells </td></tr>
+    <tr><td class="paramname">text</td><td>Der neu darzustellende Text </td></tr>
+  </table>
+  </dd>
+</dl>
 
-<p>Definiert in Zeile <a class="el" href="_visualization_impl_8h_source.html#l00079">79</a> der Datei <a class="el" href="_visualization_impl_8h_source.html">VisualizationImpl.h</a>.</p>
+<p>Definiert in Zeile <a class="el" href="_visualization_impl_8h_source.html#l00086">86</a> der Datei <a class="el" href="_visualization_impl_8h_source.html">VisualizationImpl.h</a>.</p>
 
 </div>
 </div>
@@ -738,8 +934,20 @@ Funktionen</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Ändert die Farbe des Textes. Diese Methode kann für Text und Button Objekte verwendet werden. Die Farbe wird durch 4 Komponenten definiert: Rot, Grün, Blau, Alpha Alle Komponenten Sollten einen Wert von 0 bis 1 haben, wobei der Wert 0 0% und der Wert 1 100% entspricht. </p>
+<dl class="section author"><dt>Autor</dt><dd>Stefan Landgrebe </dd></dl>
+<dl class="params"><dt>Parameter</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">textId</td><td>ID des Modells </td></tr>
+    <tr><td class="paramname">r</td><td>Rot Komponente der Farbe </td></tr>
+    <tr><td class="paramname">g</td><td>Grün Komponente der Farbe </td></tr>
+    <tr><td class="paramname">b</td><td>Blau Komponente der Farbe </td></tr>
+    <tr><td class="paramname">a</td><td>Alpha Komponente (Undurchsichtigkeit) der Farbe </td></tr>
+  </table>
+  </dd>
+</dl>
 
-<p>Definiert in Zeile <a class="el" href="_visualization_impl_8h_source.html#l00085">85</a> der Datei <a class="el" href="_visualization_impl_8h_source.html">VisualizationImpl.h</a>.</p>
+<p>Definiert in Zeile <a class="el" href="_visualization_impl_8h_source.html#l00092">92</a> der Datei <a class="el" href="_visualization_impl_8h_source.html">VisualizationImpl.h</a>.</p>
 
 </div>
 </div>
@@ -766,8 +974,19 @@ Funktionen</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Ändert die Grösse des Textes. Die Grössenangabe erfolgt in Punkten (<a class="el" href="">http://de.wikipedia.org/wiki/Schriftgrad</a>). Diese Methode kann für Text und Button Objekte verwendet werden.</p>
+<p>Aus Kompatibilitätsgründen muss für die Rückgabe von Bool Werten auf int ausgewichen werden. Der Wert 0 entspricht dabei jeweils False und der Wert 1 entspricht True.</p>
+<dl class="section author"><dt>Autor</dt><dd>Stefan Landgrebe </dd></dl>
+<dl class="params"><dt>Parameter</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">modelId</td><td>ID des Modells </td></tr>
+    <tr><td class="paramname">points</td><td>Die neue Grösse. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Rückgabe</dt><dd>(Bool) Prüfung ob die Operation durchgeführt werden konnte </dd></dl>
 
-<p>Definiert in Zeile <a class="el" href="_visualization_impl_8h_source.html#l00082">82</a> der Datei <a class="el" href="_visualization_impl_8h_source.html">VisualizationImpl.h</a>.</p>
+<p>Definiert in Zeile <a class="el" href="_visualization_impl_8h_source.html#l00089">89</a> der Datei <a class="el" href="_visualization_impl_8h_source.html">VisualizationImpl.h</a>.</p>
 
 </div>
 </div>
@@ -784,8 +1003,16 @@ Funktionen</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Rotiert die Kamera um die x-Achse </p>
+<dl class="section author"><dt>Autor</dt><dd>Stefan Landgrebe </dd></dl>
+<dl class="params"><dt>Parameter</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">degrees</td><td>Rotationswinkel in Grad </td></tr>
+  </table>
+  </dd>
+</dl>
 
-<p>Definiert in Zeile <a class="el" href="_visualization_impl_8h_source.html#l00097">97</a> der Datei <a class="el" href="_visualization_impl_8h_source.html">VisualizationImpl.h</a>.</p>
+<p>Definiert in Zeile <a class="el" href="_visualization_impl_8h_source.html#l00104">104</a> der Datei <a class="el" href="_visualization_impl_8h_source.html">VisualizationImpl.h</a>.</p>
 
 </div>
 </div>
@@ -795,7 +1022,7 @@ Funktionen</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_d092fe6f644d08052abf42c12a28702c.html">VisualizationLibrary</a></li><li class="navelem"><a class="el" href="_visualization_8h.html">Visualization.h</a></li>
-    <li class="footer">Erzeugt am Son Apr 13 2014 18:45:24 für Projektarbeit - VisualizationLibrary von
+    <li class="footer">Erzeugt am Mon Apr 14 2014 14:52:01 für Projektarbeit - VisualizationLibrary von
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

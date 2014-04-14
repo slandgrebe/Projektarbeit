@@ -20,13 +20,15 @@ namespace visual {
 		*/
 		class Button {
 		private:
-			model::ColoredSquare* square;
-			Text* text;
+			model::ColoredSquare square;
+			Text text;
 			float zSquare;
 		public:
 
 			/** Konstruktor
+			Zum eigentlichen Laden des Buttons muss zusätzlich die Methode init() aufgerufen werden
 			* @author Stefan Landgrebe
+			* @see init()
 			*/
 			Button();
 			/** Destruktor

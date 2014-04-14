@@ -194,10 +194,10 @@ Geschützte Attribute</h2></td></tr>
 <tr class="separator:ac12119d9906a688f3506c5970c168bf4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Ausführliche Beschreibung</h2>
-<div class="textblock"><p>Das <a class="el" href="classvisual_1_1model_1_1_model.html">Model</a> Interface repräsentiert ein 3D-Modell </p>
+<div class="textblock"><p>Das <a class="el" href="classvisual_1_1model_1_1_model.html">Model</a> Interface repräsentiert ein abstraktes 3D-Modell </p>
 <dl class="section author"><dt>Autor</dt><dd>Stefan Landgrebe </dd></dl>
 
-<p>Definiert in Zeile <a class="el" href="_model_8h_source.html#l00031">31</a> der Datei <a class="el" href="_model_8h_source.html">Model.h</a>.</p>
+<p>Definiert in Zeile <a class="el" href="_model_8h_source.html#l00033">33</a> der Datei <a class="el" href="_model_8h_source.html">Model.h</a>.</p>
 </div><h2 class="groupheader">Beschreibung der Konstruktoren und Destruktoren</h2>
 <a class="anchor" id="ac2c4a30d143da3235ffad5feefd13531"></a>
 <div class="memitem">
@@ -219,8 +219,10 @@ Geschützte Attribute</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Konstruktor initialisiert alle Attribute </p>
+<dl class="section author"><dt>Autor</dt><dd>Stefan Landgrebe </dd></dl>
 
-<p>Definiert in Zeile <a class="el" href="_model_8h_source.html#l00066">66</a> der Datei <a class="el" href="_model_8h_source.html">Model.h</a>.</p>
+<p>Definiert in Zeile <a class="el" href="_model_8h_source.html#l00073">73</a> der Datei <a class="el" href="_model_8h_source.html">Model.h</a>.</p>
 
 </div>
 </div>
@@ -245,8 +247,10 @@ Geschützte Attribute</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>virtueller Destruktor </p>
+<dl class="section author"><dt>Autor</dt><dd>Stefan Landgrebe </dd></dl>
 
-<p>Definiert in Zeile <a class="el" href="_model_8h_source.html#l00081">81</a> der Datei <a class="el" href="_model_8h_source.html">Model.h</a>.</p>
+<p>Definiert in Zeile <a class="el" href="_model_8h_source.html#l00092">92</a> der Datei <a class="el" href="_model_8h_source.html">Model.h</a>.</p>
 
 </div>
 </div>
@@ -272,8 +276,16 @@ Geschützte Attribute</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Hängt das Modell an die Kamera an, so dass sich dieses mit der Kamera mitbewegt und Positionierung relativ zur Kamera stattfindet. </p>
+<dl class="section author"><dt>Autor</dt><dd>Stefan Landgrebe </dd></dl>
+<dl class="params"><dt>Parameter</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">choice</td><td>True hängt das Modell an und False macht dies wieder rückgängig </td></tr>
+  </table>
+  </dd>
+</dl>
 
-<p>Definiert in Zeile <a class="el" href="_model_8h_source.html#l00171">171</a> der Datei <a class="el" href="_model_8h_source.html">Model.h</a>.</p>
+<p>Definiert in Zeile <a class="el" href="_model_8h_source.html#l00222">222</a> der Datei <a class="el" href="_model_8h_source.html">Model.h</a>.</p>
 
 </div>
 </div>
@@ -298,8 +310,11 @@ Geschützte Attribute</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Liefert den Zustand der Anhängung an die Kamrea zurück </p>
+<dl class="section author"><dt>Autor</dt><dd>Stefan Landgrebe </dd></dl>
+<dl class="section return"><dt>Rückgabe</dt><dd>True wenn das Modell an die Kamera angehängt ist, ansonsten False </dd></dl>
 
-<p>Definiert in Zeile <a class="el" href="_model_8h_source.html#l00174">174</a> der Datei <a class="el" href="_model_8h_source.html">Model.h</a>.</p>
+<p>Definiert in Zeile <a class="el" href="_model_8h_source.html#l00230">230</a> der Datei <a class="el" href="_model_8h_source.html">Model.h</a>.</p>
 
 </div>
 </div>
@@ -324,8 +339,11 @@ Geschützte Attribute</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Radius der Bounding Sphere (kleinstmögliche Kugel welche ihren Ursprung im Ursprung des Modells hat und das ganze Modell umfasst) </p>
+<dl class="section author"><dt>Autor</dt><dd>Stefan Landgrebe </dd></dl>
+<dl class="section return"><dt>Rückgabe</dt><dd>Radius </dd></dl>
 
-<p>Definiert in Zeile <a class="el" href="_model_8h_source.html#l00083">83</a> der Datei <a class="el" href="_model_8h_source.html">Model.h</a>.</p>
+<p>Definiert in Zeile <a class="el" href="_model_8h_source.html#l00098">98</a> der Datei <a class="el" href="_model_8h_source.html">Model.h</a>.</p>
 
 </div>
 </div>
@@ -350,7 +368,7 @@ Geschützte Attribute</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Zeichnet das Modell </p>
+<p>Zeichnet das Modell neu </p>
 <dl class="section author"><dt>Autor</dt><dd>Stefan Landgrebe </dd></dl>
 
 <p>Implementiert in <a class="el" href="classvisual_1_1model_1_1_assimp_model.html#a20e9bce930948ff94fbd426cab0862b9">visual::model::AssimpModel</a>, <a class="el" href="classvisual_1_1model_1_1_square.html#a1250a4f4cc5bc7c68b52b9f89ccb3b7c">visual::model::Square</a> und <a class="el" href="classvisual_1_1model_1_1_colored_square.html#aa9219355279d66614680888ab5d5c42b">visual::model::ColoredSquare</a>.</p>
@@ -378,8 +396,11 @@ Geschützte Attribute</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Berechnet und liefert die perspektivische Model-View Matrix zurück. (Wird für perspektivisch dargestellte 3D Modelle verwendet) </p>
+<dl class="section author"><dt>Autor</dt><dd>Stefan Landgrebe </dd></dl>
+<dl class="section return"><dt>Rückgabe</dt><dd>perspektivische Model-View Matrix </dd></dl>
 
-<p>Definiert in Zeile <a class="el" href="_model_8h_source.html#l00149">149</a> der Datei <a class="el" href="_model_8h_source.html">Model.h</a>.</p>
+<p>Definiert in Zeile <a class="el" href="_model_8h_source.html#l00181">181</a> der Datei <a class="el" href="_model_8h_source.html">Model.h</a>.</p>
 
 </div>
 </div>
@@ -404,8 +425,11 @@ Geschützte Attribute</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Berechnet und liefert die orthographische Model-View Matrix zurück. (Wird für GUI Elemente verwendet) </p>
+<dl class="section author"><dt>Autor</dt><dd>Stefan Landgrebe </dd></dl>
+<dl class="section return"><dt>Rückgabe</dt><dd>orthographische Model-View Matrix </dd></dl>
 
-<p>Definiert in Zeile <a class="el" href="_model_8h_source.html#l00157">157</a> der Datei <a class="el" href="_model_8h_source.html">Model.h</a>.</p>
+<p>Definiert in Zeile <a class="el" href="_model_8h_source.html#l00193">193</a> der Datei <a class="el" href="_model_8h_source.html">Model.h</a>.</p>
 
 </div>
 </div>
@@ -430,11 +454,11 @@ Geschützte Attribute</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Liefert die transformierte Matrix des Modells zurück </p>
+<p>Shader Programm Liefert die transformierte Matrix (Skalierung, Rotation, Positionierung) des Modells zurück </p>
 <dl class="section author"><dt>Autor</dt><dd>Stefan Landgrebe </dd></dl>
 <dl class="section return"><dt>Rückgabe</dt><dd>die transformierte Matrix </dd></dl>
 
-<p>Definiert in Zeile <a class="el" href="_model_8h_source.html#l00053">53</a> der Datei <a class="el" href="_model_8h_source.html">Model.h</a>.</p>
+<p>Definiert in Zeile <a class="el" href="_model_8h_source.html#l00055">55</a> der Datei <a class="el" href="_model_8h_source.html">Model.h</a>.</p>
 
 </div>
 </div>
@@ -459,8 +483,16 @@ Geschützte Attribute</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Statusänderung der Hervorhebung </p>
+<dl class="section author"><dt>Autor</dt><dd>Stefan Landgrebe </dd></dl>
+<dl class="params"><dt>Parameter</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">choice</td><td>definiert den Zustand der Hervorhebung. True aktiviert und False deaktiviert die Hervorhebung. </td></tr>
+  </table>
+  </dd>
+</dl>
 
-<p>Definiert in Zeile <a class="el" href="_model_8h_source.html#l00166">166</a> der Datei <a class="el" href="_model_8h_source.html">Model.h</a>.</p>
+<p>Definiert in Zeile <a class="el" href="_model_8h_source.html#l00213">213</a> der Datei <a class="el" href="_model_8h_source.html">Model.h</a>.</p>
 
 </div>
 </div>
@@ -489,14 +521,12 @@ Geschützte Attribute</h2></td></tr>
 <dl class="section author"><dt>Autor</dt><dd>Stefan Landgrebe </dd></dl>
 <dl class="params"><dt>Parameter</dt><dd>
   <table class="params">
-    <tr><td class="paramname">x</td><td></td></tr>
-    <tr><td class="paramname">y</td><td></td></tr>
-    <tr><td class="paramname">z</td><td></td></tr>
+    <tr><td class="paramname">position</td><td>Positionsvektor </td></tr>
   </table>
   </dd>
 </dl>
 
-<p>Definiert in Zeile <a class="el" href="_model_8h_source.html#l00104">104</a> der Datei <a class="el" href="_model_8h_source.html">Model.h</a>.</p>
+<p>Definiert in Zeile <a class="el" href="_model_8h_source.html#l00117">117</a> der Datei <a class="el" href="_model_8h_source.html">Model.h</a>.</p>
 
 </div>
 </div>
@@ -521,8 +551,11 @@ Geschützte Attribute</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Liefert die aktuelle Position des Modells zurück </p>
+<dl class="section author"><dt>Autor</dt><dd>Stefan Landgrebe </dd></dl>
+<dl class="section return"><dt>Rückgabe</dt><dd>Positionsvektor </dd></dl>
 
-<p>Definiert in Zeile <a class="el" href="_model_8h_source.html#l00108">108</a> der Datei <a class="el" href="_model_8h_source.html">Model.h</a>.</p>
+<p>Definiert in Zeile <a class="el" href="_model_8h_source.html#l00125">125</a> der Datei <a class="el" href="_model_8h_source.html">Model.h</a>.</p>
 
 </div>
 </div>
@@ -567,7 +600,7 @@ Geschützte Attribute</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definiert in Zeile <a class="el" href="_model_8h_source.html#l00117">117</a> der Datei <a class="el" href="_model_8h_source.html">Model.h</a>.</p>
+<p>Definiert in Zeile <a class="el" href="_model_8h_source.html#l00134">134</a> der Datei <a class="el" href="_model_8h_source.html">Model.h</a>.</p>
 
 </div>
 </div>
@@ -592,8 +625,11 @@ Geschützte Attribute</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Liefert den Rotationswinkel in Grad zurück </p>
+<dl class="section author"><dt>Autor</dt><dd>Stefan Landgrebe </dd></dl>
+<dl class="section return"><dt>Rückgabe</dt><dd>Rotationswinkel in Grad </dd></dl>
 
-<p>Definiert in Zeile <a class="el" href="_model_8h_source.html#l00127">127</a> der Datei <a class="el" href="_model_8h_source.html">Model.h</a>.</p>
+<p>Definiert in Zeile <a class="el" href="_model_8h_source.html#l00148">148</a> der Datei <a class="el" href="_model_8h_source.html">Model.h</a>.</p>
 
 </div>
 </div>
@@ -618,8 +654,11 @@ Geschützte Attribute</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Liefert die Rotationsachse zurück </p>
+<dl class="section author"><dt>Autor</dt><dd>Stefan Landgrebe </dd></dl>
+<dl class="section return"><dt>Rückgabe</dt><dd>Rotationsachse </dd></dl>
 
-<p>Definiert in Zeile <a class="el" href="_model_8h_source.html#l00131">131</a> der Datei <a class="el" href="_model_8h_source.html">Model.h</a>.</p>
+<p>Definiert in Zeile <a class="el" href="_model_8h_source.html#l00156">156</a> der Datei <a class="el" href="_model_8h_source.html">Model.h</a>.</p>
 
 </div>
 </div>
@@ -648,14 +687,12 @@ Geschützte Attribute</h2></td></tr>
 <dl class="section author"><dt>Autor</dt><dd>Stefan Landgrebe </dd></dl>
 <dl class="params"><dt>Parameter</dt><dd>
   <table class="params">
-    <tr><td class="paramname">x</td><td>Skalierung in x Richtung </td></tr>
-    <tr><td class="paramname">y</td><td>Skalierung in y Richtung </td></tr>
-    <tr><td class="paramname">z</td><td>Skalierung in z Richtung </td></tr>
+    <tr><td class="paramname">scale</td><td>Skalierungsvektor </td></tr>
   </table>
   </dd>
 </dl>
 
-<p>Definiert in Zeile <a class="el" href="_model_8h_source.html#l00141">141</a> der Datei <a class="el" href="_model_8h_source.html">Model.h</a>.</p>
+<p>Definiert in Zeile <a class="el" href="_model_8h_source.html#l00164">164</a> der Datei <a class="el" href="_model_8h_source.html">Model.h</a>.</p>
 
 </div>
 </div>
@@ -680,8 +717,11 @@ Geschützte Attribute</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Liefert die aktuelle Skalierung zurück. </p>
+<dl class="section author"><dt>Autor</dt><dd>Stefan Landgrebe </dd></dl>
+<dl class="section return"><dt>Rückgabe</dt><dd>Skalierungsvektor </dd></dl>
 
-<p>Definiert in Zeile <a class="el" href="_model_8h_source.html#l00145">145</a> der Datei <a class="el" href="_model_8h_source.html">Model.h</a>.</p>
+<p>Definiert in Zeile <a class="el" href="_model_8h_source.html#l00172">172</a> der Datei <a class="el" href="_model_8h_source.html">Model.h</a>.</p>
 
 </div>
 </div>
@@ -706,8 +746,16 @@ Geschützte Attribute</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Setzt die Hervorhebungsfarbe. Die Farbe wird durch 4 Komponenten definiert: Rot, Grün, Blau, Alpha Alle Komponenten Sollten einen Wert von 0 bis 1 haben, wobei der Wert 0 0% und der Wert 1 100% entspricht. </p>
+<dl class="section author"><dt>Autor</dt><dd>Stefan Landgrebe </dd></dl>
+<dl class="params"><dt>Parameter</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">position</td><td>Positionsvektor </td></tr>
+  </table>
+  </dd>
+</dl>
 
-<p>Definiert in Zeile <a class="el" href="_model_8h_source.html#l00162">162</a> der Datei <a class="el" href="_model_8h_source.html">Model.h</a>.</p>
+<p>Definiert in Zeile <a class="el" href="_model_8h_source.html#l00205">205</a> der Datei <a class="el" href="_model_8h_source.html">Model.h</a>.</p>
 
 </div>
 </div>
@@ -731,7 +779,7 @@ Geschützte Attribute</h2></td></tr>
 </div><div class="memdoc">
 <p>Matrix des Modells </p>
 
-<p>Definiert in Zeile <a class="el" href="_model_8h_source.html#l00042">42</a> der Datei <a class="el" href="_model_8h_source.html">Model.h</a>.</p>
+<p>Definiert in Zeile <a class="el" href="_model_8h_source.html#l00044">44</a> der Datei <a class="el" href="_model_8h_source.html">Model.h</a>.</p>
 
 </div>
 </div>
@@ -753,7 +801,7 @@ Geschützte Attribute</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definiert in Zeile <a class="el" href="_model_8h_source.html#l00033">33</a> der Datei <a class="el" href="_model_8h_source.html">Model.h</a>.</p>
+<p>Definiert in Zeile <a class="el" href="_model_8h_source.html#l00035">35</a> der Datei <a class="el" href="_model_8h_source.html">Model.h</a>.</p>
 
 </div>
 </div>
@@ -774,8 +822,9 @@ Geschützte Attribute</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Hervorhebungszustand </p>
 
-<p>Definiert in Zeile <a class="el" href="_model_8h_source.html#l00045">45</a> der Datei <a class="el" href="_model_8h_source.html">Model.h</a>.</p>
+<p>Definiert in Zeile <a class="el" href="_model_8h_source.html#l00047">47</a> der Datei <a class="el" href="_model_8h_source.html">Model.h</a>.</p>
 
 </div>
 </div>
@@ -796,8 +845,9 @@ Geschützte Attribute</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Hervorhebungsfarbe </p>
 
-<p>Definiert in Zeile <a class="el" href="_model_8h_source.html#l00043">43</a> der Datei <a class="el" href="_model_8h_source.html">Model.h</a>.</p>
+<p>Definiert in Zeile <a class="el" href="_model_8h_source.html#l00045">45</a> der Datei <a class="el" href="_model_8h_source.html">Model.h</a>.</p>
 
 </div>
 </div>
@@ -820,7 +870,7 @@ Geschützte Attribute</h2></td></tr>
 </div><div class="memdoc">
 <p>Vektor für die Skalierung des Modells </p>
 
-<p>Definiert in Zeile <a class="el" href="_model_8h_source.html#l00040">40</a> der Datei <a class="el" href="_model_8h_source.html">Model.h</a>.</p>
+<p>Definiert in Zeile <a class="el" href="_model_8h_source.html#l00042">42</a> der Datei <a class="el" href="_model_8h_source.html">Model.h</a>.</p>
 
 </div>
 </div>
@@ -841,8 +891,9 @@ Geschützte Attribute</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Noramlisierungsvektor damit die Bounding Sphere einen Durchmesser von 1m (bzw. 1 Einheit) hat </p>
 
-<p>Definiert in Zeile <a class="el" href="_model_8h_source.html#l00036">36</a> der Datei <a class="el" href="_model_8h_source.html">Model.h</a>.</p>
+<p>Definiert in Zeile <a class="el" href="_model_8h_source.html#l00038">38</a> der Datei <a class="el" href="_model_8h_source.html">Model.h</a>.</p>
 
 </div>
 </div>
@@ -865,7 +916,7 @@ Geschützte Attribute</h2></td></tr>
 </div><div class="memdoc">
 <p>Vektor für die Verschiebung des Modells </p>
 
-<p>Definiert in Zeile <a class="el" href="_model_8h_source.html#l00037">37</a> der Datei <a class="el" href="_model_8h_source.html">Model.h</a>.</p>
+<p>Definiert in Zeile <a class="el" href="_model_8h_source.html#l00039">39</a> der Datei <a class="el" href="_model_8h_source.html">Model.h</a>.</p>
 
 </div>
 </div>
@@ -886,8 +937,9 @@ Geschützte Attribute</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Rotationswinkel </p>
 
-<p>Definiert in Zeile <a class="el" href="_model_8h_source.html#l00038">38</a> der Datei <a class="el" href="_model_8h_source.html">Model.h</a>.</p>
+<p>Definiert in Zeile <a class="el" href="_model_8h_source.html#l00040">40</a> der Datei <a class="el" href="_model_8h_source.html">Model.h</a>.</p>
 
 </div>
 </div>
@@ -908,8 +960,9 @@ Geschützte Attribute</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Radius der umgebenden Kugel, welche das gesamte Modell umspannt und u.a. für die Kollisionserkennung verwendet wird </p>
 
-<p>Definiert in Zeile <a class="el" href="_model_8h_source.html#l00034">34</a> der Datei <a class="el" href="_model_8h_source.html">Model.h</a>.</p>
+<p>Definiert in Zeile <a class="el" href="_model_8h_source.html#l00036">36</a> der Datei <a class="el" href="_model_8h_source.html">Model.h</a>.</p>
 
 </div>
 </div>
@@ -930,8 +983,9 @@ Geschützte Attribute</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Rotationsachse </p>
 
-<p>Definiert in Zeile <a class="el" href="_model_8h_source.html#l00039">39</a> der Datei <a class="el" href="_model_8h_source.html">Model.h</a>.</p>
+<p>Definiert in Zeile <a class="el" href="_model_8h_source.html#l00041">41</a> der Datei <a class="el" href="_model_8h_source.html">Model.h</a>.</p>
 
 </div>
 </div>
@@ -952,8 +1006,9 @@ Geschützte Attribute</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Definiert ob das Modell an die Kamera angehängt wurde </p>
 
-<p>Definiert in Zeile <a class="el" href="_model_8h_source.html#l00047">47</a> der Datei <a class="el" href="_model_8h_source.html">Model.h</a>.</p>
+<p>Definiert in Zeile <a class="el" href="_model_8h_source.html#l00049">49</a> der Datei <a class="el" href="_model_8h_source.html">Model.h</a>.</p>
 
 </div>
 </div>
@@ -966,7 +1021,7 @@ Geschützte Attribute</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacevisual.html">visual</a></li><li class="navelem"><a class="el" href="namespacevisual_1_1model.html">model</a></li><li class="navelem"><a class="el" href="classvisual_1_1model_1_1_model.html">Model</a></li>
-    <li class="footer">Erzeugt am Son Apr 13 2014 18:45:24 für Projektarbeit - VisualizationLibrary von
+    <li class="footer">Erzeugt am Mon Apr 14 2014 14:52:01 für Projektarbeit - VisualizationLibrary von
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

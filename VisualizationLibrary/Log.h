@@ -7,28 +7,117 @@
 #include <string>
 #include <stdio.h>
 
+/** Liefert die aktuelle Zeit zurück
+* @author Stefan Landgrebe
+* @return Text mit der aktuelle Zeit
+*/
 inline std::string NowTime();
 
+/** Enumeration aller Loglevels
+Zur Verfügung stehen: 
+Level		| Bedeutung
+-----------	| -----------
+logOFF		| Deaktiviert das Log
+logFATAL	| Nur fatale Meldungen werden angezeigt
+logERROR	| Nur Fehlermeldungen und höher werden angezeigt
+logWARNING	| Nur Warnungen und höher werden angezeigt
+logINFO		| Nur Informationsmeldungen und höher werden angezeigt
+logDEBUG	| Nur Debugmeldungen und höher werden angezeigt
+logTRACE	| Alle Meldungen werden angezeigt
+* @author Stefan Landgrebe
+*/
 enum TLogLevel { logOFF = 0, logFATAL, logERROR, logWARNING, logINFO, logDEBUG, logTRACE };
 
+
+/** Log Klasse sollte als Alternative zu std::cout verwendet werden und erlaubt das selektive darstellen von unterschiedlich wichtigen Meldungen.
+Der Code stammt ursprünglich von <a href="http://www.drdobbs.com/cpp/logging-in-c/201804215">http://www.drdobbs.com/cpp/logging-in-c/201804215</a>
+Verwendung: Log().info() << "Dies ist eine Information";
+Ausgabe: 13:26:17.172 [INFO]	Dies ist eine Information
+* @author Stefan Landgrebe
+*/
 class Log {
 public:
+
+	/** Konstruktor 
+	* @author Stefan Landgrebe
+	*/
 	Log();
+
+	/** Destruktor
+	Schreibt die Logmeldung.
+	* @author Stefan Landgrebe
+	*/
 	virtual ~Log();
+
+	/** Wird zur Ausgabe ins Log verwendet. Die Methode erwartet als Parameter das zu verwendende Loglevel.
+	* @author Stefan Landgrebe
+	* @param level Das zu verwendende Loglevel
+	* @return Referenz auf den stringstream
+	*/
 	std::ostringstream& Get(TLogLevel level = logINFO);
 
+
+	/** Equivalänt zu Log().Get(logFATAL)
+	* @author Stefan Landgrebe
+	* @return Referenz auf den stringstream
+	*/
 	std::ostringstream& fatal();
+
+	/** Equivalänt zu Log().Get(logERROR)
+	* @author Stefan Landgrebe
+	* @return Referenz auf den stringstream
+	*/
 	std::ostringstream& error();
+
+	/** Equivalänt zu Log().Get(logWARNING)
+	* @author Stefan Landgrebe
+	* @return Referenz auf den stringstream
+	*/
 	std::ostringstream& warning();
+
+	/** Equivalänt zu Log().Get(logINFO)
+	* @author Stefan Landgrebe
+	* @return Referenz auf den stringstream
+	*/
 	std::ostringstream& info();
+
+	/** Equivalänt zu Log().Get(logDEBUG)
+	* @author Stefan Landgrebe
+	* @return Referenz auf den stringstream
+	*/
 	std::ostringstream& debug();
+
+	/** Equivalänt zu Log().Get(logTRACE)
+	* @author Stefan Landgrebe
+	* @return Referenz auf den stringstream
+	*/
 	std::ostringstream& trace();
-public:
+
+
+	/** Definiert das aktuelle Loglevel. Nur Logmeldungen welche mindestens diesem Level entsprechen, werden ausgegeben.
+	Verwendung: Log().ReportingLevel() = logINFO;
+	* @author Stefan Landgrebe
+	* @return Referenz auf das Loglevel
+	*/
 	static TLogLevel& ReportingLevel();
+
+	/** Erzeugt den passenden Text zum mitgegebenen Loglevel
+	* @author Stefan Landgrebe
+	* @param level Loglevel
+	* @return Loglevel als Text
+	*/
 	static std::string ToString(TLogLevel level);
+
+	/** Liefert das entsprechende Loglevel zum mitgegebenen Loglevel zurück
+	Umkehrung der ToString() Methode
+	* @author Stefan Landgrebe
+	* @param level Loglevel als Text
+	* @return Loglevel
+	* @see ToString()
+	*/
 	static TLogLevel FromString(const std::string& level);
 protected:
-	std::ostringstream os;
+	std::ostringstream os; /** stringstream welcher für das Schreiben der Logmeldungen verwendet wird */
 private:
 	Log(const Log&);
 	Log& operator =(const Log&);

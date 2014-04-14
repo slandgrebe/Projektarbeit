@@ -132,7 +132,7 @@ Klassendiagramm für visual::model::Texture:</div>
 <tr class="separator:a875952611895a140070ebddb913e0b63"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Ausführliche Beschreibung</h2>
-<div class="textblock"><p>Das <a class="el" href="classvisual_1_1model_1_1_texture.html">Texture</a> Interface repräsentiert eine Textur </p>
+<div class="textblock"><p>Das <a class="el" href="classvisual_1_1model_1_1_texture.html">Texture</a> Interface repräsentiert eine Textur. </p>
 <dl class="section author"><dt>Autor</dt><dd>Stefan Landgrebe </dd></dl>
 
 <p>Definiert in Zeile <a class="el" href="_texture_8h_source.html#l00026">26</a> der Datei <a class="el" href="_texture_8h_source.html">Texture.h</a>.</p>
@@ -220,6 +220,20 @@ Klassendiagramm für visual::model::Texture:</div>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Verwendet den übergebenen Bitmap-Buffer zur Erzeugung der Textur. </p>
+<dl class="section author"><dt>Autor</dt><dd>Stefan Landgrebe </dd></dl>
+<dl class="params"><dt>Parameter</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">width</td><td>Breite des Bildes </td></tr>
+    <tr><td class="paramname">height</td><td>Höhe des Bildes </td></tr>
+    <tr><td class="paramname">image</td><td>Bitmap-Buffer des Bildes </td></tr>
+    <tr><td class="paramname">internalFormat</td><td>Internes Format welches bei der Erstellung der Textur verwendet werden soll </td></tr>
+    <tr><td class="paramname">format</td><td>Format welches bei der Erstellung der Textur verwendet werden soll. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Rückgabe</dt><dd>Prüfung ob die Operation durchgeführt werden konnte. </dd></dl>
+<dl class="section see"><dt>Siehe auch</dt><dd><a href="https://www.opengl.org/sdk/docs/man3/xhtml/glTexImage2D.xml">relevante OpenGL Dokumentation</a> </dd></dl>
 
 <p>Implementiert in <a class="el" href="classvisual_1_1model_1_1_texture_soil.html#a34c9171361721039d339be49f6b4e45d">visual::model::TextureSoil</a>.</p>
 
@@ -254,7 +268,7 @@ Klassendiagramm für visual::model::Texture:</div>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Rückgabe</dt><dd>bool </dd></dl>
+<dl class="section return"><dt>Rückgabe</dt><dd>Prüfung ob die Operation durchgeführt werden konnte. </dd></dl>
 
 <p>Implementiert in <a class="el" href="classvisual_1_1model_1_1_texture_soil.html#aebb7d022d68c98f8f3860b5c6b11ec1e">visual::model::TextureSoil</a>.</p>
 
@@ -269,7 +283,7 @@ Klassendiagramm für visual::model::Texture:</div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacevisual.html">visual</a></li><li class="navelem"><a class="el" href="namespacevisual_1_1model.html">model</a></li><li class="navelem"><a class="el" href="classvisual_1_1model_1_1_texture.html">Texture</a></li>
-    <li class="footer">Erzeugt am Son Apr 13 2014 18:45:24 für Projektarbeit - VisualizationLibrary von
+    <li class="footer">Erzeugt am Mon Apr 14 2014 14:52:01 für Projektarbeit - VisualizationLibrary von
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

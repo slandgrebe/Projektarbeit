@@ -16,9 +16,12 @@ namespace visual {
 	namespace graphics {
 
 		/** Verantwortlich für den OpenGL Kontext, das Fenster und den kontrollierten und kontinuierlichen Ablauf der Bibliothek.
-		Die Abarbeitung und somit das Fenster, laufen sich in einem separaten Thread.
+		Die Abarbeitung und somit das Fenster, laufen sich in einem separaten Thread. 
+		Zur Erstellung des OpenGL Kontext wird die GLEW (OpenGL Extension Wrangler) Library verwendet und zur Erstellung des Fensters wird die GLFW (keine Bedeutung) Library verwendet.
 		Es handelt sich hierbei um einen Singleton.
 		* @author Stefan Landgrebe
+		* @see <a href="http://glew.sourceforge.net/">http://glew.sourceforge.net/</a>
+		* @see <a href="http://www.glfw.org/">http://www.glfw.org/</a>
 		*/
 		class GraphicEngine {
 		public:

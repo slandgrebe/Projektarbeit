@@ -99,14 +99,128 @@ $(document).ready(function(){initNavTree('index.html','');});
 <div class="title">VisualizationLibrary </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p>Stefan Landgrebe</p>
-<p>VisualizationLibrary ist ein Teil der Projektarbeit der KTSI. Die Bibliothek ermöglicht es auf einfache Art und Weise 3D-Modelle darzustellen sowie ein einfaches GUI zu erstellen. Diese Bibliothek baut auf OpenGL 3.3 auf. </p>
+<div class="textblock"><dl class="section author"><dt>Autor</dt><dd>Stefan Landgrebe</dd></dl>
+<p>VisualizationLibrary ist ein Teil der Projektarbeit der KTSI. Die Bibliothek ermöglicht es auf einfache Art und Weise 3D-Modelle darzustellen sowie ein einfaches GUI zu erstellen. Diese Bibliothek baut auf OpenGL 3.3 auf.</p>
+<h1>API </h1>
+<h2>Fenster </h2>
+<table class="doxtable">
+<tr>
+<th>Beschreibung </th><th>Dokumentation  </th></tr>
+<tr>
+<td>Prüfung ob das Fenster offen ist </td><td><a class="el" href="_visualization_impl_8h.html#a1196e01e0f6a4a3f6c94be284c70077b">isRunning</a> </td></tr>
+</table>
+<p><br/>
+ </p>
+<h2>Modell Erzeugung </h2>
+<table class="doxtable">
+<tr>
+<th>Beschreibung </th><th>Dokumentation  </th></tr>
+<tr>
+<td>3D Modell </td><td><a class="el" href="_visualization_impl_8h.html#ae58a940dc8487d8e403f1a81ae6e153a">addModel</a> </td></tr>
+<tr>
+<td>Punkt (Rechteck mit Textur) </td><td><a class="el" href="_visualization_impl_8h.html#ac64b7edd1fc7d999552d1745a203f74a">addPoint</a> </td></tr>
+<tr>
+<td>Text </td><td><a class="el" href="_visualization_impl_8h.html#af96642b9715c4aa45aa8504dc1f95788">addText</a> </td></tr>
+<tr>
+<td>Button </td><td><a class="el" href="_visualization_impl_8h.html#a574afa7ecddbb6028ec40567f3c54dc3">addButton</a> </td></tr>
+<tr>
+<td>Prüfung ob Modell bereits erzeugt wurde </td><td><a class="el" href="_visualization_impl_8h.html#addecf0fc1e831fa50ffcd8246511335f">isCreated</a> </td></tr>
+<tr>
+<td>Entfernung eines Modells </td><td><a class="el" href="_visualization_impl_8h.html#a9c9096ce7ce4afbb333266a6ddcca9d1">dispose</a> </td></tr>
+</table>
+<p><br/>
+ </p>
+<h2>Modell Manipulation </h2>
+<table class="doxtable">
+<tr>
+<th>Beschreibung </th><th>Dokumentation  </th></tr>
+<tr>
+<td>Positionieren </td><td><a class="el" href="_visualization_impl_8h.html#ab7ef3ae59da17b0f42783b4119efad69">position</a> </td></tr>
+<tr>
+<td>Rotation <br/>
+ (Nur Model und Point) </td><td><a class="el" href="_visualization_impl_8h.html#ae270c1724205c0699558127781906c24">rotate</a> </td></tr>
+<tr>
+<td>Skalierung <br/>
+ (Nur Model, Point und Button) </td><td><a class="el" href="_visualization_impl_8h.html#aa0ca6c77068987654769e0aeca29719b">scale</a> </td></tr>
+<tr>
+<td>Hervorhebungsfarbe definieren <br/>
+ (Nur Model, Point und Button) </td><td><a class="el" href="_visualization_impl_8h.html#a0d17e3989d3b2209fd3e96be2da86d09">highlightColor</a> </td></tr>
+<tr>
+<td>Hervorhebung aktivieren und deaktivieren <br/>
+ (Nur Model, Point und Button) </td><td><a class="el" href="_visualization_impl_8h.html#ac6ea91b436eb1ecb42d14aec322c1801">isHighlighted</a> </td></tr>
+<tr>
+<td>Modell an die Kamera anhängen <br/>
+ (Nur Model und Point) </td><td><a class="el" href="_visualization_impl_8h.html#a7091eeab7f122059f102e0a2bc96b855">attachToCamera</a> </td></tr>
+</table>
+<p><br/>
+ </p>
+<h2>Text </h2>
+<table class="doxtable">
+<tr>
+<th>Beschreibung </th><th>Dokumentation  </th></tr>
+<tr>
+<td>Text Element erzeugen </td><td><a class="el" href="_visualization_impl_8h.html#af96642b9715c4aa45aa8504dc1f95788">addText</a> </td></tr>
+<tr>
+<td>anzuzeigender Text ändern </td><td><a class="el" href="_visualization_impl_8h.html#adf56317b9bb2c78a5a477702a84ded32">text</a> </td></tr>
+<tr>
+<td>Textgrösse ändern </td><td><a class="el" href="_visualization_impl_8h.html#a7b3e7416812f4b5193f4faada9bd3b34">textSize</a> </td></tr>
+<tr>
+<td>Farbe des Textes ändern </td><td><a class="el" href="_visualization_impl_8h.html#ac17e08b37b55c834eb33276f1ea92d4b">textColor</a> </td></tr>
+<tr>
+<td>Entfernung des Textelements </td><td><a class="el" href="_visualization_impl_8h.html#a9c9096ce7ce4afbb333266a6ddcca9d1">dispose</a> </td></tr>
+</table>
+<p><br/>
+ </p>
+<h2>Kamera </h2>
+<table class="doxtable">
+<tr>
+<th>Beschreibung </th><th>Dokumentation  </th></tr>
+<tr>
+<td>Positionieren </td><td><a class="el" href="_visualization_impl_8h.html#a6e4c552903c8557c637d77bcb6fcdf02">positionCamera</a> </td></tr>
+<tr>
+<td>Rotation um y-Achse </td><td><a class="el" href="_visualization_impl_8h.html#a53941f87d0d00e10bab64b20209c7cfa">rotateCamera</a> </td></tr>
+<tr>
+<td>Rotation um x-Achse </td><td><a class="el" href="_visualization_impl_8h.html#a62e28fce153ed73f31dbe94bbfdc4783">tiltCamera</a> </td></tr>
+<tr>
+<td>Bewegungsgeschwindigkeit in m/s </td><td><a class="el" href="_visualization_impl_8h.html#a1fa1f0555b918a0c73a22aea65deb5f6">changeCameraSpeed</a> </td></tr>
+</table>
+<p><br/>
+ </p>
+<h2>Kollisionserkennung </h2>
+<p>Bei der Kollisionserkennung wird das Resultat als Text gespeichert. <br/>
+Mit der <a class="el" href="_visualization_impl_8h.html#a28d55e6f6b8af143d419ebe3a822c82e">collisionsTextLength</a> Funktion kann die Länge des Textes abgefragt werden, bevor mit der <a class="el" href="_visualization_impl_8h.html#a6c2122e68783421a79f4def79d159422">collisionsText</a> Funktion der Text ausgelesen wird. <br/>
+<br/>
+Der Text hat folgendes Format <br/>
+<b>Format:</b> 1:2,3;2:1;3:1;4: <br/>
+<b>Bedeutung:</b></p>
+<ul>
+<li>Objekt mit der ID 1 kollidiert mit Objekt 2 und 3 <br/>
+</li>
+<li>Objekt 2 kollidiert mit Objekt 1 <br/>
+</li>
+<li>Objekt 3 kollidiert mit Objekt 1 <br/>
+</li>
+<li>Objekt 4 kollidiert mit nichts. <br/>
+<br/>
+<table class="doxtable">
+<tr>
+<th>Beschreibung </th><th>Dokumentation  </th></tr>
+<tr>
+<td>Länge des Textes der Kollisionserkennung </td><td><a class="el" href="_visualization_impl_8h.html#a28d55e6f6b8af143d419ebe3a822c82e">collisionsTextLength</a> </td></tr>
+<tr>
+<td>Text der Kollisionserkennung </td><td><a class="el" href="_visualization_impl_8h.html#a6c2122e68783421a79f4def79d159422">collisionsText</a> </td></tr>
+</table>
+<br/>
+<br/>
+<br/>
+</li>
+</ul>
 </div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Erzeugt am Son Apr 13 2014 18:45:24 für Projektarbeit - VisualizationLibrary von
+    <li class="footer">Erzeugt am Mon Apr 14 2014 14:52:01 für Projektarbeit - VisualizationLibrary von
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

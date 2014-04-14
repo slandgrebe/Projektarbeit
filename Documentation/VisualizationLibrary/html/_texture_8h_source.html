@@ -126,15 +126,15 @@ $(document).ready(function(){initNavTree('_texture_8h_source.html','');});
 <div class="line"><a name="l00026"></a><span class="lineno"><a class="line" href="classvisual_1_1model_1_1_texture.html">   26</a></span>&#160;        <span class="keyword">class </span><a class="code" href="classvisual_1_1model_1_1_texture.html">Texture</a> {</div>
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        <span class="keyword">public</span>:</div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;            <span class="keyword">virtual</span> <span class="keywordtype">bool</span> <a class="code" href="classvisual_1_1model_1_1_texture.html#a9d8ee3f7772799e9ea16443608c52d3c">load</a>(<span class="keyword">const</span> <span class="keywordtype">int</span> width, <span class="keyword">const</span> <span class="keywordtype">int</span> height, <span class="keyword">const</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span>* image, GLint internalFormat, GLenum format) = 0;</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;            <span class="keyword">virtual</span> <span class="keywordtype">bool</span> <a class="code" href="classvisual_1_1model_1_1_texture.html#aadea22b74419b5ef936050484d908b58">loadFromFile</a>(<span class="keyword">const</span> std::string&amp; filename) = 0;</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;            <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classvisual_1_1model_1_1_texture.html#a875952611895a140070ebddb913e0b63">bind</a>(GLenum textureUnit = GL_TEXTURE0) = 0;</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        };</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    }</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;}</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;            <span class="keyword">virtual</span> <span class="keywordtype">bool</span> <a class="code" href="classvisual_1_1model_1_1_texture.html#a9d8ee3f7772799e9ea16443608c52d3c">load</a>(<span class="keyword">const</span> <span class="keywordtype">int</span> width, <span class="keyword">const</span> <span class="keywordtype">int</span> height, <span class="keyword">const</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span>* image, GLint internalFormat, GLenum format) = 0;</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;            <span class="keyword">virtual</span> <span class="keywordtype">bool</span> <a class="code" href="classvisual_1_1model_1_1_texture.html#aadea22b74419b5ef936050484d908b58">loadFromFile</a>(<span class="keyword">const</span> std::string&amp; filename) = 0;</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;            <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classvisual_1_1model_1_1_texture.html#a875952611895a140070ebddb913e0b63">bind</a>(GLenum textureUnit = GL_TEXTURE0) = 0;</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        };</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    }</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;}</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="ttc" id="classvisual_1_1model_1_1_texture_html_a875952611895a140070ebddb913e0b63"><div class="ttname"><a href="classvisual_1_1model_1_1_texture.html#a875952611895a140070ebddb913e0b63">visual::model::Texture::bind</a></div><div class="ttdeci">virtual void bind(GLenum textureUnit=GL_TEXTURE0)=0</div></div>
 <div class="ttc" id="classvisual_1_1model_1_1_texture_html_a9d8ee3f7772799e9ea16443608c52d3c"><div class="ttname"><a href="classvisual_1_1model_1_1_texture.html#a9d8ee3f7772799e9ea16443608c52d3c">visual::model::Texture::load</a></div><div class="ttdeci">virtual bool load(const int width, const int height, const unsigned char *image, GLint internalFormat, GLenum format)=0</div></div>
 <div class="ttc" id="classvisual_1_1model_1_1_texture_html"><div class="ttname"><a href="classvisual_1_1model_1_1_texture.html">visual::model::Texture</a></div><div class="ttdef"><b>Definition:</b> <a href="_texture_8h_source.html#l00026">Texture.h:26</a></div></div>
@@ -145,7 +145,7 @@ $(document).ready(function(){initNavTree('_texture_8h_source.html','');});
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_d092fe6f644d08052abf42c12a28702c.html">VisualizationLibrary</a></li><li class="navelem"><a class="el" href="_texture_8h.html">Texture.h</a></li>
-    <li class="footer">Erzeugt am Son Apr 13 2014 18:45:24 für Projektarbeit - VisualizationLibrary von
+    <li class="footer">Erzeugt am Mon Apr 14 2014 14:52:01 für Projektarbeit - VisualizationLibrary von
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

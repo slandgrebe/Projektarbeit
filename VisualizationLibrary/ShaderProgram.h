@@ -19,7 +19,9 @@ namespace visual {
 		public:
 
 			/** Konstruktor
+			Zur Erstellung des eigentlichen Shader Programms muss eine der beiden createShaderProgram() Methoden aufgerufen werden.
 			* @author Stefan Landgrebe
+			* @see createShaderProgram()
 			*/
 			ShaderProgram();
 

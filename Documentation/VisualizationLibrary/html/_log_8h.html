@@ -169,11 +169,11 @@ Funktionen</h2></td></tr>
 </div><div class="memdoc">
 <b>Wert:</b><div class="fragment"><div class="line"><span class="keywordflow">if</span> (level &gt; <a class="code" href="class_log.html#aa4cfe92eb1c066161b1b06dfa2e8dc55">Log::ReportingLevel</a>()); \</div>
 <div class="line">    else <a class="code" href="class_log.html">Log</a>().<a class="code" href="class_log.html#ac7c72c3bee646547c78a38286d88c202">Get</a>(level)</div>
-<div class="ttc" id="class_log_html_ac7c72c3bee646547c78a38286d88c202"><div class="ttname"><a href="class_log.html#ac7c72c3bee646547c78a38286d88c202">Log::Get</a></div><div class="ttdeci">std::ostringstream &amp; Get(TLogLevel level=logINFO)</div><div class="ttdef"><b>Definition:</b> <a href="_log_8h_source.html#l00043">Log.h:43</a></div></div>
-<div class="ttc" id="class_log_html_aa4cfe92eb1c066161b1b06dfa2e8dc55"><div class="ttname"><a href="class_log.html#aa4cfe92eb1c066161b1b06dfa2e8dc55">Log::ReportingLevel</a></div><div class="ttdeci">static TLogLevel &amp; ReportingLevel()</div><div class="ttdef"><b>Definition:</b> <a href="_log_8h_source.html#l00082">Log.h:82</a></div></div>
-<div class="ttc" id="class_log_html"><div class="ttname"><a href="class_log.html">Log</a></div><div class="ttdef"><b>Definition:</b> <a href="_log_8h_source.html#l00014">Log.h:14</a></div></div>
+<div class="ttc" id="class_log_html_ac7c72c3bee646547c78a38286d88c202"><div class="ttname"><a href="class_log.html#ac7c72c3bee646547c78a38286d88c202">Log::Get</a></div><div class="ttdeci">std::ostringstream &amp; Get(TLogLevel level=logINFO)</div><div class="ttdef"><b>Definition:</b> <a href="_log_8h_source.html#l00132">Log.h:132</a></div></div>
+<div class="ttc" id="class_log_html_aa4cfe92eb1c066161b1b06dfa2e8dc55"><div class="ttname"><a href="class_log.html#aa4cfe92eb1c066161b1b06dfa2e8dc55">Log::ReportingLevel</a></div><div class="ttdeci">static TLogLevel &amp; ReportingLevel()</div><div class="ttdef"><b>Definition:</b> <a href="_log_8h_source.html#l00171">Log.h:171</a></div></div>
+<div class="ttc" id="class_log_html"><div class="ttname"><a href="class_log.html">Log</a></div><div class="ttdef"><b>Definition:</b> <a href="_log_8h_source.html#l00038">Log.h:38</a></div></div>
 </div><!-- fragment -->
-<p>Definiert in Zeile <a class="el" href="_log_8h_source.html#l00116">116</a> der Datei <a class="el" href="_log_8h_source.html">Log.h</a>.</p>
+<p>Definiert in Zeile <a class="el" href="_log_8h_source.html#l00205">205</a> der Datei <a class="el" href="_log_8h_source.html">Log.h</a>.</p>
 
 </div>
 </div>
@@ -188,7 +188,7 @@ Funktionen</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definiert in Zeile <a class="el" href="_log_8h_source.html#l00114">114</a> der Datei <a class="el" href="_log_8h_source.html">Log.h</a>.</p>
+<p>Definiert in Zeile <a class="el" href="_log_8h_source.html#l00203">203</a> der Datei <a class="el" href="_log_8h_source.html">Log.h</a>.</p>
 
 </div>
 </div>
@@ -202,6 +202,26 @@ Funktionen</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Enumeration aller Loglevels Zur Verfügung stehen: </p>
+<table class="doxtable">
+<tr>
+<th>Level </th><th>Bedeutung  </th></tr>
+<tr>
+<td>logOFF </td><td>Deaktiviert das <a class="el" href="class_log.html">Log</a> </td></tr>
+<tr>
+<td>logFATAL </td><td>Nur fatale Meldungen werden angezeigt </td></tr>
+<tr>
+<td>logERROR </td><td>Nur Fehlermeldungen und höher werden angezeigt </td></tr>
+<tr>
+<td>logWARNING </td><td>Nur Warnungen und höher werden angezeigt </td></tr>
+<tr>
+<td>logINFO </td><td>Nur Informationsmeldungen und höher werden angezeigt </td></tr>
+<tr>
+<td>logDEBUG </td><td>Nur Debugmeldungen und höher werden angezeigt </td></tr>
+<tr>
+<td>logTRACE </td><td>Alle Meldungen werden angezeigt </td></tr>
+</table>
+<dl class="section author"><dt>Autor</dt><dd>Stefan Landgrebe </dd></dl>
 <table class="fieldtable">
 <tr><th colspan="2">AufzÃ¤hlungswerte</th></tr><tr><td class="fieldname"><em><a class="anchor" id="a2341a2a7c04d08eb40d2cb0b18b0b778ad7458b401e37af39fd7af100db7407a5"></a>logOFF</em>&#160;</td><td class="fielddoc">
 </td></tr>
@@ -219,7 +239,7 @@ Funktionen</h2></td></tr>
 </td></tr>
 </table>
 
-<p>Definiert in Zeile <a class="el" href="_log_8h_source.html#l00012">12</a> der Datei <a class="el" href="_log_8h_source.html">Log.h</a>.</p>
+<p>Definiert in Zeile <a class="el" href="_log_8h_source.html#l00029">29</a> der Datei <a class="el" href="_log_8h_source.html">Log.h</a>.</p>
 
 </div>
 </div>
@@ -244,8 +264,11 @@ Funktionen</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Liefert die aktuelle Zeit zurück </p>
+<dl class="section author"><dt>Autor</dt><dd>Stefan Landgrebe </dd></dl>
+<dl class="section return"><dt>RÃ¼ckgabe</dt><dd>Text mit der aktuelle Zeit </dd></dl>
 
-<p>Definiert in Zeile <a class="el" href="_log_8h_source.html#l00143">143</a> der Datei <a class="el" href="_log_8h_source.html">Log.h</a>.</p>
+<p>Definiert in Zeile <a class="el" href="_log_8h_source.html#l00232">232</a> der Datei <a class="el" href="_log_8h_source.html">Log.h</a>.</p>
 
 </div>
 </div>
@@ -255,7 +278,7 @@ Funktionen</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_d092fe6f644d08052abf42c12a28702c.html">VisualizationLibrary</a></li><li class="navelem"><a class="el" href="_log_8h.html">Log.h</a></li>
-    <li class="footer">Erzeugt am Son Apr 13 2014 18:45:24 fÃ¼r Projektarbeit - VisualizationLibrary von
+    <li class="footer">Erzeugt am Mon Apr 14 2014 14:52:01 fÃ¼r Projektarbeit - VisualizationLibrary von
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>
