@@ -24,6 +24,12 @@
 
 namespace visual {
 	namespace model {
+
+		/** AssimpModel erbt von der abstrakten Klasse Model. 
+		Die Klasse wird zum laden von 3D Modellen gebraucht und verwendet dafür die Assimp Library, welche unzählige Formate unterstützt.
+		* @author Stefan Landgrebe
+		* @see <a href="http://assimp.sourceforge.net/">http://assimp.sourceforge.net/</a> 
+		*/
 		class AssimpModel : public Model {
 		private:
 			GLuint vertexArrayId; /** Referenz auf das VAO (Vertex Array Object) */
@@ -65,12 +71,29 @@ namespace visual {
 			std::vector<TextureSoil*> textureList;
 
 		public:
+
+			/** Konstruktor
+			Für das eigentliche Laden des 3D Modells muss zusätzlich die Methode loadModel() aufgerufen werden.
+			* @author Stefan Landgrebe
+			* @see loadModel()
+			*/
 			AssimpModel();
+
+			/** Destruktor
+			* @author Stefan Landgrebe
+			*/
 			~AssimpModel();
 
+			/** Implementierung der Model::loadModel() Methode.
+			Liest die übergebene Datei aus und übergibt die Vertices an OpenGL.
+			* @author Stefan Landgrebe
+			* @param filename Dateipfad der 3D Modell Datei
+			* @return Prüfung ob die Operation durchgeführt werden konnte.
+			* @see Model::loadModel()
+			*/
 			bool loadModel(const std::string filename);
 
-			/** Zeichnet das Modell
+			/** Zeichnet das Modell neu
 			* @author Stefan Landgrebe
 			*/
 			void draw(void);

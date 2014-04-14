@@ -20,18 +20,28 @@ namespace visual {
 	namespace model {
 
 		/**
-		* Das Texture Interface repr�sentiert eine Textur
+		* Das Texture Interface repräsentiert eine Textur.
 		* @author Stefan Landgrebe
 		*/
 		class Texture {
 		public:
 
+			/** Verwendet den übergebenen Bitmap-Buffer zur Erzeugung der Textur.
+			* @author Stefan Landgrebe
+			* @param width Breite des Bildes
+			* @param height Höhe des Bildes
+			* @param image Bitmap-Buffer des Bildes
+			* @param internalFormat Internes Format welches bei der Erstellung der Textur verwendet werden soll
+			* @param format Format welches bei der Erstellung der Textur verwendet werden soll.
+			* @return Prüfung ob die Operation durchgeführt werden konnte.
+			* @see <a href="https://www.opengl.org/sdk/docs/man3/xhtml/glTexImage2D.xml">relevante OpenGL Dokumentation</a>
+			*/
 			virtual bool load(const int width, const int height, const unsigned char* image, GLint internalFormat, GLenum format) = 0;
 
 			/** laedt die Textur in den Speicher
 			* @author Stefan Landgrebe
 			* @param filename Dateiname der zu ladenden Textur
-			* @return bool
+			* @return Prüfung ob die Operation durchgeführt werden konnte.
 			*/
 			virtual bool loadFromFile(const std::string& filename) = 0;
 

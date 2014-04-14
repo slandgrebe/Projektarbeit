@@ -37,6 +37,8 @@ namespace VisualizationExample
         [DllImport("Visualization.dll")]
         public extern static bool scale(uint modelId, float x, float y, float z);
         [DllImport("Visualization.dll")]
+        public extern static bool scalingIsNormalized(uint modelId, bool choice);
+        [DllImport("Visualization.dll")]
         public extern static bool highlightColor(uint modelId, float r, float g, float b, float a);
         [DllImport("Visualization.dll")]
         public extern static bool isHighlighted(uint modelId, bool choice);
@@ -81,6 +83,7 @@ namespace VisualizationExample
             uint modelId = addModel("data/models/shuttle/SpaceShuttleOrbiter.3ds");
             while (!isCreated(modelId)) { }
             scale(modelId, 2.0f, 0.5f, 1f);
+            scalingIsNormalized(modelId, true);
             rotate(modelId, -45.0f, 1.0f, 0.0f, 1.0f);
             position(modelId, -2f, -0.5f, -4.5f);
             highlightColor(modelId, 0.0f, 1.0f, 0.0f, 1.0f);
@@ -89,13 +92,14 @@ namespace VisualizationExample
             uint modelId2 = addModel("data/models/shuttle/SpaceShuttleOrbiter.3ds");
             while (!isCreated(modelId2)) { }
             scale(modelId2, 0.5f, 0.5f, 0.5f);
+            scalingIsNormalized(modelId2, true);
             rotate(modelId2, -45.0f, 0.0f, 1.0f, 1.0f);
             position(modelId2, -0.3f, -0.4f, -1.5f);
             highlightColor(modelId2, 0.0f, 1.0f, 0.0f, 0.5f);
             isHighlighted(modelId2, false);
 
             // TEXT
-            uint textId = addText("");
+            uint textId = addText("data/fonts/MADAVE.ttf");
             while (!isCreated(textId)) { }
             text(textId, "Es geht!");
             position(textId, 0.7f, 0.5f, 1.0f);

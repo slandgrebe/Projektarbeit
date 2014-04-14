@@ -8,8 +8,6 @@ using namespace visual::model;
 ColoredSquare::ColoredSquare() {}
 
 ColoredSquare::~ColoredSquare() {
-	delete shaderProgram;
-
 	// VBOs und VAO entfernen
 	glDeleteBuffers(1, &vertexBufferId);
 	//glDeleteBuffers(1, &colorBufferId);
@@ -25,8 +23,8 @@ bool ColoredSquare::loadModel(void) {
 	Log().debug() << " [ColoredSquare] square vao: " << vertexArrayId ;
 
 	// shader
-	shaderProgram = new graphics::ShaderProgram;
-	shaderProgram->createShaderProgram("data/shader/colored.vertexshader", "data/shader/colored.fragmentshader");
+	//shaderProgram = new graphics::ShaderProgram;
+	shaderProgram.createShaderProgram("data/shader/colored.vertexshader", "data/shader/colored.fragmentshader");
 
 	m_boundingSphereRadius = 0.5f;
 	if (m_boundingSphereRadius > 0) {
@@ -84,10 +82,10 @@ void ColoredSquare::draw(void) {
 	glBindVertexArray(vertexArrayId);
 
 	// shader
-	shaderProgram->use();
+	shaderProgram.use();
 
 	// positions
-	GLint posAttrib = shaderProgram->getAttribute("position");
+	GLint posAttrib = shaderProgram.getAttribute("position");
 	glEnableVertexAttribArray(posAttrib);
 	glBindBuffer(GL_ARRAY_BUFFER, vertexBufferId);
 	glVertexAttribPointer(
@@ -113,7 +111,7 @@ void ColoredSquare::draw(void) {
 		);*/
 
 	// color
-	GLint colorAttribute = shaderProgram->getUniform("color");
+	GLint colorAttribute = shaderProgram.getUniform("color");
 	GLfloat r = 0.0f, g = 0.5f, b = 0.5f, a = 1.0f; // standard: aquamarin
 	if (m_isHighlighted) {
 		r = highlightColor.r;
@@ -124,7 +122,7 @@ void ColoredSquare::draw(void) {
 	glUniform4f(colorAttribute, r, g, b, a);
 
 	// transformations
-	GLint uniMvp = shaderProgram->getUniform("mvp");
+	GLint uniMvp = shaderProgram.getUniform("mvp");
 	//glm::mat4 mvp = getModelViewMatrix();
 	glm::mat4 mvp = getOrthographicModelViewMatrix();
 

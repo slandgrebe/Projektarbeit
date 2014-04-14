@@ -172,6 +172,7 @@
     <None Include="data\shader\colored.vertexshader">
       <Filter>Resource Files\shader</Filter>
     </None>
+    <None Include="ClassDiagram.cd" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="data\models\shuttle\spstob_1.bmp">

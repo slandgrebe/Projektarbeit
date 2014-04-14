@@ -16,7 +16,7 @@ Text::Text() {
 }
 
 Text::~Text() {
-	delete shaderProgram;
+	//delete shaderProgram;
 
 	for (std::vector<GlyphData>::iterator it = glyphs.begin(); it != glyphs.end(); ++it) {
 		delete it->bitmapBuffer;
@@ -82,8 +82,8 @@ bool Text::init(std::string filename) {
 	glyphSlot = face->glyph;
 
 
-	shaderProgram = new visual::graphics::ShaderProgram;
-	shaderProgram->createShaderProgram("data/shader/text.vertexshader", "data/shader/text.fragmentshader");
+	//shaderProgram = new visual::graphics::ShaderProgram;
+	shaderProgram.createShaderProgram("data/shader/text.vertexshader", "data/shader/text.fragmentshader");
 
 	glGenVertexArrays(1, &vao);
 	glBindVertexArray(vao);
@@ -103,7 +103,7 @@ void Text::write(std::string text, float x, float y, int align) {
 	//glBindTexture(GL_TEXTURE_2D, textTexture);
 
 	//fontCoordinates = glGetAttribLocation(shaderProgram->getShaderProgramId(), "fontCoords");
-	fontCoordinates = shaderProgram->getAttribute("fontCoords");
+	fontCoordinates = shaderProgram.getAttribute("fontCoords");
 	glEnableVertexAttribArray(fontCoordinates);
 	glVertexAttribPointer(fontCoordinates, 4, GL_FLOAT, GL_FALSE, 0, 0);
 
@@ -117,7 +117,7 @@ void Text::write(std::string text, float x, float y, int align) {
 	glPixelStorei(GL_UNPACK_ALIGNMENT, 1);
 
 	//glUseProgram(shaderProgram->getShaderProgramId());
-	shaderProgram->use();
+	shaderProgram.use();
 
 	int windowWidth = visual::graphics::GraphicEngine::getInstance()->getWindowWidth();
 	int windowHeight = visual::graphics::GraphicEngine::getInstance()->getWindowHeight();
@@ -235,10 +235,10 @@ void Text::getGlyph(char c) {
 void Text::draw(void) {
 	
 
-	glUseProgram(shaderProgram->getShaderProgramId());
+	glUseProgram(shaderProgram.getShaderProgramId());
 
 	//GLint colorAttribute = glGetUniformLocation(shaderProgram->getShaderProgramId(), "color");
-	GLint colorAttribute = shaderProgram->getUniform("color");
+	GLint colorAttribute = shaderProgram.getUniform("color");
 
 	GLfloat r = color.r;
 	GLfloat g = color.g;

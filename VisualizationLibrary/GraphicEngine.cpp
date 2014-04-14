@@ -25,7 +25,7 @@ GraphicEngine* GraphicEngine::getInstance() {
 
 		std::async(worker);
 	}
-	
+
 	return singleInstance;
 }
 

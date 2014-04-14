@@ -11,6 +11,12 @@
 
 namespace visual {
 	namespace gui {
+
+		/** Text Elemente.
+		Diese Klasse verwendet zum Auslesen der Schriftdateien die sehr weit verbreitete Bibliothek FreeType.
+		* @author Stefan Landgrebe
+		* @see <a href="http://www.freetype.org/">http://www.freetype.org/</a> 
+		*/
 		class Text {
 		private:
 			std::string m_text;
@@ -31,7 +37,7 @@ namespace visual {
 			GLint fontCoordinates;
 			GLuint textTexture;
 
-			visual::graphics::ShaderProgram* shaderProgram;
+			visual::graphics::ShaderProgram shaderProgram;
 
 			enum alignment {
 				ALIGN_LEFT, ALIGN_CENTER, ALIGN_RIGHT
@@ -52,23 +58,62 @@ namespace visual {
 			std::vector<GlyphData> glyphs;
 			GlyphData currentGlyph;
 
+			void write(std::string text, float x, float y, int align);
 			int nextPowerOf2(int n);
 
 		public:
+
+			/** Konstruktor
+			Zum Laden des eigentlichen Textes muss zusätzlich die Methode init() aufgerufen werden.
+			* @author Stefan Landgrebe
+			* @see init()
+			*/
 			Text();
+
+			/** Destruktor
+			* @author Stefan Landgrebe
+			*/
 			~Text();
 
-			bool init(std::string filename);
-			void write(std::string text, float x, float y, int align);
+			/** Erzeugt das effektive Text Objekt
+			* @author Stefan Landgrebe
+			* @param filename Dateipfad der Schriftart
+			* @return Prüfung ob die Operation durchgeführt werden konnte
+			*/
+			bool init(std::string filename);			
 
+			/** Ändert den darzustellenden Text
+			* @author Stefan Landgrebe
+			* @param text Der darzustellende Text
+			*/
 			void setText(const std::string text);
+
+			/** Positioniert den Mittelpunkt des Textes an die übergebene Koordinate auf der Zeichnungsfläche des GUIs.
+			Die Zeichnungsfläche umfasst das gesamte Fenster.
+			Die Zeichnungsfläche ist 2 Einheiten breit und hoch, wobei die untere, linke Ecke der Koordinate -1/-1 und die obere, rechte Ecke der Koordinate 1/1 entspricht.
+			* @author Stefan Landgrebe
+			* @param x X-Koordinate
+			* @param y Y-Koordinate
+			*/
 			void setPosition(const float x, const float y);
+
+			/** Ändert die Grösse des Textes
+			* @author Stefan Landgrebe
+			* @param points Grösse in Punkten
+			* @return Prüfung ob die Operation durchgeführt werden konnte
+			*/
 			bool setSize(const int points);
+
+			/** Ändert die Farbe des Textes
+			* @author Stefan Landgrebe
+			* @param color Farbe (r,g,b,a)
+			*/
 			void setColor(const glm::vec4 color);
-			//bool setFontFamily(const std::string filename = "data/fonts/arial.ttf");
 
-			//void fontOpt(fontOptions opt, int value);
 
+			/** Zeichnet den Text neu
+			* @author Stefan Landgrebe
+			*/
 			void draw(void);
 		};
 	}

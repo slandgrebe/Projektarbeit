@@ -33,13 +33,16 @@ Manager::Manager() {
 	}
 }
 
+
 bool Manager::isRunning(void) {
 	return graphics::GraphicEngine::getInstance()->isRunning();
 }
 
+
 void Manager::doSomething(std::string s) {
 	addText(s);
 }
+
 
 GLuint Manager::addModel(const std::string filename) {
 	if (isRunning()) {
@@ -47,7 +50,7 @@ GLuint Manager::addModel(const std::string filename) {
 
 		Log().debug() << " adding Model to Queue: " << modelInstantiationCounter ;
 
-		// Queue für Thread Sicherheit
+		// Queue fÃ¼r Thread Sicherheit
 		graphics::GraphicEngine::getInstance()->enqueueModel(modelInstantiationCounter, filename);
 
 		return modelInstantiationCounter;
@@ -56,13 +59,14 @@ GLuint Manager::addModel(const std::string filename) {
 	return 0;
 }
 
+
 GLuint Manager::addPoint(const std::string textureFilename) {
 	if (isRunning()) {
 		modelInstantiationCounter++;
 
 		Log().debug() << " adding Point to Queue: " << modelInstantiationCounter ;
 		
-		// Queue für Thread Sicherheit
+		// Queue fÃ¼r Thread Sicherheit
 		graphics::GraphicEngine::getInstance()->enqueueSquare(modelInstantiationCounter, textureFilename);
 
 		return modelInstantiationCounter;
@@ -70,6 +74,7 @@ GLuint Manager::addPoint(const std::string textureFilename) {
 
 	return 0;
 }
+
 
 GLboolean Manager::isModelCreated(GLuint modelId) {
 	if (assimpModelList.find(modelId) != assimpModelList.end()) {
@@ -88,9 +93,12 @@ GLboolean Manager::isModelCreated(GLuint modelId) {
 	return GL_FALSE;
 }
 
+
 void Manager::dispose(GLuint modelId) {
 	graphics::GraphicEngine::getInstance()->enqueueDispose(modelId);
 }
+
+
 void Manager::remove(GLuint modelId) {
 	std::map<GLuint, visual::model::AssimpModel*>::iterator modelIterator = assimpModelList.find(modelId);
 	std::map<GLuint, visual::model::Square*>::iterator squareIterator = squareList.find(modelId);
@@ -122,106 +130,125 @@ void Manager::remove(GLuint modelId) {
 	}
 }
 
+
 void Manager::addToModelList(GLuint modelId, model::AssimpModel* model) {
 	Log().debug() << " adding Model to List: " << modelId ;
 	assimpModelList.insert(std::make_pair(modelId, model));
 }
+
 void Manager::addToSquareList(GLuint modelId, model::Square* model) {
 	Log().debug() << " adding Square to List: " << modelId ;
 	squareList.insert(std::make_pair(modelId, model));
 }
+
 void Manager::addToTextList(GLuint modelId, gui::Text* text) {
 	Log().debug() << " adding Text to List: " << modelId ;
 	textList.insert(std::make_pair(modelId, text));
 }
+
 void Manager::addToButtonList(GLuint buttonId, gui::Button* button) {
 	Log().debug() << " adding Button to List: " << buttonId ;
 	buttonList.insert(std::make_pair(buttonId, button));
 }
 
-GLboolean Manager::positionModel(GLuint modelId, glm::vec3 position) {
-	//processQueue();
-	
-	for (auto it = assimpModelList.cbegin(); it != assimpModelList.cend(); ++it)
-	{
-		//Log().debug() << it->first << " " << it->second << " " << "\n";
-	}
 
+bool Manager::positionModel(GLuint modelId, glm::vec3 position) {
 	if (assimpModelList.find(modelId) != assimpModelList.end()) {
 		model::AssimpModel* model = assimpModelList.find(modelId)->second;
 		model->position(position);
 		
-		return GL_TRUE;
+		return true;
 	}
 	else if (squareList.find(modelId) != squareList.end()) {
 		model::Square* model = squareList.find(modelId)->second;
 		model->position(position);
 
-		return GL_TRUE;
+		return true;
 	}
 	else if (textList.find(modelId) != textList.end()) {
 		gui::Text* model = textList.find(modelId)->second;
 		model->setPosition(position.x, position.y);
 
-		return GL_TRUE;
+		return true;
 	}
 	else if (buttonList.find(modelId) != buttonList.end()) {
 		gui::Button* model = buttonList.find(modelId)->second;
 		model->position(glm::vec2(position));
 
-		return GL_TRUE;
+		return true;
 	}
 	else {
 		Log().error() << "Das Model mit der modelId '" << modelId << "' konnte waehrend dem Versuch es neu zu positionieren nicht gefunden werden." ;
 	}
 
-	return GL_FALSE;
+	return false;
 }
 
-GLboolean Manager::rotateModel(GLuint modelId, GLfloat degrees, glm::vec3 axis) {
+
+bool Manager::rotateModel(GLuint modelId, GLfloat degrees, glm::vec3 axis) {
 	if (assimpModelList.find(modelId) != assimpModelList.end()) {
 		model::AssimpModel* model = assimpModelList.find(modelId)->second;
 		model->rotate(degrees, axis);
 
-		return GL_TRUE;
+		return true;
 	}
 	else if (squareList.find(modelId) != squareList.end()) {
 		model::Square* model = squareList.find(modelId)->second;
 		model->rotate(degrees, axis);
 
-		return GL_TRUE;
+		return true;
 	}
 	else {
 		Log().error() << "Das Model mit der modelId '" << modelId << "' konnte waehrend dem Versuch es neu zu rotieren nicht gefunden werden." ;
 	}
 
-	return GL_FALSE;
+	return false;
 }
 
-GLboolean Manager::scaleModel(GLuint modelId, glm::vec3 scale) {
+
+bool Manager::scaleModel(GLuint modelId, glm::vec3 scale) {
 	if (assimpModelList.find(modelId) != assimpModelList.end()) {
 		model::AssimpModel* model = assimpModelList.find(modelId)->second;
 		model->scale(scale);
 
-		return GL_TRUE;
+		return true;
 	}
 	else if (squareList.find(modelId) != squareList.end()) {
 		model::Square* model = squareList.find(modelId)->second;
 		model->scale(scale);
 
-		return GL_TRUE;
+		return true;
 	}
 	else if (buttonList.find(modelId) != buttonList.end()) {
 		gui::Button* model = buttonList.find(modelId)->second;
 		model->scale(glm::vec2(scale));
 
-		return GL_TRUE;
+		return true;
 	}
 	else {
 		Log().error() << "Das Model mit der modelId '" << modelId << "' konnte waehrend dem Versuch es neu zu skalieren nicht gefunden werden." ;
 	}
 
-	return GL_FALSE;
+	return false;
+}
+bool Manager::scalingIsNormalized(GLuint modelId, bool choice) {
+	if (assimpModelList.find(modelId) != assimpModelList.end()) {
+		model::AssimpModel* model = assimpModelList.find(modelId)->second;
+		model->scalingIsNormalized(choice);
+
+		return true;
+	}
+	else if (squareList.find(modelId) != squareList.end()) {
+		model::Square* model = squareList.find(modelId)->second;
+		model->scalingIsNormalized(choice);
+
+		return true;
+	}
+	else {
+		Log().error() << "Das Model mit der modelId '" << modelId << "' konnte waehrend dem Versuch den Zustand der Skalierungsnormalisierung zu Ã¤ndern nicht gefunden werden.";
+	}
+
+	return false;
 }
 
 
@@ -250,6 +277,7 @@ bool Manager::setModelHighlightColor(GLuint modelId, glm::vec4 color) {
 
 	return false;
 }
+
 bool Manager::isModelHighlighted(GLuint modelId, bool choice) {
 	if (assimpModelList.find(modelId) != assimpModelList.end()) {
 		model::AssimpModel* model = assimpModelList.find(modelId)->second;
@@ -276,6 +304,7 @@ bool Manager::isModelHighlighted(GLuint modelId, bool choice) {
 	return false;
 }
 
+
 bool Manager::attachModelToCamera(GLuint modelId, bool choice) {
 	if (assimpModelList.find(modelId) != assimpModelList.end()) {
 		model::AssimpModel* model = assimpModelList.find(modelId)->second;
@@ -296,14 +325,15 @@ bool Manager::attachModelToCamera(GLuint modelId, bool choice) {
 	return false;
 }
 
-GLuint Manager::addText(const std::string filename) {
+
+GLuint Manager::addText(const std::string fontname) {
 	if (isRunning()) {
 		modelInstantiationCounter++;
 
 		Log().debug() << " adding Text to Queue: " << modelInstantiationCounter ;
 
-		// Queue für Thread Sicherheit
-		graphics::GraphicEngine::getInstance()->enqueueText(modelInstantiationCounter, filename);
+		// Queue fÃ¼r Thread Sicherheit
+		graphics::GraphicEngine::getInstance()->enqueueText(modelInstantiationCounter, fontname);
 
 		return modelInstantiationCounter;
 	}
@@ -320,6 +350,7 @@ visual::gui::Text* Manager::getTextFromList(GLuint textId) {
 
 	return text;
 }
+
 bool Manager::setText(const GLuint textId, const std::string text) {
 	visual::gui::Text* textObj = getTextFromList(textId);
 	if (textObj) {
@@ -335,6 +366,7 @@ bool Manager::setText(const GLuint textId, const std::string text) {
 
 	return false;
 }
+
 bool Manager::setTextSize(const GLuint textId, const int points) {
 	visual::gui::Text* textObj = getTextFromList(textId);
 	if (textObj) {
@@ -348,6 +380,7 @@ bool Manager::setTextSize(const GLuint textId, const int points) {
 
 	return false;
 }
+
 bool Manager::setTextColor(const GLuint textId, const glm::vec4 color) {
 	visual::gui::Text* textObj = getTextFromList(textId);
 	if (textObj) {
@@ -371,7 +404,7 @@ GLuint Manager::addButton(const std::string filename) {
 
 		Log().debug() << " adding Button to Queue: " << modelInstantiationCounter ;
 
-		// Queue für Thread Sicherheit
+		// Queue fÃ¼r Thread Sicherheit
 		graphics::GraphicEngine::getInstance()->enqueueButton(modelInstantiationCounter, filename);
 
 		return modelInstantiationCounter;

@@ -1,0 +1,734 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.6"/>
+<title>Projektarbeit - VisualizationLibrary: F:/Daten/Entwicklung/OpenGL/Projektarbeit/VisualizationLibrary/Manager.cpp Quellcode</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+  $(window).load(resizeHeight);
+</script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">Projektarbeit - VisualizationLibrary
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Erzeugt von Doxygen 1.8.6 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Suchen');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Hauptseite</span></a></li>
+      <li><a href="namespaces.html"><span>Namensbereiche</span></a></li>
+      <li><a href="annotated.html"><span>Klassen</span></a></li>
+      <li class="current"><a href="files.html"><span>Dateien</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Suchen" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Auflistung&#160;der&#160;Dateien</span></a></li>
+      <li><a href="globals.html"><span>Datei-Elemente</span></a></li>
+    </ul>
+  </div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('_manager_8cpp_source.html','');});
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Alle</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Klassen</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namensbereiche</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Dateien</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Funktionen</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variablen</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typdefinitionen</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Aufzählungen</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Aufzählungswerte</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Makrodefinitionen</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Seiten</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">Manager.cpp</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="_manager_8cpp.html">gehe zur Dokumentation dieser Datei</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="stdafx_8h.html">stdafx.h</a>&quot;</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_manager_8h.html">Manager.h</a>&quot;</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &lt;iostream&gt;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;time.h&gt;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;</div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_text_8h.html">Text.h</a>&quot;</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="keyword">using namespace </span>visual;</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<a class="code" href="classvisual_1_1_manager.html">Manager</a>* Manager::instance = 0;</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;</div>
+<div class="line"><a name="l00012"></a><span class="lineno"><a class="line" href="classvisual_1_1_manager.html#af8199921090229c4215cdcfefa57a046">   12</a></span>&#160;<a class="code" href="classvisual_1_1_manager.html">Manager</a>* <a class="code" href="classvisual_1_1_manager.html#af8199921090229c4215cdcfefa57a046">Manager::getInstance</a>(<span class="keywordtype">void</span>) {</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    <span class="keywordflow">if</span> (instance == 0) {</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;        instance = <span class="keyword">new</span> <a class="code" href="classvisual_1_1_manager.html">Manager</a>;</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    }</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <span class="keywordflow">return</span> instance;</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;}</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;Manager::Manager() {</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    <a class="code" href="class_log.html#aa4cfe92eb1c066161b1b06dfa2e8dc55">Log::ReportingLevel</a>() = <a class="code" href="_log_8h.html#a2341a2a7c04d08eb40d2cb0b18b0b778a36b07a7dde9e15628d5c9711fe00bee9">logINFO</a>;</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    m_collisions = <span class="stringliteral">&quot;&quot;</span>;</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    clock_t begin = clock();</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <span class="keywordflow">while</span> (<span class="keyword">true</span>) {</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="classvisual_1_1_manager.html#aa734cccb964e8d63bae12103889ebf71">isRunning</a>()) {</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;            <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;        }</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        <span class="keywordflow">if</span> (<span class="keywordtype">double</span>(clock() - begin) / CLOCKS_PER_SEC &gt; 5) {</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;            <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        }</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    }</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;}</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;</div>
+<div class="line"><a name="l00037"></a><span class="lineno"><a class="line" href="classvisual_1_1_manager.html#aa734cccb964e8d63bae12103889ebf71">   37</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="classvisual_1_1_manager.html#aa734cccb964e8d63bae12103889ebf71">Manager::isRunning</a>(<span class="keywordtype">void</span>) {</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="classvisual_1_1graphics_1_1_graphic_engine.html#a1675ee17a75ce754132b3bdd6c7b3424">graphics::GraphicEngine::getInstance</a>()-&gt;<a class="code" href="classvisual_1_1graphics_1_1_graphic_engine.html#aaf44d64c1dbf313694aa371a90d138cb">isRunning</a>();</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;}</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;</div>
+<div class="line"><a name="l00042"></a><span class="lineno"><a class="line" href="classvisual_1_1_manager.html#a8a1d4d5d8ab50354987c09bb38054db3">   42</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classvisual_1_1_manager.html#a8a1d4d5d8ab50354987c09bb38054db3">Manager::doSomething</a>(std::string s) {</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <a class="code" href="classvisual_1_1_manager.html#ad018fbba8bdd90e1d17fac89dcd9d4d0">addText</a>(s);</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;}</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;</div>
+<div class="line"><a name="l00047"></a><span class="lineno"><a class="line" href="classvisual_1_1_manager.html#a9376c5fba7eb53ba360231c409794992">   47</a></span>&#160;GLuint <a class="code" href="classvisual_1_1_manager.html#a9376c5fba7eb53ba360231c409794992">Manager::addModel</a>(<span class="keyword">const</span> std::string filename) {</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="classvisual_1_1_manager.html#aa734cccb964e8d63bae12103889ebf71">isRunning</a>()) {</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        modelInstantiationCounter++;</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        <a class="code" href="class_log.html">Log</a>().<a class="code" href="class_log.html#aef7936d0fd59e391abd42f967be091f8">debug</a>() &lt;&lt; <span class="stringliteral">&quot; adding Model to Queue: &quot;</span> &lt;&lt; modelInstantiationCounter ;</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        <span class="comment">// Queue für Thread Sicherheit</span></div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        <a class="code" href="classvisual_1_1graphics_1_1_graphic_engine.html#a1675ee17a75ce754132b3bdd6c7b3424">graphics::GraphicEngine::getInstance</a>()-&gt;<a class="code" href="classvisual_1_1graphics_1_1_graphic_engine.html#ade3d5be31fe035ddad7bbb506cb26d2e">enqueueModel</a>(modelInstantiationCounter, filename);</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        <span class="keywordflow">return</span> modelInstantiationCounter;</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    }</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;}</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;</div>
+<div class="line"><a name="l00063"></a><span class="lineno"><a class="line" href="classvisual_1_1_manager.html#a7c9bf7d60b03fcea6a31e0a0ab2340f0">   63</a></span>&#160;GLuint <a class="code" href="classvisual_1_1_manager.html#a7c9bf7d60b03fcea6a31e0a0ab2340f0">Manager::addPoint</a>(<span class="keyword">const</span> std::string textureFilename) {</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="classvisual_1_1_manager.html#aa734cccb964e8d63bae12103889ebf71">isRunning</a>()) {</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        modelInstantiationCounter++;</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        <a class="code" href="class_log.html">Log</a>().<a class="code" href="class_log.html#aef7936d0fd59e391abd42f967be091f8">debug</a>() &lt;&lt; <span class="stringliteral">&quot; adding Point to Queue: &quot;</span> &lt;&lt; modelInstantiationCounter ;</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        </div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        <span class="comment">// Queue für Thread Sicherheit</span></div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        <a class="code" href="classvisual_1_1graphics_1_1_graphic_engine.html#a1675ee17a75ce754132b3bdd6c7b3424">graphics::GraphicEngine::getInstance</a>()-&gt;<a class="code" href="classvisual_1_1graphics_1_1_graphic_engine.html#ad29c181589658d1bf248d8404012624f">enqueueSquare</a>(modelInstantiationCounter, textureFilename);</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        <span class="keywordflow">return</span> modelInstantiationCounter;</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    }</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;}</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;</div>
+<div class="line"><a name="l00079"></a><span class="lineno"><a class="line" href="classvisual_1_1_manager.html#aab514e916c78a1ff737ac3796bd2257b">   79</a></span>&#160;GLboolean <a class="code" href="classvisual_1_1_manager.html#aab514e916c78a1ff737ac3796bd2257b">Manager::isModelCreated</a>(GLuint modelId) {</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    <span class="keywordflow">if</span> (assimpModelList.find(modelId) != assimpModelList.end()) {</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;        <span class="keywordflow">return</span> GL_TRUE;</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    }</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (squareList.find(modelId) != squareList.end()) {</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;        <span class="keywordflow">return</span> GL_TRUE;</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    }</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (textList.find(modelId) != textList.end()) {</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;        <span class="keywordflow">return</span> GL_TRUE;</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    }</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (buttonList.find(modelId) != buttonList.end()) {</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;        <span class="keywordflow">return</span> GL_TRUE;</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    }</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    <span class="keywordflow">return</span> GL_FALSE;</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;}</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;</div>
+<div class="line"><a name="l00097"></a><span class="lineno"><a class="line" href="classvisual_1_1_manager.html#a0c62f26820d9a53e414ac2305c76a1c6">   97</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classvisual_1_1_manager.html#a0c62f26820d9a53e414ac2305c76a1c6">Manager::dispose</a>(GLuint modelId) {</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    <a class="code" href="classvisual_1_1graphics_1_1_graphic_engine.html#a1675ee17a75ce754132b3bdd6c7b3424">graphics::GraphicEngine::getInstance</a>()-&gt;<a class="code" href="classvisual_1_1graphics_1_1_graphic_engine.html#a0961f8c5cb2ef625c7f21efee90416a3">enqueueDispose</a>(modelId);</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;}</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;</div>
+<div class="line"><a name="l00102"></a><span class="lineno"><a class="line" href="classvisual_1_1_manager.html#a6d4c52011dac6da70f3bd6a2882092fb">  102</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classvisual_1_1_manager.html#a6d4c52011dac6da70f3bd6a2882092fb">Manager::remove</a>(GLuint modelId) {</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    std::map&lt;GLuint, visual::model::AssimpModel*&gt;::iterator modelIterator = assimpModelList.find(modelId);</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    std::map&lt;GLuint, visual::model::Square*&gt;::iterator squareIterator = squareList.find(modelId);</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;    std::map&lt;GLuint, visual::gui::Text*&gt;::iterator textIterator = textList.find(modelId);</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;    std::map&lt;GLuint, visual::gui::Button*&gt;::iterator buttonIterator = buttonList.find(modelId);</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;    <span class="keywordflow">if</span> (modelIterator != assimpModelList.end()) {</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;        <a class="code" href="classvisual_1_1model_1_1_assimp_model.html">model::AssimpModel</a>* model = modelIterator-&gt;second;</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;        <span class="keyword">delete</span> model;</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;        assimpModelList.erase(modelIterator);</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;    }</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (squareIterator != squareList.end()) {</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;        <a class="code" href="classvisual_1_1model_1_1_square.html">model::Square</a>* model = squareIterator-&gt;second;</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;        <span class="keyword">delete</span> model;</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;        squareList.erase(squareIterator);</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;    }</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (textIterator != textList.end()) {</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;        <a class="code" href="classvisual_1_1gui_1_1_text.html">gui::Text</a>* model = textIterator-&gt;second;</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;        <span class="keyword">delete</span> model;</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;        textList.erase(textIterator);</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;    }</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (buttonIterator != buttonList.end()) {</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;        <a class="code" href="classvisual_1_1gui_1_1_button.html">gui::Button</a>* model = buttonIterator-&gt;second;</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;        <span class="keyword">delete</span> model;</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;        buttonList.erase(buttonIterator);</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;    }</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;    <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;        <a class="code" href="class_log.html">Log</a>().<a class="code" href="class_log.html#ad95b181bb1a7f5b4be3c62f4de9862d7">warning</a>() &lt;&lt; <span class="stringliteral">&quot;Model mit der ID &#39;&quot;</span> &lt;&lt; modelId &lt;&lt; <span class="stringliteral">&quot;&#39; konnte nicht entfernt werden&quot;</span>;</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;    }</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;}</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;</div>
+<div class="line"><a name="l00134"></a><span class="lineno"><a class="line" href="classvisual_1_1_manager.html#abb18c8e5a56f8d442bf22d021dbbd66f">  134</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classvisual_1_1_manager.html#abb18c8e5a56f8d442bf22d021dbbd66f">Manager::addToModelList</a>(GLuint modelId, <a class="code" href="classvisual_1_1model_1_1_assimp_model.html">model::AssimpModel</a>* model) {</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;    <a class="code" href="class_log.html">Log</a>().<a class="code" href="class_log.html#aef7936d0fd59e391abd42f967be091f8">debug</a>() &lt;&lt; <span class="stringliteral">&quot; adding Model to List: &quot;</span> &lt;&lt; modelId ;</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;    assimpModelList.insert(std::make_pair(modelId, model));</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;}</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;</div>
+<div class="line"><a name="l00139"></a><span class="lineno"><a class="line" href="classvisual_1_1_manager.html#acd75dcf722beff332e3333108ea651e8">  139</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classvisual_1_1_manager.html#acd75dcf722beff332e3333108ea651e8">Manager::addToSquareList</a>(GLuint modelId, <a class="code" href="classvisual_1_1model_1_1_square.html">model::Square</a>* model) {</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;    <a class="code" href="class_log.html">Log</a>().<a class="code" href="class_log.html#aef7936d0fd59e391abd42f967be091f8">debug</a>() &lt;&lt; <span class="stringliteral">&quot; adding Square to List: &quot;</span> &lt;&lt; modelId ;</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;    squareList.insert(std::make_pair(modelId, model));</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;}</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;</div>
+<div class="line"><a name="l00144"></a><span class="lineno"><a class="line" href="classvisual_1_1_manager.html#a793464402061e2b24fc6167c746fffd4">  144</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classvisual_1_1_manager.html#a793464402061e2b24fc6167c746fffd4">Manager::addToTextList</a>(GLuint modelId, <a class="code" href="classvisual_1_1gui_1_1_text.html">gui::Text</a>* <a class="code" href="_visualization_8h.html#adf56317b9bb2c78a5a477702a84ded32">text</a>) {</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;    <a class="code" href="class_log.html">Log</a>().<a class="code" href="class_log.html#aef7936d0fd59e391abd42f967be091f8">debug</a>() &lt;&lt; <span class="stringliteral">&quot; adding Text to List: &quot;</span> &lt;&lt; modelId ;</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;    textList.insert(std::make_pair(modelId, text));</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;}</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;</div>
+<div class="line"><a name="l00149"></a><span class="lineno"><a class="line" href="classvisual_1_1_manager.html#a15d9499c738f1111baf0d9bd8dafba89">  149</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classvisual_1_1_manager.html#a15d9499c738f1111baf0d9bd8dafba89">Manager::addToButtonList</a>(GLuint buttonId, <a class="code" href="classvisual_1_1gui_1_1_button.html">gui::Button</a>* button) {</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;    <a class="code" href="class_log.html">Log</a>().<a class="code" href="class_log.html#aef7936d0fd59e391abd42f967be091f8">debug</a>() &lt;&lt; <span class="stringliteral">&quot; adding Button to List: &quot;</span> &lt;&lt; buttonId ;</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;    buttonList.insert(std::make_pair(buttonId, button));</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;}</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;</div>
+<div class="line"><a name="l00155"></a><span class="lineno"><a class="line" href="classvisual_1_1_manager.html#a4f91b1b716b1bd12b36129dd631a9fb7">  155</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="classvisual_1_1_manager.html#a4f91b1b716b1bd12b36129dd631a9fb7">Manager::positionModel</a>(GLuint modelId, glm::vec3 <a class="code" href="_visualization_8h.html#ab7ef3ae59da17b0f42783b4119efad69">position</a>) {</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;    <span class="keywordflow">if</span> (assimpModelList.find(modelId) != assimpModelList.end()) {</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;        <a class="code" href="classvisual_1_1model_1_1_assimp_model.html">model::AssimpModel</a>* model = assimpModelList.find(modelId)-&gt;second;</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;        model-&gt;<a class="code" href="classvisual_1_1model_1_1_model.html#a1db9e50b2ac6496b9ddaa6f92c15c91b">position</a>(position);</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;        </div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;    }</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (squareList.find(modelId) != squareList.end()) {</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;        <a class="code" href="classvisual_1_1model_1_1_square.html">model::Square</a>* model = squareList.find(modelId)-&gt;second;</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;        model-&gt;<a class="code" href="classvisual_1_1model_1_1_model.html#a1db9e50b2ac6496b9ddaa6f92c15c91b">position</a>(position);</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;    }</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (textList.find(modelId) != textList.end()) {</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;        <a class="code" href="classvisual_1_1gui_1_1_text.html">gui::Text</a>* model = textList.find(modelId)-&gt;second;</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;        model-&gt;<a class="code" href="classvisual_1_1gui_1_1_text.html#a2998d8f699544dd9c10e1f90986d30c6">setPosition</a>(position.x, position.y);</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;    }</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (buttonList.find(modelId) != buttonList.end()) {</div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;        <a class="code" href="classvisual_1_1gui_1_1_button.html">gui::Button</a>* model = buttonList.find(modelId)-&gt;second;</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;        model-&gt;<a class="code" href="classvisual_1_1gui_1_1_button.html#a81cb3659e12f4b2e402d7286156d5f37">position</a>(glm::vec2(position));</div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;    }</div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;    <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;        <a class="code" href="class_log.html">Log</a>().<a class="code" href="class_log.html#a195a4d3479eb8b9b602e08a1cdaba78c">error</a>() &lt;&lt; <span class="stringliteral">&quot;Das Model mit der modelId &#39;&quot;</span> &lt;&lt; modelId &lt;&lt; <span class="stringliteral">&quot;&#39; konnte waehrend dem Versuch es neu zu positionieren nicht gefunden werden.&quot;</span> ;</div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;    }</div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;</div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;}</div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;</div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;</div>
+<div class="line"><a name="l00188"></a><span class="lineno"><a class="line" href="classvisual_1_1_manager.html#aafccc7732aa523115d0aaa9d801e1cbc">  188</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="classvisual_1_1_manager.html#aafccc7732aa523115d0aaa9d801e1cbc">Manager::rotateModel</a>(GLuint modelId, GLfloat degrees, glm::vec3 axis) {</div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;    <span class="keywordflow">if</span> (assimpModelList.find(modelId) != assimpModelList.end()) {</div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;        <a class="code" href="classvisual_1_1model_1_1_assimp_model.html">model::AssimpModel</a>* model = assimpModelList.find(modelId)-&gt;second;</div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;        model-&gt;<a class="code" href="classvisual_1_1model_1_1_model.html#a6793cc75434c53378af7301f63f1ea00">rotate</a>(degrees, axis);</div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;</div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;    }</div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (squareList.find(modelId) != squareList.end()) {</div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;        <a class="code" href="classvisual_1_1model_1_1_square.html">model::Square</a>* model = squareList.find(modelId)-&gt;second;</div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;        model-&gt;<a class="code" href="classvisual_1_1model_1_1_model.html#a6793cc75434c53378af7301f63f1ea00">rotate</a>(degrees, axis);</div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;</div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;    }</div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;    <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;        <a class="code" href="class_log.html">Log</a>().<a class="code" href="class_log.html#a195a4d3479eb8b9b602e08a1cdaba78c">error</a>() &lt;&lt; <span class="stringliteral">&quot;Das Model mit der modelId &#39;&quot;</span> &lt;&lt; modelId &lt;&lt; <span class="stringliteral">&quot;&#39; konnte waehrend dem Versuch es neu zu rotieren nicht gefunden werden.&quot;</span> ;</div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;    }</div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;</div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;}</div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;</div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;</div>
+<div class="line"><a name="l00209"></a><span class="lineno"><a class="line" href="classvisual_1_1_manager.html#a37e157e6e89d5a9173e78f2ebcdc94c7">  209</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="classvisual_1_1_manager.html#a37e157e6e89d5a9173e78f2ebcdc94c7">Manager::scaleModel</a>(GLuint modelId, glm::vec3 <a class="code" href="_visualization_8h.html#aa0ca6c77068987654769e0aeca29719b">scale</a>) {</div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;    <span class="keywordflow">if</span> (assimpModelList.find(modelId) != assimpModelList.end()) {</div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;        <a class="code" href="classvisual_1_1model_1_1_assimp_model.html">model::AssimpModel</a>* model = assimpModelList.find(modelId)-&gt;second;</div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;        model-&gt;<a class="code" href="classvisual_1_1model_1_1_model.html#af2829e84aac62272c3116ad75c144d50">scale</a>(scale);</div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;</div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;    }</div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (squareList.find(modelId) != squareList.end()) {</div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;        <a class="code" href="classvisual_1_1model_1_1_square.html">model::Square</a>* model = squareList.find(modelId)-&gt;second;</div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;        model-&gt;<a class="code" href="classvisual_1_1model_1_1_model.html#af2829e84aac62272c3116ad75c144d50">scale</a>(scale);</div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;</div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;    }</div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (buttonList.find(modelId) != buttonList.end()) {</div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;        <a class="code" href="classvisual_1_1gui_1_1_button.html">gui::Button</a>* model = buttonList.find(modelId)-&gt;second;</div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;        model-&gt;<a class="code" href="classvisual_1_1gui_1_1_button.html#add04c66c50527c134faa7735c245925b">scale</a>(glm::vec2(scale));</div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;</div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;    }</div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;    <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;        <a class="code" href="class_log.html">Log</a>().<a class="code" href="class_log.html#a195a4d3479eb8b9b602e08a1cdaba78c">error</a>() &lt;&lt; <span class="stringliteral">&quot;Das Model mit der modelId &#39;&quot;</span> &lt;&lt; modelId &lt;&lt; <span class="stringliteral">&quot;&#39; konnte waehrend dem Versuch es neu zu skalieren nicht gefunden werden.&quot;</span> ;</div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;    }</div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;</div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;}</div>
+<div class="line"><a name="l00234"></a><span class="lineno"><a class="line" href="classvisual_1_1_manager.html#a023c4a9f7592db47bcf586c1ec41c638">  234</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="classvisual_1_1_manager.html#a023c4a9f7592db47bcf586c1ec41c638">Manager::scalingIsNormalized</a>(GLuint modelId, <span class="keywordtype">bool</span> choice) {</div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;    <span class="keywordflow">if</span> (assimpModelList.find(modelId) != assimpModelList.end()) {</div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;        <a class="code" href="classvisual_1_1model_1_1_assimp_model.html">model::AssimpModel</a>* model = assimpModelList.find(modelId)-&gt;second;</div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;        model-&gt;<a class="code" href="classvisual_1_1model_1_1_model.html#a2350840c1d7d30c9a042bbce66fc66c9">scalingIsNormalized</a>(choice);</div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;</div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;    }</div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (squareList.find(modelId) != squareList.end()) {</div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;        <a class="code" href="classvisual_1_1model_1_1_square.html">model::Square</a>* model = squareList.find(modelId)-&gt;second;</div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;        model-&gt;<a class="code" href="classvisual_1_1model_1_1_model.html#a2350840c1d7d30c9a042bbce66fc66c9">scalingIsNormalized</a>(choice);</div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;</div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;    }</div>
+<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;    <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;        <a class="code" href="class_log.html">Log</a>().<a class="code" href="class_log.html#a195a4d3479eb8b9b602e08a1cdaba78c">error</a>() &lt;&lt; <span class="stringliteral">&quot;Das Model mit der modelId &#39;&quot;</span> &lt;&lt; modelId &lt;&lt; <span class="stringliteral">&quot;&#39; konnte waehrend dem Versuch den Zustand der Skalierungsnormalisierung zu ändern nicht gefunden werden.&quot;</span>;</div>
+<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;    }</div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;</div>
+<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;}</div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;</div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;</div>
+<div class="line"><a name="l00255"></a><span class="lineno"><a class="line" href="classvisual_1_1_manager.html#a817293e18dad0c6f72184d3b53519a15">  255</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="classvisual_1_1_manager.html#a817293e18dad0c6f72184d3b53519a15">Manager::setModelHighlightColor</a>(GLuint modelId, glm::vec4 color) {</div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;    <span class="keywordflow">if</span> (assimpModelList.find(modelId) != assimpModelList.end()) {</div>
+<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;        <a class="code" href="classvisual_1_1model_1_1_assimp_model.html">model::AssimpModel</a>* model = assimpModelList.find(modelId)-&gt;second;</div>
+<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;        model-&gt;<a class="code" href="classvisual_1_1model_1_1_model.html#aaa35c9cd9802539aa9d7d1feb30699e4">setHighlightColor</a>(color);</div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;</div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;    }</div>
+<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (squareList.find(modelId) != squareList.end()) {</div>
+<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;        <a class="code" href="classvisual_1_1model_1_1_square.html">model::Square</a>* model = squareList.find(modelId)-&gt;second;</div>
+<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;        model-&gt;<a class="code" href="classvisual_1_1model_1_1_model.html#aaa35c9cd9802539aa9d7d1feb30699e4">setHighlightColor</a>(color);</div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;</div>
+<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;    }</div>
+<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (buttonList.find(modelId) != buttonList.end()) {</div>
+<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;        <a class="code" href="classvisual_1_1gui_1_1_button.html">gui::Button</a>* model = buttonList.find(modelId)-&gt;second;</div>
+<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;        model-&gt;<a class="code" href="classvisual_1_1gui_1_1_button.html#a16d095525f84f743cac1ab0891165229">setHighlightColor</a>(color);</div>
+<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;</div>
+<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;    }</div>
+<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;    <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;        <a class="code" href="class_log.html">Log</a>().<a class="code" href="class_log.html#a195a4d3479eb8b9b602e08a1cdaba78c">error</a>() &lt;&lt; <span class="stringliteral">&quot;Das Model mit der modelId &#39;&quot;</span> &lt;&lt; modelId &lt;&lt; <span class="stringliteral">&quot;&#39; konnte waehrend dem Versuch dessen Highlight Farbe zu setzen nicht gefunden werden.&quot;</span> ;</div>
+<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;    }</div>
+<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;</div>
+<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;}</div>
+<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;</div>
+<div class="line"><a name="l00281"></a><span class="lineno"><a class="line" href="classvisual_1_1_manager.html#aca24f480ad78e99ad1f1e7800b519d50">  281</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="classvisual_1_1_manager.html#aca24f480ad78e99ad1f1e7800b519d50">Manager::isModelHighlighted</a>(GLuint modelId, <span class="keywordtype">bool</span> choice) {</div>
+<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;    <span class="keywordflow">if</span> (assimpModelList.find(modelId) != assimpModelList.end()) {</div>
+<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;        <a class="code" href="classvisual_1_1model_1_1_assimp_model.html">model::AssimpModel</a>* model = assimpModelList.find(modelId)-&gt;second;</div>
+<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;        model-&gt;<a class="code" href="classvisual_1_1model_1_1_model.html#a539a2593905295e6e2eaf7900efa5bc1">isHighlighted</a>(choice);</div>
+<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;</div>
+<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;    }</div>
+<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (squareList.find(modelId) != squareList.end()) {</div>
+<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;        <a class="code" href="classvisual_1_1model_1_1_square.html">model::Square</a>* model = squareList.find(modelId)-&gt;second;</div>
+<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;        model-&gt;<a class="code" href="classvisual_1_1model_1_1_model.html#a539a2593905295e6e2eaf7900efa5bc1">isHighlighted</a>(choice);</div>
+<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;</div>
+<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;    }</div>
+<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (buttonList.find(modelId) != buttonList.end()) {</div>
+<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;        <a class="code" href="classvisual_1_1gui_1_1_button.html">gui::Button</a>* model = buttonList.find(modelId)-&gt;second;</div>
+<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;        model-&gt;<a class="code" href="classvisual_1_1gui_1_1_button.html#af67f0472470ef045769f9903bf851120">isHighlighted</a>(choice);</div>
+<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;</div>
+<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;    }</div>
+<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;    <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;        <a class="code" href="class_log.html">Log</a>().<a class="code" href="class_log.html#a195a4d3479eb8b9b602e08a1cdaba78c">error</a>() &lt;&lt; <span class="stringliteral">&quot;Das Model mit der modelId &#39;&quot;</span> &lt;&lt; modelId &lt;&lt; <span class="stringliteral">&quot;&#39; konnte waehrend dem Versuch den Highlight Modus zu aendern nicht gefunden werden.&quot;</span> ;</div>
+<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;    }</div>
+<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;</div>
+<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;}</div>
+<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;</div>
+<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;</div>
+<div class="line"><a name="l00308"></a><span class="lineno"><a class="line" href="classvisual_1_1_manager.html#a90f207cc68f619810d9131f87b629c8b">  308</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="classvisual_1_1_manager.html#a90f207cc68f619810d9131f87b629c8b">Manager::attachModelToCamera</a>(GLuint modelId, <span class="keywordtype">bool</span> choice) {</div>
+<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;    <span class="keywordflow">if</span> (assimpModelList.find(modelId) != assimpModelList.end()) {</div>
+<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;        <a class="code" href="classvisual_1_1model_1_1_assimp_model.html">model::AssimpModel</a>* model = assimpModelList.find(modelId)-&gt;second;</div>
+<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;        model-&gt;<a class="code" href="classvisual_1_1model_1_1_model.html#af518ecfa9a8b92e9859527b5394c7edc">attachedToCamera</a>(choice);</div>
+<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;</div>
+<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;    }</div>
+<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (squareList.find(modelId) != squareList.end()) {</div>
+<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;        <a class="code" href="classvisual_1_1model_1_1_square.html">model::Square</a>* model = squareList.find(modelId)-&gt;second;</div>
+<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;        model-&gt;<a class="code" href="classvisual_1_1model_1_1_model.html#af518ecfa9a8b92e9859527b5394c7edc">attachedToCamera</a>(choice);</div>
+<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;</div>
+<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;    }</div>
+<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;    <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;        <a class="code" href="class_log.html">Log</a>().<a class="code" href="class_log.html#a195a4d3479eb8b9b602e08a1cdaba78c">error</a>() &lt;&lt; <span class="stringliteral">&quot;Das Model mit der modelId &#39;&quot;</span> &lt;&lt; modelId &lt;&lt; <span class="stringliteral">&quot;&#39; konnte waehrend dem Versuch es an die Kamera anzubinden nicht gefunden werden.&quot;</span>;</div>
+<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;    }</div>
+<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;</div>
+<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;}</div>
+<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;</div>
+<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;</div>
+<div class="line"><a name="l00329"></a><span class="lineno"><a class="line" href="classvisual_1_1_manager.html#ad018fbba8bdd90e1d17fac89dcd9d4d0">  329</a></span>&#160;GLuint <a class="code" href="classvisual_1_1_manager.html#ad018fbba8bdd90e1d17fac89dcd9d4d0">Manager::addText</a>(<span class="keyword">const</span> std::string fontname) {</div>
+<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="classvisual_1_1_manager.html#aa734cccb964e8d63bae12103889ebf71">isRunning</a>()) {</div>
+<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;        modelInstantiationCounter++;</div>
+<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;</div>
+<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;        <a class="code" href="class_log.html">Log</a>().<a class="code" href="class_log.html#aef7936d0fd59e391abd42f967be091f8">debug</a>() &lt;&lt; <span class="stringliteral">&quot; adding Text to Queue: &quot;</span> &lt;&lt; modelInstantiationCounter ;</div>
+<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;</div>
+<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;        <span class="comment">// Queue für Thread Sicherheit</span></div>
+<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;        <a class="code" href="classvisual_1_1graphics_1_1_graphic_engine.html#a1675ee17a75ce754132b3bdd6c7b3424">graphics::GraphicEngine::getInstance</a>()-&gt;<a class="code" href="classvisual_1_1graphics_1_1_graphic_engine.html#ab9594c1033773e74bb40432300a9f180">enqueueText</a>(modelInstantiationCounter, fontname);</div>
+<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;</div>
+<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;        <span class="keywordflow">return</span> modelInstantiationCounter;</div>
+<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;    }</div>
+<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;</div>
+<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;    <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;}</div>
+<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;</div>
+<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;<a class="code" href="classvisual_1_1gui_1_1_text.html">visual::gui::Text</a>* Manager::getTextFromList(GLuint textId) {</div>
+<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;    <a class="code" href="classvisual_1_1gui_1_1_text.html">visual::gui::Text</a>* <a class="code" href="_visualization_8h.html#adf56317b9bb2c78a5a477702a84ded32">text</a> = NULL;</div>
+<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;</div>
+<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;    <span class="keywordflow">if</span> (textList.find(textId) != textList.end()) {</div>
+<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;        text = textList.find(textId)-&gt;second;</div>
+<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;    }</div>
+<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;</div>
+<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="_visualization_8h.html#adf56317b9bb2c78a5a477702a84ded32">text</a>;</div>
+<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;}</div>
+<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;</div>
+<div class="line"><a name="l00354"></a><span class="lineno"><a class="line" href="classvisual_1_1_manager.html#a8b7f4f9b6ff27f3228a2276e463b81a7">  354</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="classvisual_1_1_manager.html#a8b7f4f9b6ff27f3228a2276e463b81a7">Manager::setText</a>(<span class="keyword">const</span> GLuint textId, <span class="keyword">const</span> std::string text) {</div>
+<div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160;    <a class="code" href="classvisual_1_1gui_1_1_text.html">visual::gui::Text</a>* textObj = getTextFromList(textId);</div>
+<div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160;    <span class="keywordflow">if</span> (textObj) {</div>
+<div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160;        textObj-&gt;<a class="code" href="classvisual_1_1gui_1_1_text.html#ae74a8e040b8f9de03f1a3ecba3e9420d">setText</a>(text);</div>
+<div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160;    }</div>
+<div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160;    </div>
+<div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160;    <a class="code" href="classvisual_1_1gui_1_1_button.html">gui::Button</a>* button = getButtonFromList(textId);</div>
+<div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160;    <span class="keywordflow">if</span> (button) {</div>
+<div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160;        button-&gt;<a class="code" href="classvisual_1_1gui_1_1_button.html#a127e2c9382ff14435f785c84dc405b37">setText</a>(text);</div>
+<div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160;    }</div>
+<div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160;</div>
+<div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160;}</div>
+<div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160;</div>
+<div class="line"><a name="l00370"></a><span class="lineno"><a class="line" href="classvisual_1_1_manager.html#a9813423f2d2080ce91f53c481df78efe">  370</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="classvisual_1_1_manager.html#a9813423f2d2080ce91f53c481df78efe">Manager::setTextSize</a>(<span class="keyword">const</span> GLuint textId, <span class="keyword">const</span> <span class="keywordtype">int</span> points) {</div>
+<div class="line"><a name="l00371"></a><span class="lineno">  371</span>&#160;    <a class="code" href="classvisual_1_1gui_1_1_text.html">visual::gui::Text</a>* textObj = getTextFromList(textId);</div>
+<div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160;    <span class="keywordflow">if</span> (textObj) {</div>
+<div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160;        <span class="keywordflow">return</span> textObj-&gt;<a class="code" href="classvisual_1_1gui_1_1_text.html#a32405c9f6b422af27c0f283aff2590a3">setSize</a>(points);</div>
+<div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160;    }</div>
+<div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160;    </div>
+<div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160;    <a class="code" href="classvisual_1_1gui_1_1_button.html">gui::Button</a>* button = getButtonFromList(textId);</div>
+<div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160;    <span class="keywordflow">if</span> (button) {</div>
+<div class="line"><a name="l00378"></a><span class="lineno">  378</span>&#160;        <span class="keywordflow">return</span> button-&gt;<a class="code" href="classvisual_1_1gui_1_1_button.html#a74ef202b5839b3c15605fd28be06d547">setTextSize</a>(points);</div>
+<div class="line"><a name="l00379"></a><span class="lineno">  379</span>&#160;    }</div>
+<div class="line"><a name="l00380"></a><span class="lineno">  380</span>&#160;</div>
+<div class="line"><a name="l00381"></a><span class="lineno">  381</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00382"></a><span class="lineno">  382</span>&#160;}</div>
+<div class="line"><a name="l00383"></a><span class="lineno">  383</span>&#160;</div>
+<div class="line"><a name="l00384"></a><span class="lineno"><a class="line" href="classvisual_1_1_manager.html#aab5ddb031956862dba4c2ba337e6a3e7">  384</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="classvisual_1_1_manager.html#aab5ddb031956862dba4c2ba337e6a3e7">Manager::setTextColor</a>(<span class="keyword">const</span> GLuint textId, <span class="keyword">const</span> glm::vec4 color) {</div>
+<div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160;    <a class="code" href="classvisual_1_1gui_1_1_text.html">visual::gui::Text</a>* textObj = getTextFromList(textId);</div>
+<div class="line"><a name="l00386"></a><span class="lineno">  386</span>&#160;    <span class="keywordflow">if</span> (textObj) {</div>
+<div class="line"><a name="l00387"></a><span class="lineno">  387</span>&#160;        textObj-&gt;<a class="code" href="classvisual_1_1gui_1_1_text.html#a16c0f5c67ae5939fa4010824da662635">setColor</a>(color);</div>
+<div class="line"><a name="l00388"></a><span class="lineno">  388</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00389"></a><span class="lineno">  389</span>&#160;    }</div>
+<div class="line"><a name="l00390"></a><span class="lineno">  390</span>&#160;</div>
+<div class="line"><a name="l00391"></a><span class="lineno">  391</span>&#160;    <a class="code" href="classvisual_1_1gui_1_1_button.html">gui::Button</a>* button = getButtonFromList(textId);</div>
+<div class="line"><a name="l00392"></a><span class="lineno">  392</span>&#160;    <span class="keywordflow">if</span> (button) {</div>
+<div class="line"><a name="l00393"></a><span class="lineno">  393</span>&#160;        button-&gt;<a class="code" href="classvisual_1_1gui_1_1_button.html#afacde5ffbf6fa7c17c266406fb4747e5">setTextColor</a>(color);</div>
+<div class="line"><a name="l00394"></a><span class="lineno">  394</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00395"></a><span class="lineno">  395</span>&#160;    }</div>
+<div class="line"><a name="l00396"></a><span class="lineno">  396</span>&#160;</div>
+<div class="line"><a name="l00397"></a><span class="lineno">  397</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00398"></a><span class="lineno">  398</span>&#160;}</div>
+<div class="line"><a name="l00399"></a><span class="lineno">  399</span>&#160;</div>
+<div class="line"><a name="l00400"></a><span class="lineno">  400</span>&#160;</div>
+<div class="line"><a name="l00401"></a><span class="lineno"><a class="line" href="classvisual_1_1_manager.html#a2f176f2366f0cd3782a53b4124d45b4e">  401</a></span>&#160;GLuint <a class="code" href="classvisual_1_1_manager.html#a2f176f2366f0cd3782a53b4124d45b4e">Manager::addButton</a>(<span class="keyword">const</span> std::string filename) {</div>
+<div class="line"><a name="l00402"></a><span class="lineno">  402</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="classvisual_1_1_manager.html#aa734cccb964e8d63bae12103889ebf71">isRunning</a>()) {</div>
+<div class="line"><a name="l00403"></a><span class="lineno">  403</span>&#160;        modelInstantiationCounter++;</div>
+<div class="line"><a name="l00404"></a><span class="lineno">  404</span>&#160;</div>
+<div class="line"><a name="l00405"></a><span class="lineno">  405</span>&#160;        <a class="code" href="class_log.html">Log</a>().<a class="code" href="class_log.html#aef7936d0fd59e391abd42f967be091f8">debug</a>() &lt;&lt; <span class="stringliteral">&quot; adding Button to Queue: &quot;</span> &lt;&lt; modelInstantiationCounter ;</div>
+<div class="line"><a name="l00406"></a><span class="lineno">  406</span>&#160;</div>
+<div class="line"><a name="l00407"></a><span class="lineno">  407</span>&#160;        <span class="comment">// Queue für Thread Sicherheit</span></div>
+<div class="line"><a name="l00408"></a><span class="lineno">  408</span>&#160;        <a class="code" href="classvisual_1_1graphics_1_1_graphic_engine.html#a1675ee17a75ce754132b3bdd6c7b3424">graphics::GraphicEngine::getInstance</a>()-&gt;<a class="code" href="classvisual_1_1graphics_1_1_graphic_engine.html#afb8ef3808ac2fbc6f4adf136e32259a2">enqueueButton</a>(modelInstantiationCounter, filename);</div>
+<div class="line"><a name="l00409"></a><span class="lineno">  409</span>&#160;</div>
+<div class="line"><a name="l00410"></a><span class="lineno">  410</span>&#160;        <span class="keywordflow">return</span> modelInstantiationCounter;</div>
+<div class="line"><a name="l00411"></a><span class="lineno">  411</span>&#160;    }</div>
+<div class="line"><a name="l00412"></a><span class="lineno">  412</span>&#160;</div>
+<div class="line"><a name="l00413"></a><span class="lineno">  413</span>&#160;    <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a name="l00414"></a><span class="lineno">  414</span>&#160;}</div>
+<div class="line"><a name="l00415"></a><span class="lineno">  415</span>&#160;<a class="code" href="classvisual_1_1gui_1_1_button.html">gui::Button</a>* Manager::getButtonFromList(GLuint buttonId) {</div>
+<div class="line"><a name="l00416"></a><span class="lineno">  416</span>&#160;    <a class="code" href="classvisual_1_1gui_1_1_button.html">gui::Button</a>* button = NULL;</div>
+<div class="line"><a name="l00417"></a><span class="lineno">  417</span>&#160;</div>
+<div class="line"><a name="l00418"></a><span class="lineno">  418</span>&#160;    <span class="keywordflow">if</span> (buttonList.find(buttonId) != buttonList.end()) {</div>
+<div class="line"><a name="l00419"></a><span class="lineno">  419</span>&#160;        button = buttonList.find(buttonId)-&gt;second;</div>
+<div class="line"><a name="l00420"></a><span class="lineno">  420</span>&#160;    }</div>
+<div class="line"><a name="l00421"></a><span class="lineno">  421</span>&#160;</div>
+<div class="line"><a name="l00422"></a><span class="lineno">  422</span>&#160;    <span class="keywordflow">return</span> button;</div>
+<div class="line"><a name="l00423"></a><span class="lineno">  423</span>&#160;}</div>
+<div class="line"><a name="l00424"></a><span class="lineno">  424</span>&#160;</div>
+<div class="line"><a name="l00425"></a><span class="lineno"><a class="line" href="classvisual_1_1_manager.html#ad4fd54b0457b8349bc591317576f9dc2">  425</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classvisual_1_1_manager.html#ad4fd54b0457b8349bc591317576f9dc2">Manager::positionCamera</a>(glm::vec3 <a class="code" href="_visualization_8h.html#ab7ef3ae59da17b0f42783b4119efad69">position</a>) {</div>
+<div class="line"><a name="l00426"></a><span class="lineno">  426</span>&#160;    <a class="code" href="classvisual_1_1graphics_1_1_graphic_engine.html#a1675ee17a75ce754132b3bdd6c7b3424">graphics::GraphicEngine::getInstance</a>()-&gt;<a class="code" href="classvisual_1_1graphics_1_1_graphic_engine.html#a91f1c58d7d36cbd423b57992f94fe332">camera</a>()-&gt;<a class="code" href="classvisual_1_1graphics_1_1_camera.html#aa91b07181806432f909d17123fe965be">position</a>(position);</div>
+<div class="line"><a name="l00427"></a><span class="lineno">  427</span>&#160;}</div>
+<div class="line"><a name="l00428"></a><span class="lineno"><a class="line" href="classvisual_1_1_manager.html#a997041d6e200f98c2f00e2d5dbdcd8b7">  428</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classvisual_1_1_manager.html#a997041d6e200f98c2f00e2d5dbdcd8b7">Manager::rotateCamera</a>(<span class="keywordtype">float</span> degrees) {</div>
+<div class="line"><a name="l00429"></a><span class="lineno">  429</span>&#160;    <a class="code" href="classvisual_1_1graphics_1_1_graphic_engine.html#a1675ee17a75ce754132b3bdd6c7b3424">graphics::GraphicEngine::getInstance</a>()-&gt;<a class="code" href="classvisual_1_1graphics_1_1_graphic_engine.html#a91f1c58d7d36cbd423b57992f94fe332">camera</a>()-&gt;<a class="code" href="classvisual_1_1graphics_1_1_camera.html#a3051950336c5b0c300058eaf5f25a6ca">rotate</a>(degrees);</div>
+<div class="line"><a name="l00430"></a><span class="lineno">  430</span>&#160;}</div>
+<div class="line"><a name="l00431"></a><span class="lineno"><a class="line" href="classvisual_1_1_manager.html#a78370636e261218fc199030d507c6a37">  431</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classvisual_1_1_manager.html#a78370636e261218fc199030d507c6a37">Manager::tiltCamera</a>(<span class="keywordtype">float</span> degrees) {</div>
+<div class="line"><a name="l00432"></a><span class="lineno">  432</span>&#160;    <a class="code" href="classvisual_1_1graphics_1_1_graphic_engine.html#a1675ee17a75ce754132b3bdd6c7b3424">graphics::GraphicEngine::getInstance</a>()-&gt;<a class="code" href="classvisual_1_1graphics_1_1_graphic_engine.html#a91f1c58d7d36cbd423b57992f94fe332">camera</a>()-&gt;<a class="code" href="classvisual_1_1graphics_1_1_camera.html#a6fdf46b0d32515d3591fda1bcf9a4294">tilt</a>(degrees);</div>
+<div class="line"><a name="l00433"></a><span class="lineno">  433</span>&#160;}</div>
+<div class="line"><a name="l00434"></a><span class="lineno"><a class="line" href="classvisual_1_1_manager.html#a668c3e265401632ec04d64d5c2c67218">  434</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classvisual_1_1_manager.html#a668c3e265401632ec04d64d5c2c67218">Manager::changeCameraSpeed</a>(<span class="keywordtype">float</span> speed) {</div>
+<div class="line"><a name="l00435"></a><span class="lineno">  435</span>&#160;    <a class="code" href="classvisual_1_1graphics_1_1_graphic_engine.html#a1675ee17a75ce754132b3bdd6c7b3424">graphics::GraphicEngine::getInstance</a>()-&gt;<a class="code" href="classvisual_1_1graphics_1_1_graphic_engine.html#a91f1c58d7d36cbd423b57992f94fe332">camera</a>()-&gt;<a class="code" href="classvisual_1_1graphics_1_1_camera.html#a41b5d80657ce59a9e45af329ea405ad9">changeSpeed</a>(speed);</div>
+<div class="line"><a name="l00436"></a><span class="lineno">  436</span>&#160;}</div>
+<div class="line"><a name="l00437"></a><span class="lineno">  437</span>&#160;</div>
+<div class="line"><a name="l00438"></a><span class="lineno"><a class="line" href="classvisual_1_1_manager.html#ab979837a457344d4d4f09fb40e4af795">  438</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classvisual_1_1_manager.html#ab979837a457344d4d4f09fb40e4af795">Manager::doCollisionDetection</a>(<span class="keywordtype">void</span>) {</div>
+<div class="line"><a name="l00439"></a><span class="lineno">  439</span>&#160;    <span class="comment">//{ 1:{2, 3}, 2 : {1, 2} }</span></div>
+<div class="line"><a name="l00440"></a><span class="lineno">  440</span>&#160;    <span class="comment">//1:2,3;2:1,2</span></div>
+<div class="line"><a name="l00441"></a><span class="lineno">  441</span>&#160;    std::stringstream collisions;</div>
+<div class="line"><a name="l00442"></a><span class="lineno">  442</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">char</span>* separator1 = <span class="stringliteral">&quot;&quot;</span>;</div>
+<div class="line"><a name="l00443"></a><span class="lineno">  443</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">char</span>* separator2 = <span class="stringliteral">&quot;&quot;</span>;</div>
+<div class="line"><a name="l00444"></a><span class="lineno">  444</span>&#160;    glm::vec3 cameraPosition = <a class="code" href="classvisual_1_1graphics_1_1_graphic_engine.html#a1675ee17a75ce754132b3bdd6c7b3424">graphics::GraphicEngine::getInstance</a>()-&gt;<a class="code" href="classvisual_1_1graphics_1_1_graphic_engine.html#a91f1c58d7d36cbd423b57992f94fe332">camera</a>()-&gt;<a class="code" href="classvisual_1_1graphics_1_1_camera.html#aa91b07181806432f909d17123fe965be">position</a>();</div>
+<div class="line"><a name="l00445"></a><span class="lineno">  445</span>&#160;    </div>
+<div class="line"><a name="l00446"></a><span class="lineno">  446</span>&#160;    <span class="comment">// Modelle</span></div>
+<div class="line"><a name="l00447"></a><span class="lineno">  447</span>&#160;    std::map&lt;GLuint, model::AssimpModel*&gt;::iterator it;</div>
+<div class="line"><a name="l00448"></a><span class="lineno">  448</span>&#160;    <span class="keywordflow">for</span> (it = assimpModelList.begin(); it != assimpModelList.end(); it++) {</div>
+<div class="line"><a name="l00449"></a><span class="lineno">  449</span>&#160;        <a class="code" href="classvisual_1_1model_1_1_assimp_model.html">model::AssimpModel</a>* modelA = (*it).second;</div>
+<div class="line"><a name="l00450"></a><span class="lineno">  450</span>&#160;        collisions &lt;&lt; separator1 &lt;&lt; it-&gt;first &lt;&lt; <span class="stringliteral">&quot;:&quot;</span>;</div>
+<div class="line"><a name="l00451"></a><span class="lineno">  451</span>&#160;        separator1 = <span class="stringliteral">&quot;;&quot;</span>;</div>
+<div class="line"><a name="l00452"></a><span class="lineno">  452</span>&#160;</div>
+<div class="line"><a name="l00453"></a><span class="lineno">  453</span>&#160;        glm::vec3 a = modelA-&gt;<a class="code" href="classvisual_1_1model_1_1_model.html#a1db9e50b2ac6496b9ddaa6f92c15c91b">position</a>();</div>
+<div class="line"><a name="l00454"></a><span class="lineno">  454</span>&#160;        <span class="keywordflow">if</span> (modelA-&gt;<a class="code" href="classvisual_1_1model_1_1_model.html#af518ecfa9a8b92e9859527b5394c7edc">attachedToCamera</a>()) {</div>
+<div class="line"><a name="l00455"></a><span class="lineno">  455</span>&#160;            a += cameraPosition;</div>
+<div class="line"><a name="l00456"></a><span class="lineno">  456</span>&#160;        }</div>
+<div class="line"><a name="l00457"></a><span class="lineno">  457</span>&#160;        <span class="keywordtype">float</span> ar = modelA-&gt;<a class="code" href="classvisual_1_1model_1_1_model.html#a52d941bb73198189f1c0f7a4d8d71307">boundingSphereRadius</a>();</div>
+<div class="line"><a name="l00458"></a><span class="lineno">  458</span>&#160;</div>
+<div class="line"><a name="l00459"></a><span class="lineno">  459</span>&#160;        std::map&lt;GLuint, model::AssimpModel*&gt;::iterator it2;</div>
+<div class="line"><a name="l00460"></a><span class="lineno">  460</span>&#160;        <span class="keywordflow">for</span> (it2 = assimpModelList.begin(); it2 != assimpModelList.end(); it2++) {</div>
+<div class="line"><a name="l00461"></a><span class="lineno">  461</span>&#160;            <a class="code" href="classvisual_1_1model_1_1_assimp_model.html">model::AssimpModel</a>* modelB = (*it2).second;</div>
+<div class="line"><a name="l00462"></a><span class="lineno">  462</span>&#160;</div>
+<div class="line"><a name="l00463"></a><span class="lineno">  463</span>&#160;            <span class="keywordflow">if</span> (modelA == modelB) {</div>
+<div class="line"><a name="l00464"></a><span class="lineno">  464</span>&#160;                <span class="keywordflow">continue</span>;</div>
+<div class="line"><a name="l00465"></a><span class="lineno">  465</span>&#160;            }</div>
+<div class="line"><a name="l00466"></a><span class="lineno">  466</span>&#160;</div>
+<div class="line"><a name="l00467"></a><span class="lineno">  467</span>&#160;            </div>
+<div class="line"><a name="l00468"></a><span class="lineno">  468</span>&#160;            glm::vec3 b = modelB-&gt;<a class="code" href="classvisual_1_1model_1_1_model.html#a1db9e50b2ac6496b9ddaa6f92c15c91b">position</a>();</div>
+<div class="line"><a name="l00469"></a><span class="lineno">  469</span>&#160;            <span class="keywordflow">if</span> (modelB-&gt;<a class="code" href="classvisual_1_1model_1_1_model.html#af518ecfa9a8b92e9859527b5394c7edc">attachedToCamera</a>()) {</div>
+<div class="line"><a name="l00470"></a><span class="lineno">  470</span>&#160;                b += cameraPosition;</div>
+<div class="line"><a name="l00471"></a><span class="lineno">  471</span>&#160;            }</div>
+<div class="line"><a name="l00472"></a><span class="lineno">  472</span>&#160;</div>
+<div class="line"><a name="l00473"></a><span class="lineno">  473</span>&#160;            <span class="keywordtype">float</span> br = modelB-&gt;<a class="code" href="classvisual_1_1model_1_1_model.html#a52d941bb73198189f1c0f7a4d8d71307">boundingSphereRadius</a>();</div>
+<div class="line"><a name="l00474"></a><span class="lineno">  474</span>&#160;</div>
+<div class="line"><a name="l00475"></a><span class="lineno">  475</span>&#160;            <span class="keywordflow">if</span> (pow(a.x - b.x, 2) + pow(a.y - b.y, 2) + pow(a.z - b.z, 2) &lt; pow(ar + br, 2)) {</div>
+<div class="line"><a name="l00476"></a><span class="lineno">  476</span>&#160;                collisions &lt;&lt; separator2 &lt;&lt; it2-&gt;first;</div>
+<div class="line"><a name="l00477"></a><span class="lineno">  477</span>&#160;                separator2 = <span class="stringliteral">&quot;,&quot;</span>;</div>
+<div class="line"><a name="l00478"></a><span class="lineno">  478</span>&#160;            }</div>
+<div class="line"><a name="l00479"></a><span class="lineno">  479</span>&#160;        }</div>
+<div class="line"><a name="l00480"></a><span class="lineno">  480</span>&#160;</div>
+<div class="line"><a name="l00481"></a><span class="lineno">  481</span>&#160;        separator2 = <span class="stringliteral">&quot;&quot;</span>;</div>
+<div class="line"><a name="l00482"></a><span class="lineno">  482</span>&#160;    }</div>
+<div class="line"><a name="l00483"></a><span class="lineno">  483</span>&#160;</div>
+<div class="line"><a name="l00484"></a><span class="lineno">  484</span>&#160;    this-&gt;m_collisions = collisions.str();</div>
+<div class="line"><a name="l00485"></a><span class="lineno">  485</span>&#160;}</div>
+<div class="line"><a name="l00486"></a><span class="lineno"><a class="line" href="classvisual_1_1_manager.html#a0bb723d77e5c61d441349341a7748caf">  486</a></span>&#160;<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="classvisual_1_1_manager.html#a0bb723d77e5c61d441349341a7748caf">Manager::collisionsTextLength</a>(<span class="keywordtype">void</span>) {</div>
+<div class="line"><a name="l00487"></a><span class="lineno">  487</span>&#160;    m_collisionsCache = m_collisions;</div>
+<div class="line"><a name="l00488"></a><span class="lineno">  488</span>&#160;    <span class="keywordflow">return</span> m_collisionsCache.length();</div>
+<div class="line"><a name="l00489"></a><span class="lineno">  489</span>&#160;}</div>
+<div class="line"><a name="l00490"></a><span class="lineno"><a class="line" href="classvisual_1_1_manager.html#a0d9165ccde8a3e2faacba134032deaf7">  490</a></span>&#160;std::string <a class="code" href="classvisual_1_1_manager.html#a0d9165ccde8a3e2faacba134032deaf7">Manager::collisionsText</a>(<span class="keywordtype">void</span>) {</div>
+<div class="line"><a name="l00491"></a><span class="lineno">  491</span>&#160;    <span class="keywordflow">return</span> m_collisionsCache;</div>
+<div class="line"><a name="l00492"></a><span class="lineno">  492</span>&#160;}</div>
+<div class="line"><a name="l00493"></a><span class="lineno">  493</span>&#160;</div>
+<div class="line"><a name="l00494"></a><span class="lineno"><a class="line" href="classvisual_1_1_manager.html#af31c641449dc33cb8af16d19ab73f44c">  494</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classvisual_1_1_manager.html#af31c641449dc33cb8af16d19ab73f44c">Manager::draw</a>(<span class="keywordtype">void</span>) {</div>
+<div class="line"><a name="l00495"></a><span class="lineno">  495</span>&#160;    <span class="keywordflow">if</span> (!<a class="code" href="classvisual_1_1_manager.html#aa734cccb964e8d63bae12103889ebf71">isRunning</a>()) {</div>
+<div class="line"><a name="l00496"></a><span class="lineno">  496</span>&#160;        <a class="code" href="class_log.html">Log</a>().<a class="code" href="class_log.html#a195a4d3479eb8b9b602e08a1cdaba78c">error</a>() &lt;&lt; <span class="stringliteral">&quot;Manager: GraphicsEngine ist nicht in einem laufenden Zustand. Neuzeichnen abgebrochen.&quot;</span> ;</div>
+<div class="line"><a name="l00497"></a><span class="lineno">  497</span>&#160;        <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00498"></a><span class="lineno">  498</span>&#160;    }</div>
+<div class="line"><a name="l00499"></a><span class="lineno">  499</span>&#160;    </div>
+<div class="line"><a name="l00500"></a><span class="lineno">  500</span>&#160;    <span class="comment">// Modelle zeichnen</span></div>
+<div class="line"><a name="l00501"></a><span class="lineno">  501</span>&#160;    std::map&lt;GLuint, model::AssimpModel*&gt;::iterator it;</div>
+<div class="line"><a name="l00502"></a><span class="lineno">  502</span>&#160;    <span class="keywordflow">for</span> (it = assimpModelList.begin(); it != assimpModelList.end(); it++) {</div>
+<div class="line"><a name="l00503"></a><span class="lineno">  503</span>&#160;        <a class="code" href="classvisual_1_1model_1_1_assimp_model.html">model::AssimpModel</a>* model = (*it).second;</div>
+<div class="line"><a name="l00504"></a><span class="lineno">  504</span>&#160;        model-&gt;<a class="code" href="classvisual_1_1model_1_1_assimp_model.html#a20e9bce930948ff94fbd426cab0862b9">draw</a>();</div>
+<div class="line"><a name="l00505"></a><span class="lineno">  505</span>&#160;    }</div>
+<div class="line"><a name="l00506"></a><span class="lineno">  506</span>&#160;</div>
+<div class="line"><a name="l00507"></a><span class="lineno">  507</span>&#160;    <span class="comment">// Punkte zeichnen</span></div>
+<div class="line"><a name="l00508"></a><span class="lineno">  508</span>&#160;    std::map&lt;GLuint, model::Square*&gt;::iterator it2;</div>
+<div class="line"><a name="l00509"></a><span class="lineno">  509</span>&#160;    <span class="keywordflow">for</span> (it2 = squareList.begin(); it2 != squareList.end(); it2++) {</div>
+<div class="line"><a name="l00510"></a><span class="lineno">  510</span>&#160;        <a class="code" href="classvisual_1_1model_1_1_square.html">model::Square</a>* model = (*it2).second;</div>
+<div class="line"><a name="l00511"></a><span class="lineno">  511</span>&#160;        model-&gt;<a class="code" href="classvisual_1_1model_1_1_square.html#a1250a4f4cc5bc7c68b52b9f89ccb3b7c">draw</a>();</div>
+<div class="line"><a name="l00512"></a><span class="lineno">  512</span>&#160;    }</div>
+<div class="line"><a name="l00513"></a><span class="lineno">  513</span>&#160;</div>
+<div class="line"><a name="l00514"></a><span class="lineno">  514</span>&#160;    <span class="comment">// GUI immer zuoberst</span></div>
+<div class="line"><a name="l00515"></a><span class="lineno">  515</span>&#160;    glClear(GL_DEPTH_BUFFER_BIT);</div>
+<div class="line"><a name="l00516"></a><span class="lineno">  516</span>&#160;    </div>
+<div class="line"><a name="l00517"></a><span class="lineno">  517</span>&#160;    <span class="comment">// Texte zeichnen</span></div>
+<div class="line"><a name="l00518"></a><span class="lineno">  518</span>&#160;    std::map&lt;GLuint, gui::Text*&gt;::iterator it3;</div>
+<div class="line"><a name="l00519"></a><span class="lineno">  519</span>&#160;    <span class="keywordflow">for</span> (it3 = textList.begin(); it3 != textList.end(); it3++) {</div>
+<div class="line"><a name="l00520"></a><span class="lineno">  520</span>&#160;        <a class="code" href="classvisual_1_1gui_1_1_text.html">gui::Text</a>* text = (*it3).second;</div>
+<div class="line"><a name="l00521"></a><span class="lineno">  521</span>&#160;        text-&gt;<a class="code" href="classvisual_1_1gui_1_1_text.html#aa960c8a1e1259f719718235ff941cede">draw</a>();</div>
+<div class="line"><a name="l00522"></a><span class="lineno">  522</span>&#160;    }</div>
+<div class="line"><a name="l00523"></a><span class="lineno">  523</span>&#160;</div>
+<div class="line"><a name="l00524"></a><span class="lineno">  524</span>&#160;    <span class="comment">// Buttons zeichnen</span></div>
+<div class="line"><a name="l00525"></a><span class="lineno">  525</span>&#160;    std::map&lt;GLuint, gui::Button*&gt;::iterator it4;</div>
+<div class="line"><a name="l00526"></a><span class="lineno">  526</span>&#160;    <span class="keywordflow">for</span> (it4 = buttonList.begin(); it4 != buttonList.end(); it4++) {</div>
+<div class="line"><a name="l00527"></a><span class="lineno">  527</span>&#160;        <a class="code" href="classvisual_1_1gui_1_1_button.html">gui::Button</a>* button = (*it4).second;</div>
+<div class="line"><a name="l00528"></a><span class="lineno">  528</span>&#160;        button-&gt;<a class="code" href="classvisual_1_1gui_1_1_button.html#a0380207dc9e4edcd0272207a39c7cdeb">draw</a>();</div>
+<div class="line"><a name="l00529"></a><span class="lineno">  529</span>&#160;    }</div>
+<div class="line"><a name="l00530"></a><span class="lineno">  530</span>&#160;}</div>
+<div class="ttc" id="classvisual_1_1gui_1_1_button_html_af67f0472470ef045769f9903bf851120"><div class="ttname"><a href="classvisual_1_1gui_1_1_button.html#af67f0472470ef045769f9903bf851120">visual::gui::Button::isHighlighted</a></div><div class="ttdeci">void isHighlighted(bool choice)</div><div class="ttdef"><b>Definition:</b> <a href="_button_8cpp_source.html#l00057">Button.cpp:57</a></div></div>
+<div class="ttc" id="classvisual_1_1_manager_html_a2f176f2366f0cd3782a53b4124d45b4e"><div class="ttname"><a href="classvisual_1_1_manager.html#a2f176f2366f0cd3782a53b4124d45b4e">visual::Manager::addButton</a></div><div class="ttdeci">GLuint addButton(const std::string fontname)</div><div class="ttdef"><b>Definition:</b> <a href="_manager_8cpp_source.html#l00401">Manager.cpp:401</a></div></div>
+<div class="ttc" id="classvisual_1_1model_1_1_model_html_a539a2593905295e6e2eaf7900efa5bc1"><div class="ttname"><a href="classvisual_1_1model_1_1_model.html#a539a2593905295e6e2eaf7900efa5bc1">visual::model::Model::isHighlighted</a></div><div class="ttdeci">virtual void isHighlighted(bool choice)</div><div class="ttdef"><b>Definition:</b> <a href="_model_8h_source.html#l00229">Model.h:229</a></div></div>
+<div class="ttc" id="classvisual_1_1_manager_html_ad4fd54b0457b8349bc591317576f9dc2"><div class="ttname"><a href="classvisual_1_1_manager.html#ad4fd54b0457b8349bc591317576f9dc2">visual::Manager::positionCamera</a></div><div class="ttdeci">void positionCamera(glm::vec3 position)</div><div class="ttdef"><b>Definition:</b> <a href="_manager_8cpp_source.html#l00425">Manager.cpp:425</a></div></div>
+<div class="ttc" id="classvisual_1_1_manager_html_af8199921090229c4215cdcfefa57a046"><div class="ttname"><a href="classvisual_1_1_manager.html#af8199921090229c4215cdcfefa57a046">visual::Manager::getInstance</a></div><div class="ttdeci">static Manager * getInstance(void)</div><div class="ttdef"><b>Definition:</b> <a href="_manager_8cpp_source.html#l00012">Manager.cpp:12</a></div></div>
+<div class="ttc" id="classvisual_1_1model_1_1_model_html_a52d941bb73198189f1c0f7a4d8d71307"><div class="ttname"><a href="classvisual_1_1model_1_1_model.html#a52d941bb73198189f1c0f7a4d8d71307">visual::model::Model::boundingSphereRadius</a></div><div class="ttdeci">virtual float boundingSphereRadius(void)</div><div class="ttdef"><b>Definition:</b> <a href="_model_8h_source.html#l00100">Model.h:100</a></div></div>
+<div class="ttc" id="classvisual_1_1_manager_html_aa734cccb964e8d63bae12103889ebf71"><div class="ttname"><a href="classvisual_1_1_manager.html#aa734cccb964e8d63bae12103889ebf71">visual::Manager::isRunning</a></div><div class="ttdeci">bool isRunning(void)</div><div class="ttdef"><b>Definition:</b> <a href="_manager_8cpp_source.html#l00037">Manager.cpp:37</a></div></div>
+<div class="ttc" id="classvisual_1_1_manager_html_aafccc7732aa523115d0aaa9d801e1cbc"><div class="ttname"><a href="classvisual_1_1_manager.html#aafccc7732aa523115d0aaa9d801e1cbc">visual::Manager::rotateModel</a></div><div class="ttdeci">bool rotateModel(GLuint modelId, GLfloat degrees, glm::vec3 axis)</div><div class="ttdef"><b>Definition:</b> <a href="_manager_8cpp_source.html#l00188">Manager.cpp:188</a></div></div>
+<div class="ttc" id="classvisual_1_1graphics_1_1_camera_html_a6fdf46b0d32515d3591fda1bcf9a4294"><div class="ttname"><a href="classvisual_1_1graphics_1_1_camera.html#a6fdf46b0d32515d3591fda1bcf9a4294">visual::graphics::Camera::tilt</a></div><div class="ttdeci">void tilt(float degrees)</div><div class="ttdef"><b>Definition:</b> <a href="_camera_8cpp_source.html#l00029">Camera.cpp:29</a></div></div>
+<div class="ttc" id="classvisual_1_1_manager_html_a37e157e6e89d5a9173e78f2ebcdc94c7"><div class="ttname"><a href="classvisual_1_1_manager.html#a37e157e6e89d5a9173e78f2ebcdc94c7">visual::Manager::scaleModel</a></div><div class="ttdeci">bool scaleModel(GLuint modelId, glm::vec3 scale)</div><div class="ttdef"><b>Definition:</b> <a href="_manager_8cpp_source.html#l00209">Manager.cpp:209</a></div></div>
+<div class="ttc" id="classvisual_1_1graphics_1_1_graphic_engine_html_a1675ee17a75ce754132b3bdd6c7b3424"><div class="ttname"><a href="classvisual_1_1graphics_1_1_graphic_engine.html#a1675ee17a75ce754132b3bdd6c7b3424">visual::graphics::GraphicEngine::getInstance</a></div><div class="ttdeci">static GraphicEngine * getInstance()</div><div class="ttdef"><b>Definition:</b> <a href="_graphic_engine_8cpp_source.html#l00022">GraphicEngine.cpp:22</a></div></div>
+<div class="ttc" id="class_log_html_a195a4d3479eb8b9b602e08a1cdaba78c"><div class="ttname"><a href="class_log.html#a195a4d3479eb8b9b602e08a1cdaba78c">Log::error</a></div><div class="ttdeci">std::ostringstream &amp; error()</div><div class="ttdef"><b>Definition:</b> <a href="_log_8h_source.html#l00146">Log.h:146</a></div></div>
+<div class="ttc" id="classvisual_1_1_manager_html_aab5ddb031956862dba4c2ba337e6a3e7"><div class="ttname"><a href="classvisual_1_1_manager.html#aab5ddb031956862dba4c2ba337e6a3e7">visual::Manager::setTextColor</a></div><div class="ttdeci">bool setTextColor(const GLuint textId, const glm::vec4 color)</div><div class="ttdef"><b>Definition:</b> <a href="_manager_8cpp_source.html#l00384">Manager.cpp:384</a></div></div>
+<div class="ttc" id="classvisual_1_1graphics_1_1_camera_html_aa91b07181806432f909d17123fe965be"><div class="ttname"><a href="classvisual_1_1graphics_1_1_camera.html#aa91b07181806432f909d17123fe965be">visual::graphics::Camera::position</a></div><div class="ttdeci">void position(glm::vec3 position)</div><div class="ttdef"><b>Definition:</b> <a href="_camera_8cpp_source.html#l00020">Camera.cpp:20</a></div></div>
+<div class="ttc" id="classvisual_1_1_manager_html_ad018fbba8bdd90e1d17fac89dcd9d4d0"><div class="ttname"><a href="classvisual_1_1_manager.html#ad018fbba8bdd90e1d17fac89dcd9d4d0">visual::Manager::addText</a></div><div class="ttdeci">GLuint addText(const std::string fontname)</div><div class="ttdef"><b>Definition:</b> <a href="_manager_8cpp_source.html#l00329">Manager.cpp:329</a></div></div>
+<div class="ttc" id="classvisual_1_1graphics_1_1_graphic_engine_html_aaf44d64c1dbf313694aa371a90d138cb"><div class="ttname"><a href="classvisual_1_1graphics_1_1_graphic_engine.html#aaf44d64c1dbf313694aa371a90d138cb">visual::graphics::GraphicEngine::isRunning</a></div><div class="ttdeci">bool isRunning(void)</div><div class="ttdef"><b>Definition:</b> <a href="_graphic_engine_8h_source.html#l00039">GraphicEngine.h:39</a></div></div>
+<div class="ttc" id="classvisual_1_1_manager_html"><div class="ttname"><a href="classvisual_1_1_manager.html">visual::Manager</a></div><div class="ttdef"><b>Definition:</b> <a href="_manager_8h_source.html#l00021">Manager.h:21</a></div></div>
+<div class="ttc" id="classvisual_1_1_manager_html_a8b7f4f9b6ff27f3228a2276e463b81a7"><div class="ttname"><a href="classvisual_1_1_manager.html#a8b7f4f9b6ff27f3228a2276e463b81a7">visual::Manager::setText</a></div><div class="ttdeci">bool setText(const GLuint textId, const std::string text)</div><div class="ttdef"><b>Definition:</b> <a href="_manager_8cpp_source.html#l00354">Manager.cpp:354</a></div></div>
+<div class="ttc" id="classvisual_1_1model_1_1_model_html_af518ecfa9a8b92e9859527b5394c7edc"><div class="ttname"><a href="classvisual_1_1model_1_1_model.html#af518ecfa9a8b92e9859527b5394c7edc">visual::model::Model::attachedToCamera</a></div><div class="ttdeci">virtual void attachedToCamera(bool choice)</div><div class="ttdef"><b>Definition:</b> <a href="_model_8h_source.html#l00238">Model.h:238</a></div></div>
+<div class="ttc" id="classvisual_1_1_manager_html_af31c641449dc33cb8af16d19ab73f44c"><div class="ttname"><a href="classvisual_1_1_manager.html#af31c641449dc33cb8af16d19ab73f44c">visual::Manager::draw</a></div><div class="ttdeci">void draw(void)</div><div class="ttdef"><b>Definition:</b> <a href="_manager_8cpp_source.html#l00494">Manager.cpp:494</a></div></div>
+<div class="ttc" id="_manager_8h_html"><div class="ttname"><a href="_manager_8h.html">Manager.h</a></div></div>
+<div class="ttc" id="classvisual_1_1_manager_html_a6d4c52011dac6da70f3bd6a2882092fb"><div class="ttname"><a href="classvisual_1_1_manager.html#a6d4c52011dac6da70f3bd6a2882092fb">visual::Manager::remove</a></div><div class="ttdeci">void remove(GLuint modelId)</div><div class="ttdef"><b>Definition:</b> <a href="_manager_8cpp_source.html#l00102">Manager.cpp:102</a></div></div>
+<div class="ttc" id="classvisual_1_1gui_1_1_button_html_a127e2c9382ff14435f785c84dc405b37"><div class="ttname"><a href="classvisual_1_1gui_1_1_button.html#a127e2c9382ff14435f785c84dc405b37">visual::gui::Button::setText</a></div><div class="ttdeci">void setText(const std::string text)</div><div class="ttdef"><b>Definition:</b> <a href="_button_8cpp_source.html#l00043">Button.cpp:43</a></div></div>
+<div class="ttc" id="class_log_html_aef7936d0fd59e391abd42f967be091f8"><div class="ttname"><a href="class_log.html#aef7936d0fd59e391abd42f967be091f8">Log::debug</a></div><div class="ttdeci">std::ostringstream &amp; debug()</div><div class="ttdef"><b>Definition:</b> <a href="_log_8h_source.html#l00155">Log.h:155</a></div></div>
+<div class="ttc" id="classvisual_1_1graphics_1_1_graphic_engine_html_a91f1c58d7d36cbd423b57992f94fe332"><div class="ttname"><a href="classvisual_1_1graphics_1_1_graphic_engine.html#a91f1c58d7d36cbd423b57992f94fe332">visual::graphics::GraphicEngine::camera</a></div><div class="ttdeci">Camera * camera(void)</div><div class="ttdef"><b>Definition:</b> <a href="_graphic_engine_8cpp_source.html#l00049">GraphicEngine.cpp:49</a></div></div>
+<div class="ttc" id="classvisual_1_1gui_1_1_button_html_a16d095525f84f743cac1ab0891165229"><div class="ttname"><a href="classvisual_1_1gui_1_1_button.html#a16d095525f84f743cac1ab0891165229">visual::gui::Button::setHighlightColor</a></div><div class="ttdeci">void setHighlightColor(glm::vec4 color)</div><div class="ttdef"><b>Definition:</b> <a href="_button_8cpp_source.html#l00053">Button.cpp:53</a></div></div>
+<div class="ttc" id="_visualization_8h_html_ab7ef3ae59da17b0f42783b4119efad69"><div class="ttname"><a href="_visualization_8h.html#ab7ef3ae59da17b0f42783b4119efad69">position</a></div><div class="ttdeci">DLL_API int APIENTRY position(const unsigned int modelId, const float x, const float y, const float z)</div><div class="ttdef"><b>Definition:</b> <a href="_visualization_impl_8h_source.html#l00051">VisualizationImpl.h:51</a></div></div>
+<div class="ttc" id="classvisual_1_1model_1_1_model_html_aaa35c9cd9802539aa9d7d1feb30699e4"><div class="ttname"><a href="classvisual_1_1model_1_1_model.html#aaa35c9cd9802539aa9d7d1feb30699e4">visual::model::Model::setHighlightColor</a></div><div class="ttdeci">virtual void setHighlightColor(glm::vec4 color)</div><div class="ttdef"><b>Definition:</b> <a href="_model_8h_source.html#l00221">Model.h:221</a></div></div>
+<div class="ttc" id="classvisual_1_1model_1_1_model_html_a6793cc75434c53378af7301f63f1ea00"><div class="ttname"><a href="classvisual_1_1model_1_1_model.html#a6793cc75434c53378af7301f63f1ea00">visual::model::Model::rotate</a></div><div class="ttdeci">virtual void rotate(GLfloat degrees, glm::vec3 axis)</div><div class="ttdef"><b>Definition:</b> <a href="_model_8h_source.html#l00145">Model.h:145</a></div></div>
+<div class="ttc" id="_visualization_8h_html_adf56317b9bb2c78a5a477702a84ded32"><div class="ttname"><a href="_visualization_8h.html#adf56317b9bb2c78a5a477702a84ded32">text</a></div><div class="ttdeci">DLL_API void APIENTRY text(const unsigned int textId, const char *text)</div><div class="ttdef"><b>Definition:</b> <a href="_visualization_impl_8h_source.html#l00078">VisualizationImpl.h:78</a></div></div>
+<div class="ttc" id="classvisual_1_1_manager_html_a7c9bf7d60b03fcea6a31e0a0ab2340f0"><div class="ttname"><a href="classvisual_1_1_manager.html#a7c9bf7d60b03fcea6a31e0a0ab2340f0">visual::Manager::addPoint</a></div><div class="ttdeci">GLuint addPoint(const ::std::string textureFilename)</div><div class="ttdef"><b>Definition:</b> <a href="_manager_8cpp_source.html#l00063">Manager.cpp:63</a></div></div>
+<div class="ttc" id="classvisual_1_1graphics_1_1_graphic_engine_html_a0961f8c5cb2ef625c7f21efee90416a3"><div class="ttname"><a href="classvisual_1_1graphics_1_1_graphic_engine.html#a0961f8c5cb2ef625c7f21efee90416a3">visual::graphics::GraphicEngine::enqueueDispose</a></div><div class="ttdeci">void enqueueDispose(GLuint modelId)</div><div class="ttdef"><b>Definition:</b> <a href="_graphic_engine_8cpp_source.html#l00162">GraphicEngine.cpp:162</a></div></div>
+<div class="ttc" id="classvisual_1_1_manager_html_a793464402061e2b24fc6167c746fffd4"><div class="ttname"><a href="classvisual_1_1_manager.html#a793464402061e2b24fc6167c746fffd4">visual::Manager::addToTextList</a></div><div class="ttdeci">void addToTextList(GLuint textId, gui::Text *text)</div><div class="ttdef"><b>Definition:</b> <a href="_manager_8cpp_source.html#l00144">Manager.cpp:144</a></div></div>
+<div class="ttc" id="classvisual_1_1_manager_html_a15d9499c738f1111baf0d9bd8dafba89"><div class="ttname"><a href="classvisual_1_1_manager.html#a15d9499c738f1111baf0d9bd8dafba89">visual::Manager::addToButtonList</a></div><div class="ttdeci">void addToButtonList(GLuint buttonId, gui::Button *button)</div><div class="ttdef"><b>Definition:</b> <a href="_manager_8cpp_source.html#l00149">Manager.cpp:149</a></div></div>
+<div class="ttc" id="classvisual_1_1graphics_1_1_graphic_engine_html_afb8ef3808ac2fbc6f4adf136e32259a2"><div class="ttname"><a href="classvisual_1_1graphics_1_1_graphic_engine.html#afb8ef3808ac2fbc6f4adf136e32259a2">visual::graphics::GraphicEngine::enqueueButton</a></div><div class="ttdeci">void enqueueButton(GLuint modelId, std::string filename)</div><div class="ttdef"><b>Definition:</b> <a href="_graphic_engine_8cpp_source.html#l00154">GraphicEngine.cpp:154</a></div></div>
+<div class="ttc" id="classvisual_1_1gui_1_1_button_html_a81cb3659e12f4b2e402d7286156d5f37"><div class="ttname"><a href="classvisual_1_1gui_1_1_button.html#a81cb3659e12f4b2e402d7286156d5f37">visual::gui::Button::position</a></div><div class="ttdeci">void position(glm::vec2 position)</div><div class="ttdef"><b>Definition:</b> <a href="_button_8cpp_source.html#l00063">Button.cpp:63</a></div></div>
+<div class="ttc" id="classvisual_1_1_manager_html_a78370636e261218fc199030d507c6a37"><div class="ttname"><a href="classvisual_1_1_manager.html#a78370636e261218fc199030d507c6a37">visual::Manager::tiltCamera</a></div><div class="ttdeci">void tiltCamera(float degrees)</div><div class="ttdef"><b>Definition:</b> <a href="_manager_8cpp_source.html#l00431">Manager.cpp:431</a></div></div>
+<div class="ttc" id="classvisual_1_1_manager_html_a023c4a9f7592db47bcf586c1ec41c638"><div class="ttname"><a href="classvisual_1_1_manager.html#a023c4a9f7592db47bcf586c1ec41c638">visual::Manager::scalingIsNormalized</a></div><div class="ttdeci">bool scalingIsNormalized(GLuint modelId, bool choice)</div><div class="ttdef"><b>Definition:</b> <a href="_manager_8cpp_source.html#l00234">Manager.cpp:234</a></div></div>
+<div class="ttc" id="stdafx_8h_html"><div class="ttname"><a href="stdafx_8h.html">stdafx.h</a></div></div>
+<div class="ttc" id="classvisual_1_1_manager_html_a817293e18dad0c6f72184d3b53519a15"><div class="ttname"><a href="classvisual_1_1_manager.html#a817293e18dad0c6f72184d3b53519a15">visual::Manager::setModelHighlightColor</a></div><div class="ttdeci">bool setModelHighlightColor(GLuint modelId, glm::vec4 color)</div><div class="ttdef"><b>Definition:</b> <a href="_manager_8cpp_source.html#l00255">Manager.cpp:255</a></div></div>
+<div class="ttc" id="_visualization_8h_html_aa0ca6c77068987654769e0aeca29719b"><div class="ttname"><a href="_visualization_8h.html#aa0ca6c77068987654769e0aeca29719b">scale</a></div><div class="ttdeci">DLL_API int APIENTRY scale(const unsigned int modelId, const float x, const float y, const float z)</div><div class="ttdef"><b>Definition:</b> <a href="_visualization_impl_8h_source.html#l00059">VisualizationImpl.h:59</a></div></div>
+<div class="ttc" id="class_log_html_aa4cfe92eb1c066161b1b06dfa2e8dc55"><div class="ttname"><a href="class_log.html#aa4cfe92eb1c066161b1b06dfa2e8dc55">Log::ReportingLevel</a></div><div class="ttdeci">static TLogLevel &amp; ReportingLevel()</div><div class="ttdef"><b>Definition:</b> <a href="_log_8h_source.html#l00171">Log.h:171</a></div></div>
+<div class="ttc" id="classvisual_1_1_manager_html_a0bb723d77e5c61d441349341a7748caf"><div class="ttname"><a href="classvisual_1_1_manager.html#a0bb723d77e5c61d441349341a7748caf">visual::Manager::collisionsTextLength</a></div><div class="ttdeci">unsigned int collisionsTextLength(void)</div><div class="ttdef"><b>Definition:</b> <a href="_manager_8cpp_source.html#l00486">Manager.cpp:486</a></div></div>
+<div class="ttc" id="classvisual_1_1gui_1_1_button_html_a0380207dc9e4edcd0272207a39c7cdeb"><div class="ttname"><a href="classvisual_1_1gui_1_1_button.html#a0380207dc9e4edcd0272207a39c7cdeb">visual::gui::Button::draw</a></div><div class="ttdeci">void draw()</div><div class="ttdef"><b>Definition:</b> <a href="_button_8cpp_source.html#l00068">Button.cpp:68</a></div></div>
+<div class="ttc" id="classvisual_1_1gui_1_1_text_html_a32405c9f6b422af27c0f283aff2590a3"><div class="ttname"><a href="classvisual_1_1gui_1_1_text.html#a32405c9f6b422af27c0f283aff2590a3">visual::gui::Text::setSize</a></div><div class="ttdeci">bool setSize(const int points)</div><div class="ttdef"><b>Definition:</b> <a href="_text_8cpp_source.html#l00038">Text.cpp:38</a></div></div>
+<div class="ttc" id="class_log_html_ad95b181bb1a7f5b4be3c62f4de9862d7"><div class="ttname"><a href="class_log.html#ad95b181bb1a7f5b4be3c62f4de9862d7">Log::warning</a></div><div class="ttdeci">std::ostringstream &amp; warning()</div><div class="ttdef"><b>Definition:</b> <a href="_log_8h_source.html#l00149">Log.h:149</a></div></div>
+<div class="ttc" id="classvisual_1_1_manager_html_a668c3e265401632ec04d64d5c2c67218"><div class="ttname"><a href="classvisual_1_1_manager.html#a668c3e265401632ec04d64d5c2c67218">visual::Manager::changeCameraSpeed</a></div><div class="ttdeci">void changeCameraSpeed(float speed)</div><div class="ttdef"><b>Definition:</b> <a href="_manager_8cpp_source.html#l00434">Manager.cpp:434</a></div></div>
+<div class="ttc" id="classvisual_1_1model_1_1_assimp_model_html"><div class="ttname"><a href="classvisual_1_1model_1_1_assimp_model.html">visual::model::AssimpModel</a></div><div class="ttdef"><b>Definition:</b> <a href="_assimp_model_8h_source.html#l00033">AssimpModel.h:33</a></div></div>
+<div class="ttc" id="_text_8h_html"><div class="ttname"><a href="_text_8h.html">Text.h</a></div></div>
+<div class="ttc" id="classvisual_1_1_manager_html_a90f207cc68f619810d9131f87b629c8b"><div class="ttname"><a href="classvisual_1_1_manager.html#a90f207cc68f619810d9131f87b629c8b">visual::Manager::attachModelToCamera</a></div><div class="ttdeci">bool attachModelToCamera(GLuint modelId, bool choice)</div><div class="ttdef"><b>Definition:</b> <a href="_manager_8cpp_source.html#l00308">Manager.cpp:308</a></div></div>
+<div class="ttc" id="classvisual_1_1_manager_html_a4f91b1b716b1bd12b36129dd631a9fb7"><div class="ttname"><a href="classvisual_1_1_manager.html#a4f91b1b716b1bd12b36129dd631a9fb7">visual::Manager::positionModel</a></div><div class="ttdeci">bool positionModel(GLuint modelId, glm::vec3 position)</div><div class="ttdef"><b>Definition:</b> <a href="_manager_8cpp_source.html#l00155">Manager.cpp:155</a></div></div>
+<div class="ttc" id="classvisual_1_1gui_1_1_button_html_afacde5ffbf6fa7c17c266406fb4747e5"><div class="ttname"><a href="classvisual_1_1gui_1_1_button.html#afacde5ffbf6fa7c17c266406fb4747e5">visual::gui::Button::setTextColor</a></div><div class="ttdeci">void setTextColor(const glm::vec4 color)</div><div class="ttdef"><b>Definition:</b> <a href="_button_8cpp_source.html#l00049">Button.cpp:49</a></div></div>
+<div class="ttc" id="classvisual_1_1graphics_1_1_graphic_engine_html_ab9594c1033773e74bb40432300a9f180"><div class="ttname"><a href="classvisual_1_1graphics_1_1_graphic_engine.html#ab9594c1033773e74bb40432300a9f180">visual::graphics::GraphicEngine::enqueueText</a></div><div class="ttdeci">void enqueueText(GLuint modelId, std::string filename)</div><div class="ttdef"><b>Definition:</b> <a href="_graphic_engine_8cpp_source.html#l00146">GraphicEngine.cpp:146</a></div></div>
+<div class="ttc" id="classvisual_1_1model_1_1_model_html_a1db9e50b2ac6496b9ddaa6f92c15c91b"><div class="ttname"><a href="classvisual_1_1model_1_1_model.html#a1db9e50b2ac6496b9ddaa6f92c15c91b">visual::model::Model::position</a></div><div class="ttdeci">virtual void position(glm::vec3 position)</div><div class="ttdef"><b>Definition:</b> <a href="_model_8h_source.html#l00128">Model.h:128</a></div></div>
+<div class="ttc" id="classvisual_1_1gui_1_1_button_html"><div class="ttname"><a href="classvisual_1_1gui_1_1_button.html">visual::gui::Button</a></div><div class="ttdef"><b>Definition:</b> <a href="_button_8h_source.html#l00021">Button.h:21</a></div></div>
+<div class="ttc" id="classvisual_1_1gui_1_1_text_html_aa960c8a1e1259f719718235ff941cede"><div class="ttname"><a href="classvisual_1_1gui_1_1_text.html#aa960c8a1e1259f719718235ff941cede">visual::gui::Text::draw</a></div><div class="ttdeci">void draw(void)</div><div class="ttdef"><b>Definition:</b> <a href="_text_8cpp_source.html#l00235">Text.cpp:235</a></div></div>
+<div class="ttc" id="classvisual_1_1_manager_html_acd75dcf722beff332e3333108ea651e8"><div class="ttname"><a href="classvisual_1_1_manager.html#acd75dcf722beff332e3333108ea651e8">visual::Manager::addToSquareList</a></div><div class="ttdeci">void addToSquareList(GLuint modelId, model::Square *model)</div><div class="ttdef"><b>Definition:</b> <a href="_manager_8cpp_source.html#l00139">Manager.cpp:139</a></div></div>
+<div class="ttc" id="classvisual_1_1_manager_html_a0c62f26820d9a53e414ac2305c76a1c6"><div class="ttname"><a href="classvisual_1_1_manager.html#a0c62f26820d9a53e414ac2305c76a1c6">visual::Manager::dispose</a></div><div class="ttdeci">void dispose(GLuint modelId)</div><div class="ttdef"><b>Definition:</b> <a href="_manager_8cpp_source.html#l00097">Manager.cpp:97</a></div></div>
+<div class="ttc" id="classvisual_1_1gui_1_1_text_html"><div class="ttname"><a href="classvisual_1_1gui_1_1_text.html">visual::gui::Text</a></div><div class="ttdef"><b>Definition:</b> <a href="_text_8h_source.html#l00020">Text.h:20</a></div></div>
+<div class="ttc" id="classvisual_1_1_manager_html_a997041d6e200f98c2f00e2d5dbdcd8b7"><div class="ttname"><a href="classvisual_1_1_manager.html#a997041d6e200f98c2f00e2d5dbdcd8b7">visual::Manager::rotateCamera</a></div><div class="ttdeci">void rotateCamera(float degrees)</div><div class="ttdef"><b>Definition:</b> <a href="_manager_8cpp_source.html#l00428">Manager.cpp:428</a></div></div>
+<div class="ttc" id="classvisual_1_1_manager_html_abb18c8e5a56f8d442bf22d021dbbd66f"><div class="ttname"><a href="classvisual_1_1_manager.html#abb18c8e5a56f8d442bf22d021dbbd66f">visual::Manager::addToModelList</a></div><div class="ttdeci">void addToModelList(GLuint modelId, model::AssimpModel *model)</div><div class="ttdef"><b>Definition:</b> <a href="_manager_8cpp_source.html#l00134">Manager.cpp:134</a></div></div>
+<div class="ttc" id="_log_8h_html_a2341a2a7c04d08eb40d2cb0b18b0b778a36b07a7dde9e15628d5c9711fe00bee9"><div class="ttname"><a href="_log_8h.html#a2341a2a7c04d08eb40d2cb0b18b0b778a36b07a7dde9e15628d5c9711fe00bee9">logINFO</a></div><div class="ttdef"><b>Definition:</b> <a href="_log_8h_source.html#l00029">Log.h:29</a></div></div>
+<div class="ttc" id="classvisual_1_1_manager_html_aca24f480ad78e99ad1f1e7800b519d50"><div class="ttname"><a href="classvisual_1_1_manager.html#aca24f480ad78e99ad1f1e7800b519d50">visual::Manager::isModelHighlighted</a></div><div class="ttdeci">bool isModelHighlighted(GLuint modelId, bool choice)</div><div class="ttdef"><b>Definition:</b> <a href="_manager_8cpp_source.html#l00281">Manager.cpp:281</a></div></div>
+<div class="ttc" id="classvisual_1_1_manager_html_a9376c5fba7eb53ba360231c409794992"><div class="ttname"><a href="classvisual_1_1_manager.html#a9376c5fba7eb53ba360231c409794992">visual::Manager::addModel</a></div><div class="ttdeci">GLuint addModel(const ::std::string filename)</div><div class="ttdef"><b>Definition:</b> <a href="_manager_8cpp_source.html#l00047">Manager.cpp:47</a></div></div>
+<div class="ttc" id="classvisual_1_1gui_1_1_text_html_a2998d8f699544dd9c10e1f90986d30c6"><div class="ttname"><a href="classvisual_1_1gui_1_1_text.html#a2998d8f699544dd9c10e1f90986d30c6">visual::gui::Text::setPosition</a></div><div class="ttdeci">void setPosition(const float x, const float y)</div><div class="ttdef"><b>Definition:</b> <a href="_text_8cpp_source.html#l00034">Text.cpp:34</a></div></div>
+<div class="ttc" id="classvisual_1_1_manager_html_a0d9165ccde8a3e2faacba134032deaf7"><div class="ttname"><a href="classvisual_1_1_manager.html#a0d9165ccde8a3e2faacba134032deaf7">visual::Manager::collisionsText</a></div><div class="ttdeci">std::string collisionsText(void)</div><div class="ttdef"><b>Definition:</b> <a href="_manager_8cpp_source.html#l00490">Manager.cpp:490</a></div></div>
+<div class="ttc" id="classvisual_1_1gui_1_1_button_html_a74ef202b5839b3c15605fd28be06d547"><div class="ttname"><a href="classvisual_1_1gui_1_1_button.html#a74ef202b5839b3c15605fd28be06d547">visual::gui::Button::setTextSize</a></div><div class="ttdeci">bool setTextSize(const int points)</div><div class="ttdef"><b>Definition:</b> <a href="_button_8cpp_source.html#l00046">Button.cpp:46</a></div></div>
+<div class="ttc" id="classvisual_1_1model_1_1_square_html_a1250a4f4cc5bc7c68b52b9f89ccb3b7c"><div class="ttname"><a href="classvisual_1_1model_1_1_square.html#a1250a4f4cc5bc7c68b52b9f89ccb3b7c">visual::model::Square::draw</a></div><div class="ttdeci">virtual void draw(void)</div><div class="ttdef"><b>Definition:</b> <a href="_square_8cpp_source.html#l00137">Square.cpp:137</a></div></div>
+<div class="ttc" id="classvisual_1_1model_1_1_model_html_af2829e84aac62272c3116ad75c144d50"><div class="ttname"><a href="classvisual_1_1model_1_1_model.html#af2829e84aac62272c3116ad75c144d50">visual::model::Model::scale</a></div><div class="ttdeci">virtual void scale(glm::vec3 scale)</div><div class="ttdef"><b>Definition:</b> <a href="_model_8h_source.html#l00175">Model.h:175</a></div></div>
+<div class="ttc" id="classvisual_1_1_manager_html_ab979837a457344d4d4f09fb40e4af795"><div class="ttname"><a href="classvisual_1_1_manager.html#ab979837a457344d4d4f09fb40e4af795">visual::Manager::doCollisionDetection</a></div><div class="ttdeci">void doCollisionDetection(void)</div><div class="ttdef"><b>Definition:</b> <a href="_manager_8cpp_source.html#l00438">Manager.cpp:438</a></div></div>
+<div class="ttc" id="classvisual_1_1_manager_html_a9813423f2d2080ce91f53c481df78efe"><div class="ttname"><a href="classvisual_1_1_manager.html#a9813423f2d2080ce91f53c481df78efe">visual::Manager::setTextSize</a></div><div class="ttdeci">bool setTextSize(const GLuint textId, const int points)</div><div class="ttdef"><b>Definition:</b> <a href="_manager_8cpp_source.html#l00370">Manager.cpp:370</a></div></div>
+<div class="ttc" id="classvisual_1_1model_1_1_model_html_a2350840c1d7d30c9a042bbce66fc66c9"><div class="ttname"><a href="classvisual_1_1model_1_1_model.html#a2350840c1d7d30c9a042bbce66fc66c9">visual::model::Model::scalingIsNormalized</a></div><div class="ttdeci">virtual void scalingIsNormalized(bool choice)</div><div class="ttdef"><b>Definition:</b> <a href="_model_8h_source.html#l00119">Model.h:119</a></div></div>
+<div class="ttc" id="classvisual_1_1_manager_html_a8a1d4d5d8ab50354987c09bb38054db3"><div class="ttname"><a href="classvisual_1_1_manager.html#a8a1d4d5d8ab50354987c09bb38054db3">visual::Manager::doSomething</a></div><div class="ttdeci">void doSomething(std::string s)</div><div class="ttdef"><b>Definition:</b> <a href="_manager_8cpp_source.html#l00042">Manager.cpp:42</a></div></div>
+<div class="ttc" id="class_log_html"><div class="ttname"><a href="class_log.html">Log</a></div><div class="ttdef"><b>Definition:</b> <a href="_log_8h_source.html#l00038">Log.h:38</a></div></div>
+<div class="ttc" id="classvisual_1_1gui_1_1_text_html_a16c0f5c67ae5939fa4010824da662635"><div class="ttname"><a href="classvisual_1_1gui_1_1_text.html#a16c0f5c67ae5939fa4010824da662635">visual::gui::Text::setColor</a></div><div class="ttdeci">void setColor(const glm::vec4 color)</div><div class="ttdef"><b>Definition:</b> <a href="_text_8cpp_source.html#l00050">Text.cpp:50</a></div></div>
+<div class="ttc" id="classvisual_1_1graphics_1_1_graphic_engine_html_ade3d5be31fe035ddad7bbb506cb26d2e"><div class="ttname"><a href="classvisual_1_1graphics_1_1_graphic_engine.html#ade3d5be31fe035ddad7bbb506cb26d2e">visual::graphics::GraphicEngine::enqueueModel</a></div><div class="ttdeci">void enqueueModel(GLuint modelId, std::string filename)</div><div class="ttdef"><b>Definition:</b> <a href="_graphic_engine_8cpp_source.html#l00138">GraphicEngine.cpp:138</a></div></div>
+<div class="ttc" id="classvisual_1_1graphics_1_1_camera_html_a3051950336c5b0c300058eaf5f25a6ca"><div class="ttname"><a href="classvisual_1_1graphics_1_1_camera.html#a3051950336c5b0c300058eaf5f25a6ca">visual::graphics::Camera::rotate</a></div><div class="ttdeci">void rotate(float degrees)</div><div class="ttdef"><b>Definition:</b> <a href="_camera_8cpp_source.html#l00026">Camera.cpp:26</a></div></div>
+<div class="ttc" id="classvisual_1_1gui_1_1_text_html_ae74a8e040b8f9de03f1a3ecba3e9420d"><div class="ttname"><a href="classvisual_1_1gui_1_1_text.html#ae74a8e040b8f9de03f1a3ecba3e9420d">visual::gui::Text::setText</a></div><div class="ttdeci">void setText(const std::string text)</div><div class="ttdef"><b>Definition:</b> <a href="_text_8cpp_source.html#l00030">Text.cpp:30</a></div></div>
+<div class="ttc" id="classvisual_1_1model_1_1_assimp_model_html_a20e9bce930948ff94fbd426cab0862b9"><div class="ttname"><a href="classvisual_1_1model_1_1_assimp_model.html#a20e9bce930948ff94fbd426cab0862b9">visual::model::AssimpModel::draw</a></div><div class="ttdeci">void draw(void)</div><div class="ttdef"><b>Definition:</b> <a href="_assimp_model_8cpp_source.html#l00225">AssimpModel.cpp:225</a></div></div>
+<div class="ttc" id="classvisual_1_1gui_1_1_button_html_add04c66c50527c134faa7735c245925b"><div class="ttname"><a href="classvisual_1_1gui_1_1_button.html#add04c66c50527c134faa7735c245925b">visual::gui::Button::scale</a></div><div class="ttdeci">void scale(glm::vec2 scale)</div><div class="ttdef"><b>Definition:</b> <a href="_button_8cpp_source.html#l00060">Button.cpp:60</a></div></div>
+<div class="ttc" id="classvisual_1_1graphics_1_1_graphic_engine_html_ad29c181589658d1bf248d8404012624f"><div class="ttname"><a href="classvisual_1_1graphics_1_1_graphic_engine.html#ad29c181589658d1bf248d8404012624f">visual::graphics::GraphicEngine::enqueueSquare</a></div><div class="ttdeci">void enqueueSquare(GLuint modelId, std::string filename)</div><div class="ttdef"><b>Definition:</b> <a href="_graphic_engine_8cpp_source.html#l00130">GraphicEngine.cpp:130</a></div></div>
+<div class="ttc" id="classvisual_1_1_manager_html_aab514e916c78a1ff737ac3796bd2257b"><div class="ttname"><a href="classvisual_1_1_manager.html#aab514e916c78a1ff737ac3796bd2257b">visual::Manager::isModelCreated</a></div><div class="ttdeci">GLboolean isModelCreated(GLuint modelId)</div><div class="ttdef"><b>Definition:</b> <a href="_manager_8cpp_source.html#l00079">Manager.cpp:79</a></div></div>
+<div class="ttc" id="classvisual_1_1model_1_1_square_html"><div class="ttname"><a href="classvisual_1_1model_1_1_square.html">visual::model::Square</a></div><div class="ttdef"><b>Definition:</b> <a href="_square_8h_source.html#l00014">Square.h:14</a></div></div>
+<div class="ttc" id="classvisual_1_1graphics_1_1_camera_html_a41b5d80657ce59a9e45af329ea405ad9"><div class="ttname"><a href="classvisual_1_1graphics_1_1_camera.html#a41b5d80657ce59a9e45af329ea405ad9">visual::graphics::Camera::changeSpeed</a></div><div class="ttdeci">void changeSpeed(float speed)</div><div class="ttdef"><b>Definition:</b> <a href="_camera_8cpp_source.html#l00032">Camera.cpp:32</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_d092fe6f644d08052abf42c12a28702c.html">VisualizationLibrary</a></li><li class="navelem"><a class="el" href="_manager_8cpp.html">Manager.cpp</a></li>
+    <li class="footer">Erzeugt am Mon Apr 14 2014 20:52:14 für Projektarbeit - VisualizationLibrary von
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
+  </ul>
+</div>
+</body>
+</html>
