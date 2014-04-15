@@ -22,8 +22,6 @@ GLFWwindow* GraphicEngine::window = 0;
 GraphicEngine* GraphicEngine::getInstance() {
 	if (singleInstance == 0) {
 		singleInstance = new GraphicEngine;
-
-		std::async(worker);
 	}
 
 	return singleInstance;
@@ -38,6 +36,7 @@ GraphicEngine::GraphicEngine() {
 
 	running = false;
 	title = "Projektarbeit";
+	fullscreen = false;
 	width = 640;
 	height = 480;
 }
@@ -45,6 +44,20 @@ GraphicEngine::GraphicEngine() {
 GraphicEngine::~GraphicEngine() {
 	delete m_camera;
 }
+
+bool GraphicEngine::init(std::string windowTitle, bool fullscreen, unsigned int windowWidth, unsigned int windowHeight) {
+	title = windowTitle;
+	this->fullscreen = fullscreen;
+	width = windowWidth;
+	height = windowHeight;
+	
+	
+	
+	std::async(worker);
+
+	return true;
+}
+
 
 Camera* GraphicEngine::camera(void) {
 	return m_camera;
@@ -233,11 +246,16 @@ int GraphicEngine::createWindow() {
 
 	// Bildschirmauflösung auslesen
 	const GLFWvidmode * mode = glfwGetVideoMode(glfwGetPrimaryMonitor());
-	width = mode->width;
-	height = mode->height;
+	if (width == 0) {
+		width = mode->width;
+	}
+	if (height == 0) {
+		height = mode->height;
+	}
 
 	// OpenGL Kontext erstellen und Fenster öffnen
-	window = glfwCreateWindow(width, height, title.c_str(), glfwGetPrimaryMonitor(), 0);
+	if (fullscreen) window = glfwCreateWindow(width, height, title.c_str(), glfwGetPrimaryMonitor(), 0);
+	else window = glfwCreateWindow(width, height, title.c_str(), 0, 0);
 	if (!window) {
 		//fprintf(stderr, "GLFW Fenster konnte nicht geoeffnet werden. OpenGL Version 3.3 wird vorausgesetzt.\n");
 		Log().fatal() << "GLFW Fenster konnte nicht geoeffnet werden. OpenGL Version 3.3 wird vorausgesetzt.";

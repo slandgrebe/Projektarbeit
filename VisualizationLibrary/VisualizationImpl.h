@@ -15,22 +15,25 @@
 
 // exportierte funktionen
 
+extern "C" DLL_API int APIENTRY init(const char* windowTitle, bool fullscreen, unsigned int windowWidth, unsigned int windowHeight);
+DLL_API int APIENTRY init(const char* windowTitle, bool fullscreen, unsigned int windowWidth, unsigned int windowHeight) {
+	return (int)visual::Manager::getInstance()->init(windowTitle, fullscreen, windowWidth, windowHeight);
+}
 DLL_API int APIENTRY isRunning() {
-	// c++ bool in int umwandeln, damit c# bool damit umgehen kann
 	return (int)visual::Manager::getInstance()->isRunning();
+}
+DLL_API void APIENTRY close() {
+	visual::Manager::getInstance()->close();
 }
 
 DLL_API void APIENTRY doSomething(const char* text) {
-	//visual::VisualizationImpl::doSomething(text);
 	visual::Manager::getInstance()->doSomething(text);
 }
 
 DLL_API unsigned int APIENTRY addModel(const char* filename) {
-	//return visual::VisualizationImpl::addModel(filename);
 	return visual::Manager::getInstance()->addModel(filename);
 }
 DLL_API unsigned int APIENTRY addPoint(const char* filename) {
-	//return visual::VisualizationImpl::addPoint(filename);
 	return visual::Manager::getInstance()->addPoint(filename);
 }
 DLL_API unsigned int APIENTRY addText(const char* filename) {
@@ -41,7 +44,6 @@ DLL_API unsigned int APIENTRY addButton(const char* fontname) {
 }
 
 DLL_API int APIENTRY isCreated(const unsigned int modelId) {
-	//return (int)visual::VisualizationImpl::isModelCreated(modelId);
 	return visual::Manager::getInstance()->isModelCreated(modelId);
 }
 DLL_API void APIENTRY dispose(const unsigned int modelId) {
@@ -49,15 +51,12 @@ DLL_API void APIENTRY dispose(const unsigned int modelId) {
 }
 
 DLL_API int APIENTRY position(const unsigned int modelId, const float x, const float y, const float z) {
-	//return (int)visual::VisualizationImpl::positionModel(modelId, x, y, z);
 	return (int)visual::Manager::getInstance()->positionModel(modelId, glm::vec3(x, y, z));
 }
 DLL_API int APIENTRY rotate(const unsigned int modelId, const float degrees, const float x, const float y, const float z) {
-	//return (int)visual::VisualizationImpl::rotateModel(modelId, degrees, x, y, z);
 	return (int)visual::Manager::getInstance()->rotateModel(modelId, degrees, glm::vec3(x, y, z));
 }
 DLL_API int APIENTRY scale(const unsigned int modelId, const float x, const float y, const float z) {
-	//return (int)visual::VisualizationImpl::scaleModel(modelId, x, y, z);
 	return (int)visual::Manager::getInstance()->scaleModel(modelId, glm::vec3(x, y, z));
 }
 DLL_API int APIENTRY scalingIsNormalized(const unsigned int modelId, bool choice) {
@@ -106,7 +105,6 @@ DLL_API unsigned int APIENTRY collisionsTextLength(void) {
 DLL_API void APIENTRY collisionsText(char* string, int length) {
 	std::string collisions = visual::Manager::getInstance()->collisionsText().c_str();
 	strcpy_s(string, length, collisions.c_str());
-	//return visual::Manager::getInstance()->collisions().c_str();
 }
 
 #endif

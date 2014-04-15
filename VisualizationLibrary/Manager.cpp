@@ -21,7 +21,7 @@ Manager::Manager() {
 	Log::ReportingLevel() = logINFO;
 	m_collisions = "";
 
-	clock_t begin = clock();
+	/*clock_t begin = clock();
 	while (true) {
 		if (isRunning()) {
 			return;
@@ -30,14 +30,36 @@ Manager::Manager() {
 		if (double(clock() - begin) / CLOCKS_PER_SEC > 5) {
 			break;
 		}
-	}
+	}*/
 }
 
+bool Manager::init(std::string windowTitle, bool fullscreen, unsigned int windowWidth, unsigned int windowHeight) {
+	bool result = graphics::GraphicEngine::getInstance()->init(windowTitle, fullscreen, windowWidth, windowHeight);
 
+	if (result) {
+
+		clock_t begin = clock();
+		while (true) {
+			if (isRunning()) {
+				return true;
+			}
+
+			if (double(clock() - begin) / CLOCKS_PER_SEC > 5) {
+				break;
+			}
+		}
+	}
+
+	Log().fatal() << "Bibliothek konnte nicht initialisiert werden.";
+
+	return false;
+}
 bool Manager::isRunning(void) {
 	return graphics::GraphicEngine::getInstance()->isRunning();
 }
-
+void Manager::close() {
+	graphics::GraphicEngine::getInstance()->close();
+}
 
 void Manager::doSomething(std::string s) {
 	addText(s);
@@ -45,6 +67,9 @@ void Manager::doSomething(std::string s) {
 
 
 GLuint Manager::addModel(const std::string filename) {
+	if (!isRunning()) {
+		init();
+	}
 	if (isRunning()) {
 		modelInstantiationCounter++;
 
@@ -61,6 +86,11 @@ GLuint Manager::addModel(const std::string filename) {
 
 
 GLuint Manager::addPoint(const std::string textureFilename) {
+	if (!isRunning()) {
+		Log().debug() << "Window not open. Trying to open it";
+		bool result = init();
+		Log().debug() << "Result: " << result;
+	}
 	if (isRunning()) {
 		modelInstantiationCounter++;
 
@@ -327,6 +357,9 @@ bool Manager::attachModelToCamera(GLuint modelId, bool choice) {
 
 
 GLuint Manager::addText(const std::string fontname) {
+	if (!isRunning()) {
+		init();
+	}
 	if (isRunning()) {
 		modelInstantiationCounter++;
 
@@ -399,6 +432,9 @@ bool Manager::setTextColor(const GLuint textId, const glm::vec4 color) {
 
 
 GLuint Manager::addButton(const std::string filename) {
+	if (!isRunning()) {
+		init();
+	}
 	if (isRunning()) {
 		modelInstantiationCounter++;
 
@@ -493,7 +529,7 @@ std::string Manager::collisionsText(void) {
 
 void Manager::draw(void) {
 	if (!isRunning()) {
-		Log().error() << "Manager: GraphicsEngine ist nicht in einem laufenden Zustand. Neuzeichnen abgebrochen." ;
+		Log().error() << "Manager: GraphicEngine ist nicht in einem laufenden Zustand. Neuzeichnen abgebrochen." ;
 		return;
 	}
 	

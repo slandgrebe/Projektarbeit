@@ -27,11 +27,25 @@ namespace visual {
 		*/
 		static Manager* getInstance(void);
 
+		/** Öffnet das Fenster
+		* @author Stefan Landgrebe
+		* @param windowTitle Fesntertitel
+		* @param fullscreen Fullscreen
+		* @param windowWidth Fensterbreite, bei 0 wird native Bildschirmbreite verwendet
+		* @param windowHeight Fensterhöhe, bei 0 wird die native Bildschirmhöhe verwendet
+		*/
+		bool init(std::string windowTitle = "Projektarbeit", bool fullscreen = false, unsigned int windowWidth = 640, unsigned int windowHeight = 480);
+
 		/** Prüft den Zustand der Bibliothek und ob das Fenster offen ist
 		* @author Stefan Landgrebe
 		* @return True wenn das Fenster offen ist, ansonsten False.
 		*/
 		bool isRunning(void);
+
+		/** Sorgt dafür dass das Fenster geschlossen wird
+		* @author Stefan Landgrebe
+		*/
+		void close(void);
 
 		/** Fügt Modell zur Liste aller Models hinzu. Diese Methode wird von GraphicEngine nach der Erstellung des Objektes aufgerufen.
 		* @author Stefan Landgrebe

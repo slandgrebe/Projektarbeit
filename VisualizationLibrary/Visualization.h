@@ -14,7 +14,9 @@ Fenster
 -------
 Beschreibung | Dokumentation
 ------ | -------
+Öffnet das Fenster mit den angegebenen Parametern explizit \n Das Fenster würde ansonsten mit Standardwerten implizit geöffnet werden. | @link init @endlink
 Prüfung ob das Fenster offen ist | @link isRunning @endlink
+Fenster schliessen | @link close @endlink
 \n
 
 Modell Erzeugung
@@ -101,6 +103,21 @@ Text der Kollisionserkennung | @link collisionsText @endlink
  * Der Wert 0 entspricht dabei jeweils False und der Wert 1 entspricht True.
  */
 
+
+/** Öffnet das Fenster explizit. \n
+Das Fenster wird immer nur auf dem primären Bildschirm erzeugt.
+\n
+* Aus Kompatibilitätsgründen muss für die Rückgabe von Bool Werten auf int ausgewichen werden.
+* Der Wert 0 entspricht dabei jeweils False und der Wert 1 entspricht True.
+* @author Stefan Landgrebe
+* @param windowTitle Fenstertitel
+* @param fullscreen Definiert ob das Fenster den gesamten Bildschirm ausfüllt
+* @param windowWidth Fensterbreite in Pixel. Wird 0 übergeben, wird die native Breite verwendet.
+* @param windowHeight Fensterhöhe in Pixel. Wird 0 übergeben, wird die native Höhe verwendet.
+* @return (Bool) True wenn das Fenster erstellt werden konnte, ansonsten False.
+*/
+extern "C" DLL_API int APIENTRY init(const char* windowTitle, bool fullscreen, unsigned int windowWidth, unsigned int windowHeight);
+
 /** Prüft den Zustand der Bibliothek und ob das Fenster offen ist \n
 \n
 * Aus Kompatibilitätsgründen muss für die Rückgabe von Bool Werten auf int ausgewichen werden.
@@ -109,6 +126,11 @@ Text der Kollisionserkennung | @link collisionsText @endlink
 * @return (Bool) True wenn das Fenster offen ist, ansonsten False.
 */
 extern "C" DLL_API int APIENTRY isRunning(void);
+
+/** Sorgt dafür dass das Fenster geschlossen wird.
+* @author Stefan Landgrebe
+*/
+extern "C" DLL_API void APIENTRY close(void);
 
 /** Test Funktion welche nicht für den produktiven Einsatz gedacht ist.
 * @author Stefan Landgrebe
