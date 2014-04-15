@@ -73,16 +73,17 @@ namespace VisualizationExample
         static void Main(string[] args)
         {
             System.Windows.Forms.MessageBox.Show("Mit <Esc> kann das Programm beendet werden.");
-            
-            // WINDOW
+
+            Console.WriteLine(init("Fenstertitel", false, 640, 480));
+
+            /*// WINDOW
             init("Test", false, 640, 480);
             close();
 
-            init("Test2", false, 640, 480);
+            init("Test2", false, 640, 480);*/
 
             // POINTS
             uint pointId = addPoint("data/textures/sample.png");
-            Console.WriteLine("pointId: " + pointId);
             while (pointId != 0 && !isCreated(pointId)) { }
             position(pointId, -0.5f, 0.5f, -5f);
 

@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Runtime.InteropServices;
-
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace VisualizationLibraryTest
 {
@@ -9,7 +6,13 @@ namespace VisualizationLibraryTest
     {
         static void Main(string[] args)
         {
+            Window.RunAllTests();
+            Point.RunAllTests();
 
+            Console.WriteLine("*******************************************");
+            Console.WriteLine(Window.ResultMessage());
+            Console.WriteLine(Point.ResultMessage());
+            Console.Read();
         }
     }
 }
