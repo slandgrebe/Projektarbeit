@@ -8,7 +8,11 @@ namespace VisualizationExample
         /*[DllImport("Visualization.dll", EntryPoint = "doSomething")]
         extern static void doSomething(string text);*/
         [DllImport("Visualization.dll")]
+        public extern static bool init(string windowTitle, bool fullscreen, uint windowWidth, uint windowHeight);
+        [DllImport("Visualization.dll")]
         public extern static bool isRunning();
+        [DllImport("Visualization.dll")]
+        public extern static void close();
 
 
         [DllImport("Visualization.dll")]
@@ -70,6 +74,12 @@ namespace VisualizationExample
         {
             System.Windows.Forms.MessageBox.Show("Mit <Esc> kann das Programm beendet werden.");
             
+            // WINDOW
+            init("Test", false, 640, 480);
+            close();
+
+            init("Test2", false, 640, 480);
+
             // POINTS
             uint pointId = addPoint("data/textures/sample.png");
             Console.WriteLine("pointId: " + pointId);

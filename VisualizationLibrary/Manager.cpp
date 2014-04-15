@@ -33,11 +33,10 @@ Manager::Manager() {
 	}*/
 }
 
-bool Manager::init(std::string windowTitle, bool fullscreen, unsigned int windowWidth, unsigned int windowHeight) {
+bool Manager::init(std::string windowTitle, bool fullscreen, unsigned int windowWidth, unsigned int windowHeight) {	
 	bool result = graphics::GraphicEngine::getInstance()->init(windowTitle, fullscreen, windowWidth, windowHeight);
 
 	if (result) {
-
 		clock_t begin = clock();
 		while (true) {
 			if (isRunning()) {
@@ -49,7 +48,7 @@ bool Manager::init(std::string windowTitle, bool fullscreen, unsigned int window
 			}
 		}
 	}
-
+	
 	Log().fatal() << "Bibliothek konnte nicht initialisiert werden.";
 
 	return false;
@@ -59,6 +58,14 @@ bool Manager::isRunning(void) {
 }
 void Manager::close() {
 	graphics::GraphicEngine::getInstance()->close();
+
+	clock_t begin = clock();
+	while (isRunning()) {
+		if (double(clock() - begin) / CLOCKS_PER_SEC > 10) {
+			Log().error() << "Fenster konnte nicht innerhalb von 5s geschlossen werden.";
+			break;
+		}
+	}
 }
 
 void Manager::doSomething(std::string s) {

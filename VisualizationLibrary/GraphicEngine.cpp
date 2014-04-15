@@ -73,6 +73,8 @@ glm::mat4 GraphicEngine::getViewOrthographicMatrix() {
 }
 
 void GraphicEngine::worker(void) {
+	Log().debug() << "worker started";
+	
 	if (0 != GraphicEngine::getInstance()->createWindow()) {
 		return;
 	}
@@ -82,6 +84,7 @@ void GraphicEngine::worker(void) {
 	}
 	
 	GraphicEngine::getInstance()->running = true;
+
 
 	/***************
 		LOOP
@@ -135,9 +138,9 @@ void GraphicEngine::worker(void) {
 		//Log().debug() << "Bild gezeichnet in " << int(now - begin) / CLOCKS_PER_SEC << "ms. Das entspricht " << 1000 / (now - begin) << " FPS." ;
 	}
 
+	glfwTerminate(); 
 	GraphicEngine::getInstance()->running = false;
-
-	glfwTerminate();
+	Log().info() << "Fenster geschlossen";
 }
 
 void GraphicEngine::enqueueSquare(GLuint modelId, std::string filename) {
