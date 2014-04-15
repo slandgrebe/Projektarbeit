@@ -72,7 +72,8 @@ namespace VisualizationExample
             
             // POINTS
             uint pointId = addPoint("data/textures/sample.png");
-            while (!isCreated(pointId)) { }
+            Console.WriteLine("pointId: " + pointId);
+            while (pointId != 0 && !isCreated(pointId)) { }
             position(pointId, -0.5f, 0.5f, -5f);
 
             uint pointId2 = addPoint("data/textures/test.png");
