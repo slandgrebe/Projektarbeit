@@ -67,6 +67,7 @@ Bewegungsgeschwindigkeit in m/s | @link changeCameraSpeed @endlink
 
 Kollisionserkennung
 -------------------
+Die Kollisionserkennung findet nur für Objekte welche mit der @link addModel @endlink Methode hinzugefügt wurden statt. \n
 Bei der Kollisionserkennung wird das Resultat als Text gespeichert. \n
 Mit der @link collisionsTextLength @endlink Funktion kann die Länge des Textes abgefragt werden, bevor mit der @link collisionsText @endlink Funktion der Text ausgelesen wird. \n
 \n
@@ -315,11 +316,17 @@ extern "C" DLL_API int APIENTRY attachToCamera(const unsigned int modelId, const
 
 /** Ändert den darzustellenden Text
 Diese Methode kann für Text und Button Objekte verwendet werden.
+\n
+
+* Aus Kompatibilitätsgründen muss für die Rückgabe von Bool Werten auf int ausgewichen werden.\n
+* Der Wert 0 entspricht dabei jeweils False und der Wert 1 entspricht True.
+
 * @author Stefan Landgrebe
 * @param textId ID des Modells
 * @param text Der neu darzustellende Text
+* @return (Bool) Prüfung ob die Operation durchgeführt werden konnte
 */
-extern "C" DLL_API void APIENTRY text(const unsigned int textId, const char* text);
+extern "C" DLL_API int APIENTRY text(const unsigned int textId, const char* text);
 
 /** Ändert die Grösse des Textes. Die Grössenangabe erfolgt in Punkten (<a href="http://de.wikipedia.org/wiki/Schriftgrad">http://de.wikipedia.org/wiki/Schriftgrad</a>).
 Diese Methode kann für Text und Button Objekte verwendet werden. \n
@@ -340,14 +347,20 @@ Diese Methode kann für Text und Button Objekte verwendet werden. \n
 \n
 Die Farbe wird durch 4 Komponenten definiert: Rot, Grün, Blau, Alpha \n
 Alle Komponenten Sollten einen Wert von 0 bis 1 haben, wobei der Wert 0 0% und der Wert 1 100% entspricht.
+\n
+
+* Aus Kompatibilitätsgründen muss für die Rückgabe von Bool Werten auf int ausgewichen werden.\n
+* Der Wert 0 entspricht dabei jeweils False und der Wert 1 entspricht True.
+
 * @author Stefan Landgrebe
 * @param textId ID des Modells
 * @param r Rot Komponente der Farbe
 * @param g Grün Komponente der Farbe
 * @param b Blau Komponente der Farbe
 * @param a Alpha Komponente (Undurchsichtigkeit) der Farbe
+* @return (Bool) Prüfung ob die Operation durchgeführt werden konnte
 */
-extern "C" DLL_API void APIENTRY textColor(const unsigned int textId, const float r, const float g, const float b, const float a);
+extern "C" DLL_API int APIENTRY textColor(const unsigned int textId, const float r, const float g, const float b, const float a);
 
 
 /** Positioniert die Kamera
@@ -384,15 +397,22 @@ extern "C" DLL_API void APIENTRY changeCameraSpeed(float speed);
 */
 extern "C" DLL_API unsigned int APIENTRY collisionsTextLength(void);
 
-/** Text mit allen Kollisionen.
-Format: 1:2,3;2:1;3:1;4:
-Bedeutung: Objekt mit der ID 1 kollidiert mit Objekt 2 und 3
-Objekt 2 kollidiert mit Objekt 1
-Objekt 3 kollidiert mit Objekt 1
-Objekt 4 kollidiert mit nichts.
+/** Text mit allen Kollisionen. \n
+Die Kollisionserkennung findet nur für Objekte welche mit der @link addModel @endlink Methode hinzugefügt wurden statt. \n
+Format: 1:2,3;2:1;3:1;4: \n
+Bedeutung: Objekt mit der ID 1 kollidiert mit Objekt 2 und 3 \n
+Objekt 2 kollidiert mit Objekt 1 \n
+Objekt 3 kollidiert mit Objekt 1 \n
+Objekt 4 kollidiert mit nichts.\n
+\n
+
+* Aus Kompatibilitätsgründen muss für die Rückgabe von Bool Werten auf int ausgewichen werden.\n
+* Der Wert 0 entspricht dabei jeweils False und der Wert 1 entspricht True.
+
 * @author Stefan Landgrebe
 * @param string Das zu beschreibende String Objekt
 * @param length Die Anzahl Zeichen welche in den String kopiert werden sollen
+* @return (Bool) Prüfung ob die Operation durchgeführt werden konnte
 * @see collisionsTextLength()
 */
-extern "C" DLL_API void APIENTRY collisionsText(char* string, int length);
+extern "C" DLL_API int APIENTRY collisionsText(char* string, int length);

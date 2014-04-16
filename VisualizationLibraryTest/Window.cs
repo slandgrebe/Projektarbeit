@@ -6,7 +6,7 @@ namespace VisualizationLibraryTest
     [TestClass]
     public class Window
     {
-        private static String resultMessage = "";
+        /*private static String resultMessage = "";
 
         public static void RunAllTests()
         {
@@ -102,10 +102,13 @@ namespace VisualizationLibraryTest
             // Tear Down
 
             return result;
-        }
+        }*/
 
+        
+        
         // Nicht funktionierende Test Cases .. oder doch?
         [TestMethod]
+        [TestCategory("Window")]
         public void Window_NotYetOpen()
         {
             Assert.AreEqual(false, Library.isRunning());
@@ -113,16 +116,89 @@ namespace VisualizationLibraryTest
         }
 
         [TestMethod]
-        public void Window_init()
+        [TestCategory("Window")]
+        public void Window_Init()
         {
             Assert.AreEqual(true, Library.init("Fenstertitel", false, 640, 480));
             Library.close();
         }
 
         [TestMethod]
-        public void Window_close()
+        [TestCategory("Window")]
+        public void Window_Init_EmptyTitle()
+        {
+            Assert.AreEqual(true, Library.init("", false, 640, 480));
+            Library.close();
+        }
+
+        [TestMethod]
+        [TestCategory("Window")]
+        public void Window_Init_FullscreenLowResolution()
+        {
+            Assert.AreEqual(true, Library.init("Fenstertitel", true, 640, 480));
+            Library.close();
+        }
+
+        [TestMethod]
+        [TestCategory("Window")]
+        public void Window_Init_FullscreenNativeResolution()
+        {
+            Assert.AreEqual(true, Library.init("Fenstertitel", false, 0, 0));
+            Library.close();
+        }
+
+        [TestMethod]
+        [TestCategory("Window")]
+        public void Window_Init_NativeResolution()
+        {
+            Assert.AreEqual(true, Library.init("Fenstertitel", false, 0, 0));
+            Library.close();
+        }
+
+        [TestMethod]
+        [TestCategory("Window")]
+        public void Window_Init_ResolutionOverkill()
+        {
+            Assert.AreEqual(true, Library.init("Fenstertitel", false, 64000, 48000));
+            Library.close();
+        }
+
+        [TestMethod]
+        [TestCategory("Window")]
+        public void Window_Init_FullscreenResolutionOverkill()
+        {
+            Assert.AreEqual(true, Library.init("Fenstertitel", false, 64000, 48000));
+            Library.close();
+        }
+
+        [TestMethod]
+        public void Window_Init_()
+        {
+            Assert.AreEqual(true, Library.init("Fenstertitel", false, 640, 480));
+            Library.close();
+        }
+
+        [TestMethod]
+        public void Window_Close()
         {
             Library.init("Fenstertitel", false, 640, 480);
+            Library.close();
+            Assert.AreEqual(false, Library.isRunning());
+        }
+
+        [TestMethod]
+        public void Window_InitTwoTimes()
+        {
+            Library.init("Fenstertitel", false, 640, 480);
+            Assert.AreEqual(false, Library.init("Fenstertitel", false, 640, 480));
+            Library.close();
+        }
+
+        [TestMethod]
+        public void Window_CloseTwoTimes()
+        {
+            Library.init("Fenstertitel", false, 640, 480);
+            Library.close();
             Library.close();
             Assert.AreEqual(false, Library.isRunning());
         }

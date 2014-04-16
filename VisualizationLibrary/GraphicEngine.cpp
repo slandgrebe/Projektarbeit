@@ -2,7 +2,7 @@
 #include "stdafx.h"
 
 // Link statically with GLEW
-#define GLEW_STATIC
+
 
 #include "GraphicEngine.h"
 #include <fstream>
@@ -46,12 +46,15 @@ GraphicEngine::~GraphicEngine() {
 }
 
 bool GraphicEngine::init(std::string windowTitle, bool fullscreen, unsigned int windowWidth, unsigned int windowHeight) {
+	if (running) {
+		return false;
+	}
+
+
 	title = windowTitle;
 	this->fullscreen = fullscreen;
 	width = windowWidth;
 	height = windowHeight;
-	
-	
 	
 	std::async(worker);
 

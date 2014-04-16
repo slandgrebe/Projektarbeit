@@ -74,14 +74,14 @@ DLL_API int APIENTRY attachToCamera(const unsigned int modelId, const bool choic
 
 
 
-DLL_API void APIENTRY text(const unsigned int textId, const char* text) {
-	visual::Manager::getInstance()->setText(textId, text);
+DLL_API int APIENTRY text(const unsigned int textId, const char* text) {
+	return (int)visual::Manager::getInstance()->setText(textId, text);
 }
 DLL_API int APIENTRY textSize(const unsigned int textId, const int points) {
 	return (int)visual::Manager::getInstance()->setTextSize(textId, points);
 }
-DLL_API void APIENTRY textColor(const unsigned int textId, const float r, const float g, const float b, const float a) {
-	visual::Manager::getInstance()->setTextColor(textId, glm::vec4(r, g, b, a));
+DLL_API int APIENTRY textColor(const unsigned int textId, const float r, const float g, const float b, const float a) {
+	return (int)visual::Manager::getInstance()->setTextColor(textId, glm::vec4(r, g, b, a));
 }
 
 
@@ -102,9 +102,15 @@ DLL_API void APIENTRY changeCameraSpeed(float speed) {
 DLL_API unsigned int APIENTRY collisionsTextLength(void) {
 	return visual::Manager::getInstance()->collisionsTextLength();
 }
-DLL_API void APIENTRY collisionsText(char* string, int length) {
+DLL_API int APIENTRY collisionsText(char* string, int length) {
 	std::string collisions = visual::Manager::getInstance()->collisionsText().c_str();
+	
+	if ((int)collisions.length() > length) {
+		return (int)false;
+	}
+	
 	strcpy_s(string, length, collisions.c_str());
+	return (int)true;
 }
 
 #endif

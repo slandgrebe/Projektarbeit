@@ -137,7 +137,7 @@ namespace visual {
 		* @param modelId ID des zu prüfenden Modells
 		* @return Resultat der Prüfung
 		*/
-		GLboolean isModelCreated(GLuint modelId);
+		bool isModelCreated(GLuint modelId);
 
 
 		/** Markiert ein Modell zur Entfernung. Diese Methode kann für alle Arten von Modellen verwendet werden (Model, Point, Text, Button).

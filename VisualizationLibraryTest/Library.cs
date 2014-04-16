@@ -48,12 +48,14 @@ namespace VisualizationLibraryTest
         [DllImport("Visualization.dll")]
         public extern static bool attachToCamera(uint modelId, bool choice);
 
+
         [DllImport("Visualization.dll")]
-        public extern static void text(uint textId, string text);
+        public extern static bool text(uint textId, string text);
         [DllImport("Visualization.dll")]
         public extern static bool textSize(uint textId, int points);
         [DllImport("Visualization.dll")]
-        public extern static void textColor(uint textId, float r, float g, float b, float a);
+        public extern static bool textColor(uint textId, float r, float g, float b, float a);
+
 
         [DllImport("Visualization.dll")]
         public extern static void positionCamera(float x, float y, float z);
@@ -64,9 +66,10 @@ namespace VisualizationLibraryTest
         [DllImport("Visualization.dll")]
         public extern static void changeCameraSpeed(float speed);
 
+
         [DllImport("Visualization.dll")]
         public extern static uint collisionsTextLength();
         [DllImport("Visualization.dll")]
-        public extern static void collisionsText(System.Text.StringBuilder text, int length);
+        public extern static bool collisionsText(System.Text.StringBuilder text, int length);
     }
 }

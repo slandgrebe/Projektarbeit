@@ -113,21 +113,21 @@ GLuint Manager::addPoint(const std::string textureFilename) {
 }
 
 
-GLboolean Manager::isModelCreated(GLuint modelId) {
+bool Manager::isModelCreated(GLuint modelId) {
 	if (assimpModelList.find(modelId) != assimpModelList.end()) {
-		return GL_TRUE;
+		return true;
 	}
 	else if (squareList.find(modelId) != squareList.end()) {
-		return GL_TRUE;
+		return true;
 	}
 	else if (textList.find(modelId) != textList.end()) {
-		return GL_TRUE;
+		return true;
 	}
 	else if (buttonList.find(modelId) != buttonList.end()) {
-		return GL_TRUE;
+		return true;
 	}
 
-	return GL_FALSE;
+	return false;
 }
 
 

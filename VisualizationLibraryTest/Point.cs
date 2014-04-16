@@ -6,7 +6,7 @@ namespace VisualizationLibraryTest
     [TestClass]
     public class Point
     {
-        private static String resultMessage = "";
+        /*private static String resultMessage = "";
 
         public static void RunAllTests()
         {
@@ -489,7 +489,7 @@ namespace VisualizationLibraryTest
             Library.close();
 
             return result;
-        }
+        }*/
 
 
 
@@ -580,9 +580,7 @@ namespace VisualizationLibraryTest
         public void Point_Dispose()
         {
             // Setup
-            Library.init("Test", false, 640, 480);
-            uint id = Library.addPoint("data/textures/sample.png");
-            System.Threading.Thread.Sleep(100); // Multithreading
+            uint id = Utility.SetupPoint();
             Library.dispose(id);
             System.Threading.Thread.Sleep(100); // Multithreading
 
@@ -597,9 +595,7 @@ namespace VisualizationLibraryTest
         public void Point_DisposeNegavite() // Point löschen den es nicht gibt
         {
             // Setup
-            Library.init("Test", false, 640, 480);
-            uint id = Library.addPoint("data/textures/sample.png");
-            System.Threading.Thread.Sleep(100); // Multithreading
+            uint id = Utility.SetupPoint();
             while (Library.isCreated(id)) // finde nicht existierende Id
             {
                 id++;
@@ -617,9 +613,7 @@ namespace VisualizationLibraryTest
         public void Point_Position()
         {
             // Setup
-            Library.init("Test", false, 640, 480);
-            uint id = Library.addPoint("data/textures/sample.png");
-            System.Threading.Thread.Sleep(100); // Multithreading
+            uint id = Utility.SetupPoint();
 
             // Test
             Assert.AreEqual(true, Library.position(id, 1.0f, 1.0f, 1.0f));
@@ -632,9 +626,7 @@ namespace VisualizationLibraryTest
         public void Point_PositionNegavite() // Point positionieren den es nicht gibt
         {
             // Setup
-            Library.init("Test", false, 640, 480);
-            uint id = Library.addPoint("data/textures/sample.png");
-            System.Threading.Thread.Sleep(100); // Multithreading
+            uint id = Utility.SetupPoint();
             while (Library.isCreated(id)) // finde nicht existierende Id
             {
                 id++;
@@ -651,9 +643,7 @@ namespace VisualizationLibraryTest
         public void Point_Rotate()
         {
             // Setup
-            Library.init("Test", false, 640, 480);
-            uint id = Library.addPoint("data/textures/sample.png");
-            System.Threading.Thread.Sleep(100); // Multithreading
+            uint id = Utility.SetupPoint();
 
             // Test
             Assert.AreEqual(true, Library.rotate(id, 90, 1, 1, 1));
@@ -666,9 +656,7 @@ namespace VisualizationLibraryTest
         public void Point_RotateWithoutAxis()
         {
             // Setup
-            Library.init("Test", false, 640, 480);
-            uint id = Library.addPoint("data/textures/sample.png");
-            System.Threading.Thread.Sleep(100); // Multithreading
+            uint id = Utility.SetupPoint();
 
             // Test
             Assert.AreEqual(true, Library.rotate(id, 90, 0, 0, 0));
@@ -681,9 +669,7 @@ namespace VisualizationLibraryTest
         public void Point_RotateNegavite() // Point positionieren den es nicht gibt
         {
             // Setup
-            Library.init("Test", false, 640, 480);
-            uint id = Library.addPoint("data/textures/sample.png");
-            System.Threading.Thread.Sleep(100); // Multithreading
+            uint id = Utility.SetupPoint();
             while (Library.isCreated(id)) // finde nicht existierende Id
             {
                 id++;
@@ -700,9 +686,7 @@ namespace VisualizationLibraryTest
         public void Point_Scale()
         {
             // Setup
-            Library.init("Test", false, 640, 480);
-            uint id = Library.addPoint("data/textures/sample.png");
-            System.Threading.Thread.Sleep(100); // Multithreading
+            uint id = Utility.SetupPoint();
 
             // Test
             Assert.AreEqual(true, Library.scale(id, 0.5f, 0.5f, 0.5f));
@@ -715,9 +699,7 @@ namespace VisualizationLibraryTest
         public void Point_ScaleNegativeNumbers()
         {
             // Setup
-            Library.init("Test", false, 640, 480);
-            uint id = Library.addPoint("data/textures/sample.png");
-            System.Threading.Thread.Sleep(100); // Multithreading
+            uint id = Utility.SetupPoint();
 
             // Test
             Assert.AreEqual(true, Library.scale(id, -0.5f, -0.5f, -0.5f));
@@ -730,9 +712,7 @@ namespace VisualizationLibraryTest
         public void Point_ScaleNegavite() // Point skalieren den es nicht gibt
         {
             // Setup
-            Library.init("Test", false, 640, 480);
-            uint id = Library.addPoint("data/textures/sample.png");
-            System.Threading.Thread.Sleep(100); // Multithreading
+            uint id = Utility.SetupPoint();
             while (Library.isCreated(id)) // finde nicht existierende Id
             {
                 id++;
@@ -749,9 +729,7 @@ namespace VisualizationLibraryTest
         public void Point_ScalingIsNormalized()
         {
             // Setup
-            Library.init("Test", false, 640, 480);
-            uint id = Library.addPoint("data/textures/sample.png");
-            System.Threading.Thread.Sleep(100); // Multithreading
+            uint id = Utility.SetupPoint();
 
             // Test
             Assert.AreEqual(true, Library.scalingIsNormalized(id, true));
@@ -764,9 +742,7 @@ namespace VisualizationLibraryTest
         public void Point_ScalingIsNormalizedNegavite() // Point Skalierungsnormaliesierung den es nicht gibt
         {
             // Setup
-            Library.init("Test", false, 640, 480);
-            uint id = Library.addPoint("data/textures/sample.png");
-            System.Threading.Thread.Sleep(100); // Multithreading
+            uint id = Utility.SetupPoint();
             while (Library.isCreated(id)) // finde nicht existierende Id
             {
                 id++;
@@ -783,9 +759,7 @@ namespace VisualizationLibraryTest
         public void Point_HighlightColor()
         {
             // Setup
-            Library.init("Test", false, 640, 480);
-            uint id = Library.addPoint("data/textures/sample.png");
-            System.Threading.Thread.Sleep(100); // Multithreading
+            uint id = Utility.SetupPoint();
 
             // Test
             Assert.AreEqual(true, Library.highlightColor(id, 1.0f, 1.0f, 1.0f, 1.0f));
@@ -798,9 +772,7 @@ namespace VisualizationLibraryTest
         public void Point_HighlightColornNegavite() // Point positionieren den es nicht gibt
         {
             // Setup
-            Library.init("Test", false, 640, 480);
-            uint id = Library.addPoint("data/textures/sample.png");
-            System.Threading.Thread.Sleep(100); // Multithreading
+            uint id = Utility.SetupPoint();
             while (Library.isCreated(id)) // finde nicht existierende Id
             {
                 id++;
@@ -817,9 +789,7 @@ namespace VisualizationLibraryTest
         public void Point_HighlightColorOutOfBounds()
         {
             // Setup
-            Library.init("Test", false, 640, 480);
-            uint id = Library.addPoint("data/textures/sample.png");
-            System.Threading.Thread.Sleep(100); // Multithreading
+            uint id = Utility.SetupPoint();
 
             // Test
             Assert.AreEqual(true, Library.highlightColor(id, 2.0f, 2.0f, 2.0f, 2.0f));
@@ -832,9 +802,7 @@ namespace VisualizationLibraryTest
         public void Point_HighlightColorOutOfBoundsNegative()
         {
             // Setup
-            Library.init("Test", false, 640, 480);
-            uint id = Library.addPoint("data/textures/sample.png");
-            System.Threading.Thread.Sleep(100); // Multithreading
+            uint id = Utility.SetupPoint();
 
             // Test
             Assert.AreEqual(true, Library.highlightColor(id, -2.0f, -2.0f, -2.0f, -2.0f));
@@ -847,9 +815,7 @@ namespace VisualizationLibraryTest
         public void Point_IsHighlighted()
         {
             // Setup
-            Library.init("Test", false, 640, 480);
-            uint id = Library.addPoint("data/textures/sample.png");
-            System.Threading.Thread.Sleep(100); // Multithreading
+            uint id = Utility.SetupPoint();
 
             // Test
             Assert.AreEqual(true, Library.isHighlighted(id, true));
@@ -859,12 +825,10 @@ namespace VisualizationLibraryTest
         }
 
         [TestMethod]
-        public void Point_IsHighlightedNegavite() // Point positionieren den es nicht gibt
+        public void Point_IsHighlightedNegavite()
         {
             // Setup
-            Library.init("Test", false, 640, 480);
-            uint id = Library.addPoint("data/textures/sample.png");
-            System.Threading.Thread.Sleep(100); // Multithreading
+            uint id = Utility.SetupPoint();
             while (Library.isCreated(id)) // finde nicht existierende Id
             {
                 id++;
@@ -872,6 +836,51 @@ namespace VisualizationLibraryTest
 
             // Test
             Assert.AreEqual(false, Library.isHighlighted(id, true));
+
+            // Tear Down
+            Library.close();
+        }
+
+        [TestMethod]
+        public void Point_AttachToCamera()
+        {
+            // Setup
+            uint id = Utility.SetupPoint();
+        
+            // Test
+            Assert.AreEqual(true, Library.attachToCamera(id, true));
+
+            // Tear Down
+            Library.close();
+        }
+
+        [TestMethod]
+        public void Point_DetachFromCamera()
+        {
+            // Setup
+            uint id = Utility.SetupPoint();
+            Library.attachToCamera(id, true);
+
+            // Test
+            Assert.AreEqual(true, Library.attachToCamera(id, false));
+
+            // Tear Down
+            Library.close();
+        }
+
+        [TestMethod]
+        public void Point_AttachToCameraNegative()
+        {
+            // Setup
+            uint id = Utility.SetupPoint();
+            Library.attachToCamera(id, true);
+            while (Library.isCreated(id)) // finde nicht existierende Id
+            {
+                id++;
+            }
+
+            // Test
+            Assert.AreEqual(false, Library.attachToCamera(id, true));
 
             // Tear Down
             Library.close();

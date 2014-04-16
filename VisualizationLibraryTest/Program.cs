@@ -6,13 +6,13 @@ namespace VisualizationLibraryTest
     {
         static void Main(string[] args)
         {
-            Window.RunAllTests();
+            /*Window.RunAllTests();
             Point.RunAllTests();
 
             Console.WriteLine("*******************************************");
             Console.WriteLine(Window.ResultMessage());
             Console.WriteLine(Point.ResultMessage());
-            Console.Read();
+            Console.Read();*/
         }
     }
 }
