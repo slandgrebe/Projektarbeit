@@ -17,7 +17,7 @@ namespace VisualizationLibraryTest
 
             // Tear Down
             Utility.CheckCreation(id, 1);
-            if (!Utility.TearDownModel(id)) Assert.AreEqual(1, 0); // da ging was schief
+            if (!Utility.TearDown(id)) Assert.AreEqual(1, 0); // da ging was schief
         }
 
         [TestMethod]
@@ -32,7 +32,7 @@ namespace VisualizationLibraryTest
 
             // Tear Down
             Utility.CheckCreation(id, 1);
-            if (!Utility.TearDownModel(id)) Assert.AreEqual(1, 0); // da ging was schief
+            if (!Utility.TearDown(id)) Assert.AreEqual(1, 0); // da ging was schief
         }
 
         [TestMethod]
@@ -46,7 +46,7 @@ namespace VisualizationLibraryTest
 
             // Tear Down
             Utility.CheckCreation(id, 1);
-            if (!Utility.TearDownModel(id)) Assert.AreEqual(1, 0); // da ging was schief
+            if (!Utility.TearDown(id)) Assert.AreEqual(1, 0); // da ging was schief
         }
 
         [TestMethod]
@@ -61,7 +61,7 @@ namespace VisualizationLibraryTest
 
             // Tear Down
             Utility.CheckCreation(id, 1);
-            if (!Utility.TearDownModel(id)) Assert.AreEqual(1, 0); // da ging was schief
+            if (!Utility.TearDown(id)) Assert.AreEqual(1, 0); // da ging was schief
         }
 
         [TestMethod]
@@ -74,7 +74,7 @@ namespace VisualizationLibraryTest
             Assert.AreEqual(true, Library.isCreated(id));
 
             // Tear Down
-            if (!Utility.TearDownModel(id)) Assert.AreEqual(1, 0); // da ging was schief
+            if (!Utility.TearDown(id)) Assert.AreEqual(1, 0); // da ging was schief
         }
 
         [TestMethod]
@@ -102,7 +102,7 @@ namespace VisualizationLibraryTest
             Assert.AreEqual(false, Library.isCreated(id));
 
             // Tear Down
-            if (!Utility.TearDownModel(id)) Assert.AreEqual(1, 0); // da ging was schief
+            if (!Utility.TearDown(id)) Assert.AreEqual(1, 0); // da ging was schief
         }
 
         [TestMethod]
@@ -121,7 +121,7 @@ namespace VisualizationLibraryTest
             Assert.AreEqual(1, 1); // keine Exception, mehr kann man nicht testen
 
             // Tear Down
-            if (!Utility.TearDownModel(id)) Assert.AreEqual(1, 0); // da ging was schief
+            if (!Utility.TearDown(id)) Assert.AreEqual(1, 0); // da ging was schief
         }
 
         [TestMethod]
@@ -134,7 +134,7 @@ namespace VisualizationLibraryTest
             Assert.AreEqual(true, Library.position(id, 1.0f, 1.0f, 1.0f));
 
             // Tear Down
-            if (!Utility.TearDownModel(id)) Assert.AreEqual(1, 0); // da ging was schief
+            if (!Utility.TearDown(id)) Assert.AreEqual(1, 0); // da ging was schief
         }
 
         [TestMethod]
@@ -152,7 +152,7 @@ namespace VisualizationLibraryTest
             Assert.AreEqual(false, Library.position(inexistantId, 1, 1, 1));
 
             // Tear Down
-            if (!Utility.TearDownModel(id)) Assert.AreEqual(1, 0); // da ging was schief
+            if (!Utility.TearDown(id)) Assert.AreEqual(1, 0); // da ging was schief
         }
 
         [TestMethod]
@@ -165,7 +165,7 @@ namespace VisualizationLibraryTest
             Assert.AreEqual(true, Library.rotate(id, 90, 1, 1, 1));
 
             // Tear Down
-            if (!Utility.TearDownModel(id)) Assert.AreEqual(1, 0); // da ging was schief
+            if (!Utility.TearDown(id)) Assert.AreEqual(1, 0); // da ging was schief
         }
 
         [TestMethod]
@@ -178,7 +178,7 @@ namespace VisualizationLibraryTest
             Assert.AreEqual(true, Library.rotate(id, 90, 0, 0, 0));
 
             // Tear Down
-            if (!Utility.TearDownModel(id)) Assert.AreEqual(1, 0); // da ging was schief
+            if (!Utility.TearDown(id)) Assert.AreEqual(1, 0); // da ging was schief
         }
 
         [TestMethod]
@@ -196,7 +196,7 @@ namespace VisualizationLibraryTest
             Assert.AreEqual(false, Library.rotate(inexistantId, 90, 1, 1, 1));
 
             // Tear Down
-            if (!Utility.TearDownModel(id)) Assert.AreEqual(1, 0); // da ging was schief
+            if (!Utility.TearDown(id)) Assert.AreEqual(1, 0); // da ging was schief
         }
 
         [TestMethod]
@@ -211,7 +211,7 @@ namespace VisualizationLibraryTest
             Assert.AreEqual(true, Library.scale(id, 0.5f, 0.5f, 0.5f));
 
             // Tear Down
-            if (!Utility.TearDownModel(id)) Assert.AreEqual(1, 0); // da ging was schief
+            if (!Utility.TearDown(id)) Assert.AreEqual(1, 0); // da ging was schief
         }
 
         [TestMethod]
@@ -224,7 +224,7 @@ namespace VisualizationLibraryTest
             Assert.AreEqual(true, Library.scale(id, -0.5f, -0.5f, -0.5f));
 
             // Tear Down
-            if (!Utility.TearDownModel(id)) Assert.AreEqual(1, 0); // da ging was schief
+            if (!Utility.TearDown(id)) Assert.AreEqual(1, 0); // da ging was schief
         }
 
         [TestMethod]
@@ -242,7 +242,7 @@ namespace VisualizationLibraryTest
             Assert.AreEqual(false, Library.scale(inexistantId, 1, 1, 1));
 
             // Tear Down
-            if (!Utility.TearDownModel(id)) Assert.AreEqual(1, 0); // da ging was schief
+            if (!Utility.TearDown(id)) Assert.AreEqual(1, 0); // da ging was schief
         }
 
         [TestMethod]
@@ -255,7 +255,7 @@ namespace VisualizationLibraryTest
             Assert.AreEqual(true, Library.scalingIsNormalized(id, true));
 
             // Tear Down
-            if (!Utility.TearDownModel(id)) Assert.AreEqual(1, 0); // da ging was schief
+            if (!Utility.TearDown(id)) Assert.AreEqual(1, 0); // da ging was schief
         }
 
         [TestMethod]
@@ -273,7 +273,7 @@ namespace VisualizationLibraryTest
             Assert.AreEqual(false, Library.scalingIsNormalized(inexistantId, true));
 
             // Tear Down
-            if (!Utility.TearDownModel(id)) Assert.AreEqual(1, 0); // da ging was schief
+            if (!Utility.TearDown(id)) Assert.AreEqual(1, 0); // da ging was schief
         }
 
         [TestMethod]
@@ -286,7 +286,7 @@ namespace VisualizationLibraryTest
             Assert.AreEqual(true, Library.highlightColor(id, 1.0f, 1.0f, 1.0f, 1.0f));
 
             // Tear Down
-            if (!Utility.TearDownModel(id)) Assert.AreEqual(1, 0); // da ging was schief
+            if (!Utility.TearDown(id)) Assert.AreEqual(1, 0); // da ging was schief
         }
 
         [TestMethod]
@@ -304,7 +304,7 @@ namespace VisualizationLibraryTest
             Assert.AreEqual(false, Library.highlightColor(inexistantId, 1, 1, 1, 1));
 
             // Tear Down
-            if (!Utility.TearDownModel(id)) Assert.AreEqual(1, 0); // da ging was schief
+            if (!Utility.TearDown(id)) Assert.AreEqual(1, 0); // da ging was schief
         }
 
         [TestMethod]
@@ -317,7 +317,7 @@ namespace VisualizationLibraryTest
             Assert.AreEqual(true, Library.highlightColor(id, 2.0f, 2.0f, 2.0f, 2.0f));
 
             // Tear Down
-            if (!Utility.TearDownModel(id)) Assert.AreEqual(1, 0); // da ging was schief
+            if (!Utility.TearDown(id)) Assert.AreEqual(1, 0); // da ging was schief
         }
 
         [TestMethod]
@@ -330,7 +330,7 @@ namespace VisualizationLibraryTest
             Assert.AreEqual(true, Library.highlightColor(id, -2.0f, -2.0f, -2.0f, -2.0f));
 
             // Tear Down
-            if (!Utility.TearDownModel(id)) Assert.AreEqual(1, 0); // da ging was schief
+            if (!Utility.TearDown(id)) Assert.AreEqual(1, 0); // da ging was schief
         }
 
         [TestMethod]
@@ -343,7 +343,7 @@ namespace VisualizationLibraryTest
             Assert.AreEqual(true, Library.isHighlighted(id, true));
 
             // Tear Down
-            if (!Utility.TearDownModel(id)) Assert.AreEqual(1, 0); // da ging was schief
+            if (!Utility.TearDown(id)) Assert.AreEqual(1, 0); // da ging was schief
         }
 
         [TestMethod]
@@ -361,7 +361,7 @@ namespace VisualizationLibraryTest
             Assert.AreEqual(false, Library.isHighlighted(inexistantId, true));
 
             // Tear Down
-            if (!Utility.TearDownModel(id)) Assert.AreEqual(1, 0); // da ging was schief
+            if (!Utility.TearDown(id)) Assert.AreEqual(1, 0); // da ging was schief
         }
 
         [TestMethod]
@@ -374,7 +374,7 @@ namespace VisualizationLibraryTest
             Assert.AreEqual(true, Library.attachToCamera(id, true));
 
             // Tear Down
-            if (!Utility.TearDownModel(id)) Assert.AreEqual(1, 0); // da ging was schief
+            if (!Utility.TearDown(id)) Assert.AreEqual(1, 0); // da ging was schief
         }
 
         [TestMethod]
@@ -388,7 +388,7 @@ namespace VisualizationLibraryTest
             Assert.AreEqual(true, Library.attachToCamera(id, false));
 
             // Tear Down
-            if (!Utility.TearDownModel(id)) Assert.AreEqual(1, 0); // da ging was schief
+            if (!Utility.TearDown(id)) Assert.AreEqual(1, 0); // da ging was schief
         }
 
         [TestMethod]
@@ -407,7 +407,7 @@ namespace VisualizationLibraryTest
             Assert.AreEqual(false, Library.attachToCamera(inexistantId, true));
 
             // Tear Down
-            if (!Utility.TearDownModel(id)) Assert.AreEqual(1, 0); // da ging was schief
+            if (!Utility.TearDown(id)) Assert.AreEqual(1, 0); // da ging was schief
         }
     }
 }

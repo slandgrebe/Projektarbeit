@@ -53,34 +53,25 @@ namespace VisualizationLibraryTest
             return true;
         }
 
-        public static bool TearDown(uint id)
+        public static bool Dispose(uint id)
         {
             bool result = false;
-            
-            Library.dispose(id);
-            if (CheckRemoval(id, 2)) // sollte nicht mehr existieren
-            {
-                result = true;
-            }
-
-            Library.close();
-
-            return result;
-        }
-
-        public static bool TearDownModel(uint id)
-        {
-            bool result = false;
-
             Library.dispose(id);
             if (CheckRemoval(id, 2)) // Das macht bei Models Probleme
             {
                 result = true;
             }
 
+            return result;
+        }
+
+        public static bool TearDown(uint id)
+        {
+            bool result = Dispose(id);
+
             Library.close();
 
-            return true;
+            return result;
         }
 
         public static uint SetupModel()
