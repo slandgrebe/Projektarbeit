@@ -25,6 +25,26 @@ namespace VisualizationLibraryTest
             return result;
         }
 
+        public static bool CheckRemoval(uint id, float seconds)
+        {
+            Stopwatch sw = Stopwatch.StartNew();
+            bool result = false;
+
+            while (sw.ElapsedMilliseconds / 1000 < seconds)
+            {
+                if (!Library.isCreated(id)) // das hier macht irgendwie probleme ...
+                {
+                    result = true;
+                    break;
+                }
+                System.Threading.Thread.Sleep(1); // ... darum gibts das hier
+            }
+
+            sw.Stop();
+
+            return result;
+        }
+
         public static bool InitWindow()
         {
             if (!Library.init("Test", false, 640, 480))
@@ -37,14 +57,17 @@ namespace VisualizationLibraryTest
 
         public static bool TearDown(uint id)
         {
-            Library.close();
+            bool result = false;
+            
             Library.dispose(id);
-            if (!CheckCreation(id, 1)) // sollte nicht mehr existieren
+            if (CheckRemoval(id, 2)) // sollte nicht mehr existieren
             {
-                return false;
+                result = true;
             }
 
-            return true;
+            Library.close();
+
+            return result;
         }
 
         public static uint SetupPoint()
@@ -57,7 +80,7 @@ namespace VisualizationLibraryTest
 
             uint id = Library.addPoint("data/textures/sample.png");
 
-            if (!CheckCreation(id, 1))
+            if (!CheckCreation(id, 2))
             {
                 return 0; // da ging was schief
             }

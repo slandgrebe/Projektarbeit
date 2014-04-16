@@ -504,7 +504,8 @@ namespace VisualizationLibraryTest
             Assert.AreNotEqual(0, id);
 
             // Tear Down
-            Library.close();
+            Utility.CheckCreation(id, 1);
+            if (!Utility.TearDown(id)) Assert.AreEqual(1, 0); // da ging was schief
         }
 
         [TestMethod]
@@ -518,7 +519,8 @@ namespace VisualizationLibraryTest
             Assert.AreNotEqual(0, id);
 
             // Tear Down
-            Library.close();
+            Utility.CheckCreation(id, 1);
+            if (!Utility.TearDown(id)) Assert.AreEqual(1, 0); // da ging was schief
         }
 
         [TestMethod]
@@ -531,7 +533,8 @@ namespace VisualizationLibraryTest
             Assert.AreNotEqual(0, id);
 
             // Tear Down
-            Library.close();
+            Utility.CheckCreation(id, 1);
+            if (!Utility.TearDown(id)) Assert.AreEqual(1, 0); // da ging was schief
         }
 
         [TestMethod]
@@ -545,22 +548,22 @@ namespace VisualizationLibraryTest
             Assert.AreNotEqual(0, id);
 
             // Tear Down
-            Library.close();
+            Utility.CheckCreation(id, 1);
+            if (!Utility.TearDown(id)) Assert.AreEqual(1, 0); // da ging was schief
         }
 
         [TestMethod]
         public void Point_IsCreated()
         {
             // Setup
-            Library.init("Test", false, 640, 480);
-            uint id = Library.addPoint("data/textures/sample.png");
-            System.Threading.Thread.Sleep(100); // Multithreading
+            uint id = Utility.SetupPoint();
+            //System.Threading.Thread.Sleep(100); // Multithreading
 
             // Test
             Assert.AreEqual(true, Library.isCreated(id));
 
             // Tear Down
-            Library.close();
+            if (!Utility.TearDown(id)) Assert.AreEqual(1, 0); // da ging was schief
         }
 
         [TestMethod]
@@ -588,7 +591,7 @@ namespace VisualizationLibraryTest
             Assert.AreEqual(false, Library.isCreated(id));
 
             // Tear Down
-            Library.close();
+            if (!Utility.TearDown(id)) Assert.AreEqual(1, 0); // da ging was schief
         }
 
         [TestMethod]
@@ -606,7 +609,7 @@ namespace VisualizationLibraryTest
             Assert.AreEqual(1, 1); // keine Exception, mehr kann man nicht testen
 
             // Tear Down
-            Library.close();
+            if (!Utility.TearDown(id)) Assert.AreEqual(1, 0); // da ging was schief
         }
 
         [TestMethod]
@@ -619,7 +622,7 @@ namespace VisualizationLibraryTest
             Assert.AreEqual(true, Library.position(id, 1.0f, 1.0f, 1.0f));
 
             // Tear Down
-            Library.close();
+            if (!Utility.TearDown(id)) Assert.AreEqual(1, 0); // da ging was schief
         }
 
         [TestMethod]
@@ -636,7 +639,7 @@ namespace VisualizationLibraryTest
             Assert.AreEqual(false, Library.position(id, 1, 1, 1));
 
             // Tear Down
-            Library.close();
+            if (!Utility.TearDown(id)) Assert.AreEqual(1, 0); // da ging was schief
         }
 
         [TestMethod]
@@ -649,7 +652,7 @@ namespace VisualizationLibraryTest
             Assert.AreEqual(true, Library.rotate(id, 90, 1, 1, 1));
 
             // Tear Down
-            Library.close();
+            if (!Utility.TearDown(id)) Assert.AreEqual(1, 0); // da ging was schief
         }
 
         [TestMethod]
@@ -662,7 +665,7 @@ namespace VisualizationLibraryTest
             Assert.AreEqual(true, Library.rotate(id, 90, 0, 0, 0));
 
             // Tear Down
-            Library.close();
+            if (!Utility.TearDown(id)) Assert.AreEqual(1, 0); // da ging was schief
         }
 
         [TestMethod]
@@ -679,12 +682,15 @@ namespace VisualizationLibraryTest
             Assert.AreEqual(false, Library.rotate(id, 90, 1, 1, 1));
 
             // Tear Down
+            //if (!Utility.TearDown(id)) Assert.AreEqual(1, 0); // da ging was schief
             Library.close();
         }
 
         [TestMethod]
         public void Point_Scale()
         {
+            
+            
             // Setup
             uint id = Utility.SetupPoint();
 
@@ -692,7 +698,7 @@ namespace VisualizationLibraryTest
             Assert.AreEqual(true, Library.scale(id, 0.5f, 0.5f, 0.5f));
 
             // Tear Down
-            Library.close();
+            if (!Utility.TearDown(id)) Assert.AreEqual(1, 0); // da ging was schief
         }
 
         [TestMethod]
@@ -705,7 +711,7 @@ namespace VisualizationLibraryTest
             Assert.AreEqual(true, Library.scale(id, -0.5f, -0.5f, -0.5f));
 
             // Tear Down
-            Library.close();
+            if (!Utility.TearDown(id)) Assert.AreEqual(1, 0); // da ging was schief
         }
 
         [TestMethod]
@@ -722,6 +728,7 @@ namespace VisualizationLibraryTest
             Assert.AreEqual(false, Library.scale(id, 1, 1, 1));
 
             // Tear Down
+            //if (!Utility.TearDown(id)) Assert.AreEqual(1, 0); // da ging was schief
             Library.close();
         }
 
@@ -735,7 +742,7 @@ namespace VisualizationLibraryTest
             Assert.AreEqual(true, Library.scalingIsNormalized(id, true));
 
             // Tear Down
-            Library.close();
+            if (!Utility.TearDown(id)) Assert.AreEqual(1, 0); // da ging was schief
         }
 
         [TestMethod]
@@ -752,6 +759,7 @@ namespace VisualizationLibraryTest
             Assert.AreEqual(false, Library.scalingIsNormalized(id, true));
 
             // Tear Down
+            //if (!Utility.TearDown(id)) Assert.AreEqual(1, 0); // da ging was schief
             Library.close();
         }
 
@@ -765,7 +773,7 @@ namespace VisualizationLibraryTest
             Assert.AreEqual(true, Library.highlightColor(id, 1.0f, 1.0f, 1.0f, 1.0f));
 
             // Tear Down
-            Library.close();
+            if (!Utility.TearDown(id)) Assert.AreEqual(1, 0); // da ging was schief
         }
 
         [TestMethod]
@@ -782,6 +790,7 @@ namespace VisualizationLibraryTest
             Assert.AreEqual(false, Library.highlightColor(id, 1, 1, 1, 1));
 
             // Tear Down
+            //if (!Utility.TearDown(id)) Assert.AreEqual(1, 0); // da ging was schief
             Library.close();
         }
 
@@ -795,7 +804,7 @@ namespace VisualizationLibraryTest
             Assert.AreEqual(true, Library.highlightColor(id, 2.0f, 2.0f, 2.0f, 2.0f));
 
             // Tear Down
-            Library.close();
+            if (!Utility.TearDown(id)) Assert.AreEqual(1, 0); // da ging was schief
         }
 
         [TestMethod]
@@ -808,7 +817,7 @@ namespace VisualizationLibraryTest
             Assert.AreEqual(true, Library.highlightColor(id, -2.0f, -2.0f, -2.0f, -2.0f));
 
             // Tear Down
-            Library.close();
+            if (!Utility.TearDown(id)) Assert.AreEqual(1, 0); // da ging was schief
         }
 
         [TestMethod]
@@ -821,7 +830,7 @@ namespace VisualizationLibraryTest
             Assert.AreEqual(true, Library.isHighlighted(id, true));
 
             // Tear Down
-            Library.close();
+            if (!Utility.TearDown(id)) Assert.AreEqual(1, 0); // da ging was schief
         }
 
         [TestMethod]
@@ -838,6 +847,7 @@ namespace VisualizationLibraryTest
             Assert.AreEqual(false, Library.isHighlighted(id, true));
 
             // Tear Down
+            //if (!Utility.TearDown(id)) Assert.AreEqual(1, 0); // da ging was schief
             Library.close();
         }
 
@@ -851,7 +861,7 @@ namespace VisualizationLibraryTest
             Assert.AreEqual(true, Library.attachToCamera(id, true));
 
             // Tear Down
-            Library.close();
+            if (!Utility.TearDown(id)) Assert.AreEqual(1, 0); // da ging was schief
         }
 
         [TestMethod]
@@ -865,7 +875,7 @@ namespace VisualizationLibraryTest
             Assert.AreEqual(true, Library.attachToCamera(id, false));
 
             // Tear Down
-            Library.close();
+            if (!Utility.TearDown(id)) Assert.AreEqual(1, 0); // da ging was schief
         }
 
         [TestMethod]
@@ -883,6 +893,7 @@ namespace VisualizationLibraryTest
             Assert.AreEqual(false, Library.attachToCamera(id, true));
 
             // Tear Down
+            //if (!Utility.TearDown(id)) Assert.AreEqual(1, 0); // da ging was schief
             Library.close();
         }
     }
