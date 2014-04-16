@@ -557,7 +557,6 @@ namespace VisualizationLibraryTest
         {
             // Setup
             uint id = Utility.SetupPoint();
-            //System.Threading.Thread.Sleep(100); // Multithreading
 
             // Test
             Assert.AreEqual(true, Library.isCreated(id));

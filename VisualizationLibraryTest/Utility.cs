@@ -87,5 +87,23 @@ namespace VisualizationLibraryTest
 
             return id;
         }
+
+        public static uint SetupText()
+        {
+            // Setup
+            if (!InitWindow())
+            {
+                return 0; // da ging was schief
+            }
+
+            uint id = Library.addText("data/fonts/arial.ttf");
+
+            if (!CheckCreation(id, 2))
+            {
+                return 0; // da ging was schief
+            }
+
+            return id;
+        }
     }
 }
