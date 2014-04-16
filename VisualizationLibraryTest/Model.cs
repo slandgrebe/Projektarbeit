@@ -4,81 +4,81 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace VisualizationLibraryTest
 {
     [TestClass]
-    public class Point
+    public class Model
     {
         [TestMethod]
-        public void Point_AddWithoutExistingWindowWithData()
+        public void Model_AddWithoutExistingWindowWithData()
         {
             // Setup
-            uint id = Library.addPoint("data/textures/sample.png");
+            uint id = Library.addModel("data/models/cube.obj");
 
             // Test
             Assert.AreNotEqual(0, id);
 
             // Tear Down
             Utility.CheckCreation(id, 1);
-            if (!Utility.TearDown(id)) Assert.AreEqual(1, 0); // da ging was schief
+            if (!Utility.TearDownModel(id)) Assert.AreEqual(1, 0); // da ging was schief
         }
 
         [TestMethod]
-        public void Point_AddWithExistingWindowWithData()
+        public void Model_AddWithExistingWindowWithData()
         {
             // Setup
             Library.init("Test", false, 640, 480);
-            uint id = Library.addPoint("data/textures/sample.png");
+            uint id = Library.addModel("data/models/cube.obj");
 
             // Test
             Assert.AreNotEqual(0, id);
 
             // Tear Down
             Utility.CheckCreation(id, 1);
-            if (!Utility.TearDown(id)) Assert.AreEqual(1, 0); // da ging was schief
+            if (!Utility.TearDownModel(id)) Assert.AreEqual(1, 0); // da ging was schief
         }
 
         [TestMethod]
-        public void Point_AddWithoutExistingWindowWithoutData()
+        public void Model_AddWithoutExistingWindowWithoutData()
         {
             // Setup
-            uint id = Library.addPoint("");
+            uint id = Library.addModel("");
 
             // Test
             Assert.AreNotEqual(0, id);
 
             // Tear Down
             Utility.CheckCreation(id, 1);
-            if (!Utility.TearDown(id)) Assert.AreEqual(1, 0); // da ging was schief
+            if (!Utility.TearDownModel(id)) Assert.AreEqual(1, 0); // da ging was schief
         }
 
         [TestMethod]
-        public void Point_AddWithExistingWindowWithoutData()
+        public void Model_AddWithExistingWindowWithoutData()
         {
             // Setup
             Library.init("Test", false, 640, 480);
-            uint id = Library.addPoint("");
+            uint id = Library.addModel("");
 
             // Test
             Assert.AreNotEqual(0, id);
 
             // Tear Down
             Utility.CheckCreation(id, 1);
-            if (!Utility.TearDown(id)) Assert.AreEqual(1, 0); // da ging was schief
+            if (!Utility.TearDownModel(id)) Assert.AreEqual(1, 0); // da ging was schief
         }
 
         [TestMethod]
-        public void Point_IsCreated()
+        public void Model_IsCreated()
         {
             // Setup
-            uint id = Utility.SetupPoint();
+            uint id = Utility.SetupModel();
 
             // Test
             Assert.AreEqual(true, Library.isCreated(id));
 
             // Tear Down
-            if (!Utility.TearDown(id)) Assert.AreEqual(1, 0); // da ging was schief
+            if (!Utility.TearDownModel(id)) Assert.AreEqual(1, 0); // da ging was schief
         }
 
         [TestMethod]
-        public void Point_IsCreatedNegative()
+        public void Model_IsCreatedNegative()
         {
             // Setup
             Library.init("Test", false, 640, 480);
@@ -91,10 +91,10 @@ namespace VisualizationLibraryTest
         }
 
         [TestMethod]
-        public void Point_Dispose()
+        public void Model_Dispose()
         {
             // Setup
-            uint id = Utility.SetupPoint();
+            uint id = Utility.SetupModel();
             Library.dispose(id);
             System.Threading.Thread.Sleep(100); // Multithreading
 
@@ -102,14 +102,14 @@ namespace VisualizationLibraryTest
             Assert.AreEqual(false, Library.isCreated(id));
 
             // Tear Down
-            if (!Utility.TearDown(id)) Assert.AreEqual(1, 0); // da ging was schief
+            if (!Utility.TearDownModel(id)) Assert.AreEqual(1, 0); // da ging was schief
         }
 
         [TestMethod]
-        public void Point_DisposeNegavite() // Point löschen den es nicht gibt
+        public void Model_DisposeNegative() // Point löschen den es nicht gibt
         {
             // Setup
-            uint id = Utility.SetupPoint();
+            uint id = Utility.SetupModel();
             uint inexistantId = id;
             while (Library.isCreated(inexistantId)) // finde nicht existierende Id
             {
@@ -121,27 +121,27 @@ namespace VisualizationLibraryTest
             Assert.AreEqual(1, 1); // keine Exception, mehr kann man nicht testen
 
             // Tear Down
-            if (!Utility.TearDown(id)) Assert.AreEqual(1, 0); // da ging was schief
+            if (!Utility.TearDownModel(id)) Assert.AreEqual(1, 0); // da ging was schief
         }
 
         [TestMethod]
-        public void Point_Position()
+        public void Model_Position()
         {
             // Setup
-            uint id = Utility.SetupPoint();
+            uint id = Utility.SetupModel();
 
             // Test
             Assert.AreEqual(true, Library.position(id, 1.0f, 1.0f, 1.0f));
 
             // Tear Down
-            if (!Utility.TearDown(id)) Assert.AreEqual(1, 0); // da ging was schief
+            if (!Utility.TearDownModel(id)) Assert.AreEqual(1, 0); // da ging was schief
         }
 
         [TestMethod]
-        public void Point_PositionNegavite() // Point positionieren den es nicht gibt
+        public void Model_PositionNegative() // Point positionieren den es nicht gibt
         {
             // Setup
-            uint id = Utility.SetupPoint();
+            uint id = Utility.SetupModel();
             uint inexistantId = id;
             while (Library.isCreated(inexistantId)) // finde nicht existierende Id
             {
@@ -152,40 +152,40 @@ namespace VisualizationLibraryTest
             Assert.AreEqual(false, Library.position(inexistantId, 1, 1, 1));
 
             // Tear Down
-            if (!Utility.TearDown(id)) Assert.AreEqual(1, 0); // da ging was schief
+            if (!Utility.TearDownModel(id)) Assert.AreEqual(1, 0); // da ging was schief
         }
 
         [TestMethod]
-        public void Point_Rotate()
+        public void Model_Rotate()
         {
             // Setup
-            uint id = Utility.SetupPoint();
+            uint id = Utility.SetupModel();
 
             // Test
             Assert.AreEqual(true, Library.rotate(id, 90, 1, 1, 1));
 
             // Tear Down
-            if (!Utility.TearDown(id)) Assert.AreEqual(1, 0); // da ging was schief
+            if (!Utility.TearDownModel(id)) Assert.AreEqual(1, 0); // da ging was schief
         }
 
         [TestMethod]
-        public void Point_RotateWithoutAxis()
+        public void Model_RotateWithoutAxis()
         {
             // Setup
-            uint id = Utility.SetupPoint();
+            uint id = Utility.SetupModel();
 
             // Test
             Assert.AreEqual(true, Library.rotate(id, 90, 0, 0, 0));
 
             // Tear Down
-            if (!Utility.TearDown(id)) Assert.AreEqual(1, 0); // da ging was schief
+            if (!Utility.TearDownModel(id)) Assert.AreEqual(1, 0); // da ging was schief
         }
 
         [TestMethod]
-        public void Point_RotateNegavite() // Point positionieren den es nicht gibt
+        public void Model_RotateNegative() // Point positionieren den es nicht gibt
         {
             // Setup
-            uint id = Utility.SetupPoint();
+            uint id = Utility.SetupModel();
             uint inexistantId = id;
             while (Library.isCreated(inexistantId)) // finde nicht existierende Id
             {
@@ -196,40 +196,42 @@ namespace VisualizationLibraryTest
             Assert.AreEqual(false, Library.rotate(inexistantId, 90, 1, 1, 1));
 
             // Tear Down
-            if (!Utility.TearDown(id)) Assert.AreEqual(1, 0); // da ging was schief
+            if (!Utility.TearDownModel(id)) Assert.AreEqual(1, 0); // da ging was schief
         }
 
         [TestMethod]
-        public void Point_Scale()
+        public void Model_Scale()
         {
+
+
             // Setup
-            uint id = Utility.SetupPoint();
+            uint id = Utility.SetupModel();
 
             // Test
             Assert.AreEqual(true, Library.scale(id, 0.5f, 0.5f, 0.5f));
 
             // Tear Down
-            if (!Utility.TearDown(id)) Assert.AreEqual(1, 0); // da ging was schief
+            if (!Utility.TearDownModel(id)) Assert.AreEqual(1, 0); // da ging was schief
         }
 
         [TestMethod]
-        public void Point_ScaleNegativeNumbers()
+        public void Model_ScaleNegativeNumbers()
         {
             // Setup
-            uint id = Utility.SetupPoint();
+            uint id = Utility.SetupModel();
 
             // Test
             Assert.AreEqual(true, Library.scale(id, -0.5f, -0.5f, -0.5f));
 
             // Tear Down
-            if (!Utility.TearDown(id)) Assert.AreEqual(1, 0); // da ging was schief
+            if (!Utility.TearDownModel(id)) Assert.AreEqual(1, 0); // da ging was schief
         }
 
         [TestMethod]
-        public void Point_ScaleNegavite() // Point skalieren den es nicht gibt
+        public void Model_ScaleNegative() // Point skalieren den es nicht gibt
         {
             // Setup
-            uint id = Utility.SetupPoint();
+            uint id = Utility.SetupModel();
             uint inexistantId = id;
             while (Library.isCreated(inexistantId)) // finde nicht existierende Id
             {
@@ -240,27 +242,27 @@ namespace VisualizationLibraryTest
             Assert.AreEqual(false, Library.scale(inexistantId, 1, 1, 1));
 
             // Tear Down
-            if (!Utility.TearDown(id)) Assert.AreEqual(1, 0); // da ging was schief
+            if (!Utility.TearDownModel(id)) Assert.AreEqual(1, 0); // da ging was schief
         }
 
         [TestMethod]
-        public void Point_ScalingIsNormalized()
+        public void Model_ScalingIsNormalized()
         {
             // Setup
-            uint id = Utility.SetupPoint();
+            uint id = Utility.SetupModel();
 
             // Test
             Assert.AreEqual(true, Library.scalingIsNormalized(id, true));
 
             // Tear Down
-            if (!Utility.TearDown(id)) Assert.AreEqual(1, 0); // da ging was schief
+            if (!Utility.TearDownModel(id)) Assert.AreEqual(1, 0); // da ging was schief
         }
 
         [TestMethod]
-        public void Point_ScalingIsNormalizedNegavite() // Point Skalierungsnormaliesierung den es nicht gibt
+        public void Model_ScalingIsNormalizedNegative() // Point Skalierungsnormaliesierung den es nicht gibt
         {
             // Setup
-            uint id = Utility.SetupPoint();
+            uint id = Utility.SetupModel();
             uint inexistantId = id;
             while (Library.isCreated(inexistantId)) // finde nicht existierende Id
             {
@@ -271,27 +273,27 @@ namespace VisualizationLibraryTest
             Assert.AreEqual(false, Library.scalingIsNormalized(inexistantId, true));
 
             // Tear Down
-            if (!Utility.TearDown(id)) Assert.AreEqual(1, 0); // da ging was schief
+            if (!Utility.TearDownModel(id)) Assert.AreEqual(1, 0); // da ging was schief
         }
 
         [TestMethod]
-        public void Point_HighlightColor()
+        public void Model_HighlightColor()
         {
             // Setup
-            uint id = Utility.SetupPoint();
+            uint id = Utility.SetupModel();
 
             // Test
             Assert.AreEqual(true, Library.highlightColor(id, 1.0f, 1.0f, 1.0f, 1.0f));
 
             // Tear Down
-            if (!Utility.TearDown(id)) Assert.AreEqual(1, 0); // da ging was schief
+            if (!Utility.TearDownModel(id)) Assert.AreEqual(1, 0); // da ging was schief
         }
 
         [TestMethod]
-        public void Point_HighlightColornNegavite() // Point positionieren den es nicht gibt
+        public void Model_HighlightColornNegative() // Point positionieren den es nicht gibt
         {
             // Setup
-            uint id = Utility.SetupPoint();
+            uint id = Utility.SetupModel();
             uint inexistantId = id;
             while (Library.isCreated(inexistantId)) // finde nicht existierende Id
             {
@@ -302,53 +304,53 @@ namespace VisualizationLibraryTest
             Assert.AreEqual(false, Library.highlightColor(inexistantId, 1, 1, 1, 1));
 
             // Tear Down
-            if (!Utility.TearDown(id)) Assert.AreEqual(1, 0); // da ging was schief
+            if (!Utility.TearDownModel(id)) Assert.AreEqual(1, 0); // da ging was schief
         }
 
         [TestMethod]
-        public void Point_HighlightColorOutOfBounds()
+        public void Model_HighlightColorOutOfBounds()
         {
             // Setup
-            uint id = Utility.SetupPoint();
+            uint id = Utility.SetupModel();
 
             // Test
             Assert.AreEqual(true, Library.highlightColor(id, 2.0f, 2.0f, 2.0f, 2.0f));
 
             // Tear Down
-            if (!Utility.TearDown(id)) Assert.AreEqual(1, 0); // da ging was schief
+            if (!Utility.TearDownModel(id)) Assert.AreEqual(1, 0); // da ging was schief
         }
 
         [TestMethod]
-        public void Point_HighlightColorOutOfBoundsNegative()
+        public void Model_HighlightColorOutOfBoundsNegativeNumbers()
         {
             // Setup
-            uint id = Utility.SetupPoint();
+            uint id = Utility.SetupModel();
 
             // Test
             Assert.AreEqual(true, Library.highlightColor(id, -2.0f, -2.0f, -2.0f, -2.0f));
 
             // Tear Down
-            if (!Utility.TearDown(id)) Assert.AreEqual(1, 0); // da ging was schief
+            if (!Utility.TearDownModel(id)) Assert.AreEqual(1, 0); // da ging was schief
         }
 
         [TestMethod]
-        public void Point_IsHighlighted()
+        public void Model_IsHighlighted()
         {
             // Setup
-            uint id = Utility.SetupPoint();
+            uint id = Utility.SetupModel();
 
             // Test
             Assert.AreEqual(true, Library.isHighlighted(id, true));
 
             // Tear Down
-            if (!Utility.TearDown(id)) Assert.AreEqual(1, 0); // da ging was schief
+            if (!Utility.TearDownModel(id)) Assert.AreEqual(1, 0); // da ging was schief
         }
 
         [TestMethod]
-        public void Point_IsHighlightedNegavite()
+        public void Model_IsHighlightedNegative()
         {
             // Setup
-            uint id = Utility.SetupPoint();
+            uint id = Utility.SetupModel();
             uint inexistantId = id;
             while (Library.isCreated(inexistantId)) // finde nicht existierende Id
             {
@@ -359,41 +361,41 @@ namespace VisualizationLibraryTest
             Assert.AreEqual(false, Library.isHighlighted(inexistantId, true));
 
             // Tear Down
-            if (!Utility.TearDown(id)) Assert.AreEqual(1, 0); // da ging was schief
+            if (!Utility.TearDownModel(id)) Assert.AreEqual(1, 0); // da ging was schief
         }
 
         [TestMethod]
-        public void Point_AttachToCamera()
+        public void Model_AttachToCamera()
         {
             // Setup
-            uint id = Utility.SetupPoint();
-        
+            uint id = Utility.SetupModel();
+
             // Test
             Assert.AreEqual(true, Library.attachToCamera(id, true));
 
             // Tear Down
-            if (!Utility.TearDown(id)) Assert.AreEqual(1, 0); // da ging was schief
+            if (!Utility.TearDownModel(id)) Assert.AreEqual(1, 0); // da ging was schief
         }
 
         [TestMethod]
-        public void Point_DetachFromCamera()
+        public void Model_DetachFromCamera()
         {
             // Setup
-            uint id = Utility.SetupPoint();
+            uint id = Utility.SetupModel();
             Library.attachToCamera(id, true);
 
             // Test
             Assert.AreEqual(true, Library.attachToCamera(id, false));
 
             // Tear Down
-            if (!Utility.TearDown(id)) Assert.AreEqual(1, 0); // da ging was schief
+            if (!Utility.TearDownModel(id)) Assert.AreEqual(1, 0); // da ging was schief
         }
 
         [TestMethod]
-        public void Point_AttachToCameraNegative()
+        public void Model_AttachToCameraNegative()
         {
             // Setup
-            uint id = Utility.SetupPoint();
+            uint id = Utility.SetupModel();
             Library.attachToCamera(id, true);
             uint inexistantId = id;
             while (Library.isCreated(inexistantId)) // finde nicht existierende Id
@@ -405,7 +407,7 @@ namespace VisualizationLibraryTest
             Assert.AreEqual(false, Library.attachToCamera(inexistantId, true));
 
             // Tear Down
-            if (!Utility.TearDown(id)) Assert.AreEqual(1, 0); // da ging was schief
+            if (!Utility.TearDownModel(id)) Assert.AreEqual(1, 0); // da ging was schief
         }
     }
 }

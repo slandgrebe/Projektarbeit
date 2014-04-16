@@ -5,13 +5,13 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace VisualizationLibraryTest
 {
     [TestClass]
-    public class Text
+    public class Button
     {
         [TestMethod]
-        public void Text_AddWithoutExistingWindowWithData()
+        public void Button_AddWithoutExistingWindowWithData()
         {
             // Setup
-            uint id = Library.addText("data/fonts/arial.ttf");
+            uint id = Library.addButton("data/fonts/arial.ttf");
 
             // Test
             Assert.AreNotEqual(0, id);
@@ -21,11 +21,11 @@ namespace VisualizationLibraryTest
         }
 
         [TestMethod]
-        public void Text_AddWithExistingWindowWithData()
+        public void Button_AddWithExistingWindowWithData()
         {
             // Setup
             Library.init("Test", false, 640, 480);
-            uint id = Library.addText("data/fonts/arial.ttf");
+            uint id = Library.addButton("data/fonts/arial.ttf");
 
             // Test
             Assert.AreNotEqual(0, id);
@@ -35,10 +35,10 @@ namespace VisualizationLibraryTest
         }
 
         [TestMethod]
-        public void Text_AddWithoutExistingWindowWithoutData()
+        public void Button_AddWithoutExistingWindowWithoutData()
         {
             // Setup
-            uint id = Library.addText("");
+            uint id = Library.addButton("");
 
             // Test
             Assert.AreNotEqual(0, id);
@@ -48,11 +48,11 @@ namespace VisualizationLibraryTest
         }
 
         [TestMethod]
-        public void Text_AddWithExistingWindowWithoutData()
+        public void Button_AddWithExistingWindowWithoutData()
         {
             // Setup
             Library.init("Test", false, 640, 480);
-            uint id = Library.addText("");
+            uint id = Library.addButton("");
 
             // Test
             Assert.AreNotEqual(0, id);
@@ -62,10 +62,10 @@ namespace VisualizationLibraryTest
         }
 
         [TestMethod]
-        public void Text_IsCreated()
+        public void Button_IsCreated()
         {
             // Setup
-            uint id = Utility.SetupText();
+            uint id = Utility.SetupButton();
 
             // Test
             Assert.AreEqual(true, Library.isCreated(id));
@@ -75,7 +75,7 @@ namespace VisualizationLibraryTest
         }
 
         [TestMethod]
-        public void Text_IsCreatedNegative()
+        public void Button_IsCreatedNegative()
         {
             // Setup
             Library.init("Test", false, 640, 480);
@@ -88,10 +88,10 @@ namespace VisualizationLibraryTest
         }
 
         [TestMethod]
-        public void Text_Dispose()
+        public void Button_Dispose()
         {
             // Setup
-            uint id = Utility.SetupText();
+            uint id = Utility.SetupButton();
             Library.dispose(id);
             Utility.CheckRemoval(id, 2);
 
@@ -103,10 +103,10 @@ namespace VisualizationLibraryTest
         }
 
         [TestMethod]
-        public void Text_DisposeNegavite() // Point löschen den es nicht gibt
+        public void Button_DisposeNegavite() // Point löschen den es nicht gibt
         {
             // Setup
-            uint id = Utility.SetupText();
+            uint id = Utility.SetupButton();
             uint inexistantId = id;
             while (Library.isCreated(inexistantId)) // finde nicht existierende Id
             {
@@ -122,10 +122,10 @@ namespace VisualizationLibraryTest
         }
 
         [TestMethod]
-        public void Text_Position()
+        public void Button_Position()
         {
             // Setup
-            uint id = Utility.SetupText();
+            uint id = Utility.SetupButton();
 
             // Test
             Assert.AreEqual(true, Library.position(id, 1.0f, 1.0f, 1.0f));
@@ -135,10 +135,10 @@ namespace VisualizationLibraryTest
         }
 
         [TestMethod]
-        public void Text_PositionNegavite() // Model positionieren den es nicht gibt
+        public void Button_PositionNegavite() // Model positionieren den es nicht gibt
         {
             // Setup
-            uint id = Utility.SetupText();
+            uint id = Utility.SetupButton();
             uint inexistantId = id;
             while (Library.isCreated(inexistantId)) // finde nicht existierende Id
             {
@@ -153,10 +153,10 @@ namespace VisualizationLibraryTest
         }
 
         [TestMethod]
-        public void Text_Rotate() // Text kann nicht rotiert werden
+        public void Button_Rotate() // Text kann nicht rotiert werden
         {
             // Setup
-            uint id = Utility.SetupText();
+            uint id = Utility.SetupButton();
 
             // Test
             Assert.AreEqual(false, Library.rotate(id, 90, 1, 1, 1));
@@ -166,49 +166,49 @@ namespace VisualizationLibraryTest
         }
 
         [TestMethod]
-        public void Text_Scale() // Text kann nicht skaliert werden
+        public void Button_Scale() // Text kann nicht skaliert werden
         {
             // Setup
-            uint id = Utility.SetupText();
+            uint id = Utility.SetupButton();
 
             // Test
-            Assert.AreEqual(false, Library.scale(id, 0.5f, 0.5f, 0.5f));
+            Assert.AreEqual(true, Library.scale(id, 0.5f, 0.5f, 0.5f));
 
             // Tear Down
             if (!Utility.TearDown(id)) Assert.AreEqual(1, 0); // da ging was schief
         }
 
         [TestMethod]
-        public void Text_HighlightColor() // Text kann nicht hervorgehoben werden
+        public void Button_HighlightColor() // Text kann nicht hervorgehoben werden
         {
             // Setup
-            uint id = Utility.SetupText();
+            uint id = Utility.SetupButton();
 
             // Test
-            Assert.AreEqual(false, Library.highlightColor(id, 1.0f, 1.0f, 1.0f, 1.0f));
+            Assert.AreEqual(true, Library.highlightColor(id, 1.0f, 1.0f, 1.0f, 1.0f));
 
             // Tear Down
             if (!Utility.TearDown(id)) Assert.AreEqual(1, 0); // da ging was schief
         }
 
         [TestMethod]
-        public void Text_IsHighlighted() // Text kann nicht hervorgehoben werden
+        public void Button_IsHighlighted() // Text kann nicht hervorgehoben werden
         {
             // Setup
-            uint id = Utility.SetupText();
+            uint id = Utility.SetupButton();
 
             // Test
-            Assert.AreEqual(false, Library.isHighlighted(id, true));
+            Assert.AreEqual(true, Library.isHighlighted(id, true));
 
             // Tear Down
             if (!Utility.TearDown(id)) Assert.AreEqual(1, 0); // da ging was schief
         }
 
         [TestMethod]
-        public void Text_AttachToCamera() // Text kann nicht an die Kamera angehängt werden
+        public void Button_AttachToCamera() // Text kann nicht an die Kamera angehängt werden
         {
             // Setup
-            uint id = Utility.SetupText();
+            uint id = Utility.SetupButton();
 
             // Test
             Assert.AreEqual(false, Library.attachToCamera(id, true));
@@ -218,10 +218,10 @@ namespace VisualizationLibraryTest
         }
 
         [TestMethod]
-        public void Text_Text()
+        public void Button_Text()
         {
             // Setup
-            uint id = Utility.SetupText();
+            uint id = Utility.SetupButton();
 
             // Test
             Assert.AreEqual(true, Library.isCreated(id) && Library.text(id, "anderer text"));
@@ -230,10 +230,10 @@ namespace VisualizationLibraryTest
             if (!Utility.TearDown(id)) Assert.AreEqual(1, 0); // da ging was schief
         }
         [TestMethod]
-        public void Text_TextNegative()
+        public void Button_TextNegative()
         {
             // Setup
-            uint id = Utility.SetupText();
+            uint id = Utility.SetupButton();
 
             // Test
             Assert.AreEqual(true, Library.text(id, ""));
@@ -243,10 +243,10 @@ namespace VisualizationLibraryTest
         }
 
         [TestMethod]
-        public void Text_TextSize()
+        public void Button_TextSize()
         {
             // Setup
-            uint id = Utility.SetupText();
+            uint id = Utility.SetupButton();
 
             // Test
             Assert.AreEqual(true, Library.textSize(id, 20));
@@ -256,10 +256,10 @@ namespace VisualizationLibraryTest
         }
 
         [TestMethod]
-        public void Text_TextSizeNegativeSize()
+        public void Button_TextSizeNegativeSize()
         {
             // Setup
-            uint id = Utility.SetupText();
+            uint id = Utility.SetupButton();
 
             // Test
             Assert.AreEqual(true, Library.textSize(id, -20));
@@ -269,10 +269,10 @@ namespace VisualizationLibraryTest
         }
 
         [TestMethod]
-        public void Text_TextSizeZero()
+        public void Button_TextSizeZero()
         {
             // Setup
-            uint id = Utility.SetupText();
+            uint id = Utility.SetupButton();
 
             // Test
             Assert.AreEqual(true, Library.textSize(id, 0));
@@ -282,16 +282,16 @@ namespace VisualizationLibraryTest
         }
 
         [TestMethod]
-        public void Text_TextSizeNegative()
+        public void Button_TextSizeNegative()
         {
             // Setup
-            uint id = Utility.SetupText();
+            uint id = Utility.SetupButton();
             uint inexistantId = id;
             while (Library.isCreated(inexistantId)) // finde nicht existierende Id
             {
                 inexistantId++;
             }
-            
+
             // Test
             Assert.AreEqual(false, Library.textSize(inexistantId, 20));
 
@@ -300,10 +300,10 @@ namespace VisualizationLibraryTest
         }
 
         [TestMethod]
-        public void Text_TextColor()
+        public void Button_TextColor()
         {
             // Setup
-            uint id = Utility.SetupText();
+            uint id = Utility.SetupButton();
 
             // Test
             Assert.AreEqual(true, Library.textColor(id, 1, 1, 1, 1));
@@ -313,10 +313,10 @@ namespace VisualizationLibraryTest
         }
 
         [TestMethod]
-        public void Text_TextColorOutOfBounds()
+        public void Button_TextColorOutOfBounds()
         {
             // Setup
-            uint id = Utility.SetupText();
+            uint id = Utility.SetupButton();
 
             // Test
             Assert.AreEqual(true, Library.textColor(id, 2, 2, 2, 2));
@@ -326,10 +326,10 @@ namespace VisualizationLibraryTest
         }
 
         [TestMethod]
-        public void Text_TextColorOutOfBoundsNegative()
+        public void Button_TextColorOutOfBoundsNegative()
         {
             // Setup
-            uint id = Utility.SetupText();
+            uint id = Utility.SetupButton();
 
             // Test
             Assert.AreEqual(true, Library.textColor(id, -2, -2, -2, -2));
@@ -339,10 +339,10 @@ namespace VisualizationLibraryTest
         }
 
         [TestMethod]
-        public void Text_TextColorNegative() // Model das nicht existiert
+        public void Button_TextColorNegative() // Model das nicht existiert
         {
             // Setup
-            uint id = Utility.SetupText();
+            uint id = Utility.SetupButton();
             uint inexistantId = id;
             while (Library.isCreated(inexistantId)) // finde nicht existierende Id
             {

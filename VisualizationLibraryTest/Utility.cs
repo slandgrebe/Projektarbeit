@@ -4,8 +4,6 @@ namespace VisualizationLibraryTest
 {
     class Utility
     {
-        
-
         public static bool CheckCreation(uint id, float seconds)
         {
             Stopwatch sw = Stopwatch.StartNew();
@@ -37,7 +35,7 @@ namespace VisualizationLibraryTest
                     result = true;
                     break;
                 }
-                System.Threading.Thread.Sleep(1); // ... darum gibts das hier
+                System.Threading.Thread.Sleep(1); // ... darum gibts das hier, was bei Model aber auch nicht mehr hilft.
             }
 
             sw.Stop();
@@ -70,6 +68,39 @@ namespace VisualizationLibraryTest
             return result;
         }
 
+        public static bool TearDownModel(uint id)
+        {
+            bool result = false;
+
+            Library.dispose(id);
+            if (CheckRemoval(id, 2)) // Das macht bei Models Probleme
+            {
+                result = true;
+            }
+
+            Library.close();
+
+            return true;
+        }
+
+        public static uint SetupModel()
+        {
+            // Setup
+            if (!InitWindow())
+            {
+                return 0; // da ging was schief
+            }
+
+            uint id = Library.addModel("data/models/cube.obj");
+
+            if (!CheckCreation(id, 2))
+            {
+                return 0; // da ging was schief
+            }
+
+            return id;
+        }
+
         public static uint SetupPoint()
         {
             // Setup
@@ -97,6 +128,24 @@ namespace VisualizationLibraryTest
             }
 
             uint id = Library.addText("data/fonts/arial.ttf");
+
+            if (!CheckCreation(id, 2))
+            {
+                return 0; // da ging was schief
+            }
+
+            return id;
+        }
+
+        public static uint SetupButton()
+        {
+            // Setup
+            if (!InitWindow())
+            {
+                return 0; // da ging was schief
+            }
+
+            uint id = Library.addButton("data/fonts/arial.ttf");
 
             if (!CheckCreation(id, 2))
             {
