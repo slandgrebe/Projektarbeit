@@ -37,23 +37,18 @@ namespace Controller
         /// </summary>
         public void Start()
         {
-            game = Game.Instance;
+            
             Sensor = new SkeletonTracker();
             Sensor.Start();
             Sensor.SkeletonEvent += new SkeletonTrackerEvent(GetEvent);
-            
-            
+            game = Game.Instance;
         }
 
         /// <summary>
         /// Punkte und Linien für einen Körpder erstellen
         /// </summary>
         private void Initialize()
-        {
-            
-           
-            
-            
+        { 
         }
 
         /// <summary>
@@ -61,8 +56,9 @@ namespace Controller
         /// </summary>
         public void Update()
         {
-            game.Update();
-            
+            if(game != null){
+                game.Update();
+            }
         }
 
         /// <summary>
