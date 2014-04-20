@@ -37,6 +37,8 @@ namespace View
         [DllImport("Visualization.dll")]
         public extern static bool scale(uint modelId, float x, float y, float z);
         [DllImport("Visualization.dll")]
+        public extern static bool scalingIsNormalized(uint modelId, bool choice);
+        [DllImport("Visualization.dll")]
         public extern static bool highlightColor(uint modelId, float r, float g, float b, float a);
         [DllImport("Visualization.dll")]
         public extern static bool isHighlighted(uint modelId, bool choice);
@@ -58,6 +60,11 @@ namespace View
         public extern static void tiltCamera(float degrees);
         [DllImport("Visualization.dll")]
         public extern static void changeCameraSpeed(float speed);
+
+        [DllImport("Visualization.dll")]
+        public extern static uint collisionsTextLength();
+        [DllImport("Visualization.dll")]
+        public extern static void collisionsText(System.Text.StringBuilder text, int length);
         
         public static bool drawLine(uint id, float x1, float y1, float z1, float x2, float y2, float z2)
         {

@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<Level xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <segmentsXmlPath>
+    <string>/Resource Files/Levels/Jungle/Segments/Start.xml</string>
+  </segmentsXmlPath>
+  <Name>Jungle</Name>
+  <Difficulty>Easy</Difficulty>
+</Level>

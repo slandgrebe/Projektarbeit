@@ -7,14 +7,29 @@ using View;
 
 namespace Controller
 {
-    class Model
+    public class Model
     {
         public uint Id { get; set; }
+        public string Path { get; set; }
+        public bool ScalingNormalized { get; set; }
 
-        public Model(string path)
+        public Model()
         {
-            Id = Visualization.addModel(path);
+            ScalingNormalized = false;
+        }
+
+        public Model(string path, bool scalingNormalized = false)
+        {
+            Path = path;
+            ScalingNormalized = scalingNormalized;
+            Create();
+        }
+
+        public void Create()
+        {
+            Id = Visualization.addModel(Path);
             while (!Visualization.isCreated(Id)) { }
+            Visualization.scalingIsNormalized(Id, ScalingNormalized);
         }
 
         public void Scale(float scale)

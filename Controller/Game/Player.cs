@@ -11,17 +11,17 @@ namespace Controller
     {
         public float Scale { private get; set; }
         public bool Attach { private get; set; }
-        
-        private Model Head = new Model("Resource Files/Models/Player/Head.3ds");
-        private Model Torso = new Model("Resource Files/Models/Player/Torso.3ds");
-        private Model UpperarmLeft = new Model("Resource Files/Models/Player/UpperArm.3ds");
-        private Model UpperarmRight = new Model("Resource Files/Models/Player/UpperArm.3ds");
-        private Model ForearmLeft = new Model("Resource Files/Models/Player/ForeArm.3ds");
-        private Model ForearmRight = new Model("Resource Files/Models/Player/ForeArm.3ds");
-        private Model ThighlegLeft = new Model("Resource Files/Models/Player/ThighLeg.3ds");
-        private Model ThighlegRight = new Model("Resource Files/Models/Player/ThighLeg.3ds");
-        private Model LowerlegLeft = new Model("Resource Files/Models/Player/LowerLeg.3ds");
-        private Model LowerlegRight = new Model("Resource Files/Models/Player/LowerLeg.3ds");
+
+        private Model Head = new Model("Resource Files/Models/Player/Head.3ds", false);
+        private Model Torso = new Model("Resource Files/Models/Player/Torso.3ds", false);
+        private Model UpperarmLeft = new Model("Resource Files/Models/Player/UpperArm.3ds", false);
+        private Model UpperarmRight = new Model("Resource Files/Models/Player/UpperArm.3ds", false);
+        private Model ForearmLeft = new Model("Resource Files/Models/Player/ForeArm.3ds", false);
+        private Model ForearmRight = new Model("Resource Files/Models/Player/ForeArm.3ds", false);
+        private Model ThighlegLeft = new Model("Resource Files/Models/Player/ThighLeg.3ds", false);
+        private Model ThighlegRight = new Model("Resource Files/Models/Player/ThighLeg.3ds", false);
+        private Model LowerlegLeft = new Model("Resource Files/Models/Player/LowerLeg.3ds", false);
+        private Model LowerlegRight = new Model("Resource Files/Models/Player/LowerLeg.3ds", false);
 
         public void Update()
         {
@@ -60,12 +60,12 @@ namespace Controller
             Body.Instance.Scale(Scale);
 
 
-            Head.Scale(Scale / 3.333f);
+            Head.Scale(Scale);
             Torso.Scale(Scale);
-            UpperarmLeft.Scale(Scale / 1.333f);
-            UpperarmRight.Scale(Scale / 1.333f);
-            ForearmLeft.Scale(Scale / 1.1f);
-            ForearmRight.Scale(Scale / 1.1f);
+            UpperarmLeft.Scale(Scale);
+            UpperarmRight.Scale(Scale);
+            ForearmLeft.Scale(Scale);
+            ForearmRight.Scale(Scale);
             ThighlegLeft.Scale(Scale);
             ThighlegRight.Scale(Scale);
             LowerlegLeft.Scale(Scale);
