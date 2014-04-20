@@ -164,6 +164,16 @@ namespace visual {
 		* @return Prüfung ob die Operation durchgeführt werden konnte
 		*/
 		bool positionModel(GLuint modelId, glm::vec3 position);
+
+		/** Liefert die Position eines Modell. Kann mit allen Arten von Modellen umgehen, allerdings werden diese unterschiedlich behandelt.
+		Model und Point werden relativ zum Ursprung in einem normalen, dreidimensionalem, kartesischem Koordinatensystem positioniert.
+		Bei Text und Button handelt es sich um GUI Elemente, weswegen hier die z-Koordinate ignoriert wird.
+		X- und Y-Koordinaten gehen von -1 bis +1 wobei -1 dem linken bzw. unteren Rand und +1 dem rechten bzw. oberen Rand entspricht.
+		* @author Stefan Landgrebe
+		* @param modelId ID des Modells
+		* @return Position des Modells
+		*/
+		glm::vec3 modelPosition(GLuint modelId);
 		
 		/** Rotiert ein Modell. Diese Methode kann nur für Model und Point verwendet werden.
 		* @author Stefan Landgrebe

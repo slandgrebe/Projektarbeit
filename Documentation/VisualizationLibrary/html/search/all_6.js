@@ -5,6 +5,7 @@ var searchData=
   ['getinstance',['getInstance',['../classvisual_1_1graphics_1_1_graphic_engine.html#a1675ee17a75ce754132b3bdd6c7b3424',1,'visual::graphics::GraphicEngine::getInstance()'],['../classvisual_1_1_manager.html#af8199921090229c4215cdcfefa57a046',1,'visual::Manager::getInstance()']]],
   ['getmodelviewmatrix',['getModelViewMatrix',['../classvisual_1_1model_1_1_model.html#a35a7ec0210e00cb95e2d7ac98e6bc318',1,'visual::model::Model']]],
   ['getorthographicmodelviewmatrix',['getOrthographicModelViewMatrix',['../classvisual_1_1model_1_1_model.html#a6394c98337670f55e7c25a6aa685a16d',1,'visual::model::Model']]],
+  ['getposition',['getPosition',['../classvisual_1_1gui_1_1_text.html#ad159a3b998791b33162248b75073f894',1,'visual::gui::Text']]],
   ['getprojectionmatrix',['getProjectionMatrix',['../classvisual_1_1graphics_1_1_graphic_engine.html#a3d78ef543a0ddadce5a48693cbc6cefe',1,'visual::graphics::GraphicEngine']]],
   ['getshaderprogramid',['getShaderProgramId',['../classvisual_1_1graphics_1_1_shader_program.html#a15f94853532cdc4a2afa37b1e0b190e5',1,'visual::graphics::ShaderProgram']]],
   ['gettransformedmodelmatrix',['getTransformedModelMatrix',['../classvisual_1_1model_1_1_model.html#acf686da571802d4b23e4999c7b3767de',1,'visual::model::Model']]],
@@ -14,7 +15,7 @@ var searchData=
   ['getviewprojectionmatrix',['getViewProjectionMatrix',['../classvisual_1_1graphics_1_1_graphic_engine.html#a31fc702d4d91b6836867f6f5c3e22a9f',1,'visual::graphics::GraphicEngine']]],
   ['getwindowheight',['getWindowHeight',['../classvisual_1_1graphics_1_1_graphic_engine.html#a0696e5fff4f13400ccadf5e50c4b8adf',1,'visual::graphics::GraphicEngine']]],
   ['getwindowwidth',['getWindowWidth',['../classvisual_1_1graphics_1_1_graphic_engine.html#a3a11fbf3b74696b39f0a109fb2e9da94',1,'visual::graphics::GraphicEngine']]],
-  ['glew_5fstatic',['GLEW_STATIC',['../_graphic_engine_8cpp.html#abcde84ea0ef5f934384e4620f092c85a',1,'GraphicEngine.cpp']]],
+  ['glew_5fstatic',['GLEW_STATIC',['../stdafx_8h.html#abcde84ea0ef5f934384e4620f092c85a',1,'stdafx.h']]],
   ['graphicengine',['GraphicEngine',['../classvisual_1_1graphics_1_1_graphic_engine.html',1,'visual::graphics']]],
   ['graphicengine_2ecpp',['GraphicEngine.cpp',['../_graphic_engine_8cpp.html',1,'']]],
   ['graphicengine_2eh',['GraphicEngine.h',['../_graphic_engine_8h.html',1,'']]]

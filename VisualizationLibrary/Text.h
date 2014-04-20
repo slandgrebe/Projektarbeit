@@ -97,6 +97,15 @@ namespace visual {
 			*/
 			void setPosition(const float x, const float y);
 
+			/** Liefert die Position des Objekts auf der Zeichnungsfläche des GUIs.
+			Die Zeichnungsfläche umfasst das gesamte Fenster.
+			Die Zeichnungsfläche ist 2 Einheiten breit und hoch, wobei die untere, linke Ecke der Koordinate -1/-1 und die obere, rechte Ecke der Koordinate 1/1 entspricht.
+			* @author Stefan Landgrebe
+			* @return Position
+			*/
+			glm::vec2 getPosition(void);
+
+
 			/** Ändert die Grösse des Textes
 			* @author Stefan Landgrebe
 			* @param points Grösse in Punkten

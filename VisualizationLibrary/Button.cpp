@@ -64,6 +64,9 @@ void Button::position(glm::vec2 position) {
 	square.position(glm::vec3(position, zSquare));
 	text.setPosition(position.x, position.y);
 }
+glm::vec3 Button::position(void) {
+	return square.position();
+}
 
 void Button::draw() {
 	square.draw();

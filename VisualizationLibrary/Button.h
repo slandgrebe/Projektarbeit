@@ -92,6 +92,13 @@ namespace visual {
 			*/
 			void position(glm::vec2 position);
 
+			/** Liefert die Position eines Modell.
+			Die Zeichnungsfläche des GUIs ist 2 Einheiten breit und hoch (jeweils von -1 bis +1). Standardmässig befindet sich der Button an der Position 0/0 (dem Mittelpunkt).
+			Bsp.: Positioniert man den Button an die Position 0.5/-0.5 befindet er sich unten rechts im Fenster.
+			* @author Stefan Landgrebe
+			* @return Position
+			*/
+			glm::vec3 position(void);
 
 			/** Zeichnet den Button neu.
 			* @author Stefan Landgrebe

@@ -36,6 +36,7 @@ Modell Manipulation
 Beschreibung | Dokumentation
 ------ | -------
 Positionieren | @link position @endlink
+momentane Position | @link positionX @endlink \n @link positionY @endlink \n @link positionZ @endlink \n
 Rotation \n (Nur Model und Point) | @link rotate @endlink
 Skalierung \n (Nur Model, Point und Button) | @link scale @endlink
 Skalierungsnormalisierung \n (Nur Model und Point) | @link scalingIsNormalized @endlink
@@ -209,6 +210,43 @@ X- und Y-Koordinaten gehen von -1 bis +1 wobei -1 dem linken bzw. unteren Rand u
 * @return (Bool) Prüfung ob die Operation durchgeführt werden konnte
 */
 extern "C" DLL_API int APIENTRY position(const unsigned int modelId, const float x, const float y, const float z);
+
+/** Liefert die x-Komponente der Position eines Objekts. Kann mit allen Arten von Modellen umgehen, allerdings werden diese unterschiedlich behandelt.
+Model und Point werden relativ zum Ursprung in einem normalen, dreidimensionalem, kartesischem Koordinatensystem positioniert.
+Bei Text und Button handelt es sich um GUI Elemente, weswegen hier die z-Koordinate ignoriert wird.
+X- und Y-Koordinaten gehen von -1 bis +1 wobei -1 dem linken bzw. unteren Rand und +1 dem rechten bzw. oberen Rand entspricht. \n
+\n
+
+* @author Stefan Landgrebe
+* @param modelId ID des Modells
+* @return x-Komponente der Position eines Objekts
+*/
+extern "C" DLL_API float APIENTRY positionX(const unsigned int modelId);
+
+/** Liefert die y-Komponente der Position eines Objekts. Kann mit allen Arten von Modellen umgehen, allerdings werden diese unterschiedlich behandelt.
+Model und Point werden relativ zum Ursprung in einem normalen, dreidimensionalem, kartesischem Koordinatensystem positioniert.
+Bei Text und Button handelt es sich um GUI Elemente, weswegen hier die z-Koordinate ignoriert wird.
+X- und Y-Koordinaten gehen von -1 bis +1 wobei -1 dem linken bzw. unteren Rand und +1 dem rechten bzw. oberen Rand entspricht. \n
+\n
+
+* @author Stefan Landgrebe
+* @param modelId ID des Modells
+* @return y-Komponente der Position eines Objekts
+*/
+extern "C" DLL_API float APIENTRY positionY(const unsigned int modelId);
+
+/** Liefert die z-Komponente der Position eines Objekts. Kann mit allen Arten von Modellen umgehen, allerdings werden diese unterschiedlich behandelt.
+Model und Point werden relativ zum Ursprung in einem normalen, dreidimensionalem, kartesischem Koordinatensystem positioniert.
+Bei Text und Button handelt es sich um GUI Elemente, weswegen hier die z-Koordinate ignoriert wird.
+X- und Y-Koordinaten gehen von -1 bis +1 wobei -1 dem linken bzw. unteren Rand und +1 dem rechten bzw. oberen Rand entspricht. \n
+\n
+
+* @author Stefan Landgrebe
+* @param modelId ID des Modells
+* @return z-Komponente der Position eines Objekts
+*/
+extern "C" DLL_API float APIENTRY positionZ(const unsigned int modelId);
+
 
 /** Rotiert ein Modell. Diese Methode kann nur für Model und Point verwendet werden. \n
 \n

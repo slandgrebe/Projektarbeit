@@ -153,6 +153,109 @@ namespace VisualizationLibraryTest
         }
 
         [TestMethod]
+        public void Text_PositionX()
+        {
+            // Setup
+            uint id = Utility.SetupText();
+            Library.position(id, 1, 2, 3);
+
+            // Test
+            Assert.AreEqual(1, Library.positionX(id));
+
+            // Tear Down
+            if (!Utility.TearDown(id)) Assert.AreEqual(1, 0); // da ging was schief
+        }
+
+        [TestMethod]
+        public void Text_PositionXNegative() // Point positionieren den es nicht gibt
+        {
+            // Setup
+            uint id = Utility.SetupText();
+            Library.position(id, 1, 2, 3);
+
+            uint inexistantId = id;
+            while (Library.isCreated(inexistantId)) // finde nicht existierende Id
+            {
+                inexistantId++;
+            }
+
+            // Test
+            Assert.AreEqual(0, Library.positionX(inexistantId));
+
+            // Tear Down
+            if (!Utility.TearDown(id)) Assert.AreEqual(1, 0); // da ging was schief
+        }
+
+        [TestMethod]
+        public void Text_PositionY()
+        {
+            // Setup
+            uint id = Utility.SetupText();
+            Library.position(id, 1, 2, 3);
+
+            // Test
+            Assert.AreEqual(2, Library.positionY(id));
+
+            // Tear Down
+            if (!Utility.TearDown(id)) Assert.AreEqual(1, 0); // da ging was schief
+        }
+
+        [TestMethod]
+        public void Text_PositionYNegative() // Point positionieren den es nicht gibt
+        {
+            // Setup
+            uint id = Utility.SetupText();
+            Library.position(id, 1, 2, 3);
+
+            uint inexistantId = id;
+            while (Library.isCreated(inexistantId)) // finde nicht existierende Id
+            {
+                inexistantId++;
+            }
+
+            // Test
+            Assert.AreEqual(0, Library.positionY(inexistantId));
+
+            // Tear Down
+            if (!Utility.TearDown(id)) Assert.AreEqual(1, 0); // da ging was schief
+        }
+
+        [TestMethod]
+        public void Text_PositionZ() // Text hat keine z-Komponente
+        {
+            // Setup
+            uint id = Utility.SetupText();
+            Library.position(id, 1, 2, 3);
+
+            // Test
+            Assert.AreNotEqual(3, Library.positionZ(id));
+
+            // Tear Down
+            if (!Utility.TearDown(id)) Assert.AreEqual(1, 0); // da ging was schief
+        }
+
+        [TestMethod]
+        public void Text_PositionZNegative() // Point positionieren den es nicht gibt
+        {
+            // Setup
+            uint id = Utility.SetupText();
+            Library.position(id, 1, 2, 3);
+
+            uint inexistantId = id;
+            while (Library.isCreated(inexistantId)) // finde nicht existierende Id
+            {
+                inexistantId++;
+            }
+
+            // Test
+            Assert.AreEqual(0, Library.positionZ(inexistantId));
+
+            // Tear Down
+            if (!Utility.TearDown(id)) Assert.AreEqual(1, 0); // da ging was schief
+        }
+
+
+        [TestMethod]
         public void Text_Rotate() // Text kann nicht rotiert werden
         {
             // Setup

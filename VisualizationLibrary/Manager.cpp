@@ -221,6 +221,31 @@ bool Manager::positionModel(GLuint modelId, glm::vec3 position) {
 	return false;
 }
 
+glm::vec3 Manager::modelPosition(GLuint modelId) {
+	glm::vec3 position = glm::vec3(0, 0, 0);
+
+	if (assimpModelList.find(modelId) != assimpModelList.end()) {
+		model::AssimpModel* model = assimpModelList.find(modelId)->second;
+		position = model->position();
+	}
+	else if (squareList.find(modelId) != squareList.end()) {
+		model::Square* model = squareList.find(modelId)->second;
+		position = model->position();
+	}
+	else if (textList.find(modelId) != textList.end()) {
+		gui::Text* model = textList.find(modelId)->second;
+		position = glm::vec3(model->getPosition(), 0);
+	}
+	else if (buttonList.find(modelId) != buttonList.end()) {
+		gui::Button* model = buttonList.find(modelId)->second;
+		position = model->position();
+	}
+	else {
+		Log().error() << "Das Model mit der modelId '" << modelId << "' konnte waehrend dem Versuch dessen Position zu ermitteln nicht gefunden werden.";
+	}
+
+	return position;
+}
 
 bool Manager::rotateModel(GLuint modelId, GLfloat degrees, glm::vec3 axis) {
 	if (assimpModelList.find(modelId) != assimpModelList.end()) {

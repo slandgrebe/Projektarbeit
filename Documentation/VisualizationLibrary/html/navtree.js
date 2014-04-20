@@ -32,7 +32,7 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "_assimp_model_8cpp.html",
-"classvisual_1_1model_1_1_model.html#a6793cc75434c53378af7301f63f1ea00"
+"classvisual_1_1model_1_1_model.html#a353ab65e6e0d6baa69e7963cc0e581ab"
 ];
 
 var SYNCONMSG = 'Klicken um Panelsynchronisation auszuschalten';
