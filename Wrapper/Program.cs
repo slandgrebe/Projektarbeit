@@ -8,7 +8,11 @@ namespace VisualizationExample
         /*[DllImport("Visualization.dll", EntryPoint = "doSomething")]
         extern static void doSomething(string text);*/
         [DllImport("Visualization.dll")]
+        public extern static bool init(string windowTitle, bool fullscreen, uint windowWidth, uint windowHeight);
+        [DllImport("Visualization.dll")]
         public extern static bool isRunning();
+        [DllImport("Visualization.dll")]
+        public extern static void close();
 
 
         [DllImport("Visualization.dll")]
@@ -46,11 +50,11 @@ namespace VisualizationExample
         public extern static bool attachToCamera(uint modelId, bool choice);
 
         [DllImport("Visualization.dll")]
-        public extern static void text(uint textId, string text);
+        public extern static bool text(uint textId, string text);
 		[DllImport("Visualization.dll")]
         public extern static bool textSize(uint textId, int points);
         [DllImport("Visualization.dll")]
-        public extern static void textColor(uint textId, float r, float g, float b, float a);
+        public extern static bool textColor(uint textId, float r, float g, float b, float a);
 
         [DllImport("Visualization.dll")]
         public extern static void positionCamera(float x, float y, float z);
@@ -64,15 +68,23 @@ namespace VisualizationExample
         [DllImport("Visualization.dll")]
         public extern static uint collisionsTextLength();
         [DllImport("Visualization.dll")]
-        public extern static void collisionsText(System.Text.StringBuilder text, int length);
+        public extern static bool collisionsText(System.Text.StringBuilder text, int length);
 
         static void Main(string[] args)
         {
             System.Windows.Forms.MessageBox.Show("Mit <Esc> kann das Programm beendet werden.");
-            
+
+            Console.WriteLine(init("Fenstertitel", false, 640, 480));
+
+            /*// WINDOW
+            init("Test", false, 640, 480);
+            close();
+
+            init("Test2", false, 640, 480);*/
+
             // POINTS
             uint pointId = addPoint("data/textures/sample.png");
-            while (!isCreated(pointId)) { }
+            while (pointId != 0 && !isCreated(pointId)) { }
             position(pointId, -0.5f, 0.5f, -5f);
 
             uint pointId2 = addPoint("data/textures/test.png");

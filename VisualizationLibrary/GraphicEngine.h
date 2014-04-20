@@ -32,11 +32,26 @@ namespace visual {
 			*/
 			static GraphicEngine* getInstance();
 
+			/** Öffnet das Fenster
+			* @author Stefan Landgrebe
+			* @param windowTitle Fesntertitel
+			* @param fullscreen Fullscreen
+			* @param windowWidth Fensterbreite, bei 0 wird native Bildschirmbreite verwendet
+			* @param windowHeight Fensterhöhe, bei 0 wird die native Bildschirmhöhe verwendet
+			*/
+			bool init(std::string windowTitle = "Projektarbeit", bool fullscreen = false, unsigned int windowWidth = 640, unsigned int windowHeight = 480);
+
 			/** Prüft den Zustand des Fensters.
 			* @author Stefan Landgrebe
 			* @return True wenn das Fenster offen ist, ansonsten False
 			*/
 			bool isRunning(void) { return running; }
+
+			/** Sorgt dafür dass das Fenster geschlossen wird
+			* @author Stefan Landgrebe
+			*/
+			void close(void) { glfwSetWindowShouldClose(window, GL_TRUE); }
+
 
 			/** Warteschlange für neu zu erstellende Objekte der Klasse Square.
 			Dies ist aufgrund der Threadsicherheit notwendig.
@@ -128,6 +143,7 @@ namespace visual {
 			static GraphicEngine* singleInstance;
 			static GLFWwindow* window;
 			std::string title;
+			bool fullscreen;
 			int width;
 			int height;
 

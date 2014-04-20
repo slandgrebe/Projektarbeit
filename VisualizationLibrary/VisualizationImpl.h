@@ -15,22 +15,25 @@
 
 // exportierte funktionen
 
+extern "C" DLL_API int APIENTRY init(const char* windowTitle, bool fullscreen, unsigned int windowWidth, unsigned int windowHeight);
+DLL_API int APIENTRY init(const char* windowTitle, bool fullscreen, unsigned int windowWidth, unsigned int windowHeight) {
+	return (int)visual::Manager::getInstance()->init(windowTitle, fullscreen, windowWidth, windowHeight);
+}
 DLL_API int APIENTRY isRunning() {
-	// c++ bool in int umwandeln, damit c# bool damit umgehen kann
 	return (int)visual::Manager::getInstance()->isRunning();
+}
+DLL_API void APIENTRY close() {
+	visual::Manager::getInstance()->close();
 }
 
 DLL_API void APIENTRY doSomething(const char* text) {
-	//visual::VisualizationImpl::doSomething(text);
 	visual::Manager::getInstance()->doSomething(text);
 }
 
 DLL_API unsigned int APIENTRY addModel(const char* filename) {
-	//return visual::VisualizationImpl::addModel(filename);
 	return visual::Manager::getInstance()->addModel(filename);
 }
 DLL_API unsigned int APIENTRY addPoint(const char* filename) {
-	//return visual::VisualizationImpl::addPoint(filename);
 	return visual::Manager::getInstance()->addPoint(filename);
 }
 DLL_API unsigned int APIENTRY addText(const char* filename) {
@@ -41,7 +44,6 @@ DLL_API unsigned int APIENTRY addButton(const char* fontname) {
 }
 
 DLL_API int APIENTRY isCreated(const unsigned int modelId) {
-	//return (int)visual::VisualizationImpl::isModelCreated(modelId);
 	return visual::Manager::getInstance()->isModelCreated(modelId);
 }
 DLL_API void APIENTRY dispose(const unsigned int modelId) {
@@ -49,15 +51,12 @@ DLL_API void APIENTRY dispose(const unsigned int modelId) {
 }
 
 DLL_API int APIENTRY position(const unsigned int modelId, const float x, const float y, const float z) {
-	//return (int)visual::VisualizationImpl::positionModel(modelId, x, y, z);
 	return (int)visual::Manager::getInstance()->positionModel(modelId, glm::vec3(x, y, z));
 }
 DLL_API int APIENTRY rotate(const unsigned int modelId, const float degrees, const float x, const float y, const float z) {
-	//return (int)visual::VisualizationImpl::rotateModel(modelId, degrees, x, y, z);
 	return (int)visual::Manager::getInstance()->rotateModel(modelId, degrees, glm::vec3(x, y, z));
 }
 DLL_API int APIENTRY scale(const unsigned int modelId, const float x, const float y, const float z) {
-	//return (int)visual::VisualizationImpl::scaleModel(modelId, x, y, z);
 	return (int)visual::Manager::getInstance()->scaleModel(modelId, glm::vec3(x, y, z));
 }
 DLL_API int APIENTRY scalingIsNormalized(const unsigned int modelId, bool choice) {
@@ -75,14 +74,14 @@ DLL_API int APIENTRY attachToCamera(const unsigned int modelId, const bool choic
 
 
 
-DLL_API void APIENTRY text(const unsigned int textId, const char* text) {
-	visual::Manager::getInstance()->setText(textId, text);
+DLL_API int APIENTRY text(const unsigned int textId, const char* text) {
+	return (int)visual::Manager::getInstance()->setText(textId, text);
 }
 DLL_API int APIENTRY textSize(const unsigned int textId, const int points) {
 	return (int)visual::Manager::getInstance()->setTextSize(textId, points);
 }
-DLL_API void APIENTRY textColor(const unsigned int textId, const float r, const float g, const float b, const float a) {
-	visual::Manager::getInstance()->setTextColor(textId, glm::vec4(r, g, b, a));
+DLL_API int APIENTRY textColor(const unsigned int textId, const float r, const float g, const float b, const float a) {
+	return (int)visual::Manager::getInstance()->setTextColor(textId, glm::vec4(r, g, b, a));
 }
 
 
@@ -103,10 +102,15 @@ DLL_API void APIENTRY changeCameraSpeed(float speed) {
 DLL_API unsigned int APIENTRY collisionsTextLength(void) {
 	return visual::Manager::getInstance()->collisionsTextLength();
 }
-DLL_API void APIENTRY collisionsText(char* string, int length) {
+DLL_API int APIENTRY collisionsText(char* string, int length) {
 	std::string collisions = visual::Manager::getInstance()->collisionsText().c_str();
+	
+	if ((int)collisions.length() > length) {
+		return (int)false;
+	}
+	
 	strcpy_s(string, length, collisions.c_str());
-	//return visual::Manager::getInstance()->collisions().c_str();
+	return (int)true;
 }
 
 #endif
