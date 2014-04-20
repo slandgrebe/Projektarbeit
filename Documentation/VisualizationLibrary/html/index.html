@@ -142,6 +142,11 @@ $(document).ready(function(){initNavTree('index.html','');});
 <tr>
 <td>Positionieren </td><td><a class="el" href="_visualization_impl_8h.html#ab7ef3ae59da17b0f42783b4119efad69">position</a> </td></tr>
 <tr>
+<td>momentane Position </td><td><a class="el" href="_visualization_impl_8h.html#abdf09a8f74f11984e7ee08c81ab04db1">positionX</a> <br/>
+ <a class="el" href="_visualization_impl_8h.html#a7b508ca51801157f8440f9f9daff4020">positionY</a> <br/>
+ <a class="el" href="_visualization_impl_8h.html#a864eed4eced8a3b956006c59370c7fcb">positionZ</a> <br/>
+</td></tr>
+<tr>
 <td>Rotation <br/>
  (Nur Model und Point) </td><td><a class="el" href="_visualization_impl_8h.html#ae270c1724205c0699558127781906c24">rotate</a> </td></tr>
 <tr>
@@ -169,11 +174,11 @@ $(document).ready(function(){initNavTree('index.html','');});
 <tr>
 <td>Text Element erzeugen </td><td><a class="el" href="_visualization_impl_8h.html#af96642b9715c4aa45aa8504dc1f95788">addText</a> </td></tr>
 <tr>
-<td>anzuzeigender Text ändern </td><td><a class="el" href="_visualization_impl_8h.html#adf56317b9bb2c78a5a477702a84ded32">text</a> </td></tr>
+<td>anzuzeigender Text ändern </td><td><a class="el" href="_visualization_impl_8h.html#a048e72ed7883753eb78ec3c9409670d3">text</a> </td></tr>
 <tr>
 <td>Textgrösse ändern </td><td><a class="el" href="_visualization_impl_8h.html#a7b3e7416812f4b5193f4faada9bd3b34">textSize</a> </td></tr>
 <tr>
-<td>Farbe des Textes ändern </td><td><a class="el" href="_visualization_impl_8h.html#ac17e08b37b55c834eb33276f1ea92d4b">textColor</a> </td></tr>
+<td>Farbe des Textes ändern </td><td><a class="el" href="_visualization_impl_8h.html#a977dbaa0062420794e8cf0e4ddc99194">textColor</a> </td></tr>
 <tr>
 <td>Entfernung des Textelements </td><td><a class="el" href="_visualization_impl_8h.html#a9c9096ce7ce4afbb333266a6ddcca9d1">dispose</a> </td></tr>
 </table>
@@ -195,8 +200,9 @@ $(document).ready(function(){initNavTree('index.html','');});
 <p><br/>
  </p>
 <h2>Kollisionserkennung </h2>
-<p>Bei der Kollisionserkennung wird das Resultat als Text gespeichert. <br/>
-Mit der <a class="el" href="_visualization_impl_8h.html#a28d55e6f6b8af143d419ebe3a822c82e">collisionsTextLength</a> Funktion kann die Länge des Textes abgefragt werden, bevor mit der <a class="el" href="_visualization_impl_8h.html#a6c2122e68783421a79f4def79d159422">collisionsText</a> Funktion der Text ausgelesen wird. <br/>
+<p>Die Kollisionserkennung findet nur für Objekte welche mit der <a class="el" href="_visualization_impl_8h.html#ae58a940dc8487d8e403f1a81ae6e153a">addModel</a> Methode hinzugefügt wurden statt. <br/>
+Bei der Kollisionserkennung wird das Resultat als Text gespeichert. <br/>
+Mit der <a class="el" href="_visualization_impl_8h.html#a28d55e6f6b8af143d419ebe3a822c82e">collisionsTextLength</a> Funktion kann die Länge des Textes abgefragt werden, bevor mit der <a class="el" href="_visualization_impl_8h.html#a6ef14e96b16ac4008df9ed908487bdb2">collisionsText</a> Funktion der Text ausgelesen wird. <br/>
 <br/>
 Der Text hat folgendes Format <br/>
 <b>Format:</b> 1:2,3;2:1;3:1;4: <br/>
@@ -216,7 +222,7 @@ Der Text hat folgendes Format <br/>
 <tr>
 <td>Länge des Textes der Kollisionserkennung </td><td><a class="el" href="_visualization_impl_8h.html#a28d55e6f6b8af143d419ebe3a822c82e">collisionsTextLength</a> </td></tr>
 <tr>
-<td>Text der Kollisionserkennung </td><td><a class="el" href="_visualization_impl_8h.html#a6c2122e68783421a79f4def79d159422">collisionsText</a> </td></tr>
+<td>Text der Kollisionserkennung </td><td><a class="el" href="_visualization_impl_8h.html#a6ef14e96b16ac4008df9ed908487bdb2">collisionsText</a> </td></tr>
 </table>
 <br/>
 <br/>
@@ -228,7 +234,7 @@ Der Text hat folgendes Format <br/>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Erzeugt am Die Apr 15 2014 21:50:29 für Projektarbeit - VisualizationLibrary von
+    <li class="footer">Erzeugt am Son Apr 20 2014 17:01:11 für Projektarbeit - VisualizationLibrary von
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

@@ -36,6 +36,12 @@ namespace VisualizationLibraryTest
         [DllImport("Visualization.dll")]
         public extern static bool position(uint modelId, float x, float y, float z);
         [DllImport("Visualization.dll")]
+        public extern static float positionX(uint modelId);
+        [DllImport("Visualization.dll")]
+        public extern static float positionY(uint modelId);
+        [DllImport("Visualization.dll")]
+        public extern static float positionZ(uint modelId);
+        [DllImport("Visualization.dll")]
         public extern static bool rotate(uint modelId, float degrees, float x, float y, float z);
         [DllImport("Visualization.dll")]
         public extern static bool scale(uint modelId, float x, float y, float z);

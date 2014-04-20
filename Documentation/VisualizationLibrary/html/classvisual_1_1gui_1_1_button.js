@@ -6,6 +6,7 @@ var classvisual_1_1gui_1_1_button =
     [ "init", "classvisual_1_1gui_1_1_button.html#a9793c903582fac84b81803b37dcc9c56", null ],
     [ "isHighlighted", "classvisual_1_1gui_1_1_button.html#af67f0472470ef045769f9903bf851120", null ],
     [ "position", "classvisual_1_1gui_1_1_button.html#a81cb3659e12f4b2e402d7286156d5f37", null ],
+    [ "position", "classvisual_1_1gui_1_1_button.html#a499481c8fa5889739004960fac79b049", null ],
     [ "scale", "classvisual_1_1gui_1_1_button.html#add04c66c50527c134faa7735c245925b", null ],
     [ "setHighlightColor", "classvisual_1_1gui_1_1_button.html#a16d095525f84f743cac1ab0891165229", null ],
     [ "setText", "classvisual_1_1gui_1_1_button.html#a127e2c9382ff14435f785c84dc405b37", null ],

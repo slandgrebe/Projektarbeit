@@ -53,6 +53,15 @@ DLL_API void APIENTRY dispose(const unsigned int modelId) {
 DLL_API int APIENTRY position(const unsigned int modelId, const float x, const float y, const float z) {
 	return (int)visual::Manager::getInstance()->positionModel(modelId, glm::vec3(x, y, z));
 }
+DLL_API float APIENTRY positionX(const unsigned int modelId) {
+	return visual::Manager::getInstance()->modelPosition(modelId).x;
+}
+DLL_API float APIENTRY positionY(const unsigned int modelId) {
+	return visual::Manager::getInstance()->modelPosition(modelId).y;
+}
+DLL_API float APIENTRY positionZ(const unsigned int modelId) {
+	return visual::Manager::getInstance()->modelPosition(modelId).z;
+}
 DLL_API int APIENTRY rotate(const unsigned int modelId, const float degrees, const float x, const float y, const float z) {
 	return (int)visual::Manager::getInstance()->rotateModel(modelId, degrees, glm::vec3(x, y, z));
 }

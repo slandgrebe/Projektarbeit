@@ -5,6 +5,7 @@ var searchData=
   ['getinstance',['getInstance',['../classvisual_1_1graphics_1_1_graphic_engine.html#a1675ee17a75ce754132b3bdd6c7b3424',1,'visual::graphics::GraphicEngine::getInstance()'],['../classvisual_1_1_manager.html#af8199921090229c4215cdcfefa57a046',1,'visual::Manager::getInstance()']]],
   ['getmodelviewmatrix',['getModelViewMatrix',['../classvisual_1_1model_1_1_model.html#a35a7ec0210e00cb95e2d7ac98e6bc318',1,'visual::model::Model']]],
   ['getorthographicmodelviewmatrix',['getOrthographicModelViewMatrix',['../classvisual_1_1model_1_1_model.html#a6394c98337670f55e7c25a6aa685a16d',1,'visual::model::Model']]],
+  ['getposition',['getPosition',['../classvisual_1_1gui_1_1_text.html#ad159a3b998791b33162248b75073f894',1,'visual::gui::Text']]],
   ['getprojectionmatrix',['getProjectionMatrix',['../classvisual_1_1graphics_1_1_graphic_engine.html#a3d78ef543a0ddadce5a48693cbc6cefe',1,'visual::graphics::GraphicEngine']]],
   ['getshaderprogramid',['getShaderProgramId',['../classvisual_1_1graphics_1_1_shader_program.html#a15f94853532cdc4a2afa37b1e0b190e5',1,'visual::graphics::ShaderProgram']]],
   ['gettransformedmodelmatrix',['getTransformedModelMatrix',['../classvisual_1_1model_1_1_model.html#acf686da571802d4b23e4999c7b3767de',1,'visual::model::Model']]],

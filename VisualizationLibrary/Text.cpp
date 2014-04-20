@@ -35,6 +35,9 @@ void Text::setPosition(const float x, const float y) {
 	this->x = x;
 	this->y = y;
 }
+glm::vec2 Text::getPosition(void) {
+	return glm::vec2(x, y);
+}
 bool Text::setSize(const int pixelSize) {
 	// set the font's pixel size
 	if (FT_Set_Pixel_Sizes(face, 0, pixelSize)) {
