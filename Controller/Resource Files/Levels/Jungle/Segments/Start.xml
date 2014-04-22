@@ -1,5 +1,84 @@
 <?xml version="1.0"?>
 <LevelSegment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Length>100</Length>
+  <obstacles>
+    <Object>
+      <ModelXmlPath>/Resource Files/Levels/Jungle/Models/Limb.xml</ModelXmlPath>
+      <Scale>1</Scale>
+      <PosX>-2</PosX>
+      <PosY>2</PosY>
+      <PosZ>-35</PosZ>
+      <RotateHorizontal>180</RotateHorizontal>
+      <AttachToCamera>false</AttachToCamera>
+    </Object>
+    <Object>
+      <ModelXmlPath>/Resource Files/Levels/Jungle/Models/Limb.xml</ModelXmlPath>
+      <Scale>1</Scale>
+      <PosX>-2</PosX>
+      <PosY>1.5</PosY>
+      <PosZ>-45</PosZ>
+      <RotateHorizontal>180</RotateHorizontal>
+      <AttachToCamera>false</AttachToCamera>
+    </Object>
+    <Object>
+      <ModelXmlPath>/Resource Files/Levels/Jungle/Models/Limb.xml</ModelXmlPath>
+      <Scale>1</Scale>
+      <PosX>2</PosX>
+      <PosY>1.5</PosY>
+      <PosZ>-50</PosZ>
+      <AttachToCamera>false</AttachToCamera>
+    </Object>
+    <Object>
+      <ModelXmlPath>/Resource Files/Levels/Jungle/Models/Limb.xml</ModelXmlPath>
+      <Scale>1</Scale>
+      <PosX>3</PosX>
+      <PosY>0.1</PosY>
+      <PosZ>-60</PosZ>
+      <AttachToCamera>false</AttachToCamera>
+    </Object>
+  </obstacles>
+  <scores>
+    <Object>
+      <ModelXmlPath>/Resource Files/Levels/Jungle/Models/Banana.xml</ModelXmlPath>
+      <Scale>0.3</Scale>
+      <PosX>1</PosX>
+      <PosY>1</PosY>
+      <PosZ>-10</PosZ>
+      <AttachToCamera>false</AttachToCamera>
+    </Object>
+    <Object>
+      <ModelXmlPath>/Resource Files/Levels/Jungle/Models/Banana.xml</ModelXmlPath>
+      <Scale>0.3</Scale>
+      <PosX>1</PosX>
+      <PosY>1</PosY>
+      <PosZ>-20</PosZ>
+      <AttachToCamera>false</AttachToCamera>
+    </Object>
+    <Object>
+      <ModelXmlPath>/Resource Files/Levels/Jungle/Models/Banana.xml</ModelXmlPath>
+      <Scale>0.3</Scale>
+      <PosX>1</PosX>
+      <PosY>1</PosY>
+      <PosZ>-30</PosZ>
+      <AttachToCamera>false</AttachToCamera>
+    </Object>
+    <Object>
+      <ModelXmlPath>/Resource Files/Levels/Jungle/Models/Banana.xml</ModelXmlPath>
+      <Scale>0.3</Scale>
+      <PosX>1</PosX>
+      <PosY>1</PosY>
+      <PosZ>-40</PosZ>
+      <AttachToCamera>false</AttachToCamera>
+    </Object>
+    <Object>
+      <ModelXmlPath>/Resource Files/Levels/Jungle/Models/Banana.xml</ModelXmlPath>
+      <Scale>0.3</Scale>
+      <PosX>1</PosX>
+      <PosY>1.5</PosY>
+      <PosZ>-50</PosZ>
+      <AttachToCamera>false</AttachToCamera>
+    </Object>
+  </scores>
   <objects>
     <Object>
       <ModelXmlPath>/Resource Files/Levels/Jungle/Models/Floor.xml</ModelXmlPath>
@@ -417,80 +496,5 @@
       <PosZ>-3.5</PosZ>
       <AttachToCamera>true</AttachToCamera>
     </Object>
-    <Object>
-      <ModelXmlPath>/Resource Files/Levels/Jungle/Models/Banana.xml</ModelXmlPath>
-      <Scale>0.3</Scale>
-      <PosX>1</PosX>
-      <PosY>1</PosY>
-      <PosZ>-10</PosZ>
-      <AttachToCamera>false</AttachToCamera>
-    </Object>
-    <Object>
-      <ModelXmlPath>/Resource Files/Levels/Jungle/Models/Banana.xml</ModelXmlPath>
-      <Scale>0.3</Scale>
-      <PosX>1</PosX>
-      <PosY>1</PosY>
-      <PosZ>-20</PosZ>
-      <AttachToCamera>false</AttachToCamera>
-    </Object>
-    <Object>
-      <ModelXmlPath>/Resource Files/Levels/Jungle/Models/Banana.xml</ModelXmlPath>
-      <Scale>0.3</Scale>
-      <PosX>1</PosX>
-      <PosY>1</PosY>
-      <PosZ>-30</PosZ>
-      <AttachToCamera>false</AttachToCamera>
-    </Object>
-    <Object>
-      <ModelXmlPath>/Resource Files/Levels/Jungle/Models/Banana.xml</ModelXmlPath>
-      <Scale>0.3</Scale>
-      <PosX>1</PosX>
-      <PosY>1</PosY>
-      <PosZ>-40</PosZ>
-      <AttachToCamera>false</AttachToCamera>
-    </Object>
-    <Object>
-      <ModelXmlPath>/Resource Files/Levels/Jungle/Models/Limb.xml</ModelXmlPath>
-      <Scale>1</Scale>
-      <PosX>-2</PosX>
-      <PosY>2</PosY>
-      <PosZ>-35</PosZ>
-      <RotateHorizontal>180</RotateHorizontal>
-      <AttachToCamera>false</AttachToCamera>
-    </Object>
-    <Object>
-      <ModelXmlPath>/Resource Files/Levels/Jungle/Models/Limb.xml</ModelXmlPath>
-      <Scale>1</Scale>
-      <PosX>-2</PosX>
-      <PosY>1.5</PosY>
-      <PosZ>-45</PosZ>
-      <RotateHorizontal>180</RotateHorizontal>
-      <AttachToCamera>false</AttachToCamera>
-    </Object>
-    <Object>
-      <ModelXmlPath>/Resource Files/Levels/Jungle/Models/Limb.xml</ModelXmlPath>
-      <Scale>1</Scale>
-      <PosX>2</PosX>
-      <PosY>1.5</PosY>
-      <PosZ>-50</PosZ>
-      <AttachToCamera>false</AttachToCamera>
-    </Object>
-    <Object>
-      <ModelXmlPath>/Resource Files/Levels/Jungle/Models/Banana.xml</ModelXmlPath>
-      <Scale>0.3</Scale>
-      <PosX>1</PosX>
-      <PosY>1.5</PosY>
-      <PosZ>-50</PosZ>
-      <AttachToCamera>false</AttachToCamera>
-    </Object>
-    <Object>
-      <ModelXmlPath>/Resource Files/Levels/Jungle/Models/Limb.xml</ModelXmlPath>
-      <Scale>1</Scale>
-      <PosX>3</PosX>
-      <PosY>0.1</PosY>
-      <PosZ>-60</PosZ>
-      <AttachToCamera>false</AttachToCamera>
-    </Object>
   </objects>
-  <Length>100</Length>
 </LevelSegment>

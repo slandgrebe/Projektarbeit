@@ -4,13 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace View
+namespace View.Gui
 {
-    class Button
+    public class Button
     {
-        public void SetPosition(float x, float y)
-        {
+        public string Text { get; set; }
 
-        }
+
     }
 }

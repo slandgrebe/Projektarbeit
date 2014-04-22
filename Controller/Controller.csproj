@@ -64,6 +64,7 @@
     <Compile Include="Gesture\GesturePause.cs" />
     <Compile Include="Gesture\GestureClose.cs" />
     <Compile Include="Game\Level.cs" />
+    <Compile Include="Initialise.cs" />
     <Compile Include="Object\Model.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -149,6 +150,9 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Resource Files\Background\white.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Resource Files\Levels\Jungle\Level.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

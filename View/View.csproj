@@ -40,6 +40,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Gui\Button.cs" />
+    <Compile Include="Gui\GameUi.cs" />
+    <Compile Include="Gui\MenuUi.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Visualization.cs" />
   </ItemGroup>

@@ -37,7 +37,7 @@ namespace Controller
         /// </summary>
         public void Start()
         {
-            
+            //Initialise.Instance.NotTracked();
             Sensor = new SkeletonTracker();
             Sensor.Start();
             Sensor.SkeletonEvent += new SkeletonTrackerEvent(GetEvent);
@@ -56,9 +56,20 @@ namespace Controller
         /// </summary>
         public void Update()
         {
-            if(game != null){
-                game.Update();
-            }
+            //if (Body.Instance.IsTracked)
+            //{
+                //Initialise.Instance.Tracked();
+                if (game != null)
+                {
+                    game.Update();
+                }
+            //}
+            //else
+            //{
+                //speerbildschirm anzeigen
+                //Initialise.Instance.NotTracked();
+                // alles reseten
+            //}
         }
 
         /// <summary>

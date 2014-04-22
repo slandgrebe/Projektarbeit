@@ -39,6 +39,14 @@ namespace Controller
 
         public void Create(float z)
         {
+            foreach (Object o in obstacles)
+            {
+                o.Create(z);
+            }
+            foreach (Object s in scores)
+            {
+                s.Create(z);
+            }
             foreach (Object o in objects)
             {
                 o.Create(z);

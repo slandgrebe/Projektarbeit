@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
 using System.Xml.Serialization;
+using View;
 
 namespace Controller
 {
@@ -15,42 +16,15 @@ namespace Controller
         public Player Player { get; set; }
         public Level level = null;
         private bool loadet = false;
+        private GameUi gameUi;
 
         public Game()
         {
             Player = new Player();
-            Player.Scale = 0.5f;
+            Player.Scale = 0.7f;
             Player.Attach = true;
-            /*
-            Model model = new Model();
-            model.Path = "Resource Files/Models/Rail/Rail.3ds";
-            model.ScalingNormalized = false;
-            
-            Object o1 = new Object();
-            o1.ModelXmlPath = ".xml";
-            o1.Scale = 0.5f;
-            o1.PosX = 0;
-            o1.PosY = 0;
-            o1.PosZ = 11.5f*-1;
-            o1.AttachToCamera = false;
-            
-            LevelSegment seg = new LevelSegment();
-            seg.AddObject(o1);
-            
-            */
-            /*
-            level = new Level();
-            level.Name = "Jungle";
-            level.Difficulty = "Easy";
-            level.AddXmlPath("Resource Files/Levels/Jungle/Models/Rail.xml");
+            Player.Lives = 10;
 
-            FileStream stream;
-            stream = new FileStream(@"C:\Users\tobia_000\Documents\Level.xml", FileMode.Create);
-            XmlSerializer serializer = new XmlSerializer(typeof(Level));
-            serializer.Serialize(stream, level);
-            stream.Close();
-            */
-            
             string dir = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
             dir = dir + @"\Resource Files\Levels\Jungle\Level.xml";
 
@@ -60,6 +34,7 @@ namespace Controller
             level = (Level)serializer.Deserialize(stream);
             level.Deserialize();
             level.Load();
+            gameUi = new GameUi();
             loadet = true;
             View.Visualization.changeCameraSpeed(5f);
         }
@@ -82,12 +57,38 @@ namespace Controller
 
         public void Update()
         {
+            if(level.LevelLength + 90 > Player.GetPosition()){
+                View.Visualization.changeCameraSpeed(0);
+            }
             if (loadet)
             {
                 Player.Update();
-            }
+                gameUi.Lives = Player.Lives;
+                gameUi.Score = Player.Score;
+                gameUi.Update();
+                foreach (LevelSegment segment in level.segments)
+                {
+                    foreach (Object score in segment.scores)
+                    {
+                        if (score.handleCollisions(Player, true))
+                        {
+                            Player.Score++;
+                        }
+                    }
+                }
+
+                foreach (LevelSegment segment in level.segments)
+                {
+                    foreach (Object obstacle in segment.obstacles)
+                    {
+                        if (obstacle.handleCollisions(Player, false))
+                        {
+                            Player.Lives--;
+                        }
+                    }
+                }
+                gameUi.Update();
+            } 
         }
     }
-
-
 }
