@@ -7,29 +7,54 @@ using Model;
 
 namespace Controller
 {
-    class Player
+    public class Player
     {
         public float Scale { private get; set; }
         public bool Attach { private get; set; }
+        public uint Lives { get; set; }
+        public uint Score { get; set; }
 
-        private Model Head = new Model("Resource Files/Models/Player/Head.3ds", false);
-        private Model Torso = new Model("Resource Files/Models/Player/Torso.3ds", false);
-        private Model UpperarmLeft = new Model("Resource Files/Models/Player/UpperArm.3ds", false);
-        private Model UpperarmRight = new Model("Resource Files/Models/Player/UpperArm.3ds", false);
-        private Model ForearmLeft = new Model("Resource Files/Models/Player/ForeArm.3ds", false);
-        private Model ForearmRight = new Model("Resource Files/Models/Player/ForeArm.3ds", false);
-        private Model ThighlegLeft = new Model("Resource Files/Models/Player/ThighLeg.3ds", false);
-        private Model ThighlegRight = new Model("Resource Files/Models/Player/ThighLeg.3ds", false);
-        private Model LowerlegLeft = new Model("Resource Files/Models/Player/LowerLeg.3ds", false);
-        private Model LowerlegRight = new Model("Resource Files/Models/Player/LowerLeg.3ds", false);
+        public Model Head { get; private set; }
+        public Model Torso { get; private set; }
+        public Model UpperarmLeft { get; private set; }
+        public Model UpperarmRight { get; private set; }
+        public Model ForearmLeft { get; private set; }
+        public Model ForearmRight { get; private set; }
+        public Model ThighlegLeft { get; private set; }
+        public Model ThighlegRight { get; private set; }
+        public Model LowerlegLeft { get; private set; }
+        public Model LowerlegRight { get; private set; }
+
+        public List<uint> Colidet { get; set; }
+
+        public Player()
+        {
+            Head = new Model("Resource Files/Models/Player/Head.3ds", false);
+            Torso = new Model("Resource Files/Models/Player/Torso.3ds", false);
+            UpperarmLeft = new Model("Resource Files/Models/Player/UpperArm.3ds", false);
+            UpperarmRight = new Model("Resource Files/Models/Player/UpperArm.3ds", false);
+            ForearmLeft = new Model("Resource Files/Models/Player/ForeArm.3ds", false);
+            ForearmRight = new Model("Resource Files/Models/Player/ForeArm.3ds", false);
+            ThighlegLeft = new Model("Resource Files/Models/Player/ThighLeg.3ds", false);
+            ThighlegRight = new Model("Resource Files/Models/Player/ThighLeg.3ds", false);
+            LowerlegLeft = new Model("Resource Files/Models/Player/LowerLeg.3ds", false);
+            LowerlegRight = new Model("Resource Files/Models/Player/LowerLeg.3ds", false);
+
+            Colidet = new List<uint>();
+        }
 
         public void Update()
         {
             Body.Instance.ZModifikator(Body.Instance.Spine.Z + 3);
-            Body.Instance.YModifikator(Body.Instance.Spine.Y -1.4f);
+            Body.Instance.YModifikator(-0.7f);
             ScalePlayer();
             Alignment();
             AttachToCamera();
+        }
+
+        public float GetPosition()
+        {
+            return View.Visualization.positionZ(Torso.Id);
         }
 
         private void Alignment()

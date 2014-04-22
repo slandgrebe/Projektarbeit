@@ -18,11 +18,8 @@ namespace Controller
         {
             try
             {
-                bool kinect = true;
-                if (kinect)
-                {
-                    Run.Instance.Start();
-                }
+                Run.Instance.Start();
+                //MenuUi u = new MenuUi();
                 Console.Read();
 
             }

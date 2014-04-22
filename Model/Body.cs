@@ -52,11 +52,14 @@ namespace Model
         /// <summary>Koordinatenobjekt des Punktes: Handgelenk rechts</summary>
         public Position WristRight { get; set; }
 
+        public bool IsTracked { get; set; }
+
         /// <summary>
         /// Konstruktor, Initialisiert die Körperpunkte
         /// </summary>
         private Body()
         {
+            IsTracked = false;
             AnkleLeft = new Position();
             AnkleRight = new Position();
             ElbowLeft = new Position();

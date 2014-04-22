@@ -227,6 +227,7 @@ namespace VisualizationExample
                 {
                     highlightColor(modelId, 1f, 0f, 0f, 1f);
                     isHighlighted(modelId, true);
+                    dispose(modelId);
                 }
                 else // keine Kollision
                 {
