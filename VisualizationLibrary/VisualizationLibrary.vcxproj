@@ -103,6 +103,7 @@
     <ClInclude Include="GraphicEngine.h" />
     <ClInclude Include="Log.h" />
     <ClInclude Include="Manager.h" />
+    <ClInclude Include="Math.h" />
     <ClInclude Include="Model.h" />
     <ClInclude Include="SafeQueue.h" />
     <ClInclude Include="ShaderProgram.h" />
@@ -130,6 +131,7 @@
     </ClCompile>
     <ClCompile Include="GraphicEngine.cpp" />
     <ClCompile Include="Manager.cpp" />
+    <ClCompile Include="Math.cpp" />
     <ClCompile Include="ShaderProgram.cpp" />
     <ClCompile Include="Square.cpp" />
     <ClCompile Include="stdafx.cpp">

@@ -222,6 +222,11 @@ void AssimpModel::clear() {
 	}
 }
 
+bool AssimpModel::doesIntersect(AssimpModel* other) {
+
+	return true;
+}
+
 void AssimpModel::draw() {
 	//Log().debug() << "draw AssimpModel" ;
 	//Log().debug() << " Anzahl Meshes: " << meshList.size() ;

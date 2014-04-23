@@ -226,7 +226,12 @@ glm::vec3 Manager::modelPosition(GLuint modelId) {
 
 	if (assimpModelList.find(modelId) != assimpModelList.end()) {
 		model::AssimpModel* model = assimpModelList.find(modelId)->second;
-		position = model->position();
+		if (model->attachedToCamera()) {
+			position = model->position() + graphics::GraphicEngine::getInstance()->camera()->position();
+		}
+		else {
+			position = model->position();
+		}
 	}
 	else if (squareList.find(modelId) != squareList.end()) {
 		model::Square* model = squareList.find(modelId)->second;
@@ -528,11 +533,12 @@ void Manager::doCollisionDetection(void) {
 		for (it2 = assimpModelList.begin(); it2 != assimpModelList.end(); it2++) {
 			model::AssimpModel* modelB = (*it2).second;
 
+			// mit sich selber nicht vergleichen
 			if (modelA == modelB) {
 				continue;
 			}
 
-			
+			// wenn Modell an die Kamera angehängt ist, zur Position noch die Kameraposition dazu rechnen
 			glm::vec3 b = modelB->position();
 			if (modelB->attachedToCamera()) {
 				b += cameraPosition;
@@ -540,9 +546,12 @@ void Manager::doCollisionDetection(void) {
 
 			float br = modelB->boundingSphereRadius();
 
+			// kugeln schneiden sich
 			if (pow(a.x - b.x, 2) + pow(a.y - b.y, 2) + pow(a.z - b.z, 2) < pow(ar + br, 2)) {
-				collisions << separator2 << it2->first;
-				separator2 = ",";
+				if (modelA->doesIntersect(modelB)) { // exaktere prüfung
+					collisions << separator2 << it2->first;
+					separator2 = ",";
+				}
 			}
 		}
 
