@@ -247,7 +247,6 @@ namespace visual {
 				return m_isAttachedToCamera;
 			}
 
-
 			/** Zeichnet das Modell neu
 			* @author Stefan Landgrebe
 			*/

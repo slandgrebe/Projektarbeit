@@ -40,6 +40,8 @@ namespace visual {
 			//bool initTexture() {};
 			void clear();
 
+			
+
 			struct Vertex {
 				glm::vec3 position;
 				glm::vec2 textureCoordinate;
@@ -92,6 +94,13 @@ namespace visual {
 			* @see Model::loadModel()
 			*/
 			bool loadModel(const std::string filename);
+
+			/** Prüft ob dieses Modell ein anderes schneidet.
+			* @author Stefan Landgrebe
+			* @param other das andere Modell
+			* @return True wenn es min. 1 Schnittpunkt gibt.
+			*/
+			bool doesIntersect(AssimpModel* other);
 
 			/** Zeichnet das Modell neu
 			* @author Stefan Landgrebe
