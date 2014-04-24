@@ -7,11 +7,13 @@ using View;
 
 namespace Controller
 {
-    public class Model
+    public class Model : IDisposable
     {
         public uint Id { get; set; }
         public string Path { get; set; }
         public bool ScalingNormalized { get; set; }
+
+        private bool disposed = false;
 
         public Model()
         {
@@ -55,6 +57,30 @@ namespace Controller
         public void AttachToCamera(bool choice)
         {
             Visualization.attachToCamera(Id, choice);
+        }
+
+        public void Dispose()
+        {
+            if (!disposed)
+            {
+                Dispose(true);
+                GC.SuppressFinalize(this);
+            }
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                // Freigabe verwalteter Objekte
+            }
+            // Freigabe von Fremdresourcen
+            Visualization.dispose(Id);
+        }
+
+        ~Model()
+        {
+            Dispose(false);
         }
     }
 }

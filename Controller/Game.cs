@@ -57,37 +57,40 @@ namespace Controller
 
         public void Update()
         {
-            if(level.LevelLength + 90 > Player.GetPosition()){
+            /*if(level.LevelLength + 90 > Player.GetPosition()){
                 View.Visualization.changeCameraSpeed(0);
-            }
+            }*/
             if (loadet)
             {
-                Player.Update();
-                gameUi.Lives = Player.Lives;
-                gameUi.Score = Player.Score;
-                gameUi.Update();
-                foreach (LevelSegment segment in level.segments)
+                if (level != null)
                 {
-                    foreach (Object score in segment.scores)
+                    Player.Update();
+                    gameUi.Lives = Player.Lives;
+                    gameUi.Score = Player.Score;
+                    gameUi.Update();
+                    foreach (LevelSegment segment in level.segments)
                     {
-                        if (score.handleCollisions(Player, true))
+                        foreach (Object score in segment.scores)
                         {
-                            Player.Score++;
+                            if (score.handleCollisions(Player, true))
+                            {
+                                Player.Score++;
+                            }
                         }
                     }
-                }
 
-                foreach (LevelSegment segment in level.segments)
-                {
-                    foreach (Object obstacle in segment.obstacles)
+                    foreach (LevelSegment segment in level.segments)
                     {
-                        if (obstacle.handleCollisions(Player, false))
+                        foreach (Object obstacle in segment.obstacles)
                         {
-                            Player.Lives--;
+                            if (obstacle.handleCollisions(Player, false))
+                            {
+                                Player.Lives--;
+                            }
                         }
                     }
+                    gameUi.Update();
                 }
-                gameUi.Update();
             } 
         }
     }

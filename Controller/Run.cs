@@ -15,7 +15,11 @@ namespace Controller
         private static Run instance;
         private int init = 0;
         private Game game = null;
-
+        private NoTrackingUi noTrackingUi = null;
+        private MenuUi menuUi = null;
+        private Click click = new Click();
+        private Modus modus;
+        private uint trackId = 0;
         /// <summary>
         /// stellt sicher, dass diese Klasse nur einmal Instanziert wird.
         /// </summary>
@@ -37,11 +41,28 @@ namespace Controller
         /// </summary>
         public void Start()
         {
-            //Initialise.Instance.NotTracked();
+            trackId = Visualization.addText("data/fonts/arial.ttf");
+            while (!Visualization.isCreated(trackId)) { }
+            Visualization.position(trackId, -0.7f, -0.7f, 1.0f);
+            Visualization.textSize(trackId, 36);
+            Visualization.textColor(trackId, 1f, 0f, 0f, 1f);
+            Visualization.text(trackId, "No");
+            /*noTrackingUi = new NoTrackingUi();
+            noTrackingUi.Position = 1000;
+            noTrackingUi.Show();
+            */
+
+            modus = Modus.Menu;
+
+            menuUi = new MenuUi();
+            menuUi.Position = 0;
+            menuUi.Show();
+            
+
             Sensor = new SkeletonTracker();
             Sensor.Start();
             Sensor.SkeletonEvent += new SkeletonTrackerEvent(GetEvent);
-            game = Game.Instance;
+
         }
 
         /// <summary>
@@ -56,20 +77,45 @@ namespace Controller
         /// </summary>
         public void Update()
         {
+            switch (modus)
+            {
+                case Modus.Menu:
+                    Body.Instance.Scale(0.1f);
+                    menuUi.Show();
+                    menuUi.PositionCursor(Body.Instance.HandRight.X, Body.Instance.HandRight.Y);
+                    if(menuUi.HoverButton(Body.Instance.HandRight.X, Body.Instance.HandRight.Y))
+                    {
+                        if(click.IsClicked()){
+                            modus = Modus.Play;
+                        }
+                    }
+                    break;
+
+                case Modus.Play:
+                    menuUi.Hide();
+                    if (game != null)
+                    {
+                        game.Update();
+                    }
+                    else
+                    {
+                        game = Game.Instance;
+                    }
+                    break;
+
+                default:
+                    break;
+            }
+
             //if (Body.Instance.IsTracked)
-            //{
-                //Initialise.Instance.Tracked();
-                if (game != null)
-                {
-                    game.Update();
-                }
-            //}
-            //else
-            //{
-                //speerbildschirm anzeigen
-                //Initialise.Instance.NotTracked();
-                // alles reseten
-            //}
+            if (Body.Instance.Spine.X + Body.Instance.Spine.Y + Body.Instance.Spine.Z != 0 )
+            {
+                Visualization.text(trackId, "Yes");
+            }
+            else
+            {
+                Visualization.text(trackId, "No");
+            }
         }
 
         /// <summary>
