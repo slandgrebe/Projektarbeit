@@ -72,17 +72,12 @@ namespace VisualizationExample
 
         static void Main(string[] args)
         {
-            System.Windows.Forms.MessageBox.Show("Mit <Esc> kann das Programm beendet werden.");
+            //System.Windows.Forms.MessageBox.Show("Mit <Esc> kann das Programm beendet werden.");
 
-            Console.WriteLine(init("Fenstertitel", false, 640, 480));
-
-            /*// WINDOW
+            // WINDOW
             init("Test", false, 640, 480);
-            close();
 
-            init("Test2", false, 640, 480);*/
-
-            // POINTS
+            /*// POINTS
             uint pointId = addPoint("data/textures/sample.png");
             while (pointId != 0 && !isCreated(pointId)) { }
             position(pointId, -0.5f, 0.5f, -5f);
@@ -94,14 +89,14 @@ namespace VisualizationExample
             // MODELS
             uint modelId = addModel("data/models/shuttle/SpaceShuttleOrbiter.3ds");
             while (!isCreated(modelId)) { }
-            scale(modelId, 2.0f, 0.5f, 1f);
+            //scale(modelId, 2.0f, 0.5f, 1f);
             scalingIsNormalized(modelId, true);
-            rotate(modelId, -45.0f, 1.0f, 0.0f, 1.0f);
-            position(modelId, -2f, -0.5f, -4.5f);
-            highlightColor(modelId, 0.0f, 1.0f, 0.0f, 1.0f);
-            isHighlighted(modelId, true);
+            //rotate(modelId, -45.0f, 1.0f, 0.0f, 1.0f);
+            position(modelId, 0f, 0f, -4.5f);
+            //highlightColor(modelId, 0.0f, 1.0f, 0.0f, 1.0f);
+            //isHighlighted(modelId, true);
 
-            uint modelId2 = addModel("data/models/shuttle/SpaceShuttleOrbiter.3ds");
+            /*uint modelId2 = addModel("data/models/shuttle/SpaceShuttleOrbiter.3ds");
             while (!isCreated(modelId2)) { }
             scale(modelId2, 0.5f, 0.5f, 0.5f);
             scalingIsNormalized(modelId2, true);
@@ -146,44 +141,63 @@ namespace VisualizationExample
             dispose(buttonId);
             dispose(pointId);
             dispose(modelId);
-            dispose(textId);
+            dispose(textId);*/
 
             // CAMERA
-            positionCamera(0, 0, 5);
-            changeCameraSpeed(1f);
+            positionCamera(0, 0, 2);
+            //changeCameraSpeed(1f);
 
             // ATTACH MODEL TO CAMERA
             uint modelId_attachedToCamera = addModel("data/models/cube.obj");
             while (!isCreated(modelId_attachedToCamera)) { }
             scale(modelId_attachedToCamera, 0.5f, 0.5f, 0.5f);
-            position(modelId_attachedToCamera, 0f, 1f, -5f);
+            scalingIsNormalized(modelId_attachedToCamera, true);
+            position(modelId_attachedToCamera, -2f, 0f, -2f);
             rotate(modelId_attachedToCamera, -90.0f, 1.0f, 0.0f, 0.0f);
-            highlightColor(modelId_attachedToCamera, 0.0f, 0.0f, 1.0f, 1.0f);
+            highlightColor(modelId_attachedToCamera, 1.0f, 0.0f, 0.0f, 1.0f);
             isHighlighted(modelId_attachedToCamera, true);
-            attachToCamera(modelId_attachedToCamera, true);
+            //attachToCamera(modelId_attachedToCamera, true);
 
             // MODEL TO COLLIDE
-            uint modelId_collision = addModel("data/models/shuttle/SpaceShuttleOrbiter.3ds");
+            uint modelId_collision = addModel("data/models/cube.obj");
             while (!isCreated(modelId_collision)) { }
-            //scale(modelId_collision, 0.5, 0.5, 0.5);
+            scale(modelId_collision, 0.5f, 0.5f, 0.5f);
+            scalingIsNormalized(modelId_collision, true);
+            position(modelId_collision, 0f, 0f, -2f);
             rotate(modelId_collision, -90.0f, 1.0f, 0.0f, 0.0f);
-            highlightColor(modelId_collision, 0.0f, 1.0f, 1.0f, 1.0f);
+            highlightColor(modelId_collision, 0.0f, 1.0f, 0.0f, 1.0f);
             isHighlighted(modelId_collision, true);
 
+            // MODEL TO COLLIDE2
+            uint modelId_collision2 = addModel("Resource Files/Models/Wagon/Wagon.3ds");
+            while (!isCreated(modelId_collision2)) { }
+            scale(modelId_collision2, 0.1f, 2.0f, 0.1f);
+            scalingIsNormalized(modelId_collision2, true);
+            position(modelId_collision2, 1.5f, 0f, -2f);
+            //rotate(modelId_collision2, -90.0f, 1.0f, 0.0f, 0.0f);
+            highlightColor(modelId_collision2, 0.0f, 0.0f, 1.0f, 1.0f);
+            isHighlighted(modelId_collision2, true);
+
             float rotation = 0f;
+            float x = -2f;
             // RUNNING
             while (isRunning()) {
                 System.Threading.Thread.Sleep(1); // senkt die CPU Auslastung drastisch
 
                 handleCollisions(modelId_attachedToCamera);
 
-                rotate(modelId_attachedToCamera, rotation++, 0f, 1f, 0f);
+                //rotate(modelId_attachedToCamera, rotation++, 0f, 1f, 0f);
+                
+                x += 0.001f;
+                position(modelId_attachedToCamera, x, 0f, -2f);
                 //tiltCamera(rotation / 5);
             }
         }
 
         static void handleCollisions(uint modelId)
         {
+            bool collision = false;
+            
             // COLLISION DETECTION
             System.Collections.Generic.Dictionary<uint, System.Collections.Generic.List<uint>> collisionList = new System.Collections.Generic.Dictionary<uint, System.Collections.Generic.List<uint>>();
 
@@ -225,20 +239,21 @@ namespace VisualizationExample
                 System.Collections.Generic.List<uint> myCollisions = collisionList[modelId];
                 if (myCollisions.Count > 0) // es gibt kollisionen => das Objekt selber behandeln
                 {
-                    highlightColor(modelId, 1f, 0f, 0f, 1f);
+                    //Console.WriteLine("Collision detected!");
+                    highlightColor(modelId, 1f, 1f, 0f, 1f);
                     isHighlighted(modelId, true);
-                    dispose(modelId);
+                    //dispose(modelId);
                 }
                 else // keine Kollision
                 {
-                    highlightColor(modelId, 1f, 1f, 1f, 1f);
+                    highlightColor(modelId, 1f, 0f, 1f, 1f);
                     isHighlighted(modelId, false);
                 }
 
                 // jede Kollision von diesem Objekt mit einem anderen
                 foreach (uint anotherModelId in myCollisions)
                 {
-                    highlightColor(anotherModelId, 1f, 0f, 0f, 1f);
+                    highlightColor(anotherModelId, 0f, 1f, 1f, 1f);
                     isHighlighted(anotherModelId, true);
                 }
             }

@@ -103,6 +103,7 @@
     <ClInclude Include="GraphicEngine.h" />
     <ClInclude Include="Log.h" />
     <ClInclude Include="Manager.h" />
+    <ClInclude Include="Math.h" />
     <ClInclude Include="Model.h" />
     <ClInclude Include="SafeQueue.h" />
     <ClInclude Include="ShaderProgram.h" />
@@ -130,6 +131,7 @@
     </ClCompile>
     <ClCompile Include="GraphicEngine.cpp" />
     <ClCompile Include="Manager.cpp" />
+    <ClCompile Include="Math.cpp" />
     <ClCompile Include="ShaderProgram.cpp" />
     <ClCompile Include="Square.cpp" />
     <ClCompile Include="stdafx.cpp">
@@ -162,6 +164,7 @@
     <Image Include="data\models\shuttle\spstob_3.bmp" />
     <Image Include="data\models\shuttle\spstob_4.bmp" />
     <Image Include="data\models\shuttle\spstob_e.bmp" />
+    <Image Include="data\textures\fallback.png" />
     <Image Include="data\textures\red.jpg" />
     <Image Include="data\textures\sample.png" />
     <Image Include="data\textures\test.png" />

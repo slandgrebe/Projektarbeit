@@ -43,6 +43,12 @@
     <Filter Include="Header Files\graphics">
       <UniqueIdentifier>{33d21059-ae5b-4b7f-8ea2-edd78c486615}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\math">
+      <UniqueIdentifier>{df12e9c5-46e2-4755-aede-095f9aba68d9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\math">
+      <UniqueIdentifier>{a90ac954-e676-4bf7-8b29-d6e28efd9e70}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -102,6 +108,9 @@
     <ClInclude Include="Camera.h">
       <Filter>Header Files\graphics</Filter>
     </ClInclude>
+    <ClInclude Include="Math.h">
+      <Filter>Header Files\math</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -142,6 +151,9 @@
     </ClCompile>
     <ClCompile Include="Camera.cpp">
       <Filter>Source Files\graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="Math.cpp">
+      <Filter>Source Files\math</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -197,6 +209,9 @@
       <Filter>Resource Files\textures</Filter>
     </Image>
     <Image Include="data\textures\test.png">
+      <Filter>Resource Files\textures</Filter>
+    </Image>
+    <Image Include="data\textures\fallback.png">
       <Filter>Resource Files\textures</Filter>
     </Image>
   </ItemGroup>

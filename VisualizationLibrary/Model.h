@@ -134,6 +134,9 @@ namespace visual {
 			* @return Positionsvektor
 			*/
 			virtual glm::vec3 position(void) {
+				if (m_isAttachedToCamera) {
+					return m_positionVector + graphics::GraphicEngine::getInstance()->camera()->position();
+				}
 				return m_positionVector;
 			};
 
@@ -246,7 +249,6 @@ namespace visual {
 			virtual bool attachedToCamera(void) {
 				return m_isAttachedToCamera;
 			}
-
 
 			/** Zeichnet das Modell neu
 			* @author Stefan Landgrebe
