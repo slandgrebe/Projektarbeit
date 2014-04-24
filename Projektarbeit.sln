@@ -12,6 +12,9 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Controller", "Controller\Controller.csproj", "{88EE6FBB-4DB9-4F30-BC26-152CFAC6D1E5}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VisulizationExample", "Wrapper\VisulizationExample.csproj", "{5335B503-6E79-439E-B405-FECB3EB3C5B5}"
+	ProjectSection(ProjectDependencies) = postProject
+		{675B0B15-F88D-451A-B19D-2C98FE78C952} = {675B0B15-F88D-451A-B19D-2C98FE78C952}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VisualizationLibraryTest", "VisualizationLibraryTest\VisualizationLibraryTest.csproj", "{82F0BA8B-4F3C-40B1-895F-0B2DDF341BAD}"
 EndProject

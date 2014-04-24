@@ -18,7 +18,7 @@ Manager* Manager::getInstance(void) {
 }
 
 Manager::Manager() {
-	Log::ReportingLevel() = logDEBUG;
+	Log::ReportingLevel() = logTRACE;
 	m_collisions = "";
 
 	/*clock_t begin = clock();
@@ -226,12 +226,7 @@ glm::vec3 Manager::modelPosition(GLuint modelId) {
 
 	if (assimpModelList.find(modelId) != assimpModelList.end()) {
 		model::AssimpModel* model = assimpModelList.find(modelId)->second;
-		if (model->attachedToCamera()) {
-			position = model->position() + graphics::GraphicEngine::getInstance()->camera()->position();
-		}
-		else {
-			position = model->position();
-		}
+		position = model->position();
 	}
 	else if (squareList.find(modelId) != squareList.end()) {
 		model::Square* model = squareList.find(modelId)->second;
@@ -514,7 +509,7 @@ void Manager::doCollisionDetection(void) {
 	std::stringstream collisions;
 	const char* separator1 = "";
 	const char* separator2 = "";
-	glm::vec3 cameraPosition = graphics::GraphicEngine::getInstance()->camera()->position();
+	//glm::vec3 cameraPosition = graphics::GraphicEngine::getInstance()->camera()->position();
 	
 	// Modelle
 	std::map<GLuint, model::AssimpModel*>::iterator it;
@@ -523,36 +518,36 @@ void Manager::doCollisionDetection(void) {
 		collisions << separator1 << it->first << ":";
 		separator1 = ";";
 
-		glm::vec3 a = modelA->position();
+		/*glm::vec3 a = modelA->position();
 		if (modelA->attachedToCamera()) {
 			a += cameraPosition;
 		}
-		float ar = modelA->boundingSphereRadius();
+		float ar = modelA->boundingSphereRadius();*/
 
 		std::map<GLuint, model::AssimpModel*>::iterator it2;
 		for (it2 = assimpModelList.begin(); it2 != assimpModelList.end(); it2++) {
 			model::AssimpModel* modelB = (*it2).second;
 
-			// mit sich selber nicht vergleichen
+			/*// mit sich selber nicht vergleichen
 			if (modelA == modelB) {
 				continue;
-			}
+			}*/
 
-			// wenn Modell an die Kamera angehängt ist, zur Position noch die Kameraposition dazu rechnen
+			/*// wenn Modell an die Kamera angehängt ist, zur Position noch die Kameraposition dazu rechnen
 			glm::vec3 b = modelB->position();
 			if (modelB->attachedToCamera()) {
 				b += cameraPosition;
 			}
 
-			float br = modelB->boundingSphereRadius();
+			float br = modelB->boundingSphereRadius();*/
 
 			// kugeln schneiden sich
-			if (pow(a.x - b.x, 2) + pow(a.y - b.y, 2) + pow(a.z - b.z, 2) < pow(ar + br, 2)) {
+			//if (pow(a.x - b.x, 2) + pow(a.y - b.y, 2) + pow(a.z - b.z, 2) < pow(ar + br, 2)) {
 				if (modelA->doesIntersect(modelB)) { // exaktere prüfung
 					collisions << separator2 << it2->first;
 					separator2 = ",";
 				}
-			}
+			//}
 		}
 
 		separator2 = "";

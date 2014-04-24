@@ -3,7 +3,7 @@
 
 using namespace visual::math;
 
-const float Math::NEAR_ZERO = 0.00000001;
+const float Math::NEAR_ZERO = 0.00000001f;
 
 Math::Math() {
 }
@@ -65,7 +65,9 @@ bool Math::segmentIntersectsTriangle(glm::vec3 start, glm::vec3 end,
 	glm::vec3 normal = glm::cross(edgeAB, edgeAC); // Normale des Dreiecks
 
 	if (normal == glm::vec3(0)) {      // triangle is degenerate
-		Log().warning() << "degenerate triangle" << std::endl;
+		/*Log().warning() << "degenerate triangle: a[" << vertexA.x << "/" << vertexA.y << "/" << vertexA.z << "] " << 
+												"b[" << vertexB.x << "/" << vertexB.y << "/" << vertexB.z << "] " <<
+												"c[" << vertexC.x << "/" << vertexC.y << "/" << vertexC.z << "]";*/
 		return false;                  // do not deal with this case
 	}
 
@@ -75,23 +77,18 @@ bool Math::segmentIntersectsTriangle(glm::vec3 start, glm::vec3 end,
 	float b = glm::dot(normal, direction);	// Cosinus des Winkels zwischen Dreieck-Normale und Strecken-Richtung
 	if (b < NEAR_ZERO && b > -NEAR_ZERO) {  // Strecke ist parallel zur Dreieck Ebene
 		if (a == 0) { // Strecke liegt in der Dreieck Ebene
-			Log().trace() << "same plane";
 			if (segmentIntersection(start, end, vertexA, vertexB)) { // schneidet strecke die Seite AB
-				Log().trace() << "AB";
 				return true;
 			}
 			else if (segmentIntersection(start, end, vertexA, vertexC)) { // schneidet strecke die Seite AC
-				Log().trace() << "AC";
 				return true;
 			}
 			else if (segmentIntersection(start, end, vertexB, vertexC)) { // schneidet strecke die Seite BC
-				Log().trace() << "BC";
 				return true;
 			}
 			return false; // keine berührungspunkte
 		}
 		else {
-			Log().trace() << "parallel, but not touching";
 			return false; // Strecke berührt die Dreieck Ebene nicht
 		}
 	}
@@ -101,7 +98,6 @@ bool Math::segmentIntersectsTriangle(glm::vec3 start, glm::vec3 end,
 	if (r < 0.0 						// ray goes away from triangle
 		&& r > 1.0) {                   // for a segment, also test if (r > 1.0) => no intersect
 
-		Log().trace() << "segment not intersecting, but line would";
 		return false;                   // => no intersect
 	}
 
@@ -121,12 +117,10 @@ bool Math::segmentIntersectsTriangle(glm::vec3 start, glm::vec3 end,
 	float s, t;
 	s = (uv * wv - vv * wu) / D;
 	if (s < 0.0 || s > 1.0) {        // I is outside T
-		Log().trace() << "outside triangle 1";
 		return false;
 	}
 	t = (uv * wu - uu * wv) / D;
 	if (t < 0.0 || (s + t) > 1.0) { // I is outside T
-		Log().trace() << "outside triangle 2";
 		return false;
 	}
 

@@ -164,6 +164,7 @@
     <Image Include="data\models\shuttle\spstob_3.bmp" />
     <Image Include="data\models\shuttle\spstob_4.bmp" />
     <Image Include="data\models\shuttle\spstob_e.bmp" />
+    <Image Include="data\textures\fallback.png" />
     <Image Include="data\textures\red.jpg" />
     <Image Include="data\textures\sample.png" />
     <Image Include="data\textures\test.png" />

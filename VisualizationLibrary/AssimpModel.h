@@ -56,6 +56,18 @@ namespace visual {
 				}
 			};
 
+			struct Triangle {
+				Triangle(glm::vec3 a, glm::vec3 b, glm::vec3 c) {
+					this->a = a;
+					this->b = b;
+					this->c = c;
+				}
+
+				glm::vec3 a;
+				glm::vec3 b;
+				glm::vec3 c;
+			};
+
 			struct MeshEntry {
 				MeshEntry();
 				~MeshEntry();
@@ -67,6 +79,12 @@ namespace visual {
 				GLuint indexBufferId;
 				unsigned int numIndices;
 				unsigned int materialIndex;
+
+				// Collision Detection
+				unsigned int numTriangles; 
+				std::vector<Triangle> triangles;
+
+				Triangle getTriangle(unsigned int n);
 			};	
 
 			std::vector<MeshEntry> meshList;

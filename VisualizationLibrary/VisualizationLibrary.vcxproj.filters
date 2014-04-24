@@ -211,5 +211,8 @@
     <Image Include="data\textures\test.png">
       <Filter>Resource Files\textures</Filter>
     </Image>
+    <Image Include="data\textures\fallback.png">
+      <Filter>Resource Files\textures</Filter>
+    </Image>
   </ItemGroup>
 </Project>

@@ -139,6 +139,7 @@ void GraphicEngine::worker(void) {
 		begin = now;
 		now = clock();
 		//Log().debug() << "Bild gezeichnet in " << int(now - begin) / CLOCKS_PER_SEC << "ms. Das entspricht " << 1000 / (now - begin) << " FPS." ;
+		//Log().debug() << "Bild gezeichnet in " << timeDifference << "ms. " << 1 / timeDifference << " FPS";
 	}
 
 	glfwTerminate(); 
@@ -252,6 +253,9 @@ int GraphicEngine::createWindow() {
 
 	// Bildschirmauflösung auslesen
 	const GLFWvidmode * mode = glfwGetVideoMode(glfwGetPrimaryMonitor());
+	
+	Log().debug() << "createWindow width[" << width << "] height[" << height << "]";
+
 	if (width == 0) {
 		width = mode->width;
 	}

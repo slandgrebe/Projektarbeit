@@ -3,6 +3,7 @@
 #include "GraphicEngine.h"
 #include <glm/gtc/type_ptr.hpp>
 #include <iostream>
+#include "Math.h"
 
 using namespace visual::model;
 
@@ -38,10 +39,35 @@ void AssimpModel::MeshEntry::init(	const std::vector<Vertex>& vertices,
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, indexBufferId);
 	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(unsigned int)* numIndices, &indices[0], GL_STATIC_DRAW);
 
+	// collision detection
+	numTriangles = indices.size() / 3;
+	for (unsigned int i = 0; i < numTriangles; i++) {
+		Log().debug() << "fill triangle List " << i;
+		Triangle t = Triangle(vertices[indices[i * 3 + 0]].position, 
+								vertices[indices[i * 3 + 1]].position, 
+								vertices[indices[i * 3 + 2]].position);
+		this->triangles.push_back(t);
+	}
+
 	/*for (std::vector<unsigned int>::const_iterator i = indices.begin(); i != indices.end(); ++i)
 		Log().debug() << *i << ' ';
 
 	Log().debug() ;*/
+}
+
+AssimpModel::Triangle AssimpModel::MeshEntry::getTriangle(unsigned int n) {
+	Triangle t = Triangle(glm::vec3(0), glm::vec3(0), glm::vec3(0));
+
+	// testen ob n gültig ist
+	if (n < numTriangles) {
+		t = triangles[n];
+	}
+	else {
+		// warning
+		Log().warning() << "AssimpModel::MeshEntry::getTriangle(): n zu gross.";
+	}
+
+	return t;
 }
 
 
@@ -204,7 +230,7 @@ bool AssimpModel::initMaterials(const aiScene* scene, const std::string& filenam
 		// Load a white texture in case the model does not include its own texture
 		if (!textureList[i]) {
 			textureList[i] = new TextureSoil();
-			returnValue = textureList[i]->loadFromFile("data/textures/red.jpg");
+			returnValue = textureList[i]->loadFromFile("data/textures/fallback.png");
 
 			Log().warning() << "  Benutze Fallback Textur" ;
 		}
@@ -223,8 +249,70 @@ void AssimpModel::clear() {
 }
 
 bool AssimpModel::doesIntersect(AssimpModel* other) {
+	// mit sich selber testen macht wenig sinn
+	if (this == other) {
+		return false;
+	}
 
-	return true;
+	glm::vec3 pos1 = this->position(); // attachedToCamera in der position Methode noch berücksichtigen!
+	glm::vec3 pos2 = other->position();
+
+	float radius1 = this->boundingSphereRadius();
+	float radius2 = other->boundingSphereRadius();
+
+	// sehr einfacher, schneller, ungenauer Test zuerst
+	if (pow(pos1.x - pos2.x, 2) + pow(pos1.y - pos2.y, 2) + pow(pos1.z - pos2.z, 2) <= pow(radius1 + radius2, 2)) { // berühren oder schneiden sich die Bounding Spheres?
+
+		return true;
+
+		// zu langsam :(
+
+		// measure time
+		clock_t begin = clock();
+		float timeDifference = 0.0f;
+
+		// sehr komplexer, langsamer, exakter Test danach
+		glm::mat4 mvp1 = this->getTransformedModelMatrix();
+		glm::mat4 mvp2 = other->getTransformedModelMatrix();
+
+		// Jedes Teilmodell von diesem Modell...
+		for (unsigned int i = 0; i < this->meshList.size(); i++) {
+
+			// ... und davon jedes Dreieck ...
+			for (unsigned int j = 0; j < this->meshList[i].numTriangles; j++) {
+				// This Triangle
+				Triangle t1 = this->meshList[i].triangles[j];
+
+				glm::vec3 a1 = glm::vec3(mvp1 * glm::vec4(t1.a, 1.0));
+				glm::vec3 b1 = glm::vec3(mvp1 * glm::vec4(t1.b, 1.0));
+				glm::vec3 c1 = glm::vec3(mvp1 * glm::vec4(t1.c, 1.0));
+
+				// ... wird mit jedem Teilmodell des anderen Modells...
+				for (unsigned int k = 0; k < other->meshList.size(); k++) {
+					// ... und davon mit jedem Dreieck getestet.
+					for (unsigned int l = 0; l < other->meshList[k].numTriangles; l++) {
+						// Other Triangle
+						Triangle t2 = other->meshList[k].triangles[l];
+
+						glm::vec3 a2 = glm::vec3(mvp2 * glm::vec4(t2.a, 1.0));
+						glm::vec3 b2 = glm::vec3(mvp2 * glm::vec4(t2.b, 1.0));
+						glm::vec3 c2 = glm::vec3(mvp2 * glm::vec4(t2.c, 1.0));
+
+						// Test
+						if (math::Math::doTrianglesIntersect(a1, b1, c1,  a2, b2, c2)) { // berühren oder schneiden sich die zwei Dreiecke?
+							return true;
+						}
+					}
+				}
+			}
+		}
+		// doch keine kollision
+
+		//Log().debug() << "time: " << (float)(clock() - begin) / 1.0f;
+
+	} // if - einfacher test
+
+	return false;
 }
 
 void AssimpModel::draw() {
@@ -290,6 +378,7 @@ void AssimpModel::draw() {
 			g = highlightColor.g;
 			b = highlightColor.b;
 			a = highlightColor.a;
+			//Log().debug() << "Model is highlighted!" << r << "/" << g << "/" << b << "/" << a;
 		}
 		glUniform4f(highlightAttribute, r, g, b, a);
 
