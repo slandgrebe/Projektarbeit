@@ -7,7 +7,7 @@ using View;
 
 namespace View
 {
-    public class ScoreUi
+    public class MenuUi
     {
         public float Position { get; set; }
         private uint backgroundId = 0;
@@ -15,7 +15,7 @@ namespace View
 
         private uint buttonId = 0;
 
-        public ScoreUi()
+        public MenuUi()
         {
             backgroundId = Visualization.addPoint("Resource Files/Background/white.jpg");
             while (backgroundId != 0 && !Visualization.isCreated(backgroundId)) { }

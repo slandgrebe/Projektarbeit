@@ -15,11 +15,12 @@ namespace Controller
         private static Game instance;
         public Player Player { get; set; }
         public Level level = null;
-        private bool loadet = false;
+        public GameStatus GameStatus { get; set; }
         private GameUi gameUi;
 
         public Game()
         {
+            GameStatus = GameStatus.Nothing;
             Player = new Player();
             Player.Scale = 0.7f;
             Player.Attach = true;
@@ -35,8 +36,17 @@ namespace Controller
             level.Deserialize();
             level.Load();
             gameUi = new GameUi();
-            loadet = true;
-            View.Visualization.changeCameraSpeed(5f);
+            GameStatus = GameStatus.Loadet;
+        }
+
+        public void Start()
+        {
+            if (GameStatus == GameStatus.Loadet)
+            {
+                View.Visualization.positionCamera(0, 1.5f, 0);
+                View.Visualization.changeCameraSpeed(5f);
+                GameStatus = GameStatus.Started;
+            }
         }
 
         /// <summary>
@@ -57,10 +67,10 @@ namespace Controller
 
         public void Update()
         {
-            /*if(level.LevelLength + 90 > Player.GetPosition()){
+            if(GameStatus != GameStatus.Started){
                 View.Visualization.changeCameraSpeed(0);
-            }*/
-            if (loadet)
+            }
+            if (GameStatus == GameStatus.Started)
             {
                 if (level != null)
                 {
@@ -90,8 +100,26 @@ namespace Controller
                         }
                     }
                     gameUi.Update();
+                    ChechLevelEnd();
+                    CheckGameOver();
                 }
             } 
+        }
+
+        private void CheckGameOver()
+        {
+            if (Player.Lives == 0)
+            {
+                GameStatus = GameStatus.GameOver;
+            }
+        }
+
+        private void ChechLevelEnd()
+        {
+            if (level.LevelLength + 10 > Player.GetPosition())
+            {
+                GameStatus = GameStatus.Successful;
+            }
         }
     }
 }

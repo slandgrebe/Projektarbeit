@@ -58,6 +58,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Game.cs" />
+    <Compile Include="Game\GameStatus.cs" />
     <Compile Include="Game\LevelSegment.cs" />
     <Compile Include="Game\Object.cs" />
     <Compile Include="Gesture\Click.cs" />

@@ -17,6 +17,7 @@ namespace Controller
         private Game game = null;
         private NoTrackingUi noTrackingUi = null;
         private MenuUi menuUi = null;
+        private ScoreUi scoreUi = null;
         private Click click = new Click();
         private Modus modus;
         private uint trackId = 0;
@@ -55,9 +56,11 @@ namespace Controller
             modus = Modus.Menu;
 
             menuUi = new MenuUi();
-            menuUi.Position = 0;
+            menuUi.Position = 100;
             menuUi.Show();
-            
+
+            scoreUi = new ScoreUi();
+            scoreUi.Position = 200;
 
             Sensor = new SkeletonTracker();
             Sensor.Start();
@@ -93,13 +96,38 @@ namespace Controller
 
                 case Modus.Play:
                     menuUi.Hide();
+                    scoreUi.Hide();
                     if (game != null)
                     {
+                        if (game.GameStatus == GameStatus.Loadet)
+                        {
+                            game.Start();
+                        }
                         game.Update();
+                        if (game.GameStatus == GameStatus.Successful)
+                        {
+                            modus = Modus.Score;
+                        }
+                        if (game.GameStatus == GameStatus.GameOver)
+                        {
+                            modus = Modus.GameOver;
+                        }
                     }
                     else
                     {
                         game = Game.Instance;
+                    }
+                    break;
+
+                case Modus.Score:
+                    Body.Instance.Scale(0.1f);
+                    scoreUi.Show();
+                    scoreUi.PositionCursor(Body.Instance.HandRight.X, Body.Instance.HandRight.Y);
+                    if (scoreUi.HoverButton(Body.Instance.HandRight.X, Body.Instance.HandRight.Y))
+                    {
+                        if(click.IsClicked()){
+                            modus = Modus.Play;
+                        }
                     }
                     break;
 

@@ -45,8 +45,6 @@ namespace Controller
         public Level(){
             segments = new List<LevelSegment>();
             segmentsXmlPath = new List<string>();
-
-            View.Visualization.positionCamera(0, 1.5f, 0);
         }
 
         public void AddSegment(LevelSegment segment)
