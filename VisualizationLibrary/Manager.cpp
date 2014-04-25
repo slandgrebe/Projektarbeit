@@ -18,7 +18,7 @@ Manager* Manager::getInstance(void) {
 }
 
 Manager::Manager() {
-	Log::ReportingLevel() = logTRACE;
+	Log::ReportingLevel() = logINFO;
 	m_collisions = "";
 
 	/*clock_t begin = clock();
