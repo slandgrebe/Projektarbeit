@@ -30,7 +30,6 @@ namespace Controller
             Player = new Player();
             Player.Scale = 0.7f;
             Player.Attach = true;
-            Player.Lives = 4;
             Player.Score = 0;
 
             string dir = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
@@ -42,6 +41,8 @@ namespace Controller
             level = (Level)serializer.Deserialize(stream);
             level.Deserialize();
             level.Load();
+
+            Player.Lives =level.Lives;
             
             gameUi.Show();
             GameStatus = GameStatus.Loadet;
@@ -131,7 +132,7 @@ namespace Controller
 
         private void ChechLevelEnd()
         {
-            if (level.LevelLength + 10 > Player.GetPosition())
+            if (level.LevelLength + level.segments.Last().Length - 2 > Player.GetPosition())
             {
                 GameStatus = GameStatus.Successful;
             }

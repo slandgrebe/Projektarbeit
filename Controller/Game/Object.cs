@@ -22,7 +22,7 @@ namespace Controller
         public void Create(float z)
         {
             Model.Create();
-            Model.Position(PosX, PosY, z + PosZ);
+            Model.Position(PosX, PosY, z + PosZ *-1);
             Model.Scale(Scale);
             Model.AttachToCamera(AttachToCamera);
             Model.Rotate(RotateHorizontal, 0, 1, 0);

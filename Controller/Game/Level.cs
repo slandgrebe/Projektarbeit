@@ -15,6 +15,7 @@ namespace Controller
         public List<LevelSegment> segments;
         public List<string> segmentsXmlPath;
         public float LevelLength = 0;
+        public uint Lives { get; set; }
 
         public void Load()
         {
