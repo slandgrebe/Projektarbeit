@@ -40,6 +40,8 @@ namespace visual {
 			//bool initTexture() {};
 			void clear();
 
+			
+
 			struct Vertex {
 				glm::vec3 position;
 				glm::vec2 textureCoordinate;
@@ -54,6 +56,18 @@ namespace visual {
 				}
 			};
 
+			struct Triangle {
+				Triangle(glm::vec3 a, glm::vec3 b, glm::vec3 c) {
+					this->a = a;
+					this->b = b;
+					this->c = c;
+				}
+
+				glm::vec3 a;
+				glm::vec3 b;
+				glm::vec3 c;
+			};
+
 			struct MeshEntry {
 				MeshEntry();
 				~MeshEntry();
@@ -65,6 +79,12 @@ namespace visual {
 				GLuint indexBufferId;
 				unsigned int numIndices;
 				unsigned int materialIndex;
+
+				// Collision Detection
+				unsigned int numTriangles; 
+				std::vector<Triangle> triangles;
+
+				Triangle getTriangle(unsigned int n);
 			};	
 
 			std::vector<MeshEntry> meshList;
@@ -92,6 +112,13 @@ namespace visual {
 			* @see Model::loadModel()
 			*/
 			bool loadModel(const std::string filename);
+
+			/** Prüft ob dieses Modell ein anderes schneidet.
+			* @author Stefan Landgrebe
+			* @param other das andere Modell
+			* @return True wenn es min. 1 Schnittpunkt gibt.
+			*/
+			bool doesIntersect(AssimpModel* other);
 
 			/** Zeichnet das Modell neu
 			* @author Stefan Landgrebe

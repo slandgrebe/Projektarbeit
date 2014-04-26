@@ -20,13 +20,13 @@ namespace Controller
                 HandLeftStart = Body.Instance.HandLeft.Z;
                 StartTime = DateTime.Now;
             }
+            Console.WriteLine(HandRightStart - Body.Instance.HandRight.Z);
 
-
-            if ((HandRightStart - Body.Instance.HandRight.Z) >= 0.3)
+            if ((HandRightStart - Body.Instance.HandRight.Z) >= 0.2)
             {
                 return true;
             }
-            if ((HandLeftStart - Body.Instance.HandLeft.Z) >= 0.3)
+            if ((HandLeftStart - Body.Instance.HandLeft.Z) >= 0.2)
             {
                 return true;
             }

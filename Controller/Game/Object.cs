@@ -102,5 +102,10 @@ namespace Controller
             }
             return false;
         }
+
+        public void Dispose()
+        {
+            Model = null;
+        }
     }
 }

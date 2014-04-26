@@ -20,11 +20,18 @@ namespace Controller
 
         public Game()
         {
-            GameStatus = GameStatus.Nothing;
+            gameUi = new GameUi();
+            Init();
+        }
+
+        public void Init()
+        {
+            GameStatus = GameStatus.Initial;
             Player = new Player();
             Player.Scale = 0.7f;
             Player.Attach = true;
-            Player.Lives = 10;
+            Player.Lives = 4;
+            Player.Score = 0;
 
             string dir = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
             dir = dir + @"\Resource Files\Levels\Jungle\Level.xml";
@@ -35,7 +42,8 @@ namespace Controller
             level = (Level)serializer.Deserialize(stream);
             level.Deserialize();
             level.Load();
-            gameUi = new GameUi();
+            
+            gameUi.Show();
             GameStatus = GameStatus.Loadet;
         }
 
@@ -104,6 +112,13 @@ namespace Controller
                     CheckGameOver();
                 }
             } 
+        }
+
+        public void DisposeLevel()
+        {
+            gameUi.Hide();
+            level.Dispose();
+            GameStatus = GameStatus.Start;
         }
 
         private void CheckGameOver()

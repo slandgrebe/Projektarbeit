@@ -12,8 +12,8 @@ namespace View
         public float Position { get; set; }
         private uint backgroundId = 0;
         private uint cursorId = 0;
-
         private uint buttonId = 0;
+        private bool show = true;
 
         public MenuUi()
         {
@@ -41,17 +41,26 @@ namespace View
 
         public void Show()
         {
-            Visualization.position(backgroundId, Position, 0f, -0.3f);
-            Visualization.position(buttonId, 0, 0, 1); // Z-Koordinate wird ignoriert, da es sich beim Button um ein GUI Element handelt
-            Visualization.positionCamera(Position, 0, 0);
-            Visualization.attachToCamera(cursorId, true);
+            if (!show)
+            {
+                Visualization.changeCameraSpeed(0);
+                Visualization.position(backgroundId, Position, 0f, -0.3f);
+                Visualization.position(buttonId, 0, 0, 1); // Z-Koordinate wird ignoriert, da es sich beim Button um ein GUI Element handelt
+                Visualization.positionCamera(Position, 0, 0);
+                Visualization.attachToCamera(cursorId, true);
+                show = true;
+            }
         }
 
         public void Hide()
         {
-            Visualization.position(backgroundId, -1000, 0f, -0.3f);
-            Visualization.position(buttonId, -1000, 0f, 1); // Z-Koordinate wird ignoriert, da es sich beim Button um ein GUI Element handelt
-            Visualization.position(cursorId, -1000, 0f, -0.2f);
+            if (show)
+            {
+                Visualization.position(backgroundId, -1000, 0f, -0.3f);
+                Visualization.position(buttonId, -1000, 0f, 1); // Z-Koordinate wird ignoriert, da es sich beim Button um ein GUI Element handelt
+                Visualization.position(cursorId, -1000, 0f, -0.2f);
+                show = false;
+            }
         }
 
         public void PositionCursor(float x, float y)

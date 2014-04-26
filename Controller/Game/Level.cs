@@ -55,6 +55,14 @@ namespace Controller
         public void AddXmlPath(string path)
         {
             segmentsXmlPath.Add(path);
-        }    
+        }
+
+        public void Dispose()
+        {
+            foreach (LevelSegment segment in segments)
+            {
+                segment.Dispose();
+            }
+        }
     }
 }

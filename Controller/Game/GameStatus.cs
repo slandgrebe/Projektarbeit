@@ -8,10 +8,11 @@ namespace Controller
 {
     public enum GameStatus : short
     {
-        Nothing = 0,
-        Loadet = 1,
-        Started = 2,
-        Successful = 3,
-        GameOver = 4,
+        Initial = 0,
+        Start = 1,
+        Loadet = 2,
+        Started = 3,
+        Successful = 4,
+        GameOver = 5
     }
 }

@@ -258,6 +258,25 @@ namespace VisualizationLibraryTest
         }
 
         [TestMethod]
+        public void Model_PositionAttachedToCamera() // Position des Modells nachdem es an die Kamera angehängt wurde
+        {
+            // Setup
+            uint id = Utility.SetupModel();
+            Library.position(id, 1, 2, 3);
+            Library.positionCamera(1, 2, 3);
+            Library.attachToCamera(id, true);
+
+            // Test
+            Assert.AreEqual(2, Library.positionX(id));
+            Assert.AreEqual(4, Library.positionY(id));
+            Assert.AreEqual(6, Library.positionZ(id));
+
+            // Tear Down
+            if (!Utility.TearDown(id)) Assert.AreEqual(1, 0); // da ging was schief
+        }
+
+
+        [TestMethod]
         public void Model_Rotate()
         {
             // Setup

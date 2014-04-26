@@ -17,10 +17,11 @@ namespace Controller
         private Game game = null;
         private NoTrackingUi noTrackingUi = null;
         private MenuUi menuUi = null;
+        private LoadingUi loadingUi = null;
         private ScoreUi scoreUi = null;
+        private GameOverUi gameOverUi = null;
         private Click click = new Click();
         private Modus modus;
-        private uint trackId = 0;
         /// <summary>
         /// stellt sicher, dass diese Klasse nur einmal Instanziert wird.
         /// </summary>
@@ -42,25 +43,22 @@ namespace Controller
         /// </summary>
         public void Start()
         {
-            trackId = Visualization.addText("data/fonts/arial.ttf");
-            while (!Visualization.isCreated(trackId)) { }
-            Visualization.position(trackId, -0.7f, -0.7f, 1.0f);
-            Visualization.textSize(trackId, 36);
-            Visualization.textColor(trackId, 1f, 0f, 0f, 1f);
-            Visualization.text(trackId, "No");
-            /*noTrackingUi = new NoTrackingUi();
-            noTrackingUi.Position = 1000;
-            noTrackingUi.Show();
-            */
-
-            modus = Modus.Menu;
+            modus = Modus.NotTracked;
+            noTrackingUi = new NoTrackingUi();
+            noTrackingUi.Position = 100;
+            noTrackingUi.Show(); 
 
             menuUi = new MenuUi();
-            menuUi.Position = 100;
-            menuUi.Show();
+            menuUi.Position = 200;
+
+            loadingUi = new LoadingUi();
+            loadingUi.Position = 300;
 
             scoreUi = new ScoreUi();
-            scoreUi.Position = 200;
+            scoreUi.Position = 400;
+
+            gameOverUi = new GameOverUi();
+            gameOverUi.Position = 500;
 
             Sensor = new SkeletonTracker();
             Sensor.Start();
@@ -80,10 +78,36 @@ namespace Controller
         /// </summary>
         public void Update()
         {
+            if (Body.Instance.IsTracked)
+            {
+                if (modus == Modus.NotTracked)
+                {
+                    modus = Modus.Menu;
+                }
+            }
+            else
+            {
+                modus = Modus.NotTracked;
+            }
+            
             switch (modus)
             {
+                case Modus.NotTracked:
+                    noTrackingUi.Show();
+                    if (game != null)
+                    {
+                        game.DisposeLevel();
+                    }
+                    menuUi.Hide();
+                    loadingUi.Hide();
+                    scoreUi.Hide();
+                    gameOverUi.Hide();
+                    
+                    break;
+
                 case Modus.Menu:
                     Body.Instance.Scale(0.1f);
+                    noTrackingUi.Hide();
                     menuUi.Show();
                     menuUi.PositionCursor(Body.Instance.HandRight.X, Body.Instance.HandRight.Y);
                     if(menuUi.HoverButton(Body.Instance.HandRight.X, Body.Instance.HandRight.Y))
@@ -97,8 +121,18 @@ namespace Controller
                 case Modus.Play:
                     menuUi.Hide();
                     scoreUi.Hide();
+                    gameOverUi.Hide();
                     if (game != null)
                     {
+                        if (game.GameStatus == GameStatus.Started)
+                        {
+                            loadingUi.Hide();
+                        }
+                        if (game.GameStatus == GameStatus.Start)
+                        {
+                            loadingUi.Show();
+                            game.Init();
+                        }
                         if (game.GameStatus == GameStatus.Loadet)
                         {
                             game.Start();
@@ -106,43 +140,51 @@ namespace Controller
                         game.Update();
                         if (game.GameStatus == GameStatus.Successful)
                         {
+                            game.DisposeLevel();
                             modus = Modus.Score;
                         }
                         if (game.GameStatus == GameStatus.GameOver)
                         {
+                            game.DisposeLevel();
                             modus = Modus.GameOver;
                         }
                     }
                     else
                     {
+                        loadingUi.Show();
                         game = Game.Instance;
                     }
                     break;
 
                 case Modus.Score:
                     Body.Instance.Scale(0.1f);
-                    scoreUi.Show();
+                    scoreUi.Show(game.Player.Score);
                     scoreUi.PositionCursor(Body.Instance.HandRight.X, Body.Instance.HandRight.Y);
                     if (scoreUi.HoverButton(Body.Instance.HandRight.X, Body.Instance.HandRight.Y))
                     {
                         if(click.IsClicked()){
                             modus = Modus.Play;
+                            game.GameStatus = GameStatus.Start;
+                        }
+                    }
+                    break;
+
+                case Modus.GameOver:
+                    Body.Instance.Scale(0.1f);
+                    gameOverUi.Show();
+                    gameOverUi.PositionCursor(Body.Instance.HandRight.X, Body.Instance.HandRight.Y);
+                    if (gameOverUi.HoverButton(Body.Instance.HandRight.X, Body.Instance.HandRight.Y))
+                    {
+                        if (click.IsClicked())
+                        {
+                            modus = Modus.Play;
+                            game.GameStatus = GameStatus.Start;
                         }
                     }
                     break;
 
                 default:
                     break;
-            }
-
-            //if (Body.Instance.IsTracked)
-            if (Body.Instance.Spine.X + Body.Instance.Spine.Y + Body.Instance.Spine.Z != 0 )
-            {
-                Visualization.text(trackId, "Yes");
-            }
-            else
-            {
-                Visualization.text(trackId, "No");
             }
         }
 

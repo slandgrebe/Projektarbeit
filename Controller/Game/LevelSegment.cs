@@ -71,6 +71,22 @@ namespace Controller
             }
         }
 
+        public void Dispose()
+        {
+            foreach (Object o in obstacles)
+            {
+                o.Dispose();
+            }
+            foreach (Object s in scores)
+            {
+                s.Dispose();
+            }
+            foreach (Object o in objects)
+            {
+                o.Dispose();
+            }
+        }
+
         /*
         public void Deserialize()
         {
