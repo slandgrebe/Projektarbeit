@@ -45,8 +45,6 @@ namespace Controller
         public Level(){
             segments = new List<LevelSegment>();
             segmentsXmlPath = new List<string>();
-
-            View.Visualization.positionCamera(0, 1.5f, 0);
         }
 
         public void AddSegment(LevelSegment segment)
@@ -57,6 +55,14 @@ namespace Controller
         public void AddXmlPath(string path)
         {
             segmentsXmlPath.Add(path);
-        }    
+        }
+
+        public void Dispose()
+        {
+            foreach (LevelSegment segment in segments)
+            {
+                segment.Dispose();
+            }
+        }
     }
 }

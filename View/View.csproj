@@ -42,6 +42,10 @@
     <Compile Include="Gui\Button.cs" />
     <Compile Include="Gui\GameUi.cs" />
     <Compile Include="Gui\MenuUi.cs" />
+    <Compile Include="Gui\LoadingUi.cs" />
+    <Compile Include="Gui\NoTrackingUi.cs" />
+    <Compile Include="Gui\ScoreUi.cs" />
+    <Compile Include="Gui\GameOverUi.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Visualization.cs" />
   </ItemGroup>

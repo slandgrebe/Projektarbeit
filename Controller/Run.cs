@@ -15,7 +15,13 @@ namespace Controller
         private static Run instance;
         private int init = 0;
         private Game game = null;
-
+        private NoTrackingUi noTrackingUi = null;
+        private MenuUi menuUi = null;
+        private LoadingUi loadingUi = null;
+        private ScoreUi scoreUi = null;
+        private GameOverUi gameOverUi = null;
+        private Click click = new Click();
+        private Modus modus;
         /// <summary>
         /// stellt sicher, dass diese Klasse nur einmal Instanziert wird.
         /// </summary>
@@ -37,11 +43,27 @@ namespace Controller
         /// </summary>
         public void Start()
         {
-            //Initialise.Instance.NotTracked();
+            modus = Modus.NotTracked;
+            noTrackingUi = new NoTrackingUi();
+            noTrackingUi.Position = 100;
+            noTrackingUi.Show(); 
+
+            menuUi = new MenuUi();
+            menuUi.Position = 200;
+
+            loadingUi = new LoadingUi();
+            loadingUi.Position = 300;
+
+            scoreUi = new ScoreUi();
+            scoreUi.Position = 400;
+
+            gameOverUi = new GameOverUi();
+            gameOverUi.Position = 500;
+
             Sensor = new SkeletonTracker();
             Sensor.Start();
             Sensor.SkeletonEvent += new SkeletonTrackerEvent(GetEvent);
-            game = Game.Instance;
+
         }
 
         /// <summary>
@@ -56,20 +78,114 @@ namespace Controller
         /// </summary>
         public void Update()
         {
-            //if (Body.Instance.IsTracked)
-            //{
-                //Initialise.Instance.Tracked();
-                if (game != null)
+            if (Body.Instance.IsTracked)
+            {
+                if (modus == Modus.NotTracked)
                 {
-                    game.Update();
+                    modus = Modus.Menu;
                 }
-            //}
-            //else
-            //{
-                //speerbildschirm anzeigen
-                //Initialise.Instance.NotTracked();
-                // alles reseten
-            //}
+            }
+            else
+            {
+                modus = Modus.NotTracked;
+            }
+            
+            switch (modus)
+            {
+                case Modus.NotTracked:
+                    noTrackingUi.Show();
+                    if (game != null)
+                    {
+                        game.DisposeLevel();
+                    }
+                    menuUi.Hide();
+                    loadingUi.Hide();
+                    scoreUi.Hide();
+                    gameOverUi.Hide();
+                    
+                    break;
+
+                case Modus.Menu:
+                    Body.Instance.Scale(0.1f);
+                    noTrackingUi.Hide();
+                    menuUi.Show();
+                    menuUi.PositionCursor(Body.Instance.HandRight.X, Body.Instance.HandRight.Y);
+                    if(menuUi.HoverButton(Body.Instance.HandRight.X, Body.Instance.HandRight.Y))
+                    {
+                        if(click.IsClicked()){
+                            modus = Modus.Play;
+                        }
+                    }
+                    break;
+
+                case Modus.Play:
+                    menuUi.Hide();
+                    scoreUi.Hide();
+                    gameOverUi.Hide();
+                    if (game != null)
+                    {
+                        if (game.GameStatus == GameStatus.Started)
+                        {
+                            loadingUi.Hide();
+                        }
+                        if (game.GameStatus == GameStatus.Start)
+                        {
+                            loadingUi.Show();
+                            game.Init();
+                        }
+                        if (game.GameStatus == GameStatus.Loadet)
+                        {
+                            game.Start();
+                        }
+                        game.Update();
+                        if (game.GameStatus == GameStatus.Successful)
+                        {
+                            game.DisposeLevel();
+                            modus = Modus.Score;
+                        }
+                        if (game.GameStatus == GameStatus.GameOver)
+                        {
+                            game.DisposeLevel();
+                            modus = Modus.GameOver;
+                        }
+                    }
+                    else
+                    {
+                        loadingUi.Show();
+                        game = Game.Instance;
+                    }
+                    break;
+
+                case Modus.Score:
+                    Body.Instance.Scale(0.1f);
+                    scoreUi.Show(game.Player.Score);
+                    scoreUi.PositionCursor(Body.Instance.HandRight.X, Body.Instance.HandRight.Y);
+                    if (scoreUi.HoverButton(Body.Instance.HandRight.X, Body.Instance.HandRight.Y))
+                    {
+                        if(click.IsClicked()){
+                            modus = Modus.Play;
+                            game.GameStatus = GameStatus.Start;
+                        }
+                    }
+                    break;
+
+                case Modus.GameOver:
+                    Body.Instance.Scale(0.1f);
+                    gameOverUi.Show();
+                    gameOverUi.PositionCursor(Body.Instance.HandRight.X, Body.Instance.HandRight.Y);
+                    if (gameOverUi.HoverButton(Body.Instance.HandRight.X, Body.Instance.HandRight.Y))
+                    {
+                        if (click.IsClicked())
+                        {
+                            modus = Modus.Play;
+                            game.GameStatus = GameStatus.Start;
+                        }
+                    }
+                    break;
+
+                default:
+                    break;
+            }
         }
 
         /// <summary>

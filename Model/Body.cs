@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Kinect;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -52,7 +53,25 @@ namespace Model
         /// <summary>Koordinatenobjekt des Punktes: Handgelenk rechts</summary>
         public Position WristRight { get; set; }
 
-        public bool IsTracked { get; set; }
+        private bool _isTracked;
+        public bool IsTracked
+        {
+            get { return _isTracked; }
+            set
+            {
+                if (value)
+                {
+                    StartTime = DateTime.Now;
+                    _isTracked = value;
+                }
+                if (Math.Abs(StartTime.Subtract(DateTime.Now).TotalSeconds) >= 2)
+                {
+                    _isTracked = value;
+                }
+            }
+        }
+
+        private DateTime StartTime = DateTime.Now;
 
         /// <summary>
         /// Konstruktor, Initialisiert die Körperpunkte

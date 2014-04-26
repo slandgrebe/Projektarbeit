@@ -53,14 +53,15 @@ namespace Model
                         // Getrackte Körperpunkte zwischenspeichern
                         Parallel.ForEach(skeletons, skel =>
                         {
-                            if (skel.Joints[JointType.Spine].TrackingState == JointTrackingState.NotTracked)
-                            {
-                                body.IsTracked = false;
-                            }
-                            else
+                            if (skel.TrackingState != SkeletonTrackingState.NotTracked)
                             {
                                 body.IsTracked = true;
                             }
+                            else
+                            {
+                                body.IsTracked = false;
+                            }
+
                             setPosition(skel.Joints[JointType.AnkleLeft]);
                             setPosition(skel.Joints[JointType.AnkleRight]);
                             setPosition(skel.Joints[JointType.ElbowLeft]);

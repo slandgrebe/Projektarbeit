@@ -15,15 +15,23 @@ namespace Controller
         private static Game instance;
         public Player Player { get; set; }
         public Level level = null;
-        private bool loadet = false;
+        public GameStatus GameStatus { get; set; }
         private GameUi gameUi;
 
         public Game()
         {
+            gameUi = new GameUi();
+            Init();
+        }
+
+        public void Init()
+        {
+            GameStatus = GameStatus.Initial;
             Player = new Player();
             Player.Scale = 0.7f;
             Player.Attach = true;
-            Player.Lives = 10;
+            Player.Lives = 4;
+            Player.Score = 0;
 
             string dir = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
             dir = dir + @"\Resource Files\Levels\Jungle\Level.xml";
@@ -34,9 +42,19 @@ namespace Controller
             level = (Level)serializer.Deserialize(stream);
             level.Deserialize();
             level.Load();
-            gameUi = new GameUi();
-            loadet = true;
-            View.Visualization.changeCameraSpeed(5f);
+            
+            gameUi.Show();
+            GameStatus = GameStatus.Loadet;
+        }
+
+        public void Start()
+        {
+            if (GameStatus == GameStatus.Loadet)
+            {
+                View.Visualization.positionCamera(0, 1.5f, 0);
+                View.Visualization.changeCameraSpeed(5f);
+                GameStatus = GameStatus.Started;
+            }
         }
 
         /// <summary>
@@ -57,38 +75,66 @@ namespace Controller
 
         public void Update()
         {
-            if(level.LevelLength + 90 > Player.GetPosition()){
+            if(GameStatus != GameStatus.Started){
                 View.Visualization.changeCameraSpeed(0);
             }
-            if (loadet)
+            if (GameStatus == GameStatus.Started)
             {
-                Player.Update();
-                gameUi.Lives = Player.Lives;
-                gameUi.Score = Player.Score;
-                gameUi.Update();
-                foreach (LevelSegment segment in level.segments)
+                if (level != null)
                 {
-                    foreach (Object score in segment.scores)
+                    Player.Update();
+                    gameUi.Lives = Player.Lives;
+                    gameUi.Score = Player.Score;
+                    gameUi.Update();
+                    foreach (LevelSegment segment in level.segments)
                     {
-                        if (score.handleCollisions(Player, true))
+                        foreach (Object score in segment.scores)
                         {
-                            Player.Score++;
+                            if (score.handleCollisions(Player, true))
+                            {
+                                Player.Score++;
+                            }
                         }
                     }
-                }
 
-                foreach (LevelSegment segment in level.segments)
-                {
-                    foreach (Object obstacle in segment.obstacles)
+                    foreach (LevelSegment segment in level.segments)
                     {
-                        if (obstacle.handleCollisions(Player, false))
+                        foreach (Object obstacle in segment.obstacles)
                         {
-                            Player.Lives--;
+                            if (obstacle.handleCollisions(Player, false))
+                            {
+                                Player.Lives--;
+                            }
                         }
                     }
+                    gameUi.Update();
+                    ChechLevelEnd();
+                    CheckGameOver();
                 }
-                gameUi.Update();
             } 
+        }
+
+        public void DisposeLevel()
+        {
+            gameUi.Hide();
+            level.Dispose();
+            GameStatus = GameStatus.Start;
+        }
+
+        private void CheckGameOver()
+        {
+            if (Player.Lives == 0)
+            {
+                GameStatus = GameStatus.GameOver;
+            }
+        }
+
+        private void ChechLevelEnd()
+        {
+            if (level.LevelLength + 10 > Player.GetPosition())
+            {
+                GameStatus = GameStatus.Successful;
+            }
         }
     }
 }
