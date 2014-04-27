@@ -15,6 +15,24 @@
 
 using namespace visual::graphics;
 
+
+// Hilfsfunktion //http://www.lighthouse3d.com/cg-topics/error-tracking-in-opengl/
+#define printOpenGLError() printOglError(__FILE__, __LINE__)
+
+int printOglError(char *file, int line) {
+	GLenum glErr;
+	int    retCode = 0;
+
+	glErr = glGetError();
+	if (glErr != GL_NO_ERROR) {
+		Log().error() << "glError in file " << file << " @ line " << line << ": " << gluErrorString(glErr);
+		/*printf("glError in file %s @ line %d: %s\n",
+			file, line, gluErrorString(glErr));*/
+		retCode = 1;
+	}
+	return retCode;
+}
+
 // static attributes
 GraphicEngine* GraphicEngine::singleInstance = 0;
 GLFWwindow* GraphicEngine::window = 0;
@@ -88,6 +106,7 @@ void GraphicEngine::worker(void) {
 	
 	GraphicEngine::getInstance()->running = true;
 
+	printOpenGLError();
 
 	/***************
 		LOOP
@@ -134,6 +153,8 @@ void GraphicEngine::worker(void) {
 		// Swap buffers
 		glfwSwapBuffers(window);
 		glfwPollEvents();
+
+		printOpenGLError();
 
 		// measure time
 		begin = now;
@@ -275,6 +296,8 @@ int GraphicEngine::createWindow() {
 	glfwMakeContextCurrent(window);
 
 	Log().info() << "Fenster erstellt";
+	printOpenGLError();
+
 
 	return 0;
 }
@@ -283,6 +306,8 @@ int GraphicEngine::createOpenGLContext(void) {
 	// Initialisiere GLEW - muss nach GLFW Initialisierung getan werden!
 	glewExperimental = GL_TRUE; // wird beim Core Profile benötigt
 	GLenum err = glewInit();
+	printOpenGLError();
+
 	if (GLEW_OK != err) {
 		// glewInit ist fehlgeschlagen
 		//fprintf(stderr, "GLEW Initialisierungsfehler: %s\n", glewGetErrorString(err));
@@ -291,6 +316,7 @@ int GraphicEngine::createOpenGLContext(void) {
 	}
 
 	Log().info() << "GLEW initialisiert" ;
+	printOpenGLError();
 
 	return 0;
 }
