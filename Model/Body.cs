@@ -7,7 +7,10 @@ using System.Threading.Tasks;
 
 namespace Model
 {
-    public class Body : EventArgs
+    /// <summary>
+    /// Bildet die Körperpunkte einer getrackten Person ab.
+    /// </summary>
+    public class Body
     {
         /// <summary>Instanz des Positionobjektes</summary>
         private static Body instance;
@@ -52,8 +55,9 @@ namespace Model
         public Position WristLeft { get; set; }
         /// <summary>Koordinatenobjekt des Punktes: Handgelenk rechts</summary>
         public Position WristRight { get; set; }
-
+        /// <summary>Flag, ob eine Person aktuell erkennt wird</summary>
         private bool _isTracked;
+        /// <summary>Flag, ob eine Person aktuell erkennt wird. Erfolgt 2 Sekundenlang kein Signal, so wird das Flag auf false gesetzt.</summary>
         public bool IsTracked
         {
             get { return _isTracked; }
@@ -61,17 +65,17 @@ namespace Model
             {
                 if (value)
                 {
-                    StartTime = DateTime.Now;
+                    trackedStartTime = DateTime.Now;
                     _isTracked = value;
                 }
-                if (Math.Abs(StartTime.Subtract(DateTime.Now).TotalSeconds) >= 2)
+                if (Math.Abs(trackedStartTime.Subtract(DateTime.Now).TotalSeconds) >= 2)
                 {
                     _isTracked = value;
                 }
             }
         }
-
-        private DateTime StartTime = DateTime.Now;
+        /// <summary>Zeitpunkt der letzten erfolgreichen erkennung einer Person</summary>
+        private DateTime trackedStartTime = DateTime.Now;
 
         /// <summary>
         /// Konstruktor, Initialisiert die Körperpunkte
@@ -102,7 +106,7 @@ namespace Model
         }
 
         /// <summary>
-        /// stellt sicher, dass diese Klasse nur einmal Instanziert wird.
+        /// Stellt sicher, dass diese Klasse nur einmal Instanziert wird.
         /// </summary>
         /// <returns>instance der Klasse Position</returns>
         public static Body Instance
@@ -117,9 +121,14 @@ namespace Model
             }
         }
 
+        /// <summary>
+        /// Modifiziert alle Körperpunkte entlang der Z-Achse um den Modifikator.
+        /// </summary>
+        /// <param name="mod">Modifikator</param>
         public void ZModifikator(float mod){
             if (mod <= 0)
             {
+                // Negativer Modifikator
                 AnkleLeft.Z += mod;
                 AnkleRight.Z += mod;
                 ElbowLeft.Z += mod;
@@ -143,6 +152,7 @@ namespace Model
             }
             else
             {
+                // Positiver Modifikator
                 AnkleLeft.Z -= mod;
                 AnkleRight.Z -= mod;
                 ElbowLeft.Z -= mod;
@@ -166,10 +176,15 @@ namespace Model
             }
         }
 
+        /// <summary>
+        /// Modifiziert alle Körperpunkte entlang der Y-Achse um den Modifikator.
+        /// </summary>
+        /// <param name="mod">Modifikator</param>
         public void YModifikator(float mod)
         {
             if (mod <= 0)
             {
+                // Negativer Modifikator
                 AnkleLeft.Y += mod;
                 AnkleRight.Y += mod;
                 ElbowLeft.Y += mod;
@@ -193,6 +208,7 @@ namespace Model
             }
             else
             {
+                // Positiver Modifikator
                 AnkleLeft.Y -= mod;
                 AnkleRight.Y -= mod;
                 ElbowLeft.Y -= mod;
@@ -216,9 +232,13 @@ namespace Model
             }
         }
 
-
+        /// <summary>
+        /// Skalliert den Getrackten Körper um den Skalierwert.
+        /// </summary>
+        /// <param name="scale">Skalierwert</param>
         public void Scale(float scale)
         {
+            // Skallieren der X-Achse
             AnkleLeft.X *= scale;
             AnkleRight.X *= scale;
             ElbowLeft.X *= scale;
@@ -240,6 +260,7 @@ namespace Model
             WristLeft.X *= scale;
             WristRight.X *= scale;
 
+            // Skallieren der Y-Achse
             AnkleLeft.Y *= scale;
             AnkleRight.Y *= scale;
             ElbowLeft.Y *= scale;
@@ -260,6 +281,28 @@ namespace Model
             Spine.Y *= scale;
             WristLeft.Y *= scale;
             WristRight.Y *= scale;
+
+            // Skallieren der Z-Achse
+            AnkleLeft.Z *= scale;
+            AnkleRight.Z *= scale;
+            ElbowLeft.Z *= scale;
+            ElbowRight.Z *= scale;
+            FootLeft.Z *= scale;
+            FootRight.Z *= scale;
+            HandLeft.Z *= scale;
+            HandRight.Z *= scale;
+            Head.Z *= scale;
+            HipCenter.Z *= scale;
+            HipLeft.Z *= scale;
+            HipRight.Z *= scale;
+            KneeLeft.Z *= scale;
+            KneeRight.Z *= scale;
+            ShoulderCenter.Z *= scale;
+            ShoulderLeft.Z *= scale;
+            ShoulderRight.Z *= scale;
+            Spine.Z *= scale;
+            WristLeft.Z *= scale;
+            WristRight.Z *= scale;
         }
     }
 }

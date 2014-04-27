@@ -45,7 +45,7 @@ namespace Controller
 
         public void Update()
         {
-            Body.Instance.ZModifikator(Body.Instance.Spine.Z + 3);
+            Body.Instance.ZModifikator(Body.Instance.Spine.Z + 4.5f);
             Body.Instance.YModifikator(-0.7f);
             ScalePlayer();
             Alignment();

@@ -22,11 +22,11 @@ namespace Controller
             }
             Console.WriteLine(HandRightStart - Body.Instance.HandRight.Z);
 
-            if ((HandRightStart - Body.Instance.HandRight.Z) >= 0.2)
+            if ((HandRightStart - Body.Instance.HandRight.Z) >= 0.02)
             {
                 return true;
             }
-            if ((HandLeftStart - Body.Instance.HandLeft.Z) >= 0.2)
+            if ((HandLeftStart - Body.Instance.HandLeft.Z) >= 0.02)
             {
                 return true;
             }

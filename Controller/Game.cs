@@ -27,10 +27,6 @@ namespace Controller
         public void Init()
         {
             GameStatus = GameStatus.Initial;
-            Player = new Player();
-            Player.Scale = 0.7f;
-            Player.Attach = true;
-            Player.Score = 0;
 
             string dir = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
             dir = dir + @"\Resource Files\Levels\Jungle\Level.xml";
@@ -42,6 +38,10 @@ namespace Controller
             level.Deserialize();
             level.Load();
 
+            Player = new Player();
+            Player.Scale = 0.7f;
+            Player.Attach = true;
+            Player.Score = 0;
             Player.Lives =level.Lives;
             
             gameUi.Show();
