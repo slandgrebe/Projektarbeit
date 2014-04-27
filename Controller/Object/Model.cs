@@ -29,34 +29,76 @@ namespace Controller
 
         public void Create()
         {
-            Id = Visualization.addModel(Path);
-            while (!Visualization.isCreated(Id)) { }
-            Visualization.scalingIsNormalized(Id, ScalingNormalized);
+            Id = Visualization.AddModel(Path);
+            while (!Visualization.IsCreated(Id)) { }
+            Visualization.ScalingIsNormalized(Id, ScalingNormalized);
         }
 
         public void Scale(float scale)
         {
-            Visualization.scale(Id, scale, scale, scale);
+            Visualization.Scale(Id, scale, scale, scale);
         }
 
         public void Rotate(float degrees, float x, float y, float z)
         {
-            Visualization.rotate(Id, degrees, x, y, z);
+            Visualization.Rotate(Id, degrees, x, y, z);
         }
 
-        public void Alignment(float fromX, float fromY, float fromZ, float toX, float toY, float toZ)
+        public bool Alignment(float fromX, float fromY, float fromZ, float toX, float toY, float toZ)
         {
-            Visualization.drawLine(Id, fromX, fromY, fromZ, toX, toY, toZ);
+            if (fromX == toX && fromY == toY && fromZ == toZ)
+            {
+                return false;
+            }
+
+            //Vector aus p1 und p2
+            double xv = System.Convert.ToDouble(toX - fromX);
+            double yv = System.Convert.ToDouble(toY - fromY);
+            double zv = System.Convert.ToDouble(toZ - fromZ);
+
+            //länge berechnen
+            double lenght = System.Math.Sqrt(xv * xv + yv * yv + zv * zv);
+
+
+            //Vector normalisieren
+            double xvn = xv / lenght;
+            double yvn = yv / lenght;
+            double zvn = zv / lenght;
+
+            //Standard Vector definieren
+            double xs = 1;
+            double ys = 0;
+            double zs = 0;
+
+            //berechnung der Rotationsachse
+            double xa = zvn * ys - yvn * zs;
+            double ya = xvn * zs - zvn * xs;
+            double za = yvn * xs - xvn * ys;
+
+            //berechnung cosinus des rotationswinkels
+            double cosw = xvn * xs + yvn * ys + zvn * zs;
+
+            //rotationswinkel in radian berechnen
+            double w = System.Math.Acos(cosw);
+
+            //radian in Grad umrechnen
+            w = w * 180 / System.Math.PI;
+
+            //Model Positionieren und ausrichten
+            Visualization.Rotate(Id, (float)w, (float)xa, (float)ya, (float)za);
+            Visualization.Position(Id, fromX, fromY, fromZ);
+
+            return true;
         }
 
         public void Position(float x, float y, float z)
         {
-            Visualization.position(Id, x, y, z);
+            Visualization.Position(Id, x, y, z);
         }
 
         public void AttachToCamera(bool choice)
         {
-            Visualization.attachToCamera(Id, choice);
+            Visualization.AttachToCamera(Id, choice);
         }
 
         public void Dispose()
@@ -75,7 +117,7 @@ namespace Controller
                 // Freigabe verwalteter Objekte
             }
             // Freigabe von Fremdresourcen
-            Visualization.dispose(Id);
+            Visualization.Dispose(Id);
         }
 
         ~Model()

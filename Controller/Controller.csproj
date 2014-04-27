@@ -68,11 +68,6 @@
     <Compile Include="Initialise.cs" />
     <Compile Include="Modus.cs" />
     <Compile Include="Object\Model.cs" />
-    <Compile Include="Properties\Settings.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTimeSharedInput>True</DesignTimeSharedInput>
-      <DependentUpon>Settings.settings</DependentUpon>
-    </Compile>
     <Compile Include="Run.cs" />
     <Compile Include="Game\Player.cs" />
     <Compile Include="Program.cs" />
@@ -80,10 +75,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="Properties\Settings.settings">
-      <Generator>SettingsSingleFileGenerator</Generator>
-      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
-    </None>
     <None Include="Resource Files\Models\Banana\banana.3ds">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

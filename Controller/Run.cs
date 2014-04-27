@@ -78,6 +78,7 @@ namespace Controller
         /// </summary>
         public void Update()
         {
+            
             if (Body.Instance.IsTracked)
             {
                 if (modus == Modus.NotTracked)
@@ -89,7 +90,7 @@ namespace Controller
             {
                 modus = Modus.NotTracked;
             }
-            
+
             switch (modus)
             {
                 case Modus.NotTracked:
@@ -102,7 +103,7 @@ namespace Controller
                     loadingUi.Hide();
                     scoreUi.Hide();
                     gameOverUi.Hide();
-                    
+
                     break;
 
                 case Modus.Menu:
@@ -110,9 +111,10 @@ namespace Controller
                     noTrackingUi.Hide();
                     menuUi.Show();
                     menuUi.PositionCursor(Body.Instance.HandRight.X, Body.Instance.HandRight.Y);
-                    if(menuUi.HoverButton(Body.Instance.HandRight.X, Body.Instance.HandRight.Y))
+                    if (menuUi.HoverButton(Body.Instance.HandRight.X, Body.Instance.HandRight.Y))
                     {
-                        if(click.IsClicked()){
+                        if (click.IsClicked())
+                        {
                             modus = Modus.Play;
                         }
                     }
@@ -162,7 +164,8 @@ namespace Controller
                     scoreUi.PositionCursor(Body.Instance.HandRight.X, Body.Instance.HandRight.Y);
                     if (scoreUi.HoverButton(Body.Instance.HandRight.X, Body.Instance.HandRight.Y))
                     {
-                        if(click.IsClicked()){
+                        if (click.IsClicked())
+                        {
                             modus = Modus.Play;
                             game.GameStatus = GameStatus.Start;
                         }
@@ -186,6 +189,11 @@ namespace Controller
                 default:
                     break;
             }
+
+                /*while (View.Visualization.IsRunning())
+                {
+                System.Threading.Thread.Sleep(1); // senkt die CPU Auslastung drastisch
+            }*/
         }
 
         /// <summary>

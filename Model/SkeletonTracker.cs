@@ -8,8 +8,7 @@ using Microsoft.Kinect;
 namespace Model
 {
     public delegate void SkeletonTrackerEvent();
-    /// <summary>
-    
+    /// <summary>  
     /// Ansteuerung der Kinect und speichert die getrackten Daten in das Body Objekt.
     /// </summary>
     public class SkeletonTracker

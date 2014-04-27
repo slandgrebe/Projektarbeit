@@ -23,6 +23,10 @@ namespace Controller
                 Console.Read();
 
             }
+            catch (DllNotFoundException)
+            {
+                Console.WriteLine("Benötigte dll fehlt!");
+            }
             catch (Exception e)
             {
                 Console.WriteLine(e);

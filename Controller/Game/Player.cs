@@ -54,7 +54,7 @@ namespace Controller
 
         public float GetPosition()
         {
-            return View.Visualization.positionZ(Torso.Id);
+            return View.Visualization.PositionZ(Torso.Id);
         }
 
         private void Alignment()

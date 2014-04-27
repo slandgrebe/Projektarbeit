@@ -16,32 +16,32 @@ namespace View
 
         public GameUi()
         {
-            liveId = Visualization.addText("data/fonts/arial.ttf");
-            while (!Visualization.isCreated(liveId)) { }
-            scoreId = Visualization.addText("data/fonts/arial.ttf");
-            while (!Visualization.isCreated(scoreId)) { }
+            liveId = Visualization.AddText("data/fonts/arial.ttf");
+            while (!Visualization.IsCreated(liveId)) { }
+            scoreId = Visualization.AddText("data/fonts/arial.ttf");
+            while (!Visualization.IsCreated(scoreId)) { }
 
-            Visualization.textSize(liveId, 36);
-            Visualization.textColor(liveId, 1f, 0f, 0f, 1f);
+            Visualization.TextSize(liveId, 36);
+            Visualization.TextColor(liveId, 1f, 0f, 0f, 1f);
 
-            Visualization.textSize(scoreId, 36);
-            Visualization.textColor(scoreId, 1f, 0f, 0f, 1f);
+            Visualization.TextSize(scoreId, 36);
+            Visualization.TextColor(scoreId, 1f, 0f, 0f, 1f);
 
             Hide();
         }
 
         public void Update()
         {
-            Visualization.text(liveId, "Lives: " + Lives);
-            Visualization.text(scoreId, "Score: " + Score);
+            Visualization.Text(liveId, "Lives: " + Lives);
+            Visualization.Text(scoreId, "Score: " + Score);
         }
 
         public void Show()
         {
             if (!show)
             {
-                Visualization.position(liveId, -0.7f, 0.7f, 1.0f);
-                Visualization.position(scoreId, 0.7f, 0.7f, 1.0f);
+                Visualization.Position(liveId, -0.7f, 0.7f, 1.0f);
+                Visualization.Position(scoreId, 0.7f, 0.7f, 1.0f);
                 show = true;
             }
         }
@@ -50,8 +50,8 @@ namespace View
         {
             if (show)
             {
-                Visualization.position(liveId, -1000, 0, 1); // Z-Koordinate wird ignoriert, da es sich beim Button um ein GUI Element handelt
-                Visualization.position(scoreId, -1000, 0, 1); // Z-Koordinate wird ignoriert, da es sich beim Button um ein GUI Element handelt
+                Visualization.Position(liveId, -1000, 0, 1); // Z-Koordinate wird ignoriert, da es sich beim Button um ein GUI Element handelt
+                Visualization.Position(scoreId, -1000, 0, 1); // Z-Koordinate wird ignoriert, da es sich beim Button um ein GUI Element handelt
                 show = false;
             }
         }

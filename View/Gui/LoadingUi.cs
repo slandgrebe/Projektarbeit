@@ -16,15 +16,15 @@ namespace View
 
         public LoadingUi()
         {
-            backgroundId = Visualization.addPoint("Resource Files/Background/white.jpg");
-            while (backgroundId != 0 && !Visualization.isCreated(backgroundId)) { }
-            Visualization.scale(backgroundId, 10, 10, 1);
+            backgroundId = Visualization.AddPoint("Resource Files/Background/white.jpg");
+            while (backgroundId != 0 && !Visualization.IsCreated(backgroundId)) { }
+            Visualization.Scale(backgroundId, 10, 10, 1);
 
-            textId = Visualization.addText("data/fonts/arial.ttf");
-            while (!Visualization.isCreated(textId)) { }
-            Visualization.text(textId, "Ladet");
-            Visualization.textSize(textId, 50);
-            Visualization.textColor(textId, 0f, 0f, 0f, 1.0f);
+            textId = Visualization.AddText("data/fonts/arial.ttf");
+            while (!Visualization.IsCreated(textId)) { }
+            Visualization.Text(textId, "Ladet");
+            Visualization.TextSize(textId, 50);
+            Visualization.TextColor(textId, 0f, 0f, 0f, 1.0f);
             
             Hide();
         }
@@ -33,9 +33,9 @@ namespace View
         {
             if (!show)
             {
-                Visualization.position(backgroundId, Position, 0f, -0.3f);
-                Visualization.position(textId, 0, 0, 0);
-                Visualization.positionCamera(Position, 0, 0);
+                Visualization.Position(backgroundId, Position, 0f, -0.3f);
+                Visualization.Position(textId, 0, 0, 0);
+                Visualization.PositionCamera(Position, 0, 0);
                 show = true;
             }
         }
@@ -44,8 +44,8 @@ namespace View
         {
             if (show)
             {
-                Visualization.position(backgroundId, -1000, 0f, -0.3f);
-                Visualization.position(textId, -1000, 0, 0);
+                Visualization.Position(backgroundId, -1000, 0f, -0.3f);
+                Visualization.Position(textId, -1000, 0, 0);
                 show = false;
             }
         }

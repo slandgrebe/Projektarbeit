@@ -36,7 +36,7 @@ namespace Controller
 
         public void NotTracked(){
             //Visualization.position(textId, 0f, 0f, 1.0f);
-            Visualization.positionCamera(1000, 0, 0);
+            Visualization.PositionCamera(1000, 0, 0);
         }
 
         public void Tracked(){

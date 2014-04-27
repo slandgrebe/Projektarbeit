@@ -52,8 +52,8 @@ namespace Controller
         {
             if (GameStatus == GameStatus.Loadet)
             {
-                View.Visualization.positionCamera(0, 1.5f, 0);
-                View.Visualization.changeCameraSpeed(5f);
+                View.Visualization.PositionCamera(0, 1.5f, 0);
+                View.Visualization.ChangeCameraSpeed(5f);
                 GameStatus = GameStatus.Started;
             }
         }
@@ -77,7 +77,7 @@ namespace Controller
         public void Update()
         {
             if(GameStatus != GameStatus.Started){
-                View.Visualization.changeCameraSpeed(0);
+                View.Visualization.ChangeCameraSpeed(0);
             }
             if (GameStatus == GameStatus.Started)
             {
