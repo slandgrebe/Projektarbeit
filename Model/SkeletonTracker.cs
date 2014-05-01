@@ -72,6 +72,7 @@ namespace Model
                             {
                                 // Person ist erkannt
                                 body.IsTracked = true;
+                                body.Z = skel.Position.Z;
 
                                 // Zwischenspeichern der einzelnen Körperpunkte
                                 setPosition(skel.Joints[JointType.AnkleLeft]);

@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace Controller
 {
+    /// <summary>
+    /// Enum für den Status des Spiels.
+    /// </summary>
     public enum GameStatus : short
     {
         Initial = 0,

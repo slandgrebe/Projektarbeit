@@ -9,18 +9,27 @@ namespace View
     public static class Visualization
     {
         /// <summary>
+        /// Öffnet das Fenster explizit. 
+        /// Das Fenster wird immer nur auf dem primären Bildschirm erzeugt. 
+        /// </summary>
+        /// <param name="windowTitle">Fenstertitel</param>
+        /// <param name="fullscreen">Definiert ob das Fenster den gesamten Bildschirm ausfüllt</param>
+        /// <param name="windowWidth">Fensterbreite in Pixel. Wird 0 übergeben, wird die native Breite verwendet.</param>
+        /// <param name="windowHeight">Fensterhöhe in Pixel. Wird 0 übergeben, wird die native Höhe verwendet.</param>
+        /// <returns></returns>
+        [DllImport("Visualization.dll", EntryPoint = "init")]
+        public extern static bool Init(string windowTitle, bool fullscreen, uint windowWidth, uint windowHeight);
+        /// <summary>
         /// Prüft den Zustand der Bibliothek und ob das Fenster offen ist
         /// </summary>
         /// <returns>True wenn das Fenster offen ist, ansonsten False.</returns>
         [DllImport("Visualization.dll", EntryPoint = "isRunning")]
         public extern static bool IsRunning();
-
         /// <summary>
-        /// Test Methode, welche nicht für den produktiven Einsatz gedacht ist.
+        /// Sorgt dafür dass das Fenster geschlossen wird.
         /// </summary>
-        /// <param name="text">Ein String</param>
-        [DllImport("Visualization.dll", EntryPoint = "doSomething")]
-        public extern static void DoSomething(string text);
+        [DllImport("Visualization.dll", EntryPoint = "close")]
+        public extern static void Close();
 
         /// <summary>
         /// Fügt ein 3D Modell hinzu
@@ -68,7 +77,7 @@ namespace View
         /// <summary>
         /// Positioniert ein Modell. Kann mit allen Arten von Modellen umgehen, allerdings werden diese unterschiedlich behandelt. Model und Point werden relativ zum Ursprung in einem normalen, dreidimensionalem, kartesischem Koordinatensystem positioniert. Bei Text und Button handelt es sich um GUI Elemente, weswegen hier die z-Koordinate ignoriert wird. X- und Y-Koordinaten gehen von -1 bis +1 wobei -1 dem linken bzw. unteren Rand und +1 dem rechten bzw. oberen Rand entspricht. 
         /// </summary>
-        /// <param name="modelId"></param>
+        /// <param name="modelId">Id des Modells</param>
         /// <param name="x">x Koordinate</param>
         /// <param name="y">y Koordinate</param>
         /// <param name="z">z Koordinate</param>
@@ -127,6 +136,7 @@ namespace View
         [DllImport("Visualization.dll", EntryPoint = "isHighlighted")]
         public extern static bool IsHighlighted(uint modelId, bool choice);
         /// <summary>
+        /// 
         /// Hängt ein Modell an die Kamera an. Dies hat zur Folge, dass dieses Objekt relativ zur Kamera positioniert wird. Diese Methode kann nur für Modelle und Punkte verwendet werden. 
         /// </summary>
         /// <param name="modelId">ID des Modells</param>

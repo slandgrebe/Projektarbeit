@@ -7,26 +7,47 @@ using Model;
 
 namespace Controller
 {
+    /// <summary>
+    /// Stellt einen Spielcharakter in der Ausgabe dar
+    /// </summary>
     public class Player
     {
+        /// <summary>Skalierungsgrad der Spielfigur als Ganzes</summary>
         public float Scale { private get; set; }
+        /// <summary>Spielfigur der Kamera anhängen</summary>
         public bool Attach { private get; set; }
+        /// <summary>Aktuell noch verfügbare Leben der Spielfigur</summary>
         public uint Lives { get; set; }
+        /// <summary>Aktueller Punktestand der Spielfigur</summary>
         public uint Score { get; set; }
 
+        /// <summary>Modell des Kopfes</summary>
         public Model Head { get; private set; }
+        /// <summary>Modell des Körpers</summary>
         public Model Torso { get; private set; }
+        /// <summary>Modell des linken Oberarms</summary>
         public Model UpperarmLeft { get; private set; }
+        /// <summary>Modell des rechten Oberarms</summary>
         public Model UpperarmRight { get; private set; }
+        /// <summary>Modell des linken Untgerarms</summary>
         public Model ForearmLeft { get; private set; }
+        /// <summary>Modell des rechten Unterarms</summary>
         public Model ForearmRight { get; private set; }
+        /// <summary>Modell des linken Oberschenkels</summary>
         public Model ThighlegLeft { get; private set; }
+        /// <summary>Modell des rechten Oberschenkels</summary>
         public Model ThighlegRight { get; private set; }
+        /// <summary>Modell des linken Unterschenkels</summary>
         public Model LowerlegLeft { get; private set; }
+        /// <summary>Modell des linken Unterschenkels</summary>
         public Model LowerlegRight { get; private set; }
-
+        
+        /// <summary>Modelle mit denen die Spielfigur schon Kollidiert ist</summary>
         public List<uint> Colidet { get; set; }
 
+        /// <summary>
+        /// Initialisierung der Spielfigur
+        /// </summary>
         public Player()
         {
             Head = new Model("Resource Files/Models/Player/Head.3ds", false);
@@ -43,20 +64,30 @@ namespace Controller
             Colidet = new List<uint>();
         }
 
+        /// <summary>
+        /// Positionierung der einzelnen Modelle der Spielfigur anhand Personenerkennung
+        /// </summary>
         public void Update()
         {
-            Body.Instance.ZModifikator(Body.Instance.Spine.Z + 4.5f);
+            Body.Instance.ZModifikator(Body.Instance.Z + 4.5f);
             Body.Instance.YModifikator(-0.7f);
             ScalePlayer();
             Alignment();
             AttachToCamera();
         }
 
+        /// <summary>
+        /// Gib die absolute Z Koordinate der Spielfigur zurück.
+        /// </summary>
+        /// <returns></returns>
         public float GetPosition()
         {
             return View.Visualization.PositionZ(Torso.Id);
         }
 
+        /// <summary>
+        /// Die einzelnen Körperteile neu ausrichten
+        /// </summary>
         private void Alignment()
         {
             Head.Position(Body.Instance.Head.X, Body.Instance.Head.Y, Body.Instance.Head.Z);
@@ -80,11 +111,13 @@ namespace Controller
                 Body.Instance.AnkleRight.X, Body.Instance.AnkleRight.Y, Body.Instance.AnkleRight.Z);
         }
 
+        /// <summary>
+        /// Spielfigur Skallieren
+        /// </summary>
         private void ScalePlayer()
         {
             Body.Instance.Scale(Scale);
-
-
+            
             Head.Scale(Scale);
             Torso.Scale(Scale);
             UpperarmLeft.Scale(Scale);
@@ -97,6 +130,7 @@ namespace Controller
             LowerlegRight.Scale(Scale);
         }
 
+        // Spielfigur der Kamera anhängen
         private void AttachToCamera()
         {
             Head.AttachToCamera(Attach);

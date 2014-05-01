@@ -65,7 +65,6 @@
     <Compile Include="Gesture\GesturePause.cs" />
     <Compile Include="Gesture\GestureClose.cs" />
     <Compile Include="Game\Level.cs" />
-    <Compile Include="Initialise.cs" />
     <Compile Include="Modus.cs" />
     <Compile Include="Object\Model.cs" />
     <Compile Include="Run.cs" />

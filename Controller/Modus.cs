@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace Controller
 {
+    /// <summary>
+    /// Enum für den Programmmodus
+    /// </summary>
     public enum Modus : short
     {
         NotTracked = 1,

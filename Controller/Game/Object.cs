@@ -8,6 +8,7 @@ using System.Xml.Serialization;
 
 namespace Controller
 {
+    
     public class Object
     {
         public string ModelXmlPath {get; set; }

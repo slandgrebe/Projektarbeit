@@ -10,14 +10,25 @@ using View;
 
 namespace Controller
 {
+    /// <summary>
+    /// Beinhaltet das Spiel
+    /// </summary>
     class Game
     {
+        /// <summary>Instanz des Positionobjektes.</summary>
         private static Game instance;
+        /// <summary>Beinhaltet die Spielfigur.</summary>
         public Player Player { get; set; }
+        /// <summary>Beinhaltet das level.</summary>
         public Level level = null;
+        /// <summary>Beinhaltet den aktuellen Spielstatus.</summary>
         public GameStatus GameStatus { get; set; }
+        /// <summary>Beinhaltet das GUI während des Spiels.</summary>
         private GameUi gameUi;
 
+        /// <summary>
+        /// Initialisiert das Spiel
+        /// </summary>
         public Game()
         {
             gameUi = new GameUi();
@@ -48,6 +59,9 @@ namespace Controller
             GameStatus = GameStatus.Loadet;
         }
 
+        /// <summary>
+        /// Startet das Spiel, sofern das Level fertig geladen ist.
+        /// </summary>
         public void Start()
         {
             if (GameStatus == GameStatus.Loadet)
@@ -59,7 +73,7 @@ namespace Controller
         }
 
         /// <summary>
-        /// stellt sicher, dass diese Klasse nur einmal Instanziert wird.
+        /// Stellt sicher, dass diese Klasse nur einmal Instanziert wird.
         /// </summary>
         /// <returns>instance der Klasse Position</returns>
         public static Game Instance
@@ -74,8 +88,12 @@ namespace Controller
             }
         }
 
+        /// <summary>
+        /// Spiellogik während eines durchlaufs.
+        /// </summary>
         public void Update()
         {
+            // Wenn das Lvel beendet ist, die Kamera stoppen
             if(GameStatus != GameStatus.Started){
                 View.Visualization.ChangeCameraSpeed(0);
             }
@@ -83,10 +101,10 @@ namespace Controller
             {
                 if (level != null)
                 {
+                    // Spielfigur bewegen
                     Player.Update();
-                    gameUi.Lives = Player.Lives;
-                    gameUi.Score = Player.Score;
-                    gameUi.Update();
+                    
+                    // Score um 1 erhöhen, wenn ein Punkt gesammelt wird
                     foreach (LevelSegment segment in level.segments)
                     {
                         foreach (Object score in segment.scores)
@@ -98,6 +116,7 @@ namespace Controller
                         }
                     }
 
+                    // Leben um 1 verringern, wenn ein Hinternis getroffen wird
                     foreach (LevelSegment segment in level.segments)
                     {
                         foreach (Object obstacle in segment.obstacles)
@@ -108,20 +127,34 @@ namespace Controller
                             }
                         }
                     }
+
+                    // Neuer Score, Lebensvorrat im GUI anzeigen
+                    gameUi.Lives = Player.Lives;
+                    gameUi.Score = Player.Score;
                     gameUi.Update();
+
+                    // Prüfen ob das Ziel erreicht wurde
                     ChechLevelEnd();
+
+                    // Prüfen ob der Spieler Game Over ist
                     CheckGameOver();
                 }
             } 
         }
 
-        public void DisposeLevel()
+        /// <summary>
+        /// verbirgt das GUI und löscht das Level
+        /// </summary>
+        public void ResetGame()
         {
             gameUi.Hide();
             level.Dispose();
             GameStatus = GameStatus.Start;
         }
 
+        /// <summary>
+        /// Überprüft ob der Spieler Game Over ist
+        /// </summary>
         private void CheckGameOver()
         {
             if (Player.Lives == 0)
@@ -130,6 +163,9 @@ namespace Controller
             }
         }
 
+        /// <summary>
+        /// Überprüft ob der Spieler im Ziel ist.
+        /// </summary>
         private void ChechLevelEnd()
         {
             if (level.LevelLength + level.segments.Last().Length - 2 > Player.GetPosition())
