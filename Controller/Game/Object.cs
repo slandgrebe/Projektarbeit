@@ -43,9 +43,9 @@ namespace Controller
             // COLLISION DETECTION
             System.Collections.Generic.Dictionary<uint, System.Collections.Generic.List<uint>> collisionList = new System.Collections.Generic.Dictionary<uint, System.Collections.Generic.List<uint>>();
 
-            uint length = View.Visualization.CollisionsTextLength();
+            uint length = View.Model.CollisionsTextLength();
             System.Text.StringBuilder str = new System.Text.StringBuilder((int)length + 1);
-            View.Visualization.CollisionsText(str, str.Capacity); // Daten aus DLL holen
+            View.Model.CollisionsText(str, str.Capacity); // Daten aus DLL holen
             // str: 1:2,3;2:1,2 => 1 kollidiert mit 2 und 3. 2 kollidiert mit 1 und 2.
             String collisionsString = str.ToString(); // Daten parsen
             string[] models = collisionsString.Split(';');
@@ -95,7 +95,7 @@ namespace Controller
                         player.Colidet.Add(Model.Id);
                         if (dispose)
                         {
-                            View.Visualization.Dispose(Model.Id);
+                            View.Model.Dispose(Model.Id);
                         }
                         return true;
                     }

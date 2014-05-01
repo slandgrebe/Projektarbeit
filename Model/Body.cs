@@ -54,7 +54,11 @@ namespace Model
         public Position WristLeft { get; set; }
         /// <summary>Koordinatenobjekt des Punktes: Handgelenk rechts</summary>
         public Position WristRight { get; set; }
-
+        /// <summary>X Koordinate des Körpers</summary>
+        public float X { get; set; }
+        /// <summary>Y Koordinate des Körpers</summary>
+        public float Y { get; set; }
+        /// <summary>Z Koordinate des Körpers</summary>
         public float Z { get; set; }
         /// <summary>Flag, ob eine Person aktuell erkennt wird</summary>
         private bool _isTracked;

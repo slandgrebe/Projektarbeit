@@ -18,30 +18,30 @@ namespace View
 
         public ScoreUi()
         {
-            backgroundId = Visualization.AddPoint("Resource Files/Background/white.jpg");
-            while (backgroundId != 0 && !Visualization.IsCreated(backgroundId)) { }
-            Visualization.Scale(backgroundId, 10, 10, 1);
+            backgroundId = Model.AddPoint("Resource Files/Background/white.jpg");
+            while (backgroundId != 0 && !Model.IsCreated(backgroundId)) { }
+            Model.Scale(backgroundId, 10, 10, 1);
 
-            buttonId = Visualization.AddButton("data/fonts/arial.ttf");
-            while (!Visualization.IsCreated(buttonId)) { }
-            Visualization.Scale(buttonId, 1f, 0.5f, 1); // Skalierung in z-Richtung wird ignoriert, da es sich beim Button um ein GUI Element handelt
-            Visualization.Text(buttonId, "Nochmal");
-            Visualization.TextColor(buttonId, 1f, 1f, 1f, 1.0f);
-            Visualization.TextSize(buttonId, 70);
-            Visualization.HighlightColor(buttonId, 0.5f, 0f, 0f, 1f);
-            Visualization.IsHighlighted(buttonId, true);
+            buttonId = Model.AddButton("data/fonts/arial.ttf");
+            while (!Model.IsCreated(buttonId)) { }
+            Model.Scale(buttonId, 1f, 0.5f, 1); // Skalierung in z-Richtung wird ignoriert, da es sich beim Button um ein GUI Element handelt
+            Text.String(buttonId, "Nochmal");
+            Text.TextColor(buttonId, 1f, 1f, 1f, 1.0f);
+            Text.TextSize(buttonId, 70);
+            Model.HighlightColor(buttonId, 0.5f, 0f, 0f, 1f);
+            Model.IsHighlighted(buttonId, true);
             //
             //Visualization.textColor(buttonId, 0f, 0f, 0f, 1.0f);
 
-            cursorId = Visualization.AddPoint("Resource Files/Models/Hand/hand-stop-2.jpg");
-            while (cursorId != 0 && !Visualization.IsCreated(cursorId)) { }
-            Visualization.Scale(cursorId, 0.03f, 0.05f, 1);
+            cursorId = Model.AddPoint("Resource Files/Models/Hand/hand-stop-2.jpg");
+            while (cursorId != 0 && !Model.IsCreated(cursorId)) { }
+            Model.Scale(cursorId, 0.03f, 0.05f, 1);
 
-            textId = Visualization.AddText("data/fonts/arial.ttf");
-            while (!Visualization.IsCreated(textId)) { }
-            Visualization.Text(textId, "Score: ");
-            Visualization.TextSize(textId, 50);
-            Visualization.TextColor(textId, 0f, 0f, 0f, 1.0f);
+            textId = Text.AddText("data/fonts/arial.ttf");
+            while (!Text.IsCreated(textId)) { }
+            Text.String(textId, "Score: ");
+            Text.TextSize(textId, 50);
+            Text.TextColor(textId, 0f, 0f, 0f, 1.0f);
 
             Hide();
         }
@@ -50,13 +50,13 @@ namespace View
         {
             if (!show)
             {
-                Visualization.ChangeCameraSpeed(0);
-                Visualization.Position(backgroundId, Position, 0f, -0.3f);
-                Visualization.Position(buttonId, 0, 0, 1); // Z-Koordinate wird ignoriert, da es sich beim Button um ein GUI Element handelt
-                Visualization.PositionCamera(Position, 0, 0);
-                Visualization.AttachToCamera(cursorId, true);
-                Visualization.Position(textId, 0, 0.5f, 0);
-                Visualization.Text(textId, "Score: " + score);
+                Camera.ChangeCameraSpeed(0);
+                Model.Position(backgroundId, Position, 0f, -0.3f);
+                Model.Position(buttonId, 0, 0, 1); // Z-Koordinate wird ignoriert, da es sich beim Button um ein GUI Element handelt
+                Camera.PositionCamera(Position, 0, 0);
+                Model.AttachToCamera(cursorId, true);
+                Text.Position(textId, 0, 0.5f, 0);
+                Text.String(textId, "Score: " + score);
                 show = true;
             }
         }
@@ -65,24 +65,24 @@ namespace View
         {
             if (show)
             {
-                Visualization.Position(backgroundId, -1000, 0f, -0.3f);
-                Visualization.Position(buttonId, -1000, 0f, 1); // Z-Koordinate wird ignoriert, da es sich beim Button um ein GUI Element handelt
-                Visualization.Position(cursorId, -1000, 0f, -0.2f);
-                Visualization.Position(textId, -1000, 0f, 0);
+                Model.Position(backgroundId, -1000, 0f, -0.3f);
+                Model.Position(buttonId, -1000, 0f, 1); // Z-Koordinate wird ignoriert, da es sich beim Button um ein GUI Element handelt
+                Model.Position(cursorId, -1000, 0f, -0.2f);
+                Text.Position(textId, -1000, 0f, 0);
                 show = false;
             }
         }
 
         public void PositionCursor(float x, float y)
         {
-            Visualization.Position(cursorId, x, y, -0.2f);
+            Model.Position(cursorId, x, y, -0.2f);
             if (HoverButton(x, y))
             {
-                Visualization.HighlightColor(buttonId, 1f, 1f, 0f, 1f);
+                Model.HighlightColor(buttonId, 1f, 1f, 0f, 1f);
             }
             else
             {
-                Visualization.HighlightColor(buttonId, 0.5f, 0f, 0f, 1f);
+                Model.HighlightColor(buttonId, 0.5f, 0f, 0f, 1f);
             }
         }
 

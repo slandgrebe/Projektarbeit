@@ -72,6 +72,9 @@ namespace Model
                             {
                                 // Person ist erkannt
                                 body.IsTracked = true;
+                                // Position des Körpers
+                                body.X = skel.Position.X;
+                                body.Y = skel.Position.Y;
                                 body.Z = skel.Position.Z;
 
                                 // Zwischenspeichern der einzelnen Körperpunkte

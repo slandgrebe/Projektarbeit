@@ -86,17 +86,5 @@ namespace Controller
                 o.Dispose();
             }
         }
-
-        /*
-        public void Deserialize()
-        {
-            FileStream stream;
-            foreach (string objectXmlPath in objectsXmlPath)
-            {
-                stream = new FileStream(@objectXmlPath, FileMode.Open);
-                XmlSerializer serializer = new XmlSerializer(typeof(Object));
-                AddObject((Object)serializer.Deserialize(stream));
-            }
-        }*/
     }
 }

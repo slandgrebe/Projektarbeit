@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using View;
 
 namespace Controller
 {
@@ -46,9 +45,9 @@ namespace Controller
         /// </summary>
         public void Create()
         {
-            Id = Visualization.AddModel(Path);
-            while (!Visualization.IsCreated(Id)) { }
-            Visualization.ScalingIsNormalized(Id, ScalingNormalized);
+            Id = View.Model.AddModel(Path);
+            while (!View.Model.IsCreated(Id)) { }
+            View.Model.ScalingIsNormalized(Id, ScalingNormalized);
         }
 
         /// <summary>
@@ -57,7 +56,7 @@ namespace Controller
         /// <param name="scale">Skalierungsangabe</param>
         public void Scale(float scale)
         {
-            Visualization.Scale(Id, scale, scale, scale);
+            View.Model.Scale(Id, scale, scale, scale);
         }
 
         /// <summary>
@@ -69,7 +68,7 @@ namespace Controller
         /// <param name="z">z Komponente der Rotationsachse</param>
         public void Rotate(float degrees, float x, float y, float z)
         {
-            Visualization.Rotate(Id, degrees, x, y, z);
+            View.Model.Rotate(Id, degrees, x, y, z);
         }
 
         /// <summary>
@@ -123,8 +122,8 @@ namespace Controller
             w = w * 180 / System.Math.PI;
 
             //Model Positionieren und ausrichten
-            Visualization.Rotate(Id, (float)w, (float)xa, (float)ya, (float)za);
-            Visualization.Position(Id, fromX, fromY, fromZ);
+            View.Model.Rotate(Id, (float)w, (float)xa, (float)ya, (float)za);
+            View.Model.Position(Id, fromX, fromY, fromZ);
 
             return true;
         }
@@ -137,7 +136,7 @@ namespace Controller
         /// <param name="z">z Koordinate</param>
         public void Position(float x, float y, float z)
         {
-            Visualization.Position(Id, x, y, z);
+            View.Model.Position(Id, x, y, z);
         }
 
         /// <summary>
@@ -146,7 +145,7 @@ namespace Controller
         /// <param name="choice"></param>
         public void AttachToCamera(bool choice)
         {
-            Visualization.AttachToCamera(Id, choice);
+            View.Model.AttachToCamera(Id, choice);
         }
 
         /// <summary>
@@ -172,7 +171,7 @@ namespace Controller
                 // Freigabe verwalteter Objekte
             }
             // Freigabe von Fremdresourcen
-            Visualization.Dispose(Id);
+            View.Model.Dispose(Id);
         }
 
         /// <summary>

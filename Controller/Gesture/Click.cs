@@ -8,7 +8,7 @@ using Model;
 namespace Controller
 {
     /// <summary>
-    /// Wird zur Überprüfung eines durch die Körperbewegung durchgeführte Auswahl getätigt wird.
+    /// Überprüft, ob eine durch die Körperbewegung durchgeführte Auswahl getätigt wird.
     /// </summary>
     class Click
     {

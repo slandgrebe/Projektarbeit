@@ -82,7 +82,7 @@ namespace Controller
         /// <returns></returns>
         public float GetPosition()
         {
-            return View.Visualization.PositionZ(Torso.Id);
+            return View.Model.PositionZ(Torso.Id);
         }
 
         /// <summary>

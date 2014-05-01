@@ -57,7 +57,7 @@ namespace Controller
             modus = Modus.NotTracked;
             
             // Fenster im Fullscreen öffnen
-            Visualization.Init("Jump and Run",false,0,0);
+            Window.Init("Jump and Run",false,0,0);
 
             // Gui Element für Keine Person erkannt initialisieren
             noTrackingUi = new NoTrackingUi();
@@ -88,7 +88,7 @@ namespace Controller
         {
             Initialize();
             System.Threading.Thread.Sleep(30);
-            while(Visualization.IsRunning())
+            while(Window.IsRunning())
             {
                 // senkt die CPU Auslastung drastisch
                 System.Threading.Thread.Sleep(1);
@@ -119,7 +119,7 @@ namespace Controller
                     // Programm mit Geste beenden
                     if (GestureClose.IsTrue())
                     {
-                        Visualization.Close();
+                        Window.Close();
                         break;
                     }
 

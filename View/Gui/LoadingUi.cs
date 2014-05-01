@@ -16,15 +16,15 @@ namespace View
 
         public LoadingUi()
         {
-            backgroundId = Visualization.AddPoint("Resource Files/Background/white.jpg");
-            while (backgroundId != 0 && !Visualization.IsCreated(backgroundId)) { }
-            Visualization.Scale(backgroundId, 10, 10, 1);
+            backgroundId = Model.AddPoint("Resource Files/Background/white.jpg");
+            while (backgroundId != 0 && !Model.IsCreated(backgroundId)) { }
+            Model.Scale(backgroundId, 10, 10, 1);
 
-            textId = Visualization.AddText("data/fonts/arial.ttf");
-            while (!Visualization.IsCreated(textId)) { }
-            Visualization.Text(textId, "Ladet");
-            Visualization.TextSize(textId, 50);
-            Visualization.TextColor(textId, 0f, 0f, 0f, 1.0f);
+            textId = Text.AddText("data/fonts/arial.ttf");
+            while (!Text.IsCreated(textId)) { }
+            Text.String(textId, "Ladet");
+            Text.TextSize(textId, 50);
+            Text.TextColor(textId, 0f, 0f, 0f, 1.0f);
             
             Hide();
         }
@@ -33,9 +33,9 @@ namespace View
         {
             if (!show)
             {
-                Visualization.Position(backgroundId, Position, 0f, -0.3f);
-                Visualization.Position(textId, 0, 0, 0);
-                Visualization.PositionCamera(Position, 0, 0);
+                Model.Position(backgroundId, Position, 0f, -0.3f);
+                Text.Position(textId, 0, 0, 0);
+                Camera.PositionCamera(Position, 0, 0);
                 show = true;
             }
         }
@@ -44,8 +44,8 @@ namespace View
         {
             if (show)
             {
-                Visualization.Position(backgroundId, -1000, 0f, -0.3f);
-                Visualization.Position(textId, -1000, 0, 0);
+                Model.Position(backgroundId, -1000, 0f, -0.3f);
+                Text.Position(textId, -1000, 0, 0);
                 show = false;
             }
         }
