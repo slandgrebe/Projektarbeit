@@ -7,7 +7,6 @@ using Microsoft.Kinect;
 
 namespace Model
 {
-    public delegate void SkeletonTrackerEvent();
     /// <summary>  
     /// Ansteuerung der Kinect und speichert die getrackten Daten in das Body Objekt.
     /// </summary>
@@ -17,8 +16,6 @@ namespace Model
         private KinectSensor sensor = null;
         /// <summary>Body Objekt für den zwischenspeicher</summary>
         private Body body = null;
-        /// <summary>Skelett Erfassungs Event</summary>
-        public event SkeletonTrackerEvent SkeletonEvent;
 
         /// <summary>
         /// Starten der Personenerfassung mit der Kinect.
@@ -105,11 +102,6 @@ namespace Model
                                 body.IsTracked = false;
                             }
                         });
-                        // Skeleton Event starten
-                        if (SkeletonEvent != null)
-                        {
-                            SkeletonEvent();
-                        }
                     }
                 }
             }

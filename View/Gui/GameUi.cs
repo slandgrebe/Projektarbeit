@@ -6,16 +6,28 @@ using System.Threading.Tasks;
 
 namespace View
 {
+    /// <summary>
+    /// Darstellung des GUI innerhalb des Spieles.
+    /// </summary>
     public class GameUi
     {
+        /// <summary>ID des Textes für die Lebensanzeigen</summary>
         private uint liveId = 0;
+        /// <summary>ID des Textes für die erreichten Punkte</summary>
         private uint scoreId = 0;
+        /// <summary>Aktuelle anzahl Leben</summary>
         public uint Lives { get; set; }
+        /// <summary>Aktuell gesammelte Punkte</summary>
         public uint Score { get; set; }
+        /// <summary>Flag zum umschalten zwischen Hide und Show</summary>
         private bool show = true;
 
+        /// <summary>
+        /// Initialisiert das GUI, zeigt sie aber nicht an.
+        /// </summary>
         public GameUi()
         {
+            // Texte erzeugen
             liveId = Text.AddText("data/fonts/arial.ttf");
             while (!Text.IsCreated(liveId)) { }
             scoreId = Text.AddText("data/fonts/arial.ttf");
@@ -27,15 +39,22 @@ namespace View
             Text.TextSize(scoreId, 36);
             Text.TextColor(scoreId, 1f, 0f, 0f, 1f);
 
+            // GUI nicht anzeigen
             Hide();
         }
 
+        /// <summary>
+        /// Lebens und Punkteanzeige aktualisieren
+        /// </summary>
         public void Update()
         {
             Text.String(liveId, "Lives: " + Lives);
             Text.String(scoreId, "Score: " + Score);
         }
 
+        /// <summary>
+        /// GUI anzeigen
+        /// </summary>
         public void Show()
         {
             if (!show)
@@ -46,6 +65,9 @@ namespace View
             }
         }
 
+        /// <summary>
+        /// GUI nicht mehr anzeigen
+        /// </summary>
         public void Hide()
         {
             if (show)

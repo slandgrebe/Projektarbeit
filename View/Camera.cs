@@ -4,7 +4,7 @@ using System.Runtime.InteropServices;
 namespace View
 {
     /// <summary>
-    /// Einbinden der Visualization.dll in C#
+    /// Einbinden der Kamerafunktionen der Visualization.dll in C#
     /// </summary>
     public static class Camera
     {

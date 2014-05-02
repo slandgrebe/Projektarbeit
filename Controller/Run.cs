@@ -99,7 +99,6 @@ namespace Controller
                     // Personenerkennung starten
                     sensor = new SkeletonTracker();
                     sensor.Start();
-                    sensor.SkeletonEvent += new SkeletonTrackerEvent(GetEvent);
                 }
                 else
                 {
@@ -237,14 +236,6 @@ namespace Controller
         private void End()
         {
             sensor.Stop();
-        }
-
-        /// <summary>
-        /// Abfangen des Events welcher der Sensor sendet
-        /// </summary>
-        private void GetEvent()
-        {
-            //Update();
         }
     }
 }

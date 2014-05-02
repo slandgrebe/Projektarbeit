@@ -57,12 +57,11 @@
     <Reference Include="System.Xml.Serialization" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Game.cs" />
+    <Compile Include="Game\Game.cs" />
     <Compile Include="Game\GameStatus.cs" />
     <Compile Include="Game\LevelSegment.cs" />
     <Compile Include="Game\Object.cs" />
     <Compile Include="Gesture\Click.cs" />
-    <Compile Include="Gesture\GesturePause.cs" />
     <Compile Include="Gesture\GestureClose.cs" />
     <Compile Include="Game\Level.cs" />
     <Compile Include="Modus.cs" />

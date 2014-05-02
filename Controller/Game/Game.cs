@@ -35,6 +35,9 @@ namespace Controller
             Init();
         }
 
+        /// <summary>
+        /// Ladet das Level, erstellt die Spielfigur
+        /// </summary>
         public void Init()
         {
             GameStatus = GameStatus.Initial;

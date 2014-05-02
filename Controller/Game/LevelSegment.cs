@@ -8,13 +8,23 @@ using System.Xml.Serialization;
 
 namespace Controller
 {
+    /// <summary>
+    /// Übernimmt die Darstellung eines Levelsegmentes
+    /// </summary>
     public class LevelSegment
     {
+        /// <summary>Liste aller Hinternissen</summary>
         public List<Object> obstacles;
+        /// <summary>Liste aller Punkte</summary>
         public List<Object> scores;
+        /// <summary>Liste aller neutralen Objekte</summary>
         public List<Object> objects;
+        /// <summary>Länge des Levelsegmentes</summary>
         public float Length { get; set; }
 
+        /// <summary>
+        /// Initialisierung des Levelsegments
+        /// </summary>
         public LevelSegment()
         {
             obstacles = new List<Object>();
@@ -22,21 +32,37 @@ namespace Controller
             objects = new List<Object>();
         }
         
+        /// <summary>
+        /// Hinternis hinzufügen
+        /// </summary>
+        /// <param name="obj">Hinternisobjekt</param>
         public void AddObstacle(Object obj)
         {
             obstacles.Add(obj);
         }
 
+        /// <summary>
+        /// Punkte Hinzufügen
+        /// </summary>
+        /// <param name="obj">Punkteobjekt</param>
         public void AddScore(Object obj)
         {
             scores.Add(obj);
         }
 
+        /// <summary>
+        /// Neutrales Objekt hinzufügen
+        /// </summary>
+        /// <param name="obj">Neutrales Objekt</param>
         public void AddObject(Object obj)
         {
             objects.Add(obj);
         }
 
+        /// <summary>
+        /// Levelsegment in der Anzeige darstellen
+        /// </summary>
+        /// <param name="z"></param>
         public void Create(float z)
         {
             foreach (Object o in obstacles)
@@ -53,6 +79,9 @@ namespace Controller
             }
         }
 
+        /// <summary>
+        /// Objekte dieses Levelsegment anhand der XML erzeugen
+        /// </summary>
         public void Deserialize()
         {
             foreach (Object obstacle in obstacles)
@@ -71,6 +100,9 @@ namespace Controller
             }
         }
 
+        /// <summary>
+        /// Levelsegment aus der Anzeige entfernen
+        /// </summary>
         public void Dispose()
         {
             foreach (Object o in obstacles)

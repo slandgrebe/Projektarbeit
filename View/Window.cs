@@ -3,6 +3,9 @@ using System.Runtime.InteropServices;
 
 namespace View
 {
+    /// <summary>
+    /// Einbinden der Fensterfunktionen der Visualization.dll in C#
+    /// </summary>
     public static class Window
     {
         /// <summary>

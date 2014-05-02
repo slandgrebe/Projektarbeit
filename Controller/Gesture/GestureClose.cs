@@ -13,7 +13,7 @@ namespace Controller
     class GestureClose
     {
         /// <summary>
-        /// 
+        /// Gibt True zurück, wenn die Gestig erkannt wurde
         /// </summary>
         /// <returns></returns>
         public static bool IsTrue()

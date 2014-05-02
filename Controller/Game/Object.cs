@@ -8,18 +8,32 @@ using System.Xml.Serialization;
 
 namespace Controller
 {
-    
+    /// <summary>
+    /// Übernimmt die Darstellung es eines Modelles innerhalb eines Levels.
+    /// </summary>
     public class Object
     {
+        /// <summary>XML Pfad zum Objekt</summary>
         public string ModelXmlPath {get; set; }
+        /// <summary>Skalierung des Objekts</summary>
         public float Scale { get; set; }
+        /// <summary>Positionierung X Koordinate des Objekts</summary>
         public float PosX { get; set; }
+        /// <summary>Positionierung Y Koordinate des Objekts</summary>
         public float PosY { get; set; }
+        /// <summary>Positionierung Z Koordinate des Objekts</summary>
         public float PosZ { get; set; }
+        /// <summary>Objekt der Kamera anhängen</summary>
         public bool AttachToCamera { get; set; }
+        /// <summary>Winkel in Grad, um welches das Objekt Horizontal gedreht werden soll</summary>
         public float RotateHorizontal { get; set; }
+        /// <summary>Beinhaltet das Model</summary>
         public Model Model { get; set; }
 
+        /// <summary>
+        /// Erstellt das Objekt in der Anzeige
+        /// </summary>
+        /// <param name="z">Relativer 0 Punkt in der Z Koordinate</param>
         public void Create(float z)
         {
             Model.Create();
@@ -29,6 +43,9 @@ namespace Controller
             Model.Rotate(RotateHorizontal, 0, 1, 0);
         }
 
+        /// <summary>
+        /// Model anhand des XML erzeugen
+        /// </summary>
         public void Deserialize()
         {
             FileStream stream;
@@ -38,6 +55,12 @@ namespace Controller
             stream.Close();
         }
 
+        /// <summary>
+        /// Überprüft, ob das Objekt mit der Spielfigur Kollidiert
+        /// </summary>
+        /// <param name="player">Spielfigur</param>
+        /// <param name="dispose">Modell soll nach der Kollision gelöscht werden</param>
+        /// <returns></returns>
         public bool handleCollisions(Player player, bool dispose)
         {
             // COLLISION DETECTION
@@ -104,6 +127,9 @@ namespace Controller
             return false;
         }
 
+        /// <summary>
+        /// Model aus der Anzeige entfernen
+        /// </summary>
         public void Dispose()
         {
             Model = null;

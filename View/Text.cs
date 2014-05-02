@@ -3,6 +3,9 @@ using System.Runtime.InteropServices;
 
 namespace View
 {
+    /// <summary>
+    /// Einbinden der Textfunktionen der Visualization.dll in C#
+    /// </summary>
     public static class Text
     {
         /// <summary>
