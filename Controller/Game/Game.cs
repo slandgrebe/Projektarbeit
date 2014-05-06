@@ -43,7 +43,7 @@ namespace Controller
             GameStatus = GameStatus.Initial;
 
             string dir = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
-            dir = dir + @"\Resource Files\Levels\Jungle\Level.xml";
+            dir = dir + @"\data\levels\jungle\level.xml";
 
             FileStream stream;
             stream = new FileStream(dir, FileMode.Open);

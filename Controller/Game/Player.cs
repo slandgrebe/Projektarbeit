@@ -50,16 +50,16 @@ namespace Controller
         /// </summary>
         public Player()
         {
-            Head = new Model("Resource Files/Models/Player/Head.3ds", false);
-            Torso = new Model("Resource Files/Models/Player/Torso.3ds", false);
-            UpperarmLeft = new Model("Resource Files/Models/Player/UpperArm.3ds", false);
-            UpperarmRight = new Model("Resource Files/Models/Player/UpperArm.3ds", false);
-            ForearmLeft = new Model("Resource Files/Models/Player/ForeArm.3ds", false);
-            ForearmRight = new Model("Resource Files/Models/Player/ForeArm.3ds", false);
-            ThighlegLeft = new Model("Resource Files/Models/Player/ThighLeg.3ds", false);
-            ThighlegRight = new Model("Resource Files/Models/Player/ThighLeg.3ds", false);
-            LowerlegLeft = new Model("Resource Files/Models/Player/LowerLeg.3ds", false);
-            LowerlegRight = new Model("Resource Files/Models/Player/LowerLeg.3ds", false);
+            Head = new Model("data/models/player/head.3ds", false);
+            Torso = new Model("data/models/player/torso.3ds", false);
+            UpperarmLeft = new Model("data/models/player/upperarm.3ds", false);
+            UpperarmRight = new Model("data/models/player/upperarm.3ds", false);
+            ForearmLeft = new Model("data/models/player/forearm.3ds", false);
+            ForearmRight = new Model("data/models/player/forearm.3ds", false);
+            ThighlegLeft = new Model("data/models/player/thighleg.3ds", false);
+            ThighlegRight = new Model("data/models/player/thighleg.3ds", false);
+            LowerlegLeft = new Model("data/models/player/lowerleg.3ds", false);
+            LowerlegRight = new Model("data/models/player/lowerleg.3ds", false);
 
             Colidet = new List<uint>();
         }

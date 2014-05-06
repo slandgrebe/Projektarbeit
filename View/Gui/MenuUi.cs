@@ -29,7 +29,7 @@ namespace View
         public MenuUi()
         {
             // Hintergrund erzeugen
-            backgroundId = Model.AddPoint("Resource Files/Background/white.jpg");
+            backgroundId = Model.AddPoint("data/background/white.jpg");
             while (backgroundId != 0 && !Model.IsCreated(backgroundId)) { }
             Model.Scale(backgroundId, 10, 10, 1);
 
@@ -44,7 +44,7 @@ namespace View
             Model.IsHighlighted(buttonId, true);
 
             // Cursor erzeugen
-            cursorId = Model.AddPoint("Resource Files/Models/Hand/hand-stop-2.jpg");
+            cursorId = Model.AddPoint("data/models/hand/hand-stop-2.jpg");
             while (cursorId != 0 && !Model.IsCreated(cursorId)) { }
             Model.Scale(cursorId, 0.03f, 0.05f, 1);
 

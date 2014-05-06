@@ -27,14 +27,14 @@ namespace View
         public LoadingUi()
         {
             // Hintergrund erzeugen
-            backgroundId = Model.AddPoint("Resource Files/Background/white.jpg");
+            backgroundId = Model.AddPoint("data/background/white.jpg");
             while (backgroundId != 0 && !Model.IsCreated(backgroundId)) { }
             Model.Scale(backgroundId, 10, 10, 1);
 
             // Text erzeugen
             textId = Text.AddText("data/fonts/arial.ttf");
             while (!Text.IsCreated(textId)) { }
-            Text.String(textId, "Keine Person erkannt!");
+            Text.String(textId, "Level wird geladen");
             Text.TextSize(textId, 50);
             Text.TextColor(textId, 0f, 0f, 0f, 1.0f);
 

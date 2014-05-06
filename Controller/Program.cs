@@ -6,20 +6,21 @@ using System.Threading.Tasks;
 using Model;
 using View;
 
+/// <summary>
+/// Start Klasse
+/// \mainpage
+/// Project name
+/// ==================
+/// bla
+/// Important classes
+/// ------------------
+/// * Class1
+/// * Class2
+/// * Class3
+/// </summary>
 namespace Controller
 {
-    /// <summary>
-    /// Start Klasse
-    /// \mainpage
-    /// Project name
-    /// ==================
-    /// bla
-    /// Important classes
-    /// ------------------
-    /// * Class1
-    /// * Class2
-    /// * Class3
-    /// </summary>
+
     class Program
     {
         /// <summary>
@@ -35,10 +36,6 @@ namespace Controller
 
                 // Verhindert das schliessen des Programmes
                 //Console.Read();
-            }
-            catch (DllNotFoundException)
-            {
-                Console.WriteLine("Benötigte dll fehlt!");
             }
             catch (Exception e)
             {
