@@ -62,24 +62,28 @@ namespace Controller
             LowerlegRight = new Model("data/models/player/lowerleg.3ds", false);
 
             Colidet = new List<uint>();
+
+            Scale = 1;
         }
 
         /// <summary>
         /// Positionierung der einzelnen Modelle der Spielfigur anhand Personenerkennung
         /// </summary>
-        public void Update()
+        /// <returns>Prüfung ob die Operation durchgeführt werden konnte</returns>
+        public bool Update()
         {
-            Body.Instance.ZModifikator(Body.Instance.Z + 4.5f);
+            Body.Instance.ZModifikator((Body.Instance.Z*-1) -4.5f);
             Body.Instance.YModifikator(-0.7f);
-            ScalePlayer();
-            Alignment();
-            AttachToCamera();
+            if (!ScalePlayer()) return false;
+            if (!Alignment()) return false;
+            if (!AttachToCamera()) return false;
+            return true;
         }
 
         /// <summary>
-        /// Gib die absolute Z Koordinate der Spielfigur zurück.
+        /// Gib die absolute Z Koordinate der Spielfigur in der Welt zurück.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Gib die absolute Z Koordinate der Spielfigur ion der Welt zurück</returns>
         public float GetPosition()
         {
             return View.Model.PositionZ(Torso.Id);
@@ -88,61 +92,69 @@ namespace Controller
         /// <summary>
         /// Die einzelnen Körperteile neu ausrichten
         /// </summary>
-        private void Alignment()
+        /// <returns>Prüfung ob die Operation durchgeführt werden konnte</returns>
+        private bool Alignment()
         {
-            Head.Position(Body.Instance.Head.X, Body.Instance.Head.Y, Body.Instance.Head.Z);
-            Torso.Alignment(Body.Instance.HipCenter.X, Body.Instance.HipCenter.Y, Body.Instance.HipCenter.Z,
-                Body.Instance.ShoulderCenter.X, Body.Instance.ShoulderCenter.Y, Body.Instance.ShoulderCenter.Z);
-            UpperarmLeft.Alignment(Body.Instance.ShoulderLeft.X, Body.Instance.ShoulderLeft.Y, Body.Instance.ShoulderLeft.Z,
-                Body.Instance.ElbowLeft.X, Body.Instance.ElbowLeft.Y, Body.Instance.ElbowLeft.Z);
-            UpperarmRight.Alignment(Body.Instance.ShoulderRight.X, Body.Instance.ShoulderRight.Y, Body.Instance.ShoulderRight.Z,
-                Body.Instance.ElbowRight.X, Body.Instance.ElbowRight.Y, Body.Instance.ElbowRight.Z);
-            ForearmLeft.Alignment(Body.Instance.ElbowLeft.X, Body.Instance.ElbowLeft.Y, Body.Instance.ElbowLeft.Z,
-                Body.Instance.WristLeft.X, Body.Instance.WristLeft.Y, Body.Instance.WristLeft.Z);
-            ForearmRight.Alignment(Body.Instance.ElbowRight.X, Body.Instance.ElbowRight.Y, Body.Instance.ElbowRight.Z,
-                Body.Instance.WristRight.X, Body.Instance.WristRight.Y, Body.Instance.WristRight.Z);
-            ThighlegLeft.Alignment(Body.Instance.HipLeft.X, Body.Instance.HipLeft.Y, Body.Instance.HipLeft.Z,
-                Body.Instance.KneeLeft.X, Body.Instance.KneeLeft.Y, Body.Instance.KneeLeft.Z);
-            ThighlegRight.Alignment(Body.Instance.HipRight.X, Body.Instance.HipRight.Y, Body.Instance.HipRight.Z,
-                Body.Instance.KneeRight.X, Body.Instance.KneeRight.Y, Body.Instance.KneeRight.Z);
-            LowerlegLeft.Alignment(Body.Instance.KneeLeft.X, Body.Instance.KneeLeft.Y, Body.Instance.KneeLeft.Z,
-                Body.Instance.AnkleLeft.X, Body.Instance.AnkleLeft.Y, Body.Instance.AnkleLeft.Z);
-            LowerlegRight.Alignment(Body.Instance.KneeRight.X, Body.Instance.KneeRight.Y, Body.Instance.KneeRight.Z,
-                Body.Instance.AnkleRight.X, Body.Instance.AnkleRight.Y, Body.Instance.AnkleRight.Z);
+            if (!Head.Position(Body.Instance.Head.X, Body.Instance.Head.Y, Body.Instance.Head.Z)) return false;
+            if (!Torso.Alignment(Body.Instance.HipCenter.X, Body.Instance.HipCenter.Y, Body.Instance.HipCenter.Z,
+                Body.Instance.ShoulderCenter.X, Body.Instance.ShoulderCenter.Y, Body.Instance.ShoulderCenter.Z)) return false;
+            if (!UpperarmLeft.Alignment(Body.Instance.ShoulderLeft.X, Body.Instance.ShoulderLeft.Y, Body.Instance.ShoulderLeft.Z,
+                Body.Instance.ElbowLeft.X, Body.Instance.ElbowLeft.Y, Body.Instance.ElbowLeft.Z)) return false;
+            if (!UpperarmRight.Alignment(Body.Instance.ShoulderRight.X, Body.Instance.ShoulderRight.Y, Body.Instance.ShoulderRight.Z,
+                Body.Instance.ElbowRight.X, Body.Instance.ElbowRight.Y, Body.Instance.ElbowRight.Z)) return false;
+            if (!ForearmLeft.Alignment(Body.Instance.ElbowLeft.X, Body.Instance.ElbowLeft.Y, Body.Instance.ElbowLeft.Z,
+                Body.Instance.WristLeft.X, Body.Instance.WristLeft.Y, Body.Instance.WristLeft.Z)) return false;
+            if (!ForearmRight.Alignment(Body.Instance.ElbowRight.X, Body.Instance.ElbowRight.Y, Body.Instance.ElbowRight.Z,
+                Body.Instance.WristRight.X, Body.Instance.WristRight.Y, Body.Instance.WristRight.Z)) return false;
+            if (!ThighlegLeft.Alignment(Body.Instance.HipLeft.X, Body.Instance.HipLeft.Y, Body.Instance.HipLeft.Z,
+                Body.Instance.KneeLeft.X, Body.Instance.KneeLeft.Y, Body.Instance.KneeLeft.Z)) return false;
+            if (!ThighlegRight.Alignment(Body.Instance.HipRight.X, Body.Instance.HipRight.Y, Body.Instance.HipRight.Z,
+                Body.Instance.KneeRight.X, Body.Instance.KneeRight.Y, Body.Instance.KneeRight.Z)) return false;
+            if (!LowerlegLeft.Alignment(Body.Instance.KneeLeft.X, Body.Instance.KneeLeft.Y, Body.Instance.KneeLeft.Z,
+                Body.Instance.AnkleLeft.X, Body.Instance.AnkleLeft.Y, Body.Instance.AnkleLeft.Z)) return false;
+            if (!LowerlegRight.Alignment(Body.Instance.KneeRight.X, Body.Instance.KneeRight.Y, Body.Instance.KneeRight.Z,
+                Body.Instance.AnkleRight.X, Body.Instance.AnkleRight.Y, Body.Instance.AnkleRight.Z)) return false;
+            return true;
         }
 
         /// <summary>
         /// Spielfigur Skallieren
         /// </summary>
-        private void ScalePlayer()
+        /// <returns>Prüfung ob die Operation durchgeführt werden konnte</returns>
+        private bool ScalePlayer()
         {
             Body.Instance.Scale(Scale);
             
-            Head.Scale(Scale);
-            Torso.Scale(Scale);
-            UpperarmLeft.Scale(Scale);
-            UpperarmRight.Scale(Scale);
-            ForearmLeft.Scale(Scale);
-            ForearmRight.Scale(Scale);
-            ThighlegLeft.Scale(Scale);
-            ThighlegRight.Scale(Scale);
-            LowerlegLeft.Scale(Scale);
-            LowerlegRight.Scale(Scale);
+            if (!Head.Scale(Scale)) return false;
+            if (!Torso.Scale(Scale)) return false;
+            if (!UpperarmLeft.Scale(Scale)) return false;
+            if (!UpperarmRight.Scale(Scale)) return false;
+            if (!ForearmLeft.Scale(Scale)) return false;
+            if (!ForearmRight.Scale(Scale)) return false;
+            if (!ThighlegLeft.Scale(Scale)) return false;
+            if (!ThighlegRight.Scale(Scale)) return false;
+            if (!LowerlegLeft.Scale(Scale)) return false;
+            if (!LowerlegRight.Scale(Scale)) return false;
+            return true;
         }
 
-        // Spielfigur der Kamera anhängen
-        private void AttachToCamera()
+        /// <summary>
+        /// Spielfigur der Kamera anhängen.
+        /// </summary>
+        /// <returns>Prüfung ob die Operation durchgeführt werden konnte</returns>
+        private bool AttachToCamera()
         {
-            Head.AttachToCamera(Attach);
-            UpperarmLeft.AttachToCamera(Attach);
-            UpperarmRight.AttachToCamera(Attach);
-            ForearmLeft.AttachToCamera(Attach);
-            ForearmRight.AttachToCamera(Attach);
-            Torso.AttachToCamera(Attach);
-            ThighlegLeft.AttachToCamera(Attach);
-            ThighlegRight.AttachToCamera(Attach);
-            LowerlegLeft.AttachToCamera(Attach);
-            LowerlegRight.AttachToCamera(Attach);
+            if (!Head.AttachToCamera(Attach)) return false;
+            if (!UpperarmLeft.AttachToCamera(Attach)) return false;
+            if (!UpperarmRight.AttachToCamera(Attach)) return false;
+            if (!ForearmLeft.AttachToCamera(Attach)) return false;
+            if (!ForearmRight.AttachToCamera(Attach)) return false;
+            if (!Torso.AttachToCamera(Attach)) return false;
+            if (!ThighlegLeft.AttachToCamera(Attach)) return false;
+            if (!ThighlegRight.AttachToCamera(Attach)) return false;
+            if (!LowerlegLeft.AttachToCamera(Attach)) return false;
+            if (!LowerlegRight.AttachToCamera(Attach)) return false;
+            return true;
         }
     }
 }

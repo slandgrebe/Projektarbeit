@@ -43,20 +43,26 @@ namespace Controller
         /// <summary>
         /// Erstellt das Modell in der Ausgabe
         /// </summary>
-        public void Create()
+        /// <returns>Prüfung ob die Operation durchgeführt werden konnte</returns>
+        public bool Create()
         {
+            if (Id > 0) return false;
+            if (Path == null || Path.Length == 0) return false;
             Id = View.Model.AddModel(Path);
             while (!View.Model.IsCreated(Id)) { }
             View.Model.ScalingIsNormalized(Id, ScalingNormalized);
+            return true;
         }
 
         /// <summary>
         /// Skalliert das Modell
         /// </summary>
         /// <param name="scale">Skalierungsangabe</param>
-        public void Scale(float scale)
+        /// <returns>Prüfung ob die Operation durchgeführt werden konnte</returns>
+        public bool Scale(float scale)
         {
-            View.Model.Scale(Id, scale, scale, scale);
+            if (Id == 0) return false;
+            return View.Model.Scale(Id, scale, scale, scale);
         }
 
         /// <summary>
@@ -66,9 +72,11 @@ namespace Controller
         /// <param name="x">x Komponente der Rotationsachse</param>
         /// <param name="y">y Komponente der Rotationsachse</param>
         /// <param name="z">z Komponente der Rotationsachse</param>
-        public void Rotate(float degrees, float x, float y, float z)
+        /// <returns>Prüfung ob die Operation durchgeführt werden konnte</returns>
+        public bool Rotate(float degrees, float x, float y, float z)
         {
-            View.Model.Rotate(Id, degrees, x, y, z);
+            if (Id == 0) return false;
+            return View.Model.Rotate(Id, degrees, x, y, z);
         }
 
         /// <summary>
@@ -80,9 +88,11 @@ namespace Controller
         /// <param name="toX">Ziel X Koordinate</param>
         /// <param name="toY">Ziel Y Koordinate</param>
         /// <param name="toZ">Ziel Z Koordinate</param>
-        /// <returns>Ausrichtung erfolgreich ausgeführt</returns>
+        /// <returns>Prüfung ob die Operation durchgeführt werden konnte</returns>
         public bool Alignment(float fromX, float fromY, float fromZ, float toX, float toY, float toZ)
         {
+            if (Id == 0) return false;
+
             // Ausgangspunkt darf nicht Zielpunkt sein.
             if (fromX == toX && fromY == toY && fromZ == toZ)
             {
@@ -122,8 +132,8 @@ namespace Controller
             w = w * 180 / System.Math.PI;
 
             //Model Positionieren und ausrichten
-            View.Model.Rotate(Id, (float)w, (float)xa, (float)ya, (float)za);
-            View.Model.Position(Id, fromX, fromY, fromZ);
+            if (!View.Model.Position(Id, fromX, fromY, fromZ)) return false;
+            if (!View.Model.Rotate(Id, (float)w, (float)xa, (float)ya, (float)za)) return false;
 
             return true;
         }
@@ -134,18 +144,22 @@ namespace Controller
         /// <param name="x">x Koordinate</param>
         /// <param name="y">y Koordinate</param>
         /// <param name="z">z Koordinate</param>
-        public void Position(float x, float y, float z)
+        /// <returns>Prüfung ob die Operation durchgeführt werden konnte</returns>
+        public bool Position(float x, float y, float z)
         {
-            View.Model.Position(Id, x, y, z);
+            if (Id == 0) return false;
+            return View.Model.Position(Id, x, y, z);
         }
 
         /// <summary>
         /// Hängt ein Modell an die Kamera an. Dies hat zur Folge, dass dieses Objekt relativ zur Kamera positioniert wird.
         /// </summary>
-        /// <param name="choice"></param>
-        public void AttachToCamera(bool choice)
+        /// <param name="choice">True aktiviert und False deaktiviert die Anhängung an die Kamera.</param>
+        /// <returns>Prüfung ob die Operation durchgeführt werden konnte</returns>
+        public bool AttachToCamera(bool choice)
         {
-            View.Model.AttachToCamera(Id, choice);
+            if (Id == 0) return false;
+            return View.Model.AttachToCamera(Id, choice);
         }
 
         /// <summary>
@@ -171,7 +185,8 @@ namespace Controller
                 // Freigabe verwalteter Objekte
             }
             // Freigabe von Fremdresourcen
-            View.Model.Dispose(Id);
+            if(Id > 0) View.Model.Dispose(Id);
+            Id = 0;
         }
 
         /// <summary>

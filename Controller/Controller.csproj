@@ -64,6 +64,12 @@
     <Compile Include="Gesture\Click.cs" />
     <Compile Include="Gesture\GestureClose.cs" />
     <Compile Include="Game\Level.cs" />
+    <Compile Include="Gui\GameOverUi.cs" />
+    <Compile Include="Gui\GameUi.cs" />
+    <Compile Include="Gui\LoadingUi.cs" />
+    <Compile Include="Gui\MenuUi.cs" />
+    <Compile Include="Gui\NoTrackingUi.cs" />
+    <Compile Include="Gui\ScoreUi.cs" />
     <Compile Include="Modus.cs" />
     <Compile Include="Object\Model.cs" />
     <Compile Include="Run.cs" />

@@ -49,14 +49,7 @@ namespace Model
         /// <param name="value">X Wert</param>
         /// <returns>Veränderter X Wert</returns>
         private float ManipulateX(float value){
-            if (XModifikator <= 0)
-            {
-                value += XModifikator;
-            }
-            else
-            {
-                value -= XModifikator;
-            }
+            value += XModifikator;
             return value*Scale;
         }
 
@@ -67,14 +60,7 @@ namespace Model
         /// <returns>Veränderter Y Wert</returns>
         private float ManipulateY(float value)
         {
-            if (YModifikator <= 0)
-            {
-                value += YModifikator;
-            }
-            else
-            {
-                value -= YModifikator;
-            }
+            value += YModifikator;
             return value*Scale;
         }
 
@@ -85,14 +71,7 @@ namespace Model
         /// <returns>Veränderter Z Wert</returns>
         private float ManipulateZ(float value)
         {
-            if (ZModifikator <= 0)
-            {
-                value += ZModifikator;
-            }
-            else
-            {
-                value -= ZModifikator;
-            }
+            value += ZModifikator;
             return value * Scale;
         }
     }

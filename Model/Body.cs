@@ -65,7 +65,14 @@ namespace Model
         /// <summary>Flag, ob eine Person aktuell erkennt wird. Erfolgt 2 Sekundenlang kein Signal, so wird das Flag auf false gesetzt.</summary>
         public bool IsTracked
         {
-            get { return _isTracked; }
+            get
+            {
+                if (Math.Abs(trackedStartTime.Subtract(DateTime.Now).TotalSeconds) >= 2)
+                {
+                    _isTracked = false;
+                }
+                return _isTracked;
+            }
             set
             {
                 if (value)

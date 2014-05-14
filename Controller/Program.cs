@@ -33,9 +33,6 @@ namespace Controller
             {
                 // Programm Starten
                 Run r = Run.Instance;
-
-                // Verhindert das schliessen des Programmes
-                //Console.Read();
             }
             catch (Exception e)
             {

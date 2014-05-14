@@ -34,13 +34,15 @@ namespace Controller
         /// Erstellt das Objekt in der Anzeige
         /// </summary>
         /// <param name="z">Relativer 0 Punkt in der Z Koordinate</param>
-        public void Create(float z)
+        /// <returns>Prüfung ob die Operation durchgeführt werden konnte</returns>
+        public bool Create(float z)
         {
-            Model.Create();
-            Model.Position(PosX, PosY, z + PosZ *-1);
-            Model.Scale(Scale);
-            Model.AttachToCamera(AttachToCamera);
-            Model.Rotate(RotateHorizontal, 0, 1, 0);
+            if (!Model.Create()) return false;
+            if (!Model.Position(PosX, PosY, z + PosZ *-1)) return false;
+            if (!Model.Scale(Scale)) return false;
+            if (!Model.AttachToCamera(AttachToCamera)) return false;
+            if (!Model.Rotate(RotateHorizontal, 0, 1, 0)) return false;
+            return true;
         }
 
         /// <summary>
