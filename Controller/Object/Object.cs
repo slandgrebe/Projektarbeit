@@ -31,14 +31,67 @@ namespace Controller
         public Model Model { get; set; }
 
         /// <summary>
+        /// Initialisierung des Objektes.
+        /// </summary>
+        public Object()
+        {
+            Scale = 1;
+            PosX = 0;
+            PosY = 0;
+            PosZ = 0;
+            AttachToCamera = false;
+            RotateHorizontal = 0;
+        }
+
+        /// <summary>
+        /// Erstellt das Objekt in der Anzeige
+        /// </summary>
+        /// <returns>Prüfung ob die Operation durchgeführt werden konnte</returns>
+        public bool Create()
+        {
+            if (Model == null) return false;
+            if (!Model.Create()) return false;
+            if (!Model.Position(PosX, PosY, PosZ * -1)) return false;
+            if (!Model.Scale(Scale)) return false;
+            if (!Model.AttachToCamera(AttachToCamera)) return false;
+            if (!Model.Rotate(RotateHorizontal, 0, 1, 0)) return false;
+            return true;
+        }
+
+        /// <summary>
         /// Erstellt das Objekt in der Anzeige
         /// </summary>
         /// <param name="z">Relativer 0 Punkt in der Z Koordinate</param>
         /// <returns>Prüfung ob die Operation durchgeführt werden konnte</returns>
         public bool Create(float z)
         {
+            if (Model == null) return false;
             if (!Model.Create()) return false;
-            if (!Model.Position(PosX, PosY, z + PosZ *-1)) return false;
+            if (!Model.Position(PosX, PosY, (z + PosZ) * -1)) return false;
+            if (!Model.Scale(Scale)) return false;
+            if (!Model.AttachToCamera(AttachToCamera)) return false;
+            if (!Model.Rotate(RotateHorizontal, 0, 1, 0)) return false;
+            return true;
+        }
+        
+        /// <summary>
+        /// Erstellt das Objekt in der Anzeige
+        /// </summary>
+        /// <param name="z">Relativer 0 Punkt in der Z Koordinate</param>
+        /// <param name="path">Pfad zur 3D Datei</param>
+        /// <returns>Prüfung ob die Operation durchgeführt werden konnte</returns>
+        public bool Create(float z, string path)
+        {
+            if (Model == null)
+            {
+                Model = new Model(path);
+            }
+            else
+            {
+                Model.Path = path;
+                if (!Model.Create()) return false;
+            }
+            if (!Model.Position(PosX, PosY, (z + PosZ) * -1)) return false;
             if (!Model.Scale(Scale)) return false;
             if (!Model.AttachToCamera(AttachToCamera)) return false;
             if (!Model.Rotate(RotateHorizontal, 0, 1, 0)) return false;
@@ -63,7 +116,7 @@ namespace Controller
         /// <param name="player">Spielfigur</param>
         /// <param name="dispose">Modell soll nach der Kollision gelöscht werden</param>
         /// <returns></returns>
-        public bool handleCollisions(Player player, bool dispose)
+        public bool Collision(Player player, bool dispose)
         {
             // COLLISION DETECTION
             System.Collections.Generic.Dictionary<uint, System.Collections.Generic.List<uint>> collisionList = new System.Collections.Generic.Dictionary<uint, System.Collections.Generic.List<uint>>();
@@ -120,7 +173,7 @@ namespace Controller
                         player.Colidet.Add(Model.Id);
                         if (dispose)
                         {
-                            View.Model.Dispose(Model.Id);
+                            Dispose();
                         }
                         return true;
                     }
@@ -134,7 +187,7 @@ namespace Controller
         /// </summary>
         public void Dispose()
         {
-            Model = null;
+            Model.Dispose();
         }
     }
 }

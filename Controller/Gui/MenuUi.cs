@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using View;
 
-namespace View
+namespace Controller
 {
     /// <summary>
     /// Darstellung des Hauptmenus
@@ -20,33 +20,35 @@ namespace View
         private uint cursorId = 0;
         /// <summary>ID des Buttons</summary>
         private uint buttonId = 0;
-        /// <summary>Flag zum umschalten zwischen Hide und Show</summary>
-        private bool show = true;
+        /// <summary>Zeigt an, ob dieses GUI aktuell aktiv ist, oder nicht.</summary>
+        public bool IsShow { get; set; }
 
         /// <summary>
         /// Initialisiert das GUI, zeigt sie aber nicht an.
         /// </summary>
         public MenuUi()
         {
+            IsShow = true;
+
             // Hintergrund erzeugen
-            backgroundId = Model.AddPoint("data/background/white.jpg");
-            while (backgroundId != 0 && !Model.IsCreated(backgroundId)) { }
-            Model.Scale(backgroundId, 10, 10, 1);
+            backgroundId = View.Model.AddPoint("data/background/white.jpg");
+            while (backgroundId != 0 && !View.Model.IsCreated(backgroundId)) { }
+            View.Model.Scale(backgroundId, 10, 10, 1);
 
             // Button erzeugen
-            buttonId = Model.AddButton("data/fonts/arial.ttf");
-            while (!Model.IsCreated(buttonId)) { }
-            Model.Scale(buttonId, 1f, 0.5f, 1); // Skalierung in z-Richtung wird ignoriert, da es sich beim Button um ein GUI Element handelt
+            buttonId = View.Model.AddButton("data/fonts/arial.ttf");
+            while (!View.Model.IsCreated(buttonId)) { }
+            View.Model.Scale(buttonId, 1f, 0.5f, 1); // Skalierung in z-Richtung wird ignoriert, da es sich beim Button um ein GUI Element handelt
             Text.String(buttonId, "Start");
             Text.TextColor(buttonId, 1f, 1f, 1f, 1.0f);
             Text.TextSize(buttonId, 70);
-            Model.HighlightColor(buttonId, 0.5f, 0f, 0f, 1f);
-            Model.IsHighlighted(buttonId, true);
+            View.Model.HighlightColor(buttonId, 0.5f, 0f, 0f, 1f);
+            View.Model.IsHighlighted(buttonId, true);
 
             // Cursor erzeugen
-            cursorId = Model.AddPoint("data/models/hand/hand-stop-2.jpg");
-            while (cursorId != 0 && !Model.IsCreated(cursorId)) { }
-            Model.Scale(cursorId, 0.03f, 0.05f, 1);
+            cursorId = View.Model.AddPoint("data/models/hand/hand-stop-2.jpg");
+            while (cursorId != 0 && !View.Model.IsCreated(cursorId)) { }
+            View.Model.Scale(cursorId, 0.03f, 0.05f, 1);
 
             // GUI nicht anzeigen
             Hide();
@@ -57,14 +59,14 @@ namespace View
         /// </summary>
         public void Show()
         {
-            if (!show)
+            if (!IsShow)
             {
                 Camera.ChangeCameraSpeed(0);
-                Model.Position(backgroundId, Position, 0f, -0.3f);
-                Model.Position(buttonId, 0, 0, 1); // Z-Koordinate wird ignoriert, da es sich beim Button um ein GUI Element handelt
+                View.Model.Position(backgroundId, Position, 0f, -0.3f);
+                View.Model.Position(buttonId, 0, 0, 1); // Z-Koordinate wird ignoriert, da es sich beim Button um ein GUI Element handelt
                 Camera.PositionCamera(Position, 0, 0);
-                Model.AttachToCamera(cursorId, true);
-                show = true;
+                View.Model.AttachToCamera(cursorId, true);
+                IsShow = true;
             }
         }
 
@@ -73,12 +75,12 @@ namespace View
         /// </summary>
         public void Hide()
         {
-            if (show)
+            if (IsShow)
             {
-                Model.Position(backgroundId, -1000, 0f, -0.3f);
-                Model.Position(buttonId, -1000, 0f, 1); // Z-Koordinate wird ignoriert, da es sich beim Button um ein GUI Element handelt
-                Model.Position(cursorId, -1000, 0f, -0.2f);
-                show = false;
+                View.Model.Position(backgroundId, -1000, 0f, -0.3f);
+                View.Model.Position(buttonId, -1000, 0f, 1); // Z-Koordinate wird ignoriert, da es sich beim Button um ein GUI Element handelt
+                View.Model.Position(cursorId, -1000, 0f, -0.2f);
+                IsShow = false;
             }
         }
 
@@ -89,14 +91,14 @@ namespace View
         /// <param name="y">Y Koordinate</param>
         public void PositionCursor(float x, float y)
         {
-            Model.Position(cursorId, x, y, -0.2f);
+            View.Model.Position(cursorId, x, y, -0.2f);
             if (HoverButton(x, y))
             {
-                Model.HighlightColor(buttonId, 1f, 1f, 0f, 1f);
+                View.Model.HighlightColor(buttonId, 1f, 1f, 0f, 1f);
             }
             else
             {
-                Model.HighlightColor(buttonId, 0.5f, 0f, 0f, 1f);
+                View.Model.HighlightColor(buttonId, 0.5f, 0f, 0f, 1f);
             }
         }
 

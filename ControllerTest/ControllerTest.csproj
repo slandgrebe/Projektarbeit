@@ -50,9 +50,21 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="ModelTest.cs" />
-    <Compile Include="ObjectTest.cs" />
-    <Compile Include="PlayerTest.cs" />
+    <Compile Include="Data.cs" />
+    <Compile Include="Game\GameTest.cs" />
+    <Compile Include="Game\LevelSegmentTest.cs" />
+    <Compile Include="Game\LevelTest.cs" />
+    <Compile Include="Gesture\ClickTest.cs" />
+    <Compile Include="Gesture\GestureCloseTest.cs" />
+    <Compile Include="Gui\ScoreUiTest.cs" />
+    <Compile Include="Gui\NoTrackingUiTest.cs" />
+    <Compile Include="Gui\MenuUiTest.cs" />
+    <Compile Include="Gui\LoadingUiTest.cs" />
+    <Compile Include="Gui\GameUiTest.cs" />
+    <Compile Include="Gui\GameOverUiTest.cs" />
+    <Compile Include="Object\ModelTest.cs" />
+    <Compile Include="Object\ObjectTest.cs" />
+    <Compile Include="Game\PlayerTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -69,6 +81,7 @@
       <Name>View</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>

@@ -1,66 +1,16 @@
 ﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Controller;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using Model;
 
 namespace ControllerTest
 {
-    [TestClass]
-    public class PlayerTest
+    public static class Data
     {
-        private static Player player;
-
-        [ClassInitialize]
-        public static void MyClassInitialize(TestContext testContext)
+        public static void SetBody()
         {
-            View.Window.Init("test", false, 10, 10);
-            player = new Player();
-        }
-
-        [ClassCleanup]
-        public static void MyClassCleanup()
-        {
-            View.Window.Close();
-        }
-
-        [TestMethod]
-        public void Player_Update()
-        {
-            setBody();
-            player.Scale = 0.5f;
-            Assert.AreEqual(true, player.Update(), "Spieler konnte nicht aktualisiert werden.");
-            setBody();
-            Assert.AreEqual(0.15f, Body.Instance.Spine.Y, "Spieler wurde in der Y Achse nicht korrekt positioniert.");
-            Assert.AreEqual(-2.25f, Body.Instance.Spine.Z, "Spieler wurde in der Z Achse nicht korrekt positioniert.");
-        }
-
-        [TestMethod]
-        public void Player_GetPositionAttachedToCamera()
-        {
-            setBody();
-            player.Scale = 0.5f;
-            player.Attach = true;
-            player.Update();
-            setBody();
-            player.Update();
-            View.Camera.PositionCamera(1, 3, 2);
-            Assert.AreEqual(-0.25, player.GetPosition(), "Es wurde eine falsche Spielerpositionierung zurück gegeben.");
-        }
-
-        [TestMethod]
-        public void Player_GetPositionNotAttachedToCamera()
-        {
-            setBody();
-            player.Scale = 0.5f;
-            player.Attach = false;
-            player.Update();
-            setBody();
-            player.Update();
-            View.Camera.PositionCamera(1, 3, 2);
-            Assert.AreEqual(-2.25, player.GetPosition(), "Es wurde eine falsche Spielerpositionierung zurück gegeben.");
-        }
-
-        private static void setBody(){
             Body.Instance.Z = 1;
             Body.Instance.X = 0;
             Body.Instance.Y = 0;

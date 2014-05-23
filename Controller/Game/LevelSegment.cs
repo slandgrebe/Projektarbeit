@@ -62,21 +62,23 @@ namespace Controller
         /// <summary>
         /// Levelsegment in der Anzeige darstellen
         /// </summary>
-        /// <param name="z"></param>
-        public void Create(float z)
+        /// <param name="z">Relativer 0 Punkt in der Z Koordinate</param>
+        /// <returns>Prüfung ob die Operation durchgeführt werden konnte</returns>
+        public bool Create(float z)
         {
             foreach (Object o in obstacles)
             {
-                o.Create(z);
+                if (!o.Create(z)) return false;
             }
             foreach (Object s in scores)
             {
-                s.Create(z);
+                 if (!s.Create(z)) return false;
             }
             foreach (Object o in objects)
             {
-                o.Create(z);
+                if (!o.Create(z)) return false;
             }
+            return true;
         }
 
         /// <summary>

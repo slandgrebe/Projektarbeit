@@ -4,6 +4,7 @@ using System.Text;
 using System.Threading.Tasks;
 using View;
 using Model;
+using System;
 
 namespace Controller
 {
@@ -97,8 +98,16 @@ namespace Controller
                 if (sensor == null)
                 {
                     // Personenerkennung starten
-                    sensor = new SkeletonTracker();
-                    sensor.Start();
+                    try
+                    {
+                        // Programm Starten
+                        sensor = new SkeletonTracker();
+                        sensor.Start();
+                    }
+                    catch (Exception e)
+                    {
+                        modus = Modus.NotTracked;
+                    }
                 }
                 else
                 {
@@ -162,6 +171,7 @@ namespace Controller
                                 if (game.GameStatus == GameStatus.Start)
                                 {
                                     loadingUi.Show();
+                                    game.LevelXmlPath = "/data/levels/jungle/level.xml";
                                     game.Init();
                                 }
                                 // Level ist geladen

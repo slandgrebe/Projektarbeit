@@ -36,15 +36,17 @@ namespace Controller
         }
 
         /// <summary>
-        /// Level in der Anzeige erzeugen
+        /// Level in der Anzeige erzeugen/laden
         /// </summary>
-        public void Load()
+        /// <returns>Prüfung ob die Operation durchgeführt werden konnte</returns>
+        public bool Load()
         {
             foreach (LevelSegment segment in segments)
             {
-                segment.Create(LevelLength);
-                LevelLength -= segment.Length;
+                if (!segment.Create(LevelLength)) return false;
+                LevelLength += segment.Length;
             }
+            return true;
         }
 
         /// <summary>

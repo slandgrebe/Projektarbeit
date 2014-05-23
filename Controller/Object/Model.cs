@@ -47,7 +47,7 @@ namespace Controller
         public bool Create()
         {
             if (Id > 0) return false;
-            if (Path == null || Path.Length == 0) return false;
+            if (Path == null || String.IsNullOrEmpty(Path)) return false;
             Id = View.Model.AddModel(Path);
             while (!View.Model.IsCreated(Id)) { }
             View.Model.ScalingIsNormalized(Id, ScalingNormalized);

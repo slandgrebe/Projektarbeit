@@ -13,7 +13,7 @@ namespace Controller
     /// <summary>
     /// Beinhaltet das Spiel
     /// </summary>
-    class Game
+    public class Game
     {
         /// <summary>Instanz des Positionobjektes.</summary>
         private static Game instance;
@@ -23,6 +23,8 @@ namespace Controller
         public Level level = null;
         /// <summary>Beinhaltet den aktuellen Spielstatus.</summary>
         public GameStatus GameStatus { get; set; }
+        /// <summary>XML Pfad zum level</summary>
+        public string LevelXmlPath { get; set; }
         /// <summary>Beinhaltet das GUI während des Spiels.</summary>
         private GameUi gameUi;
 
@@ -32,23 +34,29 @@ namespace Controller
         public Game()
         {
             gameUi = new GameUi();
-            Init();
+            GameStatus = GameStatus.Start;
         }
 
         /// <summary>
         /// Ladet das Level, erstellt die Spielfigur
         /// </summary>
-        public void Init()
+        public bool Init()
         {
+            if (String.IsNullOrEmpty(LevelXmlPath))
+            {
+                return false;
+            }
+
             GameStatus = GameStatus.Initial;
 
             string dir = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
-            dir = dir + @"\data\levels\jungle\level.xml";
+            dir = dir + LevelXmlPath;
 
             FileStream stream;
             stream = new FileStream(dir, FileMode.Open);
             XmlSerializer serializer = new XmlSerializer(typeof(Level));
             level = (Level)serializer.Deserialize(stream);
+            stream.Close();
             level.Deserialize();
             level.Load();
 
@@ -56,10 +64,12 @@ namespace Controller
             Player.Scale = 0.7f;
             Player.Attach = true;
             Player.Score = 0;
-            Player.Lives =level.Lives;
+            Player.Lives = level.Lives;
             
             gameUi.Show();
             GameStatus = GameStatus.Loadet;
+
+            return true;
         }
 
         /// <summary>
@@ -112,7 +122,7 @@ namespace Controller
                     {
                         foreach (Object score in segment.scores)
                         {
-                            if (score.handleCollisions(Player, true))
+                            if (score.Collision(Player, true))
                             {
                                 Player.Score++;
                             }
@@ -124,7 +134,7 @@ namespace Controller
                     {
                         foreach (Object obstacle in segment.obstacles)
                         {
-                            if (obstacle.handleCollisions(Player, false))
+                            if (obstacle.Collision(Player, false))
                             {
                                 Player.Lives--;
                             }
@@ -137,7 +147,7 @@ namespace Controller
                     gameUi.Update();
 
                     // Prüfen ob das Ziel erreicht wurde
-                    ChechLevelEnd();
+                    CheckLevelEnd();
 
                     // Prüfen ob der Spieler Game Over ist
                     CheckGameOver();
@@ -169,9 +179,9 @@ namespace Controller
         /// <summary>
         /// Überprüft ob der Spieler im Ziel ist.
         /// </summary>
-        private void ChechLevelEnd()
+        private void CheckLevelEnd()
         {
-            if (level.LevelLength + level.segments.Last().Length - 2 > Player.GetPosition())
+            if (level.LevelLength - level.segments.Last().Length + 2 < Player.GetPosition() * -1)
             {
                 GameStatus = GameStatus.Successful;
             }

@@ -72,7 +72,7 @@ namespace Controller
         /// <returns>Prüfung ob die Operation durchgeführt werden konnte</returns>
         public bool Update()
         {
-            Body.Instance.ZModifikator((Body.Instance.Z*-1) -4.5f);
+            Body.Instance.ZModifikator((Body.Instance.Z*-1) -4.5f); // Spielfigur vor der Kamera positionieren
             Body.Instance.YModifikator(-0.7f);
             if (!ScalePlayer()) return false;
             if (!Alignment()) return false;

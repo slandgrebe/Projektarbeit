@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using View;
 
-namespace View
+namespace Controller
 {
     /// <summary>
     /// Darstellung des GUI wenn keine Person erkannt wird.
@@ -18,18 +18,20 @@ namespace View
         private uint backgroundId = 0;
         /// <summary>ID des Textes</summary>
         private uint textId = 0;
-        /// <summary>Flag zum umschalten zwischen Hide und Show</summary>
-        private bool show = true;
+        /// <summary>Zeigt an, ob dieses GUI aktuell aktiv ist, oder nicht.</summary>
+        public bool IsShow { get; set; }
 
         /// <summary>
         /// Initialisiert das GUI, zeigt sie aber nicht an.
         /// </summary>
         public NoTrackingUi()
         {
+            IsShow = true;
+            
             // Hintergrund erzeugen
-            backgroundId = Model.AddPoint("data/background/white.jpg");
-            while (backgroundId != 0 && !Model.IsCreated(backgroundId)) { }
-            Model.Scale(backgroundId, 10, 10, 1);
+            backgroundId = View.Model.AddPoint("data/background/white.jpg");
+            while (backgroundId != 0 && !View.Model.IsCreated(backgroundId)) { }
+            View.Model.Scale(backgroundId, 10, 10, 1);
 
             // Text erzeugen
             textId = Text.AddText("data/fonts/arial.ttf");
@@ -47,13 +49,13 @@ namespace View
         /// </summary>
         public void Show()
         {
-            if (!show)
+            if (!IsShow)
             {
                 Camera.ChangeCameraSpeed(0);
-                Model.Position(backgroundId, Position, 0f, -0.3f);
+                View.Model.Position(backgroundId, Position, 0f, -0.3f);
                 Text.Position(textId, 0, 0, 0);
                 Camera.PositionCamera(Position, 0, 0);
-                show = true;
+                IsShow = true;
             }
         }
 
@@ -62,11 +64,11 @@ namespace View
         /// </summary>
         public void Hide()
         {
-            if (show)
+            if (IsShow)
             {
-                Model.Position(backgroundId, -1000, 0f, -0.3f);
+                View.Model.Position(backgroundId, -1000, 0f, -0.3f);
                 Text.Position(textId, -1000, 0, 0);
-                show = false;
+                IsShow = false;
             }
         }
     }

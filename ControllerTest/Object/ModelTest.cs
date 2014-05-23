@@ -7,19 +7,19 @@ namespace ControllerTest
     [TestClass]
     public class ModelTest
     {
-        private static Controller.Model model;
-        private static Controller.Model model2;
+        private Controller.Model model;
+        private Controller.Model model2;
 
-        [ClassInitialize]
-        public static void MyClassInitialize(TestContext testContext)
+        [TestInitialize]
+        public void MyClassInitialize()
         {
-            View.Window.Init("test", false, 10, 10);
+            View.Window.Init("test", false, 100, 100);
             model = new Controller.Model("data/models/cube.obj", true);
             model2 = new Controller.Model();
         }
 
-        [ClassCleanup]
-        public static void MyClassCleanup()
+        [TestCleanup]
+        public void MyClassCleanup()
         {
             View.Window.Close();
         }

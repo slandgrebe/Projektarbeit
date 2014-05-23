@@ -10,7 +10,7 @@ namespace Controller
     /// <summary>
     /// Überprüft, ob eine durch den Körper getätigte Geste zum Schliessen getätigt wird.
     /// </summary>
-    class GestureClose
+    public class GestureClose
     {
         /// <summary>
         /// Gibt True zurück, wenn die Gestig erkannt wurde

@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using View;
 
-namespace View
+namespace Controller
 {
     /// <summary>
     /// Darstellung des GUI innerhalb des Spieles.
@@ -19,14 +20,16 @@ namespace View
         public uint Lives { get; set; }
         /// <summary>Aktuell gesammelte Punkte</summary>
         public uint Score { get; set; }
-        /// <summary>Flag zum umschalten zwischen Hide und Show</summary>
-        private bool show = true;
+        /// <summary>Zeigt an, ob dieses GUI aktuell aktiv ist, oder nicht.</summary>
+        public bool IsShow { get; set; }
 
         /// <summary>
         /// Initialisiert das GUI, zeigt sie aber nicht an.
         /// </summary>
         public GameUi()
         {
+            IsShow = true;
+
             // Texte erzeugen
             liveId = Text.AddText("data/fonts/arial.ttf");
             while (!Text.IsCreated(liveId)) { }
@@ -57,11 +60,11 @@ namespace View
         /// </summary>
         public void Show()
         {
-            if (!show)
+            if (!IsShow)
             {
                 Text.Position(liveId, -0.7f, 0.7f, 1.0f);
                 Text.Position(scoreId, 0.7f, 0.7f, 1.0f);
-                show = true;
+                IsShow = true;
             }
         }
 
@@ -70,11 +73,11 @@ namespace View
         /// </summary>
         public void Hide()
         {
-            if (show)
+            if (IsShow)
             {
                 Text.Position(liveId, -1000, 0, 1); // Z-Koordinate wird ignoriert, da es sich beim Button um ein GUI Element handelt
                 Text.Position(scoreId, -1000, 0, 1); // Z-Koordinate wird ignoriert, da es sich beim Button um ein GUI Element handelt
-                show = false;
+                IsShow = false;
             }
         }
     }
