@@ -13,10 +13,14 @@ namespace ControllerTest.Gesture
         {
             Click click = new Click();
             Model.Body.Instance.Scale(1);
+            Model.Body.Instance.XModifikator(0);
+            Model.Body.Instance.YModifikator(0);
+            Model.Body.Instance.ZModifikator(0);
+            Data.SetBody();
             Model.Body.Instance.HandRight.Z = -1f;
             Assert.AreEqual(false, click.IsClicked(), "Click wurde erst initialisiert.");
             Model.Body.Instance.HandRight.Z -= 0.01f;
-            Assert.AreEqual(false, click.IsClicked(), "Hand wurde noch nicht genügend nach vorne bewegt.");
+            Assert.AreEqual(false, click.IsClicked(), "Hand wurde noch nicht genügend nach vorne bewegt." + click.HandRightStart.ToString());
             Model.Body.Instance.HandRight.Z -= 0.02f;
             Assert.AreEqual(true, click.IsClicked(), "Click wurde ausgeführt.");
         }
@@ -26,6 +30,10 @@ namespace ControllerTest.Gesture
         {
             Click click = new Click();
             Model.Body.Instance.Scale(1);
+            Model.Body.Instance.XModifikator(0);
+            Model.Body.Instance.YModifikator(0);
+            Model.Body.Instance.ZModifikator(0);
+            Data.SetBody();
             Model.Body.Instance.HandRight.Z = -1f;
             Assert.AreEqual(false, click.IsClicked(), "Click wurde erst initialisiert.");
             Model.Body.Instance.HandRight.Z -= 0.01f;
@@ -40,6 +48,10 @@ namespace ControllerTest.Gesture
         {
             Click click = new Click();
             Model.Body.Instance.Scale(1);
+            Model.Body.Instance.XModifikator(0);
+            Model.Body.Instance.YModifikator(0);
+            Model.Body.Instance.ZModifikator(0);
+            Data.SetBody();
             Model.Body.Instance.HandRight.Z = -1f;
             Assert.AreEqual(false, click.IsClicked(), "Click wurde erst initialisiert.");
             Model.Body.Instance.HandRight.Z += 0.02f;

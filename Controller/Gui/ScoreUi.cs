@@ -30,6 +30,8 @@ namespace Controller
         /// </summary>
         public ScoreUi()
         {
+            IsShow = true;
+
             // Hintergrund erzeugen
             backgroundId = View.Model.AddPoint("data/background/white.jpg");
             while (backgroundId != 0 && !View.Model.IsCreated(backgroundId)) { }

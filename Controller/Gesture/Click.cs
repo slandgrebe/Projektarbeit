@@ -13,7 +13,7 @@ namespace Controller
     public class Click
     {
         /// <summary>Speichert die Z Koordinate der Rechten Hand zur Startzeit zwischen</summary>
-        private float HandRightStart = 0;
+        public float HandRightStart { get; set; }
         /// <summary>Speichert die Z Koordinate der Linken Hand zur Startzeit zwischen</summary>
         private float HandLeftStart = 0;
         /// <summary>Speichert die Startzeit der Geste</summary>

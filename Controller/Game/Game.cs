@@ -34,6 +34,7 @@ namespace Controller
         public Game()
         {
             gameUi = new GameUi();
+            Player = new Player();
             GameStatus = GameStatus.Start;
         }
 
@@ -60,7 +61,6 @@ namespace Controller
             level.Deserialize();
             level.Load();
 
-            Player = new Player();
             Player.Scale = 0.7f;
             Player.Attach = true;
             Player.Score = 0;

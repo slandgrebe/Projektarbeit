@@ -37,6 +37,7 @@ namespace ControllerTest
         [TestMethod]
         public void Player_GetPositionAttachedToCamera()
         {
+            System.Threading.Thread.Sleep(500);
             Data.SetBody();
             player.Scale = 0.5f;
             player.Attach = true;
@@ -50,6 +51,7 @@ namespace ControllerTest
         [TestMethod]
         public void Player_GetPositionNotAttachedToCamera()
         {
+            System.Threading.Thread.Sleep(500);
             Data.SetBody();
             player.Scale = 0.5f;
             player.Attach = false;

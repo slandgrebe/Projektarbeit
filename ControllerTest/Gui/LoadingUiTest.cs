@@ -28,7 +28,7 @@ namespace ControllerTest.Gui
         }
 
         [TestMethod]
-        public void GameOverUi_Hide()
+        public void LoadingUi_Hide()
         {
             LoadingUi ui = new LoadingUi();
             Assert.AreEqual(false, ui.IsShow, "Gui wird nach Initialisierung nicht angezeigt.");
