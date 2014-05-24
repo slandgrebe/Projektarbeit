@@ -58,7 +58,7 @@ namespace Controller
             modus = Modus.NotTracked;
             
             // Fenster im Fullscreen öffnen
-            Window.Init("Jump and Run",false,0,0);
+            Window.Init("Jump and Run",true,0,0);
 
             // Gui Element für Keine Person erkannt initialisieren
             noTrackingUi = new NoTrackingUi();
