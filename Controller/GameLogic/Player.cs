@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MotionDetection;
+using JumpAndRun.Item;
 
 namespace JumpAndRun.GameLogic
 {
