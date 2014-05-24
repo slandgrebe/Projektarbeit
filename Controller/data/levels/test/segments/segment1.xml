@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<LevelSegment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Length>10</Length>
+  <obstacles>
+    <Object>
+      <ModelXmlPath>/data/levels/jungle/models/limb.xml</ModelXmlPath>
+      <Scale>1</Scale>
+      <PosX>-2</PosX>
+      <PosY>2</PosY>
+      <PosZ>35</PosZ>
+      <RotateHorizontal>180</RotateHorizontal>
+      <AttachToCamera>false</AttachToCamera>
+    </Object>
+  </obstacles>
+  <scores>
+    <Object>
+      <ModelXmlPath>/data/levels/jungle/models/banana.xml</ModelXmlPath>
+      <Scale>0.3</Scale>
+      <PosX>1</PosX>
+      <PosY>1</PosY>
+      <PosZ>10</PosZ>
+      <AttachToCamera>false</AttachToCamera>
+    </Object>
+  </scores>
+  <objects>
+    <Object>
+      <ModelXmlPath>/data/levels/jungle/models/floor.xml</ModelXmlPath>
+      <Scale>1</Scale>
+      <PosX>0</PosX>
+      <PosY>-0.1</PosY>
+      <PosZ>0</PosZ>
+      <AttachToCamera>false</AttachToCamera>
+    </Object>
+  </objects>
+</LevelSegment>

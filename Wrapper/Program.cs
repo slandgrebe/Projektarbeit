@@ -169,7 +169,7 @@ namespace VisualizationExample
             isHighlighted(modelId_collision, true);
 
             // MODEL TO COLLIDE2
-            uint modelId_collision2 = addModel("Resource Files/Models/Wagon/Wagon.3ds");
+            uint modelId_collision2 = addModel("data/Models/Wagon/Wagon.3ds");
             while (!isCreated(modelId_collision2)) { }
             scale(modelId_collision2, 0.1f, 2.0f, 0.1f);
             scalingIsNormalized(modelId_collision2, true);

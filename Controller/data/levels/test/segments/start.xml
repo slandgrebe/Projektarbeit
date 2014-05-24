@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<LevelSegment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Length>10</Length>
+  <objects>
+    <Object>
+      <ModelXmlPath>/data/levels/test/models/floor.xml</ModelXmlPath>
+      <Scale>1</Scale>
+      <PosX>0</PosX>
+      <PosY>-0.1</PosY>
+      <PosZ>0</PosZ>
+      <AttachToCamera>false</AttachToCamera>
+    </Object>
+    <Object>
+      <ModelXmlPath>/data/levels/test/models/wagon.xml</ModelXmlPath>
+      <Scale>0.5</Scale>
+      <PosX>0</PosX>
+      <PosY>-1.3</PosY>
+      <PosZ>3.5</PosZ>
+      <AttachToCamera>true</AttachToCamera>
+    </Object>
+  </objects>
+</LevelSegment>

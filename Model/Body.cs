@@ -7,11 +7,13 @@ using System.Threading.Tasks;
 
 namespace Model
 {
-    public class Body : EventArgs
+    /// <summary>
+    /// Bildet die Körperpunkte einer getrackten Person ab.
+    /// </summary>
+    public class Body
     {
         /// <summary>Instanz des Positionobjektes</summary>
         private static Body instance;
-        
         /// <summary>Koordinatenobjekt des Punktes: Fussgelenk links</summary>
         public Position AnkleLeft { get; set; }
         /// <summary>Koordinatenobjekt des Punktes: Fussgelenk rechts</summary>
@@ -52,26 +54,40 @@ namespace Model
         public Position WristLeft { get; set; }
         /// <summary>Koordinatenobjekt des Punktes: Handgelenk rechts</summary>
         public Position WristRight { get; set; }
-
+        /// <summary>X Koordinate des Körpers</summary>
+        public float X { get; set; }
+        /// <summary>Y Koordinate des Körpers</summary>
+        public float Y { get; set; }
+        /// <summary>Z Koordinate des Körpers</summary>
+        public float Z { get; set; }
+        /// <summary>Flag, ob eine Person aktuell erkennt wird</summary>
         private bool _isTracked;
+        /// <summary>Flag, ob eine Person aktuell erkennt wird. Erfolgt 2 Sekundenlang kein Signal, so wird das Flag auf false gesetzt.</summary>
         public bool IsTracked
         {
-            get { return _isTracked; }
+            get
+            {
+                if (Math.Abs(trackedStartTime.Subtract(DateTime.Now).TotalSeconds) >= 2)
+                {
+                    _isTracked = false;
+                }
+                return _isTracked;
+            }
             set
             {
                 if (value)
                 {
-                    StartTime = DateTime.Now;
+                    trackedStartTime = DateTime.Now;
                     _isTracked = value;
                 }
-                if (Math.Abs(StartTime.Subtract(DateTime.Now).TotalSeconds) >= 2)
+                if (Math.Abs(trackedStartTime.Subtract(DateTime.Now).TotalSeconds) >= 2)
                 {
                     _isTracked = value;
                 }
             }
         }
-
-        private DateTime StartTime = DateTime.Now;
+        /// <summary>Zeitpunkt der letzten erfolgreichen erkennung einer Person</summary>
+        private DateTime trackedStartTime = DateTime.Now;
 
         /// <summary>
         /// Konstruktor, Initialisiert die Körperpunkte
@@ -102,7 +118,7 @@ namespace Model
         }
 
         /// <summary>
-        /// stellt sicher, dass diese Klasse nur einmal Instanziert wird.
+        /// Stellt sicher, dass diese Klasse nur einmal Instanziert wird.
         /// </summary>
         /// <returns>instance der Klasse Position</returns>
         public static Body Instance
@@ -117,149 +133,118 @@ namespace Model
             }
         }
 
-        public void ZModifikator(float mod){
-            if (mod <= 0)
-            {
-                AnkleLeft.Z += mod;
-                AnkleRight.Z += mod;
-                ElbowLeft.Z += mod;
-                ElbowRight.Z += mod;
-                FootLeft.Z += mod;
-                FootRight.Z += mod;
-                HandLeft.Z += mod;
-                HandRight.Z += mod;
-                Head.Z += mod;
-                HipCenter.Z += mod;
-                HipLeft.Z += mod;
-                HipRight.Z += mod;
-                KneeLeft.Z += mod;
-                KneeRight.Z += mod;
-                ShoulderCenter.Z += mod;
-                ShoulderLeft.Z += mod;
-                ShoulderRight.Z += mod;
-                Spine.Z += mod;
-                WristLeft.Z += mod;
-                WristRight.Z += mod;
-            }
-            else
-            {
-                AnkleLeft.Z -= mod;
-                AnkleRight.Z -= mod;
-                ElbowLeft.Z -= mod;
-                ElbowRight.Z -= mod;
-                FootLeft.Z -= mod;
-                FootRight.Z -= mod;
-                HandLeft.Z -= mod;
-                HandRight.Z -= mod;
-                Head.Z -= mod;
-                HipCenter.Z -= mod;
-                HipLeft.Z -= mod;
-                HipRight.Z -= mod;
-                KneeLeft.Z -= mod;
-                KneeRight.Z -= mod;
-                ShoulderCenter.Z -= mod;
-                ShoulderLeft.Z -= mod;
-                ShoulderRight.Z -= mod;
-                Spine.Z -= mod;
-                WristLeft.Z -= mod;
-                WristRight.Z -= mod;
-            }
+        /// <summary>
+        /// Modifiziert alle Körperpunkte entlang der X-Achse um den Modifikator.
+        /// </summary>
+        /// <param name="mod">Modifikator</param>
+        /// 
+        public void XModifikator(float mod)
+        {
+            AnkleLeft.XModifikator = mod;
+            AnkleRight.XModifikator = mod;
+            ElbowLeft.XModifikator = mod;
+            ElbowRight.XModifikator = mod;
+            FootLeft.XModifikator = mod;
+            FootRight.XModifikator = mod;
+            HandLeft.XModifikator = mod;
+            HandRight.XModifikator = mod;
+            Head.XModifikator = mod;
+            HipCenter.XModifikator = mod;
+            HipLeft.XModifikator = mod;
+            HipRight.XModifikator = mod;
+            KneeLeft.XModifikator = mod;
+            KneeRight.XModifikator = mod;
+            ShoulderCenter.XModifikator = mod;
+            ShoulderLeft.XModifikator = mod;
+            ShoulderRight.XModifikator = mod;
+            Spine.XModifikator = mod;
+            WristLeft.XModifikator = mod;
+            WristRight.XModifikator = mod;
         }
 
+        /// <summary>
+        /// Modifiziert alle Körperpunkte entlang der Y-Achse um den Modifikator.
+        /// </summary>
+        /// <param name="mod">Modifikator</param>
         public void YModifikator(float mod)
         {
-            if (mod <= 0)
-            {
-                AnkleLeft.Y += mod;
-                AnkleRight.Y += mod;
-                ElbowLeft.Y += mod;
-                ElbowRight.Y += mod;
-                FootLeft.Y += mod;
-                FootRight.Y += mod;
-                HandLeft.Y += mod;
-                HandRight.Y += mod;
-                Head.Y += mod;
-                HipCenter.Y += mod;
-                HipLeft.Y += mod;
-                HipRight.Y += mod;
-                KneeLeft.Y += mod;
-                KneeRight.Y += mod;
-                ShoulderCenter.Y += mod;
-                ShoulderLeft.Y += mod;
-                ShoulderRight.Y += mod;
-                Spine.Y += mod;
-                WristLeft.Y += mod;
-                WristRight.Y += mod;
-            }
-            else
-            {
-                AnkleLeft.Y -= mod;
-                AnkleRight.Y -= mod;
-                ElbowLeft.Y -= mod;
-                ElbowRight.Y -= mod;
-                FootLeft.Y -= mod;
-                FootRight.Y -= mod;
-                HandLeft.Y -= mod;
-                HandRight.Y -= mod;
-                Head.Y -= mod;
-                HipCenter.Y -= mod;
-                HipLeft.Y -= mod;
-                HipRight.Y -= mod;
-                KneeLeft.Y -= mod;
-                KneeRight.Y -= mod;
-                ShoulderCenter.Y -= mod;
-                ShoulderLeft.Y -= mod;
-                ShoulderRight.Y -= mod;
-                Spine.Y -= mod;
-                WristLeft.Y -= mod;
-                WristRight.Y -= mod;
-            }
+            AnkleLeft.YModifikator = mod;
+            AnkleRight.YModifikator = mod;
+            ElbowLeft.YModifikator = mod;
+            ElbowRight.YModifikator = mod;
+            FootLeft.YModifikator = mod;
+            FootRight.YModifikator = mod;
+            HandLeft.YModifikator = mod;
+            HandRight.YModifikator = mod;
+            Head.YModifikator = mod;
+            HipCenter.YModifikator = mod;
+            HipLeft.YModifikator = mod;
+            HipRight.YModifikator = mod;
+            KneeLeft.YModifikator = mod;
+            KneeRight.YModifikator = mod;
+            ShoulderCenter.YModifikator = mod;
+            ShoulderLeft.YModifikator = mod;
+            ShoulderRight.YModifikator = mod;
+            Spine.YModifikator = mod;
+            WristLeft.YModifikator = mod;
+            WristRight.YModifikator = mod;
         }
 
+        /// <summary>
+        /// Modifiziert alle Körperpunkte entlang der Z-Achse um den Modifikator.
+        /// </summary>
+        /// <param name="mod">Modifikator</param>
+        /// 
+        public void ZModifikator(float mod)
+        {
+            AnkleLeft.ZModifikator = mod;
+            AnkleRight.ZModifikator = mod;
+            ElbowLeft.ZModifikator = mod;
+            ElbowRight.ZModifikator = mod;
+            FootLeft.ZModifikator = mod;
+            FootRight.ZModifikator = mod;
+            HandLeft.ZModifikator = mod;
+            HandRight.ZModifikator = mod;
+            Head.ZModifikator = mod;
+            HipCenter.ZModifikator = mod;
+            HipLeft.ZModifikator = mod;
+            HipRight.ZModifikator = mod;
+            KneeLeft.ZModifikator = mod;
+            KneeRight.ZModifikator = mod;
+            ShoulderCenter.ZModifikator = mod;
+            ShoulderLeft.ZModifikator = mod;
+            ShoulderRight.ZModifikator = mod;
+            Spine.ZModifikator = mod;
+            WristLeft.ZModifikator = mod;
+            WristRight.ZModifikator = mod;
+        }
 
+        /// <summary>
+        /// Skalliert den Getrackten Körper um den Skalierwert.
+        /// </summary>
+        /// <param name="scale">Skalierwert</param>
         public void Scale(float scale)
         {
-            AnkleLeft.X *= scale;
-            AnkleRight.X *= scale;
-            ElbowLeft.X *= scale;
-            ElbowRight.X *= scale;
-            FootLeft.X *= scale;
-            FootRight.X *= scale;
-            HandLeft.X *= scale;
-            HandRight.X *= scale;
-            Head.X *= scale;
-            HipCenter.X *= scale;
-            HipLeft.X *= scale;
-            HipRight.X *= scale;
-            KneeLeft.X *= scale;
-            KneeRight.X *= scale;
-            ShoulderCenter.X *= scale;
-            ShoulderLeft.X *= scale;
-            ShoulderRight.X *= scale;
-            Spine.X *= scale;
-            WristLeft.X *= scale;
-            WristRight.X *= scale;
-
-            AnkleLeft.Y *= scale;
-            AnkleRight.Y *= scale;
-            ElbowLeft.Y *= scale;
-            ElbowRight.Y *= scale;
-            FootLeft.Y *= scale;
-            FootRight.Y *= scale;
-            HandLeft.Y *= scale;
-            HandRight.Y *= scale;
-            Head.Y *= scale;
-            HipCenter.Y *= scale;
-            HipLeft.Y *= scale;
-            HipRight.Y *= scale;
-            KneeLeft.Y *= scale;
-            KneeRight.Y *= scale;
-            ShoulderCenter.Y *= scale;
-            ShoulderLeft.Y *= scale;
-            ShoulderRight.Y *= scale;
-            Spine.Y *= scale;
-            WristLeft.Y *= scale;
-            WristRight.Y *= scale;
+            AnkleLeft.Scale = scale;
+            AnkleRight.Scale = scale;
+            ElbowLeft.Scale = scale;
+            ElbowRight.Scale = scale;
+            FootLeft.Scale = scale;
+            FootRight.Scale = scale;
+            HandLeft.Scale = scale;
+            HandRight.Scale = scale;
+            Head.Scale = scale;
+            HipCenter.Scale = scale;
+            HipLeft.Scale = scale;
+            HipRight.Scale = scale;
+            KneeLeft.Scale = scale;
+            KneeRight.Scale = scale;
+            ShoulderCenter.Scale = scale;
+            ShoulderLeft.Scale = scale;
+            ShoulderRight.Scale = scale;
+            Spine.Scale = scale;
+            WristLeft.Scale = scale;
+            WristRight.Scale = scale;
         }
     }
 }

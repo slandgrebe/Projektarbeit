@@ -1,0 +1,11 @@
+﻿<?xml version="1.0"?>
+<Level xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <segmentsXmlPath>
+    <string>/data/levels/test/segments/start.xml</string>
+    <string>/data/levels/test/segments/segment1.xml</string>
+    <string>/data/levels/test/segments/end.xml</string>
+  </segmentsXmlPath>
+  <Name>Test</Name>
+  <Difficulty>Easy</Difficulty>
+  <Lives>4</Lives>
+</Level>

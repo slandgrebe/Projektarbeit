@@ -7,20 +7,24 @@ using Model;
 
 namespace Controller
 {
-    class GestureClose
+    /// <summary>
+    /// Überprüft, ob eine durch den Körper getätigte Geste zum Schliessen getätigt wird.
+    /// </summary>
+    public class GestureClose
     {
+        /// <summary>
+        /// Gibt True zurück, wenn die Gestig erkannt wurde
+        /// </summary>
+        /// <returns></returns>
         public static bool IsTrue()
         {
-            if (Body.Instance.Spine.X != 0)
+            if (Body.Instance.ElbowLeft.Y < Body.Instance.ShoulderLeft.Y && Body.Instance.ElbowRight.Y < Body.Instance.ShoulderRight.Y) // Ellebogen befinden sich unterhalb der Schultern
             {
-                if (Body.Instance.ElbowLeft.Y < Body.Instance.ShoulderLeft.Y && Body.Instance.ElbowRight.Y < Body.Instance.ShoulderRight.Y)
+                if (Body.Instance.HandLeft.X > Body.Instance.HandRight.X) // Linke Hand ist rechts von der rechten Hand
                 {
-                    if (Body.Instance.HandLeft.X > Body.Instance.HandRight.X)
+                    if (Body.Instance.HandLeft.Y > Body.Instance.ElbowLeft.Y && Body.Instance.HandRight.Y > Body.Instance.ElbowRight.Y) // Hände sind oberhalb der Ellebogen
                     {
-                        if (Body.Instance.HandLeft.Y > Body.Instance.ElbowLeft.Y && Body.Instance.HandRight.Y > Body.Instance.ElbowRight.Y)
-                        {
-                            return true;
-                        }
+                        return true;
                     }
                 }
             }

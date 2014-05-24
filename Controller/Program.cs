@@ -6,8 +6,21 @@ using System.Threading.Tasks;
 using Model;
 using View;
 
+/// <summary>
+/// Start Klasse
+/// \mainpage
+/// Project name
+/// ==================
+/// bla
+/// Important classes
+/// ------------------
+/// * Class1
+/// * Class2
+/// * Class3
+/// </summary>
 namespace Controller
 {
+
     class Program
     {
         /// <summary>
@@ -18,10 +31,8 @@ namespace Controller
         {
             try
             {
-                Run.Instance.Start();
-                //MenuUi u = new MenuUi();
-                Console.Read();
-
+                // Programm Starten
+                Run r = Run.Instance;
             }
             catch (Exception e)
             {

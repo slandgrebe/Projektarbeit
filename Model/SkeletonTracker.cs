@@ -7,15 +7,19 @@ using Microsoft.Kinect;
 
 namespace Model
 {
-    public delegate void SkeletonTrackerEvent();
-    
+    /// <summary>  
+    /// Ansteuerung der Kinect und speichert die getrackten Daten in das Body Objekt.
+    /// </summary>
     public class SkeletonTracker
     {
-        KinectSensor sensor = null;
-        Body body = null;
+        /// <summary>Kinect Sensor Objekt</summary>
+        private KinectSensor sensor = null;
+        /// <summary>Body Objekt für den zwischenspeicher</summary>
+        private Body body = null;
 
-        public event SkeletonTrackerEvent SkeletonEvent;
-        
+        /// <summary>
+        /// Starten der Personenerfassung mit der Kinect.
+        /// </summary>
         public void Start()
         {
             sensor = KinectSensor.KinectSensors[0];
@@ -26,11 +30,19 @@ namespace Model
             sensor.Start();
         }
 
+        /// <summary>
+        /// Schaltet die Personenerfassung ab.
+        /// </summary>
         public void Stop()
         {
             sensor.Stop();
         }
 
+        /// <summary>
+        /// Speichert pro erfasstes Frame die Körperdaten ins Body Objekt.
+        /// </summary>
+        /// <param name="sender">Senderobjekt</param>
+        /// <param name="e">Eventargument</param>
         private void runtime_SkeletonFrameReady(object sender, SkeletonFrameReadyEventArgs e)
         {
             Skeleton[] skeletons = null;
@@ -55,45 +67,53 @@ namespace Model
                         {
                             if (skel.TrackingState != SkeletonTrackingState.NotTracked)
                             {
+                                // Person ist erkannt
                                 body.IsTracked = true;
+                                // Position des Körpers
+                                body.X = skel.Position.X;
+                                body.Y = skel.Position.Y;
+                                body.Z = skel.Position.Z;
+
+                                // Zwischenspeichern der einzelnen Körperpunkte
+                                setPosition(skel.Joints[JointType.AnkleLeft]);
+                                setPosition(skel.Joints[JointType.AnkleRight]);
+                                setPosition(skel.Joints[JointType.ElbowLeft]);
+                                setPosition(skel.Joints[JointType.ElbowRight]);
+                                setPosition(skel.Joints[JointType.FootLeft]);
+                                setPosition(skel.Joints[JointType.FootRight]);
+                                setPosition(skel.Joints[JointType.HandLeft]);
+                                setPosition(skel.Joints[JointType.HandRight]);
+                                setPosition(skel.Joints[JointType.Head]);
+                                setPosition(skel.Joints[JointType.HipCenter]);
+                                setPosition(skel.Joints[JointType.HipLeft]);
+                                setPosition(skel.Joints[JointType.HipRight]);
+                                setPosition(skel.Joints[JointType.KneeLeft]);
+                                setPosition(skel.Joints[JointType.KneeRight]);
+                                setPosition(skel.Joints[JointType.ShoulderCenter]);
+                                setPosition(skel.Joints[JointType.ShoulderLeft]);
+                                setPosition(skel.Joints[JointType.ShoulderRight]);
+                                setPosition(skel.Joints[JointType.Spine]);
+                                setPosition(skel.Joints[JointType.WristLeft]);
+                                setPosition(skel.Joints[JointType.WristRight]);
                             }
                             else
                             {
+                                // Keine Person erkannt
                                 body.IsTracked = false;
                             }
-
-                            setPosition(skel.Joints[JointType.AnkleLeft]);
-                            setPosition(skel.Joints[JointType.AnkleRight]);
-                            setPosition(skel.Joints[JointType.ElbowLeft]);
-                            setPosition(skel.Joints[JointType.ElbowRight]);
-                            setPosition(skel.Joints[JointType.FootLeft]);
-                            setPosition(skel.Joints[JointType.FootRight]);
-                            setPosition(skel.Joints[JointType.HandLeft]);
-                            setPosition(skel.Joints[JointType.HandRight]);
-                            setPosition(skel.Joints[JointType.Head]);
-                            setPosition(skel.Joints[JointType.HipCenter]);
-                            setPosition(skel.Joints[JointType.HipLeft]);
-                            setPosition(skel.Joints[JointType.HipRight]);
-                            setPosition(skel.Joints[JointType.KneeLeft]);
-                            setPosition(skel.Joints[JointType.KneeRight]);
-                            setPosition(skel.Joints[JointType.ShoulderCenter]);
-                            setPosition(skel.Joints[JointType.ShoulderLeft]);
-                            setPosition(skel.Joints[JointType.ShoulderRight]);
-                            setPosition(skel.Joints[JointType.Spine]);
-                            setPosition(skel.Joints[JointType.WristLeft]);
-                            setPosition(skel.Joints[JointType.WristRight]);
                         });
-                        if (SkeletonEvent != null)
-                            SkeletonEvent();
                     }
                 }
             }
         }
-
         
-
+        /// <summary>
+        /// Zwischenspeichern eines Körperpunktes
+        /// </summary>
+        /// <param name="joint">Körperpunkt</param>
         private void setPosition(Joint joint)
         {
+            // Wenn der Körperpunkt getrackt oder vermutet wird
             if (joint.TrackingState == JointTrackingState.Tracked || joint.TrackingState == JointTrackingState.Inferred)
             {
                 switch (joint.JointType)

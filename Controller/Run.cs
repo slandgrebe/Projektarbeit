@@ -4,28 +4,40 @@ using System.Text;
 using System.Threading.Tasks;
 using View;
 using Model;
+using System;
 
 namespace Controller
 {
+    /// <summary>
+    /// Hauptklasse des Programmes. Abhandeln Ausgabenelemente und sicherstellen der Anzeige zum richtigen Zeitpunkt.
+    /// </summary>
     class Run
     {
-        private SkeletonTracker Sensor = null;
-        
-        /// <summary>Instanz des Positionobjektes</summary>
+        /// <summary>Instanz des Personenerkennungssensor</summary>
+        private SkeletonTracker sensor = null;
+        /// <summary>Eigene Instanz</summary>
         private static Run instance;
-        private int init = 0;
+        /// <summary>Instanz des eigentlichen Spieles</summary>
         private Game game = null;
+        /// <summary>Gui Element, wenn keine Person erkannt wird</summary>
         private NoTrackingUi noTrackingUi = null;
+        /// <summary>Gui Element für das Hauptmenu</summary>
         private MenuUi menuUi = null;
+        /// <summary>Gui Element während des Levelladens</summary>
         private LoadingUi loadingUi = null;
+        /// <summary>Gui Element für das erfolgreiche Beenden eines Levels</summary>
         private ScoreUi scoreUi = null;
+        /// <summary>Gui Element wenn das Level wenn man das Level nicht beenden kann</summary>
         private GameOverUi gameOverUi = null;
+        /// <summary>Klickgeste überprüfen</summary>
         private Click click = new Click();
+        /// <summary>Aktueller Modus des Spieles</summary>
         private Modus modus;
+
         /// <summary>
-        /// stellt sicher, dass diese Klasse nur einmal Instanziert wird.
+        /// Stellt sicher, dass diese Klasse nur einmal Instanziert werden kann.
         /// </summary>
-        /// <returns>instance der Klasse Position</returns>
+        /// <returns>Instance der Klasse Position</returns>
         public static Run Instance
         {
             get
@@ -39,171 +51,201 @@ namespace Controller
         }
 
         /// <summary>
-        /// Sensor starten
+        /// GUI Elemente Initialisieren.
         /// </summary>
-        public void Start()
+        private void Initialize()
         {
             modus = Modus.NotTracked;
+            
+            // Fenster im Fullscreen öffnen
+            Window.Init("Jump and Run",false,0,0);
+
+            // Gui Element für Keine Person erkannt initialisieren
             noTrackingUi = new NoTrackingUi();
             noTrackingUi.Position = 100;
             noTrackingUi.Show(); 
 
+            // Gui Element für das Hauptmenu initialisieren
             menuUi = new MenuUi();
             menuUi.Position = 200;
 
+            // Gui Element für den Ladebildschirm des Levels initialisieren
             loadingUi = new LoadingUi();
             loadingUi.Position = 300;
 
+            // Gui Element für das erfolgreiche Beenden eines Levels initialisieren
             scoreUi = new ScoreUi();
             scoreUi.Position = 400;
 
+            // Gui Element für das nicht erfolgreiche Beenden eines Levels initialisieren
             gameOverUi = new GameOverUi();
             gameOverUi.Position = 500;
-
-            Sensor = new SkeletonTracker();
-            Sensor.Start();
-            Sensor.SkeletonEvent += new SkeletonTrackerEvent(GetEvent);
-
         }
 
         /// <summary>
-        /// Punkte und Linien für einen Körpder erstellen
+        /// Abhandeln eines Frames.
         /// </summary>
-        private void Initialize()
-        { 
-        }
-
-        /// <summary>
-        /// Punkte und Linien neu setzen und ausgabe neu Zeichnen
-        /// </summary>
-        public void Update()
+        public Run()
         {
-            if (Body.Instance.IsTracked)
+            Initialize();
+            System.Threading.Thread.Sleep(30);
+            while(Window.IsRunning())
             {
-                if (modus == Modus.NotTracked)
+                // senkt die CPU Auslastung drastisch
+                System.Threading.Thread.Sleep(1);
+
+                // Sensor nicht angeschlossen / nicht gestartet
+                if (sensor == null)
                 {
-                    modus = Modus.Menu;
+                    // Personenerkennung starten
+                    try
+                    {
+                        // Programm Starten
+                        sensor = new SkeletonTracker();
+                        sensor.Start();
+                    }
+                    catch (Exception e)
+                    {
+                        modus = Modus.NotTracked;
+                    }
                 }
-            }
-            else
-            {
-                modus = Modus.NotTracked;
-            }
-            
-            switch (modus)
-            {
-                case Modus.NotTracked:
-                    noTrackingUi.Show();
-                    if (game != null)
+                else
+                {
+                    // Überprüfen ob eine Person erkannt wird
+                    if (Body.Instance.IsTracked)
                     {
-                        game.DisposeLevel();
-                    }
-                    menuUi.Hide();
-                    loadingUi.Hide();
-                    scoreUi.Hide();
-                    gameOverUi.Hide();
-                    
-                    break;
-
-                case Modus.Menu:
-                    Body.Instance.Scale(0.1f);
-                    noTrackingUi.Hide();
-                    menuUi.Show();
-                    menuUi.PositionCursor(Body.Instance.HandRight.X, Body.Instance.HandRight.Y);
-                    if(menuUi.HoverButton(Body.Instance.HandRight.X, Body.Instance.HandRight.Y))
-                    {
-                        if(click.IsClicked()){
-                            modus = Modus.Play;
-                        }
-                    }
-                    break;
-
-                case Modus.Play:
-                    menuUi.Hide();
-                    scoreUi.Hide();
-                    gameOverUi.Hide();
-                    if (game != null)
-                    {
-                        if (game.GameStatus == GameStatus.Started)
+                        if (modus == Modus.NotTracked)
                         {
-                            loadingUi.Hide();
-                        }
-                        if (game.GameStatus == GameStatus.Start)
-                        {
-                            loadingUi.Show();
-                            game.Init();
-                        }
-                        if (game.GameStatus == GameStatus.Loadet)
-                        {
-                            game.Start();
-                        }
-                        game.Update();
-                        if (game.GameStatus == GameStatus.Successful)
-                        {
-                            game.DisposeLevel();
-                            modus = Modus.Score;
-                        }
-                        if (game.GameStatus == GameStatus.GameOver)
-                        {
-                            game.DisposeLevel();
-                            modus = Modus.GameOver;
+                            modus = Modus.Menu;
                         }
                     }
                     else
                     {
-                        loadingUi.Show();
-                        game = Game.Instance;
+                        modus = Modus.NotTracked;
                     }
-                    break;
 
-                case Modus.Score:
-                    Body.Instance.Scale(0.1f);
-                    scoreUi.Show(game.Player.Score);
-                    scoreUi.PositionCursor(Body.Instance.HandRight.X, Body.Instance.HandRight.Y);
-                    if (scoreUi.HoverButton(Body.Instance.HandRight.X, Body.Instance.HandRight.Y))
+                    // Programm mit Geste beenden
+                    if (GestureClose.IsTrue())
                     {
-                        if(click.IsClicked()){
-                            modus = Modus.Play;
-                            game.GameStatus = GameStatus.Start;
-                        }
+                        Window.Close();
+                        break;
                     }
-                    break;
 
-                case Modus.GameOver:
-                    Body.Instance.Scale(0.1f);
-                    gameOverUi.Show();
-                    gameOverUi.PositionCursor(Body.Instance.HandRight.X, Body.Instance.HandRight.Y);
-                    if (gameOverUi.HoverButton(Body.Instance.HandRight.X, Body.Instance.HandRight.Y))
+                    // Weiche was aktuell am Screen angezeigt werden soll
+                    switch (modus)
                     {
-                        if (click.IsClicked())
-                        {
-                            modus = Modus.Play;
-                            game.GameStatus = GameStatus.Start;
-                        }
-                    }
-                    break;
+                        case Modus.NotTracked:
+                            noTrackingUi.Show();
+                            if (game != null)
+                            {
+                                game.ResetGame();
+                            }
+                            menuUi.Hide();
+                            loadingUi.Hide();
+                            scoreUi.Hide();
+                            gameOverUi.Hide();
+                            break;
 
-                default:
-                    break;
+                        case Modus.Menu:
+                            Body.Instance.Scale(0.1f);
+                            noTrackingUi.Hide();
+                            menuUi.Show();
+                            menuUi.PositionCursor(Body.Instance.HandRight.X, Body.Instance.HandRight.Y);
+                            // Klickgeste auf Button
+                            if (menuUi.HoverButton(Body.Instance.HandRight.X, Body.Instance.HandRight.Y))
+                            {
+                                if (click.IsClicked())
+                                {
+                                    modus = Modus.Play;
+                                }
+                            }
+                            break;
+
+                        case Modus.Play:
+                            menuUi.Hide();
+                            scoreUi.Hide();
+                            gameOverUi.Hide();
+                            if (game != null)
+                            {
+                                // Spiel/Level wird geladen
+                                if (game.GameStatus == GameStatus.Start)
+                                {
+                                    loadingUi.Show();
+                                    game.LevelXmlPath = "/data/levels/jungle/level.xml";
+                                    game.Init();
+                                }
+                                // Level ist geladen
+                                if (game.GameStatus == GameStatus.Loadet)
+                                {
+                                    game.Start();
+                                    loadingUi.Hide();
+                                }
+                                // Darstellung des Spiels updaten
+                                game.Update();
+                                // Spiel erfolgreich beendet
+                                if (game.GameStatus == GameStatus.Successful)
+                                {
+                                    game.ResetGame();
+                                    modus = Modus.Score;
+                                }
+                                // Spiel nicht erfolgreich beendet
+                                if (game.GameStatus == GameStatus.GameOver)
+                                {
+                                    game.ResetGame();
+                                    modus = Modus.GameOver;
+                                }
+                            }
+                            else
+                            {
+                                // Spiel beim ersten durchgang initialisieren
+                                loadingUi.Show();
+                                game = Game.Instance;
+                            }
+                            break;
+
+                        case Modus.Score:
+                            Body.Instance.Scale(0.1f);
+                            scoreUi.Show(game.Player.Score);
+                            scoreUi.PositionCursor(Body.Instance.HandRight.X, Body.Instance.HandRight.Y);
+                            // Klickgeste auf Button
+                            if (scoreUi.HoverButton(Body.Instance.HandRight.X, Body.Instance.HandRight.Y))
+                            {
+                                if (click.IsClicked())
+                                {
+                                    modus = Modus.Play;
+                                    game.GameStatus = GameStatus.Start;
+                                }
+                            }
+                            break;
+
+                        case Modus.GameOver:
+                            Body.Instance.Scale(0.1f);
+                            gameOverUi.Show();
+                            gameOverUi.PositionCursor(Body.Instance.HandRight.X, Body.Instance.HandRight.Y);
+                            // Klickgeste auf Button
+                            if (gameOverUi.HoverButton(Body.Instance.HandRight.X, Body.Instance.HandRight.Y))
+                            {
+                                if (click.IsClicked())
+                                {
+                                    modus = Modus.Play;
+                                    game.GameStatus = GameStatus.Start;
+                                }
+                            }
+                            break;
+
+                        default:
+                            break;
+                    }
+                }
             }
         }
 
         /// <summary>
         /// Ausgabe und Sensor sauber Beenden
         /// </summary>
-        public void End()
+        private void End()
         {
-            Sensor.Stop();
-        }
-
-        public void GetEvent()
-        {
-            if (init == 0)
-            {
-                Initialize();
-                init = 1;
-            }
-            Update();
+            sensor.Stop();
         }
     }
 }
