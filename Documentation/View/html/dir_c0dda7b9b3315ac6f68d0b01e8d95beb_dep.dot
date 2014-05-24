@@ -1,0 +1,9 @@
+digraph "C:/Users/tobia_000/Documents/Visual Studio 2013/Projects/Projektarbeit/View/Properties" {
+  compound=true
+  node [ fontsize="10", fontname="Helvetica"];
+  edge [ labelfontsize="10", labelfontname="Helvetica"];
+  subgraph clusterdir_1922121727497e1fe79b3fa1c15705eb {
+    graph [ bgcolor="#ddddee", pencolor="black", label="View" fontname="Helvetica", fontsize="10", URL="dir_1922121727497e1fe79b3fa1c15705eb.html"]
+  dir_c0dda7b9b3315ac6f68d0b01e8d95beb [shape=box, label="Properties", style="filled", fillcolor="#eeeeff", pencolor="black", URL="dir_c0dda7b9b3315ac6f68d0b01e8d95beb.html"];
+  }
+}

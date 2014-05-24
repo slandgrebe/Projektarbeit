@@ -1,0 +1,14 @@
+digraph "C:/Users/tobia_000/Documents/Visual Studio 2013/Projects/Projektarbeit/View/obj" {
+  compound=true
+  node [ fontsize="10", fontname="Helvetica"];
+  edge [ labelfontsize="10", labelfontname="Helvetica"];
+  subgraph clusterdir_1922121727497e1fe79b3fa1c15705eb {
+    graph [ bgcolor="#ddddee", pencolor="black", label="View" fontname="Helvetica", fontsize="10", URL="dir_1922121727497e1fe79b3fa1c15705eb.html"]
+  subgraph clusterdir_3bdcb9a95d1b0fc0079f556c7b9db919 {
+    graph [ bgcolor="#eeeeff", pencolor="black", label="" URL="dir_3bdcb9a95d1b0fc0079f556c7b9db919.html"];
+    dir_3bdcb9a95d1b0fc0079f556c7b9db919 [shape=plaintext label="obj"];
+    dir_f400679ea7721232f354f4ca9ffca97d [shape=box label="Debug" color="black" fillcolor="white" style="filled" URL="dir_f400679ea7721232f354f4ca9ffca97d.html"];
+    dir_d101afc233fc2be90283971b6b337be1 [shape=box label="Release" color="black" fillcolor="white" style="filled" URL="dir_d101afc233fc2be90283971b6b337be1.html"];
+  }
+  }
+}

@@ -1,6 +1,12 @@
 ﻿using System;
 using System.Runtime.InteropServices;
 
+/// \mainpage
+/// @author Tobias Karth
+/// View
+/// ==================
+/// View ist ein Teil der Projektarbeit der KTSI. Es stellt die API der VisualizationLibrary unter C# zur verfügung.
+
 namespace View
 {
     /// <summary>
