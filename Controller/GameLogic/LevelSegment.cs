@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.IO;
 using System.Xml.Serialization;
 
-namespace Controller
+namespace JumpAndRun.GameLogic
 {
     /// <summary>
     /// Übernimmt die Darstellung eines Levelsegmentes
@@ -14,11 +14,11 @@ namespace Controller
     public class LevelSegment
     {
         /// <summary>Liste aller Hinternissen</summary>
-        public List<Object> obstacles;
+        public List<JumpAndRun.Item.Object> obstacles;
         /// <summary>Liste aller Punkte</summary>
-        public List<Object> scores;
+        public List<JumpAndRun.Item.Object> scores;
         /// <summary>Liste aller neutralen Objekte</summary>
-        public List<Object> objects;
+        public List<JumpAndRun.Item.Object> objects;
         /// <summary>Länge des Levelsegmentes</summary>
         public float Length { get; set; }
 
@@ -27,16 +27,16 @@ namespace Controller
         /// </summary>
         public LevelSegment()
         {
-            obstacles = new List<Object>();
-            scores = new List<Object>();
-            objects = new List<Object>();
+            obstacles = new List<JumpAndRun.Item.Object>();
+            scores = new List<JumpAndRun.Item.Object>();
+            objects = new List<JumpAndRun.Item.Object>();
         }
         
         /// <summary>
         /// Hinternis hinzufügen
         /// </summary>
         /// <param name="obj">Hinternisobjekt</param>
-        public void AddObstacle(Object obj)
+        public void AddObstacle(JumpAndRun.Item.Object obj)
         {
             obstacles.Add(obj);
         }
@@ -45,7 +45,7 @@ namespace Controller
         /// Punkte Hinzufügen
         /// </summary>
         /// <param name="obj">Punkteobjekt</param>
-        public void AddScore(Object obj)
+        public void AddScore(JumpAndRun.Item.Object obj)
         {
             scores.Add(obj);
         }
@@ -54,7 +54,7 @@ namespace Controller
         /// Neutrales Objekt hinzufügen
         /// </summary>
         /// <param name="obj">Neutrales Objekt</param>
-        public void AddObject(Object obj)
+        public void AddObject(JumpAndRun.Item.Object obj)
         {
             objects.Add(obj);
         }
@@ -66,15 +66,15 @@ namespace Controller
         /// <returns>Prüfung ob die Operation durchgeführt werden konnte</returns>
         public bool Create(float z)
         {
-            foreach (Object o in obstacles)
+            foreach (JumpAndRun.Item.Object o in obstacles)
             {
                 if (!o.Create(z)) return false;
             }
-            foreach (Object s in scores)
+            foreach (JumpAndRun.Item.Object s in scores)
             {
                  if (!s.Create(z)) return false;
             }
-            foreach (Object o in objects)
+            foreach (JumpAndRun.Item.Object o in objects)
             {
                 if (!o.Create(z)) return false;
             }
@@ -86,17 +86,17 @@ namespace Controller
         /// </summary>
         public void Deserialize()
         {
-            foreach (Object obstacle in obstacles)
+            foreach (JumpAndRun.Item.Object obstacle in obstacles)
             {
                 obstacle.Deserialize();
             }
 
-            foreach (Object score in scores)
+            foreach (JumpAndRun.Item.Object score in scores)
             {
                 score.Deserialize();
             }
 
-            foreach (Object obj in objects)
+            foreach (JumpAndRun.Item.Object obj in objects)
             {
                 obj.Deserialize();
             }
@@ -107,15 +107,15 @@ namespace Controller
         /// </summary>
         public void Dispose()
         {
-            foreach (Object o in obstacles)
+            foreach (JumpAndRun.Item.Object o in obstacles)
             {
                 o.Dispose();
             }
-            foreach (Object s in scores)
+            foreach (JumpAndRun.Item.Object s in scores)
             {
                 s.Dispose();
             }
-            foreach (Object o in objects)
+            foreach (JumpAndRun.Item.Object o in objects)
             {
                 o.Dispose();
             }

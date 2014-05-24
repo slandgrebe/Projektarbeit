@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using View;
 
-namespace Controller
+namespace JumpAndRun.Gui
 {
     /// <summary>
     /// Darstellung des GUI innerhalb des Spieles.

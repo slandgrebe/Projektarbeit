@@ -5,11 +5,11 @@ VisualStudioVersion = 12.0.21005.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "VisualizationLibrary", "VisualizationLibrary\VisualizationLibrary.vcxproj", "{675B0B15-F88D-451A-B19D-2C98FE78C952}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Model", "Model\Model.csproj", "{6B9546B2-205E-4D02-9B29-A9FE9308D20C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MotionDetection", "Model\MotionDetection.csproj", "{6B9546B2-205E-4D02-9B29-A9FE9308D20C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "View", "View\View.csproj", "{B31D7DB9-2918-4102-AB0C-D2CF7ED48261}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Controller", "Controller\Controller.csproj", "{88EE6FBB-4DB9-4F30-BC26-152CFAC6D1E5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FitWithJumpAndRun", "Controller\FitWithJumpAndRun.csproj", "{88EE6FBB-4DB9-4F30-BC26-152CFAC6D1E5}"
 	ProjectSection(ProjectDependencies) = postProject
 		{675B0B15-F88D-451A-B19D-2C98FE78C952} = {675B0B15-F88D-451A-B19D-2C98FE78C952}
 	EndProjectSection
@@ -21,9 +21,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VisulizationExample", "Wrap
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VisualizationLibraryTest", "VisualizationLibraryTest\VisualizationLibraryTest.csproj", "{82F0BA8B-4F3C-40B1-895F-0B2DDF341BAD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModelTest", "ModelTest\ModelTest.csproj", "{20437F31-0083-4614-B1C0-FD30A530B270}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrackingTest", "ModelTest\TrackingTest.csproj", "{20437F31-0083-4614-B1C0-FD30A530B270}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ControllerTest", "ControllerTest\ControllerTest.csproj", "{A95758BE-51D8-4ADF-ADFD-B03DB83FD1AB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FitWithJumpAndRunTest", "ControllerTest\FitWithJumpAndRunTest.csproj", "{A95758BE-51D8-4ADF-ADFD-B03DB83FD1AB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -1,0 +1,335 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="FullSignature">
+  <Class Name="Controller.Game" Collapsed="true">
+    <Position X="3.5" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAACAAAEEAAAAAAAAAAAFAAAAQQIACERAAAAA=</HashCode>
+      <FileName>Game\Game.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="gameUi" />
+      <Field Name="instance" />
+      <Field Name="level" />
+      <Property Name="GameStatus" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Controller.Level" Collapsed="true">
+    <Position X="3.5" Y="9.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAIgACAACAAAQAAAAIAIAQAAABAAAACAAAAAAAAAAg=</HashCode>
+      <FileName>Game\Level.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Field Name="segments" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="Controller.LevelSegment" Collapsed="true">
+    <Position X="9.25" Y="4.75" Width="1.5" />
+    <AssociationLine Name="objects" Type="Controller.Object">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="-0.753" Y="0.266" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="obstacles" Type="Controller.Object">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="-1.398" Y="0.652" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="scores" Type="Controller.Object">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="-1.628" Y="1.016" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAAQIAABABQBAAEABAAAAAAIAAAA=</HashCode>
+      <FileName>Game\LevelSegment.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Field Name="objects" />
+      <Field Name="obstacles" />
+      <Field Name="scores" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="Controller.Player" Collapsed="true">
+    <Position X="5.75" Y="0.75" Width="2.5" />
+    <AssociationLine Name="ThighlegLeft" Type="Controller.Model">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="-0.64" Y="1.195" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="ThighlegRight" Type="Controller.Model">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="-0.442" Y="1.018" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="Torso" Type="Controller.Model">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.37" Y="1.008" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="UpperarmLeft" Type="Controller.Model">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="-0.015" Y="0.831" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="UpperarmRight" Type="Controller.Model">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.068" Y="0.622" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="LowerlegRight" Type="Controller.Model">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="-0.765" Y="0.539" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="LowerlegLeft" Type="Controller.Model">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="-1.994" Y="0.768" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="Head" Type="Controller.Model" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="6.156" Y="1.312" />
+        <Point X="6.156" Y="2.875" />
+        <Point X="6.25" Y="2.875" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true" ManuallySized="true">
+        <Position X="0.289" Y="1.339" Height="0.182" Width="0.628" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="ForearmRight" Type="Controller.Model" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="5.844" Y="1.312" />
+        <Point X="5.844" Y="3.125" />
+        <Point X="6.25" Y="3.125" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="-1.482" Y="0.537" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="ForearmLeft" Type="Controller.Model" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="6" Y="1.312" />
+        <Point X="6" Y="3" />
+        <Point X="6.25" Y="3" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="-1.034" Y="0.662" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AhYAQAACACCCBIggACIAAAAAAIAAEAAKIAAAAAAAAAA=</HashCode>
+      <FileName>Game\Player.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="ThighlegLeft" />
+      <Property Name="ThighlegRight" />
+      <Property Name="Torso" />
+      <Property Name="UpperarmLeft" />
+      <Property Name="UpperarmRight" />
+      <Property Name="LowerlegRight" />
+      <Property Name="LowerlegLeft" />
+      <Property Name="Head" />
+      <Property Name="ForearmRight" />
+      <Property Name="ForearmLeft" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Controller.Click" Collapsed="true">
+    <Position X="0.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAACAEACAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Gesture\Click.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Controller.GestureClose" Collapsed="true">
+    <Position X="3.5" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Gesture\GestureClose.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Controller.GameOverUi" Collapsed="true">
+    <Position X="3.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAgEAAAUAIABAAEAACAAAAAAAgAAAI=</HashCode>
+      <FileName>Gui\GameOverUi.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Controller.GameUi" Collapsed="true">
+    <Position X="0.5" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAgAEAAACACAAAAEAACCAAAAAAAAAAA=</HashCode>
+      <FileName>Gui\GameUi.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Controller.LoadingUi" Collapsed="true">
+    <Position X="6.5" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAgEAAAQAAABAAEAACAAAAAAAAAAAA=</HashCode>
+      <FileName>Gui\LoadingUi.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Controller.MenuUi" Collapsed="true">
+    <Position X="6.5" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAgEAAAUAIAAAAEAACAAAAAAAgAAAI=</HashCode>
+      <FileName>Gui\MenuUi.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Controller.NoTrackingUi" Collapsed="true">
+    <Position X="0.5" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAgEAAAQAAABAAEAACAAAAAAAAAAAA=</HashCode>
+      <FileName>Gui\NoTrackingUi.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Controller.ScoreUi" Collapsed="true">
+    <Position X="6.5" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAgEAAAUAIABAAEAACAAAAAAAgAAAI=</HashCode>
+      <FileName>Gui\ScoreUi.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Controller.Model" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="6.25" Y="2.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAICAAAAACAAAAIgACIAAAAAMAAAAEAAAAAAAAAAAAA=</HashCode>
+      <FileName>Object\Model.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Controller.Object" Collapsed="true">
+    <Position X="8.75" Y="2.75" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAKAAAIAAAAIAwAIAAQBAAEAAAAgAAAAAAAA=</HashCode>
+      <FileName>Object\Object.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Model" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Controller.Program" Collapsed="true">
+    <Position X="3.5" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAI=</HashCode>
+      <FileName>Program.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Run" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Controller.Run" Collapsed="true">
+    <Position X="3.5" Y="5.25" Width="1.5" />
+    <AssociationLine Name="click" Type="Controller.Click" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="3.5" Y="5.438" />
+        <Point X="3.044" Y="5.438" />
+        <Point X="3.044" Y="2.312" />
+        <Point X="2" Y="2.312" />
+      </Path>
+    </AssociationLine>
+    <AssociationLine Name="game" Type="Controller.Game" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="5" Y="5.688" />
+        <Point X="5.375" Y="5.688" />
+        <Point X="5.375" Y="8.195" />
+        <Point X="5" Y="8.195" />
+      </Path>
+    </AssociationLine>
+    <AssociationLine Name="gameOverUi" Type="Controller.GameOverUi" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="3.5" Y="5.375" />
+        <Point X="3.125" Y="5.375" />
+        <Point X="3.125" Y="2.312" />
+        <Point X="3.5" Y="2.312" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="-0.705" Y="-0.475" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="loadingUi" Type="Controller.LoadingUi" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="5" Y="5.562" />
+        <Point X="5.619" Y="5.562" />
+        <Point X="5.619" Y="7.031" />
+        <Point X="6.5" Y="7.031" />
+      </Path>
+    </AssociationLine>
+    <AssociationLine Name="menuUi" Type="Controller.MenuUi" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="5" Y="5.312" />
+        <Point X="5.375" Y="5.312" />
+        <Point X="5.375" Y="4.031" />
+        <Point X="6.5" Y="4.031" />
+      </Path>
+    </AssociationLine>
+    <AssociationLine Name="noTrackingUi" Type="Controller.NoTrackingUi" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="3.5" Y="5.5" />
+        <Point X="2.925" Y="5.5" />
+        <Point X="2.925" Y="4.031" />
+        <Point X="2" Y="4.031" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.021" Y="0.094" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="scoreUi" Type="Controller.ScoreUi" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="5" Y="5.438" />
+        <Point X="7.25" Y="5.438" />
+        <Point X="7.25" Y="5.75" />
+      </Path>
+    </AssociationLine>
+    <AssociationLine Name="sensor" Type="Model.SkeletonTracker" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="3.5" Y="5.625" />
+        <Point X="2.25" Y="5.625" />
+        <Point X="2.25" Y="5.5" />
+        <Point X="1.25" Y="5.5" />
+        <Point X="1.25" Y="5.75" />
+      </Path>
+    </AssociationLine>
+    <AssociationLine Name="GestureClose" Type="Controller.GestureClose">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="-1.057" Y="0.008" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAIBAQAAAAAAAQAAAAEAAUAAABBAAAAIQAAiAAAAAAA=</HashCode>
+      <FileName>Run.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="click" />
+      <Field Name="game" />
+      <Field Name="gameOverUi" />
+      <Field Name="loadingUi" />
+      <Field Name="instance" />
+      <Field Name="menuUi" />
+      <Field Name="modus" />
+      <Field Name="noTrackingUi" />
+      <Field Name="scoreUi" />
+      <Field Name="sensor" />
+      <Property Name="GestureClose" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Model.SkeletonTracker" Collapsed="true">
+    <Position X="0.5" Y="5.75" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Enum Name="Controller.GameStatus" Collapsed="true">
+    <Position X="6.5" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAACEAAAAAAAAAAAQAAAIAAAAAAAIAAAAAAAA=</HashCode>
+      <FileName>Game\GameStatus.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Controller.Modus" Collapsed="true">
+    <Position X="0.5" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAgAAAAAAAAAgAAAAAAAAAAAAIAAAAgAAAAAAAAAA=</HashCode>
+      <FileName>Modus.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

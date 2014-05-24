@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Model;
+using MotionDetection;
 
-namespace Controller
+namespace JumpAndRun.Gesture
 {
     /// <summary>
     /// Überprüft, ob eine durch den Körper getätigte Geste zum Schliessen getätigt wird.

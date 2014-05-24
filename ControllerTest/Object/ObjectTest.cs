@@ -21,7 +21,7 @@ namespace ControllerTest
         [TestMethod]
         public void Object_CreateWithPath()
         {
-            Controller.Object obj = new Controller.Object();
+            JumpAndRun.Object obj = new JumpAndRun.Object();
             obj.PosX = 1;
             obj.PosY = 1;
             obj.PosZ = 1;
@@ -31,7 +31,7 @@ namespace ControllerTest
         [TestMethod]
         public void Object_CreateWithoutPath()
         {
-            Controller.Object obj = new Controller.Object();
+            JumpAndRun.Object obj = new JumpAndRun.Object();
             obj.PosX = 1;
             obj.PosY = 1;
             obj.PosZ = 1;
@@ -41,7 +41,7 @@ namespace ControllerTest
         [TestMethod]
         public void Object_Deserialize()
         {
-            Controller.Object obj = new Controller.Object();
+            JumpAndRun.Object obj = new JumpAndRun.Object();
             obj.ModelXmlPath = "/data/levels/jungle/models/banana.xml";
             obj.Deserialize();
             Assert.AreEqual("data/models/banana/banana.3ds", obj.Model.Path, "Objekt wurde nicht deserialisiert.");
@@ -50,7 +50,7 @@ namespace ControllerTest
         [TestMethod]
         public void Object_DeserializeCreate()
         {
-            Controller.Object obj = new Controller.Object();
+            JumpAndRun.Object obj = new JumpAndRun.Object();
             obj.ModelXmlPath = "/data/levels/jungle/models/banana.xml";
             obj.Deserialize();
             obj.PosZ = 2;
@@ -61,7 +61,7 @@ namespace ControllerTest
         [TestMethod]
         public void Object_DeserializeCreateZPosition()
         {
-            Controller.Object obj = new Controller.Object();
+            JumpAndRun.Object obj = new JumpAndRun.Object();
             obj.ModelXmlPath = "/data/levels/jungle/models/banana.xml";
             obj.Deserialize();
             obj.PosZ = 2;
@@ -72,21 +72,21 @@ namespace ControllerTest
         [TestMethod]
         public void Object_Dispose()
         {
-            Controller.Object obj = new Controller.Object();
+            JumpAndRun.Object obj = new JumpAndRun.Object();
             obj.ModelXmlPath = "/data/levels/jungle/models/banana.xml";
             obj.Deserialize();
             obj.Create();
             obj.Dispose();
-            Assert.AreEqual((System.UInt32)0, obj.Model.Id, "Model wurde nicht gelöscht.");
+            Assert.AreEqual((System.UInt32)0, obj.Model.Id, "head wurde nicht gelöscht.");
         }
 
         [TestMethod]
         public void Object_CollisionFalse(){
-            Controller.Object obj = new Controller.Object();
+            JumpAndRun.Object obj = new JumpAndRun.Object();
             obj.ModelXmlPath = "/data/levels/jungle/models/banana.xml";
             obj.Deserialize();
             obj.Create();
-            Controller.Player player = new Controller.Player();
+            JumpAndRun.Player player = new JumpAndRun.Player();
             Data.SetBody();
             player.Scale = 0.5f;
             player.Attach = true;
@@ -103,11 +103,11 @@ namespace ControllerTest
         [TestMethod]
         public void Object_CollisionTrue()
         {
-            Controller.Object obj = new Controller.Object();
+            JumpAndRun.Object obj = new JumpAndRun.Object();
             obj.ModelXmlPath = "/data/levels/jungle/models/banana.xml";
             obj.Deserialize();
             obj.Create();
-            Controller.Player player = new Controller.Player();
+            JumpAndRun.Player player = new JumpAndRun.Player();
             Data.SetBody();
             player.Scale = 0.5f;
             player.Attach = false;
@@ -121,11 +121,11 @@ namespace ControllerTest
         [TestMethod]
         public void Object_CollisionTrueWithDispose()
         {
-            Controller.Object obj = new Controller.Object();
+            JumpAndRun.Object obj = new JumpAndRun.Object();
             obj.ModelXmlPath = "/data/levels/jungle/models/banana.xml";
             obj.Deserialize();
             obj.Create();
-            Controller.Player player = new Controller.Player();
+            JumpAndRun.Player player = new JumpAndRun.Player();
             Data.SetBody();
             player.Scale = 0.5f;
             player.Attach = false;

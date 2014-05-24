@@ -3,11 +3,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{20437F31-0083-4614-B1C0-FD30A530B270}</ProjectGuid>
+    <ProjectGuid>{A95758BE-51D8-4ADF-ADFD-B03DB83FD1AB}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ModelTest</RootNamespace>
-    <AssemblyName>ModelTest</AssemblyName>
+    <RootNamespace>ControllerTest</RootNamespace>
+    <AssemblyName>ControllerTest</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -25,6 +25,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <PlatformTarget>AnyCPU</PlatformTarget>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -50,16 +51,38 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="BodyTest.cs" />
+    <Compile Include="Data.cs" />
+    <Compile Include="Game\GameTest.cs" />
+    <Compile Include="Game\LevelSegmentTest.cs" />
+    <Compile Include="Game\LevelTest.cs" />
+    <Compile Include="Gesture\ClickTest.cs" />
+    <Compile Include="Gesture\GestureCloseTest.cs" />
+    <Compile Include="Gui\ScoreUiTest.cs" />
+    <Compile Include="Gui\NoTrackingUiTest.cs" />
+    <Compile Include="Gui\MenuUiTest.cs" />
+    <Compile Include="Gui\LoadingUiTest.cs" />
+    <Compile Include="Gui\GameUiTest.cs" />
+    <Compile Include="Gui\GameOverUiTest.cs" />
+    <Compile Include="Object\ModelTest.cs" />
+    <Compile Include="Object\ObjectTest.cs" />
+    <Compile Include="Game\PlayerTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SkeletonTrackerTest.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Model\Model.csproj">
+    <ProjectReference Include="..\Controller\FitWithJumpAndRun.csproj">
+      <Project>{88ee6fbb-4db9-4f30-bc26-152cfac6d1e5}</Project>
+      <Name>FitWithJumpAndRun</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Model\MotionDetection.csproj">
       <Project>{6b9546b2-205e-4d02-9b29-a9fe9308d20c}</Project>
-      <Name>Model</Name>
+      <Name>MotionDetection</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\View\View.csproj">
+      <Project>{b31d7db9-2918-4102-ab0c-d2cf7ed48261}</Project>
+      <Name>View</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>

@@ -5,7 +5,17 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Kinect;
 
-namespace Model
+/// Start Klasse
+/// \mainpage
+/// Position Tracking
+/// ==================
+/// bla
+/// Important classes
+/// ------------------
+/// * Class1
+/// * Class2
+/// * Class3
+namespace MotionDetection
 {
     /// <summary>  
     /// Ansteuerung der Kinect und speichert die getrackten Daten in das Body Objekt.

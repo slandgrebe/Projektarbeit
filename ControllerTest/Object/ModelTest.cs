@@ -1,21 +1,21 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Controller;
+using JumpAndRun;
 
 namespace ControllerTest
 {
     [TestClass]
     public class ModelTest
     {
-        private Controller.Model model;
-        private Controller.Model model2;
+        private JumpAndRun.Model model;
+        private JumpAndRun.Model model2;
 
         [TestInitialize]
         public void MyClassInitialize()
         {
             View.Window.Init("test", false, 100, 100);
-            model = new Controller.Model("data/models/cube.obj", true);
-            model2 = new Controller.Model();
+            model = new JumpAndRun.Model("data/models/cube.obj", true);
+            model2 = new JumpAndRun.Model();
         }
 
         [TestCleanup]
@@ -27,8 +27,8 @@ namespace ControllerTest
         [TestMethod]
         public void Model_Model()
         {
-            Controller.Model mod = new Controller.Model("data/models/cube.obj", true);
-            Assert.AreNotEqual(0, mod.Id, "Model wurde nicht erstellt.");
+            JumpAndRun.Model mod = new JumpAndRun.Model("data/models/cube.obj", true);
+            Assert.AreNotEqual(0, mod.Id, "head wurde nicht erstellt.");
             Assert.AreEqual("data/models/cube.obj", mod.Path, "Pfad wurde nicht gepseichert.");
         }
 
@@ -36,45 +36,45 @@ namespace ControllerTest
         public void Model_Create()
         {
             model.Create();
-            Assert.AreNotEqual(0, model.Id, "Model wurde nicht erstellt.");
+            Assert.AreNotEqual(0, model.Id, "head wurde nicht erstellt.");
         }
 
         [TestMethod]
         public void Model_CreateWithoutPath()
         {
-            Controller.Model mod = new Controller.Model();
-            Assert.AreEqual(false, mod.Create(), "Model darf ohne Pfad nicht erstellt werden");
+            JumpAndRun.Model mod = new JumpAndRun.Model();
+            Assert.AreEqual(false, mod.Create(), "head darf ohne Pfad nicht erstellt werden");
         }
 
         [TestMethod]
         public void Model_CreateWithId()
         {
-            Controller.Model mod = new Controller.Model("data/models/cube.obj", true);
-            Assert.AreEqual(false, mod.Create(), "Model darf nicht ein zweites mal erstellt werden.");
+            JumpAndRun.Model mod = new JumpAndRun.Model("data/models/cube.obj", true);
+            Assert.AreEqual(false, mod.Create(), "head darf nicht ein zweites mal erstellt werden.");
         }
 
         [TestMethod]
         public void Model_Scale()
         {
-            Assert.AreEqual(true, model.Scale(2), "Model wurde nicht Skaliert.");
+            Assert.AreEqual(true, model.Scale(2), "head wurde nicht Skaliert.");
         }
 
         [TestMethod]
         public void Model_ScaleWithoutId()
         {
-            Assert.AreEqual(false, model2.Scale(2), "Model darf nicht Skaliert werden.");
+            Assert.AreEqual(false, model2.Scale(2), "head darf nicht Skaliert werden.");
         }
 
         [TestMethod]
         public void Model_Rotate()
         {
-            Assert.AreEqual(true, model.Rotate(2,2,2,2), "Model wurde nicht gedreht.");
+            Assert.AreEqual(true, model.Rotate(2,2,2,2), "head wurde nicht gedreht.");
         }
 
         [TestMethod]
         public void Model_RotateWithoutId()
         {
-            Assert.AreEqual(false, model2.Rotate(2, 2, 2, 2), "Model darf nicht gedreht werden.");
+            Assert.AreEqual(false, model2.Rotate(2, 2, 2, 2), "head darf nicht gedreht werden.");
         }
 
         [TestMethod]
@@ -86,45 +86,45 @@ namespace ControllerTest
         [TestMethod]
         public void Model_AllignmentNotEqual()
         {
-            Controller.Model mod = new Controller.Model("data/models/cube.obj", true); // Test schlägt sonst fehl.
-            Assert.AreEqual(true, mod.Alignment(1, 1, 1, 2, 2, 2),"Model konnte nicht ausgerichtet werden.");
+            JumpAndRun.Model mod = new JumpAndRun.Model("data/models/cube.obj", true); // Test schlägt sonst fehl.
+            Assert.AreEqual(true, mod.Alignment(1, 1, 1, 2, 2, 2),"head konnte nicht ausgerichtet werden.");
         }
 
         [TestMethod]
         public void Model_AllignmentWithoutId()
         {
-            Controller.Model mod = new Controller.Model();
-            Assert.AreEqual(false, mod.Alignment(1, 1, 1, 2, 2, 2), "Model darf nicht ausgerichtet werden.");
+            JumpAndRun.Model mod = new JumpAndRun.Model();
+            Assert.AreEqual(false, mod.Alignment(1, 1, 1, 2, 2, 2), "head darf nicht ausgerichtet werden.");
         }
         
         [TestMethod]
         public void Model_Position()
         {
-            Assert.AreEqual(true, model.Position(3, 3, 3), "Model wurde nicht neu positioniert.");
+            Assert.AreEqual(true, model.Position(3, 3, 3), "head wurde nicht neu positioniert.");
         }
 
         [TestMethod]
         public void Model_PositionWithoutId()
         {
-            Assert.AreEqual(false, model2.Position(3, 3, 3), "Model darf nicht neu positioniert werden.");
+            Assert.AreEqual(false, model2.Position(3, 3, 3), "head darf nicht neu positioniert werden.");
         }
 
         [TestMethod]
         public void Model_AttachToCameraTrue()
         {
-            Assert.AreEqual(true, model.AttachToCamera(true), "Model wurde nicht der Kamera angehängt.");
+            Assert.AreEqual(true, model.AttachToCamera(true), "head wurde nicht der Kamera angehängt.");
         }
 
         [TestMethod]
         public void Model_AttachToCameraFalse()
         {
-            Assert.AreEqual(true, model.AttachToCamera(false), "Model wurde nicht der Kamera abgehängt.");
+            Assert.AreEqual(true, model.AttachToCamera(false), "head wurde nicht der Kamera abgehängt.");
         }
 
         [TestMethod]
         public void Model_AttachWithoutId()
         {
-            Assert.AreEqual(false, model2.AttachToCamera(true), "Model darf nicht der Kamera abge-/angehängt.");
+            Assert.AreEqual(false, model2.AttachToCamera(true), "head darf nicht der Kamera abge-/angehängt.");
         }
 
         [TestMethod]

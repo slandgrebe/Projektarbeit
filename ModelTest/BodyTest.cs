@@ -1,6 +1,6 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Model;
+using MotionDetection;
 
 namespace ModelTest
 {

@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Model
+namespace MotionDetection
 {
     /// <summary>
     /// Bildet die Körperpunkte einer getrackten Person ab.

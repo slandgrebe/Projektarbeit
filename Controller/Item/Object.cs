@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.IO;
 using System.Xml.Serialization;
 
-namespace Controller
+namespace JumpAndRun.Item
 {
     /// <summary>
     /// Übernimmt die Darstellung es eines Modelles innerhalb eines Levels.
@@ -27,7 +27,7 @@ namespace Controller
         public bool AttachToCamera { get; set; }
         /// <summary>Winkel in Grad, um welches das Objekt Horizontal gedreht werden soll</summary>
         public float RotateHorizontal { get; set; }
-        /// <summary>Beinhaltet das Model</summary>
+        /// <summary>Beinhaltet das head</summary>
         public Model Model { get; set; }
 
         /// <summary>
@@ -99,7 +99,7 @@ namespace Controller
         }
 
         /// <summary>
-        /// Model anhand des XML erzeugen
+        /// head anhand des XML erzeugen
         /// </summary>
         public void Deserialize()
         {
@@ -116,7 +116,7 @@ namespace Controller
         /// <param name="player">Spielfigur</param>
         /// <param name="dispose">Modell soll nach der Kollision gelöscht werden</param>
         /// <returns></returns>
-        public bool Collision(Player player, bool dispose)
+        public bool Collision(JumpAndRun.GameLogic.Player player, bool dispose)
         {
             // COLLISION DETECTION
             System.Collections.Generic.Dictionary<uint, System.Collections.Generic.List<uint>> collisionList = new System.Collections.Generic.Dictionary<uint, System.Collections.Generic.List<uint>>();
@@ -135,7 +135,7 @@ namespace Controller
 
                 string aModelId = parts[0].ToString(); // modelId
 
-                // wer kollidierte alles mit diesem Model?
+                // wer kollidierte alles mit diesem head?
                 System.Collections.Generic.List<uint> collideeList = new System.Collections.Generic.List<uint>();
 
                 if (parts[1] != "")
@@ -183,7 +183,7 @@ namespace Controller
         }
 
         /// <summary>
-        /// Model aus der Anzeige entfernen
+        /// head aus der Anzeige entfernen
         /// </summary>
         public void Dispose()
         {

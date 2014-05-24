@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.IO;
 using System.Xml.Serialization;
 
-namespace Controller
+namespace JumpAndRun.GameLogic
 {
     /// <summary>
     /// Übernimmt die Darstellung eines ganzen Levels

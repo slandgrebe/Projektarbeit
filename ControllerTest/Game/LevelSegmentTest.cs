@@ -1,6 +1,6 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Controller;
+using JumpAndRun;
 
 namespace ControllerTest
 {
@@ -23,7 +23,7 @@ namespace ControllerTest
         public void LevelSegment_AddObstacle()
         {
             LevelSegment ls = new LevelSegment();
-            Controller.Object obj = new Controller.Object();
+            JumpAndRun.Object obj = new JumpAndRun.Object();
             ls.AddObstacle(obj);
             Assert.AreEqual(1, ls.obstacles.Count, "Objekt wurde nicht hinzugefügt.");
         }
@@ -32,7 +32,7 @@ namespace ControllerTest
         public void LevelSegment_AddScore()
         {
             LevelSegment ls = new LevelSegment();
-            Controller.Object obj = new Controller.Object();
+            JumpAndRun.Object obj = new JumpAndRun.Object();
             ls.AddScore(obj);
             Assert.AreEqual(1, ls.scores.Count, "Objekt wurde nicht hinzugefügt.");
         }
@@ -41,7 +41,7 @@ namespace ControllerTest
         public void LevelSegment_AddObject()
         {
             LevelSegment ls = new LevelSegment();
-            Controller.Object obj = new Controller.Object();
+            JumpAndRun.Object obj = new JumpAndRun.Object();
             ls.AddObject(obj);
             Assert.AreEqual(1, ls.objects.Count, "Objekt wurde nicht hinzugefügt.");
         }
@@ -51,13 +51,13 @@ namespace ControllerTest
         {
             LevelSegment ls = new LevelSegment();
 
-            Controller.Object obstacle = new Controller.Object();
+            JumpAndRun.Object obstacle = new JumpAndRun.Object();
             obstacle.ModelXmlPath = "/data/levels/jungle/models/banana.xml";
             obstacle.Deserialize();
-            Controller.Object score = new Controller.Object();
+            JumpAndRun.Object score = new JumpAndRun.Object();
             score.ModelXmlPath = "/data/levels/jungle/models/banana.xml";
             score.Deserialize();
-            Controller.Object obj = new Controller.Object();
+            JumpAndRun.Object obj = new JumpAndRun.Object();
             obj.ModelXmlPath = "/data/levels/jungle/models/banana.xml";
             obj.Deserialize();
 
@@ -72,12 +72,12 @@ namespace ControllerTest
         public void LevelSegment_Deserialize()
         {
             LevelSegment ls = new LevelSegment();
-            Controller.Object obstacle = new Controller.Object();
+            JumpAndRun.Object obstacle = new JumpAndRun.Object();
 
             obstacle.ModelXmlPath = "/data/levels/jungle/models/banana.xml";
-            Controller.Object score = new Controller.Object();
+            JumpAndRun.Object score = new JumpAndRun.Object();
             score.ModelXmlPath = "/data/levels/jungle/models/banana.xml";
-            Controller.Object obj = new Controller.Object();
+            JumpAndRun.Object obj = new JumpAndRun.Object();
             obj.ModelXmlPath = "/data/levels/jungle/models/banana.xml";
 
             ls.AddObstacle(obstacle);
@@ -95,12 +95,12 @@ namespace ControllerTest
         public void LevelSegment_Dispose()
         {
             LevelSegment ls = new LevelSegment();
-            Controller.Object obstacle = new Controller.Object();
+            JumpAndRun.Object obstacle = new JumpAndRun.Object();
 
             obstacle.ModelXmlPath = "/data/levels/jungle/models/banana.xml";
-            Controller.Object score = new Controller.Object();
+            JumpAndRun.Object score = new JumpAndRun.Object();
             score.ModelXmlPath = "/data/levels/jungle/models/banana.xml";
-            Controller.Object obj = new Controller.Object();
+            JumpAndRun.Object obj = new JumpAndRun.Object();
             obj.ModelXmlPath = "/data/levels/jungle/models/banana.xml";
 
             ls.AddObstacle(obstacle);

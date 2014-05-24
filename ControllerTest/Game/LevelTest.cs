@@ -1,6 +1,6 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Controller;
+using JumpAndRun;
 using System.Collections.Generic;
 
 namespace ControllerTest

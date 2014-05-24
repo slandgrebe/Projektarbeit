@@ -7,8 +7,9 @@ using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
 using System.Xml.Serialization;
 using View;
+using JumpAndRun.Gui;
 
-namespace Controller
+namespace JumpAndRun.GameLogic
 {
     /// <summary>
     /// Beinhaltet das Spiel
@@ -120,7 +121,7 @@ namespace Controller
                     // Score um 1 erhöhen, wenn ein Punkt gesammelt wird
                     foreach (LevelSegment segment in level.segments)
                     {
-                        foreach (Object score in segment.scores)
+                        foreach (JumpAndRun.Item.Object score in segment.scores)
                         {
                             if (score.Collision(Player, true))
                             {
@@ -132,7 +133,7 @@ namespace Controller
                     // Leben um 1 verringern, wenn ein Hinternis getroffen wird
                     foreach (LevelSegment segment in level.segments)
                     {
-                        foreach (Object obstacle in segment.obstacles)
+                        foreach (JumpAndRun.Item.Object obstacle in segment.obstacles)
                         {
                             if (obstacle.Collision(Player, false))
                             {

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Model;
+using MotionDetection;
 using View;
 
 /// <summary>
@@ -18,11 +18,21 @@ using View;
 /// * Class2
 /// * Class3
 /// </summary>
-namespace Controller
+namespace JumpAndRun
 {
 
     class Program
     {
+        internal Run Run
+        {
+            get
+            {
+                throw new System.NotImplementedException();
+            }
+            set
+            {
+            }
+        }
         /// <summary>
         /// Eintritspunkt des Programmes
         /// </summary>

@@ -3,10 +3,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using View;
-using Model;
+using MotionDetection;
 using System;
+using JumpAndRun.GameLogic;
+using JumpAndRun.Gesture;
+using JumpAndRun.Gui;
 
-namespace Controller
+namespace JumpAndRun
 {
     /// <summary>
     /// Hauptklasse des Programmes. Abhandeln Ausgabenelemente und sicherstellen der Anzeige zum richtigen Zeitpunkt.
@@ -246,6 +249,17 @@ namespace Controller
         private void End()
         {
             sensor.Stop();
+        }
+
+        public GestureClose GestureClose
+        {
+            get
+            {
+                throw new System.NotImplementedException();
+            }
+            set
+            {
+            }
         }
     }
 }

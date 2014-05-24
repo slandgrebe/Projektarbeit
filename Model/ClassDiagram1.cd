@@ -1,0 +1,272 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="FullSignature">
+  <Class Name="Model.Body" Collapsed="true">
+    <Position X="3.5" Y="4" Width="1.5" />
+    <AssociationLine Name="AnkleLeft" Type="Model.Position">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.744" Y="-0.999" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="AnkleRight" Type="Model.Position">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="-1.222" Y="-1.001" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="ElbowLeft" Type="Model.Position">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.344" Y="-1.183" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="ElbowRight" Type="Model.Position" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="4.812" Y="4" />
+        <Point X="4.812" Y="2.812" />
+        <Point X="5.429" Y="2.812" />
+        <Point X="5.429" Y="2.438" />
+        <Point X="5" Y="2.438" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="-0.189" Y="0.905" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="FootLeft" Type="Model.Position">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.064" Y="0.486" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="FootRight" Type="Model.Position">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="-1.045" Y="0.51" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="HandLeft" Type="Model.Position" FixedToPoint="true">
+      <Path>
+        <Point X="4.75" Y="4" />
+        <Point X="4.75" Y="2.562" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="1.498" Y="-0.64" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="HandRight" Type="Model.Position" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="4.938" Y="4" />
+        <Point X="5.551" Y="4" />
+        <Point X="5.551" Y="2.25" />
+        <Point X="5" Y="2.25" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="-0.064" Y="0.118" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="Head" Type="Model.Position" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="3.562" Y="4" />
+        <Point X="3.562" Y="2.812" />
+        <Point X="3.082" Y="2.812" />
+        <Point X="3.082" Y="2.438" />
+        <Point X="3.5" Y="2.438" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.891" Y="1.223" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="HipCenter" Type="Model.Position" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="3.5" Y="4.313" />
+        <Point X="2.23" Y="4.313" />
+        <Point X="2.23" Y="1.281" />
+        <Point X="4" Y="1.281" />
+        <Point X="4" Y="2" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="-0.625" Y="-0.836" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="HipLeft" Type="Model.Position" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="3.5" Y="4.188" />
+        <Point X="2.568" Y="4.188" />
+        <Point X="2.568" Y="1.625" />
+        <Point X="3.688" Y="1.625" />
+        <Point X="3.688" Y="2" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.223" Y="-0.337" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="HipRight" Type="Model.Position" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="3.5" Y="4.453" />
+        <Point X="2.097" Y="4.453" />
+        <Point X="2.097" Y="1.168" />
+        <Point X="4.125" Y="1.168" />
+        <Point X="4.125" Y="2" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="-1.63" Y="-0.314" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="Instance" Type="Model.Body" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="4.562" Y="4.562" />
+        <Point X="4.562" Y="4.812" />
+        <Point X="4.875" Y="4.812" />
+        <Point X="4.875" Y="4.562" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="-0.417" Y="0.337" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="KneeLeft" Type="Model.Position" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="3.5" Y="4.078" />
+        <Point X="2.766" Y="4.078" />
+        <Point X="2.766" Y="2.063" />
+        <Point X="3.5" Y="2.063" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.018" Y="-0.464" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="KneeRight" Type="Model.Position" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="5" Y="4.281" />
+        <Point X="6.148" Y="4.281" />
+        <Point X="6.148" Y="1.262" />
+        <Point X="4.438" Y="1.262" />
+        <Point X="4.438" Y="2" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="-1.353" Y="-0.539" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="ShoulderCenter" Type="Model.Position" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="5" Y="4.188" />
+        <Point X="6.04" Y="4.188" />
+        <Point X="6.04" Y="1.423" />
+        <Point X="4.562" Y="1.423" />
+        <Point X="4.562" Y="2" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="-1.268" Y="0.779" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="ShoulderLeft" Type="Model.Position" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="3.5" Y="4.047" />
+        <Point X="2.951" Y="4.047" />
+        <Point X="2.951" Y="2.25" />
+        <Point X="3.5" Y="2.25" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.1" Y="0.884" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="ShoulderRight" Type="Model.Position" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="5" Y="4.453" />
+        <Point X="6.246" Y="4.453" />
+        <Point X="6.246" Y="1.146" />
+        <Point X="4.312" Y="1.146" />
+        <Point X="4.312" Y="2" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="-1.554" Y="0.619" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="Spine" Type="Model.Position" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="5" Y="4.125" />
+        <Point X="5.899" Y="4.125" />
+        <Point X="5.899" Y="1.625" />
+        <Point X="4.75" Y="1.625" />
+        <Point X="4.75" Y="2" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.225" Y="-1.018" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="WristLeft" Type="Model.Position" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="5" Y="4.047" />
+        <Point X="5.738" Y="4.047" />
+        <Point X="5.738" Y="2.063" />
+        <Point X="5" Y="2.063" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="-1.923" Y="-0.771" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="WristRight" Type="Model.Position" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="3.5" Y="4.25" />
+        <Point X="2.355" Y="4.25" />
+        <Point X="2.355" Y="1.439" />
+        <Point X="3.875" Y="1.439" />
+        <Point X="3.875" Y="2" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="-1.645" Y="-0.834" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAA4BAGAEAIQIBpJAAAAIIBBBFAEAQAACAACAYAE=</HashCode>
+      <FileName>Body.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="AnkleLeft" />
+      <Property Name="AnkleRight" />
+      <Property Name="ElbowLeft" />
+      <Property Name="ElbowRight" />
+      <Property Name="FootLeft" />
+      <Property Name="FootRight" />
+      <Property Name="HandLeft" />
+      <Property Name="HandRight" />
+      <Property Name="Head" />
+      <Property Name="HipCenter" />
+      <Property Name="HipLeft" />
+      <Property Name="HipRight" />
+      <Property Name="Instance" />
+      <Property Name="KneeLeft" />
+      <Property Name="KneeRight" />
+      <Property Name="ShoulderCenter" />
+      <Property Name="ShoulderLeft" />
+      <Property Name="ShoulderRight" />
+      <Property Name="Spine" />
+      <Property Name="WristLeft" />
+      <Property Name="WristRight" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Model.Position" Collapsed="true">
+    <Position X="3.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAgIgAQEAAAAEgIAAAAACAAAAAAAAAAAAAAAYAE=</HashCode>
+      <FileName>Position.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Model.SkeletonTracker" Collapsed="true">
+    <Position X="3.5" Y="5.25" Width="1.5" />
+    <AssociationLine Name="body" Type="Model.Body" FixedToPoint="true">
+      <Path>
+        <Point X="4.25" Y="5.25" />
+        <Point X="4.25" Y="4.562" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAABAAAAACAAgAAAAAAAAAACAQAAAAAAIAAAAAAAAAA=</HashCode>
+      <FileName>SkeletonTracker.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="body" />
+      <Field Name="sensor" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Microsoft.Kinect.KinectSensor" Collapsed="true">
+    <Position X="3.5" Y="6.25" Width="1.5" />
+    <TypeIdentifier />
+    <Lollipop Orientation="Left" Position="0.243" />
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

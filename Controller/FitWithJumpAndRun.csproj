@@ -7,7 +7,7 @@
     <ProjectGuid>{88EE6FBB-4DB9-4F30-BC26-152CFAC6D1E5}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Controller</RootNamespace>
+    <RootNamespace>JumpAndRun</RootNamespace>
     <AssemblyName>Controller</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -57,13 +57,13 @@
     <Reference Include="System.Xml.Serialization" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Game\Game.cs" />
-    <Compile Include="Game\GameStatus.cs" />
-    <Compile Include="Game\LevelSegment.cs" />
-    <Compile Include="Object\Object.cs" />
+    <Compile Include="GameLogic\Game.cs" />
+    <Compile Include="GameLogic\GameStatus.cs" />
+    <Compile Include="GameLogic\LevelSegment.cs" />
+    <Compile Include="Item\Object.cs" />
     <Compile Include="Gesture\Click.cs" />
     <Compile Include="Gesture\GestureClose.cs" />
-    <Compile Include="Game\Level.cs" />
+    <Compile Include="GameLogic\Level.cs" />
     <Compile Include="Gui\GameOverUi.cs" />
     <Compile Include="Gui\GameUi.cs" />
     <Compile Include="Gui\LoadingUi.cs" />
@@ -71,14 +71,15 @@
     <Compile Include="Gui\NoTrackingUi.cs" />
     <Compile Include="Gui\ScoreUi.cs" />
     <Compile Include="Modus.cs" />
-    <Compile Include="Object\Model.cs" />
+    <Compile Include="Item\Model.cs" />
     <Compile Include="Run.cs" />
-    <Compile Include="Game\Player.cs" />
+    <Compile Include="GameLogic\Player.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="ClassDiagram1.cd" />
     <None Include="data\models\banana\banana.3ds">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -126,9 +127,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Model\Model.csproj">
+    <ProjectReference Include="..\Model\MotionDetection.csproj">
       <Project>{6b9546b2-205e-4d02-9b29-a9fe9308d20c}</Project>
-      <Name>Model</Name>
+      <Name>MotionDetection</Name>
     </ProjectReference>
     <ProjectReference Include="..\View\View.csproj">
       <Project>{b31d7db9-2918-4102-ab0c-d2cf7ed48261}</Project>

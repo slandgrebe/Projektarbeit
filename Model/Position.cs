@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Model
+namespace MotionDetection
 {
     /// <summary>
     /// Speichert die Position eines Punktes in einem 3D-Raum.

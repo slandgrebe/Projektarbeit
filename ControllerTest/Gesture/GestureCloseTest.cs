@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Controller;
-using Model;
+using JumpAndRun;
+using MotionDetection;
 
 namespace ControllerTest.Gesture
 {

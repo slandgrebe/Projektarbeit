@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Controller
+namespace JumpAndRun.Item
 {
     /// <summary>
     /// Verwaltet ein 3D Modell
@@ -131,7 +131,7 @@ namespace Controller
             //radian in Grad umrechnen
             w = w * 180 / System.Math.PI;
 
-            //Model Positionieren und ausrichten
+            //head Positionieren und ausrichten
             if (!View.Model.Position(Id, fromX, fromY, fromZ)) return false;
             if (!View.Model.Rotate(Id, (float)w, (float)xa, (float)ya, (float)za)) return false;
 
