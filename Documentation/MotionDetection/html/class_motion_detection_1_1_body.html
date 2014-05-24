@@ -1,0 +1,876 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.5"/>
+<title>Projektarbeit - MotionDetection: MotionDetection.Body Klassenreferenz</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+  $(window).load(resizeHeight);
+</script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">Projektarbeit - MotionDetection
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Erzeugt von Doxygen 1.8.5 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Suchen');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Hauptseite</span></a></li>
+      <li><a href="namespaces.html"><span>Pakete</span></a></li>
+      <li class="current"><a href="annotated.html"><span>Klassen</span></a></li>
+      <li><a href="files.html"><span>Dateien</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Suchen" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="annotated.html"><span>Auflistung&#160;der&#160;Klassen</span></a></li>
+      <li><a href="classes.html"><span>Klassen-Verzeichnis</span></a></li>
+      <li><a href="functions.html"><span>Klassen-Elemente</span></a></li>
+    </ul>
+  </div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('class_motion_detection_1_1_body.html','');});
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Alle</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Klassen</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namensbereiche</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Dateien</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Funktionen</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Propertys</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Öffentliche Methoden</a> &#124;
+<a href="#properties">Propertys</a> &#124;
+<a href="class_motion_detection_1_1_body-members.html">Aufstellung aller Elemente</a>  </div>
+  <div class="headertitle">
+<div class="title">MotionDetection.Body Klassenreferenz</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>Bildet die Körperpunkte einer getrackten Person ab.  
+ <a href="class_motion_detection_1_1_body.html#details">Mehr ...</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+Öffentliche Methoden</h2></td></tr>
+<tr class="memitem:a405d26cfb89afdf94a861e4d8b20d7f6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_motion_detection_1_1_body.html#a405d26cfb89afdf94a861e4d8b20d7f6">XModifikator</a> (float mod)</td></tr>
+<tr class="memdesc:a405d26cfb89afdf94a861e4d8b20d7f6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Modifiziert alle Körperpunkte entlang der X-Achse um den Modifikator.  <a href="#a405d26cfb89afdf94a861e4d8b20d7f6">Mehr ...</a><br/></td></tr>
+<tr class="separator:a405d26cfb89afdf94a861e4d8b20d7f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9c0c5f75a66edc19a581903fc04654fd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_motion_detection_1_1_body.html#a9c0c5f75a66edc19a581903fc04654fd">YModifikator</a> (float mod)</td></tr>
+<tr class="memdesc:a9c0c5f75a66edc19a581903fc04654fd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Modifiziert alle Körperpunkte entlang der Y-Achse um den Modifikator.  <a href="#a9c0c5f75a66edc19a581903fc04654fd">Mehr ...</a><br/></td></tr>
+<tr class="separator:a9c0c5f75a66edc19a581903fc04654fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a62e322e7d8e4d48c2dc1ece5f221ea19"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_motion_detection_1_1_body.html#a62e322e7d8e4d48c2dc1ece5f221ea19">ZModifikator</a> (float mod)</td></tr>
+<tr class="memdesc:a62e322e7d8e4d48c2dc1ece5f221ea19"><td class="mdescLeft">&#160;</td><td class="mdescRight">Modifiziert alle Körperpunkte entlang der Z-Achse um den Modifikator.  <a href="#a62e322e7d8e4d48c2dc1ece5f221ea19">Mehr ...</a><br/></td></tr>
+<tr class="separator:a62e322e7d8e4d48c2dc1ece5f221ea19"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0effa10367ce8e9d8679d16bd6f24efe"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_motion_detection_1_1_body.html#a0effa10367ce8e9d8679d16bd6f24efe">Scale</a> (float scale)</td></tr>
+<tr class="memdesc:a0effa10367ce8e9d8679d16bd6f24efe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Skalliert den Getrackten Körper um den Skalierwert.  <a href="#a0effa10367ce8e9d8679d16bd6f24efe">Mehr ...</a><br/></td></tr>
+<tr class="separator:a0effa10367ce8e9d8679d16bd6f24efe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="properties"></a>
+Propertys</h2></td></tr>
+<tr class="memitem:a17a621bf5220cb484503cb4589de01db"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_motion_detection_1_1_position.html">Position</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_motion_detection_1_1_body.html#a17a621bf5220cb484503cb4589de01db">AnkleLeft</a><code> [get, set]</code></td></tr>
+<tr class="memdesc:a17a621bf5220cb484503cb4589de01db"><td class="mdescLeft">&#160;</td><td class="mdescRight">Koordinatenobjekt des Punktes: Fussgelenk links <a href="#a17a621bf5220cb484503cb4589de01db">Mehr ...</a><br/></td></tr>
+<tr class="separator:a17a621bf5220cb484503cb4589de01db"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a27e7ba858b68516d12649523b89c2ceb"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_motion_detection_1_1_position.html">Position</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_motion_detection_1_1_body.html#a27e7ba858b68516d12649523b89c2ceb">AnkleRight</a><code> [get, set]</code></td></tr>
+<tr class="memdesc:a27e7ba858b68516d12649523b89c2ceb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Koordinatenobjekt des Punktes: Fussgelenk rechts <a href="#a27e7ba858b68516d12649523b89c2ceb">Mehr ...</a><br/></td></tr>
+<tr class="separator:a27e7ba858b68516d12649523b89c2ceb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:add47db1606525669fa1f3af84728c4b1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_motion_detection_1_1_position.html">Position</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_motion_detection_1_1_body.html#add47db1606525669fa1f3af84728c4b1">ElbowLeft</a><code> [get, set]</code></td></tr>
+<tr class="memdesc:add47db1606525669fa1f3af84728c4b1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Koordinatenobjekt des Punktes: Ellenbogen links <a href="#add47db1606525669fa1f3af84728c4b1">Mehr ...</a><br/></td></tr>
+<tr class="separator:add47db1606525669fa1f3af84728c4b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a228c987a3abeb06d0a90fcaf357accf2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_motion_detection_1_1_position.html">Position</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_motion_detection_1_1_body.html#a228c987a3abeb06d0a90fcaf357accf2">ElbowRight</a><code> [get, set]</code></td></tr>
+<tr class="memdesc:a228c987a3abeb06d0a90fcaf357accf2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Koordinatenobjekt des Punktes: Ellenbogen rechts <a href="#a228c987a3abeb06d0a90fcaf357accf2">Mehr ...</a><br/></td></tr>
+<tr class="separator:a228c987a3abeb06d0a90fcaf357accf2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab6d298c57dc492b3c0014c6680408784"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_motion_detection_1_1_position.html">Position</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_motion_detection_1_1_body.html#ab6d298c57dc492b3c0014c6680408784">FootLeft</a><code> [get, set]</code></td></tr>
+<tr class="memdesc:ab6d298c57dc492b3c0014c6680408784"><td class="mdescLeft">&#160;</td><td class="mdescRight">Koordinatenobjekt des Punktes: Fuss links <a href="#ab6d298c57dc492b3c0014c6680408784">Mehr ...</a><br/></td></tr>
+<tr class="separator:ab6d298c57dc492b3c0014c6680408784"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa9cdacf0c91012faaedee8a91da4cb2b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_motion_detection_1_1_position.html">Position</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_motion_detection_1_1_body.html#aa9cdacf0c91012faaedee8a91da4cb2b">FootRight</a><code> [get, set]</code></td></tr>
+<tr class="memdesc:aa9cdacf0c91012faaedee8a91da4cb2b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Koordinatenobjekt des Punktes: Fuss rechts <a href="#aa9cdacf0c91012faaedee8a91da4cb2b">Mehr ...</a><br/></td></tr>
+<tr class="separator:aa9cdacf0c91012faaedee8a91da4cb2b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3779e202347f8feb61ff69b939d1164f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_motion_detection_1_1_position.html">Position</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_motion_detection_1_1_body.html#a3779e202347f8feb61ff69b939d1164f">HandLeft</a><code> [get, set]</code></td></tr>
+<tr class="memdesc:a3779e202347f8feb61ff69b939d1164f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Koordinatenobjekt des Punktes: Hand links <a href="#a3779e202347f8feb61ff69b939d1164f">Mehr ...</a><br/></td></tr>
+<tr class="separator:a3779e202347f8feb61ff69b939d1164f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abdded3f4495a653b12646668c816faa6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_motion_detection_1_1_position.html">Position</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_motion_detection_1_1_body.html#abdded3f4495a653b12646668c816faa6">HandRight</a><code> [get, set]</code></td></tr>
+<tr class="memdesc:abdded3f4495a653b12646668c816faa6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Koordinatenobjekt des Punktes: Hand rechts <a href="#abdded3f4495a653b12646668c816faa6">Mehr ...</a><br/></td></tr>
+<tr class="separator:abdded3f4495a653b12646668c816faa6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab75ba73bb647bd066d8cf711482c955e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_motion_detection_1_1_position.html">Position</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_motion_detection_1_1_body.html#ab75ba73bb647bd066d8cf711482c955e">Head</a><code> [get, set]</code></td></tr>
+<tr class="memdesc:ab75ba73bb647bd066d8cf711482c955e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Koordinatenobjekt des Punktes: Kopf <a href="#ab75ba73bb647bd066d8cf711482c955e">Mehr ...</a><br/></td></tr>
+<tr class="separator:ab75ba73bb647bd066d8cf711482c955e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aea0d1f550fb13db01f0c1a978214c388"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_motion_detection_1_1_position.html">Position</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_motion_detection_1_1_body.html#aea0d1f550fb13db01f0c1a978214c388">HipCenter</a><code> [get, set]</code></td></tr>
+<tr class="memdesc:aea0d1f550fb13db01f0c1a978214c388"><td class="mdescLeft">&#160;</td><td class="mdescRight">Koordinatenobjekt des Punktes: Hüfte mitte <a href="#aea0d1f550fb13db01f0c1a978214c388">Mehr ...</a><br/></td></tr>
+<tr class="separator:aea0d1f550fb13db01f0c1a978214c388"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0f47458caceb1026ed2e36e140cd7db3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_motion_detection_1_1_position.html">Position</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_motion_detection_1_1_body.html#a0f47458caceb1026ed2e36e140cd7db3">HipLeft</a><code> [get, set]</code></td></tr>
+<tr class="memdesc:a0f47458caceb1026ed2e36e140cd7db3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Koordinatenobjekt des Punktes: Hüfte links <a href="#a0f47458caceb1026ed2e36e140cd7db3">Mehr ...</a><br/></td></tr>
+<tr class="separator:a0f47458caceb1026ed2e36e140cd7db3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab27ff96b82d554ebc261e5f51f964496"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_motion_detection_1_1_position.html">Position</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_motion_detection_1_1_body.html#ab27ff96b82d554ebc261e5f51f964496">HipRight</a><code> [get, set]</code></td></tr>
+<tr class="memdesc:ab27ff96b82d554ebc261e5f51f964496"><td class="mdescLeft">&#160;</td><td class="mdescRight">Koordinatenobjekt des Punktes: Hüfte rechts <a href="#ab27ff96b82d554ebc261e5f51f964496">Mehr ...</a><br/></td></tr>
+<tr class="separator:ab27ff96b82d554ebc261e5f51f964496"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3ea7d6eadc98a835c1309989fcfdfbb1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_motion_detection_1_1_position.html">Position</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_motion_detection_1_1_body.html#a3ea7d6eadc98a835c1309989fcfdfbb1">KneeLeft</a><code> [get, set]</code></td></tr>
+<tr class="memdesc:a3ea7d6eadc98a835c1309989fcfdfbb1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Koordinatenobjekt des Punktes: Knie links <a href="#a3ea7d6eadc98a835c1309989fcfdfbb1">Mehr ...</a><br/></td></tr>
+<tr class="separator:a3ea7d6eadc98a835c1309989fcfdfbb1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa7c10f68c0ac2eeec60dacad11484d87"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_motion_detection_1_1_position.html">Position</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_motion_detection_1_1_body.html#aa7c10f68c0ac2eeec60dacad11484d87">KneeRight</a><code> [get, set]</code></td></tr>
+<tr class="memdesc:aa7c10f68c0ac2eeec60dacad11484d87"><td class="mdescLeft">&#160;</td><td class="mdescRight">Koordinatenobjekt des Punktes: Knie rechts <a href="#aa7c10f68c0ac2eeec60dacad11484d87">Mehr ...</a><br/></td></tr>
+<tr class="separator:aa7c10f68c0ac2eeec60dacad11484d87"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a330936b3584dfcc5edefad1df7864668"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_motion_detection_1_1_position.html">Position</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_motion_detection_1_1_body.html#a330936b3584dfcc5edefad1df7864668">ShoulderCenter</a><code> [get, set]</code></td></tr>
+<tr class="memdesc:a330936b3584dfcc5edefad1df7864668"><td class="mdescLeft">&#160;</td><td class="mdescRight">Koordinatenobjekt des Punktes: Schulter mitte <a href="#a330936b3584dfcc5edefad1df7864668">Mehr ...</a><br/></td></tr>
+<tr class="separator:a330936b3584dfcc5edefad1df7864668"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af4ec7a0f510cc72f83300795503433e8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_motion_detection_1_1_position.html">Position</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_motion_detection_1_1_body.html#af4ec7a0f510cc72f83300795503433e8">ShoulderLeft</a><code> [get, set]</code></td></tr>
+<tr class="memdesc:af4ec7a0f510cc72f83300795503433e8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Koordinatenobjekt des Punktes: Schulter links <a href="#af4ec7a0f510cc72f83300795503433e8">Mehr ...</a><br/></td></tr>
+<tr class="separator:af4ec7a0f510cc72f83300795503433e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2e362f0ab0345efea96ee903109d3f1f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_motion_detection_1_1_position.html">Position</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_motion_detection_1_1_body.html#a2e362f0ab0345efea96ee903109d3f1f">ShoulderRight</a><code> [get, set]</code></td></tr>
+<tr class="memdesc:a2e362f0ab0345efea96ee903109d3f1f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Koordinatenobjekt des Punktes: Schulter rechts <a href="#a2e362f0ab0345efea96ee903109d3f1f">Mehr ...</a><br/></td></tr>
+<tr class="separator:a2e362f0ab0345efea96ee903109d3f1f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adaf548497152989aa8329fc880b8f526"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_motion_detection_1_1_position.html">Position</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_motion_detection_1_1_body.html#adaf548497152989aa8329fc880b8f526">Spine</a><code> [get, set]</code></td></tr>
+<tr class="memdesc:adaf548497152989aa8329fc880b8f526"><td class="mdescLeft">&#160;</td><td class="mdescRight">Koordinatenobjekt des Punktes: Rückgrat <a href="#adaf548497152989aa8329fc880b8f526">Mehr ...</a><br/></td></tr>
+<tr class="separator:adaf548497152989aa8329fc880b8f526"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5c9ad6c184d8b051bbc34e5b0633fd9c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_motion_detection_1_1_position.html">Position</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_motion_detection_1_1_body.html#a5c9ad6c184d8b051bbc34e5b0633fd9c">WristLeft</a><code> [get, set]</code></td></tr>
+<tr class="memdesc:a5c9ad6c184d8b051bbc34e5b0633fd9c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Koordinatenobjekt des Punktes: Handgelenk links <a href="#a5c9ad6c184d8b051bbc34e5b0633fd9c">Mehr ...</a><br/></td></tr>
+<tr class="separator:a5c9ad6c184d8b051bbc34e5b0633fd9c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9a2fc8a822d1c6ccbe7265939f57b1e5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_motion_detection_1_1_position.html">Position</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_motion_detection_1_1_body.html#a9a2fc8a822d1c6ccbe7265939f57b1e5">WristRight</a><code> [get, set]</code></td></tr>
+<tr class="memdesc:a9a2fc8a822d1c6ccbe7265939f57b1e5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Koordinatenobjekt des Punktes: Handgelenk rechts <a href="#a9a2fc8a822d1c6ccbe7265939f57b1e5">Mehr ...</a><br/></td></tr>
+<tr class="separator:a9a2fc8a822d1c6ccbe7265939f57b1e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a48b7c8ff7069553df5a0420c004a053a"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_motion_detection_1_1_body.html#a48b7c8ff7069553df5a0420c004a053a">X</a><code> [get, set]</code></td></tr>
+<tr class="memdesc:a48b7c8ff7069553df5a0420c004a053a"><td class="mdescLeft">&#160;</td><td class="mdescRight">X Koordinate des Körpers <a href="#a48b7c8ff7069553df5a0420c004a053a">Mehr ...</a><br/></td></tr>
+<tr class="separator:a48b7c8ff7069553df5a0420c004a053a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab039d74006a318aea450c048b2c2c855"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_motion_detection_1_1_body.html#ab039d74006a318aea450c048b2c2c855">Y</a><code> [get, set]</code></td></tr>
+<tr class="memdesc:ab039d74006a318aea450c048b2c2c855"><td class="mdescLeft">&#160;</td><td class="mdescRight">Y Koordinate des Körpers <a href="#ab039d74006a318aea450c048b2c2c855">Mehr ...</a><br/></td></tr>
+<tr class="separator:ab039d74006a318aea450c048b2c2c855"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a05c979f9d39cfbb9c2abf7531836f268"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_motion_detection_1_1_body.html#a05c979f9d39cfbb9c2abf7531836f268">Z</a><code> [get, set]</code></td></tr>
+<tr class="memdesc:a05c979f9d39cfbb9c2abf7531836f268"><td class="mdescLeft">&#160;</td><td class="mdescRight">Z Koordinate des Körpers <a href="#a05c979f9d39cfbb9c2abf7531836f268">Mehr ...</a><br/></td></tr>
+<tr class="separator:a05c979f9d39cfbb9c2abf7531836f268"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8219ac6cae70bc01652a85b6bdf215e0"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_motion_detection_1_1_body.html#a8219ac6cae70bc01652a85b6bdf215e0">IsTracked</a><code> [get, set]</code></td></tr>
+<tr class="memdesc:a8219ac6cae70bc01652a85b6bdf215e0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Flag, ob eine Person aktuell erkennt wird. Erfolgt 2 Sekundenlang kein Signal, so wird das Flag auf false gesetzt. <a href="#a8219ac6cae70bc01652a85b6bdf215e0">Mehr ...</a><br/></td></tr>
+<tr class="separator:a8219ac6cae70bc01652a85b6bdf215e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a02dc2c35ee32023d3c47d2ba7205c340"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_motion_detection_1_1_body.html">Body</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_motion_detection_1_1_body.html#a02dc2c35ee32023d3c47d2ba7205c340">Instance</a><code> [get]</code></td></tr>
+<tr class="memdesc:a02dc2c35ee32023d3c47d2ba7205c340"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stellt sicher, dass diese Klasse nur einmal Instanziert wird.  <a href="#a02dc2c35ee32023d3c47d2ba7205c340">Mehr ...</a><br/></td></tr>
+<tr class="separator:a02dc2c35ee32023d3c47d2ba7205c340"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Ausführliche Beschreibung</h2>
+<div class="textblock"><p>Bildet die Körperpunkte einer getrackten Person ab. </p>
+</div><h2 class="groupheader">Dokumentation der Elementfunktionen</h2>
+<a class="anchor" id="a0effa10367ce8e9d8679d16bd6f24efe"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void MotionDetection.Body.Scale </td>
+          <td>(</td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>scale</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Skalliert den Getrackten Körper um den Skalierwert. </p>
+<dl class="params"><dt>Parameter</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">scale</td><td>Skalierwert</td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a405d26cfb89afdf94a861e4d8b20d7f6"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void MotionDetection.Body.XModifikator </td>
+          <td>(</td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>mod</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Modifiziert alle Körperpunkte entlang der X-Achse um den Modifikator. </p>
+<dl class="params"><dt>Parameter</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">mod</td><td>Modifikator</td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a9c0c5f75a66edc19a581903fc04654fd"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void MotionDetection.Body.YModifikator </td>
+          <td>(</td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>mod</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Modifiziert alle Körperpunkte entlang der Y-Achse um den Modifikator. </p>
+<dl class="params"><dt>Parameter</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">mod</td><td>Modifikator</td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a62e322e7d8e4d48c2dc1ece5f221ea19"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void MotionDetection.Body.ZModifikator </td>
+          <td>(</td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>mod</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Modifiziert alle Körperpunkte entlang der Z-Achse um den Modifikator. </p>
+<dl class="params"><dt>Parameter</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">mod</td><td>Modifikator</td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<h2 class="groupheader">Dokumentation der Propertys</h2>
+<a class="anchor" id="a17a621bf5220cb484503cb4589de01db"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_motion_detection_1_1_position.html">Position</a> MotionDetection.Body.AnkleLeft</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span><span class="mlabel">set</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Koordinatenobjekt des Punktes: Fussgelenk links</p>
+
+</div>
+</div>
+<a class="anchor" id="a27e7ba858b68516d12649523b89c2ceb"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_motion_detection_1_1_position.html">Position</a> MotionDetection.Body.AnkleRight</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span><span class="mlabel">set</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Koordinatenobjekt des Punktes: Fussgelenk rechts</p>
+
+</div>
+</div>
+<a class="anchor" id="add47db1606525669fa1f3af84728c4b1"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_motion_detection_1_1_position.html">Position</a> MotionDetection.Body.ElbowLeft</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span><span class="mlabel">set</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Koordinatenobjekt des Punktes: Ellenbogen links</p>
+
+</div>
+</div>
+<a class="anchor" id="a228c987a3abeb06d0a90fcaf357accf2"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_motion_detection_1_1_position.html">Position</a> MotionDetection.Body.ElbowRight</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span><span class="mlabel">set</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Koordinatenobjekt des Punktes: Ellenbogen rechts</p>
+
+</div>
+</div>
+<a class="anchor" id="ab6d298c57dc492b3c0014c6680408784"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_motion_detection_1_1_position.html">Position</a> MotionDetection.Body.FootLeft</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span><span class="mlabel">set</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Koordinatenobjekt des Punktes: Fuss links</p>
+
+</div>
+</div>
+<a class="anchor" id="aa9cdacf0c91012faaedee8a91da4cb2b"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_motion_detection_1_1_position.html">Position</a> MotionDetection.Body.FootRight</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span><span class="mlabel">set</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Koordinatenobjekt des Punktes: Fuss rechts</p>
+
+</div>
+</div>
+<a class="anchor" id="a3779e202347f8feb61ff69b939d1164f"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_motion_detection_1_1_position.html">Position</a> MotionDetection.Body.HandLeft</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span><span class="mlabel">set</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Koordinatenobjekt des Punktes: Hand links</p>
+
+</div>
+</div>
+<a class="anchor" id="abdded3f4495a653b12646668c816faa6"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_motion_detection_1_1_position.html">Position</a> MotionDetection.Body.HandRight</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span><span class="mlabel">set</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Koordinatenobjekt des Punktes: Hand rechts</p>
+
+</div>
+</div>
+<a class="anchor" id="ab75ba73bb647bd066d8cf711482c955e"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_motion_detection_1_1_position.html">Position</a> MotionDetection.Body.Head</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span><span class="mlabel">set</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Koordinatenobjekt des Punktes: Kopf</p>
+
+</div>
+</div>
+<a class="anchor" id="aea0d1f550fb13db01f0c1a978214c388"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_motion_detection_1_1_position.html">Position</a> MotionDetection.Body.HipCenter</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span><span class="mlabel">set</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Koordinatenobjekt des Punktes: Hüfte mitte</p>
+
+</div>
+</div>
+<a class="anchor" id="a0f47458caceb1026ed2e36e140cd7db3"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_motion_detection_1_1_position.html">Position</a> MotionDetection.Body.HipLeft</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span><span class="mlabel">set</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Koordinatenobjekt des Punktes: Hüfte links</p>
+
+</div>
+</div>
+<a class="anchor" id="ab27ff96b82d554ebc261e5f51f964496"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_motion_detection_1_1_position.html">Position</a> MotionDetection.Body.HipRight</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span><span class="mlabel">set</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Koordinatenobjekt des Punktes: Hüfte rechts</p>
+
+</div>
+</div>
+<a class="anchor" id="a02dc2c35ee32023d3c47d2ba7205c340"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_motion_detection_1_1_body.html">Body</a> MotionDetection.Body.Instance</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">get</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Stellt sicher, dass diese Klasse nur einmal Instanziert wird. </p>
+<dl class="section return"><dt>Rückgabe</dt><dd>instance der Klasse <a class="el" href="class_motion_detection_1_1_position.html" title="Speichert die Position eines Punktes in einem 3D-Raum. ">Position</a></dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a8219ac6cae70bc01652a85b6bdf215e0"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool MotionDetection.Body.IsTracked</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span><span class="mlabel">set</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Flag, ob eine Person aktuell erkennt wird. Erfolgt 2 Sekundenlang kein Signal, so wird das Flag auf false gesetzt.</p>
+
+</div>
+</div>
+<a class="anchor" id="a3ea7d6eadc98a835c1309989fcfdfbb1"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_motion_detection_1_1_position.html">Position</a> MotionDetection.Body.KneeLeft</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span><span class="mlabel">set</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Koordinatenobjekt des Punktes: Knie links</p>
+
+</div>
+</div>
+<a class="anchor" id="aa7c10f68c0ac2eeec60dacad11484d87"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_motion_detection_1_1_position.html">Position</a> MotionDetection.Body.KneeRight</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span><span class="mlabel">set</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Koordinatenobjekt des Punktes: Knie rechts</p>
+
+</div>
+</div>
+<a class="anchor" id="a330936b3584dfcc5edefad1df7864668"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_motion_detection_1_1_position.html">Position</a> MotionDetection.Body.ShoulderCenter</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span><span class="mlabel">set</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Koordinatenobjekt des Punktes: Schulter mitte</p>
+
+</div>
+</div>
+<a class="anchor" id="af4ec7a0f510cc72f83300795503433e8"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_motion_detection_1_1_position.html">Position</a> MotionDetection.Body.ShoulderLeft</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span><span class="mlabel">set</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Koordinatenobjekt des Punktes: Schulter links</p>
+
+</div>
+</div>
+<a class="anchor" id="a2e362f0ab0345efea96ee903109d3f1f"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_motion_detection_1_1_position.html">Position</a> MotionDetection.Body.ShoulderRight</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span><span class="mlabel">set</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Koordinatenobjekt des Punktes: Schulter rechts</p>
+
+</div>
+</div>
+<a class="anchor" id="adaf548497152989aa8329fc880b8f526"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_motion_detection_1_1_position.html">Position</a> MotionDetection.Body.Spine</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span><span class="mlabel">set</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Koordinatenobjekt des Punktes: Rückgrat</p>
+
+</div>
+</div>
+<a class="anchor" id="a5c9ad6c184d8b051bbc34e5b0633fd9c"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_motion_detection_1_1_position.html">Position</a> MotionDetection.Body.WristLeft</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span><span class="mlabel">set</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Koordinatenobjekt des Punktes: Handgelenk links</p>
+
+</div>
+</div>
+<a class="anchor" id="a9a2fc8a822d1c6ccbe7265939f57b1e5"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_motion_detection_1_1_position.html">Position</a> MotionDetection.Body.WristRight</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span><span class="mlabel">set</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Koordinatenobjekt des Punktes: Handgelenk rechts</p>
+
+</div>
+</div>
+<a class="anchor" id="a48b7c8ff7069553df5a0420c004a053a"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float MotionDetection.Body.X</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span><span class="mlabel">set</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>X Koordinate des Körpers</p>
+
+</div>
+</div>
+<a class="anchor" id="ab039d74006a318aea450c048b2c2c855"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float MotionDetection.Body.Y</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span><span class="mlabel">set</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Y Koordinate des Körpers</p>
+
+</div>
+</div>
+<a class="anchor" id="a05c979f9d39cfbb9c2abf7531836f268"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float MotionDetection.Body.Z</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span><span class="mlabel">set</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Z Koordinate des Körpers</p>
+
+</div>
+</div>
+<hr/>Die Dokumentation für diese Klasse wurde erzeugt aufgrund der Datei:<ul>
+<li>C:/Users/tobia_000/Documents/Visual Studio 2013/Projects/Projektarbeit/MotionDetection/<a class="el" href="_body_8cs.html">Body.cs</a></li>
+</ul>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="namespace_motion_detection.html">MotionDetection</a></li><li class="navelem"><a class="el" href="class_motion_detection_1_1_body.html">Body</a></li>
+    <li class="footer">Erzeugt am Sam Mai 24 2014 17:06:44 für Projektarbeit - MotionDetection von
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.5 </li>
+  </ul>
+</div>
+</body>
+</html>

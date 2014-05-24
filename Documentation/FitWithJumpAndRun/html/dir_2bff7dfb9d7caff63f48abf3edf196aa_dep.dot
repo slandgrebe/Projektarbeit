@@ -1,0 +1,10 @@
+digraph "C:/Users/tobia_000/Documents" {
+  compound=true
+  node [ fontsize="10", fontname="Helvetica"];
+  edge [ labelfontsize="10", labelfontname="Helvetica"];
+  subgraph clusterdir_2bff7dfb9d7caff63f48abf3edf196aa {
+    graph [ bgcolor="#eeeeff", pencolor="black", label="" URL="dir_2bff7dfb9d7caff63f48abf3edf196aa.html"];
+    dir_2bff7dfb9d7caff63f48abf3edf196aa [shape=plaintext label="Documents"];
+    dir_19b52572391c7f2a8afec504ce5d1fa7 [shape=box label="Visual Studio 2013" color="red" fillcolor="white" style="filled" URL="dir_19b52572391c7f2a8afec504ce5d1fa7.html"];
+  }
+}

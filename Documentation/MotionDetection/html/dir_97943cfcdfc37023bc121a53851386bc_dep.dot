@@ -1,0 +1,9 @@
+digraph "C:/Users/tobia_000/Documents/Visual Studio 2013/Projects/Projektarbeit/MotionDetection/Properties" {
+  compound=true
+  node [ fontsize="10", fontname="Helvetica"];
+  edge [ labelfontsize="10", labelfontname="Helvetica"];
+  subgraph clusterdir_b7530e34bdad7b0328585c63d7e92123 {
+    graph [ bgcolor="#ddddee", pencolor="black", label="MotionDetection" fontname="Helvetica", fontsize="10", URL="dir_b7530e34bdad7b0328585c63d7e92123.html"]
+  dir_97943cfcdfc37023bc121a53851386bc [shape=box, label="Properties", style="filled", fillcolor="#eeeeff", pencolor="black", URL="dir_97943cfcdfc37023bc121a53851386bc.html"];
+  }
+}
