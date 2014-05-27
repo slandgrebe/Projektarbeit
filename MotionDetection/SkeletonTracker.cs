@@ -8,7 +8,7 @@ using Microsoft.Kinect;
 /// \mainpage
 /// @author Tobias Karth
 /// 
-/// Fit with Jump & Run ist eine der Projektarbeit der KTSI. Dieses Modul erkennt anhand der Kinect for Windows eine Person und Liefert diverse Markante Körperpunkte in einem 3D Koordinatensystem.
+/// MotionDetection ist ein Teil der Projektarbeit der KTSI. Dieses Modul erkennt anhand der Kinect for Windows eine Person und liefert diverse Markante Körperpunkte in einem 3D Koordinatensystem.
 /// API
 /// ==================
 /// SkeletonTracker

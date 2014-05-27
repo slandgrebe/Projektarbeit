@@ -13,14 +13,20 @@ var NAVTREE =
       ] ]
     ] ],
     [ "Dateien", null, [
-      [ "Auflistung der Dateien", "files.html", "files" ]
+      [ "Auflistung der Dateien", "files.html", "files" ],
+      [ "Datei-Elemente", "globals.html", [
+        [ "Alle", "globals.html", null ],
+        [ "Funktionen", "globals_func.html", null ],
+        [ "Variablen", "globals_vars.html", null ]
+      ] ]
     ] ]
   ] ]
 ];
 
 var NAVTREEINDEX =
 [
-"_assembly_info_8cs.html"
+"_assembly_info_8cs.html",
+"navtree_8js.html#aa78016020f40c28356aefd325cd4df74"
 ];
 
 var SYNCONMSG = 'Klicken um Panelsynchronisation auszuschalten';

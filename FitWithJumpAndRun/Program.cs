@@ -10,7 +10,7 @@ using View;
 /// @author Tobias Karth
 /// Fit with Jump & Run
 /// ==================
-/// Fit with Jump & Run ist ein Teil der Projektarbeit der KTSI. Unter verwendung der beiden anderen Teilprojekte MotionDetection und VisualizationLibrary kann eine Figur durch eigene Körperbewegungen in einem Spiel bewegt werden.
+/// Fit with Jump & Run ist ein Teil der Projektarbeit der KTSI. Unter Verwendung der beiden anderen Teilprojekte MotionDetection und VisualizationLibrary kann eine Figur durch eigene Körperbewegungen in einem Spiel bewegt werden.
 namespace JumpAndRun
 {
     /// <summary>
