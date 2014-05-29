@@ -110,6 +110,7 @@ namespace JumpAndRun
                     catch (Exception e)
                     {
                         modus = Modus.NotTracked;
+                        sensor = null;
                     }
                 }
                 else
