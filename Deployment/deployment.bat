@@ -36,18 +36,19 @@ rmdir %0\..\%target%\
 :dateien kopieren
 mkdir %0\..\%target%
 
-COPY %0\..\..\%source%\Visualization.dll %0\..\%target%\ /Y
-COPY %0\..\..\%source%\Controller.exe %0\..\%target%\ /Y
-COPY %0\..\..\%source%\VisualizationExample.exe %0\..\%target%\ /Y
-COPY %0\..\..\%source%\Model.dll %0\..\%target%\ /Y
+:COPY %0\..\..\%source%\Visualization.dll %0\..\%target%\ /Y
+COPY %0\..\..\Debug\Visualization.dll %0\..\%target%\ /Y
+COPY %0\..\..\%source%\FitWithJumpAndRun.exe %0\..\%target%\ /Y
+:COPY %0\..\..\%source%\VisualizationExample.exe %0\..\%target%\ /Y
+COPY %0\..\..\%source%\MotionDetection.dll %0\..\%target%\ /Y
 COPY %0\..\..\%source%\View.dll %0\..\%target%\ /Y
 COPY %0\..\..\%source%\Assimp32.dll %0\..\%target%\ /Y
 
 mkdir %0\..\%target%\data
 XCOPY %0\..\..\%source%\data %0\..\%target%\data /S /Y
 
-mkdir "%0\..\%target%\Resource Files"
-XCOPY %0\..\..\%source%\data "%0\..\%target%\Resource Files" /S /Y
+:mkdir "%0\..\%target%\Resource Files"
+:XCOPY %0\..\..\%source%\data "%0\..\%target%\Resource Files" /S /Y
 
 :selbstentpackendes archiv erstellen
 "%sevenZip%" a %target%.exe -mmt -mx5 -sfx7z.sfx "%0\..\%target%"
