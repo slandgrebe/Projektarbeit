@@ -40,8 +40,6 @@ namespace visual {
 			//bool initTexture() {};
 			void clear();
 
-			
-
 			struct Vertex {
 				glm::vec3 position;
 				glm::vec2 textureCoordinate;
@@ -80,7 +78,7 @@ namespace visual {
 				unsigned int numIndices;
 				unsigned int materialIndex;
 
-				// Collision Detection
+				
 				unsigned int numTriangles; 
 				std::vector<Triangle> triangles;
 
@@ -89,6 +87,15 @@ namespace visual {
 
 			std::vector<MeshEntry> meshList;
 			std::vector<TextureSoil*> textureList;
+			// Collision Detection
+			float xMax = 0;
+			float xMin = 0;
+			float yMax = 0;
+			float yMin = 0;
+			float zMax = 0;
+			float zMin = 0;
+
+			std::vector<Triangle> collisionCube;
 
 		public:
 

@@ -4,8 +4,10 @@
 #include <glm/gtc/type_ptr.hpp>
 #include <iostream>
 #include "Math.h"
+#include "GraphicEngine.h"
 
 using namespace visual::model;
+
 
 /***************************
 	MeshEntry
@@ -39,7 +41,10 @@ void AssimpModel::MeshEntry::init(	const std::vector<Vertex>& vertices,
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, indexBufferId);
 	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(unsigned int)* numIndices, &indices[0], GL_STATIC_DRAW);
 
-	// collision detection
+	
+
+
+	/*
 	numTriangles = indices.size() / 3;
 	for (unsigned int i = 0; i < numTriangles; i++) {
 		Log().debug() << "fill triangle List " << i;
@@ -47,7 +52,7 @@ void AssimpModel::MeshEntry::init(	const std::vector<Vertex>& vertices,
 								vertices[indices[i * 3 + 1]].position, 
 								vertices[indices[i * 3 + 2]].position);
 		this->triangles.push_back(t);
-	}
+	}*/
 
 	/*for (std::vector<unsigned int>::const_iterator i = indices.begin(); i != indices.end(); ++i)
 		Log().debug() << *i << ' ';
@@ -120,6 +125,42 @@ bool AssimpModel::loadModel(const std::string filename) {
 	// Make sure the VAO is not changed from outside code
 	glBindVertexArray(0);
 
+	
+	visual::graphics::GraphicEngine::getInstance()->printOglError(__FILE__, __LINE__);
+
+	// collision cube
+	glm::vec3 frontBottomLeft(xMin, yMin, zMax);
+	glm::vec3 frontBottomRight(xMax, yMin, zMax);
+	glm::vec3 frontTopRight(xMax, yMax, zMax);
+	glm::vec3 frontTopLeft(xMin, yMax, zMax);
+	glm::vec3 backBottomLeft(xMin, yMin, zMin);
+	glm::vec3 backBottomRight(xMax, yMin, zMin);
+	glm::vec3 backTopRight(xMax, yMax, zMin);
+	glm::vec3 backTopLeft(xMin, yMax, zMin);
+	
+	visual::graphics::GraphicEngine::getInstance()->printOglError(__FILE__, __LINE__);
+
+	// vorne
+	collisionCube.push_back(Triangle(frontBottomLeft, frontBottomRight, frontTopRight)); // vorne unten rechts
+	collisionCube.push_back(Triangle(frontBottomLeft, frontTopRight, frontTopLeft)); // vorne oben links
+	// rechts
+	collisionCube.push_back(Triangle(frontBottomRight, backBottomRight, backTopRight)); // rechts unten hinten
+	collisionCube.push_back(Triangle(frontBottomRight, backTopRight, frontTopRight)); // rechts oben vorne
+	// hinten
+	collisionCube.push_back(Triangle(backBottomRight, backBottomLeft, backTopLeft)); // hinten unten links
+	collisionCube.push_back(Triangle(backBottomRight, backTopLeft, backTopRight)); // hinten oben rechts
+	// links
+	collisionCube.push_back(Triangle(backBottomLeft, frontBottomLeft, frontTopLeft)); // links unten vorne
+	collisionCube.push_back(Triangle(backBottomLeft, frontTopLeft, backTopLeft)); // link oben hinten
+	// oben
+	collisionCube.push_back(Triangle(frontTopLeft, frontTopRight, backTopRight)); // oben vorne rechts
+	collisionCube.push_back(Triangle(frontTopLeft, backTopRight, backTopLeft)); // oben hinten links
+	// unten
+	collisionCube.push_back(Triangle(backBottomLeft, backBottomRight, frontBottomRight)); // unten hinten rechts
+	collisionCube.push_back(Triangle(backBottomLeft, frontBottomRight, frontBottomLeft)); // unten vorne links
+	
+	visual::graphics::GraphicEngine::getInstance()->printOglError(__FILE__, __LINE__);
+	
 	return returnValue;
 }
 
@@ -178,6 +219,18 @@ bool AssimpModel::initSingleMesh(const int meshIndex, const aiMesh* mesh) {
 	}
 
 	meshList[meshIndex].init(vertices, indices);
+
+	// collision detection
+	for (unsigned int i = 0; i < indices.size(); i++) { // alle punkte des models durchgehen
+		glm::vec3 point = vertices[indices[i]].position;
+
+		if (point.x > xMax) xMax = point.x;
+		if (point.x < xMin) xMin = point.x;
+		if (point.y > yMax) yMax = point.y;
+		if (point.y < yMin) yMin = point.y;
+		if (point.z > zMax) zMax = point.z;
+		if (point.z < zMin) zMin = point.z;
+	}
 
 	return true;
 }
@@ -263,10 +316,10 @@ bool AssimpModel::doesIntersect(AssimpModel* other) {
 	// sehr einfacher, schneller, ungenauer Test zuerst
 	if (pow(pos1.x - pos2.x, 2) + pow(pos1.y - pos2.y, 2) + pow(pos1.z - pos2.z, 2) <= pow(radius1 + radius2, 2)) { // berühren oder schneiden sich die Bounding Spheres?
 
-		return true;
-
+		//return true;
 		// zu langsam :(
 
+		/*
 		// measure time
 		clock_t begin = clock();
 		float timeDifference = 0.0f;
@@ -307,8 +360,34 @@ bool AssimpModel::doesIntersect(AssimpModel* other) {
 			}
 		}
 		// doch keine kollision
-
+		
 		//Log().debug() << "time: " << (float)(clock() - begin) / 1.0f;
+		*/
+
+		/*glm::mat4 mvp1 = this->getTransformedModelMatrix();
+		glm::mat4 mvp2 = other->getTransformedModelMatrix();
+
+		// Jedes Dreieck von diesem Objekt ...
+		for (unsigned int i = 0; i < this->collisionCube.size(); i++) {
+			Triangle t1 = this->collisionCube[i];
+
+			/*glm::vec3 a1 = glm::vec3(mvp1 * glm::vec4(t1.a, 1.0));
+			glm::vec3 b1 = glm::vec3(mvp1 * glm::vec4(t1.b, 1.0));
+			glm::vec3 c1 = glm::vec3(mvp1 * glm::vec4(t1.c, 1.0));
+			
+			// ... mit jedem Dreieck des anderen Objektes vergleichen
+			for (unsigned int j = 0; j < other->collisionCube.size(); j++) {
+				Triangle t2 = other->collisionCube[j];
+
+				glm::vec3 a2 = glm::vec3(mvp2 * glm::vec4(t2.a, 1.0));
+				glm::vec3 b2 = glm::vec3(mvp2 * glm::vec4(t2.b, 1.0));
+				glm::vec3 c2 = glm::vec3(mvp2 * glm::vec4(t2.c, 1.0));
+
+				if (math::Math::doTrianglesIntersect(a1, b1, c1, a2, b2, c2)) { // berühren oder schneiden sich die zwei Dreiecke?
+					return true;
+				}
+			}
+		}*/
 
 	} // if - einfacher test
 

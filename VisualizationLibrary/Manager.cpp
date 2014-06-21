@@ -583,7 +583,7 @@ void Manager::draw(void) {
 		model->draw();
 	}
 
-	// GUI immer zuoberst
+	/*// GUI immer zuoberst
 	glClear(GL_DEPTH_BUFFER_BIT);
 	
 	// Texte zeichnen
@@ -598,5 +598,5 @@ void Manager::draw(void) {
 	for (it4 = buttonList.begin(); it4 != buttonList.end(); it4++) {
 		gui::Button* button = (*it4).second;
 		button->draw();
-	}
+	}*/
 }

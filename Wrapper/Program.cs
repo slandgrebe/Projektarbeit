@@ -168,16 +168,6 @@ namespace VisualizationExample
             highlightColor(modelId_collision, 0.0f, 1.0f, 0.0f, 1.0f);
             isHighlighted(modelId_collision, true);
 
-            // MODEL TO COLLIDE2
-            uint modelId_collision2 = addModel("data/Models/Wagon/Wagon.3ds");
-            while (!isCreated(modelId_collision2)) { }
-            scale(modelId_collision2, 0.1f, 2.0f, 0.1f);
-            scalingIsNormalized(modelId_collision2, true);
-            position(modelId_collision2, 1.5f, 0f, -2f);
-            //rotate(modelId_collision2, -90.0f, 1.0f, 0.0f, 0.0f);
-            highlightColor(modelId_collision2, 0.0f, 0.0f, 1.0f, 1.0f);
-            isHighlighted(modelId_collision2, true);
-
             float rotation = 0f;
             float x = -2f;
             // RUNNING

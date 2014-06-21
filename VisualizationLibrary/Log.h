@@ -7,6 +7,7 @@
 #include <string>
 #include <stdio.h>
 
+
 /** Liefert die aktuelle Zeit zurück
 * @author Stefan Landgrebe
 * @return Text mit der aktuelle Zeit
@@ -206,6 +207,10 @@ typedef Log FILELog;
 if (level > Log::ReportingLevel()); \
 	else Log().Get(level)
 
+
+
+
+
 #if defined(WIN32) || defined(_WIN32) || defined(__WIN32__)
 
 #include <windows.h>
@@ -244,5 +249,6 @@ inline std::string NowTime()
 }
 
 #endif //WIN32
+
 
 #endif //__LOG_H__
