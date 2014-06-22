@@ -26,7 +26,7 @@ int GraphicEngine::printOglError(char *file, int line) {
 
 	glErr = glGetError();
 	if (glErr != GL_NO_ERROR) {
-		Log().error() << "glError in file " << file << " @ line " << line << ": " << gluErrorString(glErr);
+		Log().debug() << "glError in file " << file << " @ line " << line << ": " << gluErrorString(glErr);
 		retCode = 1;
 	}
 	return retCode;
@@ -125,6 +125,7 @@ void GraphicEngine::worker(void) {
 	clock_t begin = clock();
 	clock_t now = clock();
 	float timeDifference = 0.0f;
+	long unsigned int frame = 0;
 
 	while (!glfwWindowShouldClose(window)) {
 		timeDifference = (float)(now - begin) / 1000.0f;
@@ -142,7 +143,7 @@ void GraphicEngine::worker(void) {
 		GraphicEngine::getInstance()->processQueue();
 
 		// collision detection
-		Manager::getInstance()->doCollisionDetection();
+		Manager::getInstance()->doCollisionDetection(frame);
 
 		// Clear the screen to black
 		glClearColor(0.3f, 0.5f, 0.9f, 1.0f);
@@ -164,8 +165,10 @@ void GraphicEngine::worker(void) {
 		// measure time
 		begin = now;
 		now = clock();
-		Log().info() << "Bild gezeichnet in " << int(now - begin) / CLOCKS_PER_SEC << "ms. Das entspricht " << 1000 / (now - begin) << " FPS." ;
+		Log().info() << "Bild gezeichnet in " << float(now - begin) << "ms. Das entspricht " << CLOCKS_PER_SEC / (now - begin) << " FPS." ;
 		//Log().debug() << "Bild gezeichnet in " << timeDifference << "ms. " << 1 / timeDifference << " FPS";
+
+		frame++;
 	}
 
 	glfwTerminate(); 

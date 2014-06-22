@@ -94,6 +94,10 @@ DLL_API int APIENTRY textColor(const unsigned int textId, const float r, const f
 }
 
 
+DLL_API void APIENTRY teest(void) {
+
+}
+
 
 DLL_API void APIENTRY positionCamera(float x, float y, float z) {
 	visual::Manager::getInstance()->positionCamera(glm::vec3(x, y, z));
@@ -108,6 +112,9 @@ DLL_API void APIENTRY changeCameraSpeed(float speed) {
 	visual::Manager::getInstance()->changeCameraSpeed(speed);
 }
 
+DLL_API int APIENTRY setCollisionGroup(const unsigned int modelId, const unsigned int collisionGroup) {
+	return visual::Manager::getInstance()->setCollisionGroup(modelId, collisionGroup);
+}
 DLL_API unsigned int APIENTRY collisionsTextLength(void) {
 	return visual::Manager::getInstance()->collisionsTextLength();
 }

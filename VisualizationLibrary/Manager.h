@@ -8,6 +8,7 @@
 #include "GraphicEngine.h"
 #include <map>
 #include <mutex>
+#include <list>
 
 /** Der visual Namespace behinhaltet das ganze Projekt (ausgenommen des API)
 * @author Stefan Landgrebe
@@ -290,7 +291,7 @@ namespace visual {
 		/** Führt die Kollisions Erkennung von Modellen durch
 		* @author Stefan Landgrebe
 		*/
-		void doCollisionDetection(void);
+		void doCollisionDetection(long unsigned int frame);
 
 		/** Länge des Textes mit allen erkannten Kollisionen
 		* @author Stefan Landgrebe
@@ -311,6 +312,14 @@ namespace visual {
 		*/
 		std::string collisionsText(void);
 
+		/** Setzt die Kollisionsgruppe von diesem Modell
+		* Modelle welche in derselben Kollisionsgruppe sind, werden nicht miteinander verglichen. Kollisionsgruppe 0 wird komplett ignoriert.
+		* @author Stefan Landgrebe
+		* @param collisionGroup Kollisionsgruppe
+		* @return Prüfung ob die Operation durchgeführt werden konnte
+		*/
+		bool setCollisionGroup(GLuint modelId, unsigned int collisionGroup);
+
 		/** Sorgt dafür dass alle Objekte neu gezeichnet werden. Diese Methode wird von GraphicEngine aufgerufen
 		* @author Stefan Landgrebe
 		* @see graphics::GraphicEngine
@@ -330,6 +339,11 @@ namespace visual {
 
 		std::string m_collisions;
 		std::string m_collisionsCache;
+
+		enum collisionGroup { ambiente, player, obstacle, bonus };
+		std::list<GLuint> collisionGroupPlayer;
+		std::list<GLuint> collisionGroupObstacle;
+		std::list<GLuint> collisionGroupBonus;
 
 		Manager(void);
 

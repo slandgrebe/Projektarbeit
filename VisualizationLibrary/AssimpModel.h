@@ -97,8 +97,11 @@ namespace visual {
 
 			std::vector<Triangle> collisionCube;
 
-		public:
+			
+			long unsigned int collisionModelUpdatedOnFrame;
 
+		public:
+			void updateCollisionModel(long unsigned int frame);
 			/** Konstruktor
 			Für das eigentliche Laden des 3D Modells muss zusätzlich die Methode loadModel() aufgerufen werden.
 			* @author Stefan Landgrebe
@@ -125,7 +128,7 @@ namespace visual {
 			* @param other das andere Modell
 			* @return True wenn es min. 1 Schnittpunkt gibt.
 			*/
-			bool doesIntersect(AssimpModel* other);
+			bool doesIntersect(AssimpModel* other, long unsigned int frame);
 
 			/** Zeichnet das Modell neu
 			* @author Stefan Landgrebe

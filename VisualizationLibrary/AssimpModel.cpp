@@ -77,7 +77,9 @@ AssimpModel::Triangle AssimpModel::MeshEntry::getTriangle(unsigned int n) {
 
 
 
-AssimpModel::AssimpModel() {}
+AssimpModel::AssimpModel() {
+	collisionModelUpdatedOnFrame = 0;
+}
 
 
 AssimpModel::~AssimpModel() {
@@ -301,11 +303,13 @@ void AssimpModel::clear() {
 	}
 }
 
-bool AssimpModel::doesIntersect(AssimpModel* other) {
+bool AssimpModel::doesIntersect(AssimpModel* other, long unsigned int frame) {
 	// mit sich selber testen macht wenig sinn
 	if (this == other) {
 		return false;
 	}
+
+	bool returnValue = false;
 
 	glm::vec3 pos1 = this->position(); // attachedToCamera in der position Methode noch berücksichtigen!
 	glm::vec3 pos2 = other->position();
@@ -316,82 +320,47 @@ bool AssimpModel::doesIntersect(AssimpModel* other) {
 	// sehr einfacher, schneller, ungenauer Test zuerst
 	if (pow(pos1.x - pos2.x, 2) + pow(pos1.y - pos2.y, 2) + pow(pos1.z - pos2.z, 2) <= pow(radius1 + radius2, 2)) { // berühren oder schneiden sich die Bounding Spheres?
 
-		//return true;
-		// zu langsam :(
-
-		/*
-		// measure time
-		clock_t begin = clock();
-		float timeDifference = 0.0f;
-
-		// sehr komplexer, langsamer, exakter Test danach
-		glm::mat4 mvp1 = this->getTransformedModelMatrix();
-		glm::mat4 mvp2 = other->getTransformedModelMatrix();
-
-		// Jedes Teilmodell von diesem Modell...
-		for (unsigned int i = 0; i < this->meshList.size(); i++) {
-
-			// ... und davon jedes Dreieck ...
-			for (unsigned int j = 0; j < this->meshList[i].numTriangles; j++) {
-				// This Triangle
-				Triangle t1 = this->meshList[i].triangles[j];
-
-				glm::vec3 a1 = glm::vec3(mvp1 * glm::vec4(t1.a, 1.0));
-				glm::vec3 b1 = glm::vec3(mvp1 * glm::vec4(t1.b, 1.0));
-				glm::vec3 c1 = glm::vec3(mvp1 * glm::vec4(t1.c, 1.0));
-
-				// ... wird mit jedem Teilmodell des anderen Modells...
-				for (unsigned int k = 0; k < other->meshList.size(); k++) {
-					// ... und davon mit jedem Dreieck getestet.
-					for (unsigned int l = 0; l < other->meshList[k].numTriangles; l++) {
-						// Other Triangle
-						Triangle t2 = other->meshList[k].triangles[l];
-
-						glm::vec3 a2 = glm::vec3(mvp2 * glm::vec4(t2.a, 1.0));
-						glm::vec3 b2 = glm::vec3(mvp2 * glm::vec4(t2.b, 1.0));
-						glm::vec3 c2 = glm::vec3(mvp2 * glm::vec4(t2.c, 1.0));
-
-						// Test
-						if (math::Math::doTrianglesIntersect(a1, b1, c1,  a2, b2, c2)) { // berühren oder schneiden sich die zwei Dreiecke?
-							return true;
-						}
-					}
-				}
-			}
-		}
-		// doch keine kollision
-		
-		//Log().debug() << "time: " << (float)(clock() - begin) / 1.0f;
-		*/
-
-		/*glm::mat4 mvp1 = this->getTransformedModelMatrix();
-		glm::mat4 mvp2 = other->getTransformedModelMatrix();
-
 		// Jedes Dreieck von diesem Objekt ...
 		for (unsigned int i = 0; i < this->collisionCube.size(); i++) {
 			Triangle t1 = this->collisionCube[i];
-
-			/*glm::vec3 a1 = glm::vec3(mvp1 * glm::vec4(t1.a, 1.0));
-			glm::vec3 b1 = glm::vec3(mvp1 * glm::vec4(t1.b, 1.0));
-			glm::vec3 c1 = glm::vec3(mvp1 * glm::vec4(t1.c, 1.0));
 			
 			// ... mit jedem Dreieck des anderen Objektes vergleichen
 			for (unsigned int j = 0; j < other->collisionCube.size(); j++) {
 				Triangle t2 = other->collisionCube[j];
 
-				glm::vec3 a2 = glm::vec3(mvp2 * glm::vec4(t2.a, 1.0));
-				glm::vec3 b2 = glm::vec3(mvp2 * glm::vec4(t2.b, 1.0));
-				glm::vec3 c2 = glm::vec3(mvp2 * glm::vec4(t2.c, 1.0));
-
-				if (math::Math::doTrianglesIntersect(a1, b1, c1, a2, b2, c2)) { // berühren oder schneiden sich die zwei Dreiecke?
+				if (math::Math::doTrianglesIntersect(t1.a, t1.b, t1.c, t2.a, t2.b, t2.c)) { // berühren oder schneiden sich die zwei Dreiecke?
 					return true;
 				}
 			}
-		}*/
-
+		}
 	} // if - einfacher test
 
 	return false;
+}
+
+void AssimpModel::updateCollisionModel(long unsigned int frame) {
+	if (m_modelChanged
+		|| (m_isAttachedToCamera && frame > collisionModelUpdatedOnFrame)) {
+
+		glm::mat4 mvp1 = this->getTransformedModelMatrix();
+
+		std::vector<Triangle> newModel;
+
+		// Jedes Dreieck von diesem Objekt ...
+		for (unsigned int i = 0; i < this->collisionCube.size(); i++) {
+			Triangle t1 = this->collisionCube[i];
+
+			glm::vec3 a1 = glm::vec3(mvp1 * glm::vec4(t1.a, 1.0));
+			glm::vec3 b1 = glm::vec3(mvp1 * glm::vec4(t1.b, 1.0));
+			glm::vec3 c1 = glm::vec3(mvp1 * glm::vec4(t1.c, 1.0));
+
+			newModel.push_back(Triangle(a1, b1, c1));
+		}
+
+		this->collisionCube = newModel;
+		collisionModelUpdatedOnFrame = frame;
+		m_modelChanged = false;
+	}
 }
 
 void AssimpModel::draw() {

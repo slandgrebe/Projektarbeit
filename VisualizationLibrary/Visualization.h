@@ -427,6 +427,22 @@ extern "C" DLL_API void APIENTRY tiltCamera(float degrees);
 */
 extern "C" DLL_API void APIENTRY changeCameraSpeed(float speed);
 
+extern "C" DLL_API void APIENTRY teest(void);
+
+/** Setzt die Kollisionsgruppe von diesem Modell
+* Modelle welche in derselben Kollisionsgruppe sind, werden nicht miteinander verglichen. Kollisionsgruppe 0 wird komplett ignoriert.
+\n
+
+* Aus Kompatibilitätsgründen muss für die Rückgabe von Bool Werten auf int ausgewichen werden.\n
+* Der Wert 0 entspricht dabei jeweils False und der Wert 1 entspricht True.
+
+* @author Stefan Landgrebe
+* @param modelId ID des Modells
+* @param collisionGroup Kollisionsgruppe
+* @return (Bool) Prüfung ob die Operation durchgeführt werden konnte
+* @see setCollisionGroup()
+*/
+extern "C" DLL_API int APIENTRY setCollisionGroup(const unsigned int modelId, const unsigned int collisionGroup);
 
 /** Länge des Textes mit allen erkannten Kollisionen
 * @author Stefan Landgrebe
