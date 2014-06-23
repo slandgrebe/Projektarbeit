@@ -95,13 +95,12 @@ namespace visual {
 			float zMax = 0;
 			float zMin = 0;
 
-			std::vector<Triangle> collisionCube;
+			std::vector<Triangle> collisionModel;
 
 			
 			long unsigned int collisionModelUpdatedOnFrame;
 
 		public:
-			void updateCollisionModel(long unsigned int frame);
 			/** Konstruktor
 			Für das eigentliche Laden des 3D Modells muss zusätzlich die Methode loadModel() aufgerufen werden.
 			* @author Stefan Landgrebe
@@ -122,6 +121,11 @@ namespace visual {
 			* @see Model::loadModel()
 			*/
 			bool loadModel(const std::string filename);
+
+
+			bool addCollisionModel(const std::string filename);
+
+			void updateCollisionModel(long unsigned int frame);
 
 			/** Prüft ob dieses Modell ein anderes schneidet.
 			* @author Stefan Landgrebe

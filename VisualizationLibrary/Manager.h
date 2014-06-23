@@ -293,6 +293,20 @@ namespace visual {
 		*/
 		void doCollisionDetection(long unsigned int frame);
 
+		bool addCollisionModel(GLuint modelId, std::string path);
+
+		/** Setzt die Kollisionsgruppe von diesem Modell
+		* Modelle welche in derselben Kollisionsgruppe sind, werden nicht miteinander verglichen.\n
+		* Gruppe 0: Ambiente\n
+		* Gruppe 1: Spieler\n
+		* Gruppe 2: Hindernisse\n
+		* Gruppe 3: Bonus
+		* @author Stefan Landgrebe
+		* @param collisionGroup Kollisionsgruppe
+		* @return Prüfung ob die Operation durchgeführt werden konnte
+		*/
+		bool collisionGroup(GLuint modelId, unsigned int collisionGroup);
+
 		/** Länge des Textes mit allen erkannten Kollisionen
 		* @author Stefan Landgrebe
 		* @return Länge des Textes
@@ -311,14 +325,7 @@ namespace visual {
 		* @see collisionsTextLength()
 		*/
 		std::string collisionsText(void);
-
-		/** Setzt die Kollisionsgruppe von diesem Modell
-		* Modelle welche in derselben Kollisionsgruppe sind, werden nicht miteinander verglichen. Kollisionsgruppe 0 wird komplett ignoriert.
-		* @author Stefan Landgrebe
-		* @param collisionGroup Kollisionsgruppe
-		* @return Prüfung ob die Operation durchgeführt werden konnte
-		*/
-		bool setCollisionGroup(GLuint modelId, unsigned int collisionGroup);
+		
 
 		/** Sorgt dafür dass alle Objekte neu gezeichnet werden. Diese Methode wird von GraphicEngine aufgerufen
 		* @author Stefan Landgrebe

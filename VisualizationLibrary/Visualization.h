@@ -427,10 +427,28 @@ extern "C" DLL_API void APIENTRY tiltCamera(float degrees);
 */
 extern "C" DLL_API void APIENTRY changeCameraSpeed(float speed);
 
-extern "C" DLL_API void APIENTRY teest(void);
+
+/** Standardmässig wird für die Kollisionserkennung ein Quader erzeugt, welcher das ganze Modell umschliesst.
+* Mit dieser Methode wird das angegebene Modell zur Kollisionserkennung verwendet.
+\n
+
+* Aus Kompatibilitätsgründen muss für die Rückgabe von Bool Werten auf int ausgewichen werden.\n
+* Der Wert 0 entspricht dabei jeweils False und der Wert 1 entspricht True.
+
+* @author Stefan Landgrebe
+* @param modelId ID des Modells
+* @param filename Pfad zum Modell
+* @return (Bool) Prüfung ob die Operation durchgeführt werden konnte
+* @see addCollisionModel()
+*/
+extern "C" DLL_API int APIENTRY addCollisionModel(const unsigned int modelId, const char* filename);
 
 /** Setzt die Kollisionsgruppe von diesem Modell
-* Modelle welche in derselben Kollisionsgruppe sind, werden nicht miteinander verglichen. Kollisionsgruppe 0 wird komplett ignoriert.
+* Modelle welche in derselben Kollisionsgruppe sind, werden nicht miteinander verglichen. \n
+* Gruppe 0: Ambiente\n
+* Gruppe 1: Spieler\n
+* Gruppe 2: Hindernisse\n
+* Gruppe 3: Bonus
 \n
 
 * Aus Kompatibilitätsgründen muss für die Rückgabe von Bool Werten auf int ausgewichen werden.\n
@@ -440,9 +458,9 @@ extern "C" DLL_API void APIENTRY teest(void);
 * @param modelId ID des Modells
 * @param collisionGroup Kollisionsgruppe
 * @return (Bool) Prüfung ob die Operation durchgeführt werden konnte
-* @see setCollisionGroup()
+* @see collisionGroup()
 */
-extern "C" DLL_API int APIENTRY setCollisionGroup(const unsigned int modelId, const unsigned int collisionGroup);
+extern "C" DLL_API int APIENTRY collisionGroup(const unsigned int modelId, const unsigned int collisionGroup);
 
 /** Länge des Textes mit allen erkannten Kollisionen
 * @author Stefan Landgrebe

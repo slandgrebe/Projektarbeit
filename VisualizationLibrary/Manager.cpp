@@ -520,7 +520,20 @@ void Manager::changeCameraSpeed(float speed) {
 	graphics::GraphicEngine::getInstance()->camera()->changeSpeed(speed);
 }
 
-bool Manager::setCollisionGroup(GLuint modelId, unsigned int newCollisionGroup) {
+
+bool Manager::addCollisionModel(GLuint modelId, std::string filename) {
+	if (assimpModelList.find(modelId) != assimpModelList.end()) {
+		model::AssimpModel* model = assimpModelList.find(modelId)->second;
+
+		return model->addCollisionModel(filename);
+	}
+	else {
+		Log().error() << "Das Model mit der modelId '" << modelId << "' konnte waehrend dem Versuch dessen Kollisionsmodell zu setzen nicht gefunden werden oder es handelt sich dabei nicht um ein 3D Modell.";
+	}
+
+	return false;
+}
+bool Manager::collisionGroup(GLuint modelId, unsigned int newCollisionGroup) {
 	if (assimpModelList.find(modelId) != assimpModelList.end()) {
 		model::AssimpModel* model = assimpModelList.find(modelId)->second;
 
@@ -579,25 +592,21 @@ void Manager::doCollisionDetection(long unsigned int frame) {
 	GLuint collisionWithObstacle = 0;
 	GLuint collisionWithBonus = 0;
 
-	if (collisionGroupPlayer.size() > 0) {
-		Log().info() << "pos z: " << assimpModelList[collisionGroupPlayer.front()]->position().z;
-	}
-
 	// collison Model aller Models der Collision group collisionGroupPlayer neu berechnen
 	clock_t begin2 = clock();
 	for (std::list<GLuint>::const_iterator itPlayer = collisionGroupPlayer.begin(), end = collisionGroupPlayer.end(); itPlayer != end; ++itPlayer) {
 		model::AssimpModel* player = assimpModelList[*itPlayer];
 		player->updateCollisionModel(frame);
 	}
-	Log().info() << "update all player models(" << collisionGroupPlayer.size() << ") " << float(clock() - begin2) << "ms. " << this->m_collisions;
+	//Log().info() << "update all player models(" << collisionGroupPlayer.size() << ") " << float(clock() - begin2) << "ms. " << this->m_collisions;
 
 	begin2 = clock();
 	for (std::map<GLuint, model::AssimpModel*>::const_iterator itModel = assimpModelList.begin(), end = assimpModelList.end(); itModel != end; ++itModel) {
 		model::AssimpModel* model = itModel->second;
 		model->updateCollisionModel(frame);
 	}
-	Log().info() << "update all models(" << assimpModelList.size() << ") " << float(clock() - begin2) << "ms. " << this->m_collisions;
-	Log().info() << "1 Collision Detection in " << float(clock() - begin) << "ms. " << this->m_collisions;
+	//Log().info() << "update all models(" << assimpModelList.size() << ") " << float(clock() - begin2) << "ms. " << this->m_collisions;
+	//Log().info() << "1 Collision Detection in " << float(clock() - begin) << "ms. " << this->m_collisions;
 	// kollision mit hindernis suchen
 	for (std::list<GLuint>::const_iterator itPlayer = collisionGroupPlayer.begin(), endPlayer = collisionGroupPlayer.end(); itPlayer != endPlayer; ++itPlayer) {
 		model::AssimpModel* player = assimpModelList[*itPlayer];
@@ -607,7 +616,7 @@ void Manager::doCollisionDetection(long unsigned int frame) {
 
 			if (player->doesIntersect(obstacle, frame)) { // exaktere prüfung
 				collisionWithObstacle = *itObstacles;
-				Log().info() << *itPlayer << " " << *itObstacles;
+				//Log().info() << *itPlayer << " " << *itObstacles;
 				break;
 			}
 		}
@@ -616,7 +625,7 @@ void Manager::doCollisionDetection(long unsigned int frame) {
 			break;
 		}
 	}
-	Log().info() << "2 Collision Detection in " << float(clock() - begin) << "ms. " << this->m_collisions;
+	//Log().info() << "2 Collision Detection in " << float(clock() - begin) << "ms. " << this->m_collisions;
 
 	// kollision mit bonus suchen
 	for (std::list<GLuint>::const_iterator itPlayer = collisionGroupPlayer.begin(), endPlayer = collisionGroupPlayer.end(); itPlayer != endPlayer; ++itPlayer) {
@@ -627,7 +636,7 @@ void Manager::doCollisionDetection(long unsigned int frame) {
 
 			if (player->doesIntersect(bonus, frame)) { // exaktere prüfung
 				collisionWithBonus = *itBonus;
-				Log().info() << *itPlayer << " " << *itBonus;
+				//Log().info() << *itPlayer << " " << *itBonus;
 				break;
 			}
 		}
@@ -636,7 +645,7 @@ void Manager::doCollisionDetection(long unsigned int frame) {
 			break;
 		}
 	}
-	Log().info() << "3 Collision Detection in " << float(clock() - begin) << "ms. " << this->m_collisions;
+	//Log().info() << "3 Collision Detection in " << float(clock() - begin) << "ms. " << this->m_collisions;
 
 	// collision text generieren
 	if (collisionWithObstacle != 0) {

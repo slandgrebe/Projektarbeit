@@ -165,7 +165,7 @@ void GraphicEngine::worker(void) {
 		// measure time
 		begin = now;
 		now = clock();
-		Log().info() << "Bild gezeichnet in " << float(now - begin) << "ms. Das entspricht " << CLOCKS_PER_SEC / (now - begin) << " FPS." ;
+		//Log().info() << "Bild gezeichnet in " << float(now - begin) << "ms. Das entspricht " << CLOCKS_PER_SEC / (now - begin) << " FPS." ;
 		//Log().debug() << "Bild gezeichnet in " << timeDifference << "ms. " << 1 / timeDifference << " FPS";
 
 		frame++;

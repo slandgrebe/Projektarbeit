@@ -67,7 +67,9 @@ namespace VisualizationExample
         public extern static void changeCameraSpeed(float speed);
 
         [DllImport("Visualization.dll")]
-        public extern static bool setCollisionGroup(uint modelId, uint collisionGroup);
+        public extern static bool addCollisionModel(uint modelId, string filename);
+        [DllImport("Visualization.dll")]
+        public extern static bool collisionGroup(uint modelId, uint collisionGroup);
         [DllImport("Visualization.dll")]
         public extern static uint collisionsTextLength();
         [DllImport("Visualization.dll")]
@@ -126,8 +128,9 @@ namespace VisualizationExample
                 rotate(modelId, -90.0f, 1.0f, 0.0f, 0.0f);
                 highlightColor(modelId, 0.0f, 1.0f, 0.0f, 1.0f);
                 isHighlighted(modelId, true);
-                setCollisionGroup(modelId, 1);
+                collisionGroup(modelId, 1);
                 attachToCamera(modelId, true);
+                addCollisionModel(modelId, "data/models/rail/rail.3ds");
             }
 
             // 100 hindernisse
@@ -149,7 +152,7 @@ namespace VisualizationExample
                 rotate(modelId, -90.0f, 1.0f, 0.0f, 0.0f);
                 highlightColor(modelId, 0.0f, 1.0f, 0.0f, 1.0f);
                 isHighlighted(modelId, true);
-                setCollisionGroup(modelId, 2);
+                collisionGroup(modelId, 2);
             }
 
             // 100 bonus
@@ -171,7 +174,7 @@ namespace VisualizationExample
                 rotate(modelId, -90.0f, 1.0f, 0.0f, 0.0f);
                 highlightColor(modelId, 0.0f, 1.0f, 0.0f, 1.0f);
                 isHighlighted(modelId, true);
-                setCollisionGroup(modelId, 3);
+                collisionGroup(modelId, 3);
             }
 
             float rotation = 0f;
