@@ -18,7 +18,7 @@ namespace JumpAndRun.GameLogic
         /// <summary>Spielfigur der Kamera anhängen</summary>
         public bool Attach { private get; set; }
         /// <summary>Aktuell noch verfügbare Leben der Spielfigur</summary>
-        public uint Lives { get; set; }
+        public uint Lifes { get; set; }
         /// <summary>Aktueller Punktestand der Spielfigur</summary>
         public uint Score { get; set; }
 

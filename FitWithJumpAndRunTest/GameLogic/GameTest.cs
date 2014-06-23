@@ -77,7 +77,7 @@ namespace JumpAndRun
             Game game = Game.Instance;
             game.LevelXmlPath = "/data/levels/test/level.xml";
             game.Init();
-            game.Player.Lives = 0;
+            game.Player.Lifes = 0;
             game.Start();
             Data.SetBody();
             game.Update();
@@ -90,7 +90,7 @@ namespace JumpAndRun
             Game game = Game.Instance;
             game.LevelXmlPath = "/data/levels/test/level.xml";
             game.Init();
-            game.Player.Lives = 5;
+            game.Player.Lifes = 5;
             game.Start();
             Data.SetBody();
             game.Update();

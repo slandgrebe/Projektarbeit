@@ -60,12 +60,12 @@ namespace JumpAndRun.GameLogic
             level = (Level)serializer.Deserialize(stream);
             stream.Close();
             level.Deserialize();
-            level.Load();
+            level.Load(20);
 
             Player.Scale = 0.7f;
             Player.Attach = true;
             Player.Score = 0;
-            Player.Lives = level.Lives;
+            Player.Lifes = level.Lifes;
             
             gameUi.Show();
             GameStatus = GameStatus.Loadet;
@@ -137,13 +137,13 @@ namespace JumpAndRun.GameLogic
                         {
                             if (obstacle.Collision(Player, false))
                             {
-                                Player.Lives--;
+                                Player.Lifes--;
                             }
                         }
                     }
 
                     // Neuer Score, Lebensvorrat im GUI anzeigen
-                    gameUi.Lives = Player.Lives;
+                    //////gameUi.Lives = Player.Lives;
                     gameUi.Score = Player.Score;
                     gameUi.Update();
 
@@ -157,8 +157,8 @@ namespace JumpAndRun.GameLogic
         }
 
         /// <summary>
-        /// verbirgt das GUI und löscht das Level
-        /// </summary>
+        ///// verbirgt das GUI und löscht das Level
+        ///// </summary>
         public void ResetGame()
         {
             gameUi.Hide();
@@ -171,7 +171,7 @@ namespace JumpAndRun.GameLogic
         /// </summary>
         private void CheckGameOver()
         {
-            if (Player.Lives == 0)
+            if (Player.Lifes == 0)
             {
                 GameStatus = GameStatus.GameOver;
             }
@@ -182,7 +182,7 @@ namespace JumpAndRun.GameLogic
         /// </summary>
         private void CheckLevelEnd()
         {
-            if (level.LevelLength - level.segments.Last().Length + 2 < Player.GetPosition() * -1)
+            if (level.Length - level.segments.Last().Length + 2 < Player.GetPosition() * -1)
             {
                 GameStatus = GameStatus.Successful;
             }
