@@ -659,7 +659,10 @@ void Manager::doCollisionDetection(long unsigned int frame) {
 	}
 
 	this->m_collisions = collisions.str();
-	Log().info() << "Collision Detection in " << float(clock() - begin) << "ms. " << this->m_collisions;
+	if (collisions.str().length() > 0) {
+		Log().info() << "Collision detected: " << collisions.str();
+	}
+	//Log().info() << "Collision Detection in " << float(clock() - begin) << "ms. " << this->m_collisions;
 }
 unsigned int Manager::collisionsTextLength(void) {
 	m_collisionsCache = m_collisions;
