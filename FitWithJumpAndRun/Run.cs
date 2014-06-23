@@ -90,9 +90,7 @@ namespace JumpAndRun
         /// </summary>
         public Run()
         {
-            Console.WriteLine("hallo");
             Initialize();
-            Console.WriteLine("hallo");
             System.Threading.Thread.Sleep(30);
             while(Window.IsRunning())
             {
@@ -157,9 +155,9 @@ namespace JumpAndRun
                             Body.Instance.Scale(0.1f);
                             noTrackingUi.Hide();
                             menuUi.Show();
-                            menuUi.PositionCursor(Body.Instance.HandRight.X, Body.Instance.HandRight.Y);
+                            menuUi.PositionCursor(Body.Instance.HandRight.X, Body.Instance.HandRight.Y, Body.Instance.Head.X, Body.Instance.Head.Y, Body.Instance.ShoulderRight.X, Body.Instance.ShoulderRight.Y);
                             // Klickgeste auf Button
-                            if (menuUi.HoverButton(Body.Instance.HandRight.X, Body.Instance.HandRight.Y))
+                            if (menuUi.CursorPosition(Body.Instance.HandRight.X, Body.Instance.HandRight.Y))
                             {
                                 if (click.IsClicked())
                                 {

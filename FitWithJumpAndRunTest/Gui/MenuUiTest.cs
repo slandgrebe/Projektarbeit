@@ -41,35 +41,35 @@ namespace JumpAndRun.Gui
         public void MenuUi_HoverButtonTrue()
         {
             MenuUi ui = new MenuUi();
-            Assert.AreEqual(true, ui.HoverButton(0,0), "Hand ist auf dem Button positioniert.");
+            Assert.AreEqual(true, ui.CursorPosition(0,0), "Hand ist auf dem Button positioniert.");
         }
 
         [TestMethod]
         public void MenuUi_HoverButtonFalseOver()
         {
             MenuUi ui = new MenuUi();
-            Assert.AreEqual(false, ui.HoverButton(0,0.1f), "Hand ist nicht auf dem Button positioniert.");
+            Assert.AreEqual(false, ui.CursorPosition(0,0.1f), "Hand ist nicht auf dem Button positioniert.");
         }
 
         [TestMethod]
         public void MenuUi_HoverButtonFalseUnder()
         {
             MenuUi ui = new MenuUi();
-            Assert.AreEqual(false, ui.HoverButton(0,-0.1f), "Hand ist nicht auf dem Button positioniert.");
+            Assert.AreEqual(false, ui.CursorPosition(0,-0.1f), "Hand ist nicht auf dem Button positioniert.");
         }
 
         [TestMethod]
         public void MenuUi_HoverButtonFalseLeft()
         {
             MenuUi ui = new MenuUi();
-            Assert.AreEqual(false, ui.HoverButton(0.1f,0), "Hand ist nicht auf dem Button positioniert.");
+            Assert.AreEqual(false, ui.CursorPosition(0.1f,0), "Hand ist nicht auf dem Button positioniert.");
         }
 
         [TestMethod]
         public void MenuUi_HoverButtonFalseRight()
         {
             MenuUi ui = new MenuUi();
-            Assert.AreEqual(false, ui.HoverButton(-0.1f,0), "Hand ist nicht auf dem Button positioniert.");
+            Assert.AreEqual(false, ui.CursorPosition(-0.1f,0), "Hand ist nicht auf dem Button positioniert.");
         }
     }
 }

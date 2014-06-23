@@ -16,10 +16,10 @@ namespace JumpAndRun.Gui
         public float Position { get; set; }
 
         /// <summary>ID des Hintergrundbildes</summary>
-        private uint backgroundImageId = 0;
+        private View.Point backgroundImage = null;
 
         /// <summary>ID des Cursors</summary>
-        private uint cursorId = 0;
+        private View.Point cursor = null;
         
         private View.Text title = null;
 
@@ -46,8 +46,8 @@ namespace JumpAndRun.Gui
              */
 
             // Hintergrund
-            backgroundImageId = View.Model.AddPoint("data/background/dschungel.png");
-            
+            backgroundImage = new View.Point("data/background/dschungel.png");
+
             // Titel
             title = new View.Text("data/fonts/SUPERTIK.TTF");
 
@@ -61,16 +61,14 @@ namespace JumpAndRun.Gui
             slogan = new View.Text("data/fonts/SUPERTIK.TTF");
 
             // Cursor
-            cursorId = View.Model.AddPoint("data/models/hand/hand-stop-2.jpg");
+            cursor = new View.Point("data/models/hand/hand-stop-2.jpg");
 
             /*
-             * Modify Object 
-             * http://paletton.com/#uid=50J0B0kllll6HHOe1sOsEdSGU6p
+             * Modify Object
              */
             // Hintergrund
-            bool test = View.Model.IsCreated(backgroundImageId);
-            while (backgroundImageId != 0 && !View.Model.IsCreated(backgroundImageId)) { }
-            View.Model.Scale(backgroundImageId, 0.4f, 0.4f, 1);
+            backgroundImage.Scale(0.4f, 0.4f);
+            backgroundImage.Position(0, 0, 100);
 
             // Titel
             title.setText("Wie anspruchsvoll darfs denn sein");
@@ -97,9 +95,9 @@ namespace JumpAndRun.Gui
             slogan.Position(0.2f, -0.9f);
 
             // Cursor
-            while (cursorId != 0 && !View.Model.IsCreated(cursorId)) { }
-            View.Model.Scale(cursorId, 0.03f, 0.05f, 1);
-
+            //cursor.Scale(0.3f, 0.5f);
+            cursor.Scale(100f, 100f);
+            cursor.Position(0, 0, -100);
 
             // GUI nicht anzeigen
             Hide();
@@ -113,19 +111,22 @@ namespace JumpAndRun.Gui
             if (!IsShown)
             {
                 Camera.ChangeCameraSpeed(0);
-                View.Model.Position(backgroundImageId, Position, 0f, -0.3f);
+                //backgroundImage.Position(Position, 0f, -0.3f);
+                backgroundImage.Show();
 
                 title.Show();
                 
-                buttonEasy.Show();
+                /*buttonEasy.Show();
                 buttonNormal.Show();
-                buttonDifficult.Show();
+                buttonDifficult.Show();*/
 
                 gameName.Show();
                 slogan.Show();
 
                 Camera.PositionCamera(Position, 0, 0);
-                View.Model.AttachToCamera(cursorId, true);
+                Console.WriteLine("test");
+                cursor.Show();
+                //View.Model.AttachToCamera(cursorId, true);
                 
                 IsShown = true;
             }
@@ -138,7 +139,8 @@ namespace JumpAndRun.Gui
         {
             if (IsShown)
             {
-                View.Model.Position(backgroundImageId, -1000, 0f, -0.3f);
+                //View.Model.Position(backgroundImageId, -1000, 0f, -0.3f);
+                backgroundImage.Hide();
 
                 title.Hide();
 
@@ -149,7 +151,8 @@ namespace JumpAndRun.Gui
                 gameName.Hide();
                 slogan.Hide();
 
-                View.Model.Position(cursorId, -1000, 0f, -0.2f);
+                //View.Model.Position(cursorId, -1000, 0f, -0.2f);
+                cursor.Hide();
 
                 IsShown = false;
             }
@@ -160,17 +163,34 @@ namespace JumpAndRun.Gui
         /// </summary>
         /// <param name="x">X Koordinate</param>
         /// <param name="y">Y Koordinate</param>
-        public void PositionCursor(float x, float y)
+        public void PositionCursor(float handX, float handY, float headX, float headY, float shoulderX, float shoulderY)
         {
-            View.Model.Position(cursorId, x, y, -0.2f);
-            if (HoverButton(x, y))
+            // convert
+            /*
+             * Oben links: headX/headY
+             * Oben rechts: (headX + shoulder
+             */
+
+            float x = 0f;
+            float y = 0f;
+
+
+            /*x = x * 2;
+            y = y * 4;
+            y = y - y / 2;*/
+
+            //Console.WriteLine("Cursor: " + x + "/" + y);
+            buttonEasy.Text("Cursor: " + x + "/" + y);
+
+            //cursor.Position(x, y, -1f);
+            /*if (CursorPosition(x, y))
             {
                 buttonEasy.Highlight(true);
             }
             else
             {
                 buttonEasy.Highlight(false);
-            }
+            }*/
         }
 
         /// <summary>
@@ -179,12 +199,13 @@ namespace JumpAndRun.Gui
         /// <param name="x">X Koordinate des Cursors</param>
         /// <param name="y">Y Koordinate des Cursors</param>
         /// <returns>True, wenn sich der Cursor sich innerhalb des Buttons befindet</returns>
-        public bool HoverButton(float x, float y)
-        {
-            if (x > -0.04 && x < 0.04 && y > -0.025 && y < 0.025)
+        public bool CursorPosition(float x, float y)
+        {            
+
+            /*if (x > -0.04 && x < 0.04 && y > -0.025 && y < 0.025)
             {
                 return true;
-            }
+            }*/
             return false;
         }
     }
