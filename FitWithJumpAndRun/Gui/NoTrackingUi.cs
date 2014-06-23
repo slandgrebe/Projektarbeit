@@ -16,17 +16,18 @@ namespace JumpAndRun.Gui
         public float Position { get; set; }
         /// <summary>ID des Hintergrundbildes</summary>
         private uint backgroundId = 0;
-        /// <summary>ID des Textes</summary>
-        private uint textId = 0;
+        /// <summary>Text</summary>
+        private View.Text text = null;
+        private View.Text hint = null;
         /// <summary>Zeigt an, ob dieses GUI aktuell aktiv ist, oder nicht.</summary>
-        public bool IsShow { get; set; }
+        public bool IsShown { get; set; }
 
         /// <summary>
         /// Initialisiert das GUI, zeigt sie aber nicht an.
         /// </summary>
         public NoTrackingUi()
         {
-            IsShow = true;
+            IsShown = true;
             
             // Hintergrund erzeugen
             backgroundId = View.Model.AddPoint("data/background/white.jpg");
@@ -34,11 +35,17 @@ namespace JumpAndRun.Gui
             View.Model.Scale(backgroundId, 10, 10, 1);
 
             // Text erzeugen
-            textId = Text.AddText("data/fonts/arial.ttf");
-            while (!Text.IsCreated(textId)) { }
-            Text.String(textId, "Keine Person erkannt!");
-            Text.TextSize(textId, 50);
-            Text.TextColor(textId, 0f, 0f, 0f, 1.0f);
+            text = new Text("data/fonts/arial.ttf");
+            text.setText("Ich kann im Moment keine Person erkennen.");
+            text.Size(50);
+            text.Color(0f, 0f, 0f, 1f);
+            text.Position(0f, 0f);
+
+            hint = new Text("data/fonts/arial.ttf");
+            hint.setText("Stell dich etwa 3-5m vor der Kinect hin");
+            hint.Size(50);
+            hint.Color(0f, 0f, 0f, 1f);
+            hint.Position(0f, -0.25f);
 
             // GUI nicht anzeigen
             Hide();
@@ -49,13 +56,14 @@ namespace JumpAndRun.Gui
         /// </summary>
         public void Show()
         {
-            if (!IsShow)
+            if (!IsShown)
             {
                 Camera.ChangeCameraSpeed(0);
                 View.Model.Position(backgroundId, Position, 0f, -0.3f);
-                Text.Position(textId, 0, 0, 0);
+                text.Show();
+                hint.Show();
                 Camera.PositionCamera(Position, 0, 0);
-                IsShow = true;
+                IsShown = true;
             }
         }
 
@@ -64,11 +72,12 @@ namespace JumpAndRun.Gui
         /// </summary>
         public void Hide()
         {
-            if (IsShow)
+            if (IsShown)
             {
                 View.Model.Position(backgroundId, -1000, 0f, -0.3f);
-                Text.Position(textId, -1000, 0, 0);
-                IsShow = false;
+                text.Hide();
+                hint.Hide();
+                IsShown = false;
             }
         }
     }

@@ -6,7 +6,7 @@ namespace View
     /// <summary>
     /// Einbinden der Textfunktionen der Visualization.dll in C#
     /// </summary>
-    public static class Text
+    public class Text
     {
         /// <summary>
         /// Fügt ein Textelement hinzu. Hierbei handelt sich um ein GUI Element.
@@ -67,5 +67,62 @@ namespace View
         /// <param name="modelId">ID des zu entfernenden Modells</param>
         [DllImport("Visualization.dll", EntryPoint = "dispose")]
         public extern static void Dispose(uint textId);
+
+
+        private uint modelId = 0;
+        private float x = 0f;
+        private float y = 0f;
+        public Text(string fontFilename)
+        {
+            float buttonScaleX = 0.5f, buttonScaleY = 0.25f;
+            int buttonTextSize = 40;
+            float buttonTextR = 0f, buttonTextG = 0f, buttonTextB = 0f, buttonTextA = 1f;
+            float buttonR = 0.667f, buttonG = 0.478f, buttonB = 0.224f, buttonA = 1f;
+
+            modelId = View.Model.AddButton(fontFilename);
+
+            while (modelId != 0 && !View.Model.IsCreated(modelId)) { }
+            View.Model.Scale(modelId, buttonScaleX, buttonScaleY, 0);
+            View.Text.String(modelId, "Text");
+            View.Text.TextColor(modelId, buttonTextR, buttonTextG, buttonTextB, buttonTextA);
+            View.Text.TextSize(modelId, buttonTextSize);
+            View.Model.HighlightColor(modelId, buttonR, buttonG, buttonB, buttonA);
+            View.Model.IsHighlighted(modelId, true);
+            View.Model.Position(modelId, 0f, 0f, 0f);
+
+            modelId = View.Text.AddText(fontFilename);
+
+            while (modelId != 0 && !View.Model.IsCreated(modelId)) { }
+            View.Text.String(modelId, "Text");
+            View.Text.TextSize(modelId, 36);
+            View.Text.Position(modelId, x, y, 0f);
+        }
+
+        public void setText(string text)
+        {
+            View.Text.String(modelId, text);
+        }
+        public void Size(int points)
+        {
+            View.Text.TextSize(modelId, points);
+        }
+        public void Position(float x, float y)
+        {
+            this.x = x;
+            this.y = y;
+            View.Text.Position(modelId, x, y, 0f);
+        }
+        public void Color(float r, float g, float b, float a)
+        {
+            View.Text.TextColor(modelId, r, g, b, a);
+        }
+        public void Show()
+        {
+            View.Text.Position(modelId, x, y, 0f);
+        }
+        public void Hide()
+        {
+            View.Text.Position(modelId, -100f, 0f, 0f);
+        }
     }
 }

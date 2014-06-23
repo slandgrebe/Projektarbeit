@@ -34,11 +34,11 @@ namespace JumpAndRun.Gui
             View.Model.Scale(backgroundId, 10, 10, 1);
 
             // Text erzeugen
-            textId = Text.AddText("data/fonts/arial.ttf");
-            while (!Text.IsCreated(textId)) { }
-            Text.String(textId, "Level wird geladen");
-            Text.TextSize(textId, 50);
-            Text.TextColor(textId, 0f, 0f, 0f, 1.0f);
+            textId = View.Text.AddText("data/fonts/arial.ttf");
+            while (!View.Text.IsCreated(textId)) { }
+            View.Text.String(textId, "Level wird geladen");
+            View.Text.TextSize(textId, 50);
+            View.Text.TextColor(textId, 0f, 0f, 0f, 1.0f);
 
             // GUI nicht anzeigen
             Hide();
@@ -52,7 +52,7 @@ namespace JumpAndRun.Gui
             if (!IsShow)
             {
                 View.Model.Position(backgroundId, Position, 0f, -0.3f);
-                Text.Position(textId, 0, 0, 0);
+                View.Text.Position(textId, 0, 0, 0);
                 Camera.PositionCamera(Position, 0, 0);
                 IsShow = true;
             }

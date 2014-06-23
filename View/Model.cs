@@ -34,6 +34,10 @@ namespace View
         /// </summary>
         /// <param name="modelId">ID des zu prüfenden Modells</param>
         /// <returns>Liefert True wenn das Objekt existiert, ansonsten False</returns>
+
+        [DllImport("Visualization.dll")]
+        public extern static uint addText(string fontFilename);
+
         [DllImport("Visualization.dll", EntryPoint = "isCreated")]
         public extern static bool IsCreated(uint modelId);
         /// <summary>
@@ -133,6 +137,7 @@ namespace View
         /// <returns>Prüfung ob die Operation durchgeführt werden konnte</returns>
         [DllImport("Visualization.dll", EntryPoint = "attachToCamera")]
         public extern static bool AttachToCamera(uint modelId, bool choice);
+
         /// <summary>
         /// Länge des Textes mit allen erkannten Kollisionen
         /// </summary>
@@ -153,5 +158,7 @@ namespace View
         /// <returns>Prüfung ob die Operation durchgeführt werden konnte</returns>
         [DllImport("Visualization.dll", EntryPoint = "collisionsText")]
         public extern static bool CollisionsText(System.Text.StringBuilder text, int length);
+
+
     }
 }

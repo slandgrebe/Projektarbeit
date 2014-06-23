@@ -24,17 +24,17 @@ namespace JumpAndRun.Gui
         {
             MenuUi ui = new MenuUi();
             ui.Show();
-            Assert.AreEqual(true, ui.IsShow, "Gui wird angezeigt.");
+            Assert.AreEqual(true, ui.IsShown, "Gui wird angezeigt.");
         }
 
         [TestMethod]
         public void MenuUi_Hide()
         {
             MenuUi ui = new MenuUi();
-            Assert.AreEqual(false, ui.IsShow, "Gui wird nach Initialisierung nicht angezeigt.");
+            Assert.AreEqual(false, ui.IsShown, "Gui wird nach Initialisierung nicht angezeigt.");
             ui.Show();
             ui.Hide();
-            Assert.AreEqual(false, ui.IsShow, "Gui wird nicht angezeigt.");
+            Assert.AreEqual(false, ui.IsShown, "Gui wird nicht angezeigt.");
         }
 
         [TestMethod]

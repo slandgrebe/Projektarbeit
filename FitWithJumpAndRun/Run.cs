@@ -90,7 +90,9 @@ namespace JumpAndRun
         /// </summary>
         public Run()
         {
+            Console.WriteLine("hallo");
             Initialize();
+            Console.WriteLine("hallo");
             System.Threading.Thread.Sleep(30);
             while(Window.IsRunning())
             {
@@ -126,6 +128,7 @@ namespace JumpAndRun
                     else
                     {
                         modus = Modus.NotTracked;
+                        //modus = Modus.Menu;
                     }
 
                     // Programm mit Geste beenden
