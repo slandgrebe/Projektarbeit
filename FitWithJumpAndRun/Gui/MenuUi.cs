@@ -111,6 +111,7 @@ namespace JumpAndRun.Gui
             if (!IsShown)
             {
                 Camera.ChangeCameraSpeed(0);
+                Console.WriteLine("pos: " + Position);
                 //backgroundImage.Position(Position, 0f, -0.3f);
                 backgroundImage.Show();
 

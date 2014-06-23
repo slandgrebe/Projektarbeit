@@ -16,6 +16,7 @@ namespace JumpAndRun.Gui
         public float Position { get; set; }
         /// <summary>ID des Hintergrundbildes</summary>
         private uint backgroundId = 0;
+        private View.Point background = null;
         /// <summary>Text</summary>
         private View.Text text = null;
         private View.Text hint = null;
@@ -30,9 +31,9 @@ namespace JumpAndRun.Gui
             IsShown = true;
             
             // Hintergrund erzeugen
-            backgroundId = View.Model.AddPoint("data/background/white.jpg");
-            while (backgroundId != 0 && !View.Model.IsCreated(backgroundId)) { }
-            View.Model.Scale(backgroundId, 10, 10, 1);
+            background = new View.Point("data/background/white.jpg");
+            background.Scale(10, 10);
+            background.Position(Position, 0, -0.3f);
 
             // Text erzeugen
             text = new Text("data/fonts/arial.ttf");
@@ -59,7 +60,8 @@ namespace JumpAndRun.Gui
             if (!IsShown)
             {
                 Camera.ChangeCameraSpeed(0);
-                View.Model.Position(backgroundId, Position, 0f, -0.3f);
+                //View.Model.Position(backgroundId, Position, 0f, -0.3f);
+                background.Show();
                 text.Show();
                 hint.Show();
                 Camera.PositionCamera(Position, 0, 0);
@@ -74,7 +76,8 @@ namespace JumpAndRun.Gui
         {
             if (IsShown)
             {
-                View.Model.Position(backgroundId, -1000, 0f, -0.3f);
+                //View.Model.Position(backgroundId, -1000, 0f, -0.3f);
+                background.Hide();
                 text.Hide();
                 hint.Hide();
                 IsShown = false;

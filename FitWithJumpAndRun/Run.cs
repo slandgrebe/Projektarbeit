@@ -70,7 +70,7 @@ namespace JumpAndRun
 
             // Gui Element für das Hauptmenu initialisieren
             menuUi = new MenuUi();
-            menuUi.Position = 200;
+            menuUi.Position = 0; // wtf?
 
             // Gui Element für den Ladebildschirm des Levels initialisieren
             loadingUi = new LoadingUi();
