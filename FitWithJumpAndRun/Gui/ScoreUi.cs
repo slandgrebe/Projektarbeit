@@ -12,52 +12,42 @@ namespace JumpAndRun.Gui
     /// </summary>
     public class ScoreUi
     {
-        /// <summary>Position des GUIS im Koordinatensystem</summary>
-        public float Position { get; set; }
         /// <summary>ID des Hintergrundbildes</summary>
-        private uint backgroundId = 0;
+        private View.Point background = null;
         /// <summary>ID des Cursors</summary>
         private uint cursorId = 0;
         /// <summary>ID des Buttons</summary>
-        private uint buttonId = 0;
+        private View.Button button = null;
         /// <summary>ID des Textes</summary>
-        private uint textId = 0;
-        /// <summary>Zeigt an, ob dieses GUI aktuell aktiv ist, oder nicht.</summary>
-        public bool IsShow { get; set; }
+        private View.Text text = null;
+
+        public uint Score { get; set; }
 
         /// <summary>
         /// Initialisiert das GUI, zeigt sie aber nicht an.
         /// </summary>
         public ScoreUi()
         {
-            IsShow = true;
+            Score = 0;
 
             // Hintergrund erzeugen
-            backgroundId = View.Model.AddPoint("data/background/white.jpg");
-            while (backgroundId != 0 && !View.Model.IsCreated(backgroundId)) { }
-            View.Model.Scale(backgroundId, 10, 10, 1);
+            background = new View.Point("data/background/white.jpg");
+            background.Scale(2, 2);
 
             // Button erzeugen
-            buttonId = View.Model.AddButton("data/fonts/arial.ttf");
-            while (!View.Model.IsCreated(buttonId)) { }
-            View.Model.Scale(buttonId, 1f, 0.5f, 1); // Skalierung in z-Richtung wird ignoriert, da es sich beim Button um ein GUI Element handelt
-            Text.String(buttonId, "Nochmal");
-            Text.TextColor(buttonId, 1f, 1f, 1f, 1.0f);
-            Text.TextSize(buttonId, 70);
-            View.Model.HighlightColor(buttonId, 0.5f, 0f, 0f, 1f);
-            View.Model.IsHighlighted(buttonId, true);
+            button = new View.Button("data/fonts/arial.ttf");
+            button.Text("Nochmal");
+
+            // Text erzeugen
+            text = new View.Text("data/fonts/arial.ttf");
+            text.setText("Punkte: " + Score);
+            text.Size(50);
+            text.Position(0, 0.5f);
 
             // Cursor erzeugen
             cursorId = View.Model.AddPoint("data/models/hand/hand-stop-2.jpg");
             while (cursorId != 0 && !View.Model.IsCreated(cursorId)) { }
             View.Model.Scale(cursorId, 0.03f, 0.05f, 1);
-
-            // Text erzeugen
-            textId = Text.AddText("data/fonts/arial.ttf");
-            while (!Text.IsCreated(textId)) { }
-            Text.String(textId, "Score: ");
-            Text.TextSize(textId, 50);
-            Text.TextColor(textId, 0f, 0f, 0f, 1.0f);
 
             // GUI nicht anzeigen
             Hide();
@@ -66,19 +56,17 @@ namespace JumpAndRun.Gui
         /// <summary>
         /// GUI anzeigen
         /// </summary>
-        public void Show(uint score)
+        public void Show()
         {
-            if (!IsShow)
-            {
-                Camera.ChangeCameraSpeed(0);
-                View.Model.Position(backgroundId, Position, 0f, -0.3f);
-                View.Model.Position(buttonId, 0, 0, 1); // Z-Koordinate wird ignoriert, da es sich beim Button um ein GUI Element handelt
-                Camera.PositionCamera(Position, 0, 0);
-                View.Model.AttachToCamera(cursorId, true);
-                Text.Position(textId, 0, 0.5f, 0);
-                Text.String(textId, "Score: " + score);
-                IsShow = true;
-            }
+            // Kamera zurücksetzen
+            Camera.ChangeCameraSpeed(0);
+            Camera.PositionCamera(0, 0, 0);
+
+            background.Show();
+            text.Show();
+            text.setText("Punkte: " + Score);
+
+            View.Model.AttachToCamera(cursorId, true);
         }
 
         /// <summary>
@@ -86,14 +74,10 @@ namespace JumpAndRun.Gui
         /// </summary>
         public void Hide()
         {
-            if (IsShow)
-            {
-                View.Model.Position(backgroundId, -1000, 0f, -0.3f);
-                View.Model.Position(buttonId, -1000, 0f, 1); // Z-Koordinate wird ignoriert, da es sich beim Button um ein GUI Element handelt
-                View.Model.Position(cursorId, -1000, 0f, -0.2f);
-                Text.Position(textId, -1000, 0f, 0);
-                IsShow = false;
-            }
+            background.Hide();
+            text.Hide();
+
+            View.Model.Position(cursorId, -1000, 0f, -0.2f);
         }
 
         /// <summary>
@@ -103,7 +87,7 @@ namespace JumpAndRun.Gui
         /// <param name="y">Y Koordinate</param>
         public void PositionCursor(float x, float y)
         {
-            View.Model.Position(cursorId, x, y, -0.2f);
+            /*View.Model.Position(cursorId, x, y, -0.2f);
             if (HoverButton(x, y))
             {
                 View.Model.HighlightColor(buttonId, 1f, 1f, 0f, 1f);
@@ -111,7 +95,7 @@ namespace JumpAndRun.Gui
             else
             {
                 View.Model.HighlightColor(buttonId, 0.5f, 0f, 0f, 1f);
-            }
+            }*/
         }
 
         /// <summary>

@@ -13,7 +13,7 @@ namespace View
         private float y = 0f;
         private float z = -1f;
         public Point(string filename) {
-            modelId = View.Model.AddPoint("data/textures/fallback.png");
+            modelId = View.Model.AddPoint(filename);
             while (modelId != 0 && !View.Model.IsCreated(modelId)) { }
             View.Model.Scale(modelId, 1f, 1f, 1f);
             //View.Model.ScalingIsNormalized(modelId, true);
@@ -36,7 +36,6 @@ namespace View
         }
         public void Show()
         {
-            System.Console.WriteLine("point: " + x + "/" + y + "/" + z);
             View.Model.Position(modelId, x, y, z);
         }
     }

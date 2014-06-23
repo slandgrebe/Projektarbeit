@@ -191,7 +191,7 @@ void Manager::addToButtonList(GLuint buttonId, gui::Button* button) {
 
 bool Manager::positionModel(GLuint modelId, glm::vec3 position) {
 
-	Log().info() << "model: " << modelId << " position: " << position.x << "/" << position.y << "/" << position.z;
+	//Log().info() << "model: " << modelId << " position: " << position.x << "/" << position.y << "/" << position.z;
 
 	if (assimpModelList.find(modelId) != assimpModelList.end()) {
 		model::AssimpModel* model = assimpModelList.find(modelId)->second;
@@ -272,7 +272,7 @@ bool Manager::rotateModel(GLuint modelId, GLfloat degrees, glm::vec3 axis) {
 
 
 bool Manager::scaleModel(GLuint modelId, glm::vec3 scale) {
-	Log().info() << "model: " << modelId << " scale: " << scale.x << "/" << scale.y << "/" << scale.z;
+	//Log().info() << "model: " << modelId << " scale: " << scale.x << "/" << scale.y << "/" << scale.z;
 
 	if (assimpModelList.find(modelId) != assimpModelList.end()) {
 		model::AssimpModel* model = assimpModelList.find(modelId)->second;

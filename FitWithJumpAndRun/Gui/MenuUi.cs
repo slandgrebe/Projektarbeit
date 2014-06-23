@@ -12,11 +12,8 @@ namespace JumpAndRun.Gui
     /// </summary>
     public class MenuUi
     {
-        /// <summary>Position des GUIS im Koordinatensystem</summary>
-        public float Position { get; set; }
-
         /// <summary>ID des Hintergrundbildes</summary>
-        private View.Point backgroundImage = null;
+        private View.Point background = null;
 
         /// <summary>ID des Cursors</summary>
         private View.Point cursor = null;
@@ -31,72 +28,48 @@ namespace JumpAndRun.Gui
         private View.Text gameName = null;
         private View.Text slogan = null;
 
-        /// <summary>Zeigt an, ob dieses GUI aktuell aktiv ist, oder nicht.</summary>
-        public bool IsShown { get; set; }
-
         /// <summary>
         /// Initialisiert das GUI, zeigt sie aber nicht an.
         /// </summary>
         public MenuUi()
         {
-            IsShown = true;
-
-            /*
-             * Create Objects
-             */
-
             // Hintergrund
-            backgroundImage = new View.Point("data/background/dschungel.png");
+            background = new View.Point("data/background/dschungel.png");
+            background.Position(0, 0, -0.8f);
 
             // Titel
             title = new View.Text("data/fonts/SUPERTIK.TTF");
-
-            // Buttons
-            buttonEasy = new View.Button("data/fonts/arial.ttf");
-            buttonNormal = new View.Button("data/fonts/arial.ttf");
-            buttonDifficult = new View.Button("data/fonts/arial.ttf");
-
-            // Spielname
-            gameName = new View.Text("data/fonts/SUPERTIK.TTF");
-            slogan = new View.Text("data/fonts/SUPERTIK.TTF");
-
-            // Cursor
-            cursor = new View.Point("data/models/hand/hand-stop-2.jpg");
-
-            /*
-             * Modify Object
-             */
-            // Hintergrund
-            backgroundImage.Scale(0.4f, 0.4f);
-            backgroundImage.Position(0, 0, -0.3f);
-
-            // Titel
             title.setText("Wie anspruchsvoll darfs denn sein");
             title.Size(72);
             title.Position(0f, 0.8f);
 
             // Buttons
+            buttonEasy = new View.Button("data/fonts/arial.ttf");
             buttonEasy.Text("entspannt");
             buttonEasy.Position(0f, 0.3f);
 
+            buttonNormal = new View.Button("data/fonts/arial.ttf");
             buttonNormal.Text("normal");
             buttonNormal.Position(0f, 0f);
 
+            buttonDifficult = new View.Button("data/fonts/arial.ttf");
             buttonDifficult.Text("anstrengend");
             buttonDifficult.Position(0f, -0.3f);
 
             // Spielname
+            gameName = new View.Text("data/fonts/SUPERTIK.TTF");
             gameName.setText("Dschungel Fitness");
             gameName.Size(72);
             gameName.Position(0f, -0.7f);
 
+            slogan = new View.Text("data/fonts/SUPERTIK.TTF");
             slogan.setText("spielend fit werden");
             slogan.Size(44);
             slogan.Position(0.2f, -0.9f);
 
             // Cursor
-            //cursor.Scale(0.3f, 0.5f);
-            cursor.Scale(100f, 100f);
+            cursor = new View.Point("data/models/hand/hand-stop-2.jpg");
+            cursor.Scale(0.05f, 0.025f);
             cursor.Position(0, 0, -0.3f);
 
             // GUI nicht anzeigen
@@ -108,29 +81,22 @@ namespace JumpAndRun.Gui
         /// </summary>
         public void Show()
         {
-            if (!IsShown)
-            {
-                Camera.ChangeCameraSpeed(0);
-                Console.WriteLine("pos: " + Position);
-                //backgroundImage.Position(Position, 0f, -0.3f);
-                backgroundImage.Show();
-
-                title.Show();
+            // Kamera zurücksetzen
+            Camera.ChangeCameraSpeed(0);
+            Camera.PositionCamera(0, 0, 0);
                 
-                /*buttonEasy.Show();
-                buttonNormal.Show();
-                buttonDifficult.Show();*/
-
-                gameName.Show();
-                slogan.Show();
-
-                Camera.PositionCamera(Position, 0, 0);
-                Console.WriteLine("test");
-                cursor.Show();
-                //View.Model.AttachToCamera(cursorId, true);
+            background.Show();
+            title.Show();
                 
-                IsShown = true;
-            }
+            buttonEasy.Show();
+            buttonNormal.Show();
+            buttonDifficult.Show();
+
+            gameName.Show();
+            slogan.Show();
+
+            cursor.Show();
+            //View.Model.AttachToCamera(cursorId, true);
         }
 
         /// <summary>
@@ -138,25 +104,18 @@ namespace JumpAndRun.Gui
         /// </summary>
         public void Hide()
         {
-            if (IsShown)
-            {
-                //View.Model.Position(backgroundImageId, -1000, 0f, -0.3f);
-                backgroundImage.Hide();
+            background.Hide();
 
-                title.Hide();
+            title.Hide();
 
-                buttonEasy.Hide();
-                buttonNormal.Hide();
-                buttonDifficult.Hide();
+            buttonEasy.Hide();
+            buttonNormal.Hide();
+            buttonDifficult.Hide();
 
-                gameName.Hide();
-                slogan.Hide();
+            gameName.Hide();
+            slogan.Hide();
 
-                //View.Model.Position(cursorId, -1000, 0f, -0.2f);
-                cursor.Hide();
-
-                IsShown = false;
-            }
+            cursor.Hide();
         }
 
         /// <summary>

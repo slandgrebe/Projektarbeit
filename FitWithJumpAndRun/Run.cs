@@ -61,28 +61,27 @@ namespace JumpAndRun
             modus = Modus.NotTracked;
             
             // Fenster im Fullscreen öffnen
-            Window.Init("Fit with Jump and Run",true,0,0);
+            Window.Init("Fit with Jump and Run", false, 1280, 800);
+
+            // Kamera zurücksetzen
+            Camera.ChangeCameraSpeed(0);
+            Camera.PositionCamera(-100, 0, 0);
 
             // Gui Element für Keine Person erkannt initialisieren
             noTrackingUi = new NoTrackingUi();
-            noTrackingUi.Position = 100;
-            noTrackingUi.Show(); 
 
             // Gui Element für das Hauptmenu initialisieren
             menuUi = new MenuUi();
-            menuUi.Position = 0; // wtf?
 
             // Gui Element für den Ladebildschirm des Levels initialisieren
             loadingUi = new LoadingUi();
-            loadingUi.Position = 300;
 
             // Gui Element für das erfolgreiche Beenden eines Levels initialisieren
             scoreUi = new ScoreUi();
-            scoreUi.Position = 400;
 
             // Gui Element für das nicht erfolgreiche Beenden eines Levels initialisieren
             gameOverUi = new GameOverUi();
-            gameOverUi.Position = 500;
+            gameOverUi.Show();
         }
 
         /// <summary>
@@ -91,6 +90,8 @@ namespace JumpAndRun
         public Run()
         {
             Initialize();
+            System.Threading.Thread.Sleep(30000);
+            Console.WriteLine("zu weit");
             System.Threading.Thread.Sleep(30);
             while(Window.IsRunning())
             {
@@ -210,7 +211,8 @@ namespace JumpAndRun
 
                         case Modus.Score:
                             Body.Instance.Scale(0.1f);
-                            scoreUi.Show(game.Player.Score);
+                            scoreUi.Score = game.Player.Score;
+                            scoreUi.Show();
                             scoreUi.PositionCursor(Body.Instance.HandRight.X, Body.Instance.HandRight.Y);
                             // Klickgeste auf Button
                             if (scoreUi.HoverButton(Body.Instance.HandRight.X, Body.Instance.HandRight.Y))

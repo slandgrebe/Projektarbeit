@@ -12,33 +12,25 @@ namespace JumpAndRun.Gui
     /// </summary>
     public class LoadingUi
     {
-        /// <summary>Position des GUIS im Koordinatensystem</summary>
-        public float Position { get; set; }
         /// <summary>ID des Hintergrundbildes</summary>
-        private uint backgroundId = 0;
+        private View.Point background = null;
         /// <summary>ID des Textes</summary>
-        private uint textId = 0;
-        /// <summary>Zeigt an, ob dieses GUI aktuell aktiv ist, oder nicht.</summary>
-        public bool IsShow { get; set; }
+        private View.Text text = null;
 
         /// <summary>
         /// Initialisiert das GUI, zeigt sie aber nicht an.
         /// </summary>
         public LoadingUi()
         {
-            IsShow = true;
-
             // Hintergrund erzeugen
-            backgroundId = View.Model.AddPoint("data/background/white.jpg");
-            while (backgroundId != 0 && !View.Model.IsCreated(backgroundId)) { }
-            View.Model.Scale(backgroundId, 10, 10, 1);
+            background = new View.Point("data/background/white.jpg");
+            background.Position(0, 0, -0.8f);
+            background.Scale(2, 2);
 
             // Text erzeugen
-            textId = View.Text.AddText("data/fonts/arial.ttf");
-            while (!View.Text.IsCreated(textId)) { }
-            View.Text.String(textId, "Level wird geladen");
-            View.Text.TextSize(textId, 50);
-            View.Text.TextColor(textId, 0f, 0f, 0f, 1.0f);
+            text = new View.Text("data/fonts/arial.ttf");
+            text.setText("Level wird geladen");
+            text.Size(50);
 
             // GUI nicht anzeigen
             Hide();
@@ -49,13 +41,12 @@ namespace JumpAndRun.Gui
         /// </summary>
         public void Show()
         {
-            if (!IsShow)
-            {
-                View.Model.Position(backgroundId, Position, 0f, -0.3f);
-                View.Text.Position(textId, 0, 0, 0);
-                Camera.PositionCamera(Position, 0, 0);
-                IsShow = true;
-            }
+            // Kamera zurücksetzen
+            Camera.ChangeCameraSpeed(0);
+            Camera.PositionCamera(0, 0, 0);
+
+            background.Show();
+            text.Show();
         }
 
         /// <summary>
@@ -63,12 +54,8 @@ namespace JumpAndRun.Gui
         /// </summary>
         public void Hide()
         {
-            if (IsShow)
-            {
-                View.Model.Position(backgroundId, -1000, 0f, -0.3f);
-                Text.Position(textId, -1000, 0, 0);
-                IsShow = false;
-            }
+            background.Hide();
+            text.Hide();
         }
     }
 }
