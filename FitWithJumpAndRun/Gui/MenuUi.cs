@@ -68,7 +68,7 @@ namespace JumpAndRun.Gui
              */
             // Hintergrund
             backgroundImage.Scale(0.4f, 0.4f);
-            backgroundImage.Position(0, 0, 100);
+            backgroundImage.Position(0, 0, -0.3f);
 
             // Titel
             title.setText("Wie anspruchsvoll darfs denn sein");
@@ -97,7 +97,7 @@ namespace JumpAndRun.Gui
             // Cursor
             //cursor.Scale(0.3f, 0.5f);
             cursor.Scale(100f, 100f);
-            cursor.Position(0, 0, -100);
+            cursor.Position(0, 0, -0.3f);
 
             // GUI nicht anzeigen
             Hide();
