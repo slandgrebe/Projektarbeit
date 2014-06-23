@@ -6,10 +6,23 @@ using System.Threading.Tasks;*/
 
 namespace Sound
 {
-    public class Sound
+    /// <summary>
+    /// Spielt Audiodateien ab.
+    /// </summary>
+    class Sound
     {
+        /// <summary>
+        /// Delegate ruft Methode auf, wenn Sound am Ende oder gestoppt wird.
+        /// </summary>
+        /// <param name="s">Soundobjekt welches beendet wurde</param>
+        public delegate void SoundStoppedEventHandler(Sound s);
+        /// <summary>
+        /// Eventhandler Informiert wenn Sound am Ende ist oder gestoppt wird.
+        /// </summary>
+        public event SoundStoppedEventHandler SoundStopped;
+
         /// <summary>Windows Media Player Objekt</summary>
-        private WMPLib.WindowsMediaPlayer wplayer = new WMPLib.WindowsMediaPlayer();
+        private WMPLib.WindowsMediaPlayer audio = new WMPLib.WindowsMediaPlayer();
         /// <summary>Dateipfad zur Audiodatei</summary>
         public string FilePath { get; set; }
         /// <summary>Wiedergabelautstärke</summary>
@@ -23,8 +36,7 @@ namespace Sound
             set
             {
                 _Volume = value;
-                wplayer.settings.volume = _Volume;
-                wplayer.StatusChange 
+                audio.settings.volume = _Volume;
             }
         }
         /// <summary>Wiedergabe wiederholen</summary>
@@ -34,25 +46,17 @@ namespace Sound
             set
             {
                 _Loop = value;
-                wplayer.settings.setMode("loop", _Loop);
+                audio.settings.setMode("loop", _Loop);
             }
         }
 
         /// <summary>
-        /// Initiaisiert das Soundobjekt
+        /// Sound erstellen
         /// </summary>
         public Sound()
         {
-            Volume = _Volume;
-        }
-
-        /// <summary>
-        /// Initiaisiert das Soundobjekt
-        /// </summary>
-        /// <param name="filePath">Dateipfad zur Sounddatei</param>
-        public Sound(string filePath) : this()
-        {
-            FilePath = filePath;
+            audio.settings.volume = Volume;
+            audio.PlayStateChange += new WMPLib._WMPOCXEvents_PlayStateChangeEventHandler(Sound_PlayStateChange);
         }
 
         /// <summary>
@@ -60,11 +64,8 @@ namespace Sound
         /// </summary>
         public void Play()
         {
-            if (FilePath.Length > 0)
-            {
-                wplayer.URL = FilePath;
-                wplayer.controls.play();
-            }
+            audio.URL = FilePath;
+            audio.controls.play();
         }
 
         /// <summary>
@@ -72,20 +73,35 @@ namespace Sound
         /// </summary>
         public void Stop()
         {
-            wplayer.controls.stop();
+            audio.controls.stop();
         }
 
         /// <summary>
         /// Sound langsam ausklingen lassen
         /// </summary>
-        public void FadeOut()
+        /// <param name="time">Zeit in Sekunden</param>
+        public void FadeOut(int time = 1)
         {
+            int sleep = (time * 1000) / Volume;
+
             while (Volume > 0)
             {
-                System.Threading.Thread.Sleep(10);
+                System.Threading.Thread.Sleep(sleep);
                 Volume--;
             }
             Stop();
+        }
+
+        /// <summary>
+        /// Abfangen wenn Sound gestoppt/zuenede ist
+        /// </summary>
+        /// <param name="NewState">aktueller Soundstatus</param>
+        private void Sound_PlayStateChange(int NewState)
+        {
+            if ((WMPLib.WMPPlayState)NewState == WMPLib.WMPPlayState.wmppsStopped)
+            {
+                SoundStopped(this);
+            }
         }
     }
 }
