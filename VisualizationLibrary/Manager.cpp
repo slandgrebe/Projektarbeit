@@ -622,7 +622,6 @@ void Manager::doCollisionDetection(long unsigned int frame) {
 
 			if (player->doesIntersect(obstacle, frame)) { // exaktere prüfung
 				collisionWithObstacle = *itObstacles;
-				//Log().info() << *itPlayer << " " << *itObstacles;
 				break;
 			}
 		}

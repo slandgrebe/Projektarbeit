@@ -95,8 +95,8 @@ namespace visual {
 			float zMax = 0;
 			float zMin = 0;
 
+			std::vector<Triangle> collisionModelOriginal;
 			std::vector<Triangle> collisionModel;
-
 			
 			long unsigned int collisionModelUpdatedOnFrame;
 

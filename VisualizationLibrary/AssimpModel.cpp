@@ -143,24 +143,26 @@ bool AssimpModel::loadModel(const std::string filename) {
 	visual::graphics::GraphicEngine::getInstance()->printOglError(__FILE__, __LINE__);
 
 	// vorne
-	collisionModel.push_back(Triangle(frontBottomLeft, frontBottomRight, frontTopRight)); // vorne unten rechts
-	collisionModel.push_back(Triangle(frontBottomLeft, frontTopRight, frontTopLeft)); // vorne oben links
+	collisionModelOriginal.push_back(Triangle(frontBottomLeft, frontBottomRight, frontTopRight)); // vorne unten rechts
+	collisionModelOriginal.push_back(Triangle(frontBottomLeft, frontTopRight, frontTopLeft)); // vorne oben links
 	// rechts
-	collisionModel.push_back(Triangle(frontBottomRight, backBottomRight, backTopRight)); // rechts unten hinten
-	collisionModel.push_back(Triangle(frontBottomRight, backTopRight, frontTopRight)); // rechts oben vorne
+	collisionModelOriginal.push_back(Triangle(frontBottomRight, backBottomRight, backTopRight)); // rechts unten hinten
+	collisionModelOriginal.push_back(Triangle(frontBottomRight, backTopRight, frontTopRight)); // rechts oben vorne
 	// hinten
-	collisionModel.push_back(Triangle(backBottomRight, backBottomLeft, backTopLeft)); // hinten unten links
-	collisionModel.push_back(Triangle(backBottomRight, backTopLeft, backTopRight)); // hinten oben rechts
+	collisionModelOriginal.push_back(Triangle(backBottomRight, backBottomLeft, backTopLeft)); // hinten unten links
+	collisionModelOriginal.push_back(Triangle(backBottomRight, backTopLeft, backTopRight)); // hinten oben rechts
 	// links
-	collisionModel.push_back(Triangle(backBottomLeft, frontBottomLeft, frontTopLeft)); // links unten vorne
-	collisionModel.push_back(Triangle(backBottomLeft, frontTopLeft, backTopLeft)); // link oben hinten
+	collisionModelOriginal.push_back(Triangle(backBottomLeft, frontBottomLeft, frontTopLeft)); // links unten vorne
+	collisionModelOriginal.push_back(Triangle(backBottomLeft, frontTopLeft, backTopLeft)); // link oben hinten
 	// oben
-	collisionModel.push_back(Triangle(frontTopLeft, frontTopRight, backTopRight)); // oben vorne rechts
-	collisionModel.push_back(Triangle(frontTopLeft, backTopRight, backTopLeft)); // oben hinten links
+	collisionModelOriginal.push_back(Triangle(frontTopLeft, frontTopRight, backTopRight)); // oben vorne rechts
+	collisionModelOriginal.push_back(Triangle(frontTopLeft, backTopRight, backTopLeft)); // oben hinten links
 	// unten
-	collisionModel.push_back(Triangle(backBottomLeft, backBottomRight, frontBottomRight)); // unten hinten rechts
-	collisionModel.push_back(Triangle(backBottomLeft, frontBottomRight, frontBottomLeft)); // unten vorne links
+	collisionModelOriginal.push_back(Triangle(backBottomLeft, backBottomRight, frontBottomRight)); // unten hinten rechts
+	collisionModelOriginal.push_back(Triangle(backBottomLeft, frontBottomRight, frontBottomLeft)); // unten vorne links
 	
+	collisionModel = collisionModelOriginal; // original behalten wegen mehrfacher mvp anwendung
+
 	visual::graphics::GraphicEngine::getInstance()->printOglError(__FILE__, __LINE__);
 	
 	return returnValue;
@@ -319,7 +321,12 @@ bool AssimpModel::doesIntersect(AssimpModel* other, long unsigned int frame) {
 
 	// sehr einfacher, schneller, ungenauer Test zuerst
 	if (pow(pos1.x - pos2.x, 2) + pow(pos1.y - pos2.y, 2) + pow(pos1.z - pos2.z, 2) <= pow(radius1 + radius2, 2)) { // berühren oder schneiden sich die Bounding Spheres?
-
+		
+		//Log().info() << "pos1: " << pos1.x << "/" << pos1.y << "/" << pos1.z;
+		//Log().info() << "pos1: " << pos2.x << "/" << pos2.y << "/" << pos2.z;
+		//Log().info() << "radius: " << radius1 << " " << radius2;
+		//Log().info() << "model: " << other->collisionModel[0].a.x << " " << other->collisionModel[0].b.x << " = " << other->collisionModel[0].b.x - other->collisionModel[0].a.x;
+		
 		// Jedes Dreieck von diesem Objekt ...
 		for (unsigned int i = 0; i < this->collisionModel.size(); i++) {
 			Triangle t1 = this->collisionModel[i];
@@ -347,8 +354,8 @@ void AssimpModel::updateCollisionModel(long unsigned int frame) {
 		std::vector<Triangle> newModel;
 
 		// Jedes Dreieck von diesem Objekt ...
-		for (unsigned int i = 0; i < this->collisionModel.size(); i++) {
-			Triangle t1 = this->collisionModel[i];
+		for (unsigned int i = 0; i < this->collisionModelOriginal.size(); i++) {
+			Triangle t1 = this->collisionModelOriginal[i];
 
 			glm::vec3 a1 = glm::vec3(mvp1 * glm::vec4(t1.a, 1.0));
 			glm::vec3 b1 = glm::vec3(mvp1 * glm::vec4(t1.b, 1.0));
@@ -416,15 +423,17 @@ bool AssimpModel::addCollisionModel(std::string filename) {
 			}
 
 			// Triangles
-			collisionModel.clear();
+			collisionModelOriginal.clear();
 			int numTriangles = indices.size() / 3;
 			for (unsigned int i = 0; i < numTriangles; i++) {
 				Triangle t = Triangle(vertices[indices[i * 3 + 0]].position,
 					vertices[indices[i * 3 + 1]].position,
 					vertices[indices[i * 3 + 2]].position);
 
-				collisionModel.push_back(t);
+				collisionModelOriginal.push_back(t);
 			}
+
+			collisionModel = collisionModelOriginal;
 		}
 
 		returnValue = true;
