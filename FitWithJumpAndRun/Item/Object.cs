@@ -137,7 +137,6 @@ namespace JumpAndRun.Item
                 // model: 1:2,3
                 if (model.Length == 0) return false;
                 string[] parts = model.Split(':');
-                Console.WriteLine("------------------------------");
 
                 if (model == Model.Id.ToString())
                 {

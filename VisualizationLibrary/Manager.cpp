@@ -546,12 +546,15 @@ bool Manager::collisionGroup(GLuint modelId, unsigned int newCollisionGroup) {
 					break;
 				case collisionGroup::player: 
 					collisionGroupPlayer.remove(modelId);
+					Log().info() << "Kollisionsgruppe Player entfernt: " << modelId;
 					break;
 				case collisionGroup::obstacle:
 					collisionGroupObstacle.remove(modelId);
+					Log().info() << "Kollisionsgruppe Hindernis entfernt: " << modelId;
 					break;
 				case collisionGroup::bonus:
 					collisionGroupBonus.remove(modelId);
+					Log().info() << "Kollisionsgruppe Punkt entfernt: " << modelId;
 					break;
 			}
 
@@ -562,12 +565,15 @@ bool Manager::collisionGroup(GLuint modelId, unsigned int newCollisionGroup) {
 					break;
 				case collisionGroup::player:
 					collisionGroupPlayer.push_back(modelId);
+					Log().info() << "Kollisionsgruppe Player: " << modelId;
 					break;
 				case collisionGroup::obstacle:
 					collisionGroupObstacle.push_back(modelId);
+					Log().info() << "Kollisionsgruppe Hindernis: " << modelId;
 					break;
 				case collisionGroup::bonus:
 					collisionGroupBonus.push_back(modelId);
+					Log().info() << "Kollisionsgruppe Punkt: " << modelId;
 					break;
 			}
 

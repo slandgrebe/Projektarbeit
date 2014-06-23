@@ -170,6 +170,7 @@ namespace JumpAndRun.Item
 
         public bool CollisionGroup(uint group)
         {
+            if (Id == 0) return false;
             return View.Model.CollisionGroup(Id, group);
         }
 
