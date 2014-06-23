@@ -33,11 +33,12 @@ namespace JumpAndRun.Item
         /// </summary>
         /// <param name="path">Dateipfad zur 3D-Datei</param>
         /// <param name="scalingNormalized">Modell beim erstellen auf einen Durchmesser von einem Meter bzw. einer Einheit skallieren.</param>
-        public Model(string path, bool scalingNormalized = false)
+        public Model(string path, bool scalingNormalized = false, uint group = 0)
         {
             Path = path;
             ScalingNormalized = scalingNormalized;
             Create();
+            CollisionGroup(group);
         }
 
         /// <summary>
@@ -160,6 +161,16 @@ namespace JumpAndRun.Item
         {
             if (Id == 0) return false;
             return View.Model.AttachToCamera(Id, choice);
+        }
+        /*
+        public bool AddCollisionModel(uint modelId, string filename)
+        {
+
+        }*/
+
+        public bool CollisionGroup(uint group)
+        {
+            return View.Model.CollisionGroup(Id, group);
         }
 
         /// <summary>

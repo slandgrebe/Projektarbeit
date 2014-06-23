@@ -51,16 +51,16 @@ namespace JumpAndRun.GameLogic
         /// </summary>
         public Player()
         {
-            Head = new Model("data/models/player/head.3ds", false);
-            Torso = new Model("data/models/player/torso.3ds", false);
-            UpperarmLeft = new Model("data/models/player/upperarm.3ds", false);
-            UpperarmRight = new Model("data/models/player/upperarm.3ds", false);
-            ForearmLeft = new Model("data/models/player/forearm.3ds", false);
-            ForearmRight = new Model("data/models/player/forearm.3ds", false);
-            ThighlegLeft = new Model("data/models/player/thighleg.3ds", false);
-            ThighlegRight = new Model("data/models/player/thighleg.3ds", false);
-            LowerlegLeft = new Model("data/models/player/lowerleg.3ds", false);
-            LowerlegRight = new Model("data/models/player/lowerleg.3ds", false);
+            Head = new Model("data/models/player/head.3ds", false, 1);
+            Torso = new Model("data/models/player/torso.3ds", false, 1);
+            UpperarmLeft = new Model("data/models/player/upperarm.3ds", false, 1);
+            UpperarmRight = new Model("data/models/player/upperarm.3ds", false, 1);
+            ForearmLeft = new Model("data/models/player/forearm.3ds", false, 1);
+            ForearmRight = new Model("data/models/player/forearm.3ds", false, 1);
+            ThighlegLeft = new Model("data/models/player/thighleg.3ds", false, 1);
+            ThighlegRight = new Model("data/models/player/thighleg.3ds", false, 1);
+            LowerlegLeft = new Model("data/models/player/lowerleg.3ds", false, 1);
+            LowerlegRight = new Model("data/models/player/lowerleg.3ds", false, 1);
 
             Colidet = new List<uint>();
 

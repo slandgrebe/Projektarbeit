@@ -69,10 +69,12 @@ namespace JumpAndRun.GameLogic
             foreach (JumpAndRun.Item.Object o in obstacles)
             {
                 if (!o.Create(z)) return false;
+                o.Model.CollisionGroup(2);
             }
             foreach (JumpAndRun.Item.Object s in scores)
             {
                  if (!s.Create(z)) return false;
+                 s.Model.CollisionGroup(3);
             }
             foreach (JumpAndRun.Item.Object o in objects)
             {
@@ -89,11 +91,13 @@ namespace JumpAndRun.GameLogic
             foreach (JumpAndRun.Item.Object obstacle in obstacles)
             {
                 obstacle.Deserialize();
+                obstacle.Model.CollisionGroup(2);
             }
 
             foreach (JumpAndRun.Item.Object score in scores)
             {
                 score.Deserialize();
+                score.Model.CollisionGroup(3);
             }
 
             foreach (JumpAndRun.Item.Object obj in objects)

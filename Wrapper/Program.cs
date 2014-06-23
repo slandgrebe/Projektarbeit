@@ -111,7 +111,7 @@ namespace VisualizationExample
 
             // 20 spieler
             List<uint> list = new List<uint>();
-            uint numCubes = 20;
+            uint numCubes = 2;
             for (int i = 0; i < numCubes; i++)
             {
                 // MODEL TO COLLIDE
@@ -134,8 +134,9 @@ namespace VisualizationExample
             }
 
             // 100 hindernisse
+            /*
             list.Clear();
-            numCubes = 100;
+            numCubes = 10;
             for (int i = 0; i < numCubes; i++)
             {
                 // MODEL TO COLLIDE
@@ -154,10 +155,10 @@ namespace VisualizationExample
                 isHighlighted(modelId, true);
                 collisionGroup(modelId, 2);
             }
-
+            */
             // 100 bonus
             list.Clear();
-            numCubes = 100;
+            numCubes = 10;
             for (int i = 0; i < numCubes; i++)
             {
                 // MODEL TO COLLIDE
@@ -213,14 +214,14 @@ namespace VisualizationExample
             {
                 // model: 1:2,3
                 string[] parts = model.Split(':');
-                if (parts.Length != 2) continue; // Fehlerbehandlung: tritt beim schliessen des Fensters auf
+                //if (parts.Length != 2) continue; // Fehlerbehandlung: tritt beim schliessen des Fensters auf
 
-                string aModelId = parts[0].ToString(); // modelId
+                string aModelId = parts[0]; // modelId
 
                 // wer kollidierte alles mit diesem Model?
                 System.Collections.Generic.List<uint> collideeList = new System.Collections.Generic.List<uint>();
 
-                if (parts[1] != "")
+                if (parts[1].Length != 0)
                 {
                     string[] collidees = parts[1].Split(',');
 
