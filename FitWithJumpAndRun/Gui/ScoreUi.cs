@@ -14,13 +14,13 @@ namespace JumpAndRun.Gui
     {
         /// <summary>ID des Hintergrundbildes</summary>
         private View.Point background = null;
-        /// <summary>ID des Cursors</summary>
-        private uint cursorId = 0;
-        /// <summary>ID des Buttons</summary>
-        private View.Button button = null;
         /// <summary>ID des Textes</summary>
         private View.Text text = null;
-
+        /// <summary>ID des Buttons</summary>
+        private View.Button button = null;
+        /// <summary>ID des Cursors</summary>
+        private uint cursorId = 0;
+        
         public uint Score { get; set; }
 
         /// <summary>
@@ -34,15 +34,15 @@ namespace JumpAndRun.Gui
             background = new View.Point("data/background/white.jpg");
             background.Scale(2, 2);
 
-            // Button erzeugen
-            button = new View.Button("data/fonts/arial.ttf");
-            button.Text("Nochmal");
-
             // Text erzeugen
             text = new View.Text("data/fonts/arial.ttf");
             text.setText("Punkte: " + Score);
             text.Size(50);
             text.Position(0, 0.5f);
+
+            // Button erzeugen
+            button = new View.Button("data/fonts/arial.ttf");
+            button.Text("Nochmal");
 
             // Cursor erzeugen
             cursorId = View.Model.AddPoint("data/models/hand/hand-stop-2.jpg");
@@ -65,6 +65,7 @@ namespace JumpAndRun.Gui
             background.Show();
             text.Show();
             text.setText("Punkte: " + Score);
+            button.Show();
 
             View.Model.AttachToCamera(cursorId, true);
         }
@@ -76,6 +77,7 @@ namespace JumpAndRun.Gui
         {
             background.Hide();
             text.Hide();
+            button.Hide();
 
             View.Model.Position(cursorId, -1000, 0f, -0.2f);
         }

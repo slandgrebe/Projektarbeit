@@ -36,6 +36,8 @@ namespace JumpAndRun
         private Click click = new Click();
         /// <summary>Aktueller Modus des Spieles</summary>
         private Modus modus;
+        enum Difficulty { Easy = 0, Normal, Difficult, Endless };
+        private Difficulty difficulty = Difficulty.Easy;
 
         /// <summary>
         /// Stellt sicher, dass diese Klasse nur einmal Instanziert werden kann.
@@ -63,10 +65,6 @@ namespace JumpAndRun
             // Fenster im Fullscreen öffnen
             Window.Init("Fit with Jump and Run", false, 1280, 800);
 
-            // Kamera zurücksetzen
-            Camera.ChangeCameraSpeed(0);
-            Camera.PositionCamera(-100, 0, 0);
-
             // Gui Element für Keine Person erkannt initialisieren
             noTrackingUi = new NoTrackingUi();
 
@@ -81,7 +79,6 @@ namespace JumpAndRun
 
             // Gui Element für das nicht erfolgreiche Beenden eines Levels initialisieren
             gameOverUi = new GameOverUi();
-            gameOverUi.Show();
         }
 
         /// <summary>
@@ -90,8 +87,6 @@ namespace JumpAndRun
         public Run()
         {
             Initialize();
-            System.Threading.Thread.Sleep(30000);
-            Console.WriteLine("zu weit");
             System.Threading.Thread.Sleep(30);
             while(Window.IsRunning())
             {
@@ -123,6 +118,9 @@ namespace JumpAndRun
                         {
                             modus = Modus.Menu;
                         }
+
+                        // Position des Cursors updaten und events auslösen
+                        Gui.Cursor.Instance.UpdatePosition();
                     }
                     else
                     {
@@ -156,15 +154,35 @@ namespace JumpAndRun
                             Body.Instance.Scale(0.1f);
                             noTrackingUi.Hide();
                             menuUi.Show();
-                            menuUi.PositionCursor(Body.Instance.HandRight.X, Body.Instance.HandRight.Y, Body.Instance.Head.X, Body.Instance.Head.Y, Body.Instance.ShoulderRight.X, Body.Instance.ShoulderRight.Y);
+                            //menuUi.PositionCursor(Body.Instance.HandRight.X, Body.Instance.HandRight.Y, Body.Instance.Head.X, Body.Instance.Head.Y, Body.Instance.ShoulderRight.X, Body.Instance.ShoulderRight.Y);
+                            
                             // Klickgeste auf Button
-                            if (menuUi.CursorPosition(Body.Instance.HandRight.X, Body.Instance.HandRight.Y))
+                            if (click.IsClicked())
+                            {
+                                if (menuUi.IsButtonEasyHovered())
+                                {
+                                    difficulty = Difficulty.Easy;
+                                    modus = Modus.Play;
+                                }
+                                else if (menuUi.IsButtonNormalHovered())
+                                {
+                                    difficulty = Difficulty.Normal;
+                                    modus = Modus.Play;
+                                }
+                                else if (menuUi.IsButtonDifficultHovered())
+                                {
+                                    difficulty = Difficulty.Difficult;
+                                    modus = Modus.Play;
+                                }
+                            }
+
+                            /*if (menuUi.CursorPosition(Body.Instance.HandRight.X, Body.Instance.HandRight.Y))
                             {
                                 if (click.IsClicked())
                                 {
                                     modus = Modus.Play;
                                 }
-                            }
+                            }*/
                             break;
 
                         case Modus.Play:

@@ -11,9 +11,11 @@ namespace View
         private uint modelId = 0;
         private float x = 0f;
         private float y = 0f;
+        private float scaleX = 0.5f;
+        private float scaleY = 0.25f;
+        public bool IsHovered { get; private set; }
         public Button(string fontFilename)
         {
-            float buttonScaleX = 0.5f, buttonScaleY = 0.25f;
             int buttonTextSize = 40;
             float buttonTextR = 0f, buttonTextG = 0f, buttonTextB = 0f, buttonTextA = 1f;
             float buttonR = 0.667f, buttonG = 0.478f, buttonB = 0.224f, buttonA = 1f;
@@ -21,7 +23,7 @@ namespace View
             modelId = View.Model.AddButton(fontFilename);
 
             while (modelId != 0 && !View.Model.IsCreated(modelId)) { }
-            View.Model.Scale(modelId, buttonScaleX, buttonScaleY, 0);
+            View.Model.Scale(modelId, scaleX, scaleY, 0);
             View.Text.String(modelId, "Text");
             View.Text.TextColor(modelId, buttonTextR, buttonTextG, buttonTextB, buttonTextA);
             View.Text.TextSize(modelId, buttonTextSize);
@@ -59,6 +61,28 @@ namespace View
             else
             {
                 View.Model.HighlightColor(modelId, 0.667f, 0.478f, 0.224f, 1f);
+            }
+        }
+
+        public void CursorUpdate(float cursorX, float cursorY)
+        {
+            float width = scaleX;
+            float xMin = x - width / 2;
+            float xMax = x + width / 2;
+
+            float height = scaleY;
+            float yMin = y - height / 2;
+            float yMax = y + height / 2;
+
+            if ((cursorX > xMin && cursorX < xMax) && (cursorY > yMin && cursorY < yMax)) 
+            {
+                Highlight(true);
+                IsHovered = true;
+            }
+            else
+            {
+                Highlight(false);
+                IsHovered = false;
             }
         }
     }

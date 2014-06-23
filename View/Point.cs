@@ -30,6 +30,10 @@ namespace View
             this.z = z;
             View.Model.Position(modelId, x, y, z);
         }
+        public void AttachToCamera(bool choice)
+        {
+            View.Model.AttachToCamera(modelId, choice);
+        }
         public void Hide()
         {
             View.Model.Position(modelId, -100f, 0f, 0f);

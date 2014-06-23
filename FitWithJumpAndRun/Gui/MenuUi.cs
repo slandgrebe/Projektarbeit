@@ -16,7 +16,7 @@ namespace JumpAndRun.Gui
         private View.Point background = null;
 
         /// <summary>ID des Cursors</summary>
-        private View.Point cursor = null;
+        //private View.Point cursor = null;
         
         private View.Text title = null;
 
@@ -68,9 +68,10 @@ namespace JumpAndRun.Gui
             slogan.Position(0.2f, -0.9f);
 
             // Cursor
-            cursor = new View.Point("data/models/hand/hand-stop-2.jpg");
+            Gui.Cursor.Instance.UpdateEvent += new Gui.Cursor.Update(CursorUpdate);
+            /*cursor = new View.Point("data/models/hand/hand-stop-2.jpg");
             cursor.Scale(0.05f, 0.025f);
-            cursor.Position(0, 0, -0.3f);
+            cursor.Position(0, 0, -0.3f);*/
 
             // GUI nicht anzeigen
             Hide();
@@ -95,8 +96,7 @@ namespace JumpAndRun.Gui
             gameName.Show();
             slogan.Show();
 
-            cursor.Show();
-            //View.Model.AttachToCamera(cursorId, true);
+            Gui.Cursor.Instance.Show();
         }
 
         /// <summary>
@@ -115,7 +115,31 @@ namespace JumpAndRun.Gui
             gameName.Hide();
             slogan.Hide();
 
-            cursor.Hide();
+            Gui.Cursor.Instance.Hide();
+        }
+
+
+        private void CursorUpdate(float x, float y)
+        {
+            //Console.WriteLine("Cursor update: " + x + " " + y);
+            buttonEasy.Text(truncate(x, 1) + "/" + truncate(y, 1));
+
+            buttonEasy.CursorUpdate(x, y);
+            buttonNormal.CursorUpdate(x, y);
+            buttonDifficult.CursorUpdate(x, y);
+        }
+
+        public bool IsButtonEasyHovered()
+        {
+            return buttonEasy.IsHovered;
+        }
+        public bool IsButtonNormalHovered()
+        {
+            return buttonNormal.IsHovered;
+        }
+        public bool IsButtonDifficultHovered()
+        {
+            return buttonDifficult.IsHovered;
         }
 
         /// <summary>
@@ -125,22 +149,21 @@ namespace JumpAndRun.Gui
         /// <param name="y">Y Koordinate</param>
         public void PositionCursor(float handX, float handY, float headX, float headY, float shoulderX, float shoulderY)
         {
-            // convert
-            /*
-             * Oben links: headX/headY
-             * Oben rechts: (headX + shoulder
-             */
+            /*float xMax = (shoulderX - headX) * 2;
+            float yMax = (shoulderY - headY);
 
-            float x = 0f;
-            float y = 0f;
+            float x = handX - headX;
+            float y = handY - headY;
 
-
-            /*x = x * 2;
-            y = y * 4;
-            y = y - y / 2;*/
+            float xRelative = x / xMax -1;
+            float yRelative = y / yMax -1;
 
             //Console.WriteLine("Cursor: " + x + "/" + y);
-            buttonEasy.Text("Cursor: " + x + "/" + y);
+
+            buttonEasy.Text(truncate(xRelative, 1) + "/" + truncate(yRelative, 1));*/
+            //buttonEasy.Text("hand: " + truncate(handX, 4) + "/" + truncate(handY, 4));
+            //buttonNormal.Text("head: " + truncate(headX, 4) + "/" + truncate(headY, 4));
+            //buttonDifficult.Text("shoulder: " + truncate(shoulderX, 4) + "/" + truncate(shoulderY, 4));
 
             //cursor.Position(x, y, -1f);
             /*if (CursorPosition(x, y))
@@ -151,6 +174,13 @@ namespace JumpAndRun.Gui
             {
                 buttonEasy.Highlight(false);
             }*/
+        }
+
+        private float truncate(float value, int digits)
+        {
+            double mult = Math.Pow(10.0, digits);
+            double result = Math.Truncate(mult * value) / mult;
+            return (float)result;
         }
 
         /// <summary>
