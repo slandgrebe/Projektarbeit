@@ -44,6 +44,10 @@ namespace JumpAndRun.GameLogic
         public string BackgroundMusicMedium { get; set; }
         /// <summary>Hintergrundmusik für schweres Level</summary>
         public string BackgroundMusicHard { get; set; }
+        /// <summary>Anzahl geladener Segmente</summary>
+        private int loadetSegments = 0;
+        /// <summary>Anzahl gelöschter</summary>
+        private int disposedSegments = 0;
 
         /// <summary>
         /// Level Initialisieren
@@ -60,36 +64,104 @@ namespace JumpAndRun.GameLogic
         /// <summary>
         /// Level in der Anzeige erzeugen/laden
         /// </summary>
-        /// <param name="severity">Schwierigkeitsindikator</param>
+        /// <param name="severity">Schwierigkeitsgrad</param>
         /// <returns>Prüfung ob die Operation durchgeführt werden konnte</returns>
         public bool Load(int severity)
         {
-            int severityInt = 0;
+            int severityPoints = 0;
             Random rnd = new Random();
+            int min = 1;
+            int max = 3;
+            int segmentSeverity = 0;
+            double indicator = 0;
+            
+            if (severity == 1){
+                severityPoints = Convert.ToInt32(SegmentNumber*1.5);
+            }else if (severity == 2){
+                severityPoints = SegmentNumber*2;
+            }else{
+                severity = 3; // Max Schwierigkeitsgrad
+                severityPoints = Convert.ToInt32(SegmentNumber*2.5);
+            }
 
             // Berechnen der noch zur verfügung stehender schwierigkeitsgrad
             for (int i = SegmentNumber; i == 0; i--)
             {
-                severityInt = (int)severity / i;
-                if (severityInt > 3) severityInt = 3;
-                segments.Add(GetRandomSegment(rnd.Next(1, severityInt)));
+                indicator = severityPoints / severity;
+                min = 1;
+                max = severity;
+                if (indicator < i)
+                {
+                    
+                    indicator = severityPoints / (severity - 1);
+                    if (indicator < i)
+                    {
+                        max = 1;
+                    }
+                    else
+                    {
+                        max = severity - 1;
+                        min = severity - 1;
+                    }
+                }
+                else
+                {
+                    min = severity;
+                    max = severity;
+                }
+                    
+
+
+                min = (int)Math.Ceiling(indicator);
+
+
+
+
+                max = (int)Math.Ceiling(indicator);
+
+                min = 1;
+                max = 3;
+                if (min < 1)
+                {
+                    min = 1;
+                    max = 1;
+                }
+                if (max > 3)
+                {
+                    min = 3;
+                    max = 3;
+                }
+                segmentSeverity = rnd.Next(min, max);
+                severityPoints -= segmentSeverity;
+                segments.Add(GetRandomSegment(segmentSeverity));
             }
 
-            ShuffleSegments();
+            ShuffleSegments(segmentsStartEnd[0], segmentsStartEnd[1]);
 
-            if (!segmentsStartEnd[0].Create(Length)) return false;
-            Length += segmentsStartEnd[0].Length;
-
-            foreach (LevelSegment segment in segments)
-            {
-                if (!segment.Create(Length)) return false;
-                Length += segment.Length;
-            }
-
-            if (!segmentsStartEnd[1].Create(Length)) return false;
-            Length += segmentsStartEnd[1].Length;
+            LoadNextSegment();
 
             return true;
+        }
+
+        /// <summary>
+        /// Ladet das nächste Segment
+        /// </summary>
+        /// <returns>Prüfung ob die Operation durchgeführt werden konnte</returns>
+        public bool LoadNextSegment()
+        {
+            if (!segments[loadetSegments].Create(Length)) return false;
+            Length += segments[loadetSegments].Length;
+            loadetSegments++;
+            return true;
+        }
+
+        /// <summary>
+        /// Entfernt das nächste Segment
+        /// </summary>
+        public void DisposeNextSegment()
+        {
+            segments[disposedSegments].Dispose();
+            disposedSegments++;
         }
 
         /// <summary>
@@ -175,12 +247,16 @@ namespace JumpAndRun.GameLogic
         /// <summary>
         /// Mischelt die Segmente
         /// </summary>
-        private void ShuffleSegments()
+        /// <param name="startSegment">Fügt das Startsegment am Anfang ein</param>
+        /// <param name="endSegment">Fügt das Endsegment am Ende an</param>
+        private void ShuffleSegments(LevelSegment startSegment, LevelSegment endSegment)
         {
             List<LevelSegment> randomList = new List<LevelSegment>();
 
             Random r = new Random();
             int randomIndex = 0;
+
+            randomList.Add(startSegment);
 
             while (segments.Count > 0)
             {
@@ -188,6 +264,8 @@ namespace JumpAndRun.GameLogic
                 randomList.Add(segments[randomIndex]);
                 segments.RemoveAt(randomIndex);
             }
+
+            randomList.Add(endSegment);
 
             segments = randomList;
         }
