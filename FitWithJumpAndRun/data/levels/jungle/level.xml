@@ -9,6 +9,10 @@
   <Lifes>4</Lifes>
   <SegmentNumber>10</SegmentNumber>
   <BackgroundMusicEasy></BackgroundMusicEasy>
+  <BackgroundMusicEasyVolume>50</BackgroundMusicEasyVolume>
   <BackgroundMusicMedium></BackgroundMusicMedium>
+  <BackgroundMusicMediumVolume>50</BackgroundMusicMediumVolume>
   <BackgroudnMusicHard></BackgroudnMusicHard>
+  <BackgroudnMusicHardVolume>50</BackgroudnMusicHardVolume>
+
 </Level>

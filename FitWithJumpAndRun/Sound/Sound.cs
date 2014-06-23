@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;*/
 
-namespace Sound
+namespace JumpAndRun.Sound
 {
     /// <summary>
     /// Spielt Audiodateien ab.

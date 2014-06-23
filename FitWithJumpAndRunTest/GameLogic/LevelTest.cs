@@ -26,7 +26,7 @@ namespace JumpAndRun
         {
             Level level = new Level();
             level.AddXmlPath("/data/levels/test/level.xml");
-            Assert.AreEqual(1, level.segmentsXmlPath.Count, "Falsche anzahl XML Pfade.");
+            Assert.AreEqual(1, level.SegmentsXmlPath.Count, "Falsche anzahl XML Pfade.");
         }
 
         [TestMethod]
@@ -35,7 +35,7 @@ namespace JumpAndRun
             Level level = new Level();
             LevelSegment ls = new LevelSegment();
             level.AddSegment(ls);
-            Assert.AreEqual(1, level.segments.Count, "Falsche anzahl Segmente.");
+            Assert.AreEqual(1, level.Segments.Count, "Falsche anzahl Segmente.");
         }
 
         [TestMethod]
@@ -46,7 +46,7 @@ namespace JumpAndRun
             level.AddXmlPath("/data/levels/test/segments/segment1.xml");
             level.AddXmlPath("/data/levels/test/segments/end.xml");
             level.Deserialize();
-            Assert.AreEqual(3, level.segments.Count, "Falsche anzahl XML Pfade.");
+            Assert.AreEqual(3, level.Segments.Count, "Falsche anzahl XML Pfade.");
         }
 
         [TestMethod]
@@ -58,7 +58,7 @@ namespace JumpAndRun
             level.AddXmlPath("/data/levels/test/segments/end.xml");
             level.Deserialize();
             level.Load();
-            Assert.AreEqual(3, level.segments.Count, "Falsche anzahl XML Pfade.");
+            Assert.AreEqual(3, level.Segments.Count, "Falsche anzahl XML Pfade.");
         }
 
         [TestMethod]
@@ -70,9 +70,9 @@ namespace JumpAndRun
             level.AddXmlPath("/data/levels/test/segments/end.xml");
             level.Deserialize();
             level.Load();
-            Assert.AreNotEqual((System.UInt32)0, level.segments[0].objects[0].Model.Id, "Objekt wurde nicht entfernt.");
+            Assert.AreNotEqual((System.UInt32)0, level.Segments[0].objects[0].Model.Id, "Objekt wurde nicht entfernt.");
             level.Dispose();
-            Assert.AreEqual((System.UInt32)0, level.segments[0].objects[0].Model.Id, "Objekt wurde nicht entfernt.");
+            Assert.AreEqual((System.UInt32)0, level.Segments[0].objects[0].Model.Id, "Objekt wurde nicht entfernt.");
         }
     }
 }
