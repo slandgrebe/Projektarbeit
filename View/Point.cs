@@ -25,6 +25,7 @@ namespace View
         }
         public void Position(float x, float y, float z)
         {
+            //Console.WriteLine("model: " + modelId + " pos: " + x + "/" + y);
             this.x = x;
             this.y = y;
             this.z = z;

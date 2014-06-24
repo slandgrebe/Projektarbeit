@@ -12,35 +12,41 @@ namespace JumpAndRun.Gui
     /// </summary>
     public class GameUi
     {
+        private static GameUi instance = null;
         /// <summary>ID des Textes für die Lebensanzeigen</summary>
-        private uint liveId = 0;
+        private View.Text life = null;
         /// <summary>ID des Textes für die erreichten Punkte</summary>
-        private uint scoreId = 0;
+        private View.Text score = null;
         /// <summary>Aktuelle anzahl Leben</summary>
-        public uint Lives { get; set; }
+        public uint Lifes { get; set; }
         /// <summary>Aktuell gesammelte Punkte</summary>
         public uint Score { get; set; }
-        /// <summary>Zeigt an, ob dieses GUI aktuell aktiv ist, oder nicht.</summary>
-        public bool IsShow { get; set; }
 
+
+        public static GameUi Instance
+        {
+            get
+            {
+                if (instance == null)
+                {
+                    instance = new GameUi();
+                }
+                return instance;
+            }
+        }
         /// <summary>
         /// Initialisiert das GUI, zeigt sie aber nicht an.
         /// </summary>
-        public GameUi()
+        private GameUi()
         {
-            IsShow = true;
-
             // Texte erzeugen
-            liveId = View.Text.AddText("data/fonts/arial.ttf");
-            while (!View.Text.IsCreated(liveId)) { }
-            scoreId = View.Text.AddText("data/fonts/arial.ttf");
-            while (!View.Text.IsCreated(scoreId)) { }
+            life = new View.Text("data/fonts/arial.ttf");
+            life.Size(52);
+            life.Position(-0.8f, 0.8f);
 
-            View.Text.TextSize(liveId, 36);
-            View.Text.TextColor(liveId, 1f, 0f, 0f, 1f);
-
-            View.Text.TextSize(scoreId, 36);
-            View.Text.TextColor(scoreId, 1f, 0f, 0f, 1f);
+            score = new View.Text("data/fonts/arial.ttf");
+            score.Size(52);
+            score.Position(0.8f, 0.8f);
 
             // GUI nicht anzeigen
             Hide();
@@ -51,8 +57,8 @@ namespace JumpAndRun.Gui
         /// </summary>
         public void Update()
         {
-            View.Text.String(liveId, "Lives: " + Lives);
-            View.Text.String(scoreId, "Score: " + Score);
+            life.setText("Leben: " + Lifes);
+            score.setText("Punkte: " + Score);
         }
 
         /// <summary>
@@ -60,12 +66,8 @@ namespace JumpAndRun.Gui
         /// </summary>
         public void Show()
         {
-            if (!IsShow)
-            {
-                View.Text.Position(liveId, -0.7f, 0.7f, 1.0f);
-                View.Text.Position(scoreId, 0.7f, 0.7f, 1.0f);
-                IsShow = true;
-            }
+            life.Show();
+            score.Show();
         }
 
         /// <summary>
@@ -73,12 +75,8 @@ namespace JumpAndRun.Gui
         /// </summary>
         public void Hide()
         {
-            if (IsShow)
-            {
-                View.Text.Position(liveId, -1000, 0, 1); // Z-Koordinate wird ignoriert, da es sich beim Button um ein GUI Element handelt
-                View.Text.Position(scoreId, -1000, 0, 1); // Z-Koordinate wird ignoriert, da es sich beim Button um ein GUI Element handelt
-                IsShow = false;
-            }
+            life.Hide();
+            score.Hide();
         }
     }
 }

@@ -12,6 +12,7 @@ namespace JumpAndRun.Gui
     /// </summary>
     public class MenuUi
     {
+        private static MenuUi instance = null;
         /// <summary>ID des Hintergrundbildes</summary>
         private View.Point background = null;
 
@@ -31,6 +32,18 @@ namespace JumpAndRun.Gui
         public delegate void DifficultySelected(JumpAndRun.Difficulty difficulty);
         public event DifficultySelected DifficultySelectedEvent;
 
+
+        public static MenuUi Instance
+        {
+            get
+            {
+                if (instance == null)
+                {
+                    instance = new MenuUi();
+                }
+                return instance;
+            }
+        }
         /// <summary>
         /// Initialisiert das GUI, zeigt sie aber nicht an.
         /// </summary>
@@ -74,11 +87,7 @@ namespace JumpAndRun.Gui
             slogan.Position(0.2f, -0.9f);
 
             // Cursor
-            //View.Cursor.Instance.MoveEvent += new View.Cursor.Move(CursorMove);
-            //View.Cursor.Instance.ClickEvent += new View.Cursor.Click(CursorClick);
-            /*cursor = new View.Point("data/models/hand/hand-stop-2.jpg");
-            cursor.Scale(0.05f, 0.025f);
-            cursor.Position(0, 0, -0.3f);*/
+            View.Cursor.Instance.MoveEvent += new View.Cursor.Move(CursorMove); // nur zum testen
 
             // GUI nicht anzeigen
             Hide();
@@ -143,88 +152,16 @@ namespace JumpAndRun.Gui
         }
 
 
-        /*private void CursorMove(float x, float y)
+        private void CursorMove(float x, float y) // nur zum testen
         {
-            //Console.WriteLine("Cursor update: " + x + " " + y);
-            buttonEasy.Text(truncate(x, 1) + "/" + truncate(y, 1));
-
-            buttonEasy.CursorUpdate(x, y);
-            buttonNormal.CursorUpdate(x, y);
-            buttonDifficult.CursorUpdate(x, y);
-        }*/
-        /*private void CursorClick()
-        {
-            buttonNormal.Text("Clicked");
-        }*/
-
-        /*public bool IsButtonEasyHovered()
-        {
-            return buttonEasy.IsHovered;
+            //buttonEasy.Text(truncate(x, 3) + "/" + truncate(y, 3));
         }
-        public bool IsButtonNormalHovered()
-        {
-            return buttonNormal.IsHovered;
-        }
-        public bool IsButtonDifficultHovered()
-        {
-            return buttonDifficult.IsHovered;
-        }*/
 
-        /// <summary>
-        /// Positioniert den Cursor
-        /// </summary>
-        /// <param name="x">X Koordinate</param>
-        /// <param name="y">Y Koordinate</param>
-        /*public void PositionCursor(float handX, float handY, float headX, float headY, float shoulderX, float shoulderY)
-        {
-            float xMax = (shoulderX - headX) * 2;
-            float yMax = (shoulderY - headY);
-
-            float x = handX - headX;
-            float y = handY - headY;
-
-            float xRelative = x / xMax -1;
-            float yRelative = y / yMax -1;
-
-            //Console.WriteLine("Cursor: " + x + "/" + y);
-
-            buttonEasy.Text(truncate(xRelative, 1) + "/" + truncate(yRelative, 1));
-            //buttonEasy.Text("hand: " + truncate(handX, 4) + "/" + truncate(handY, 4));
-            //buttonNormal.Text("head: " + truncate(headX, 4) + "/" + truncate(headY, 4));
-            //buttonDifficult.Text("shoulder: " + truncate(shoulderX, 4) + "/" + truncate(shoulderY, 4));
-
-            //cursor.Position(x, y, -1f);
-            if (CursorPosition(x, y))
-            {
-                buttonEasy.Highlight(true);
-            }
-            else
-            {
-                buttonEasy.Highlight(false);
-            }
-        }*/
-
-        private float truncate(float value, int digits)
+        private float truncate(float value, int digits) // nur zum testen
         {
             double mult = Math.Pow(10.0, digits);
             double result = Math.Truncate(mult * value) / mult;
             return (float)result;
         }
-
-        /// <summary>
-        /// Überprüft, ob sich innerhalb des Buttons befindet.
-        /// </summary>
-        /// <param name="x">X Koordinate des Cursors</param>
-        /// <param name="y">Y Koordinate des Cursors</param>
-        /// <returns>True, wenn sich der Cursor sich innerhalb des Buttons befindet</returns>
-        /*public bool CursorPosition(float x, float y)
-        {            
-
-            if (x > -0.04 && x < 0.04 && y > -0.025 && y < 0.025)
-            {
-                return true;
-            }
-            return false;
-        }*/
     }
 }

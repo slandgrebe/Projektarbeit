@@ -12,21 +12,35 @@ namespace JumpAndRun.Gui
     /// </summary>
     public class ScoreUi
     {
+        private static ScoreUi instance = null;
         /// <summary>ID des Hintergrundbildes</summary>
         private View.Point background = null;
         /// <summary>ID des Textes</summary>
         private View.Text text = null;
         /// <summary>ID des Buttons</summary>
         private View.Button button = null;
-        /// <summary>ID des Cursors</summary>
-        private uint cursorId = 0;
-        
+
+        public delegate void ButtonClick();
+        public event ButtonClick ButtonClickedEvent;
+
         public uint Score { get; set; }
+
+        public static ScoreUi Instance
+        {
+            get
+            {
+                if (instance == null)
+                {
+                    instance = new ScoreUi();
+                }
+                return instance;
+            }
+        }
 
         /// <summary>
         /// Initialisiert das GUI, zeigt sie aber nicht an.
         /// </summary>
-        public ScoreUi()
+        private ScoreUi()
         {
             Score = 0;
 
@@ -43,14 +57,23 @@ namespace JumpAndRun.Gui
             // Button erzeugen
             button = new View.Button("data/fonts/arial.ttf");
             button.Text("Nochmal");
+            button.ClickEvent += new View.Button.Clicked(ButtonClicked);
 
             // Cursor erzeugen
-            cursorId = View.Model.AddPoint("data/models/hand/hand-stop-2.jpg");
+
+            /*cursorId = View.Model.AddPoint("data/models/hand/hand-stop-2.jpg");
             while (cursorId != 0 && !View.Model.IsCreated(cursorId)) { }
-            View.Model.Scale(cursorId, 0.03f, 0.05f, 1);
+            View.Model.Scale(cursorId, 0.03f, 0.05f, 1);*/
 
             // GUI nicht anzeigen
             Hide();
+        }
+
+        public void ButtonClicked()
+        {
+            Console.WriteLine("score click");
+            //DifficultySelectedEvent(JumpAndRun.Difficulty.Easy);
+            ButtonClickedEvent();
         }
 
         /// <summary>
@@ -67,7 +90,7 @@ namespace JumpAndRun.Gui
             text.setText("Punkte: " + Score);
             button.Show();
 
-            View.Model.AttachToCamera(cursorId, true);
+            View.Cursor.Instance.Show();
         }
 
         /// <summary>
@@ -79,40 +102,7 @@ namespace JumpAndRun.Gui
             text.Hide();
             button.Hide();
 
-            View.Model.Position(cursorId, -1000, 0f, -0.2f);
-        }
-
-        /// <summary>
-        /// Positioniert den Cursor
-        /// </summary>
-        /// <param name="x">X Koordinate</param>
-        /// <param name="y">Y Koordinate</param>
-        public void PositionCursor(float x, float y)
-        {
-            /*View.Model.Position(cursorId, x, y, -0.2f);
-            if (HoverButton(x, y))
-            {
-                View.Model.HighlightColor(buttonId, 1f, 1f, 0f, 1f);
-            }
-            else
-            {
-                View.Model.HighlightColor(buttonId, 0.5f, 0f, 0f, 1f);
-            }*/
-        }
-
-        /// <summary>
-        /// Überprüft, ob sich innerhalb des Buttons befindet.
-        /// </summary>
-        /// <param name="x">X Koordinate des Cursors</param>
-        /// <param name="y">Y Koordinate des Cursors</param>
-        /// <returns>True, wenn sich der Cursor sich innerhalb des Buttons befindet</returns>
-        public bool HoverButton(float x, float y)
-        {
-            if (x > -0.04 && x < 0.04 && y > -0.025 && y < 0.025)
-            {
-                return true;
-            }
-            return false;
+            View.Cursor.Instance.Hide();
         }
     }
 }

@@ -34,7 +34,7 @@ namespace JumpAndRun.GameLogic
         /// </summary>
         public Game()
         {
-            gameUi = new GameUi();
+            gameUi = GameUi.Instance;
             Player = new Player();
             GameStatus = GameStatus.Start;
         }
@@ -67,7 +67,6 @@ namespace JumpAndRun.GameLogic
             Player.Score = 0;
             Player.Lives = level.Lives;
             
-            gameUi.Show();
             GameStatus = GameStatus.Loadet;
 
             return true;
@@ -83,6 +82,8 @@ namespace JumpAndRun.GameLogic
                 Camera.PositionCamera(0, 1.5f, 0);
                 Camera.ChangeCameraSpeed(5f);
                 GameStatus = GameStatus.Started;
+
+                GameUi.Instance.Show();
             }
         }
 
@@ -143,7 +144,7 @@ namespace JumpAndRun.GameLogic
                     }
 
                     // Neuer Score, Lebensvorrat im GUI anzeigen
-                    gameUi.Lives = Player.Lives;
+                    gameUi.Lifes = Player.Lives;
                     gameUi.Score = Player.Score;
                     gameUi.Update();
 
@@ -161,8 +162,14 @@ namespace JumpAndRun.GameLogic
         /// </summary>
         public void ResetGame()
         {
-            gameUi.Hide();
-            level.Dispose();
+            GameUi.Instance.Hide();
+            if (GameStatus == GameStatus.Loadet
+                || GameStatus == GameStatus.Started
+                || GameStatus == GameStatus.GameOver
+                || GameStatus == GameStatus.Successful)
+            {
+                level.Dispose();
+            }
             GameStatus = GameStatus.Start;
         }
 

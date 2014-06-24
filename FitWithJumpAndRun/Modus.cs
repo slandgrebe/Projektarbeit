@@ -11,10 +11,12 @@ namespace JumpAndRun
     /// </summary>
     public enum Modus : short
     {
-        NotTracked = 1,
-        Menu = 2,
-        Play = 3,
-        GameOver = 4,
-        Score = 5
+        KinectMissing = 0,
+        NotTracked,
+        Menu,
+        Loading,
+        Play,
+        GameOver,
+        Score
     }
 }

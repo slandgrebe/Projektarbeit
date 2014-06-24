@@ -13,7 +13,7 @@ namespace View
         public float X { get; private set; }
         public float Y { get; private set; }
 
-        private float z = -0.4f;
+        private float z = -0.4f; // diesen wert nicht ändern!
 
         private bool IsShown = false;
 
@@ -37,6 +37,7 @@ namespace View
             {
                 if (instance == null)
                 {
+                    Console.WriteLine("new cursor");
                     instance = new Cursor();
                 }
                 return instance;
@@ -81,9 +82,11 @@ namespace View
             X = xRelative;
             Y = yRelative;
 
-            cursor.Position(X /10, Y /10, z);
+
+            cursor.Position(X / 45.5f *4, Y / 45.5f *4, z);
 
             MoveEvent(X, Y); // event auslösen
+            //MoveEvent(X, Y /10);
         }
 
         private void CheckClick(float handX, float handY, float handZ, float headX, float headY, float headZ, float shoulderX, float shoulderY)
@@ -153,6 +156,8 @@ namespace View
         {
             cursor.Position(X, Y, 1);
             IsShown = false;
+
+            Console.WriteLine("hide cursor");
         }
     }
 }

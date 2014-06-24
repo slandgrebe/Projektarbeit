@@ -12,15 +12,29 @@ namespace JumpAndRun.Gui
     /// </summary>
     public class LoadingUi
     {
+        private static LoadingUi instance = null;
         /// <summary>ID des Hintergrundbildes</summary>
         private View.Point background = null;
         /// <summary>ID des Textes</summary>
         private View.Text text = null;
 
+
+        public static LoadingUi Instance
+        {
+            get
+            {
+                if (instance == null)
+                {
+                    instance = new LoadingUi();
+                }
+                return instance;
+            }
+        }
+
         /// <summary>
         /// Initialisiert das GUI, zeigt sie aber nicht an.
         /// </summary>
-        public LoadingUi()
+        private LoadingUi()
         {
             // Hintergrund erzeugen
             background = new View.Point("data/background/white.jpg");

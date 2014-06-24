@@ -60,7 +60,7 @@
     <Compile Include="GameLogic\Game.cs" />
     <Compile Include="GameLogic\GameStatus.cs" />
     <Compile Include="GameLogic\LevelSegment.cs" />
-    <Compile Include="Gui\Cursor.cs" />
+    <Compile Include="Gui\KinectUi.cs" />
     <Compile Include="Item\Object.cs" />
     <Compile Include="Gesture\Click.cs" />
     <Compile Include="Gesture\GestureClose.cs" />

@@ -22,24 +22,13 @@ namespace JumpAndRun
         private SkeletonTracker sensor = null;
         /// <summary>Eigene Instanz</summary>
         private static Run instance;
-        /// <summary>Instanz des eigentlichen Spieles</summary>
-        private Game game = null;
-        /// <summary>Gui Element, wenn keine Person erkannt wird</summary>
-        private NoTrackingUi noTrackingUi = null;
-        /// <summary>Gui Element für das Hauptmenu</summary>
-        private MenuUi menuUi = null;
-        /// <summary>Gui Element während des Levelladens</summary>
-        private LoadingUi loadingUi = null;
-        /// <summary>Gui Element für das erfolgreiche Beenden eines Levels</summary>
-        private ScoreUi scoreUi = null;
-        /// <summary>Gui Element wenn das Level wenn man das Level nicht beenden kann</summary>
-        private GameOverUi gameOverUi = null;
+
         /// <summary>Klickgeste überprüfen</summary>
         private Click click = new Click();
         /// <summary>Aktueller Modus des Spieles</summary>
         private Modus modus;
 
-        private Difficulty difficulty = Difficulty.Easy;
+        private Difficulty difficulty = Difficulty.NotSelected;
 
         /// <summary>
         /// Stellt sicher, dass diese Klasse nur einmal Instanziert werden kann.
@@ -62,26 +51,18 @@ namespace JumpAndRun
         /// </summary>
         private void Initialize()
         {
-            modus = Modus.NotTracked;
-            
-            // Fenster im Fullscreen öffnen
+            // Fenster öffnen
             Window.Init("Fit with Jump and Run", false, 1280, 800);
 
-            // Gui Element für Keine Person erkannt initialisieren
-            noTrackingUi = new NoTrackingUi();
+            // GUI für Initialisierung anzeigen
+            modus = Modus.KinectMissing;
+            KinectUi.Instance.SetText("Kinect wird gestartet");
+            KinectUi.Instance.Show();
 
-            // Gui Element für das Hauptmenu initialisieren
-            menuUi = new MenuUi();
-            menuUi.DifficultySelectedEvent += new JumpAndRun.Gui.MenuUi.DifficultySelected(DifficultySelected); // schwierigkeitsauswahl event abfangen
-
-            // Gui Element für den Ladebildschirm des Levels initialisieren
-            loadingUi = new LoadingUi();
-
-            // Gui Element für das erfolgreiche Beenden eines Levels initialisieren
-            scoreUi = new ScoreUi();
-
-            // Gui Element für das nicht erfolgreiche Beenden eines Levels initialisieren
-            gameOverUi = new GameOverUi();
+            // click events
+            MenuUi.Instance.DifficultySelectedEvent += new MenuUi.DifficultySelected(DifficultySelected);
+            ScoreUi.Instance.ButtonClickedEvent += new ScoreUi.ButtonClick(ScoreButtonClicked);
+            GameOverUi.Instance.ButtonClickedEvent += new GameOverUi.ButtonClick(GameOverButtonClicked);
         }
 
         /// <summary>
@@ -91,159 +72,231 @@ namespace JumpAndRun
         {
             Initialize();
             System.Threading.Thread.Sleep(30);
+
             while(Window.IsRunning())
             {
                 // senkt die CPU Auslastung drastisch
                 System.Threading.Thread.Sleep(1);
 
-                // Sensor nicht angeschlossen / nicht gestartet
-                if (sensor == null)
+                // Kinect überprüfen
+                if (!CheckKinect()) continue;
+                // Überprüfen ob eine Person erkannt wird
+                else if (!CheckPersonTracking()) continue;
+                // Schwierigkeitsgrad wählen
+                else if (!CheckDifficultySelection()) continue;
+                // spiel laden
+                else if (!CheckGameLoading()) continue;
+                // spielen
+                else if (!CheckGaming()) continue;
+                // spiel beendet
+                else if (!CheckFinishedGame()) continue;
+                // da stimmt etwas nicht
+                else 
                 {
-                    // Personenerkennung starten
-                    try
-                    {
-                        // Programm Starten
-                        sensor = new SkeletonTracker();
-                        sensor.Start();
-                    }
-                    catch (Exception e)
-                    {
-                        modus = Modus.NotTracked;
-                        sensor = null;
-                    }
+                    Console.WriteLine("ungueltiger Zustand.");
                 }
-                else
+
+                // Programm mit Geste beenden
+                if (GestureClose.IsTrue())
                 {
-                    // Überprüfen ob eine Person erkannt wird
-                    if (Body.Instance.IsTracked)
-                    {
-                        if (modus == Modus.NotTracked)
-                        {
-                            modus = Modus.Menu;
-                        }
-
-                        // Position des Cursors updaten und events auslösen
-                        View.Cursor.Instance.UpdateCursor(MotionDetection.Body.Instance.HandRight.X,
-                            MotionDetection.Body.Instance.HandRight.Y,
-                            MotionDetection.Body.Instance.HandRight.Z,
-                            MotionDetection.Body.Instance.Head.X,
-                            MotionDetection.Body.Instance.Head.Y,
-                            MotionDetection.Body.Instance.Head.Z,
-                            MotionDetection.Body.Instance.ShoulderRight.X,
-                            MotionDetection.Body.Instance.ShoulderRight.Y);
-                    }
-                    else
-                    {
-                        modus = Modus.NotTracked;
-                        //modus = Modus.Menu;
-                    }
-
-                    // Programm mit Geste beenden
-                    if (GestureClose.IsTrue())
-                    {
-                        Window.Close();
-                        break;
-                    }
-
-                    // Weiche was aktuell am Screen angezeigt werden soll
-                    switch (modus)
-                    {
-                        case Modus.NotTracked:
-                            noTrackingUi.Show();
-                            if (game != null)
-                            {
-                                game.ResetGame();
-                            }
-                            menuUi.Hide();
-                            loadingUi.Hide();
-                            scoreUi.Hide();
-                            gameOverUi.Hide();
-                            break;
-
-                        case Modus.Menu:
-                            Body.Instance.Scale(0.1f);
-                            noTrackingUi.Hide();
-                            menuUi.Show();
-                            break;
-
-                        case Modus.Play:
-                            menuUi.Hide();
-                            scoreUi.Hide();
-                            gameOverUi.Hide();
-                            if (game != null)
-                            {
-                                // Spiel/Level wird geladen
-                                if (game.GameStatus == GameStatus.Start)
-                                {
-                                    loadingUi.Show();
-                                    game.LevelXmlPath = "/data/levels/jungle/level.xml";
-                                    game.Init();
-                                }
-                                // Level ist geladen
-                                if (game.GameStatus == GameStatus.Loadet)
-                                {
-                                    game.Start();
-                                    loadingUi.Hide();
-                                }
-                                // Darstellung des Spiels updaten
-                                game.Update();
-                                // Spiel erfolgreich beendet
-                                if (game.GameStatus == GameStatus.Successful)
-                                {
-                                    game.ResetGame();
-                                    modus = Modus.Score;
-                                }
-                                // Spiel nicht erfolgreich beendet
-                                if (game.GameStatus == GameStatus.GameOver)
-                                {
-                                    game.ResetGame();
-                                    modus = Modus.GameOver;
-                                }
-                            }
-                            else
-                            {
-                                // Spiel beim ersten durchgang initialisieren
-                                loadingUi.Show();
-                                game = Game.Instance;
-                            }
-                            break;
-
-                        case Modus.Score:
-                            Body.Instance.Scale(0.1f);
-                            scoreUi.Score = game.Player.Score;
-                            scoreUi.Show();
-                            scoreUi.PositionCursor(Body.Instance.HandRight.X, Body.Instance.HandRight.Y);
-                            // Klickgeste auf Button
-                            if (scoreUi.HoverButton(Body.Instance.HandRight.X, Body.Instance.HandRight.Y))
-                            {
-                                if (click.IsClicked())
-                                {
-                                    modus = Modus.Play;
-                                    game.GameStatus = GameStatus.Start;
-                                }
-                            }
-                            break;
-
-                        case Modus.GameOver:
-                            Body.Instance.Scale(0.1f);
-                            gameOverUi.Show();
-                            gameOverUi.PositionCursor(Body.Instance.HandRight.X, Body.Instance.HandRight.Y);
-                            // Klickgeste auf Button
-                            if (gameOverUi.HoverButton(Body.Instance.HandRight.X, Body.Instance.HandRight.Y))
-                            {
-                                if (click.IsClicked())
-                                {
-                                    modus = Modus.Play;
-                                    game.GameStatus = GameStatus.Start;
-                                }
-                            }
-                            break;
-
-                        default:
-                            break;
-                    }
+                    Window.Close();
+                    break;
                 }
             }
+        }
+
+
+        private void HideAllGuis()
+        {
+            KinectUi.Instance.Hide();
+            NoTrackingUi.Instance.Hide();
+            MenuUi.Instance.Hide();
+            LoadingUi.Instance.Hide();
+            GameUi.Instance.Hide();
+            GameOverUi.Instance.Hide();
+            ScoreUi.Instance.Hide();
+        }
+        private bool CheckKinect()
+        {
+            if (sensor == null)
+            {
+                modus = Modus.KinectMissing;
+
+                // Personenerkennung starten
+                try
+                {
+                    // Programm Starten
+                    sensor = new SkeletonTracker();
+                    sensor.Start();
+                    KinectUi.Instance.Hide();
+
+                    return true;
+                }
+                catch (Exception e)
+                {
+                    KinectUi.Instance.SetText("Die Kinect ist nicht angeschlossen");
+                    KinectUi.Instance.Show();
+                    modus = Modus.NotTracked;
+                    sensor = null;
+                }
+
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+
+            return false;
+        }
+        private bool CheckPersonTracking()
+        {
+            // Überprüfen ob eine Person erkannt wird
+            if (!Body.Instance.IsTracked)
+            {
+                if (modus != Modus.NotTracked) // NoTrackingUi zeigen, falls zuvor in einem anderen Modus gewesen
+                {
+                    modus = Modus.NotTracked;
+                    HideAllGuis();
+                    NoTrackingUi.Instance.Show();
+                }
+
+                //Console.WriteLine("jetzt passiert's");
+                //Game test = new Game();
+                Game.Instance.ResetGame();
+
+                return false;
+            }
+
+            return true;
+        }
+        private bool CheckDifficultySelection()
+        {
+            // Schwierigkeitsgrad wählen
+            if (difficulty == Difficulty.NotSelected) 
+            {
+                if (modus != Modus.Menu) // MenuUi zeigen, falls zuvor in einem anderen Modus gewesen
+                {
+                    modus = Modus.Menu;
+                    Body.Instance.Scale(0.1f); // warum ist das nötig?
+                    HideAllGuis();
+                    MenuUi.Instance.Show();
+                }
+
+                UpdateCursor();
+
+                return false;
+            }
+
+            return true;
+        }
+        private bool CheckGameLoading()
+        {
+            if (Game.Instance.GameStatus == GameStatus.Start) // GameStatus.Initial???
+            {
+                if (modus != Modus.Loading)
+                {
+                    modus = Modus.Loading;
+                    HideAllGuis();
+                    LoadingUi.Instance.Show();
+                }
+
+                Game.Instance.LevelXmlPath = "/data/levels/jungle/level.xml";
+                Game.Instance.Init();
+
+                return false;
+            }
+
+            return true;
+        }
+
+        private bool CheckGaming() 
+        {
+            // Darstellung des Spiels updaten
+            Game.Instance.Update();
+
+            // Level ist geladen
+            if (Game.Instance.GameStatus == GameStatus.Loadet)
+            {
+                if (modus != Modus.Play)
+                {
+                    modus = Modus.Play;
+                    HideAllGuis();
+                }
+
+                Game.Instance.Start();
+
+                return false;
+            }
+            // am spielen
+            else if (Game.Instance.GameStatus == GameStatus.Started || Game.Instance.GameStatus == GameStatus.Start)
+            {
+                if (modus != Modus.Play)
+                {
+                    modus = Modus.Play;
+                }
+
+                return false;
+            }
+            // Spiel erfolgreich beendet
+            else if (Game.Instance.GameStatus == GameStatus.Successful)
+            {                
+                return true;
+            }
+            else if (Game.Instance.GameStatus == GameStatus.GameOver)
+            {
+                return true;
+            }
+
+            return false;
+        }
+        private bool CheckFinishedGame()
+        {
+            // Spiel erfolgreich beendet
+            if (Game.Instance.GameStatus == GameStatus.Successful)
+            {
+                if (modus != Modus.Score)
+                {
+                    modus = Modus.Score;
+                    Body.Instance.Scale(0.1f);
+                    ScoreUi.Instance.Score = Game.Instance.Player.Score;
+                    HideAllGuis();
+                    ScoreUi.Instance.Show();
+                }
+
+                UpdateCursor();
+
+                return false;
+            }
+            else if (Game.Instance.GameStatus == GameStatus.GameOver)
+            {
+                if (modus != Modus.GameOver)
+                {
+                    modus = Modus.GameOver;
+                    Body.Instance.Scale(0.1f);
+                    HideAllGuis();
+                    GameOverUi.Instance.Show();
+                }
+
+                UpdateCursor();
+
+                return false;
+            }
+
+            return true;
+        }
+
+        private void UpdateCursor()
+        {
+            // Position des Cursors updaten und events auslösen
+            View.Cursor.Instance.UpdateCursor(MotionDetection.Body.Instance.HandRight.X,
+                MotionDetection.Body.Instance.HandRight.Y,
+                MotionDetection.Body.Instance.HandRight.Z,
+                MotionDetection.Body.Instance.Head.X,
+                MotionDetection.Body.Instance.Head.Y,
+                MotionDetection.Body.Instance.Head.Z,
+                MotionDetection.Body.Instance.ShoulderRight.X,
+                MotionDetection.Body.Instance.ShoulderRight.Y);
         }
 
         public void DifficultySelected(Difficulty difficulty)
@@ -251,6 +304,22 @@ namespace JumpAndRun
             Console.WriteLine("difficulty selected: " + difficulty);
             this.difficulty = difficulty;
             modus = Modus.Play;
+        }
+        public void GameOverButtonClicked()
+        {
+            GameFinished();
+        }
+        public void ScoreButtonClicked()
+        {
+            GameFinished();
+        }
+
+        private void GameFinished()
+        {
+            Console.WriteLine("game finished");
+            modus = Modus.KinectMissing;
+            difficulty = Difficulty.NotSelected;
+            Game.Instance.ResetGame();
         }
 
         /// <summary>

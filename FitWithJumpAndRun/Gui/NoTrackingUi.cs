@@ -12,8 +12,8 @@ namespace JumpAndRun.Gui
     /// </summary>
     public class NoTrackingUi
     {
-        /// <summary>Position des GUIS im Koordinatensystem</summary>
-        public float Position { get; set; }
+        private static NoTrackingUi instance = null;
+
         /// <summary>ID des Hintergrundbildes</summary>
         private View.Point background = null;
 
@@ -21,10 +21,23 @@ namespace JumpAndRun.Gui
         private View.Text text = null;
         private View.Text hint = null;
 
+
+        public static NoTrackingUi Instance
+        {
+            get
+            {
+                if (instance == null)
+                {
+                    instance = new NoTrackingUi();
+                }
+                return instance;
+            }
+        }
+
         /// <summary>
         /// Initialisiert das GUI, zeigt sie aber nicht an.
         /// </summary>
-        public NoTrackingUi()
+        private NoTrackingUi()
         {            
             // Hintergrund erzeugen
             background = new View.Point("data/background/dschungel.png");
