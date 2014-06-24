@@ -80,8 +80,11 @@ namespace JumpAndRun.GameLogic
         {
             if (GameStatus == GameStatus.Loadet)
             {
+                //Camera.PositionCamera(0, 1.5f, -40 + 4.5f -0.5f);
+                //Camera.ChangeCameraSpeed(0f);
                 Camera.PositionCamera(0, 1.5f, 0);
                 Camera.ChangeCameraSpeed(5f);
+
                 GameStatus = GameStatus.Started;
             }
         }

@@ -144,6 +144,23 @@ void Manager::remove(GLuint modelId) {
 
 	if (modelIterator != assimpModelList.end()) {
 		model::AssimpModel* model = modelIterator->second;
+
+		// aus collisionGroup entfernen
+		switch (model->collisionGroup()) {
+			case collisionGroup::ambiente:
+				// ignore
+				break;
+			case collisionGroup::player:
+				collisionGroupPlayer.remove(modelId);
+				break;
+			case collisionGroup::obstacle:
+				collisionGroupObstacle.remove(modelId);
+				break;
+			case collisionGroup::bonus:
+				collisionGroupBonus.remove(modelId);
+				break;
+		}
+
 		delete model;
 		assimpModelList.erase(modelIterator);
 	}
@@ -503,57 +520,154 @@ void Manager::changeCameraSpeed(float speed) {
 	graphics::GraphicEngine::getInstance()->camera()->changeSpeed(speed);
 }
 
-void Manager::doCollisionDetection(void) {
-	//{ 1:{2, 3}, 2 : {1, 2} }
-	//1:2,3;2:1,2
-	std::stringstream collisions;
-	const char* separator1 = "";
-	const char* separator2 = "";
-	//glm::vec3 cameraPosition = graphics::GraphicEngine::getInstance()->camera()->position();
-	
-	// Modelle
-	std::map<GLuint, model::AssimpModel*>::iterator it;
-	for (it = assimpModelList.begin(); it != assimpModelList.end(); it++) {
-		model::AssimpModel* modelA = (*it).second;
-		collisions << separator1 << it->first << ":";
-		separator1 = ";";
 
-		/*glm::vec3 a = modelA->position();
-		if (modelA->attachedToCamera()) {
-			a += cameraPosition;
-		}
-		float ar = modelA->boundingSphereRadius();*/
+bool Manager::addCollisionModel(GLuint modelId, std::string filename) {
+	if (assimpModelList.find(modelId) != assimpModelList.end()) {
+		model::AssimpModel* model = assimpModelList.find(modelId)->second;
 
-		std::map<GLuint, model::AssimpModel*>::iterator it2;
-		for (it2 = assimpModelList.begin(); it2 != assimpModelList.end(); it2++) {
-			model::AssimpModel* modelB = (*it2).second;
+		return model->addCollisionModel(filename);
+	}
+	else {
+		Log().error() << "Das Model mit der modelId '" << modelId << "' konnte waehrend dem Versuch dessen Kollisionsmodell zu setzen nicht gefunden werden oder es handelt sich dabei nicht um ein 3D Modell.";
+	}
 
-			/*// mit sich selber nicht vergleichen
-			if (modelA == modelB) {
-				continue;
-			}*/
+	return false;
+}
+bool Manager::collisionGroup(GLuint modelId, unsigned int newCollisionGroup) {
+	if (assimpModelList.find(modelId) != assimpModelList.end()) {
+		model::AssimpModel* model = assimpModelList.find(modelId)->second;
 
-			/*// wenn Modell an die Kamera angehängt ist, zur Position noch die Kameraposition dazu rechnen
-			glm::vec3 b = modelB->position();
-			if (modelB->attachedToCamera()) {
-				b += cameraPosition;
+		if (model->collisionGroup() != newCollisionGroup) {
+			
+			// aus der alten gruppe entfernen
+			switch (model->collisionGroup()) {
+				case collisionGroup::ambiente:
+					// ignore
+					break;
+				case collisionGroup::player: 
+					collisionGroupPlayer.remove(modelId);
+					Log().info() << "Kollisionsgruppe Player entfernt: " << modelId;
+					break;
+				case collisionGroup::obstacle:
+					collisionGroupObstacle.remove(modelId);
+					Log().info() << "Kollisionsgruppe Hindernis entfernt: " << modelId;
+					break;
+				case collisionGroup::bonus:
+					collisionGroupBonus.remove(modelId);
+					Log().info() << "Kollisionsgruppe Punkt entfernt: " << modelId;
+					break;
 			}
 
-			float br = modelB->boundingSphereRadius();*/
+			// der neuen gruppe hinzufügen
+			switch (newCollisionGroup) {
+				case collisionGroup::ambiente:
+					// ignore
+					break;
+				case collisionGroup::player:
+					collisionGroupPlayer.push_back(modelId);
+					Log().info() << "Kollisionsgruppe Player: " << modelId;
+					break;
+				case collisionGroup::obstacle:
+					collisionGroupObstacle.push_back(modelId);
+					Log().info() << "Kollisionsgruppe Hindernis: " << modelId;
+					break;
+				case collisionGroup::bonus:
+					collisionGroupBonus.push_back(modelId);
+					Log().info() << "Kollisionsgruppe Punkt: " << modelId;
+					break;
+			}
 
-			// kugeln schneiden sich
-			//if (pow(a.x - b.x, 2) + pow(a.y - b.y, 2) + pow(a.z - b.z, 2) < pow(ar + br, 2)) {
-				if (modelA->doesIntersect(modelB)) { // exaktere prüfung
-					collisions << separator2 << it2->first;
-					separator2 = ",";
-				}
-			//}
+			model->collisionGroup(newCollisionGroup);
 		}
 
-		separator2 = "";
+		return true;
+	}
+	else {
+		Log().error() << "Das Model mit der modelId '" << modelId << "' konnte waehrend dem Versuch dessen Kollisionsgruppe zu setzen nicht gefunden werden oder es handelt sich dabei nicht um ein 3D Modell.";
+	}
+
+	return false;
+}
+
+void Manager::doCollisionDetection(long unsigned int frame) {
+	clock_t begin = clock();
+	
+	// 21;35
+	std::stringstream collisions;
+	
+	GLuint collisionWithObstacle = 0;
+	GLuint collisionWithBonus = 0;
+
+	// collison Model aller Models der Collision group collisionGroupPlayer neu berechnen
+	clock_t begin2 = clock();
+	for (std::list<GLuint>::const_iterator itPlayer = collisionGroupPlayer.begin(), end = collisionGroupPlayer.end(); itPlayer != end; ++itPlayer) {
+		model::AssimpModel* player = assimpModelList[*itPlayer];
+		player->updateCollisionModel(frame);
+	}
+	//Log().info() << "update all player models(" << collisionGroupPlayer.size() << ") " << float(clock() - begin2) << "ms. " << this->m_collisions;
+
+	begin2 = clock();
+	for (std::map<GLuint, model::AssimpModel*>::const_iterator itModel = assimpModelList.begin(), end = assimpModelList.end(); itModel != end; ++itModel) {
+		model::AssimpModel* model = itModel->second;
+		model->updateCollisionModel(frame);
+	}
+	//Log().info() << "update all models(" << assimpModelList.size() << ") " << float(clock() - begin2) << "ms. " << this->m_collisions;
+	//Log().info() << "1 Collision Detection in " << float(clock() - begin) << "ms. " << this->m_collisions;
+	// kollision mit hindernis suchen
+	for (std::list<GLuint>::const_iterator itPlayer = collisionGroupPlayer.begin(), endPlayer = collisionGroupPlayer.end(); itPlayer != endPlayer; ++itPlayer) {
+		model::AssimpModel* player = assimpModelList[*itPlayer];
+
+		for (std::list<GLuint>::const_iterator itObstacles = collisionGroupObstacle.begin(), endObstacle = collisionGroupObstacle.end(); itObstacles != endObstacle; ++itObstacles) {
+			model::AssimpModel* obstacle = assimpModelList[*itObstacles];
+
+			if (player->doesIntersect(obstacle, frame)) { // exaktere prüfung
+				collisionWithObstacle = *itObstacles;
+				break;
+			}
+		}
+
+		if (collisionWithObstacle != 0) {
+			break;
+		}
+	}
+	//Log().info() << "2 Collision Detection in " << float(clock() - begin) << "ms. " << this->m_collisions;
+
+	// kollision mit bonus suchen
+	for (std::list<GLuint>::const_iterator itPlayer = collisionGroupPlayer.begin(), endPlayer = collisionGroupPlayer.end(); itPlayer != endPlayer; ++itPlayer) {
+		model::AssimpModel* player = assimpModelList[*itPlayer];
+
+		for (std::list<GLuint>::const_iterator itBonus = collisionGroupBonus.begin(), endBonus = collisionGroupBonus.end(); itBonus != endBonus; ++itBonus) {
+			model::AssimpModel* bonus = assimpModelList[*itBonus];
+
+			if (player->doesIntersect(bonus, frame)) { // exaktere prüfung
+				collisionWithBonus = *itBonus;
+				//Log().info() << *itPlayer << " " << *itBonus;
+				break;
+			}
+		}
+
+		if (collisionWithBonus != 0) {
+			break;
+		}
+	}
+	//Log().info() << "3 Collision Detection in " << float(clock() - begin) << "ms. " << this->m_collisions;
+
+	// collision text generieren
+	if (collisionWithObstacle != 0) {
+		collisions << collisionWithObstacle;
+	}
+	if (collisionWithBonus != 0) {
+		if (collisionWithObstacle != 0) {
+			collisions << ";";
+		}
+		collisions << collisionWithBonus;
 	}
 
 	this->m_collisions = collisions.str();
+	if (collisions.str().length() > 0) {
+		Log().info() << "Collision detected: " << collisions.str();
+	}
+	//Log().info() << "Collision Detection in " << float(clock() - begin) << "ms. " << this->m_collisions;
 }
 unsigned int Manager::collisionsTextLength(void) {
 	m_collisionsCache = m_collisions;

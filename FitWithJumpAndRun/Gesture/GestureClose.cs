@@ -20,7 +20,7 @@ namespace JumpAndRun.Gesture
         /// <returns></returns>
         public static bool IsTrue()
         {
-            System.Console.WriteLine(Math.Abs(StartTime.Subtract(DateTime.Now).TotalSeconds));
+            //System.Console.WriteLine(Math.Abs(StartTime.Subtract(DateTime.Now).TotalSeconds));
             if (Body.Instance.ElbowLeft.Y < Body.Instance.ShoulderLeft.Y && Body.Instance.ElbowRight.Y < Body.Instance.ShoulderRight.Y) // Ellebogen befinden sich unterhalb der Schultern
             {
                 if (Body.Instance.HandLeft.X > Body.Instance.HandRight.X) // Linke Hand ist rechts von der rechten Hand

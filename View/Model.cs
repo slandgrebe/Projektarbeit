@@ -153,5 +153,9 @@ namespace View
         /// <returns>Prüfung ob die Operation durchgeführt werden konnte</returns>
         [DllImport("Visualization.dll", EntryPoint = "collisionsText")]
         public extern static bool CollisionsText(System.Text.StringBuilder text, int length);
+        [DllImport("Visualization.dll", EntryPoint = "addCollisionModel")]
+        public extern static bool AddCollisionModel(uint modelId, string filename);
+        [DllImport("Visualization.dll", EntryPoint = "collisionGroup")]
+        public extern static bool CollisionGroup(uint modelId, uint collisionGroup);
     }
 }

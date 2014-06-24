@@ -137,6 +137,9 @@ namespace visual {
 			*/
 			glm::mat4 getViewOrthographicMatrix();
 
+
+			int printOglError(char *file, int line);
+
 		private:
 			bool running;
 
@@ -177,5 +180,6 @@ namespace visual {
 		};
 	}
 }
+
 
 #endif
