@@ -20,12 +20,6 @@ namespace JumpAndRun.GameLogic
         public List<LevelSegment> Segments;
         /// <summary>Start und Endsegment dieses Levels</summary>
         private List<LevelSegment> SegmentsStartEnd;
-        /// <summary>Liste aller einfachen Levelsegmenten dieses Levels</summary>
-        private List<LevelSegment> SegmentsEasy;
-        /// <summary>Liste aller mittleren Levelsegmenten dieses Levels</summary>
-        private List<LevelSegment> SegmentsMedium;
-        /// <summary>Liste aller schweren Levelsegmenten dieses Levels</summary>
-        private List<LevelSegment> SegmentsHard;
         /// <summary>XML Pfad zum Startsegment</summary>
         public string StartSegmentXml { get; set; }
         /// <summary>XML Pfad zum Endsegment</summary>
@@ -37,7 +31,7 @@ namespace JumpAndRun.GameLogic
         /// <summary>Anzahl zur verfügung stehendes Leben für dieses Level</summary>
         public uint Lifes { get; set; }
         /// <summary>Anzahl zur verfügung stehendes Leben für dieses Level</summary>
-        public int SegmentNumber { get; set; }
+        public int LevelDuration { get; set; }
         /// <summary>Hintergrundmusik für einfaches Level</summary>
         public string BackgroundMusicEasy { get; set; }
         /// <summary>Hintergrundmusik für mittelers Level</summary>
@@ -66,8 +60,6 @@ namespace JumpAndRun.GameLogic
         {
             Segments = new List<LevelSegment>();
             SegmentsStartEnd = new List<LevelSegment>();
-            SegmentsEasy = new List<LevelSegment>();
-            SegmentsHard = new List<LevelSegment>();
             SegmentsXmlPath = new List<string>();
         }
 
@@ -76,81 +68,28 @@ namespace JumpAndRun.GameLogic
         /// </summary>
         /// <param name="severity">Schwierigkeitsgrad</param>
         /// <returns>Prüfung ob die Operation durchgeführt werden konnte</returns>
-        public bool Load(int severity)
+        public bool Load()
         {
             int severityPoints = 0;
             Random rnd = new Random();
             int min = 1;
             int max = 3;
-            int segmentSeverity = 0;
-            double indicator = 0;
+            int segmentSeverity;
 
-            Severity = severity;
-            
-            if (Severity == 1){
-                severityPoints = Convert.ToInt32(SegmentNumber*1.5);
-            }else if (severity == 2){
-                severityPoints = SegmentNumber*2;
-            }else{
-                Severity = 3; // Max Schwierigkeitsgrad
-                severityPoints = Convert.ToInt32(SegmentNumber*2.5);
-            }
-
-            // Berechnen der noch zur verfügung stehender schwierigkeitsgrad
-            for (int i = SegmentNumber; i == 0; i--)
+            // Berechnen der noch zur verfügung stehender schwierigkeitsgrade
+            /*for (int i = LevelDuration; i == 0; i--)
             {
-                indicator = severityPoints / Severity;
-                min = 1;
-                max = severity;
-                if (indicator < i)
-                {
-                    
-                    indicator = severityPoints / (Severity - 1);
-                    if (indicator < i)
-                    {
-                        max = 1;
-                    }
-                    else
-                    {
-                        max = Severity - 1;
-                        min = Severity - 1;
-                    }
-                }
-                else
-                {
-                    min = Severity;
-                    max = Severity;
-                }
-                    
-
-
-                min = (int)Math.Ceiling(indicator);
-
-
-
-
-                max = (int)Math.Ceiling(indicator);
-
-                min = 1;
-                max = 3;
-                if (min < 1)
-                {
-                    min = 1;
-                    max = 1;
-                }
-                if (max > 3)
-                {
-                    min = 3;
-                    max = 3;
-                }
                 segmentSeverity = rnd.Next(min, max);
                 severityPoints -= segmentSeverity;
                 Segments.Add(GetRandomSegment(segmentSeverity));
-            }
+            }*/
 
             ShuffleSegments(SegmentsStartEnd[0], SegmentsStartEnd[1]);
 
-            LoadNextSegment();
+            foreach (LevelSegment segment in Segments)
+            {
+                LoadNextSegment();
+            }
 
             return true;
         }
@@ -161,7 +100,8 @@ namespace JumpAndRun.GameLogic
         /// <returns>Prüfung ob die Operation durchgeführt werden konnte</returns>
         public bool LoadNextSegment()
         {
-            if (!Segments[LoadetSegments].Create(Length)) return false;
+            //if (!Segments[LoadetSegments].Create(Length)) return false
+            Segments[LoadetSegments].Create(Length);
             Length += Segments[LoadetSegments].Length;
             LoadetSegments++;
             return true;
@@ -181,31 +121,18 @@ namespace JumpAndRun.GameLogic
         /// </summary>
         public void Deserialize()
         {
-            LevelSegment ls;
-            
             SegmentsStartEnd.Add(DeserializeSegment(StartSegmentXml));
             SegmentsStartEnd.Add(DeserializeSegment(EndSegmentXml));
             foreach (string segmentXmlPath in SegmentsXmlPath)
             {
-                ls = DeserializeSegment(segmentXmlPath);
-                switch (ls.Severity.ToString())
-                {
-                    case "1":
-                        SegmentsEasy.Add(ls);
-                        break;
-                    case "2":
-                        SegmentsMedium.Add(ls);
-                        break;
-                    case "3":
-                        SegmentsHard.Add(ls);
-                        break;
-                    default:
-                        ls.Severity = 3;
-                        SegmentsHard.Add(ls);
-                        break;
-                }
+                Segments.Add(DeserializeSegment(segmentXmlPath));
             }
-            
+
+            foreach (LevelSegment segment in SegmentsStartEnd)
+            {
+                segment.Deserialize();
+            }
+
             foreach (LevelSegment segment in Segments)
             {
                 segment.Deserialize();
@@ -239,21 +166,8 @@ namespace JumpAndRun.GameLogic
             Random rnd = new Random();
             int i = 0;
 
-            switch (severity.ToString())
-            {
-                case "1":
-                    i = rnd.Next(0, SegmentsEasy.Count);
-                    return SegmentsEasy[i];
-                case "2":
-                    i = rnd.Next(0, SegmentsMedium.Count);
-                    return SegmentsMedium[i];
-                case "3":
-                    i = rnd.Next(0, SegmentsHard.Count);
-                    return SegmentsHard[i];
-                default:
-                    i = rnd.Next(0, SegmentsHard.Count);
-                    return SegmentsHard[i];
-            }
+            i = rnd.Next(0, Segments.Count);
+            return Segments[i];
         }
 
         /// <summary>
@@ -296,19 +210,19 @@ namespace JumpAndRun.GameLogic
             switch (Severity.ToString())
             {
                 case "1":
-                    BgSound.FilePath = BackgroundMusicEasy;
+                    BgSound.FilePath = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location) + BackgroundMusicEasy;
                     BgSound.Volume = BackgroundMusicEasyVolume;
                     break;
                 case "2":
-                    BgSound.FilePath = BackgroundMusicMedium;
+                    BgSound.FilePath = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location) + BackgroundMusicMedium;
                     BgSound.Volume = BackgroundMusicMediumVolume;
                     break;
                 case "3":
-                    BgSound.FilePath = BackgroundMusicHard;
+                    BgSound.FilePath = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location) + BackgroundMusicHard;
                     BgSound.Volume = BackgroundMusicHardVolume;
                     break;
                 default:
-                    BgSound.FilePath = BackgroundMusicHard;
+                    BgSound.FilePath = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location) + BackgroundMusicHard;
                     BgSound.Volume = BackgroundMusicHardVolume;
                     break;
             }

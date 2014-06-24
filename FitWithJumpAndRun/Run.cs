@@ -61,7 +61,7 @@ namespace JumpAndRun
             modus = Modus.NotTracked;
             
             // Fenster im Fullscreen öffnen
-            Window.Init("Fit with Jump and Run",true,0,0);
+            Window.Init("Fit with Jump and Run",false,1600,900);
 
             // Gui Element für Keine Person erkannt initialisieren
             noTrackingUi = new NoTrackingUi();

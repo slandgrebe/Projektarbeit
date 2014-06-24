@@ -60,7 +60,7 @@ namespace JumpAndRun.GameLogic
             level = (Level)serializer.Deserialize(stream);
             stream.Close();
             level.Deserialize();
-            level.Load(20);
+            level.Load();
 
             Player.Scale = 0.7f;
             Player.Attach = true;

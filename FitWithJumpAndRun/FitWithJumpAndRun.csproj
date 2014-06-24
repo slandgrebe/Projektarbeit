@@ -192,12 +192,15 @@
     <Content Include="data\levels\jungle\segments\end.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="data\levels\jungle\segments\segment2.xml">
+    <Content Include="data\sound\music\background_easy.wav">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <None Include="data\levels\jungle\segments\segment3xml">
+    <Content Include="data\sound\music\background_hard.wav">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
+    </Content>
+    <Content Include="data\sound\music\background_medium.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="data\levels\jungle\segments\segment1.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

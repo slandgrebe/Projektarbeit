@@ -2,17 +2,16 @@
 <Level xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <StartSegmentXml>/data/levels/jungle/segments/start.xml</StartSegmentXml>
   <EndSegmentXml>/data/levels/jungle/segments/end.xml</EndSegmentXml>
-  <segmentsXmlPath>
+  <SegmentsXmlPath>
     <string>/data/levels/jungle/segments/segment1.xml</string>
-  </segmentsXmlPath>
+  </SegmentsXmlPath>
   <Name>Jungle</Name>
   <Lifes>4</Lifes>
-  <SegmentNumber>10</SegmentNumber>
-  <BackgroundMusicEasy></BackgroundMusicEasy>
+  <LevelDuration>30</LevelDuration>
+  <BackgroundMusicEasy>/data/sound/music/background_easy.wav</BackgroundMusicEasy>
   <BackgroundMusicEasyVolume>50</BackgroundMusicEasyVolume>
-  <BackgroundMusicMedium></BackgroundMusicMedium>
+  <BackgroundMusicMedium>/data/sound/music/background_medium.wav</BackgroundMusicMedium>
   <BackgroundMusicMediumVolume>50</BackgroundMusicMediumVolume>
-  <BackgroudnMusicHard></BackgroudnMusicHard>
-  <BackgroudnMusicHardVolume>50</BackgroudnMusicHardVolume>
-
+  <BackgroundMusicHard>/data/sound/music/background_hard.wav</BackgroundMusicHard>
+  <BackgroundMusicHardVolume>50</BackgroundMusicHardVolume>
 </Level>
