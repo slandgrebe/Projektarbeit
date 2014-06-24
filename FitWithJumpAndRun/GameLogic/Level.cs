@@ -81,7 +81,7 @@ namespace JumpAndRun.GameLogic
             {
                 segmentSeverity = rnd.Next(min, max);
                 severityPoints -= segmentSeverity;
-                Segments.Add(GetRandomSegment(segmentSeverity));
+                Segments.Add(GetRandomSegment());
             }*/
 
             ShuffleSegments(SegmentsStartEnd[0], SegmentsStartEnd[1]);
@@ -159,9 +159,8 @@ namespace JumpAndRun.GameLogic
         /// <summary>
         /// Gibt ein zufälliges Segment zurück
         /// </summary>
-        /// <param name="severity">gewünschter Schwierigkeitsgrad des Segments</param>
         /// <returns>Levelsegment</returns>
-        private LevelSegment GetRandomSegment(int severity)
+        private LevelSegment GetRandomSegment()
         {
             Random rnd = new Random();
             int i = 0;
