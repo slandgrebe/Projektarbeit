@@ -100,7 +100,7 @@ namespace Sound
         {
             if ((WMPLib.WMPPlayState)NewState == WMPLib.WMPPlayState.wmppsStopped)
             {
-                SoundStopped(this);
+                if (SoundStopped != null) SoundStopped(this);
             }
         }
     }
