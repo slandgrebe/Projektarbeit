@@ -73,15 +73,21 @@ Bei der Kollisionserkennung wird das Resultat als Text gespeichert. \n
 Mit der @link collisionsTextLength @endlink Funktion kann die Länge des Textes abgefragt werden, bevor mit der @link collisionsText @endlink Funktion der Text ausgelesen wird. \n
 \n
 Der Text hat folgendes Format \n
-__Format:__ 1:2,3;2:1;3:1;4: \n
+__Format:__ 23;121 \n
 __Bedeutung:__ 
-- Objekt mit der ID 1 kollidiert mit Objekt 2 und 3 \n
-- Objekt 2 kollidiert mit Objekt 1 \n
-- Objekt 3 kollidiert mit Objekt 1 \n
-- Objekt 4 kollidiert mit nichts. \n
+Die Objekte mit der ModelId 23 und 121 hatten eine Kollision\n
+\n
+Des weiteren müssen die Objekte in sogenannte Kollisionsgruppen eingeteilt werden. Objekte welche in der selben Gruppe sind, werden nicht miteinander verglichen. 
+Zudem wird für die beiden Gruppen Hindernisse und Bonus nur der jeweils erste Treffer geliefert.\n
+- Gruppe 0: Ambiente (wird ignoriert)\n
+- Gruppe 1: Spieler\n
+- Gruppe 2: Hindernisse\n
+- Gruppe 3: Bonus\n
 \n
 Beschreibung | Dokumentation
 ------ | -------
+Separates Kollisionsmodell verwenden | @link addCollisionModel @endlink
+Kollisionsgruppe setzen | @link collisionGroup @endlink
 Länge des Textes der Kollisionserkennung | @link collisionsTextLength @endlink
 Text der Kollisionserkennung | @link collisionsText @endlink
 \n
