@@ -22,15 +22,17 @@ namespace JumpAndRun.Gui
         [TestMethod]
         public void GameUi_Show()
         {
-            GameUi ui = new GameUi();
+            GameUi ui = GameUi.Instance;
             ui.Show();
-            Assert.AreEqual(true, ui.IsShow, "Gui wird angezeigt.");
+            ui.
+            Assert.AreEqual()
+            //Assert.AreEqual(true, ui.IsShow, "Gui wird angezeigt.");
         }
 
         [TestMethod]
         public void GameUi_Hide()
         {
-            GameUi ui = new GameUi();
+            GameUi ui = GameUi.Instance;
             Assert.AreEqual(false, ui.IsShow, "Gui wird nach Initialisierung nicht angezeigt.");
             ui.Show();
             ui.Hide();

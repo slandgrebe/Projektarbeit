@@ -60,6 +60,7 @@
     <Compile Include="GameLogic\Game.cs" />
     <Compile Include="GameLogic\GameStatus.cs" />
     <Compile Include="GameLogic\LevelSegment.cs" />
+    <Compile Include="Gui\Elements\Button.cs" />
     <Compile Include="Gui\KinectUi.cs" />
     <Compile Include="Item\Object.cs" />
     <Compile Include="Gesture\Click.cs" />
@@ -80,6 +81,18 @@
     <Compile Include="Sound\Sound.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="data\sound\button\click.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\sound\button\hover.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\sound\menu\background\rainforest_ambience-GlorySunz-1938133500.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\sound\menu\background\Tree Frogs And Birds-SoundBible.com-225368035.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <None Include="App.config" />
     <None Include="ClassDiagram1.cd" />
     <Content Include="data\fonts\SUPERTIK.TTF">

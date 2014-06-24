@@ -22,9 +22,9 @@ namespace JumpAndRun.Gui
         private View.Text title = null;
 
         /// <summary>Buttons</summary>
-        private View.Button buttonEasy = null;
-        private View.Button buttonNormal = null;
-        private View.Button buttonDifficult = null;
+        private Gui.Elements.Button buttonEasy = null;
+        private Gui.Elements.Button buttonNormal = null;
+        private Gui.Elements.Button buttonDifficult = null;
 
         private View.Text gameName = null;
         private View.Text slogan = null;
@@ -60,20 +60,20 @@ namespace JumpAndRun.Gui
             title.Position(0f, 0.8f);
 
             // Buttons
-            buttonEasy = new View.Button("data/fonts/arial.ttf");
+            buttonEasy = new Gui.Elements.Button("data/fonts/arial.ttf");
             buttonEasy.Text("entspannt");
             buttonEasy.Position(0f, 0.3f);
-            buttonEasy.ClickEvent += new View.Button.Clicked(ButtonEasyClicked);
+            buttonEasy.ClickEvent += new Gui.Elements.Button.Clicked(ButtonEasyClicked);
 
-            buttonNormal = new View.Button("data/fonts/arial.ttf");
+            buttonNormal = new Gui.Elements.Button("data/fonts/arial.ttf");
             buttonNormal.Text("normal");
             buttonNormal.Position(0f, 0f);
-            buttonNormal.ClickEvent += new View.Button.Clicked(ButtonNormalClicked);
+            buttonNormal.ClickEvent += new Gui.Elements.Button.Clicked(ButtonNormalClicked);
 
-            buttonDifficult = new View.Button("data/fonts/arial.ttf");
+            buttonDifficult = new Gui.Elements.Button("data/fonts/arial.ttf");
             buttonDifficult.Text("anstrengend");
             buttonDifficult.Position(0f, -0.3f);
-            buttonDifficult.ClickEvent += new View.Button.Clicked(ButtonDifficultClicked);
+            buttonDifficult.ClickEvent += new Gui.Elements.Button.Clicked(ButtonDifficultClicked);
 
             // Spielname
             gameName = new View.Text("data/fonts/SUPERTIK.TTF");

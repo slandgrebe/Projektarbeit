@@ -4,8 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace View
+namespace JumpAndRun.Gui.Elements
 {
+
     public class Button
     {
         private uint modelId = 0;
@@ -15,6 +16,9 @@ namespace View
         private float scaleY = 0.25f;
         private string text = "Text";
         private bool IsShown = false;
+
+        private Sound.Sound clickSound = null;
+        private Sound.Sound hoverSound = null;
         public bool IsHovered { get; private set; }
 
         public delegate void Clicked();
@@ -39,6 +43,12 @@ namespace View
             // Cursor Events
             View.Cursor.Instance.MoveEvent += new View.Cursor.Move(CursorMoved);
             View.Cursor.Instance.ClickEvent += new View.Cursor.Click(CursorClicked);
+
+            // sound
+            clickSound = new Sound.Sound();
+            clickSound.FilePath = "data/sound/button/click.mp3";
+            hoverSound = new Sound.Sound();
+            hoverSound.FilePath = "data/sound/button/hover.mp3";
         }
 
         public void Position(float x, float y)
@@ -86,10 +96,11 @@ namespace View
             float yMin = y - height / 2;
             float yMax = y + height / 2;
 
-            if ((cursorX > xMin && cursorX < xMax) && (cursorY > yMin && cursorY < yMax)) 
+            if ((cursorX > xMin && cursorX < xMax) && (cursorY > yMin && cursorY < yMax))
             {
                 Highlight(true);
                 IsHovered = true;
+                hoverSound.Play();
             }
             else
             {
@@ -101,8 +112,8 @@ namespace View
         {
             if (IsHovered && IsShown)
             {
-                Console.WriteLine("button clicked: " + text);
                 ClickEvent();
+                clickSound.Play();
             }
         }
     }

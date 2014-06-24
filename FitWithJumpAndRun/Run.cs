@@ -30,6 +30,8 @@ namespace JumpAndRun
 
         private Difficulty difficulty = Difficulty.NotSelected;
 
+        private Sound.Sound backgroundSound = null;
+
         /// <summary>
         /// Stellt sicher, dass diese Klasse nur einmal Instanziert werden kann.
         /// </summary>
@@ -51,9 +53,14 @@ namespace JumpAndRun
         /// </summary>
         private void Initialize()
         {
-<<<<<<< HEAD
             // Fenster öffnen
             Window.Init("Fit with Jump and Run", false, 1280, 800);
+
+            // sound
+            backgroundSound = new Sound.Sound();
+            backgroundSound.FilePath = GetRandomFileFromFolder("data/sound/menu/background", "*.mp3");
+            backgroundSound.Volume = 50;
+            backgroundSound.SoundStopped += new Sound.Sound.SoundStoppedEventHandler(SoundFinished);
 
             // GUI für Initialisierung anzeigen
             modus = Modus.KinectMissing;
@@ -64,33 +71,6 @@ namespace JumpAndRun
             MenuUi.Instance.DifficultySelectedEvent += new MenuUi.DifficultySelected(DifficultySelected);
             ScoreUi.Instance.ButtonClickedEvent += new ScoreUi.ButtonClick(ScoreButtonClicked);
             GameOverUi.Instance.ButtonClickedEvent += new GameOverUi.ButtonClick(GameOverButtonClicked);
-=======
-            modus = Modus.NotTracked;
-            
-            // Fenster im Fullscreen öffnen
-            Window.Init("Fit with Jump and Run",false,1600,900);
-
-            // Gui Element für Keine Person erkannt initialisieren
-            noTrackingUi = new NoTrackingUi();
-            noTrackingUi.Position = 100;
-            noTrackingUi.Show(); 
-
-            // Gui Element für das Hauptmenu initialisieren
-            menuUi = new MenuUi();
-            menuUi.Position = 200;
-
-            // Gui Element für den Ladebildschirm des Levels initialisieren
-            loadingUi = new LoadingUi();
-            loadingUi.Position = 300;
-
-            // Gui Element für das erfolgreiche Beenden eines Levels initialisieren
-            scoreUi = new ScoreUi();
-            scoreUi.Position = 400;
-
-            // Gui Element für das nicht erfolgreiche Beenden eines Levels initialisieren
-            gameOverUi = new GameOverUi();
-            gameOverUi.Position = 500;
->>>>>>> master
         }
 
         /// <summary>
@@ -164,7 +144,7 @@ namespace JumpAndRun
                 {
                     KinectUi.Instance.SetText("Die Kinect ist nicht angeschlossen");
                     KinectUi.Instance.Show();
-                    modus = Modus.NotTracked;
+                    modus = Modus.KinectMissing;
                     sensor = null;
                 }
 
@@ -187,11 +167,11 @@ namespace JumpAndRun
                     modus = Modus.NotTracked;
                     HideAllGuis();
                     NoTrackingUi.Instance.Show();
+                    backgroundSound.Play();
                 }
 
-                //Console.WriteLine("jetzt passiert's");
-                //Game test = new Game();
-                Game.Instance.ResetGame();
+                //Game.Instance.ResetGame();
+                ResetEverything();
 
                 return false;
             }
@@ -209,6 +189,7 @@ namespace JumpAndRun
                     Body.Instance.Scale(0.1f); // warum ist das nötig?
                     HideAllGuis();
                     MenuUi.Instance.Show();
+                    backgroundSound.Play();
                 }
 
                 UpdateCursor();
@@ -227,6 +208,7 @@ namespace JumpAndRun
                     modus = Modus.Loading;
                     HideAllGuis();
                     LoadingUi.Instance.Show();
+                    backgroundSound.Play();
                 }
 
                 Game.Instance.LevelXmlPath = "/data/levels/jungle/level.xml";
@@ -250,6 +232,7 @@ namespace JumpAndRun
                 {
                     modus = Modus.Play;
                     HideAllGuis();
+                    backgroundSound.Stop();
                 }
 
                 Game.Instance.Start();
@@ -262,6 +245,7 @@ namespace JumpAndRun
                 if (modus != Modus.Play)
                 {
                     modus = Modus.Play;
+                    backgroundSound.Stop();
                 }
 
                 return false;
@@ -290,6 +274,7 @@ namespace JumpAndRun
                     ScoreUi.Instance.Score = Game.Instance.Player.Score;
                     HideAllGuis();
                     ScoreUi.Instance.Show();
+                    backgroundSound.Play();
                 }
 
                 UpdateCursor();
@@ -304,6 +289,7 @@ namespace JumpAndRun
                     Body.Instance.Scale(0.1f);
                     HideAllGuis();
                     GameOverUi.Instance.Show();
+                    backgroundSound.Play();
                 }
 
                 UpdateCursor();
@@ -312,6 +298,15 @@ namespace JumpAndRun
             }
 
             return true;
+        }
+
+        public void SoundFinished(Sound.Sound sound)
+        {
+            if (sound.Equals(backgroundSound))
+            {
+                backgroundSound.FilePath = GetRandomFileFromFolder("data/sound/menu/background", "*.mp3");
+                backgroundSound.Play();
+            }
         }
 
         private void UpdateCursor()
@@ -335,19 +330,28 @@ namespace JumpAndRun
         }
         public void GameOverButtonClicked()
         {
-            GameFinished();
+            ResetEverything();
         }
         public void ScoreButtonClicked()
         {
-            GameFinished();
+            ResetEverything();
         }
 
-        private void GameFinished()
+        private void ResetEverything()
         {
             Console.WriteLine("game finished");
-            modus = Modus.KinectMissing;
+            modus = Modus.NotTracked;
             difficulty = Difficulty.NotSelected;
             Game.Instance.ResetGame();
+        }
+
+        private string GetRandomFileFromFolder(string folder, string pattern)
+        {
+            int seed = (int)DateTime.Now.Ticks;
+            var rand = new Random(seed);
+            var files = System.IO.Directory.GetFiles("data/sound/menu/background", "*.mp3");
+            Console.WriteLine(rand.Next(files.Length));
+            return files[rand.Next(files.Length)];
         }
 
         /// <summary>

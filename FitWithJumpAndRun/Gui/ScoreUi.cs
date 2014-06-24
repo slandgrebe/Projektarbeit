@@ -18,7 +18,7 @@ namespace JumpAndRun.Gui
         /// <summary>ID des Textes</summary>
         private View.Text text = null;
         /// <summary>ID des Buttons</summary>
-        private View.Button button = null;
+        private Gui.Elements.Button button = null;
 
         public delegate void ButtonClick();
         public event ButtonClick ButtonClickedEvent;
@@ -55,9 +55,9 @@ namespace JumpAndRun.Gui
             text.Position(0, 0.5f);
 
             // Button erzeugen
-            button = new View.Button("data/fonts/arial.ttf");
+            button = new Gui.Elements.Button("data/fonts/arial.ttf");
             button.Text("Nochmal");
-            button.ClickEvent += new View.Button.Clicked(ButtonClicked);
+            button.ClickEvent += new Gui.Elements.Button.Clicked(ButtonClicked);
 
             // Cursor erzeugen
 

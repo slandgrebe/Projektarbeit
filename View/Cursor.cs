@@ -156,8 +156,6 @@ namespace View
         {
             cursor.Position(X, Y, 1);
             IsShown = false;
-
-            Console.WriteLine("hide cursor");
         }
     }
 }
