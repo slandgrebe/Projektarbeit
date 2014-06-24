@@ -73,15 +73,21 @@ Bei der Kollisionserkennung wird das Resultat als Text gespeichert. \n
 Mit der @link collisionsTextLength @endlink Funktion kann die Länge des Textes abgefragt werden, bevor mit der @link collisionsText @endlink Funktion der Text ausgelesen wird. \n
 \n
 Der Text hat folgendes Format \n
-__Format:__ 1:2,3;2:1;3:1;4: \n
+__Format:__ 23;121 \n
 __Bedeutung:__ 
-- Objekt mit der ID 1 kollidiert mit Objekt 2 und 3 \n
-- Objekt 2 kollidiert mit Objekt 1 \n
-- Objekt 3 kollidiert mit Objekt 1 \n
-- Objekt 4 kollidiert mit nichts. \n
+Die Objekte mit der ModelId 23 und 121 hatten eine Kollision\n
+\n
+Des weiteren müssen die Objekte in sogenannte Kollisionsgruppen eingeteilt werden. Objekte welche in der selben Gruppe sind, werden nicht miteinander verglichen. 
+Zudem wird für die beiden Gruppen Hindernisse und Bonus nur der jeweils erste Treffer geliefert.\n
+- Gruppe 0: Ambiente (wird ignoriert)\n
+- Gruppe 1: Spieler\n
+- Gruppe 2: Hindernisse\n
+- Gruppe 3: Bonus\n
 \n
 Beschreibung | Dokumentation
 ------ | -------
+Separates Kollisionsmodell verwenden | @link addCollisionModel @endlink
+Kollisionsgruppe setzen | @link collisionGroup @endlink
 Länge des Textes der Kollisionserkennung | @link collisionsTextLength @endlink
 Text der Kollisionserkennung | @link collisionsText @endlink
 \n
@@ -427,6 +433,40 @@ extern "C" DLL_API void APIENTRY tiltCamera(float degrees);
 */
 extern "C" DLL_API void APIENTRY changeCameraSpeed(float speed);
 
+
+/** Standardmässig wird für die Kollisionserkennung ein Quader erzeugt, welcher das ganze Modell umschliesst.
+* Mit dieser Methode wird das angegebene Modell zur Kollisionserkennung verwendet.
+\n
+
+* Aus Kompatibilitätsgründen muss für die Rückgabe von Bool Werten auf int ausgewichen werden.\n
+* Der Wert 0 entspricht dabei jeweils False und der Wert 1 entspricht True.
+
+* @author Stefan Landgrebe
+* @param modelId ID des Modells
+* @param filename Pfad zum Modell
+* @return (Bool) Prüfung ob die Operation durchgeführt werden konnte
+* @see addCollisionModel()
+*/
+extern "C" DLL_API int APIENTRY addCollisionModel(const unsigned int modelId, const char* filename);
+
+/** Setzt die Kollisionsgruppe von diesem Modell
+* Modelle welche in derselben Kollisionsgruppe sind, werden nicht miteinander verglichen. \n
+* Gruppe 0: Ambiente\n
+* Gruppe 1: Spieler\n
+* Gruppe 2: Hindernisse\n
+* Gruppe 3: Bonus
+\n
+
+* Aus Kompatibilitätsgründen muss für die Rückgabe von Bool Werten auf int ausgewichen werden.\n
+* Der Wert 0 entspricht dabei jeweils False und der Wert 1 entspricht True.
+
+* @author Stefan Landgrebe
+* @param modelId ID des Modells
+* @param collisionGroup Kollisionsgruppe
+* @return (Bool) Prüfung ob die Operation durchgeführt werden konnte
+* @see collisionGroup()
+*/
+extern "C" DLL_API int APIENTRY collisionGroup(const unsigned int modelId, const unsigned int collisionGroup);
 
 /** Länge des Textes mit allen erkannten Kollisionen
 * @author Stefan Landgrebe

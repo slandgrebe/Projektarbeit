@@ -1,12 +1,12 @@
 <?xml version="1.0"?>
 <LevelSegment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <Length>100</Length>
+  <Length>60</Length>
   <obstacles>
     <Object>
       <ModelXmlPath>/data/levels/jungle/models/limb.xml</ModelXmlPath>
       <Scale>1</Scale>
       <PosX>-2</PosX>
-      <PosY>2</PosY>
+      <PosY>1</PosY>
       <PosZ>35</PosZ>
       <RotateHorizontal>180</RotateHorizontal>
       <AttachToCamera>false</AttachToCamera>
@@ -15,7 +15,7 @@
       <ModelXmlPath>/data/levels/jungle/models/limb.xml</ModelXmlPath>
       <Scale>1</Scale>
       <PosX>-2</PosX>
-      <PosY>1.5</PosY>
+      <PosY>1</PosY>
       <PosZ>45</PosZ>
       <RotateHorizontal>180</RotateHorizontal>
       <AttachToCamera>false</AttachToCamera>
@@ -24,14 +24,14 @@
       <ModelXmlPath>/data/levels/jungle/models/limb.xml</ModelXmlPath>
       <Scale>1</Scale>
       <PosX>2</PosX>
-      <PosY>1.5</PosY>
+      <PosY>1</PosY>
       <PosZ>50</PosZ>
       <AttachToCamera>false</AttachToCamera>
     </Object>
     <Object>
       <ModelXmlPath>/data/levels/jungle/models/limb.xml</ModelXmlPath>
       <Scale>1</Scale>
-      <PosX>3</PosX>
+      <PosX>2</PosX>
       <PosY>0.1</PosY>
       <PosZ>60</PosZ>
       <AttachToCamera>false</AttachToCamera>
@@ -41,7 +41,7 @@
     <Object>
       <ModelXmlPath>/data/levels/jungle/models/banana.xml</ModelXmlPath>
       <Scale>0.3</Scale>
-      <PosX>1</PosX>
+      <PosX>0</PosX>
       <PosY>1</PosY>
       <PosZ>10</PosZ>
       <AttachToCamera>false</AttachToCamera>
@@ -49,7 +49,7 @@
     <Object>
       <ModelXmlPath>/data/levels/jungle/models/banana.xml</ModelXmlPath>
       <Scale>0.3</Scale>
-      <PosX>1</PosX>
+      <PosX>0</PosX>
       <PosY>1</PosY>
       <PosZ>20</PosZ>
       <AttachToCamera>false</AttachToCamera>
@@ -57,7 +57,7 @@
     <Object>
       <ModelXmlPath>/data/levels/jungle/models/banana.xml</ModelXmlPath>
       <Scale>0.3</Scale>
-      <PosX>1</PosX>
+      <PosX>0</PosX>
       <PosY>1</PosY>
       <PosZ>30</PosZ>
       <AttachToCamera>false</AttachToCamera>
@@ -65,7 +65,7 @@
     <Object>
       <ModelXmlPath>/data/levels/jungle/models/banana.xml</ModelXmlPath>
       <Scale>0.3</Scale>
-      <PosX>1</PosX>
+      <PosX>0</PosX>
       <PosY>1</PosY>
       <PosZ>40</PosZ>
       <AttachToCamera>false</AttachToCamera>
@@ -73,8 +73,8 @@
     <Object>
       <ModelXmlPath>/data/levels/jungle/models/banana.xml</ModelXmlPath>
       <Scale>0.3</Scale>
-      <PosX>1</PosX>
-      <PosY>1.5</PosY>
+      <PosX>0</PosX>
+      <PosY>1</PosY>
       <PosZ>50</PosZ>
       <AttachToCamera>false</AttachToCamera>
     </Object>
@@ -137,38 +137,6 @@
       <AttachToCamera>false</AttachToCamera>
     </Object>
     <Object>
-      <ModelXmlPath>/data/levels/jungle/models/floor.xml</ModelXmlPath>
-      <Scale>1</Scale>
-      <PosX>0</PosX>
-      <PosY>-0.1</PosY>
-      <PosZ>70</PosZ>
-      <AttachToCamera>false</AttachToCamera>
-    </Object>
-    <Object>
-      <ModelXmlPath>/data/levels/jungle/models/floor.xml</ModelXmlPath>
-      <Scale>1</Scale>
-      <PosX>0</PosX>
-      <PosY>-0.1</PosY>
-      <PosZ>80</PosZ>
-      <AttachToCamera>false</AttachToCamera>
-    </Object>
-    <Object>
-      <ModelXmlPath>/data/levels/jungle/models/floor.xml</ModelXmlPath>
-      <Scale>1</Scale>
-      <PosX>0</PosX>
-      <PosY>-0.1</PosY>
-      <PosZ>90</PosZ>
-      <AttachToCamera>false</AttachToCamera>
-    </Object>
-    <Object>
-      <ModelXmlPath>/data/levels/jungle/models/floor.xml</ModelXmlPath>
-      <Scale>1</Scale>
-      <PosX>0</PosX>
-      <PosY>-0.1</PosY>
-      <PosZ>100</PosZ>
-      <AttachToCamera>false</AttachToCamera>
-    </Object>
-    <Object>
       <ModelXmlPath>/data/levels/jungle/models/rail.xml</ModelXmlPath>
       <Scale>0.5</Scale>
       <PosX>0</PosX>
@@ -209,46 +177,6 @@
       <AttachToCamera>false</AttachToCamera>
     </Object>
     <Object>
-      <ModelXmlPath>/data/levels/jungle/models/rail.xml</ModelXmlPath>
-      <Scale>0.5</Scale>
-      <PosX>0</PosX>
-      <PosY>0</PosY>
-      <PosZ>69</PosZ>
-      <AttachToCamera>false</AttachToCamera>
-    </Object>
-    <Object>
-      <ModelXmlPath>/data/levels/jungle/models/rail.xml</ModelXmlPath>
-      <Scale>0.5</Scale>
-      <PosX>0</PosX>
-      <PosY>0</PosY>
-      <PosZ>80.5</PosZ>
-      <AttachToCamera>false</AttachToCamera>
-    </Object>
-    <Object>
-      <ModelXmlPath>/data/levels/jungle/models/rail.xml</ModelXmlPath>
-      <Scale>0.5</Scale>
-      <PosX>0</PosX>
-      <PosY>0</PosY>
-      <PosZ>92</PosZ>
-      <AttachToCamera>false</AttachToCamera>
-    </Object>
-    <Object>
-      <ModelXmlPath>/data/levels/jungle/models/rail.xml</ModelXmlPath>
-      <Scale>0.5</Scale>
-      <PosX>0</PosX>
-      <PosY>0</PosY>
-      <PosZ>103.5</PosZ>
-      <AttachToCamera>false</AttachToCamera>
-    </Object>
-    <Object>
-      <ModelXmlPath>/data/levels/jungle/models/rail.xml</ModelXmlPath>
-      <Scale>0.5</Scale>
-      <PosX>0</PosX>
-      <PosY>0</PosY>
-      <PosZ>115</PosZ>
-      <AttachToCamera>false</AttachToCamera>
-    </Object>
-    <Object>
       <ModelXmlPath>/data/levels/jungle/models/jungle.xml</ModelXmlPath>
       <Scale>1</Scale>
       <PosX>2</PosX>
@@ -294,38 +222,6 @@
       <PosX>2</PosX>
       <PosY>-0.1</PosY>
       <PosZ>60</PosZ>
-      <AttachToCamera>false</AttachToCamera>
-    </Object>
-    <Object>
-      <ModelXmlPath>/data/levels/jungle/models/jungle.xml</ModelXmlPath>
-      <Scale>1</Scale>
-      <PosX>2</PosX>
-      <PosY>-0.1</PosY>
-      <PosZ>70</PosZ>
-      <AttachToCamera>false</AttachToCamera>
-    </Object>
-    <Object>
-      <ModelXmlPath>/data/levels/jungle/models/jungle.xml</ModelXmlPath>
-      <Scale>1</Scale>
-      <PosX>2</PosX>
-      <PosY>-0.1</PosY>
-      <PosZ>80</PosZ>
-      <AttachToCamera>false</AttachToCamera>
-    </Object>
-    <Object>
-      <ModelXmlPath>/data/levels/jungle/models/jungle.xml</ModelXmlPath>
-      <Scale>1</Scale>
-      <PosX>2</PosX>
-      <PosY>-0.1</PosY>
-      <PosZ>90</PosZ>
-      <AttachToCamera>false</AttachToCamera>
-    </Object>
-    <Object>
-      <ModelXmlPath>/data/levels/jungle/models/jungle.xml</ModelXmlPath>
-      <Scale>1</Scale>
-      <PosX>2</PosX>
-      <PosY>-0.1</PosY>
-      <PosZ>100</PosZ>
       <AttachToCamera>false</AttachToCamera>
     </Object>
     <Object>
@@ -377,38 +273,6 @@
       <AttachToCamera>false</AttachToCamera>
     </Object>
     <Object>
-      <ModelXmlPath>/data/levels/jungle/models/jungle.xml</ModelXmlPath>
-      <Scale>1</Scale>
-      <PosX>-2</PosX>
-      <PosY>-0.1</PosY>
-      <PosZ>70</PosZ>
-      <AttachToCamera>false</AttachToCamera>
-    </Object>
-    <Object>
-      <ModelXmlPath>/data/levels/jungle/models/jungle.xml</ModelXmlPath>
-      <Scale>1</Scale>
-      <PosX>-2</PosX>
-      <PosY>-0.1</PosY>
-      <PosZ>80</PosZ>
-      <AttachToCamera>false</AttachToCamera>
-    </Object>
-    <Object>
-      <ModelXmlPath>/data/levels/jungle/models/jungle.xml</ModelXmlPath>
-      <Scale>1</Scale>
-      <PosX>-2</PosX>
-      <PosY>-0.1</PosY>
-      <PosZ>90</PosZ>
-      <AttachToCamera>false</AttachToCamera>
-    </Object>
-    <Object>
-      <ModelXmlPath>/data/levels/jungle/models/jungle.xml</ModelXmlPath>
-      <Scale>1</Scale>
-      <PosX>-2</PosX>
-      <PosY>-0.1</PosY>
-      <PosZ>100</PosZ>
-      <AttachToCamera>false</AttachToCamera>
-    </Object>
-    <Object>
       <ModelXmlPath>/data/levels/jungle/models/sky.xml</ModelXmlPath>
       <Scale>1</Scale>
       <PosX>-2</PosX>
@@ -454,38 +318,6 @@
       <PosX>-2</PosX>
       <PosY>6</PosY>
       <PosZ>60</PosZ>
-      <AttachToCamera>false</AttachToCamera>
-    </Object>
-    <Object>
-      <ModelXmlPath>/data/levels/jungle/models/sky.xml</ModelXmlPath>
-      <Scale>1</Scale>
-      <PosX>-2</PosX>
-      <PosY>6</PosY>
-      <PosZ>70</PosZ>
-      <AttachToCamera>false</AttachToCamera>
-    </Object>
-    <Object>
-      <ModelXmlPath>/data/levels/jungle/models/sky.xml</ModelXmlPath>
-      <Scale>1</Scale>
-      <PosX>-2</PosX>
-      <PosY>6</PosY>
-      <PosZ>80</PosZ>
-      <AttachToCamera>false</AttachToCamera>
-    </Object>
-    <Object>
-      <ModelXmlPath>/data/levels/jungle/models/sky.xml</ModelXmlPath>
-      <Scale>1</Scale>
-      <PosX>-2</PosX>
-      <PosY>6</PosY>
-      <PosZ>90</PosZ>
-      <AttachToCamera>false</AttachToCamera>
-    </Object>
-    <Object>
-      <ModelXmlPath>/data/levels/jungle/models/sky.xml</ModelXmlPath>
-      <Scale>1</Scale>
-      <PosX>-2</PosX>
-      <PosY>6</PosY>
-      <PosZ>100</PosZ>
       <AttachToCamera>false</AttachToCamera>
     </Object>
   </objects>

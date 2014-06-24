@@ -32,6 +32,7 @@ namespace visual {
 		*/
 		class Model {
 		protected:
+			unsigned int m_collisionGroup;
 			float m_boundingSphereRadius; /** Radius der umgebenden Kugel, welche das gesamte Modell umspannt und u.a. für die Kollisionserkennung verwendet wird */
 			float m_scalingNormalizationFactor; /** Noramlisierungsvektor damit die Bounding Sphere einen Durchmesser von 1m (bzw. 1 Einheit) hat */
 			bool m_scalingIsNormalized; /** Definiert ob die Skalierungsnormalisierung verwendet wird */
@@ -46,6 +47,7 @@ namespace visual {
 			bool m_isHighlighted; /** Hervorhebungszustand */
 
 			bool m_isAttachedToCamera; /** Definiert ob das Modell an die Kamera angehängt wurde */
+			bool m_modelChanged; /** Definiert ob sich das Model verändert hat */
 
 			graphics::ShaderProgram shaderProgram; /** Shader Programm */
 			 
@@ -86,6 +88,7 @@ namespace visual {
 				highlightColor = glm::vec4(1.0f, 0.0f, 0.0f, 1.0f);
 				m_isHighlighted = false;
 				m_isAttachedToCamera = false;
+				m_modelChanged = false;
 			};
 
 			/** virtueller Destruktor
@@ -127,6 +130,8 @@ namespace visual {
 			*/
 			virtual void position(glm::vec3 position) {
 				m_positionVector = position;
+
+				m_modelChanged = true;
 			};
 
 			/** Liefert die aktuelle Position des Modells zurück
@@ -153,6 +158,8 @@ namespace visual {
 
 				m_rotationAngle = degrees;
 				m_rotationAxis = axis;
+
+				m_modelChanged = true;
 			};
 			
 			/** Liefert den Rotationswinkel in Grad zurück
@@ -182,6 +189,8 @@ namespace visual {
 				else {
 					m_scalingVector = scale;
 				}
+
+				m_modelChanged = true;
 			};
 
 			/** Liefert die aktuelle Skalierung zurück.
@@ -248,6 +257,22 @@ namespace visual {
 			*/
 			virtual bool attachedToCamera(void) {
 				return m_isAttachedToCamera;
+			}
+
+			/** Setzt die Kollisionsgruppe von diesem Modell
+			* Modelle welche in derselben Kollisionsgruppe sind, werden nicht miteinander verglichen. Kollisionsgruppe 0 wird komplett ignoriert.
+			* @author Stefan Landgrebe
+			*/
+			virtual void collisionGroup(unsigned int collisionGroup) {
+				m_collisionGroup = collisionGroup;
+			}
+
+			/** Liefert die Kollisionsgroupde von diesem Modell
+			* Modelle welche in derselben Kollisionsgruppe sind, werden nicht miteinander verglichen. Kollisionsgruppe 0 wird komplett ignoriert.
+			* @author Stefan Landgrebe
+			*/
+			virtual unsigned int collisionGroup(void) {
+				return m_collisionGroup;
 			}
 
 			/** Zeichnet das Modell neu

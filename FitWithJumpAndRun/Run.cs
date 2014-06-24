@@ -51,6 +51,7 @@ namespace JumpAndRun
         /// </summary>
         private void Initialize()
         {
+<<<<<<< HEAD
             // Fenster öffnen
             Window.Init("Fit with Jump and Run", false, 1280, 800);
 
@@ -63,6 +64,33 @@ namespace JumpAndRun
             MenuUi.Instance.DifficultySelectedEvent += new MenuUi.DifficultySelected(DifficultySelected);
             ScoreUi.Instance.ButtonClickedEvent += new ScoreUi.ButtonClick(ScoreButtonClicked);
             GameOverUi.Instance.ButtonClickedEvent += new GameOverUi.ButtonClick(GameOverButtonClicked);
+=======
+            modus = Modus.NotTracked;
+            
+            // Fenster im Fullscreen öffnen
+            Window.Init("Fit with Jump and Run",false,1600,900);
+
+            // Gui Element für Keine Person erkannt initialisieren
+            noTrackingUi = new NoTrackingUi();
+            noTrackingUi.Position = 100;
+            noTrackingUi.Show(); 
+
+            // Gui Element für das Hauptmenu initialisieren
+            menuUi = new MenuUi();
+            menuUi.Position = 200;
+
+            // Gui Element für den Ladebildschirm des Levels initialisieren
+            loadingUi = new LoadingUi();
+            loadingUi.Position = 300;
+
+            // Gui Element für das erfolgreiche Beenden eines Levels initialisieren
+            scoreUi = new ScoreUi();
+            scoreUi.Position = 400;
+
+            // Gui Element für das nicht erfolgreiche Beenden eines Levels initialisieren
+            gameOverUi = new GameOverUi();
+            gameOverUi.Position = 500;
+>>>>>>> master
         }
 
         /// <summary>

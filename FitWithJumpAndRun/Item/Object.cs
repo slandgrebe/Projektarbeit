@@ -122,6 +122,11 @@ namespace JumpAndRun.Item
             System.Collections.Generic.Dictionary<uint, System.Collections.Generic.List<uint>> collisionList = new System.Collections.Generic.Dictionary<uint, System.Collections.Generic.List<uint>>();
 
             uint length = View.Model.CollisionsTextLength();
+            if (length > 0)
+            {
+                length = length;
+            }
+
             System.Text.StringBuilder str = new System.Text.StringBuilder((int)length + 1);
             View.Model.CollisionsText(str, str.Capacity); // Daten aus DLL holen
             // str: 1:2,3;2:1,2 => 1 kollidiert mit 2 und 3. 2 kollidiert mit 1 und 2.
@@ -130,11 +135,25 @@ namespace JumpAndRun.Item
             foreach (string model in models)
             {
                 // model: 1:2,3
+                if (model.Length == 0) return false;
                 string[] parts = model.Split(':');
-                if (parts.Length != 2) continue; // Fehlerbehandlung: tritt beim schliessen des Fensters auf
 
-                string aModelId = parts[0].ToString(); // modelId
+                if (model == Model.Id.ToString())
+                {
+                    if (!player.Colidet.Contains(Model.Id))
+                    {
+                        player.Colidet.Add(Model.Id);
+                        if (dispose)
+                        {
+                            Dispose();
+                        }
+                        Model.CollisionGroup(0);
+                        return true;
+                    }
+                }
 
+
+                /*
                 // wer kollidierte alles mit diesem head?
                 System.Collections.Generic.List<uint> collideeList = new System.Collections.Generic.List<uint>();
 
@@ -150,10 +169,11 @@ namespace JumpAndRun.Item
                         }
                     }
                 }
-                collisionList.Add(Convert.ToUInt32(aModelId), collideeList);
+                collisionList.Add(Convert.ToUInt32(aModelId), collideeList);*/
             }
 
             // Liste abarbeiten
+            /*
             if (collisionList.ContainsKey(Model.Id))
             {
                 System.Collections.Generic.List<uint> myCollisions = collisionList[Model.Id];
@@ -178,7 +198,7 @@ namespace JumpAndRun.Item
                         return true;
                     }
                 }
-            }
+            }*/
             return false;
         }
 

@@ -40,8 +40,6 @@ namespace visual {
 			//bool initTexture() {};
 			void clear();
 
-			
-
 			struct Vertex {
 				glm::vec3 position;
 				glm::vec2 textureCoordinate;
@@ -80,7 +78,7 @@ namespace visual {
 				unsigned int numIndices;
 				unsigned int materialIndex;
 
-				// Collision Detection
+				
 				unsigned int numTriangles; 
 				std::vector<Triangle> triangles;
 
@@ -89,9 +87,20 @@ namespace visual {
 
 			std::vector<MeshEntry> meshList;
 			std::vector<TextureSoil*> textureList;
+			// Collision Detection
+			float xMax = 0;
+			float xMin = 0;
+			float yMax = 0;
+			float yMin = 0;
+			float zMax = 0;
+			float zMin = 0;
+
+			std::vector<Triangle> collisionModelOriginal;
+			std::vector<Triangle> collisionModel;
+			
+			long unsigned int collisionModelUpdatedOnFrame;
 
 		public:
-
 			/** Konstruktor
 			Für das eigentliche Laden des 3D Modells muss zusätzlich die Methode loadModel() aufgerufen werden.
 			* @author Stefan Landgrebe
@@ -113,12 +122,17 @@ namespace visual {
 			*/
 			bool loadModel(const std::string filename);
 
+
+			bool addCollisionModel(const std::string filename);
+
+			void updateCollisionModel(long unsigned int frame);
+
 			/** Prüft ob dieses Modell ein anderes schneidet.
 			* @author Stefan Landgrebe
 			* @param other das andere Modell
 			* @return True wenn es min. 1 Schnittpunkt gibt.
 			*/
-			bool doesIntersect(AssimpModel* other);
+			bool doesIntersect(AssimpModel* other, long unsigned int frame);
 
 			/** Zeichnet das Modell neu
 			* @author Stefan Landgrebe

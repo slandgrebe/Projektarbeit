@@ -4,8 +4,10 @@
 #include <glm/gtc/type_ptr.hpp>
 #include <iostream>
 #include "Math.h"
+#include "GraphicEngine.h"
 
 using namespace visual::model;
+
 
 /***************************
 	MeshEntry
@@ -39,7 +41,10 @@ void AssimpModel::MeshEntry::init(	const std::vector<Vertex>& vertices,
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, indexBufferId);
 	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(unsigned int)* numIndices, &indices[0], GL_STATIC_DRAW);
 
-	// collision detection
+	
+
+
+	/*
 	numTriangles = indices.size() / 3;
 	for (unsigned int i = 0; i < numTriangles; i++) {
 		Log().debug() << "fill triangle List " << i;
@@ -47,7 +52,7 @@ void AssimpModel::MeshEntry::init(	const std::vector<Vertex>& vertices,
 								vertices[indices[i * 3 + 1]].position, 
 								vertices[indices[i * 3 + 2]].position);
 		this->triangles.push_back(t);
-	}
+	}*/
 
 	/*for (std::vector<unsigned int>::const_iterator i = indices.begin(); i != indices.end(); ++i)
 		Log().debug() << *i << ' ';
@@ -72,7 +77,9 @@ AssimpModel::Triangle AssimpModel::MeshEntry::getTriangle(unsigned int n) {
 
 
 
-AssimpModel::AssimpModel() {}
+AssimpModel::AssimpModel() {
+	collisionModelUpdatedOnFrame = 0;
+}
 
 
 AssimpModel::~AssimpModel() {
@@ -120,6 +127,44 @@ bool AssimpModel::loadModel(const std::string filename) {
 	// Make sure the VAO is not changed from outside code
 	glBindVertexArray(0);
 
+	
+	visual::graphics::GraphicEngine::getInstance()->printOglError(__FILE__, __LINE__);
+
+	// collision cube
+	glm::vec3 frontBottomLeft(xMin, yMin, zMax);
+	glm::vec3 frontBottomRight(xMax, yMin, zMax);
+	glm::vec3 frontTopRight(xMax, yMax, zMax);
+	glm::vec3 frontTopLeft(xMin, yMax, zMax);
+	glm::vec3 backBottomLeft(xMin, yMin, zMin);
+	glm::vec3 backBottomRight(xMax, yMin, zMin);
+	glm::vec3 backTopRight(xMax, yMax, zMin);
+	glm::vec3 backTopLeft(xMin, yMax, zMin);
+	
+	visual::graphics::GraphicEngine::getInstance()->printOglError(__FILE__, __LINE__);
+
+	// vorne
+	collisionModelOriginal.push_back(Triangle(frontBottomLeft, frontBottomRight, frontTopRight)); // vorne unten rechts
+	collisionModelOriginal.push_back(Triangle(frontBottomLeft, frontTopRight, frontTopLeft)); // vorne oben links
+	// rechts
+	collisionModelOriginal.push_back(Triangle(frontBottomRight, backBottomRight, backTopRight)); // rechts unten hinten
+	collisionModelOriginal.push_back(Triangle(frontBottomRight, backTopRight, frontTopRight)); // rechts oben vorne
+	// hinten
+	collisionModelOriginal.push_back(Triangle(backBottomRight, backBottomLeft, backTopLeft)); // hinten unten links
+	collisionModelOriginal.push_back(Triangle(backBottomRight, backTopLeft, backTopRight)); // hinten oben rechts
+	// links
+	collisionModelOriginal.push_back(Triangle(backBottomLeft, frontBottomLeft, frontTopLeft)); // links unten vorne
+	collisionModelOriginal.push_back(Triangle(backBottomLeft, frontTopLeft, backTopLeft)); // link oben hinten
+	// oben
+	collisionModelOriginal.push_back(Triangle(frontTopLeft, frontTopRight, backTopRight)); // oben vorne rechts
+	collisionModelOriginal.push_back(Triangle(frontTopLeft, backTopRight, backTopLeft)); // oben hinten links
+	// unten
+	collisionModelOriginal.push_back(Triangle(backBottomLeft, backBottomRight, frontBottomRight)); // unten hinten rechts
+	collisionModelOriginal.push_back(Triangle(backBottomLeft, frontBottomRight, frontBottomLeft)); // unten vorne links
+	
+	collisionModel = collisionModelOriginal; // original behalten wegen mehrfacher mvp anwendung
+
+	visual::graphics::GraphicEngine::getInstance()->printOglError(__FILE__, __LINE__);
+	
 	return returnValue;
 }
 
@@ -178,6 +223,18 @@ bool AssimpModel::initSingleMesh(const int meshIndex, const aiMesh* mesh) {
 	}
 
 	meshList[meshIndex].init(vertices, indices);
+
+	// collision detection
+	for (unsigned int i = 0; i < indices.size(); i++) { // alle punkte des models durchgehen
+		glm::vec3 point = vertices[indices[i]].position;
+
+		if (point.x > xMax) xMax = point.x;
+		if (point.x < xMin) xMin = point.x;
+		if (point.y > yMax) yMax = point.y;
+		if (point.y < yMin) yMin = point.y;
+		if (point.z > zMax) zMax = point.z;
+		if (point.z < zMin) zMin = point.z;
+	}
 
 	return true;
 }
@@ -248,11 +305,13 @@ void AssimpModel::clear() {
 	}
 }
 
-bool AssimpModel::doesIntersect(AssimpModel* other) {
+bool AssimpModel::doesIntersect(AssimpModel* other, long unsigned int frame) {
 	// mit sich selber testen macht wenig sinn
 	if (this == other) {
 		return false;
 	}
+
+	bool returnValue = false;
 
 	glm::vec3 pos1 = this->position(); // attachedToCamera in der position Methode noch berücksichtigen!
 	glm::vec3 pos2 = other->position();
@@ -262,57 +321,128 @@ bool AssimpModel::doesIntersect(AssimpModel* other) {
 
 	// sehr einfacher, schneller, ungenauer Test zuerst
 	if (pow(pos1.x - pos2.x, 2) + pow(pos1.y - pos2.y, 2) + pow(pos1.z - pos2.z, 2) <= pow(radius1 + radius2, 2)) { // berühren oder schneiden sich die Bounding Spheres?
+		
+		//Log().info() << "pos1: " << pos1.x << "/" << pos1.y << "/" << pos1.z;
+		//Log().info() << "pos1: " << pos2.x << "/" << pos2.y << "/" << pos2.z;
+		//Log().info() << "radius: " << radius1 << " " << radius2;
+		//Log().info() << "model: " << other->collisionModel[0].a.x << " " << other->collisionModel[0].b.x << " = " << other->collisionModel[0].b.x - other->collisionModel[0].a.x;
+		
+		// Jedes Dreieck von diesem Objekt ...
+		for (unsigned int i = 0; i < this->collisionModel.size(); i++) {
+			Triangle t1 = this->collisionModel[i];
+			
+			// ... mit jedem Dreieck des anderen Objektes vergleichen
+			for (unsigned int j = 0; j < other->collisionModel.size(); j++) {
+				Triangle t2 = other->collisionModel[j];
 
-		return true;
-
-		// zu langsam :(
-
-		// measure time
-		clock_t begin = clock();
-		float timeDifference = 0.0f;
-
-		// sehr komplexer, langsamer, exakter Test danach
-		glm::mat4 mvp1 = this->getTransformedModelMatrix();
-		glm::mat4 mvp2 = other->getTransformedModelMatrix();
-
-		// Jedes Teilmodell von diesem Modell...
-		for (unsigned int i = 0; i < this->meshList.size(); i++) {
-
-			// ... und davon jedes Dreieck ...
-			for (unsigned int j = 0; j < this->meshList[i].numTriangles; j++) {
-				// This Triangle
-				Triangle t1 = this->meshList[i].triangles[j];
-
-				glm::vec3 a1 = glm::vec3(mvp1 * glm::vec4(t1.a, 1.0));
-				glm::vec3 b1 = glm::vec3(mvp1 * glm::vec4(t1.b, 1.0));
-				glm::vec3 c1 = glm::vec3(mvp1 * glm::vec4(t1.c, 1.0));
-
-				// ... wird mit jedem Teilmodell des anderen Modells...
-				for (unsigned int k = 0; k < other->meshList.size(); k++) {
-					// ... und davon mit jedem Dreieck getestet.
-					for (unsigned int l = 0; l < other->meshList[k].numTriangles; l++) {
-						// Other Triangle
-						Triangle t2 = other->meshList[k].triangles[l];
-
-						glm::vec3 a2 = glm::vec3(mvp2 * glm::vec4(t2.a, 1.0));
-						glm::vec3 b2 = glm::vec3(mvp2 * glm::vec4(t2.b, 1.0));
-						glm::vec3 c2 = glm::vec3(mvp2 * glm::vec4(t2.c, 1.0));
-
-						// Test
-						if (math::Math::doTrianglesIntersect(a1, b1, c1,  a2, b2, c2)) { // berühren oder schneiden sich die zwei Dreiecke?
-							return true;
-						}
-					}
+				if (math::Math::doTrianglesIntersect(t1.a, t1.b, t1.c, t2.a, t2.b, t2.c)) { // berühren oder schneiden sich die zwei Dreiecke?
+					return true;
 				}
 			}
 		}
-		// doch keine kollision
-
-		//Log().debug() << "time: " << (float)(clock() - begin) / 1.0f;
-
 	} // if - einfacher test
 
 	return false;
+}
+
+void AssimpModel::updateCollisionModel(long unsigned int frame) {
+	if (m_modelChanged
+		|| (m_isAttachedToCamera && frame > collisionModelUpdatedOnFrame)) {
+
+		glm::mat4 mvp1 = this->getTransformedModelMatrix();
+
+		std::vector<Triangle> newModel;
+
+		// Jedes Dreieck von diesem Objekt ...
+		for (unsigned int i = 0; i < this->collisionModelOriginal.size(); i++) {
+			Triangle t1 = this->collisionModelOriginal[i];
+
+			glm::vec3 a1 = glm::vec3(mvp1 * glm::vec4(t1.a, 1.0));
+			glm::vec3 b1 = glm::vec3(mvp1 * glm::vec4(t1.b, 1.0));
+			glm::vec3 c1 = glm::vec3(mvp1 * glm::vec4(t1.c, 1.0));
+
+			newModel.push_back(Triangle(a1, b1, c1));
+		}
+
+		this->collisionModel = newModel;
+		collisionModelUpdatedOnFrame = frame;
+		m_modelChanged = false;
+	}
+}
+
+bool AssimpModel::addCollisionModel(std::string filename) {
+	//Log().ReportingLevel() = logDEBUG;
+	Log().debug() << "addCollisionModel[" << filename << "]";
+
+	bool returnValue = false;
+
+	Assimp::Importer importer;
+	const aiScene* scene = importer.ReadFile(filename, aiProcess_CalcTangentSpace |
+		aiProcess_Triangulate |
+		aiProcess_JoinIdenticalVertices |
+		aiProcess_SortByPType);
+
+	if (scene) {
+		Log().debug() << " Anzahl der Meshes in dieser Datei: " << scene->mNumMeshes;
+		//returnValue = this->initAllMeshes(scene, filename);
+
+		meshList.resize(scene->mNumMeshes);
+
+		// Initialize the meshes in the scene one by one
+		for (unsigned int meshIndex = 0; meshIndex < meshList.size(); meshIndex++) {
+			const aiMesh* mesh = scene->mMeshes[meshIndex];
+			Log().debug() << "  Mesh #" << meshIndex << "; Anzahl Seiten: " << mesh->mNumFaces;
+
+			meshList[meshIndex].materialIndex = mesh->mMaterialIndex;
+
+			std::vector<Vertex> vertices;
+			std::vector<unsigned int> indices;
+
+			const aiVector3D zero3D(0.0f, 0.0f, 0.0f);
+
+			// Vertices
+			for (unsigned int i = 0; i < mesh->mNumVertices; i++) {
+				const aiVector3D* pos = &(mesh->mVertices[i]);
+				const aiVector3D* normal = &(mesh->mNormals[i]);
+				const aiVector3D* texCoord = mesh->HasTextureCoords(0) ? &(mesh->mTextureCoords[0][i]) : &zero3D;
+
+				Vertex v(glm::vec3(pos->x, pos->y, pos->z),
+					glm::vec2(texCoord->x, texCoord->y),
+					glm::vec3(normal->x, normal->y, normal->z));
+
+				vertices.push_back(v);
+			}
+
+			// Faces
+			for (unsigned int i = 0; i < mesh->mNumFaces; i++) {
+				const aiFace& face = mesh->mFaces[i];
+				assert(face.mNumIndices == 3);
+				indices.push_back(face.mIndices[0]);
+				indices.push_back(face.mIndices[1]);
+				indices.push_back(face.mIndices[2]);
+			}
+
+			// Triangles
+			collisionModelOriginal.clear();
+			int numTriangles = indices.size() / 3;
+			for (unsigned int i = 0; i < numTriangles; i++) {
+				Triangle t = Triangle(vertices[indices[i * 3 + 0]].position,
+					vertices[indices[i * 3 + 1]].position,
+					vertices[indices[i * 3 + 2]].position);
+
+				collisionModelOriginal.push_back(t);
+			}
+
+			collisionModel = collisionModelOriginal;
+		}
+
+		returnValue = true;
+	}
+	else {
+		Log().error() << "Fehler beim parsen der Datei '" << filename.c_str() << " ': '" << importer.GetErrorString() << "'\n";
+	}
+
+	return returnValue;
 }
 
 void AssimpModel::draw() {

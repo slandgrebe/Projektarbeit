@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Runtime.InteropServices;
+using System.Collections.Generic;
 
 namespace VisualizationExample
 {
@@ -66,6 +67,10 @@ namespace VisualizationExample
         public extern static void changeCameraSpeed(float speed);
 
         [DllImport("Visualization.dll")]
+        public extern static bool addCollisionModel(uint modelId, string filename);
+        [DllImport("Visualization.dll")]
+        public extern static bool collisionGroup(uint modelId, uint collisionGroup);
+        [DllImport("Visualization.dll")]
         public extern static uint collisionsTextLength();
         [DllImport("Visualization.dll")]
         public extern static bool collisionsText(System.Text.StringBuilder text, int length);
@@ -77,88 +82,23 @@ namespace VisualizationExample
             // WINDOW
             init("Test", false, 640, 480);
 
-            /*// POINTS
-            uint pointId = addPoint("data/textures/sample.png");
-            while (pointId != 0 && !isCreated(pointId)) { }
-            position(pointId, -0.5f, 0.5f, -5f);
-
-            uint pointId2 = addPoint("data/textures/test.png");
-            while (!isCreated(pointId2)) { }
-            position(pointId2, 0.5f, 0.5f, -3f);
-
-            // MODELS
-            uint modelId = addModel("data/models/shuttle/SpaceShuttleOrbiter.3ds");
-            while (!isCreated(modelId)) { }
-            //scale(modelId, 2.0f, 0.5f, 1f);
-            scalingIsNormalized(modelId, true);
-            //rotate(modelId, -45.0f, 1.0f, 0.0f, 1.0f);
-            position(modelId, 0f, 0f, -4.5f);
-            //highlightColor(modelId, 0.0f, 1.0f, 0.0f, 1.0f);
-            //isHighlighted(modelId, true);
-
-            /*uint modelId2 = addModel("data/models/shuttle/SpaceShuttleOrbiter.3ds");
-            while (!isCreated(modelId2)) { }
-            scale(modelId2, 0.5f, 0.5f, 0.5f);
-            scalingIsNormalized(modelId2, true);
-            rotate(modelId2, -45.0f, 0.0f, 1.0f, 1.0f);
-            position(modelId2, -0.3f, -0.4f, -1.5f);
-            highlightColor(modelId2, 0.0f, 1.0f, 0.0f, 0.5f);
-            isHighlighted(modelId2, false);
-
-            // TEXT
-            uint textId = addText("data/fonts/MADAVE.ttf");
-            while (!isCreated(textId)) { }
-            text(textId, "Es geht!");
-            position(textId, 0.7f, 0.5f, 1.0f);
-            textSize(textId, 36);
-            textColor(textId, 0.92f, 0.95f, 0.16f, 1.0f);
-
-            uint textId2 = addText("data/fonts/KBZipaDeeDooDah.ttf");
-            while (!isCreated(textId2)) { }
-            text(textId2, "noch viel mehr Text!");
-            textSize(textId2, 60);
-            textColor(textId2, 1.0f, 0.5f, 0.0f, 1.0f);
-
-            // BUTTON
-            uint buttonId = addButton("data/fonts/arial.ttf");
-            while (!isCreated(buttonId)) { }
-
-            uint buttonId2 = addButton("data/fonts/arial.ttf");
-            while (!isCreated(buttonId2)) { }
-            highlightColor(buttonId2, 0.5f, 0f, 0f, 1f);
-            isHighlighted(buttonId2, true);
-            position(buttonId2, 0.5f, -0.5f, 1); // Z-Koordinate wird ignoriert, da es sich beim Button um ein GUI Element handelt
-            scale(buttonId2, 0.5f, 0.5f, 1); // Skalierung in z-Richtung wird ignoriert, da es sich beim Button um ein GUI Element handelt
-            text(buttonId2, "anderer text");
-            textColor(buttonId2, 0.1f, 0.1f, 0.0f, 1.0f);
-            textSize(buttonId2, 24);
-            
-
-            Console.WriteLine("zurück in c#");
-            System.Threading.Thread.Sleep(2000);
-
-            // DISPOSE
-            dispose(buttonId);
-            dispose(pointId);
-            dispose(modelId);
-            dispose(textId);*/
-
             // CAMERA
-            positionCamera(0, 0, 2);
+            positionCamera(0, 0, 0);
             //changeCameraSpeed(1f);
 
-            // ATTACH MODEL TO CAMERA
+            /*// ATTACH MODEL TO CAMERA
             uint modelId_attachedToCamera = addModel("data/models/cube.obj");
             while (!isCreated(modelId_attachedToCamera)) { }
             scale(modelId_attachedToCamera, 0.5f, 0.5f, 0.5f);
             scalingIsNormalized(modelId_attachedToCamera, true);
-            position(modelId_attachedToCamera, -2f, 0f, -2f);
+            position(modelId_attachedToCamera, -0.5f, 0f, -2f);
             rotate(modelId_attachedToCamera, -90.0f, 1.0f, 0.0f, 0.0f);
             highlightColor(modelId_attachedToCamera, 1.0f, 0.0f, 0.0f, 1.0f);
             isHighlighted(modelId_attachedToCamera, true);
-            //attachToCamera(modelId_attachedToCamera, true);
+            setCollisionGroup(modelId_attachedToCamera, 1);
+            //attachToCamera(modelId_attachedToCamera, true);*/
 
-            // MODEL TO COLLIDE
+            /*// MODEL TO COLLIDE
             uint modelId_collision = addModel("data/models/cube.obj");
             while (!isCreated(modelId_collision)) { }
             scale(modelId_collision, 0.5f, 0.5f, 0.5f);
@@ -166,17 +106,77 @@ namespace VisualizationExample
             position(modelId_collision, 0f, 0f, -2f);
             rotate(modelId_collision, -90.0f, 1.0f, 0.0f, 0.0f);
             highlightColor(modelId_collision, 0.0f, 1.0f, 0.0f, 1.0f);
-            isHighlighted(modelId_collision, true);
+            isHighlighted(modelId_collision, true);*/
 
-            // MODEL TO COLLIDE2
-            uint modelId_collision2 = addModel("data/Models/Wagon/Wagon.3ds");
-            while (!isCreated(modelId_collision2)) { }
-            scale(modelId_collision2, 0.1f, 2.0f, 0.1f);
-            scalingIsNormalized(modelId_collision2, true);
-            position(modelId_collision2, 1.5f, 0f, -2f);
-            //rotate(modelId_collision2, -90.0f, 1.0f, 0.0f, 0.0f);
-            highlightColor(modelId_collision2, 0.0f, 0.0f, 1.0f, 1.0f);
-            isHighlighted(modelId_collision2, true);
+
+            // 20 spieler
+            List<uint> list = new List<uint>();
+            uint numCubes = 2;
+            for (int i = 0; i < numCubes; i++)
+            {
+                // MODEL TO COLLIDE
+                list.Add(addModel("data/models/cube.obj"));
+            }
+
+            for (int i = 0; i < numCubes; i++)
+            {
+                uint modelId = list[i];
+                while (!isCreated(modelId)) { }
+                scale(modelId, 0.5f, 0.5f, 0.5f);
+                scalingIsNormalized(modelId, true);
+                position(modelId, 0.1f, -0.9f, -2.1f);
+                rotate(modelId, -90.0f, 1.0f, 0.0f, 0.0f);
+                highlightColor(modelId, 0.0f, 1.0f, 0.0f, 1.0f);
+                isHighlighted(modelId, true);
+                collisionGroup(modelId, 1);
+                attachToCamera(modelId, true);
+                addCollisionModel(modelId, "data/models/rail/rail.3ds");
+            }
+
+            // 100 hindernisse
+            /*
+            list.Clear();
+            numCubes = 10;
+            for (int i = 0; i < numCubes; i++)
+            {
+                // MODEL TO COLLIDE
+                list.Add(addModel("data/models/cube.obj"));
+            }
+
+            for (int i = 0; i < numCubes; i++)
+            {
+                uint modelId = list[i];
+                while (!isCreated(modelId)) { }
+                scale(modelId, 0.5f, 0.5f, 0.5f);
+                scalingIsNormalized(modelId, true);
+                position(modelId, 0f, -1f, -2f);
+                rotate(modelId, -90.0f, 1.0f, 0.0f, 0.0f);
+                highlightColor(modelId, 0.0f, 1.0f, 0.0f, 1.0f);
+                isHighlighted(modelId, true);
+                collisionGroup(modelId, 2);
+            }
+            */
+            // 100 bonus
+            list.Clear();
+            numCubes = 10;
+            for (int i = 0; i < numCubes; i++)
+            {
+                // MODEL TO COLLIDE
+                list.Add(addModel("data/models/cube.obj"));
+            }
+
+            for (int i = 0; i < numCubes; i++)
+            {
+                uint modelId = list[i];
+                while (!isCreated(modelId)) { }
+                scale(modelId, 0.5f, 0.5f, 0.5f);
+                scalingIsNormalized(modelId, true);
+                position(modelId, 0f, -1f, -2f);
+                rotate(modelId, -90.0f, 1.0f, 0.0f, 0.0f);
+                highlightColor(modelId, 0.0f, 1.0f, 0.0f, 1.0f);
+                isHighlighted(modelId, true);
+                collisionGroup(modelId, 3);
+            }
 
             float rotation = 0f;
             float x = -2f;
@@ -184,12 +184,12 @@ namespace VisualizationExample
             while (isRunning()) {
                 System.Threading.Thread.Sleep(1); // senkt die CPU Auslastung drastisch
 
-                handleCollisions(modelId_attachedToCamera);
+                handleCollisions(0);
 
                 //rotate(modelId_attachedToCamera, rotation++, 0f, 1f, 0f);
                 
                 x += 0.001f;
-                position(modelId_attachedToCamera, x, 0f, -2f);
+                //position(0, x, 0f, -2f);
                 //tiltCamera(rotation / 5);
             }
         }
@@ -204,21 +204,24 @@ namespace VisualizationExample
             uint length = collisionsTextLength();
             System.Text.StringBuilder str = new System.Text.StringBuilder((int)length+1);
             collisionsText(str, str.Capacity); // Daten aus DLL holen
+
             // str: 1:2,3;2:1,2 => 1 kollidiert mit 2 und 3. 2 kollidiert mit 1 und 2.
             String collisionsString = str.ToString(); // Daten parsen
+            //Console.WriteLine(collisionsString);
+
             string[] models = collisionsString.Split(';');
             foreach (string model in models)
             {
                 // model: 1:2,3
                 string[] parts = model.Split(':');
-                if (parts.Length != 2) continue; // Fehlerbehandlung: tritt beim schliessen des Fensters auf
+                //if (parts.Length != 2) continue; // Fehlerbehandlung: tritt beim schliessen des Fensters auf
 
-                string aModelId = parts[0].ToString(); // modelId
+                string aModelId = parts[0]; // modelId
 
                 // wer kollidierte alles mit diesem Model?
                 System.Collections.Generic.List<uint> collideeList = new System.Collections.Generic.List<uint>();
 
-                if (parts[1] != "")
+                if (parts[1].Length != 0)
                 {
                     string[] collidees = parts[1].Split(',');
 
@@ -233,7 +236,7 @@ namespace VisualizationExample
                 collisionList.Add(Convert.ToUInt32(aModelId), collideeList);
             }
 
-            // Liste abarbeiten
+            /*// Liste abarbeiten
             if (collisionList.ContainsKey(modelId))
             {
                 System.Collections.Generic.List<uint> myCollisions = collisionList[modelId];
@@ -256,7 +259,7 @@ namespace VisualizationExample
                     highlightColor(anotherModelId, 0f, 1f, 1f, 1f);
                     isHighlighted(anotherModelId, true);
                 }
-            }
+            }*/
         }
     }
 }

@@ -13,25 +13,26 @@
 
 #include <future>
 
-using namespace visual::graphics;
 
+
+using namespace visual::graphics;
 
 // Hilfsfunktion //http://www.lighthouse3d.com/cg-topics/error-tracking-in-opengl/
 #define printOpenGLError() printOglError(__FILE__, __LINE__)
 
-int printOglError(char *file, int line) {
+int GraphicEngine::printOglError(char *file, int line) {
 	GLenum glErr;
 	int    retCode = 0;
 
 	glErr = glGetError();
 	if (glErr != GL_NO_ERROR) {
 		Log().debug() << "glError in file " << file << " @ line " << line << ": " << gluErrorString(glErr);
-		/*printf("glError in file %s @ line %d: %s\n",
-			file, line, gluErrorString(glErr));*/
 		retCode = 1;
 	}
 	return retCode;
 }
+
+
 
 // static attributes
 GraphicEngine* GraphicEngine::singleInstance = 0;
@@ -106,7 +107,7 @@ void GraphicEngine::worker(void) {
 	
 	GraphicEngine::getInstance()->running = true;
 
-	printOpenGLError();
+	GraphicEngine::getInstance()->printOpenGLError();
 
 	/***************
 		LOOP
@@ -124,6 +125,7 @@ void GraphicEngine::worker(void) {
 	clock_t begin = clock();
 	clock_t now = clock();
 	float timeDifference = 0.0f;
+	long unsigned int frame = 0;
 
 	while (!glfwWindowShouldClose(window)) {
 		timeDifference = (float)(now - begin) / 1000.0f;
@@ -141,26 +143,32 @@ void GraphicEngine::worker(void) {
 		GraphicEngine::getInstance()->processQueue();
 
 		// collision detection
-		Manager::getInstance()->doCollisionDetection();
+		Manager::getInstance()->doCollisionDetection(frame);
 
 		// Clear the screen to black
 		glClearColor(0.3f, 0.5f, 0.9f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
+		GraphicEngine::getInstance()->printOpenGLError();
+
 		// Draw objects
 		Manager::getInstance()->draw();
+
+		GraphicEngine::getInstance()->printOpenGLError();
 
 		// Swap buffers
 		glfwSwapBuffers(window);
 		glfwPollEvents();
 
-		printOpenGLError();
+		GraphicEngine::getInstance()->printOpenGLError();
 
 		// measure time
 		begin = now;
 		now = clock();
-		//Log().debug() << "Bild gezeichnet in " << int(now - begin) / CLOCKS_PER_SEC << "ms. Das entspricht " << 1000 / (now - begin) << " FPS." ;
+		//Log().info() << "Bild gezeichnet in " << float(now - begin) << "ms. Das entspricht " << CLOCKS_PER_SEC / (now - begin) << " FPS." ;
 		//Log().debug() << "Bild gezeichnet in " << timeDifference << "ms. " << 1 / timeDifference << " FPS";
+
+		frame++;
 	}
 
 	glfwTerminate(); 

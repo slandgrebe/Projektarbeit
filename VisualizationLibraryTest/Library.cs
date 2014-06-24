@@ -74,6 +74,10 @@ namespace VisualizationLibraryTest
 
 
         [DllImport("Visualization.dll")]
+        public extern static bool addCollisionModel(uint modelId, string filename);
+        [DllImport("Visualization.dll")]
+        public extern static bool collisionGroup(uint modelId, uint collisionGroup);
+        [DllImport("Visualization.dll")]
         public extern static uint collisionsTextLength();
         [DllImport("Visualization.dll")]
         public extern static bool collisionsText(System.Text.StringBuilder text, int length);
