@@ -42,6 +42,7 @@ namespace JumpAndRun
             catch (Exception e)
             {
                 Console.WriteLine(e);
+                Console.ReadLine();
             }
         }
     }

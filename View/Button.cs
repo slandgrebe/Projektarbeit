@@ -13,7 +13,12 @@ namespace View
         private float y = 0f;
         private float scaleX = 0.5f;
         private float scaleY = 0.25f;
+        private string text = "Text";
+        private bool IsShown = false;
         public bool IsHovered { get; private set; }
+
+        public delegate void Clicked();
+        public event Clicked ClickEvent;
         public Button(string fontFilename)
         {
             int buttonTextSize = 40;
@@ -24,12 +29,16 @@ namespace View
 
             while (modelId != 0 && !View.Model.IsCreated(modelId)) { }
             View.Model.Scale(modelId, scaleX, scaleY, 0);
-            View.Text.String(modelId, "Text");
+            View.Text.String(modelId, text);
             View.Text.TextColor(modelId, buttonTextR, buttonTextG, buttonTextB, buttonTextA);
             View.Text.TextSize(modelId, buttonTextSize);
             View.Model.HighlightColor(modelId, buttonR, buttonG, buttonB, buttonA);
             View.Model.IsHighlighted(modelId, true);
             View.Model.Position(modelId, 0f, 0f, 0f);
+
+            // Cursor Events
+            View.Cursor.Instance.MoveEvent += new View.Cursor.Move(CursorMoved);
+            View.Cursor.Instance.ClickEvent += new View.Cursor.Click(CursorClicked);
         }
 
         public void Position(float x, float y)
@@ -40,16 +49,19 @@ namespace View
         }
         public void Text(string text)
         {
+            this.text = text;
             View.Text.String(modelId, text);
         }
 
         public void Show()
         {
             View.Model.Position(modelId, x, y, 0f);
+            IsShown = true;
         }
         public void Hide()
         {
             View.Model.Position(modelId, -100f, 0f, 0f);
+            IsShown = false;
         }
         public void Highlight(bool choice)
         {
@@ -64,7 +76,7 @@ namespace View
             }
         }
 
-        public void CursorUpdate(float cursorX, float cursorY)
+        public void CursorMoved(float cursorX, float cursorY)
         {
             float width = scaleX;
             float xMin = x - width / 2;
@@ -83,6 +95,14 @@ namespace View
             {
                 Highlight(false);
                 IsHovered = false;
+            }
+        }
+        public void CursorClicked()
+        {
+            if (IsHovered && IsShown)
+            {
+                Console.WriteLine("button clicked: " + text);
+                ClickEvent();
             }
         }
     }

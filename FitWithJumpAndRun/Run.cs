@@ -11,6 +11,8 @@ using JumpAndRun.Gui;
 
 namespace JumpAndRun
 {
+    public enum Difficulty { NotSelected = 0, Easy, Normal, Difficult, Endless };
+
     /// <summary>
     /// Hauptklasse des Programmes. Abhandeln Ausgabenelemente und sicherstellen der Anzeige zum richtigen Zeitpunkt.
     /// </summary>
@@ -36,7 +38,7 @@ namespace JumpAndRun
         private Click click = new Click();
         /// <summary>Aktueller Modus des Spieles</summary>
         private Modus modus;
-        enum Difficulty { Easy = 0, Normal, Difficult, Endless };
+
         private Difficulty difficulty = Difficulty.Easy;
 
         /// <summary>
@@ -70,6 +72,7 @@ namespace JumpAndRun
 
             // Gui Element für das Hauptmenu initialisieren
             menuUi = new MenuUi();
+            menuUi.DifficultySelectedEvent += new JumpAndRun.Gui.MenuUi.DifficultySelected(DifficultySelected); // schwierigkeitsauswahl event abfangen
 
             // Gui Element für den Ladebildschirm des Levels initialisieren
             loadingUi = new LoadingUi();
@@ -120,7 +123,14 @@ namespace JumpAndRun
                         }
 
                         // Position des Cursors updaten und events auslösen
-                        Gui.Cursor.Instance.UpdatePosition();
+                        View.Cursor.Instance.UpdateCursor(MotionDetection.Body.Instance.HandRight.X,
+                            MotionDetection.Body.Instance.HandRight.Y,
+                            MotionDetection.Body.Instance.HandRight.Z,
+                            MotionDetection.Body.Instance.Head.X,
+                            MotionDetection.Body.Instance.Head.Y,
+                            MotionDetection.Body.Instance.Head.Z,
+                            MotionDetection.Body.Instance.ShoulderRight.X,
+                            MotionDetection.Body.Instance.ShoulderRight.Y);
                     }
                     else
                     {
@@ -154,35 +164,6 @@ namespace JumpAndRun
                             Body.Instance.Scale(0.1f);
                             noTrackingUi.Hide();
                             menuUi.Show();
-                            //menuUi.PositionCursor(Body.Instance.HandRight.X, Body.Instance.HandRight.Y, Body.Instance.Head.X, Body.Instance.Head.Y, Body.Instance.ShoulderRight.X, Body.Instance.ShoulderRight.Y);
-                            
-                            // Klickgeste auf Button
-                            if (click.IsClicked())
-                            {
-                                if (menuUi.IsButtonEasyHovered())
-                                {
-                                    difficulty = Difficulty.Easy;
-                                    modus = Modus.Play;
-                                }
-                                else if (menuUi.IsButtonNormalHovered())
-                                {
-                                    difficulty = Difficulty.Normal;
-                                    modus = Modus.Play;
-                                }
-                                else if (menuUi.IsButtonDifficultHovered())
-                                {
-                                    difficulty = Difficulty.Difficult;
-                                    modus = Modus.Play;
-                                }
-                            }
-
-                            /*if (menuUi.CursorPosition(Body.Instance.HandRight.X, Body.Instance.HandRight.Y))
-                            {
-                                if (click.IsClicked())
-                                {
-                                    modus = Modus.Play;
-                                }
-                            }*/
                             break;
 
                         case Modus.Play:
@@ -263,6 +244,13 @@ namespace JumpAndRun
                     }
                 }
             }
+        }
+
+        public void DifficultySelected(Difficulty difficulty)
+        {
+            Console.WriteLine("difficulty selected: " + difficulty);
+            this.difficulty = difficulty;
+            modus = Modus.Play;
         }
 
         /// <summary>

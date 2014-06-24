@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace JumpAndRun.Gui
+namespace View
 {
     public class Cursor
     {
@@ -14,6 +14,8 @@ namespace JumpAndRun.Gui
         public float Y { get; private set; }
 
         private float z = -0.4f;
+
+        private bool IsShown = false;
 
         private float clickZCached = 0f;
         private float clickXCached = 0f;
@@ -52,23 +54,13 @@ namespace JumpAndRun.Gui
             cursor.AttachToCamera(true);
         }
 
-        public void UpdateCursor()
+        public void UpdateCursor(float handX, float handY, float handZ, float headX, float headY, float headZ, float shoulderX, float shoulderY)
         {
-            Position(MotionDetection.Body.Instance.HandRight.X,
-                MotionDetection.Body.Instance.HandRight.Y,
-                MotionDetection.Body.Instance.Head.X,
-                MotionDetection.Body.Instance.Head.Y,
-                MotionDetection.Body.Instance.ShoulderRight.X,
-                MotionDetection.Body.Instance.ShoulderRight.Y);
-
-            CheckClick(MotionDetection.Body.Instance.HandRight.X,
-                MotionDetection.Body.Instance.HandRight.Y,
-                MotionDetection.Body.Instance.HandRight.Z,
-                MotionDetection.Body.Instance.Head.X,
-                MotionDetection.Body.Instance.Head.Y,
-                MotionDetection.Body.Instance.Head.Z,
-                MotionDetection.Body.Instance.ShoulderRight.X,
-                MotionDetection.Body.Instance.ShoulderRight.Y);
+            if (IsShown) // nur ausführen, wenn der cursor auch sichtbar ist
+            {
+                Position(handX, handY, headX, headY, shoulderX, shoulderY);
+                CheckClick(handX, handY, handZ, headX, headY, headZ, shoulderX, shoulderY);
+            }
         }
         /// <summary>
         /// Positioniert den Cursor
@@ -155,10 +147,12 @@ namespace JumpAndRun.Gui
         public void Show()
         {
             cursor.Position(X, Y, z);
+            IsShown = true;
         }
         public void Hide()
         {
             cursor.Position(X, Y, 1);
+            IsShown = false;
         }
     }
 }
