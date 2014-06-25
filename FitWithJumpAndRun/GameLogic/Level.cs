@@ -24,8 +24,8 @@ namespace JumpAndRun.GameLogic
         public string StartSegmentXml { get; set; }
         /// <summary>XML Pfad zum Endsegment</summary>
         public string EndSegmentXml {get; set;}
-        /// <summary>Liste aller XML Pfade der Levelsegmente dieses Levels</summary>
-        public List<string> SegmentsXmlPath;
+        /// <summary>Pfad zum Ordner der Segmente dieses Levels</summary>
+        public string SegmentsXmlPath;
         /// <summary>Gesammtlänge des Levels in Meter</summary>
         public float Length = 0;
         /// <summary>Anzahl zur verfügung stehendes Leben für dieses Level</summary>
@@ -64,7 +64,7 @@ namespace JumpAndRun.GameLogic
         {
             Segments = new List<LevelSegment>();
             SegmentsStartEnd = new List<LevelSegment>();
-            SegmentsXmlPath = new List<string>();
+            //SegmentsXmlPath = new List<string>();
             Speed = 5;
         }
 
@@ -131,10 +131,19 @@ namespace JumpAndRun.GameLogic
         {
             SegmentsStartEnd.Add(DeserializeSegment(StartSegmentXml));
             SegmentsStartEnd.Add(DeserializeSegment(EndSegmentXml));
-            foreach (string segmentXmlPath in SegmentsXmlPath)
+
+            // alle xml Dateien im Ordner auslesen
+            //string path = "data/levels/jungle/segments";
+            var files = System.IO.Directory.GetFiles(SegmentsXmlPath, "*.xml");
+            foreach (string file in files)
+            {
+                Console.WriteLine(file);
+                Segments.Add(DeserializeSegment(file));
+            }
+            /*foreach (string segmentXmlPath in SegmentsXmlPath)
             {
                 Segments.Add(DeserializeSegment(segmentXmlPath));
-            }
+            }*/
 
             foreach (LevelSegment segment in SegmentsStartEnd)
             {
@@ -157,7 +166,8 @@ namespace JumpAndRun.GameLogic
             FileStream stream;
             LevelSegment ls;
 
-            stream = new FileStream(System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location) + filePath, FileMode.Open);
+            //stream = new FileStream(System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location) + filePath, FileMode.Open);
+            stream = new FileStream(filePath, FileMode.Open);
             XmlSerializer serializer = new XmlSerializer(typeof(LevelSegment));
             ls = (LevelSegment)serializer.Deserialize(stream);
             stream.Close();
@@ -230,6 +240,12 @@ namespace JumpAndRun.GameLogic
             }
 
             double standardDeviation = (maxDifficulty - minDifficulty) / 4; // Standardabweichung
+            
+            // bei nur einem segment...
+            if (standardDeviation <= 0)
+            {
+                standardDeviation = 1;
+            }
 
             List<LevelSegment> segmentList = new List<LevelSegment>();
             while(true)
@@ -287,29 +303,33 @@ namespace JumpAndRun.GameLogic
         /// Hinzufügen eines XML Datei eines Levelsegmentes
         /// </summary>
         /// <param name="path"></param>
-        public void AddXmlPath(string path)
+        /*public void AddXmlPath(string path)
         {
             SegmentsXmlPath.Add(path);
-        }
+        }*/
 
         public void playBackgroundMusic()
         {
             switch (Severity.ToString())
             {
                 case "1":
-                    BgSound.FilePath = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location) + BackgroundMusicEasy;
+                    //BgSound.FilePath = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location) + BackgroundMusicEasy;
+                    BgSound.FilePath = BackgroundMusicEasy;
                     BgSound.Volume = BackgroundMusicEasyVolume;
                     break;
                 case "2":
-                    BgSound.FilePath = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location) + BackgroundMusicMedium;
+                    //BgSound.FilePath = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location) + BackgroundMusicMedium;
+                    BgSound.FilePath = BackgroundMusicMedium;
                     BgSound.Volume = BackgroundMusicMediumVolume;
                     break;
                 case "3":
-                    BgSound.FilePath = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location) + BackgroundMusicHard;
+                    //BgSound.FilePath = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location) + BackgroundMusicHard;
+                    BgSound.FilePath = BackgroundMusicHard;
                     BgSound.Volume = BackgroundMusicHardVolume;
                     break;
                 default:
-                    BgSound.FilePath = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location) + BackgroundMusicHard;
+                    //BgSound.FilePath = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location) + BackgroundMusicHard;
+                    BgSound.FilePath = BackgroundMusicHard;
                     BgSound.Volume = BackgroundMusicHardVolume;
                     break;
             }
