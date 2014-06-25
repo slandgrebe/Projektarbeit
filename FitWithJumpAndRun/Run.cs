@@ -62,7 +62,7 @@ namespace JumpAndRun
             backgroundSound = new Sound.Sound();
             backgroundSound.FilePath = GetRandomFileFromFolder("data/sound/menu/background", "*.mp3");
             backgroundSound.Volume = 50;
-            backgroundSound.SoundStopped += new Sound.Sound.SoundStoppedEventHandler(SoundFinished);
+            backgroundSound.SoundFinished += new Sound.Sound.SoundFinishedEventHandler(SoundFinished);
 
             // GUI für Initialisierung anzeigen
             modus = Modus.KinectMissing;

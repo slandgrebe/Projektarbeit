@@ -106,7 +106,7 @@ namespace JumpAndRun.Gui.Elements
         /// </summary>
         public void Show()
         {
-            //View.Model.Position(modelId, x, y, 0f);
+            View.Model.Position(modelId, x, y, 0f);
             if (!IsVisible)
             {
                 IsVisible = true;
@@ -117,7 +117,7 @@ namespace JumpAndRun.Gui.Elements
         /// </summary>
         public void Hide()
         {
-            //View.Model.Position(modelId, -100f, 0f, 0f);
+            View.Model.Position(modelId, -100f, 0f, 0f);
             if (IsVisible)
             {
                 IsVisible = false; 
@@ -160,7 +160,7 @@ namespace JumpAndRun.Gui.Elements
                 {
                     Highlight(true);
                     IsHovered = true;
-                    //hoverSound.Play();
+                    hoverSound.Play();
                 }
             }
             else
@@ -180,7 +180,7 @@ namespace JumpAndRun.Gui.Elements
             if (IsHovered && IsVisible)
             {
                 ClickEvent();
-                //clickSound.Play();
+                clickSound.Play();
             }
         }
     }

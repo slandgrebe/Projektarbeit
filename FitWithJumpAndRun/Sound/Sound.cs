@@ -12,21 +12,24 @@ namespace Sound
     class Sound
     {
         /// <summary>
-        /// Delegate ruft Methode auf, wenn Sound am Ende oder gestoppt wird.
+        /// Delegate ruft Methode auf, wenn Sound am Ende
         /// </summary>
-        /// <param name="s">Soundobjekt welches beendet wurde</param>
-        public delegate void SoundStoppedEventHandler(Sound s);
+        /// <param name="s">Soundobjekt welches zu Ende gelaufen ist</param>
+        public delegate void SoundFinishedEventHandler(Sound s);
         /// <summary>
-        /// Eventhandler Informiert wenn Sound am Ende ist oder gestoppt wird.
+        /// Eventhandler Informiert wenn Sound am Ende ist
         /// </summary>
-        public event SoundStoppedEventHandler SoundStopped;
+        public event SoundFinishedEventHandler SoundFinished;
+
+        private enum SoundState { None = 0, Play, Pause, Stop, Finished }
+        private SoundState state = SoundState.None;
 
         /// <summary>Windows Media Player Objekt</summary>
         private WMPLib.WindowsMediaPlayer audio = new WMPLib.WindowsMediaPlayer();
         /// <summary>Dateipfad zur Audiodatei</summary>
         public string FilePath { get; set; }
         /// <summary>Wiedergabelautstärke</summary>
-        private int _Volume = 50;
+        private int _Volume = 100;
         /// <summary>Wiergabe wiederholen</summary>
         private bool _Loop;
         /// <summary>Wiedergabelautstärke</summary>
@@ -64,8 +67,22 @@ namespace Sound
         /// </summary>
         public void Play()
         {
-            audio.URL = FilePath;
-            audio.controls.play();
+            // wenn diese Methode zu schnell zu oft aufgerufen wird, wird eine exception geworfen
+            try
+            {
+                // Sound nur neu starten, wenn er noch nicht läuft
+                if (state != SoundState.Play)
+                {
+                    state = SoundState.Play;
+
+                    audio.URL = FilePath;
+                    audio.controls.play();
+                }
+            }
+            catch (System.Runtime.InteropServices.COMException e)
+            {
+                //System.Console.WriteLine("Sound Play Excpetion: " + e);
+            }
         }
 
         /// <summary>
@@ -73,6 +90,8 @@ namespace Sound
         /// </summary>
         public void Stop()
         {
+            state = SoundState.Stop;
+
             audio.controls.stop();
         }
 
@@ -93,14 +112,18 @@ namespace Sound
         }
 
         /// <summary>
-        /// Abfangen wenn Sound gestoppt/zuenede ist
+        /// Abfangen wenn Sound zu Ende gelaufen ist
         /// </summary>
         /// <param name="NewState">aktueller Soundstatus</param>
         private void Sound_PlayStateChange(int NewState)
         {
             if ((WMPLib.WMPPlayState)NewState == WMPLib.WMPPlayState.wmppsStopped)
             {
-                if (SoundStopped != null) SoundStopped(this);
+                if (SoundFinished != null && state != SoundState.Stop)
+                {
+                    state = SoundState.Finished;
+                    SoundFinished(this);
+                }
             }
         }
     }
