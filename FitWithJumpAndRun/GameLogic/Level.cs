@@ -26,12 +26,16 @@ namespace JumpAndRun.GameLogic
         public string EndSegmentXml {get; set;}
         /// <summary>Liste aller XML Pfade der Levelsegmente dieses Levels</summary>
         public List<string> SegmentsXmlPath;
-        /// <summary>Gesammtlänge des Levels</summary>
+        /// <summary>Gesammtlänge des Levels in Meter</summary>
         public float Length = 0;
         /// <summary>Anzahl zur verfügung stehendes Leben für dieses Level</summary>
         public uint Lifes { get; set; }
-        /// <summary>Anzahl zur verfügung stehendes Leben für dieses Level</summary>
+        /// <summary>Mindestdauer des Levels in Sekunden</summary>
         public int LevelDuration { get; set; }
+        /// <summary>
+        /// Geschwindigkeit in m/s
+        /// </summary>
+        public double Speed { get; set; }
         /// <summary>Hintergrundmusik für einfaches Level</summary>
         public string BackgroundMusicEasy { get; set; }
         /// <summary>Hintergrundmusik für mittelers Level</summary>
@@ -61,6 +65,7 @@ namespace JumpAndRun.GameLogic
             Segments = new List<LevelSegment>();
             SegmentsStartEnd = new List<LevelSegment>();
             SegmentsXmlPath = new List<string>();
+            Speed = 5;
         }
 
         /// <summary>
@@ -70,25 +75,23 @@ namespace JumpAndRun.GameLogic
         /// <returns>Prüfung ob die Operation durchgeführt werden konnte</returns>
         public bool Load()
         {
-            int severityPoints = 0;
-            Random rnd = new Random();
-            int min = 1;
-            int max = 3;
-            int segmentSeverity;
-
-            // Berechnen der noch zur verfügung stehender schwierigkeitsgrade
-            /*for (int i = LevelDuration; i == 0; i--)
+            // min. 1 Segment muss vorhanden sein
+            if (Segments.Count <= 0)
             {
-                segmentSeverity = rnd.Next(min, max);
-                severityPoints -= segmentSeverity;
-                Segments.Add(GetRandomSegment());
-            }*/
+                return false;
+            }
 
-            ShuffleSegments(SegmentsStartEnd[0], SegmentsStartEnd[1]);
+            List<LevelSegment> list = new List<LevelSegment>();
 
-            foreach (LevelSegment segment in Segments)
+            // Zufällig Segmente anhand der Schwierigkeit auswählen
+            list = ChooseRandomSegments(Difficulty.Normal, LevelDuration, Speed);
+
+            // ausgewählte Segemente zufällig aneinanderreihen
+            list = ShuffleSegments(SegmentsStartEnd[0], SegmentsStartEnd[1], list);
+
+            foreach (LevelSegment segment in list)
             {
-                LoadNextSegment();
+                LoadNextSegment(segment);
             }
 
             return true;
@@ -98,12 +101,17 @@ namespace JumpAndRun.GameLogic
         /// Ladet das nächste Segment
         /// </summary>
         /// <returns>Prüfung ob die Operation durchgeführt werden konnte</returns>
-        public bool LoadNextSegment()
+        public bool LoadNextSegment(LevelSegment segment)
         {
-            //if (!Segments[LoadetSegments].Create(Length)) return false
+            /*//if (!Segments[LoadetSegments].Create(Length)) return false
             Segments[LoadetSegments].Create(Length);
             Length += Segments[LoadetSegments].Length;
             LoadetSegments++;
+            return true;*/
+
+            segment.Create(Length);
+            Length += segment.Length;
+
             return true;
         }
 
@@ -174,7 +182,7 @@ namespace JumpAndRun.GameLogic
         /// </summary>
         /// <param name="startSegment">Fügt das Startsegment am Anfang ein</param>
         /// <param name="endSegment">Fügt das Endsegment am Ende an</param>
-        private void ShuffleSegments(LevelSegment startSegment, LevelSegment endSegment)
+        private List<LevelSegment> ShuffleSegments(LevelSegment startSegment, LevelSegment endSegment, List<LevelSegment> segments)
         {
             List<LevelSegment> randomList = new List<LevelSegment>();
 
@@ -183,16 +191,96 @@ namespace JumpAndRun.GameLogic
 
             randomList.Add(startSegment);
 
-            while (Segments.Count > 0)
+            while (segments.Count > 0)
             {
-                randomIndex = r.Next(0, Segments.Count);
-                randomList.Add(Segments[randomIndex]);
-                Segments.RemoveAt(randomIndex);
+                randomIndex = r.Next(0, segments.Count);
+                randomList.Add(segments[randomIndex]);
+                segments.RemoveAt(randomIndex);
             }
 
             randomList.Add(endSegment);
 
-            Segments = randomList;
+            return randomList;
+        }
+
+        /// <summary>
+        /// Wählt aus allen zur Verfügung stehenden Segmenten zufällige aus. Dabei wird der Schwierigkeitsgrad sowie die gewünschte Mindestlänge berücksichtigt.
+        /// </summary>
+        /// <param name="difficulty">Schwierigkeitsgrad</param>
+        /// <param name="lengthInSeconds">Mindestlänge in Sekunden</param>
+        /// <param name="speed">Geschwindigkeit in m/s</param>
+        /// <returns>Liste der ausgewählten Segemente</returns>
+        private List<LevelSegment> ChooseRandomSegments(JumpAndRun.Difficulty difficulty, int lengthInSeconds, double speed)
+        {
+            Console.WriteLine("new Random Distribution");
+            double currentLength = 0; // in meter
+            RandomNumberGenerator.SetSeedFromSystemTime();
+
+            int minDifficulty = Segments.Min(e => e.Severity); // einfachste vorhandene Schwierigkeit
+            int maxDifficulty = Segments.Max(e => e.Severity); // schwerste vorhandene Schwierigkeit
+
+
+            double nDifficulty = 0; // schwierigkeit auf einer Skala von min - max
+            switch (difficulty)
+            {
+                case Difficulty.Easy: nDifficulty = Math.Round((double)(maxDifficulty - minDifficulty) / 4) + minDifficulty; break; // 25%
+                case Difficulty.Normal: nDifficulty = Math.Round((double)(maxDifficulty - minDifficulty) / 2) + minDifficulty; break; // 50%
+                case Difficulty.Difficult: nDifficulty = Math.Round((double)(maxDifficulty - minDifficulty) / 4 * 3) + minDifficulty; break; // 75%
+                default: nDifficulty = Math.Round((double)(maxDifficulty - minDifficulty) / 2) + minDifficulty; break;
+            }
+
+            double standardDeviation = (maxDifficulty - minDifficulty) / 4; // Standardabweichung
+
+            List<LevelSegment> segmentList = new List<LevelSegment>();
+            while(true)
+            {
+                // Zufallszahl nach Gaussscher Normalverteilung mit nDifficulty als Durchschnitt
+                double d = (int)Math.Round(RandomNumberGenerator.GetNormal(nDifficulty, standardDeviation));
+                
+                // min 1, max 10
+                if (d < 1.0) d = 1;
+                else if (d > 10) d = 10;
+
+                // Segment welches dieser Schwierigkeit am ehesten entspricht
+                LevelSegment segment = GetSegmentWithDifficulty(d);
+
+                segmentList.Add(segment);
+
+                // so lange Segmente hinzufügen, bis die gewünschte Länge erreicht wird.
+                if ((currentLength + segment.Length) / speed < lengthInSeconds)
+                {
+                    currentLength += segment.Length;
+                }
+                else
+                {
+                    break;
+                }     
+            }
+
+            return segmentList;
+        }
+        private LevelSegment GetSegmentWithDifficulty(double difficulty)
+        {
+            double smallesDifference = 100000;
+            List<LevelSegment> list = new List<LevelSegment>();
+
+            foreach (LevelSegment segment in Segments)
+            {
+                double currentDifference = Math.Abs(difficulty - (double)segment.Severity);
+                if (currentDifference < smallesDifference)
+                {
+                    smallesDifference = currentDifference;
+                    list.Add(segment);
+                }
+                else if (currentDifference == smallesDifference)
+                {
+                    list.Add(segment);
+                }
+            }
+
+            double rnd = RandomNumberGenerator.GetUniform(); // zufallszahl 0-1
+            double choice = Math.Round(rnd * (list.Count - 1)); // zufallszahl * Anzahl gefundene Segemente -1 (Index fängt bei 0 an)
+            return list[(int)choice]; // Segement zurück liefern
         }
 
         /// <summary>

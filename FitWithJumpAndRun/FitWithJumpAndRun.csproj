@@ -61,6 +61,7 @@
     <Compile Include="GameLogic\Game.cs" />
     <Compile Include="GameLogic\GameStatus.cs" />
     <Compile Include="GameLogic\LevelSegment.cs" />
+    <Compile Include="GameLogic\RandomNumberGenerator.cs" />
     <Compile Include="Gui\Elements\Button.cs" />
     <Compile Include="Gui\Elements\Cursor.cs" />
     <Compile Include="Gui\Elements\Point.cs" />
