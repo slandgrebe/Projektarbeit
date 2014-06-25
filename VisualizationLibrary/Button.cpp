@@ -37,6 +37,8 @@ bool Button::init(const std::string fontname) {
 	this->scale(glm::vec2(0.5f));
 	this->setText("Klick mich");
 
+	isVisible = false;
+
 	return true;
 }
 
@@ -66,6 +68,16 @@ void Button::position(glm::vec2 position) {
 }
 glm::vec3 Button::position(void) {
 	return square.position();
+}
+
+
+bool Button::visible(void) {
+	return isVisible;
+}
+void Button::visible(bool choice) {
+	isVisible = choice;
+	square.visible(isVisible);
+	text.visible(isVisible);
 }
 
 void Button::draw() {

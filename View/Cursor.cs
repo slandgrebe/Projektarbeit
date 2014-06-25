@@ -15,8 +15,6 @@ namespace View
 
         private float z = -0.4f; // diesen wert nicht ändern!
 
-        private bool IsShown = false;
-
         private float clickZCached = 0f;
         private float clickXCached = 0f;
         private float clickYCached = 0f;
@@ -57,7 +55,7 @@ namespace View
 
         public void UpdateCursor(float handX, float handY, float handZ, float headX, float headY, float headZ, float shoulderX, float shoulderY)
         {
-            if (IsShown) // nur ausführen, wenn der cursor auch sichtbar ist
+            if (cursor.IsVisible) // nur ausführen, wenn der cursor auch sichtbar ist
             {
                 Position(handX, handY, headX, headY, shoulderX, shoulderY);
                 CheckClick(handX, handY, handZ, headX, headY, headZ, shoulderX, shoulderY);
@@ -149,13 +147,13 @@ namespace View
 
         public void Show()
         {
-            cursor.Position(X, Y, z);
-            IsShown = true;
+            cursor.Show();
+            //cursor.Position(X, Y, z);         
         }
         public void Hide()
         {
-            cursor.Position(X, Y, 1);
-            IsShown = false;
+            cursor.Hide();
+            //cursor.Position(X, Y, 1);
         }
     }
 }

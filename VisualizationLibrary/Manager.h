@@ -236,6 +236,21 @@ namespace visual {
 		*/
 		bool attachModelToCamera(GLuint modelId, bool choice);
 
+		/** Setzt die Sichtbarkeit des Objekts
+		* @author Stefan Landgrebe
+		* @param modelId ID des Modells
+		* @param choice Sichtbarkeit
+		* @return Prüfung ob die Operation durchgeführt werden konnte
+		*/
+		bool modelVisibility(GLuint modelId, bool choice);
+
+		/** Liefert die Sichtbarkeit des Objekts
+		* @author Stefan Landgrebe
+		* @param modelId ID des Modells
+		* @return Sichtbarkeit
+		*/
+		bool modelVisibility(GLuint modelId);
+
 
 		/** Ändert den darzustellenden Text
 		Diese Methode kann für Text und Button Objekte verwendet werden.

@@ -79,6 +79,11 @@ bool ColoredSquare::loadModel(void) {
 
 
 void ColoredSquare::draw(void) {
+	// unsichtbare Objekte müssen nicht geladen werden
+	if (!m_isVisible) {
+		return;
+	}
+
 	glBindVertexArray(vertexArrayId);
 
 	// shader

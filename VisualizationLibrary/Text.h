@@ -26,6 +26,8 @@ namespace visual {
 			glm::vec4 color;
 			std::string fontFamily;
 
+			bool isVisible;
+
 			FT_Library		library;	/* handle to library     */
 			FT_Face			face;		/* handle to face object */
 			FT_GlyphSlot	glyphSlot;
@@ -119,6 +121,16 @@ namespace visual {
 			*/
 			void setColor(const glm::vec4 color);
 
+			/** Liefert die Sichtbarkeit des Objekts zurück
+			* @author Stefan Landgrebe
+			* @return Sichtbarkeit
+			*/
+			bool visible(void);
+			/** Setzt die Sichtbarkeit des Objekts
+			* @author Stefan Landgrebe
+			* @param choice Sichtbarkeit
+			*/
+			void visible(bool choice);
 
 			/** Zeichnet den Text neu
 			* @author Stefan Landgrebe

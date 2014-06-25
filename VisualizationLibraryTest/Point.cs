@@ -510,5 +510,50 @@ namespace VisualizationLibraryTest
             // Tear Down
             if (!Utility.TearDown(id)) Assert.AreEqual(1, 0); // da ging was schief
         }
+
+        [TestMethod]
+        public void Point_ModelVisibility()
+        {
+            // Setup
+            uint id = Utility.SetupPoint();
+
+            // Test
+            Assert.AreEqual(false, Library.getModelVisibility(id));
+
+            // Tear Down
+            if (!Utility.TearDown(id)) Assert.AreEqual(1, 0); // da ging was schief
+        }
+        [TestMethod]
+        public void Point_SetModelVisibility()
+        {
+            // Setup
+            uint id = Utility.SetupPoint();
+            Library.setModelVisibility(id, true);
+
+            // Test
+            Assert.AreEqual(true, Library.getModelVisibility(id));
+
+            // Tear Down
+            if (!Utility.TearDown(id)) Assert.AreEqual(1, 0); // da ging was schief
+        }
+        [TestMethod]
+        public void Point_ModelVisibilityNegative()
+        {
+            // Setup
+            uint id = Utility.SetupPoint();
+            Library.attachToCamera(id, true);
+            uint inexistantId = id;
+            while (Library.isCreated(inexistantId)) // finde nicht existierende Id
+            {
+                inexistantId++;
+            }
+
+            // Test
+            Assert.AreEqual(false, Library.setModelVisibility(inexistantId, true));
+            Assert.AreEqual(false, Library.getModelVisibility(inexistantId));
+
+            // Tear Down
+            if (!Utility.TearDown(id)) Assert.AreEqual(1, 0); // da ging was schief
+        }
     }
 }

@@ -23,6 +23,8 @@ namespace visual {
 			model::ColoredSquare square;
 			Text text;
 			float zSquare;
+			bool isVisible;
+
 		public:
 
 			/** Konstruktor
@@ -91,6 +93,17 @@ namespace visual {
 			* @param position Positionsvektor
 			*/
 			void position(glm::vec2 position);
+
+			/** Liefert die Sichtbarkeit des Objekts zurück
+			* @author Stefan Landgrebe
+			* @return Sichtbarkeit
+			*/
+			bool visible(void);
+			/** Setzt die Sichtbarkeit des Objekts
+			* @author Stefan Landgrebe
+			* @param choice Sichtbarkeit
+			*/
+			void visible(bool choice);
 
 			/** Liefert die Position eines Modell.
 			Die Zeichnungsfläche des GUIs ist 2 Einheiten breit und hoch (jeweils von -1 bis +1). Standardmässig befindet sich der Button an der Position 0/0 (dem Mittelpunkt).

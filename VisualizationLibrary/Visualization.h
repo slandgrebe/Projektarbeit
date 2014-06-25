@@ -43,6 +43,8 @@ Skalierungsnormalisierung \n (Nur Model und Point) | @link scalingIsNormalized @
 Hervorhebungsfarbe definieren \n (Nur Model, Point und Button) | @link highlightColor @endlink
 Hervorhebung aktivieren und deaktivieren \n (Nur Model, Point und Button) | @link isHighlighted @endlink
 Modell an die Kamera anhängen \n (Nur Model und Point) | @link attachToCamera @endlink
+Sichtbarkeit setzen \n | @link setModelVisibility @endlink
+Sichtbarkeit prüfen \n | @link getModelVisibility @endlink
 \n
 
 Text
@@ -54,6 +56,8 @@ anzuzeigender Text ändern | @link text @endlink
 Textgrösse ändern | @link textSize @endlink
 Farbe des Textes ändern | @link textColor @endlink
 Entfernung des Textelements | @link dispose @endlink
+Sichtbarkeit setzen \n | @link setModelVisibility @endlink
+Sichtbarkeit prüfen \n | @link getModelVisibility @endlink
 \n
 
 Kamera
@@ -356,6 +360,32 @@ Diese Methode kann nur für Modelle und Punkte verwendet werden. \n
 * @see addPoint()
 */
 extern "C" DLL_API int APIENTRY attachToCamera(const unsigned int modelId, const bool choice);
+
+/** Setzt die Sichtbarkeit des Modells
+\n
+
+* Aus Kompatibilitätsgründen muss für die Rückgabe von Bool Werten auf int ausgewichen werden.
+* Der Wert 0 entspricht dabei jeweils False und der Wert 1 entspricht True.
+
+* @author Stefan Landgrebe
+* @param modelId ID des Modells
+* @param choice Sichtbarkeit
+* @return (Bool) Prüfung ob die Operation durchgeführt werden konnte
+*/
+extern "C" DLL_API int APIENTRY setModelVisibility(const unsigned int modelId, const bool choice);
+
+/** Liefert die Sichtbarkeit des Modells
+\n
+
+* Aus Kompatibilitätsgründen muss für die Rückgabe von Bool Werten auf int ausgewichen werden.
+* Der Wert 0 entspricht dabei jeweils False und der Wert 1 entspricht True.
+
+* @author Stefan Landgrebe
+* @param modelId ID des Modells
+* @return (Bool) Sichtbarkeit
+*/
+extern "C" DLL_API int APIENTRY getModelVisibility(const unsigned int modelId);
+
 
 
 /** Ändert den darzustellenden Text

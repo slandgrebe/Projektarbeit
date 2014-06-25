@@ -135,6 +135,11 @@ bool Square::load(void) {
 }
 
 void Square::draw(void) {
+	// unsichtbare Objekte müssen nicht gezeichnet werden
+	if (!m_isVisible) {
+		return;
+	}
+
 	glBindVertexArray(vertexArrayId);
 
 	// shader

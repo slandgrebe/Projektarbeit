@@ -53,6 +53,10 @@ namespace VisualizationLibraryTest
         public extern static bool isHighlighted(uint modelId, bool choice);
         [DllImport("Visualization.dll")]
         public extern static bool attachToCamera(uint modelId, bool choice);
+        [DllImport("Visualization.dll")]
+        public extern static bool setModelVisibility(uint modelId, bool choice);
+        [DllImport("Visualization.dll")]
+        public extern static bool getModelVisibility(uint modelId);
 
 
         [DllImport("Visualization.dll")]

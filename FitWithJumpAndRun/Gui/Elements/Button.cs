@@ -15,7 +15,19 @@ namespace JumpAndRun.Gui.Elements
         private float scaleX = 0.5f;
         private float scaleY = 0.25f;
         private string text = "Text";
-        private bool IsShown = false;
+        private bool isVisible = false;
+        public bool IsVisible
+        {
+            get
+            {
+                return isVisible;
+            }
+            private set
+            {
+                isVisible = value;
+                View.Model.modelVisibility(modelId, isVisible);
+            }
+        }
 
         private Sound.Sound clickSound = null;
         private Sound.Sound hoverSound = null;
@@ -29,6 +41,8 @@ namespace JumpAndRun.Gui.Elements
             float buttonTextR = 0f, buttonTextG = 0f, buttonTextB = 0f, buttonTextA = 1f;
             float buttonR = 0.667f, buttonG = 0.478f, buttonB = 0.224f, buttonA = 1f;
 
+            
+
             modelId = View.Model.AddButton(fontFilename);
 
             while (modelId != 0 && !View.Model.IsCreated(modelId)) { }
@@ -39,6 +53,8 @@ namespace JumpAndRun.Gui.Elements
             View.Model.HighlightColor(modelId, buttonR, buttonG, buttonB, buttonA);
             View.Model.IsHighlighted(modelId, true);
             View.Model.Position(modelId, 0f, 0f, 0f);
+
+            IsVisible = false;
 
             // Cursor Events
             View.Cursor.Instance.MoveEvent += new View.Cursor.Move(CursorMoved);
@@ -65,13 +81,19 @@ namespace JumpAndRun.Gui.Elements
 
         public void Show()
         {
-            View.Model.Position(modelId, x, y, 0f);
-            IsShown = true;
+            //View.Model.Position(modelId, x, y, 0f);
+            if (!IsVisible)
+            {
+                IsVisible = true;
+            }
         }
         public void Hide()
         {
-            View.Model.Position(modelId, -100f, 0f, 0f);
-            IsShown = false;
+            //View.Model.Position(modelId, -100f, 0f, 0f);
+            if (IsVisible)
+            {
+                IsVisible = false; 
+            }
         }
         public void Highlight(bool choice)
         {
@@ -98,22 +120,28 @@ namespace JumpAndRun.Gui.Elements
 
             if ((cursorX > xMin && cursorX < xMax) && (cursorY > yMin && cursorY < yMax))
             {
-                Highlight(true);
-                IsHovered = true;
-                hoverSound.Play();
+                if (!IsHovered)
+                {
+                    Highlight(true);
+                    IsHovered = true;
+                    //hoverSound.Play();
+                }
             }
             else
             {
-                Highlight(false);
-                IsHovered = false;
+                if (IsHovered)
+                {
+                    Highlight(false);
+                    IsHovered = false;
+                }
             }
         }
         public void CursorClicked()
         {
-            if (IsHovered && IsShown)
+            if (IsHovered && IsVisible)
             {
                 ClickEvent();
-                clickSound.Play();
+                //clickSound.Play();
             }
         }
     }

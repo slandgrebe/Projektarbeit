@@ -138,6 +138,11 @@ namespace View
         [DllImport("Visualization.dll", EntryPoint = "attachToCamera")]
         public extern static bool AttachToCamera(uint modelId, bool choice);
 
+        [DllImport("Visualization.dll", EntryPoint = "setModelVisibility")]
+        public extern static bool modelVisibility(uint modelId, bool choice);
+        [DllImport("Visualization.dll", EntryPoint = "getModelVisibility")]
+        public extern static bool modelVisibility(uint modelId);
+
         /// <summary>
         /// Länge des Textes mit allen erkannten Kollisionen
         /// </summary>

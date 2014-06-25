@@ -79,6 +79,7 @@ AssimpModel::Triangle AssimpModel::MeshEntry::getTriangle(unsigned int n) {
 
 AssimpModel::AssimpModel() {
 	collisionModelUpdatedOnFrame = 0;
+	m_isVisible = true; // entfernen!!!
 }
 
 
@@ -311,6 +312,11 @@ bool AssimpModel::doesIntersect(AssimpModel* other, long unsigned int frame) {
 		return false;
 	}
 
+	// unsichtbare objekte können nicht kollidieren
+	if (!this->m_isVisible || !other->m_isVisible) { 
+		return false;
+	}
+
 	bool returnValue = false;
 
 	glm::vec3 pos1 = this->position(); // attachedToCamera in der position Methode noch berücksichtigen!
@@ -346,8 +352,8 @@ bool AssimpModel::doesIntersect(AssimpModel* other, long unsigned int frame) {
 }
 
 void AssimpModel::updateCollisionModel(long unsigned int frame) {
-	if (m_modelChanged
-		|| (m_isAttachedToCamera && frame > collisionModelUpdatedOnFrame)) {
+	if (m_isVisible && // unsichtbare Objekte müssen nicht geupdated werden
+		(m_modelChanged	|| (m_isAttachedToCamera && frame > collisionModelUpdatedOnFrame))) {
 
 		glm::mat4 mvp1 = this->getTransformedModelMatrix();
 
@@ -449,6 +455,11 @@ void AssimpModel::draw() {
 	//Log().debug() << "draw AssimpModel" ;
 	//Log().debug() << " Anzahl Meshes: " << meshList.size() ;
 	
+	// unsichtbare objekte müssen nicht gezeichnet werden
+	if (!m_isVisible) { 
+		return;
+	}
+
 	glBindVertexArray(vertexArrayId);
 
 	// get Shader Program Reference

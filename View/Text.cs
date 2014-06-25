@@ -68,10 +68,28 @@ namespace View
         [DllImport("Visualization.dll", EntryPoint = "dispose")]
         public extern static void Dispose(uint textId);
 
+        [DllImport("Visualization.dll", EntryPoint = "setModelVisibility")]
+        public extern static bool modelVisibility(uint modelId, bool choice);
+        [DllImport("Visualization.dll", EntryPoint = "getModelVisibility")]
+        public extern static bool modelVisibility(uint modelId);
+
 
         private uint modelId = 0;
         private float x = 0f;
         private float y = 0f;
+        private bool isVisible = false;
+        public bool IsVisible
+        {
+            get 
+            {
+                return isVisible;
+            }
+            private set
+            {
+                isVisible = value;
+                View.Model.modelVisibility(modelId, isVisible);
+            }
+        }
         public Text(string fontFilename)
         {
             modelId = View.Text.AddText(fontFilename);
@@ -81,6 +99,7 @@ namespace View
             View.Text.TextSize(modelId, 36);
             View.Text.Position(modelId, x, y, 0f);
             View.Text.TextColor(modelId, 0.502f, 0.082f, 0.082f, 1f);
+            IsVisible = false;
         }
 
         public void setText(string text)
@@ -103,11 +122,19 @@ namespace View
         }
         public void Show()
         {
-            View.Text.Position(modelId, x, y, 0f);
+            if (!IsVisible)
+            {
+                IsVisible = true;
+            }
+            //View.Text.Position(modelId, x, y, 0f);
         }
         public void Hide()
         {
-            View.Text.Position(modelId, -100f, 0f, 0f);
+            if (IsVisible)
+            {
+                IsVisible = false;
+            }
+            //View.Text.Position(modelId, -100f, 0f, 0f);
         }
     }
 }

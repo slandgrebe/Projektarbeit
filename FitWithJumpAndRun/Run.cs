@@ -76,7 +76,7 @@ namespace JumpAndRun
         /// <summary>
         /// Abhandeln eines Frames.
         /// </summary>
-        public Run()
+        private Run()
         {
             Initialize();
             System.Threading.Thread.Sleep(30);
@@ -324,7 +324,6 @@ namespace JumpAndRun
 
         public void DifficultySelected(Difficulty difficulty)
         {
-            Console.WriteLine("difficulty selected: " + difficulty);
             this.difficulty = difficulty;
             modus = Modus.Play;
         }
@@ -339,7 +338,6 @@ namespace JumpAndRun
 
         private void ResetEverything()
         {
-            Console.WriteLine("game finished");
             modus = Modus.NotTracked;
             difficulty = Difficulty.NotSelected;
             Game.Instance.ResetGame();
@@ -350,7 +348,6 @@ namespace JumpAndRun
             int seed = (int)DateTime.Now.Ticks;
             var rand = new Random(seed);
             var files = System.IO.Directory.GetFiles("data/sound/menu/background", "*.mp3");
-            Console.WriteLine(rand.Next(files.Length));
             return files[rand.Next(files.Length)];
         }
 

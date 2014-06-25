@@ -80,6 +80,12 @@ DLL_API int APIENTRY isHighlighted(const unsigned int modelId, const bool choice
 DLL_API int APIENTRY attachToCamera(const unsigned int modelId, const bool choice) {
 	return (int)visual::Manager::getInstance()->attachModelToCamera(modelId, choice);
 }
+DLL_API int APIENTRY setModelVisibility(const unsigned int modelId, const bool choice) {
+	return (int)visual::Manager::getInstance()->modelVisibility(modelId, choice);
+}
+DLL_API int APIENTRY getModelVisibility(const unsigned int modelId) {
+	return (int)visual::Manager::getInstance()->modelVisibility(modelId);
+}
 
 
 

@@ -409,6 +409,56 @@ bool Manager::attachModelToCamera(GLuint modelId, bool choice) {
 	return false;
 }
 
+bool Manager::modelVisibility(GLuint modelId, bool choice) {
+	if (assimpModelList.find(modelId) != assimpModelList.end()) {
+		model::AssimpModel* model = assimpModelList.find(modelId)->second;
+		model->visible(choice);
+	}
+	else if (squareList.find(modelId) != squareList.end()) {
+		model::Square* model = squareList.find(modelId)->second;
+		model->visible(choice);
+	}
+	else if (textList.find(modelId) != textList.end()) {
+		gui::Text* model = textList.find(modelId)->second;
+		model->visible(choice);
+	}
+	else if (buttonList.find(modelId) != buttonList.end()) {
+		gui::Button* model = buttonList.find(modelId)->second;
+		model->visible(choice);
+	}
+	else {
+		Log().error() << "Das Model mit der modelId '" << modelId << "' konnte waehrend dem Versuch dessen Sichtbarkeit zu setzen nicht gefunden werden.";
+		return false;
+	}
+
+	return true;
+}
+
+bool Manager::modelVisibility(GLuint modelId) {
+	if (assimpModelList.find(modelId) != assimpModelList.end()) {
+		model::AssimpModel* model = assimpModelList.find(modelId)->second;
+		return model->visible();
+	}
+	else if (squareList.find(modelId) != squareList.end()) {
+		model::Square* model = squareList.find(modelId)->second;
+		return model->visible();
+	}
+	else if (textList.find(modelId) != textList.end()) {
+		gui::Text* model = textList.find(modelId)->second;
+		return model->visible();
+	}
+	else if (buttonList.find(modelId) != buttonList.end()) {
+		gui::Button* model = buttonList.find(modelId)->second;
+		return model->visible();
+	}
+	else {
+		Log().error() << "Das Model mit der modelId '" << modelId << "' konnte waehrend dem Versuch dessen Sichtbarkeit zu liefern nicht gefunden werden.";
+		return false;
+	}
+
+	return false;
+}
+
 
 GLuint Manager::addText(const std::string fontname) {
 	if (!isRunning()) {

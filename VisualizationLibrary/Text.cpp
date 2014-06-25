@@ -13,6 +13,7 @@ Text::Text() {
 	currentTextSize = 12;
 	color = glm::vec4(0.0f, 0.0f, 0.0f, 1.0f);
 	fontFamily = "data/fonts/arial.ttf";
+	isVisible = false;
 }
 
 Text::~Text() {
@@ -235,8 +236,18 @@ void Text::getGlyph(char c) {
 
 }
 
+bool Text::visible(void) {
+	return isVisible;
+}
+void Text::visible(bool choice) {
+	isVisible = choice;
+}
+
 void Text::draw(void) {
-	
+	// unsichtbare Objekte müssen nicht gezeichnet werden
+	if (!isVisible) {
+		return;
+	}
 
 	glUseProgram(shaderProgram.getShaderProgramId());
 

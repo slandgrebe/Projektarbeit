@@ -12,11 +12,25 @@ namespace View
         private float x = 0f;
         private float y = 0f;
         private float z = -1f;
+        private bool isVisible = false;
+        public bool IsVisible
+        {
+            get
+            {
+                return isVisible;
+            }
+            private set
+            {
+                isVisible = value;
+                View.Model.modelVisibility(modelId, isVisible);
+            }
+        }
         public Point(string filename) {
             modelId = View.Model.AddPoint(filename);
             while (modelId != 0 && !View.Model.IsCreated(modelId)) { }
             View.Model.Scale(modelId, 1f, 1f, 1f);
             //View.Model.ScalingIsNormalized(modelId, true);
+            IsVisible = false;
         }
 
         public void Scale(float scaleX, float scaleY)
@@ -35,13 +49,21 @@ namespace View
         {
             View.Model.AttachToCamera(modelId, choice);
         }
-        public void Hide()
-        {
-            View.Model.Position(modelId, -100f, 0f, 0f);
-        }
         public void Show()
         {
-            View.Model.Position(modelId, x, y, z);
+            if (!IsVisible)
+            {
+                IsVisible = true;
+            }
+            //View.Model.Position(modelId, x, y, z);
+        }
+        public void Hide()
+        {
+            if (IsVisible)
+            {
+                IsVisible = false;
+            }
+            //View.Model.Position(modelId, -100f, 0f, 0f);
         }
     }
 }

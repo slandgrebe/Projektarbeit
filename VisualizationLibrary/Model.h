@@ -49,6 +49,8 @@ namespace visual {
 			bool m_isAttachedToCamera; /** Definiert ob das Modell an die Kamera angehängt wurde */
 			bool m_modelChanged; /** Definiert ob sich das Model verändert hat */
 
+			bool m_isVisible; /** Definiert ob das Model im Moment sichtbar ist */
+
 			graphics::ShaderProgram shaderProgram; /** Shader Programm */
 			 
 			/** Liefert die transformierte Matrix (Skalierung, Rotation, Positionierung) des Modells zurück
@@ -89,6 +91,8 @@ namespace visual {
 				m_isHighlighted = false;
 				m_isAttachedToCamera = false;
 				m_modelChanged = false;
+
+				m_isVisible = false;
 			};
 
 			/** virtueller Destruktor
@@ -273,6 +277,21 @@ namespace visual {
 			*/
 			virtual unsigned int collisionGroup(void) {
 				return m_collisionGroup;
+			}
+
+			/** Liefert die Sichtbarkeit des Objekts zurück
+			* @author Stefan Landgrebe
+			* @return Sichtbarkeit
+			*/
+			virtual bool visible(void) {
+				return m_isVisible;
+			}
+			/** Setzt die Sichtbarkeit des Objekts
+			* @author Stefan Landgrebe
+			* @param choice Sichtbarkeit
+			*/
+			virtual void visible(bool choice) {
+				m_isVisible = choice;
 			}
 
 			/** Zeichnet das Modell neu
