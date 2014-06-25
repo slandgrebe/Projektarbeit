@@ -62,7 +62,7 @@ namespace JumpAndRun.Item
             if (!Model.Scale(Scale)) return false;
             if (!Model.AttachToCamera(AttachToCamera)) return false;
             if (!Model.Rotate(RotateHorizontal, 0, 1, 0)) return false;
-            if (!Model.Rotate(RotateVertical, 1, 0, 0)) return false;
+            //if (!Model.Rotate(RotateVertical, 1, 0, 0)) return false;
             return true;
         }
 
@@ -79,7 +79,7 @@ namespace JumpAndRun.Item
             if (!Model.Scale(Scale)) return false;
             if (!Model.AttachToCamera(AttachToCamera)) return false;
             if (!Model.Rotate(RotateHorizontal, 0, 1, 0)) return false;
-            if (!Model.Rotate(RotateVertical, 1, 0, 0)) return false;
+            //if (!Model.Rotate(RotateVertical, 1, 0, 0)) return false;
             return true;
         }
         
@@ -104,7 +104,7 @@ namespace JumpAndRun.Item
             if (!Model.Scale(Scale)) return false;
             if (!Model.AttachToCamera(AttachToCamera)) return false;
             if (!Model.Rotate(RotateHorizontal, 0, 1, 0)) return false;
-            if (!Model.Rotate(RotateVertical, 1, 0, 0)) return false;
+            //if (!Model.Rotate(RotateVertical, 1, 0, 0)) return false;
             return true;
         }
 

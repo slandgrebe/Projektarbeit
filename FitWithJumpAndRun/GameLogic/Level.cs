@@ -53,9 +53,10 @@ namespace JumpAndRun.GameLogic
         /// <summary>Anzahl gelöschter</summary>
         private int DisposedSegments = 0;
         /// <summary>Schwierigkeitsgrad</summary>
-        public int Severity { get; set; }
+        public Difficulty Severity { get; set; }
         /// <summary>Hintergrundmusik Soundobjekt</summary>
         private Sound.Sound BgSound = new Sound.Sound();
+        private List<LevelSegment> list;
 
         /// <summary>
         /// Level Initialisieren
@@ -64,6 +65,7 @@ namespace JumpAndRun.GameLogic
         {
             Segments = new List<LevelSegment>();
             SegmentsStartEnd = new List<LevelSegment>();
+            list = new List<LevelSegment>();
             //SegmentsXmlPath = new List<string>();
             Speed = 5;
         }
@@ -81,10 +83,12 @@ namespace JumpAndRun.GameLogic
                 return false;
             }
 
-            List<LevelSegment> list = new List<LevelSegment>();
+            Severity = Difficulty.Normal;
+
+            //List<LevelSegment> list = new List<LevelSegment>();
 
             // Zufällig Segmente anhand der Schwierigkeit auswählen
-            list = ChooseRandomSegments(Difficulty.Normal, LevelDuration, Speed);
+            list = ChooseRandomSegments(Severity, LevelDuration, Speed);
 
             // ausgewählte Segemente zufällig aneinanderreihen
             list = ShuffleSegments(SegmentsStartEnd[0], SegmentsStartEnd[1], list);
@@ -171,6 +175,7 @@ namespace JumpAndRun.GameLogic
             XmlSerializer serializer = new XmlSerializer(typeof(LevelSegment));
             ls = (LevelSegment)serializer.Deserialize(stream);
             stream.Close();
+            ls.FilePath = filePath;
             return ls;
         }
 
@@ -258,7 +263,8 @@ namespace JumpAndRun.GameLogic
                 else if (d > 10) d = 10;
 
                 // Segment welches dieser Schwierigkeit am ehesten entspricht
-                LevelSegment segment = GetSegmentWithDifficulty(d);
+                LevelSegment segment = DeserializeSegment(GetSegmentWithDifficulty(d).FilePath);
+                segment.Deserialize();
 
                 segmentList.Add(segment);
 
@@ -310,19 +316,19 @@ namespace JumpAndRun.GameLogic
 
         public void playBackgroundMusic()
         {
-            switch (Severity.ToString())
+            switch (Severity)
             {
-                case "1":
+                case Difficulty.Easy:
                     //BgSound.FilePath = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location) + BackgroundMusicEasy;
                     BgSound.FilePath = BackgroundMusicEasy;
                     BgSound.Volume = BackgroundMusicEasyVolume;
                     break;
-                case "2":
+                case Difficulty.Normal:
                     //BgSound.FilePath = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location) + BackgroundMusicMedium;
                     BgSound.FilePath = BackgroundMusicMedium;
                     BgSound.Volume = BackgroundMusicMediumVolume;
                     break;
-                case "3":
+                case Difficulty.Difficult:
                     //BgSound.FilePath = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location) + BackgroundMusicHard;
                     BgSound.FilePath = BackgroundMusicHard;
                     BgSound.Volume = BackgroundMusicHardVolume;
@@ -349,12 +355,7 @@ namespace JumpAndRun.GameLogic
         /// <returns>Prüfung ob die Operation durchgeführt werden konnte</returns>
         public bool Visibility(bool visible)
         {
-            foreach (LevelSegment segment in SegmentsStartEnd)
-            {
-                if (!segment.Visibility(visible)) return false;
-            }
-            
-            foreach (LevelSegment segment in Segments)
+            foreach (LevelSegment segment in list)
             {
                 if (!segment.Visibility(visible)) return false;
             }
@@ -366,7 +367,7 @@ namespace JumpAndRun.GameLogic
         /// </summary>
         public void Dispose()
         {
-            foreach (LevelSegment segment in Segments)
+            foreach (LevelSegment segment in list)
             {
                 segment.Dispose();
             }

@@ -25,6 +25,7 @@ namespace JumpAndRun.GameLogic
         public int Severity { get; set; }
         /// <summary>Absolute Startposition des Segmentes</summary>
         public float StartPosition { get; set; }
+        public string FilePath { get; set; }
 
         /// <summary>
         /// Initialisierung des Levelsegments
