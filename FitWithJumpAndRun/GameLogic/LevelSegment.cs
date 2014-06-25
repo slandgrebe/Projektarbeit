@@ -88,22 +88,47 @@ namespace JumpAndRun.GameLogic
         /// </summary>
         public void Deserialize()
         {
-            foreach (JumpAndRun.Item.Object obstacle in obstacles)
+            foreach (JumpAndRun.Item.Object o in obstacles)
             {
-                obstacle.Deserialize();
-                obstacle.Model.CollisionGroup(2);
+                o.Deserialize();
+                o.Model.CollisionGroup(2);
             }
 
-            foreach (JumpAndRun.Item.Object score in scores)
+            foreach (JumpAndRun.Item.Object s in scores)
             {
-                score.Deserialize();
-                score.Model.CollisionGroup(3);
+                s.Deserialize();
+                s.Model.CollisionGroup(3);
             }
 
-            foreach (JumpAndRun.Item.Object obj in objects)
+            foreach (JumpAndRun.Item.Object o in objects)
             {
-                obj.Deserialize();
+                o.Deserialize();
             }
+        }
+
+        /// <summary>
+        /// Objekete eines Segmentes anzeigen oder ausblenden
+        /// </summary>
+        /// <param name="visible">Sichtbarkeit</param>
+        /// <returns>Prüfung ob die Operation durchgeführt werden konnte</returns>
+        public bool Visibility(bool visible)
+        {
+            foreach (JumpAndRun.Item.Object o in obstacles)
+            {
+                o.Model.Visibility(visible);
+                //if (!o.Model.Visibility(visible)) return false;
+            }
+            foreach (JumpAndRun.Item.Object s in scores)
+            {
+                s.Model.Visibility(visible);
+                //if (!s.Model.Visibility(visible)) return false;
+            }
+            foreach (JumpAndRun.Item.Object o in objects)
+            {
+                o.Model.Visibility(visible);
+                if (!o.Model.Visibility(visible)) return false;
+            }
+            return true;
         }
 
         /// <summary>

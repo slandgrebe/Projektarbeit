@@ -157,5 +157,25 @@ namespace JumpAndRun.GameLogic
             if (!LowerlegRight.AttachToCamera(Attach)) return false;
             return true;
         }
+
+        /// <summary>
+        /// Player anzeigen oder ausblenden
+        /// </summary>
+        /// <param name="visible">Sichtbarkeit</param>
+        /// <returns>Prüfung ob die Operation durchgeführt werden konnte</returns>
+        public bool Visibility(bool visible)
+        {
+            if (!Head.Visibility(visible)) return false;
+            if (!Torso.Visibility(visible)) return false;
+            if (!UpperarmLeft.Visibility(visible)) return false;
+            if (!UpperarmRight.Visibility(visible)) return false;
+            if (!ForearmLeft.Visibility(visible)) return false;
+            if (!ForearmRight.Visibility(visible)) return false;
+            if (!ThighlegLeft.Visibility(visible)) return false;
+            if (!ThighlegRight.Visibility(visible)) return false;
+            if (!LowerlegLeft.Visibility(visible)) return false;
+            if (!LowerlegRight.Visibility(visible)) return false;
+            return true;
+        }
     }
 }

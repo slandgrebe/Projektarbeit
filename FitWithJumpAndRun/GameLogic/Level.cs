@@ -50,6 +50,20 @@ namespace JumpAndRun.GameLogic
         }
 
         /// <summary>
+        /// Objekete eines Levels anzeigen oder ausblenden
+        /// </summary>
+        /// <param name="visible">Sichtbarkeit</param>
+        /// <returns>Prüfung ob die Operation durchgeführt werden konnte</returns>
+        public bool Visibility(bool visible)
+        {
+            foreach (LevelSegment segment in segments)
+            {
+                if (!segment.Visibility(visible)) return false;
+            }
+            return true;
+        }
+
+        /// <summary>
         /// Levelsegmente aus der XML erzeugen
         /// </summary>
         public void Deserialize()

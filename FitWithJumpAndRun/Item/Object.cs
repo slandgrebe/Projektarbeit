@@ -27,8 +27,14 @@ namespace JumpAndRun.Item
         public bool AttachToCamera { get; set; }
         /// <summary>Winkel in Grad, um welches das Objekt Horizontal gedreht werden soll</summary>
         public float RotateHorizontal { get; set; }
+        /// <summary>Winkel in Grad, um welches das Objekt Vertical gedreht werden soll</summary>
+        public float RotateVertical { get; set; }
+        /// <summary>Schwiergikeitsgrad des Objektes</summary>
+        public int Severity { get; set; }
         /// <summary>Beinhaltet das head</summary>
         public Model Model { get; set; }
+        /// <summary>Soundobjekt</summary>
+        private Sound.Sound SoundCollision = new Sound.Sound();
 
         /// <summary>
         /// Initialisierung des Objektes.
@@ -41,6 +47,7 @@ namespace JumpAndRun.Item
             PosZ = 0;
             AttachToCamera = false;
             RotateHorizontal = 0;
+            Severity = 1;
         }
 
         /// <summary>
@@ -95,6 +102,7 @@ namespace JumpAndRun.Item
             if (!Model.Scale(Scale)) return false;
             if (!Model.AttachToCamera(AttachToCamera)) return false;
             if (!Model.Rotate(RotateHorizontal, 0, 1, 0)) return false;
+            if (!Model.Rotate(RotateVertical, 1, 0, 0)) return false;
             return true;
         }
 
@@ -122,19 +130,14 @@ namespace JumpAndRun.Item
             System.Collections.Generic.Dictionary<uint, System.Collections.Generic.List<uint>> collisionList = new System.Collections.Generic.Dictionary<uint, System.Collections.Generic.List<uint>>();
 
             uint length = View.Model.CollisionsTextLength();
-            if (length > 0)
-            {
-                length = length;
-            }
 
             System.Text.StringBuilder str = new System.Text.StringBuilder((int)length + 1);
             View.Model.CollisionsText(str, str.Capacity); // Daten aus DLL holen
-            // str: 1:2,3;2:1,2 => 1 kollidiert mit 2 und 3. 2 kollidiert mit 1 und 2.
+            // str: 3;2 => 3 und 2 sind kollidiert
             String collisionsString = str.ToString(); // Daten parsen
             string[] models = collisionsString.Split(';');
             foreach (string model in models)
             {
-                // model: 1:2,3
                 if (model.Length == 0) return false;
                 string[] parts = model.Split(':');
 
@@ -143,63 +146,27 @@ namespace JumpAndRun.Item
                     if (!player.Colidet.Contains(Model.Id))
                     {
                         player.Colidet.Add(Model.Id);
-                        if (dispose)
-                        {
-                            Dispose();
-                        }
+                        PlaySound();
+                        if (dispose) Dispose();
                         Model.CollisionGroup(0);
                         return true;
                     }
                 }
-
-
-                /*
-                // wer kollidierte alles mit diesem head?
-                System.Collections.Generic.List<uint> collideeList = new System.Collections.Generic.List<uint>();
-
-                if (parts[1] != "")
-                {
-                    string[] collidees = parts[1].Split(',');
-
-                    foreach (string collidee in collidees)
-                    {
-                        if (collidee != "")
-                        {
-                            collideeList.Add(Convert.ToUInt32(collidee));
-                        }
-                    }
-                }
-                collisionList.Add(Convert.ToUInt32(aModelId), collideeList);*/
             }
-
-            // Liste abarbeiten
-            /*
-            if (collisionList.ContainsKey(Model.Id))
-            {
-                System.Collections.Generic.List<uint> myCollisions = collisionList[Model.Id];
-                if (myCollisions.Contains(player.Head.Id) ||
-                    myCollisions.Contains(player.Torso.Id) ||
-                    myCollisions.Contains(player.UpperarmLeft.Id) ||
-                    myCollisions.Contains(player.UpperarmRight.Id) ||
-                    myCollisions.Contains(player.ForearmLeft.Id) ||
-                    myCollisions.Contains(player.ForearmRight.Id) ||
-                    myCollisions.Contains(player.ThighlegLeft.Id) ||
-                    myCollisions.Contains(player.ThighlegRight.Id) ||
-                    myCollisions.Contains(player.LowerlegLeft.Id) ||
-                    myCollisions.Contains(player.LowerlegRight.Id)) // es gibt kollisionen => das Objekt selber behandeln
-                {
-                    if (!player.Colidet.Contains(Model.Id))
-                    {
-                        player.Colidet.Add(Model.Id);
-                        if (dispose)
-                        {
-                            Dispose();
-                        }
-                        return true;
-                    }
-                }
-            }*/
             return false;
+        }
+        
+        /// <summary>
+        /// Spielt einen Sound ab.
+        /// </summary>
+        private void PlaySound()
+        {
+            if (Model.Sound.Length > 0)
+            {
+                SoundCollision.FilePath = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location) + Model.Sound;
+                if (Model.SoundVolume > 0) SoundCollision.Volume = Model.SoundVolume;
+                SoundCollision.Play();
+            }
         }
 
         /// <summary>

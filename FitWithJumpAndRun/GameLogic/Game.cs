@@ -81,6 +81,8 @@ namespace JumpAndRun.GameLogic
             {
                 //Camera.PositionCamera(0, 1.5f, -40 + 4.5f -0.5f);
                 //Camera.ChangeCameraSpeed(0f);
+                level.Visibility(true);
+                Player.Visibility(true);
                 Camera.PositionCamera(0, 1.5f, 0);
                 Camera.ChangeCameraSpeed(5f);
 
@@ -184,6 +186,9 @@ namespace JumpAndRun.GameLogic
             if (Player.Lives == 0)
             {
                 GameStatus = GameStatus.GameOver;
+                Camera.ChangeCameraSpeed(0);
+                level.Visibility(false);
+                Player.Visibility(false);
             }
         }
 
@@ -195,6 +200,8 @@ namespace JumpAndRun.GameLogic
             if (level.LevelLength - level.segments.Last().Length + 2 < Player.GetPosition() * -1)
             {
                 GameStatus = GameStatus.Successful;
+                level.Visibility(false);
+                Player.Visibility(false);
             }
         }
     }

@@ -15,8 +15,14 @@ namespace JumpAndRun.Item
         public uint Id { get; set; }
         /// <summary>Dateipfad zum 3D Modelles</summary>
         public string Path { get; set; }
+        /// <summary>Dateipfad zum Kollisionsmodel</summary>
+        public string CollisionPath { get; set; }
         /// <summary>Modell beim erstellen auf einen Durchmesser von einem Meter bzw. einer Einheit skallieren</summary>
         public bool ScalingNormalized { get; set; }
+        /// <summary>Sound bei Kollision</summary>
+        public string Sound { get; set; }
+        /// <summary>Soundlautstärke bei Kollision</summary>
+        public int SoundVolume { get; set; }
         /// <summary>Modell wurde gelöscht</summary>
         private bool disposed = false;
 
@@ -52,6 +58,7 @@ namespace JumpAndRun.Item
             Id = View.Model.AddModel(Path);
             while (!View.Model.IsCreated(Id)) { }
             View.Model.ScalingIsNormalized(Id, ScalingNormalized);
+            Visibility(false);
             return true;
         }
 
@@ -162,16 +169,26 @@ namespace JumpAndRun.Item
             if (Id == 0) return false;
             return View.Model.AttachToCamera(Id, choice);
         }
-        /*
-        public bool AddCollisionModel(uint modelId, string filename)
-        {
 
-        }*/
-
+        /// <summary>
+        /// Modell einer Kollisionsgruppe zuweisen
+        /// </summary>
+        /// <param name="group">Kollisionsgruppe: 1: Kollidieren, 2: Punkte, 3: Hinternise</param>
+        /// <returns>Prüfung ob die Operation durchgeführt werden konnte</returns>
         public bool CollisionGroup(uint group)
         {
             if (Id == 0) return false;
             return View.Model.CollisionGroup(Id, group);
+        }
+
+        /// <summary>
+        /// Sichtbarkeit des Modelles
+        /// </summary>
+        /// <param name="visible">True wird das Model sichtbar.</param>
+        /// <returns>Prüfung ob die Operation durchgeführt werden konnte</returns>
+        public bool Visibility(bool visible)
+        {
+            return View.Model.modelVisibility(Id, visible);
         }
 
         /// <summary>
