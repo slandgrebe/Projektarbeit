@@ -115,17 +115,14 @@ namespace JumpAndRun.GameLogic
         {
             foreach (JumpAndRun.Item.Object o in obstacles)
             {
-                o.Model.Visibility(visible);
-                //if (!o.Model.Visibility(visible)) return false;
+                if (!o.Model.Visibility(visible)) return false;
             }
             foreach (JumpAndRun.Item.Object s in scores)
             {
-                s.Model.Visibility(visible);
-                //if (!s.Model.Visibility(visible)) return false;
+                if (!s.Model.Visibility(visible)) return false; 
             }
             foreach (JumpAndRun.Item.Object o in objects)
             {
-                o.Model.Visibility(visible);
                 if (!o.Model.Visibility(visible)) return false;
             }
             return true;

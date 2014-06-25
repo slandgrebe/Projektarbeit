@@ -7,33 +7,19 @@
       <Scale>1</Scale>
       <PosX>-2</PosX>
       <PosY>1</PosY>
-      <PosZ>35</PosZ>
-      <RotateHorizontal>180</RotateHorizontal>
-      <AttachToCamera>false</AttachToCamera>
-    </Object>
-    <Object>
-      <ModelXmlPath>/data/levels/jungle/models/limb.xml</ModelXmlPath>
-      <Scale>1</Scale>
-      <PosX>-2</PosX>
-      <PosY>1</PosY>
-      <PosZ>45</PosZ>
-      <RotateHorizontal>180</RotateHorizontal>
-      <AttachToCamera>false</AttachToCamera>
-    </Object>
-    <Object>
-      <ModelXmlPath>/data/levels/jungle/models/limb.xml</ModelXmlPath>
-      <Scale>1</Scale>
-      <PosX>2</PosX>
-      <PosY>1</PosY>
-      <PosZ>50</PosZ>
-      <AttachToCamera>false</AttachToCamera>
-    </Object>
-    <Object>
-      <ModelXmlPath>/data/levels/jungle/models/limb.xml</ModelXmlPath>
-      <Scale>1</Scale>
-      <PosX>2</PosX>
-      <PosY>0.1</PosY>
       <PosZ>60</PosZ>
+      <RotateHorizontal>180</RotateHorizontal>
+      <RotateVertical>180</RotateVertical>
+      <AttachToCamera>false</AttachToCamera>
+    </Object>
+    <Object>
+      <ModelXmlPath>/data/levels/jungle/models/liana.xml</ModelXmlPath>
+      <Scale>1</Scale>
+      <PosX>0</PosX>
+      <PosY>3</PosY>
+      <PosZ>10</PosZ>
+      <RotateHorizontal>0</RotateHorizontal>
+      <RotateVertical>90</RotateVertical>
       <AttachToCamera>false</AttachToCamera>
     </Object>
   </obstacles>
@@ -47,7 +33,7 @@
       <AttachToCamera>false</AttachToCamera>
     </Object>
     <Object>
-      <ModelXmlPath>/data/levels/jungle/models/banana.xml</ModelXmlPath>
+      <ModelXmlPath>/data/levels/jungle/models/cocosnut.xml</ModelXmlPath>
       <Scale>0.3</Scale>
       <PosX>0</PosX>
       <PosY>1</PosY>
@@ -55,11 +41,12 @@
       <AttachToCamera>false</AttachToCamera>
     </Object>
     <Object>
-      <ModelXmlPath>/data/levels/jungle/models/banana.xml</ModelXmlPath>
-      <Scale>0.3</Scale>
+      <ModelXmlPath>/data/levels/jungle/models/mango.xml</ModelXmlPath>
+      <Scale>0.6</Scale>
       <PosX>0</PosX>
       <PosY>1</PosY>
       <PosZ>30</PosZ>
+      <RotateVertical>90</RotateVertical>
       <AttachToCamera>false</AttachToCamera>
     </Object>
     <Object>

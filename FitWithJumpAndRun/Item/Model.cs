@@ -53,7 +53,7 @@ namespace JumpAndRun.Item
         /// <returns>Prüfung ob die Operation durchgeführt werden konnte</returns>
         public bool Create()
         {
-            if (Id > 0) return false;
+            if (Id > 0) return true;
             if (Path == null || String.IsNullOrEmpty(Path)) return false;
             Id = View.Model.AddModel(Path);
             while (!View.Model.IsCreated(Id)) { }
@@ -69,7 +69,7 @@ namespace JumpAndRun.Item
         /// <returns>Prüfung ob die Operation durchgeführt werden konnte</returns>
         public bool Scale(float scale)
         {
-            if (Id == 0) return false;
+            if (Id == 0) return true;
             return View.Model.Scale(Id, scale, scale, scale);
         }
 
@@ -83,7 +83,7 @@ namespace JumpAndRun.Item
         /// <returns>Prüfung ob die Operation durchgeführt werden konnte</returns>
         public bool Rotate(float degrees, float x, float y, float z)
         {
-            if (Id == 0) return false;
+            if (Id == 0) return true;
             return View.Model.Rotate(Id, degrees, x, y, z);
         }
 
@@ -99,7 +99,7 @@ namespace JumpAndRun.Item
         /// <returns>Prüfung ob die Operation durchgeführt werden konnte</returns>
         public bool Alignment(float fromX, float fromY, float fromZ, float toX, float toY, float toZ)
         {
-            if (Id == 0) return false;
+            if (Id == 0) return true;
 
             // Ausgangspunkt darf nicht Zielpunkt sein.
             if (fromX == toX && fromY == toY && fromZ == toZ)
@@ -155,7 +155,7 @@ namespace JumpAndRun.Item
         /// <returns>Prüfung ob die Operation durchgeführt werden konnte</returns>
         public bool Position(float x, float y, float z)
         {
-            if (Id == 0) return false;
+            if (Id == 0) return true;
             return View.Model.Position(Id, x, y, z);
         }
 
@@ -166,7 +166,7 @@ namespace JumpAndRun.Item
         /// <returns>Prüfung ob die Operation durchgeführt werden konnte</returns>
         public bool AttachToCamera(bool choice)
         {
-            if (Id == 0) return false;
+            if (Id == 0) return true;
             return View.Model.AttachToCamera(Id, choice);
         }
 
@@ -177,7 +177,7 @@ namespace JumpAndRun.Item
         /// <returns>Prüfung ob die Operation durchgeführt werden konnte</returns>
         public bool CollisionGroup(uint group)
         {
-            if (Id == 0) return false;
+            if (Id == 0) return true;
             return View.Model.CollisionGroup(Id, group);
         }
 
@@ -188,6 +188,7 @@ namespace JumpAndRun.Item
         /// <returns>Prüfung ob die Operation durchgeführt werden konnte</returns>
         public bool Visibility(bool visible)
         {
+            if (Id == 0) return true;
             return View.Model.modelVisibility(Id, visible);
         }
 

@@ -93,6 +93,30 @@ namespace JumpAndRun
         }
 
         [TestMethod]
+        public void LevelSegment_Visibility()
+        {
+            LevelSegment ls = new LevelSegment();
+
+            JumpAndRun.Item.Object obstacle = new JumpAndRun.Item.Object();
+            obstacle.ModelXmlPath = "/data/levels/jungle/models/banana.xml";
+            obstacle.Deserialize();
+            JumpAndRun.Item.Object score = new JumpAndRun.Item.Object();
+            score.ModelXmlPath = "/data/levels/jungle/models/banana.xml";
+            score.Deserialize();
+            JumpAndRun.Item.Object obj = new JumpAndRun.Item.Object();
+            obj.ModelXmlPath = "/data/levels/jungle/models/banana.xml";
+            obj.Deserialize();
+
+            ls.AddObstacle(obstacle);
+            ls.AddScore(score);
+            ls.AddObject(obj);
+
+            ls.Create(0);
+
+            Assert.AreEqual(true, ls.Visibility(true), "Segment wurde nicht sichtbar.");
+        }
+
+        [TestMethod]
         public void LevelSegment_Dispose()
         {
             LevelSegment ls = new LevelSegment();
