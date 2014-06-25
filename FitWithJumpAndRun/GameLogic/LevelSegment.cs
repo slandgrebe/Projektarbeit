@@ -21,6 +21,8 @@ namespace JumpAndRun.GameLogic
         public List<JumpAndRun.Item.Object> objects;
         /// <summary>Länge des Levelsegmentes</summary>
         public float Length { get; set; }
+        /// <summary>Schwierigkeitsgrad des Levelsegmentes</summary>
+        public int Severity { get; set; }
 
         /// <summary>
         /// Initialisierung des Levelsegments

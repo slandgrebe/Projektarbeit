@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;*/
 
-namespace Sound
+namespace JumpAndRun.Sound
 {
     /// <summary>
     /// Spielt Audiodateien ab.
@@ -75,9 +75,9 @@ namespace Sound
                 {
                     state = SoundState.Play;
 
-                    audio.URL = FilePath;
-                    audio.controls.play();
-                }
+            audio.URL = FilePath;
+            audio.controls.play();
+        }
             }
             catch (System.Runtime.InteropServices.COMException e)
             {
