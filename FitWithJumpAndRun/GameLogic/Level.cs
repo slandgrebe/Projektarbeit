@@ -349,6 +349,11 @@ namespace JumpAndRun.GameLogic
         /// <returns>Prüfung ob die Operation durchgeführt werden konnte</returns>
         public bool Visibility(bool visible)
         {
+            foreach (LevelSegment segment in SegmentsStartEnd)
+            {
+                if (!segment.Visibility(visible)) return false;
+            }
+            
             foreach (LevelSegment segment in Segments)
             {
                 if (!segment.Visibility(visible)) return false;

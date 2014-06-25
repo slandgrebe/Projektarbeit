@@ -58,8 +58,15 @@ namespace JumpAndRun.Sound
         /// </summary>
         public Sound()
         {
-            audio.settings.volume = Volume;
-            audio.PlayStateChange += new WMPLib._WMPOCXEvents_PlayStateChangeEventHandler(Sound_PlayStateChange);
+            try
+            {
+                audio.settings.volume = Volume;
+                audio.PlayStateChange += new WMPLib._WMPOCXEvents_PlayStateChangeEventHandler(Sound_PlayStateChange);
+            }
+            catch (System.Exception e)
+            {
+                System.Console.WriteLine("Sounderror: " + FilePath);
+            }
         }
 
         /// <summary>

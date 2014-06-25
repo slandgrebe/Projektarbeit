@@ -23,6 +23,8 @@ namespace JumpAndRun.GameLogic
         public float Length { get; set; }
         /// <summary>Schwierigkeitsgrad des Levelsegmentes</summary>
         public int Severity { get; set; }
+        /// <summary>Absolute Startposition des Segmentes</summary>
+        public float StartPosition { get; set; }
 
         /// <summary>
         /// Initialisierung des Levelsegments
@@ -68,19 +70,20 @@ namespace JumpAndRun.GameLogic
         /// <returns>Prüfung ob die Operation durchgeführt werden konnte</returns>
         public bool Create(float z)
         {
+            StartPosition = z;
             foreach (JumpAndRun.Item.Object o in obstacles)
             {
-                if (!o.Create(z)) return false;
+                if (!o.Create(StartPosition)) return false;
                 o.Model.CollisionGroup(2);
             }
             foreach (JumpAndRun.Item.Object s in scores)
             {
-                 if (!s.Create(z)) return false;
+                if (!s.Create(StartPosition)) return false;
                  s.Model.CollisionGroup(3);
             }
             foreach (JumpAndRun.Item.Object o in objects)
             {
-                if (!o.Create(z)) return false;
+                if (!o.Create(StartPosition)) return false;
             }
             return true;
         }

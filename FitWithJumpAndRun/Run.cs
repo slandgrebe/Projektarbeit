@@ -94,8 +94,8 @@ namespace JumpAndRun
                 // senkt die CPU Auslastung drastisch
                 System.Threading.Thread.Sleep(1);
 
-                /*// Kinect überprüfen
-                if (!CheckKinect()) continue;
+                // Kinect überprüfen
+                /*if (!CheckKinect()) continue;
                 // Überprüfen ob eine Person erkannt wird
                 else if (!CheckPersonTracking()) continue;
                 // Schwierigkeitsgrad wählen
