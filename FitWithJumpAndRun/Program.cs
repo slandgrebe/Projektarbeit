@@ -18,16 +18,6 @@ namespace JumpAndRun
     /// </summary>
     class Program
     {
-        internal Run Run
-        {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
-            set
-            {
-            }
-        }
         /// <summary>
         /// Eintritspunkt des Programmes
         /// </summary>

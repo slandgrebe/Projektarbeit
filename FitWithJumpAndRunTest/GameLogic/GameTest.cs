@@ -36,7 +36,7 @@ namespace JumpAndRun
             game.LevelXmlPath = "/data/levels/test/level.xml";
             Assert.AreEqual(true, game.Init(), "Das Level konnte nicht initialisiert werden.");
             Assert.IsNotNull(game.Player, "Spieler wurde nicht erstellt.");
-            Assert.AreEqual(3, game.level.segments.Count, "Level wurde nicht deserialisiert.");
+            Assert.AreEqual(3, game.level.Segments.Count, "Level wurde nicht deserialisiert.");
             Assert.AreEqual(GameStatus.Loadet, game.GameStatus, "Game Status ist nicht 'loadet'");
         }
 
@@ -67,7 +67,7 @@ namespace JumpAndRun
             game.LevelXmlPath = "/data/levels/test/level.xml";
             game.Init();
             game.ResetGame();
-            Assert.AreEqual((System.UInt32)0, game.level.segments[0].objects[0].Model.Id, "Objekte wurden nicht entfernt.");
+            Assert.AreEqual((System.UInt32)0, game.level.Segments[0].objects[0].Model.Id, "Objekte wurden nicht entfernt.");
             Assert.AreEqual(GameStatus.Start, game.GameStatus, "Game Status muss 'start' sein.");
         }
 
@@ -77,7 +77,7 @@ namespace JumpAndRun
             Game game = Game.Instance;
             game.LevelXmlPath = "/data/levels/test/level.xml";
             game.Init();
-            game.Player.Lives = 0;
+            game.Player.Lifes = 0;
             game.Start();
             Data.SetBody();
             game.Update();
@@ -90,7 +90,7 @@ namespace JumpAndRun
             Game game = Game.Instance;
             game.LevelXmlPath = "/data/levels/test/level.xml";
             game.Init();
-            game.Player.Lives = 5;
+            game.Player.Lifes = 5;
             game.Start();
             Data.SetBody();
             game.Update();

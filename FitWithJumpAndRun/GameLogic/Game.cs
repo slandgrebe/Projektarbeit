@@ -65,7 +65,7 @@ namespace JumpAndRun.GameLogic
             Player.Scale = 0.7f;
             Player.Attach = true;
             Player.Score = 0;
-            Player.Lives = level.Lives;
+            Player.Lifes = level.Lifes;
             
             GameStatus = GameStatus.Loadet;
 
@@ -83,7 +83,7 @@ namespace JumpAndRun.GameLogic
                 //Camera.ChangeCameraSpeed(0f);
                 Camera.PositionCamera(0, 1.5f, 0);
                 Camera.ChangeCameraSpeed(5f);
-
+                level.playBackgroundMusic();
                 GameStatus = GameStatus.Started;
 
                 GameUi.Instance.Show();
@@ -123,7 +123,7 @@ namespace JumpAndRun.GameLogic
                     Player.Update();
                     
                     // Score um 1 erhöhen, wenn ein Punkt gesammelt wird
-                    foreach (LevelSegment segment in level.segments)
+                    foreach (LevelSegment segment in level.Segments)
                     {
                         foreach (JumpAndRun.Item.Object score in segment.scores)
                         {
@@ -135,19 +135,19 @@ namespace JumpAndRun.GameLogic
                     }
 
                     // Leben um 1 verringern, wenn ein Hinternis getroffen wird
-                    foreach (LevelSegment segment in level.segments)
+                    foreach (LevelSegment segment in level.Segments)
                     {
                         foreach (JumpAndRun.Item.Object obstacle in segment.obstacles)
                         {
                             if (obstacle.Collision(Player, false))
                             {
-                                Player.Lives--;
+                                Player.Lifes--;
                             }
                         }
                     }
 
                     // Neuer Score, Lebensvorrat im GUI anzeigen
-                    gameUi.Lifes = Player.Lives;
+                    //////gameUi.Lives = Player.Lives;
                     gameUi.Score = Player.Score;
                     gameUi.Update();
 
@@ -156,13 +156,18 @@ namespace JumpAndRun.GameLogic
 
                     // Prüfen ob der Spieler Game Over ist
                     CheckGameOver();
+
+                    if (GameStatus == GameStatus.GameOver || GameStatus == GameStatus.Successful)
+                    {
+                        level.stopBackgroundMusic();
+                    }
                 }
             } 
         }
 
         /// <summary>
-        /// verbirgt das GUI und löscht das Level
-        /// </summary>
+        ///// verbirgt das GUI und löscht das Level
+        ///// </summary>
         public void ResetGame()
         {
             GameUi.Instance.Hide();
@@ -171,7 +176,7 @@ namespace JumpAndRun.GameLogic
                 || GameStatus == GameStatus.GameOver
                 || GameStatus == GameStatus.Successful)
             {
-                level.Dispose();
+            level.Dispose();
             }
             GameStatus = GameStatus.Start;
         }
@@ -181,7 +186,7 @@ namespace JumpAndRun.GameLogic
         /// </summary>
         private void CheckGameOver()
         {
-            if (Player.Lives == 0)
+            if (Player.Lifes == 0)
             {
                 GameStatus = GameStatus.GameOver;
             }
@@ -192,7 +197,7 @@ namespace JumpAndRun.GameLogic
         /// </summary>
         private void CheckLevelEnd()
         {
-            if (level.LevelLength - level.segments.Last().Length + 2 < Player.GetPosition() * -1)
+            if (level.Length - level.Segments.Last().Length + 2 < Player.GetPosition() * -1)
             {
                 GameStatus = GameStatus.Successful;
             }
