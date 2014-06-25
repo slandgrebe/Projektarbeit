@@ -14,15 +14,24 @@ namespace JumpAndRun.Gui
     {
         private static GameOverUi instance = null;
         /// <summary>ID des Hintergrundbildes</summary>
-        private View.Point background = null;
+        private JumpAndRun.Gui.Elements.Point background = null;
         /// <summary>ID des Textes</summary>
-        private View.Text text = null;
+        private JumpAndRun.Gui.Elements.Text text = null;
         /// <summary>ID des Buttons</summary>
         private Gui.Elements.Button button = null;
 
+        /// <summary>
+        /// Delegate für das Button Click Event
+        /// </summary>
         public delegate void ButtonClick();
+        /// <summary>
+        /// Button Click Event
+        /// </summary>
         public event ButtonClick ButtonClickedEvent;
 
+        /// <summary>
+        /// Singleton
+        /// </summary>
         public static GameOverUi Instance
         {
             get
@@ -40,11 +49,11 @@ namespace JumpAndRun.Gui
         private GameOverUi()
         {
             // Hintergrund erzeugen
-            background = new View.Point("data/background/white.jpg");
+            background = new JumpAndRun.Gui.Elements.Point("data/background/white.jpg");
             background.Scale(2, 2);
 
             // Text erzeugen
-            text = new View.Text("data/fonts/arial.ttf");
+            text = new JumpAndRun.Gui.Elements.Text("data/fonts/arial.ttf");
             text.setText("Game over!");
             text.Position(0, 0.5f);
 
@@ -62,6 +71,9 @@ namespace JumpAndRun.Gui
             Hide();
         }
 
+        /// <summary>
+        /// Listener des Button Click Events
+        /// </summary>
         public void ButtonClicked()
         {
             Console.WriteLine("game over click");
@@ -82,7 +94,7 @@ namespace JumpAndRun.Gui
             text.Show();
             button.Show();
 
-            View.Cursor.Instance.Show();
+            JumpAndRun.Gui.Elements.Cursor.Instance.Show();
         }
 
         /// <summary>
@@ -94,7 +106,7 @@ namespace JumpAndRun.Gui
             text.Hide();
             button.Hide();
 
-            View.Cursor.Instance.Hide();
+            JumpAndRun.Gui.Elements.Cursor.Instance.Hide();
         }
     }
 }

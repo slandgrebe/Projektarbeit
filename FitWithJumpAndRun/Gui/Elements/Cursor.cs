@@ -4,13 +4,22 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace View
+namespace JumpAndRun.Gui.Elements
 {
+    /// <summary>
+    /// Cursor Klasse
+    /// </summary>
     public class Cursor
     {
         private static Cursor instance = null;
-        private View.Point cursor = null;
+        private JumpAndRun.Gui.Elements.Point cursor = null;
+        /// <summary>
+        /// X Koordinate des Cursors
+        /// </summary>
         public float X { get; private set; }
+        /// <summary>
+        /// Y Koordinate des Cursors
+        /// </summary>
         public float Y { get; private set; }
 
         private float z = -0.4f; // diesen wert nicht ändern!
@@ -23,19 +32,35 @@ namespace View
         private float clickYPotentialStart = 0f;
         private DateTime clickTimePotentialStart = DateTime.Now;
 
+        /// <summary>
+        /// Delegate für das Cursor Bewegungs Event
+        /// </summary>
+        /// <param name="x">x Koordinate</param>
+        /// <param name="y">y Koordinate</param>
         public delegate void Move(float x, float y);
+        /// <summary>
+        /// Cursor Bewegungs Event
+        /// </summary>
         public event Move MoveEvent;
 
+        /// <summary>
+        /// Delegate für das Klick Event
+        /// </summary>
         public delegate void Click();
+        /// <summary>
+        /// Klick Event
+        /// </summary>
         public event Click ClickEvent;
 
+        /// <summary>
+        /// Singleton
+        /// </summary>
         public static Cursor Instance
         {
             get
             {
                 if (instance == null)
                 {
-                    Console.WriteLine("new cursor");
                     instance = new Cursor();
                 }
                 return instance;
@@ -47,19 +72,35 @@ namespace View
             X = 0;
             Y = 0;
 
-            cursor = new View.Point("data/models/hand/hand-stop-2.jpg");
+            cursor = new JumpAndRun.Gui.Elements.Point("data/models/hand/hand-stop-2.jpg");
             cursor.Scale(0.03f, 0.05f);
             cursor.Position(X, Y, z);
             cursor.AttachToCamera(true);
         }
 
-        public void UpdateCursor(float handX, float handY, float handZ, float headX, float headY, float headZ, float shoulderX, float shoulderY)
+        /// <summary>
+        /// Setzt den Cursor neu anhand der ermittelten Personenerkennungsdaten
+        /// </summary>
+        public void UpdateCursor()
         {
-            if (cursor.IsVisible) // nur ausführen, wenn der cursor auch sichtbar ist
+            // nur updaten, wenn der Cursor auch angezeigt wird
+            if (cursor.IsVisible)
             {
+                // Position des Cursors updaten und events auslösen
+                UpdateCursor(MotionDetection.Body.Instance.HandRight.X,
+                    MotionDetection.Body.Instance.HandRight.Y,
+                    MotionDetection.Body.Instance.HandRight.Z,
+                    MotionDetection.Body.Instance.Head.X,
+                    MotionDetection.Body.Instance.Head.Y,
+                    MotionDetection.Body.Instance.Head.Z,
+                    MotionDetection.Body.Instance.ShoulderRight.X,
+                    MotionDetection.Body.Instance.ShoulderRight.Y);
+            }
+        }
+        private void UpdateCursor(float handX, float handY, float handZ, float headX, float headY, float headZ, float shoulderX, float shoulderY)
+        {
                 Position(handX, handY, headX, headY, shoulderX, shoulderY);
                 CheckClick(handX, handY, handZ, headX, headY, headZ, shoulderX, shoulderY);
-            }
         }
         /// <summary>
         /// Positioniert den Cursor
@@ -145,11 +186,17 @@ namespace View
             }
         }
 
+        /// <summary>
+        /// Cursor anzeigen
+        /// </summary>
         public void Show()
         {
             cursor.Show();
             //cursor.Position(X, Y, z);         
         }
+        /// <summary>
+        /// Cursor verstecken
+        /// </summary>
         public void Hide()
         {
             cursor.Hide();

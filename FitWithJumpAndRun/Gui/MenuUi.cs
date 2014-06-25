@@ -14,25 +14,34 @@ namespace JumpAndRun.Gui
     {
         private static MenuUi instance = null;
         /// <summary>ID des Hintergrundbildes</summary>
-        private View.Point background = null;
+        private JumpAndRun.Gui.Elements.Point background = null;
 
         /// <summary>ID des Cursors</summary>
         //private View.Point cursor = null;
-        
-        private View.Text title = null;
+
+        private JumpAndRun.Gui.Elements.Text title = null;
 
         /// <summary>Buttons</summary>
         private Gui.Elements.Button buttonEasy = null;
         private Gui.Elements.Button buttonNormal = null;
         private Gui.Elements.Button buttonDifficult = null;
 
-        private View.Text gameName = null;
-        private View.Text slogan = null;
+        private JumpAndRun.Gui.Elements.Text gameName = null;
+        private JumpAndRun.Gui.Elements.Text slogan = null;
 
+        /// <summary>
+        /// Delegate für das Difficulty Selected Event
+        /// </summary>
+        /// <param name="difficulty">Schwierigkeitsgrad</param>
         public delegate void DifficultySelected(JumpAndRun.Difficulty difficulty);
+        /// <summary>
+        /// Difficulty Selected Event
+        /// </summary>
         public event DifficultySelected DifficultySelectedEvent;
 
-
+        /// <summary>
+        /// Singleton
+        /// </summary>
         public static MenuUi Instance
         {
             get
@@ -47,14 +56,14 @@ namespace JumpAndRun.Gui
         /// <summary>
         /// Initialisiert das GUI, zeigt sie aber nicht an.
         /// </summary>
-        public MenuUi()
+        private MenuUi()
         {
             // Hintergrund
-            background = new View.Point("data/background/dschungel.png");
+            background = new JumpAndRun.Gui.Elements.Point("data/background/dschungel.png");
             background.Position(0, 0, -0.8f);
 
             // Titel
-            title = new View.Text("data/fonts/SUPERTIK.TTF");
+            title = new JumpAndRun.Gui.Elements.Text("data/fonts/SUPERTIK.TTF");
             title.setText("Wie anspruchsvoll darfs denn sein");
             title.Size(72);
             title.Position(0f, 0.8f);
@@ -76,33 +85,42 @@ namespace JumpAndRun.Gui
             buttonDifficult.ClickEvent += new Gui.Elements.Button.Clicked(ButtonDifficultClicked);
 
             // Spielname
-            gameName = new View.Text("data/fonts/SUPERTIK.TTF");
+            gameName = new JumpAndRun.Gui.Elements.Text("data/fonts/SUPERTIK.TTF");
             gameName.setText("Dschungel Fitness");
             gameName.Size(72);
             gameName.Position(0f, -0.7f);
 
-            slogan = new View.Text("data/fonts/SUPERTIK.TTF");
+            slogan = new JumpAndRun.Gui.Elements.Text("data/fonts/SUPERTIK.TTF");
             slogan.setText("spielend fit werden");
             slogan.Size(44);
             slogan.Position(0.2f, -0.9f);
 
             // Cursor
-            View.Cursor.Instance.MoveEvent += new View.Cursor.Move(CursorMove); // nur zum testen
+            JumpAndRun.Gui.Elements.Cursor.Instance.MoveEvent += new JumpAndRun.Gui.Elements.Cursor.Move(CursorMove); // nur zum testen
 
             // GUI nicht anzeigen
             Hide();
         }
 
+        /// <summary>
+        /// Button Click Event Listener für den Einfach Button
+        /// </summary>
         public void ButtonEasyClicked()
         {
             Console.WriteLine("easy");
             DifficultySelectedEvent(JumpAndRun.Difficulty.Easy);
         }
+        /// <summary>
+        /// Button Click Event Listener für den Normal Button
+        /// </summary>
         public void ButtonNormalClicked()
         {
             Console.WriteLine("normal");
             DifficultySelectedEvent(JumpAndRun.Difficulty.Normal);
         }
+        /// <summary>
+        /// Button Click Event Listener für den Schwer Button
+        /// </summary>
         public void ButtonDifficultClicked()
         {
             Console.WriteLine("difficult");
@@ -129,7 +147,7 @@ namespace JumpAndRun.Gui
             gameName.Show();
             slogan.Show();
 
-            View.Cursor.Instance.Show();
+            JumpAndRun.Gui.Elements.Cursor.Instance.Show();
         }
 
         /// <summary>
@@ -148,7 +166,7 @@ namespace JumpAndRun.Gui
             gameName.Hide();
             slogan.Hide();
 
-            View.Cursor.Instance.Hide();
+            JumpAndRun.Gui.Elements.Cursor.Instance.Hide();
         }
 
 

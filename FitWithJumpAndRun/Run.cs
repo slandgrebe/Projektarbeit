@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using View;
 using MotionDetection;
 using System;
@@ -47,14 +48,15 @@ namespace JumpAndRun
                 return instance;
             }
         }
-
-        /// <summary>
-        /// GUI Elemente Initialisieren.
-        /// </summary>
-        private void Initialize()
+       
+        private bool Initialize()
         {
             // Fenster öffnen
-            Window.Init("Fit with Jump and Run", false, 1280, 800);
+            if (!Window.Init("Dschungel Trainer", false, 1280, 800))
+            {
+                System.Windows.Forms.MessageBox.Show("Leider kann das Spiel auf deinem Computer nicht gestartet werden. Wahrscheinlich ist die Grafikkarte zu alt.");
+                return false;
+            }
 
             // sound
             backgroundSound = new Sound.Sound();
@@ -71,6 +73,8 @@ namespace JumpAndRun
             MenuUi.Instance.DifficultySelectedEvent += new MenuUi.DifficultySelected(DifficultySelected);
             ScoreUi.Instance.ButtonClickedEvent += new ScoreUi.ButtonClick(ScoreButtonClicked);
             GameOverUi.Instance.ButtonClickedEvent += new GameOverUi.ButtonClick(GameOverButtonClicked);
+
+            return true;
         }
 
         /// <summary>
@@ -78,9 +82,13 @@ namespace JumpAndRun
         /// </summary>
         private Run()
         {
-            Initialize();
+            if (!Initialize())
+            {
+                return;
+            }
             System.Threading.Thread.Sleep(30);
 
+            // Hauptschleife
             while(Window.IsRunning())
             {
                 // senkt die CPU Auslastung drastisch
@@ -113,7 +121,7 @@ namespace JumpAndRun
             }
         }
 
-
+        // Alle GUIs ausblenden
         private void HideAllGuis()
         {
             KinectUi.Instance.Hide();
@@ -124,6 +132,8 @@ namespace JumpAndRun
             GameOverUi.Instance.Hide();
             ScoreUi.Instance.Hide();
         }
+
+        // prüfen ob Kinect angeschlossen ist
         private bool CheckKinect()
         {
             if (sensor == null)
@@ -147,8 +157,6 @@ namespace JumpAndRun
                     modus = Modus.KinectMissing;
                     sensor = null;
                 }
-
-                return false;
             }
             else
             {
@@ -157,6 +165,8 @@ namespace JumpAndRun
 
             return false;
         }
+
+        // prüfen ob eine Person von der Kinect erkannt wird
         private bool CheckPersonTracking()
         {
             // Überprüfen ob eine Person erkannt wird
@@ -170,14 +180,19 @@ namespace JumpAndRun
                     backgroundSound.Play();
                 }
 
-                //Game.Instance.ResetGame();
+                // Alles zurücksetzen, da keine Person mehr erkannt wird
                 ResetEverything();
 
                 return false;
             }
 
+            // Kinect ist angeschlossen und Person erkannt: Cursors updaten
+            JumpAndRun.Gui.Elements.Cursor.Instance.UpdateCursor();
+
             return true;
         }
+        
+        // überprüfen ob eine Schwierigkeit ausgewählt wurde
         private bool CheckDifficultySelection()
         {
             // Schwierigkeitsgrad wählen
@@ -192,15 +207,16 @@ namespace JumpAndRun
                     backgroundSound.Play();
                 }
 
-                UpdateCursor();
-
                 return false;
             }
 
             return true;
         }
+
+        // Überprüfen ob das Spiel geladen ist
         private bool CheckGameLoading()
         {
+            // Spiel muss geladen werden
             if (Game.Instance.GameStatus == GameStatus.Start) // GameStatus.Initial???
             {
                 if (modus != Modus.Loading)
@@ -209,10 +225,11 @@ namespace JumpAndRun
                     HideAllGuis();
                     LoadingUi.Instance.Show();
                     backgroundSound.Play();
-                }
 
-                Game.Instance.LevelXmlPath = "/data/levels/jungle/level.xml";
-                Game.Instance.Init();
+                    // Spiel laden
+                    Game.Instance.LevelXmlPath = "/data/levels/jungle/level.xml";
+                    Game.Instance.Init();
+                }
 
                 return false;
             }
@@ -220,6 +237,7 @@ namespace JumpAndRun
             return true;
         }
 
+        // Überprüfen ob das Spiel am laufen ist
         private bool CheckGaming() 
         {
             // Darstellung des Spiels updaten
@@ -262,6 +280,8 @@ namespace JumpAndRun
 
             return false;
         }
+
+        // Überprüfen ob der Spieler noch den Endbildschirm bestaunt
         private bool CheckFinishedGame()
         {
             // Spiel erfolgreich beendet
@@ -277,10 +297,9 @@ namespace JumpAndRun
                     backgroundSound.Play();
                 }
 
-                UpdateCursor();
-
                 return false;
             }
+            // Spiel nicht so erfolgreich beendet
             else if (Game.Instance.GameStatus == GameStatus.GameOver)
             {
                 if (modus != Modus.GameOver)
@@ -292,14 +311,13 @@ namespace JumpAndRun
                     backgroundSound.Play();
                 }
 
-                UpdateCursor();
-
                 return false;
             }
 
             return true;
         }
 
+        // Event Listener wenn ein Sound zu ende ist
         public void SoundFinished(Sound.Sound sound)
         {
             if (sound.Equals(backgroundSound))
@@ -309,33 +327,34 @@ namespace JumpAndRun
             }
         }
 
-        private void UpdateCursor()
-        {
-            // Position des Cursors updaten und events auslösen
-            View.Cursor.Instance.UpdateCursor(MotionDetection.Body.Instance.HandRight.X,
-                MotionDetection.Body.Instance.HandRight.Y,
-                MotionDetection.Body.Instance.HandRight.Z,
-                MotionDetection.Body.Instance.Head.X,
-                MotionDetection.Body.Instance.Head.Y,
-                MotionDetection.Body.Instance.Head.Z,
-                MotionDetection.Body.Instance.ShoulderRight.X,
-                MotionDetection.Body.Instance.ShoulderRight.Y);
-        }
 
+        /// <summary>
+        /// Event Listener wenn die Schwierigkeit ausgewählt wurde
+        /// </summary>
+        /// <param name="difficulty">ausgewählter Schwierigkeitsgrad</param>
         public void DifficultySelected(Difficulty difficulty)
         {
             this.difficulty = difficulty;
             modus = Modus.Play;
         }
+
+        /// <summary>
+        /// Event Listener wenn auf dem Game Over Bildschirm der Button geklickt wird
+        /// </summary>
         public void GameOverButtonClicked()
         {
             ResetEverything();
         }
+        /// <summary>
+        /// Event Listener wenn auf dem Siegbildschirm der Button geklickt wird
+        /// </summary>
+
         public void ScoreButtonClicked()
         {
             ResetEverything();
         }
 
+        // Alles auf den Anfangszustand zurücksetzen
         private void ResetEverything()
         {
             modus = Modus.NotTracked;
@@ -343,6 +362,7 @@ namespace JumpAndRun
             Game.Instance.ResetGame();
         }
 
+        // Zufällige Datei aus Ordner zurückliefern
         private string GetRandomFileFromFolder(string folder, string pattern)
         {
             int seed = (int)DateTime.Now.Ticks;
@@ -359,7 +379,7 @@ namespace JumpAndRun
             sensor.Stop();
         }
 
-        public GestureClose GestureClose
+        /*public GestureClose GestureClose
         {
             get
             {
@@ -368,6 +388,6 @@ namespace JumpAndRun
             set
             {
             }
-        }
+        }*/
     }
 }

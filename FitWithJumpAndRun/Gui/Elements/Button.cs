@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace JumpAndRun.Gui.Elements
 {
-
+    /// <summary>
+    /// Abstrahiert das Button Element der Visualization Library
+    /// </summary>
     public class Button
     {
         private uint modelId = 0;
@@ -16,6 +18,9 @@ namespace JumpAndRun.Gui.Elements
         private float scaleY = 0.25f;
         private string text = "Text";
         private bool isVisible = false;
+        /// <summary>
+        /// Sichtbarkeit
+        /// </summary>
         public bool IsVisible
         {
             get
@@ -33,8 +38,18 @@ namespace JumpAndRun.Gui.Elements
         private Sound.Sound hoverSound = null;
         public bool IsHovered { get; private set; }
 
+        /// <summary>
+        /// Delegate für das Click Event
+        /// </summary>
         public delegate void Clicked();
+        /// <summary>
+        /// ClickEvent
+        /// </summary>
         public event Clicked ClickEvent;
+        /// <summary>
+        /// Konstruktor
+        /// </summary>
+        /// <param name="fontFilename">zu verwendende Schriftart</param>
         public Button(string fontFilename)
         {
             int buttonTextSize = 40;
@@ -57,8 +72,8 @@ namespace JumpAndRun.Gui.Elements
             IsVisible = false;
 
             // Cursor Events
-            View.Cursor.Instance.MoveEvent += new View.Cursor.Move(CursorMoved);
-            View.Cursor.Instance.ClickEvent += new View.Cursor.Click(CursorClicked);
+            JumpAndRun.Gui.Elements.Cursor.Instance.MoveEvent += new JumpAndRun.Gui.Elements.Cursor.Move(CursorMoved);
+            JumpAndRun.Gui.Elements.Cursor.Instance.ClickEvent += new JumpAndRun.Gui.Elements.Cursor.Click(CursorClicked);
 
             // sound
             clickSound = new Sound.Sound();
@@ -66,19 +81,29 @@ namespace JumpAndRun.Gui.Elements
             hoverSound = new Sound.Sound();
             hoverSound.FilePath = "data/sound/button/hover.mp3";
         }
-
+        /// <summary>
+        /// Position setzen
+        /// </summary>
+        /// <param name="x">x Koordinate (-1 bis 1)</param>
+        /// <param name="y">y Koordinate (-1 bis 1)</param>
         public void Position(float x, float y)
         {
             this.x = x;
             this.y = y;
             View.Model.Position(modelId, x, y, 0f);
         }
+        /// <summary>
+        /// Text ändern
+        /// </summary>
+        /// <param name="text">zu verwendender Text</param>
         public void Text(string text)
         {
             this.text = text;
             View.Text.String(modelId, text);
         }
-
+        /// <summary>
+        /// Anzeigen
+        /// </summary>
         public void Show()
         {
             //View.Model.Position(modelId, x, y, 0f);
@@ -87,6 +112,9 @@ namespace JumpAndRun.Gui.Elements
                 IsVisible = true;
             }
         }
+        /// <summary>
+        /// verstecken
+        /// </summary>
         public void Hide()
         {
             //View.Model.Position(modelId, -100f, 0f, 0f);
@@ -95,6 +123,10 @@ namespace JumpAndRun.Gui.Elements
                 IsVisible = false; 
             }
         }
+        /// <summary>
+        /// hervorheben
+        /// </summary>
+        /// <param name="choice">Auswahl</param>
         public void Highlight(bool choice)
         {
             //http://paletton.com/#uid=50J0B0kllll6HHOe1sOsEdSGU6p
@@ -107,7 +139,11 @@ namespace JumpAndRun.Gui.Elements
                 View.Model.HighlightColor(modelId, 0.667f, 0.478f, 0.224f, 1f);
             }
         }
-
+        /// <summary>
+        /// Event Listener wenn der Cursor sich bewegt. Wird dazu verwenden, um herauszufinden ob der Cursor sich über dem Button befindet
+        /// </summary>
+        /// <param name="cursorX">Cursor x Koordinate</param>
+        /// <param name="cursorY">Cursor y Koordinate</param>
         public void CursorMoved(float cursorX, float cursorY)
         {
             float width = scaleX;
@@ -136,6 +172,9 @@ namespace JumpAndRun.Gui.Elements
                 }
             }
         }
+        /// <summary>
+        /// Event Listener wenn der Cursor klickt
+        /// </summary>
         public void CursorClicked()
         {
             if (IsHovered && IsVisible)

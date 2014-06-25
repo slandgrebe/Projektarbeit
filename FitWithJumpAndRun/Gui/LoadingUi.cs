@@ -14,11 +14,13 @@ namespace JumpAndRun.Gui
     {
         private static LoadingUi instance = null;
         /// <summary>ID des Hintergrundbildes</summary>
-        private View.Point background = null;
+        private JumpAndRun.Gui.Elements.Point background = null;
         /// <summary>ID des Textes</summary>
-        private View.Text text = null;
+        private JumpAndRun.Gui.Elements.Text text = null;
 
-
+        /// <summary>
+        /// Singleton
+        /// </summary>
         public static LoadingUi Instance
         {
             get
@@ -37,12 +39,12 @@ namespace JumpAndRun.Gui
         private LoadingUi()
         {
             // Hintergrund erzeugen
-            background = new View.Point("data/background/white.jpg");
+            background = new JumpAndRun.Gui.Elements.Point("data/background/white.jpg");
             background.Position(0, 0, -0.8f);
             background.Scale(2, 2);
 
             // Text erzeugen
-            text = new View.Text("data/fonts/arial.ttf");
+            text = new JumpAndRun.Gui.Elements.Text("data/fonts/arial.ttf");
             text.setText("Level wird geladen");
             text.Size(50);
 

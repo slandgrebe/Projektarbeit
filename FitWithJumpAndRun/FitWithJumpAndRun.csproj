@@ -49,6 +49,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -61,6 +62,9 @@
     <Compile Include="GameLogic\GameStatus.cs" />
     <Compile Include="GameLogic\LevelSegment.cs" />
     <Compile Include="Gui\Elements\Button.cs" />
+    <Compile Include="Gui\Elements\Cursor.cs" />
+    <Compile Include="Gui\Elements\Point.cs" />
+    <Compile Include="Gui\Elements\Text.cs" />
     <Compile Include="Gui\KinectUi.cs" />
     <Compile Include="Item\Object.cs" />
     <Compile Include="Gesture\Click.cs" />
