@@ -1,6 +1,7 @@
 <?xml version="1.0"?>
 <Model xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Path>data/models/palm/palm.3ds</Path>
+  <CollisionPath>data/models/palm/palm_collide.3ds</CollisionPath>
   <ScalingNormalized>true</ScalingNormalized>
   <Sound>data/sound/model/obstacle.wav</Sound>
   <SoundVolume>100</SoundVolume>
