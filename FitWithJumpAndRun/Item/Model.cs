@@ -25,6 +25,21 @@ namespace JumpAndRun.Item
         public int SoundVolume { get; set; }
         /// <summary>Modell wurde gelöscht</summary>
         private bool disposed = false;
+        /// <summary>
+        /// An Kamera angehängt
+        /// </summary>
+        private bool AttachedToCamera = false;
+        /// <summary>
+        /// Hängt ein Modell an die Kamera an. Dies hat zur Folge, dass dieses Objekt relativ zur Kamera positioniert wird.
+        /// </summary>
+        /// <param name="choice">True aktiviert und False deaktiviert die Anhängung an die Kamera.</param>
+        /// <returns>Prüfung ob die Operation durchgeführt werden konnte</returns>
+        public bool AttachToCamera(bool choice)
+        {
+            if (Id == 0) return true;
+            AttachedToCamera = View.Model.AttachToCamera(Id, choice);
+            return AttachedToCamera;
+        }
 
         /// <summary>
         /// Konstruktor der Klasse ohne automatische Objekterstellung.
@@ -32,6 +47,7 @@ namespace JumpAndRun.Item
         public Model()
         {
             ScalingNormalized = false;
+            AttachedToCamera = false;
         }
 
         /// <summary>
@@ -157,17 +173,6 @@ namespace JumpAndRun.Item
         {
             if (Id == 0) return true;
             return View.Model.Position(Id, x, y, z);
-        }
-
-        /// <summary>
-        /// Hängt ein Modell an die Kamera an. Dies hat zur Folge, dass dieses Objekt relativ zur Kamera positioniert wird.
-        /// </summary>
-        /// <param name="choice">True aktiviert und False deaktiviert die Anhängung an die Kamera.</param>
-        /// <returns>Prüfung ob die Operation durchgeführt werden konnte</returns>
-        public bool AttachToCamera(bool choice)
-        {
-            if (Id == 0) return true;
-            return View.Model.AttachToCamera(Id, choice);
         }
 
         /// <summary>

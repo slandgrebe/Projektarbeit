@@ -109,6 +109,10 @@ namespace JumpAndRun.GameLogic
             {
                 if (!o.Create(StartPosition)) return false;
             }
+
+            // alles ausblenden am Anfang
+            Visibility(false);
+
             return true;
         }
 

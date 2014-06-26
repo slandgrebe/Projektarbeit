@@ -33,7 +33,18 @@ namespace JumpAndRun.Item
         public float PosY { get; set; }
         /// <summary>Positionierung Z Koordinate des Objekts</summary>
         public float PosZ { get; set; }
-        /// <summary>Objekt der Kamera anhängen</summary>
+        /// <summary>
+        /// An Kamera anhängen
+        /// </summary>
+        /// <param name="choice"></param>
+        /// <returns></returns>
+        public bool AttachItToCamera(bool choice) 
+        {
+            return this.Model.AttachToCamera(choice);
+        }
+        /// <summary>
+        /// nur für deserializer
+        /// </summary>
         public bool AttachToCamera { get; set; }
 
         /// <summary>Schwiergikeitsgrad des Objektes</summary>
@@ -52,7 +63,6 @@ namespace JumpAndRun.Item
             PosX = 0;
             PosY = 0;
             PosZ = 0;
-            AttachToCamera = false;
             RotationAxis = new float[] { 1f, 0f, 0f };
             RotationAngle = 0f;
             Severity = 1;
@@ -184,6 +194,11 @@ namespace JumpAndRun.Item
         public void Dispose()
         {
             Model.Dispose();
+        }
+
+        public bool Visibility(bool choice)
+        {
+            return this.Model.Visibility(choice);
         }
     }
 }

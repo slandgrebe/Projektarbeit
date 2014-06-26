@@ -43,6 +43,8 @@ namespace JumpAndRun.GameLogic
         public Model LowerlegLeft { get; private set; }
         /// <summary>Modell des linken Unterschenkels</summary>
         public Model LowerlegRight { get; private set; }
+
+        private Item.Object Wagon = null;
         
         /// <summary>Modelle mit denen die Spielfigur schon Kollidiert ist</summary>
         public List<uint> Colided { get; set; }
@@ -96,6 +98,15 @@ namespace JumpAndRun.GameLogic
             ThighlegRight = new Model("data/models/player/thighleg.3ds", false, 1);
             LowerlegLeft = new Model("data/models/player/lowerleg.3ds", false, 1);
             LowerlegRight = new Model("data/models/player/lowerleg.3ds", false, 1);
+
+            Wagon = new Item.Object();
+            Wagon.Scale = 0.5f;
+            Wagon.PosX = 0;
+            Wagon.PosY =-1.3f;
+            //Wagon.PosZ = 3.5f;
+            Wagon.ModelXmlPath = "data/levels/jungle/models/wagon.xml";
+            Wagon.Deserialize();
+            Wagon.Create(3.5f);
 
             Colided = new List<uint>();
 
@@ -190,6 +201,7 @@ namespace JumpAndRun.GameLogic
             if (!ThighlegRight.AttachToCamera(Attach)) return false;
             if (!LowerlegLeft.AttachToCamera(Attach)) return false;
             if (!LowerlegRight.AttachToCamera(Attach)) return false;
+            if (!Wagon.AttachItToCamera(Attach)) return false;
             return true;
         }
 
@@ -210,6 +222,7 @@ namespace JumpAndRun.GameLogic
             if (!ThighlegRight.Visibility(visible)) return false;
             if (!LowerlegLeft.Visibility(visible)) return false;
             if (!LowerlegRight.Visibility(visible)) return false;
+            if (!Wagon.Visibility(visible)) return false;
             return true;
         }
     }

@@ -52,6 +52,10 @@ namespace JumpAndRun.GameLogic
         public int BackgroundMusicMediumVolume { get; set; }
         /// <summary>Hintergrundmusiklautstärke für schweres Level</summary>
         public int BackgroundMusicHardVolume { get; set; }
+        /// <summary>
+        /// Sichtweite (max. 100m, danach werden die Objekte von der Bibliothek nicht mehr gezeichnet)
+        /// </summary>
+        public float VisibilityRange { get; set; }
         /// <summary>Anzahl geladener Segmente</summary>
         private int LoadetSegments = 0;
         /// <summary>Anzahl gelöschter</summary>
@@ -88,7 +92,10 @@ namespace JumpAndRun.GameLogic
 
             this.difficulty = difficulty;
 
-            //List<LevelSegment> list = new List<LevelSegment>();
+            // Event bei Start und Ende
+            SegmentsStartEnd[0].EnteredEvent += new LevelSegment.Entered(SegmentExited);
+            SegmentsStartEnd[1].EnteredEvent += new LevelSegment.Entered(SegmentExited);
+            SegmentsStartEnd[0].Visibility(true);
 
             // Zufällig Segmente anhand der Schwierigkeit auswählen
             RandomlyChosenSegments = ChooseRandomSegments(difficulty, LevelDuration, Speed);
@@ -102,7 +109,7 @@ namespace JumpAndRun.GameLogic
                 if (!LoadNextSegment(segment))
                 {
                     return false;
-            }
+                }
             }
 
             return true;
@@ -125,9 +132,39 @@ namespace JumpAndRun.GameLogic
                 return false;
             }
 
+            // Events
+            segment.ExitedEvent += new LevelSegment.Exited(SegmentExited);
+            segment.EnteredEvent += new LevelSegment.Entered(SegmentEntered);
+
+            // Gesamtlänge
             Length += segment.Length;
 
             return true;
+        }
+
+        public void SegmentExited(LevelSegment segment)
+        {
+            // alle segmente der nächsten 100m einblenden
+            float currentPosition = segment.StartPosition + segment.Length;
+            List<LevelSegment> list = RandomlyChosenSegments.FindAll(e => e.StartPosition + 10 < currentPosition);
+            foreach (LevelSegment s in list)
+            {
+                s.Visibility(false);
+            }
+        }
+
+        public void SegmentEntered(LevelSegment segment)
+        {
+            // segment ausblenden, sieht man sowieso nicht mehr
+            segment.Visibility(true);
+
+            // alle segmente der nächsten 100m einblenden
+            float currentPosition = segment.StartPosition + segment.Length;
+            List<LevelSegment> list = RandomlyChosenSegments.FindAll(e => e.StartPosition >= currentPosition && e.StartPosition <= currentPosition + VisibilityRange);
+            foreach (LevelSegment s in list)
+            {
+                s.Visibility(true);
+            }
         }
 
         /*/// <summary>

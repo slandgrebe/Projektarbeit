@@ -6,6 +6,7 @@
   <Name>Jungle</Name>
   <Lifes>4</Lifes>
   <LevelDuration>10</LevelDuration>
+  <VisibilityRange>100</VisibilityRange>
   <BackgroundMusicEasy>data/sound/music/background_easy.wav</BackgroundMusicEasy>
   <BackgroundMusicEasyVolume>50</BackgroundMusicEasyVolume>
   <BackgroundMusicMedium>data/sound/music/background_medium.wav</BackgroundMusicMedium>
