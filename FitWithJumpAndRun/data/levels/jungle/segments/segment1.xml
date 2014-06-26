@@ -4,7 +4,7 @@
   <Severity>1</Severity>
   <obstacles>
     <Object>
-      <ModelXmlPath>/data/levels/jungle/models/limb.xml</ModelXmlPath>
+      <ModelXmlPath>data/levels/jungle/models/limb.xml</ModelXmlPath>
       <Scale>1</Scale>
       <PosX>-2</PosX>
       <PosY>1</PosY>
@@ -15,7 +15,7 @@
   </obstacles>
   <scores>
     <Object>
-      <ModelXmlPath>/data/levels/jungle/models/banana.xml</ModelXmlPath>
+      <ModelXmlPath>data/levels/jungle/models/banana.xml</ModelXmlPath>
       <Scale>0.3</Scale>
       <PosX>0</PosX>
       <PosY>1</PosY>
@@ -25,7 +25,7 @@
   </scores>
   <objects>
     <Object>
-      <ModelXmlPath>/data/levels/jungle/models/floor.xml</ModelXmlPath>
+      <ModelXmlPath>data/levels/jungle/models/floor.xml</ModelXmlPath>
       <Scale>1</Scale>
       <PosX>0</PosX>
       <PosY>-0.1</PosY>
@@ -34,7 +34,7 @@
       <AttachToCamera>false</AttachToCamera>
     </Object>
     <Object>
-      <ModelXmlPath>/data/levels/jungle/models/rail.xml</ModelXmlPath>
+      <ModelXmlPath>data/levels/jungle/models/rail.xml</ModelXmlPath>
       <Scale>0.5</Scale>
       <PosX>0</PosX>
       <PosY>0</PosY>
@@ -43,7 +43,7 @@
       <AttachToCamera>false</AttachToCamera>
     </Object>
     <Object>
-      <ModelXmlPath>/data/levels/jungle/models/jungle.xml</ModelXmlPath>
+      <ModelXmlPath>data/levels/jungle/models/jungle.xml</ModelXmlPath>
       <Scale>1</Scale>
       <PosX>2</PosX>
       <PosY>-0.1</PosY>
@@ -52,7 +52,7 @@
       <AttachToCamera>false</AttachToCamera>
     </Object>
     <Object>
-      <ModelXmlPath>/data/levels/jungle/models/jungle.xml</ModelXmlPath>
+      <ModelXmlPath>data/levels/jungle/models/jungle.xml</ModelXmlPath>
       <Scale>1</Scale>
       <PosX>-2</PosX>
       <PosY>-0.1</PosY>
@@ -61,7 +61,7 @@
       <AttachToCamera>false</AttachToCamera>
     </Object>
     <Object>
-      <ModelXmlPath>/data/levels/jungle/models/sky.xml</ModelXmlPath>
+      <ModelXmlPath>data/levels/jungle/models/sky.xml</ModelXmlPath>
       <Scale>1</Scale>
       <PosX>2</PosX>
       <PosY>6</PosY>
