@@ -75,7 +75,7 @@ namespace JumpAndRun.GameLogic
         /// </summary>
         /// <param name="severity">Schwierigkeitsgrad</param>
         /// <returns>Prüfung ob die Operation durchgeführt werden konnte</returns>
-        public bool Load()
+        public bool Load(Difficulty difficulty)
         {
             // min. 1 Segment muss vorhanden sein
             if (Segments.Count <= 0)
@@ -83,7 +83,7 @@ namespace JumpAndRun.GameLogic
                 return false;
             }
 
-            Severity = Difficulty.Normal;
+            Severity = difficulty;
 
             //List<LevelSegment> list = new List<LevelSegment>();
 

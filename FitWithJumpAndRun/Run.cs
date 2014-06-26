@@ -95,13 +95,13 @@ namespace JumpAndRun
                 System.Threading.Thread.Sleep(1);
 
                 // Kinect überprüfen
-                /*if (!CheckKinect()) continue;
+                if (!CheckKinect()) continue;
                 // Überprüfen ob eine Person erkannt wird
                 else if (!CheckPersonTracking()) continue;
                 // Schwierigkeitsgrad wählen
                 else if (!CheckDifficultySelection()) continue;
                 // spiel laden
-                else */if (!CheckGameLoading()) continue;
+                else if (!CheckGameLoading()) continue;
                 // spielen
                 else if (!CheckGaming()) continue;
                 // spiel beendet
@@ -228,7 +228,7 @@ namespace JumpAndRun
 
                     // Spiel laden
                     Game.Instance.LevelXmlPath = "/data/levels/jungle/level.xml";
-                    Game.Instance.Init();
+                    Game.Instance.Init(difficulty);
                 }
 
                 return false;

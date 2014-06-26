@@ -44,7 +44,7 @@ namespace JumpAndRun.GameLogic
         /// <summary>
         /// Ladet das Level, erstellt die Spielfigur
         /// </summary>
-        public bool Init()
+        public bool Init(Difficulty difficulty)
         {
             if (String.IsNullOrEmpty(LevelXmlPath))
             {
@@ -62,7 +62,7 @@ namespace JumpAndRun.GameLogic
             level = (Level)serializer.Deserialize(stream);
             stream.Close();
             level.Deserialize();
-            level.Load();
+            level.Load(difficulty);
 
             Player.Scale = 0.7f;
             Player.Attach = true;
