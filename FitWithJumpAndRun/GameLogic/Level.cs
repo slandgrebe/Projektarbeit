@@ -18,9 +18,7 @@ namespace JumpAndRun.GameLogic
         public string Name { get; set; }
         /// <summary>Liste aller Levelsegmentes dieses Levels</summary>
         private List<LevelSegment> AllAvailableSegments;
-        /// <summary>
-        /// Alle zufällig ausgewählten Segmente für diese Runde
-        /// </summary>
+        /// <summary>Alle zufällig ausgewählten Segmente für diese Runde</summary>
         public List<LevelSegment> RandomlyChosenSegments;
         /// <summary>Start und Endsegment dieses Levels</summary>
         private List<LevelSegment> SegmentsStartEnd;
@@ -36,9 +34,7 @@ namespace JumpAndRun.GameLogic
         public uint Lifes { get; set; }
         /// <summary>Mindestdauer des Levels in Sekunden</summary>
         public int LevelDuration { get; set; }
-        /// <summary>
-        /// Geschwindigkeit in m/s
-        /// </summary>
+        /// <summary>Geschwindigkeit in m/s</summary>
         public double Speed { get; set; }
         /// <summary>Hintergrundmusik für einfaches Level</summary>
         public string BackgroundMusicEasy { get; set; }
@@ -52,14 +48,13 @@ namespace JumpAndRun.GameLogic
         public int BackgroundMusicMediumVolume { get; set; }
         /// <summary>Hintergrundmusiklautstärke für schweres Level</summary>
         public int BackgroundMusicHardVolume { get; set; }
-        /// <summary>
-        /// Sichtweite (max. 100m, danach werden die Objekte von der Bibliothek nicht mehr gezeichnet)
-        /// </summary>
+        /// <summary>Sichtweite (max. 100m, danach werden die Objekte von der Bibliothek nicht mehr gezeichnet)</summary>
         public float VisibilityRange { get; set; }
         /// <summary>Anzahl geladener Segmente</summary>
         private int LoadetSegments = 0;
         /// <summary>Anzahl gelöschter</summary>
         private int DisposedSegments = 0;
+        /// <summary>Schwierigkeitsgrad des Levels</summary>
         private JumpAndRun.Difficulty difficulty = JumpAndRun.Difficulty.NotSelected;
         /// <summary>Hintergrundmusik Soundobjekt</summary>
         private Sound.Sound BgSound = new Sound.Sound();
@@ -118,6 +113,7 @@ namespace JumpAndRun.GameLogic
         /// <summary>
         /// Ladet das nächste Segment
         /// </summary>
+        /// <param name="segment">Segment das geladen werden soll</param>
         /// <returns>Prüfung ob die Operation durchgeführt werden konnte</returns>
         public bool LoadNextSegment(LevelSegment segment)
         {
@@ -142,6 +138,10 @@ namespace JumpAndRun.GameLogic
             return true;
         }
 
+        /// <summary>
+        /// Eventmethode wenn ein Segment verlassen wird.
+        /// </summary>
+        /// <param name="segment">Segment welches verlassen wird</param>
         public void SegmentExited(LevelSegment segment)
         {
             // alle segmente der nächsten 100m einblenden
@@ -153,6 +153,10 @@ namespace JumpAndRun.GameLogic
             }
         }
 
+        /// <summary>
+        /// Eventmethode wenn ein Segment betreten wird.
+        /// </summary>
+        /// <param name="segment">Sgment welches betreten wird</param>
         public void SegmentEntered(LevelSegment segment)
         {
             // segment ausblenden, sieht man sowieso nicht mehr
@@ -166,15 +170,6 @@ namespace JumpAndRun.GameLogic
                 s.Visibility(true);
             }
         }
-
-        /*/// <summary>
-        /// Entfernt das nächste Segment
-        /// </summary>
-        public void DisposeNextSegment()
-        {
-            AllAvailableSegments[DisposedSegments].Dispose();
-            DisposedSegments++;
-        }*/
 
         /// <summary>
         /// Level aus der XML erzeugen
@@ -223,24 +218,13 @@ namespace JumpAndRun.GameLogic
             return ls;
         }
 
-        /*/// <summary>
-        /// Gibt ein zufälliges Segment zurück
-        /// </summary>
-        /// <returns>Levelsegment</returns>
-        private LevelSegment GetRandomSegment()
-        {
-            Random rnd = new Random();
-            int i = 0;
-
-            i = rnd.Next(0, AllAvailableSegments.Count);
-            return AllAvailableSegments[i];
-        }*/
-
         /// <summary>
         /// Mischelt die Segmente
         /// </summary>
         /// <param name="startSegment">Fügt das Startsegment am Anfang ein</param>
         /// <param name="endSegment">Fügt das Endsegment am Ende an</param>
+        /// <param name="segments">Liste mit Segmenten</param>
+        /// <returns>Liste mit allen Segmenten in der korrekten darzustellenden Reihenfolge</returns>
         private List<LevelSegment> ShuffleSegments(LevelSegment startSegment, LevelSegment endSegment, List<LevelSegment> segments)
         {
             List<LevelSegment> randomList = new List<LevelSegment>();

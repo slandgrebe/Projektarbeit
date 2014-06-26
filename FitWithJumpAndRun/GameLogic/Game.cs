@@ -28,8 +28,9 @@ namespace JumpAndRun.GameLogic
         private GameUi gameUi;
         /// <summary>Beinhaltet die Segmentnummer, in welchem sich der Spieler gerade befindet</summary>
         private int CurrentSegment;
-
+        /// <summary>Kamerageschwindigkeit  in m/s</summary>
         private double speed = 5;
+        /// <summary>Startzeit bei Levelbeginn</summary>
         private DateTime startTime = DateTime.Now;
 
         /// <summary>
@@ -61,6 +62,9 @@ namespace JumpAndRun.GameLogic
         /// <summary>
         /// Ladet das Level, erstellt die Spielfigur
         /// </summary>
+        /// <param name="levelXmlPath">XML Pfad des gewünschten Levels</param>
+        /// <param name="difficulty">Schwierigkeitsgrad</param>
+        /// <returns>Prüfung ob das Level geladen werden konnte</returns>
         public bool Load(string levelXmlPath = "data/levels/jungle/level.xml", JumpAndRun.Difficulty difficulty = JumpAndRun.Difficulty.Normal)
         {
             /*if (String.IsNullOrEmpty(LevelXmlPath))
@@ -189,8 +193,8 @@ namespace JumpAndRun.GameLogic
         }
 
         /// <summary>
-        ///// verbirgt das GUI und löscht das Level
-        ///// </summary>
+        /// verbirgt das GUI und löscht das Level
+        /// </summary>
         public void ResetGame()
         {
             GameUi.Instance.Hide();
@@ -199,7 +203,7 @@ namespace JumpAndRun.GameLogic
                 || GameStatus == GameStatus.GameOver
                 || GameStatus == GameStatus.Successful)
             {
-            level.Dispose();
+                level.Dispose();
             }
             GameStatus = GameStatus.Start;
         }
@@ -228,20 +232,6 @@ namespace JumpAndRun.GameLogic
                 GameStatus = GameStatus.Successful;
                 level.Visibility(false);
                 Player.Visibility(false);
-            }
-        }
-
-        private void CheckPlayerPosition()
-        {
-            if (CurrentSegment < 0)
-            {
-                // Start Event auslösen
-            }
-            else if (level.RandomlyChosenSegments[CurrentSegment + 1].StartPosition > Player.GetPosition() * -1)
-            {
-                // End Event auslösen
-                CurrentSegment++;
-                // Start Event auslösen
             }
         }
     }
