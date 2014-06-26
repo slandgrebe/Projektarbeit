@@ -231,7 +231,7 @@ namespace JumpAndRun
 
                     // Spiel laden
                     string path = "data/levels/jungle/level.xml";
-                    Game.Instance.Load(path);
+                    Game.Instance.Load(path, difficulty);
                 }
 
                 return false;
