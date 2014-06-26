@@ -59,6 +59,7 @@ namespace JumpAndRun.GameLogic
         private JumpAndRun.Difficulty difficulty = JumpAndRun.Difficulty.NotSelected;
         /// <summary>Hintergrundmusik Soundobjekt</summary>
         private Sound.Sound BgSound = new Sound.Sound();
+        private List<LevelSegment> list;
 
         /// <summary>
         /// Level Initialisieren
@@ -68,6 +69,7 @@ namespace JumpAndRun.GameLogic
             AllAvailableSegments = new List<LevelSegment>();
             RandomlyChosenSegments = new List<LevelSegment>();
             SegmentsStartEnd = new List<LevelSegment>();
+            list = new List<LevelSegment>();
             //SegmentsXmlPath = new List<string>();
             Speed = 5;
         }
@@ -87,6 +89,8 @@ namespace JumpAndRun.GameLogic
 
             this.difficulty = difficulty;
 
+            //List<LevelSegment> list = new List<LevelSegment>();
+
             // Zufällig Segmente anhand der Schwierigkeit auswählen
             RandomlyChosenSegments = ChooseRandomSegments(difficulty, LevelDuration, Speed);
 
@@ -99,7 +103,7 @@ namespace JumpAndRun.GameLogic
                 if (!LoadNextSegment(segment))
                 {
                     return false;
-                }
+            }
             }
 
             return true;
@@ -163,7 +167,7 @@ namespace JumpAndRun.GameLogic
             {
                 segment.Deserialize();
             }
-        }
+            }
 
         /// <summary>
         /// Levelsegmente aus XML erzeugen
@@ -180,6 +184,7 @@ namespace JumpAndRun.GameLogic
             XmlSerializer serializer = new XmlSerializer(typeof(LevelSegment));
             ls = (LevelSegment)serializer.Deserialize(stream);
             stream.Close();
+            ls.FilePath = filePath;
             return ls;
         }
 
@@ -269,7 +274,8 @@ namespace JumpAndRun.GameLogic
                 else if (d > maxDifficulty) d = maxDifficulty;
 
                 // Segment welches dieser Schwierigkeit am ehesten entspricht
-                LevelSegment segment = GetSegmentWithDifficulty(d);
+                LevelSegment segment = DeserializeSegment(GetSegmentWithDifficulty(d).FilePath);
+                segment.Deserialize();
 
                 segmentList.Add(segment);
 
@@ -363,6 +369,20 @@ namespace JumpAndRun.GameLogic
         public void stopBackgroundMusic()
         {
             BgSound.FadeOut(1);
+        }
+
+        /// <summary>
+        /// Objekete eines Levels anzeigen oder ausblenden
+        /// </summary>
+        /// <param name="visible">Sichtbarkeit</param>
+        /// <returns>Prüfung ob die Operation durchgeführt werden konnte</returns>
+        public bool Visibility(bool visible)
+        {
+            foreach (LevelSegment segment in list)
+            {
+                if (!segment.Visibility(visible)) return false;
+            }
+            return true;
         }
 
         /// <summary>

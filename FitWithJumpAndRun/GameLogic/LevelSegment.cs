@@ -23,6 +23,9 @@ namespace JumpAndRun.GameLogic
         public float Length { get; set; }
         /// <summary>Schwierigkeitsgrad des Levelsegmentes</summary>
         public int Severity { get; set; }
+        /// <summary>Absolute Startposition des Segmentes</summary>
+        public float StartPosition { get; set; }
+        public string FilePath { get; set; }
 
         /// <summary>
         /// Initialisierung des Levelsegments
@@ -68,19 +71,20 @@ namespace JumpAndRun.GameLogic
         /// <returns>Prüfung ob die Operation durchgeführt werden konnte</returns>
         public bool Create(float z)
         {
+            StartPosition = z;
             foreach (JumpAndRun.Item.Object o in obstacles)
             {
-                if (!o.Create(z)) return false;
+                if (!o.Create(StartPosition)) return false;
                 o.Model.CollisionGroup(2);
             }
             foreach (JumpAndRun.Item.Object s in scores)
             {
-                 if (!s.Create(z)) return false;
+                if (!s.Create(StartPosition)) return false;
                  s.Model.CollisionGroup(3);
             }
             foreach (JumpAndRun.Item.Object o in objects)
             {
-                if (!o.Create(z)) return false;
+                if (!o.Create(StartPosition)) return false;
             }
             return true;
         }
@@ -90,22 +94,44 @@ namespace JumpAndRun.GameLogic
         /// </summary>
         public void Deserialize()
         {
-            foreach (JumpAndRun.Item.Object obstacle in obstacles)
+            foreach (JumpAndRun.Item.Object o in obstacles)
             {
-                obstacle.Deserialize();
-                obstacle.Model.CollisionGroup(2);
+                o.Deserialize();
+                o.Model.CollisionGroup(2);
             }
 
-            foreach (JumpAndRun.Item.Object score in scores)
+            foreach (JumpAndRun.Item.Object s in scores)
             {
-                score.Deserialize();
-                score.Model.CollisionGroup(3);
+                s.Deserialize();
+                s.Model.CollisionGroup(3);
             }
 
-            foreach (JumpAndRun.Item.Object obj in objects)
+            foreach (JumpAndRun.Item.Object o in objects)
             {
-                obj.Deserialize();
+                o.Deserialize();
             }
+        }
+
+        /// <summary>
+        /// Objekete eines Segmentes anzeigen oder ausblenden
+        /// </summary>
+        /// <param name="visible">Sichtbarkeit</param>
+        /// <returns>Prüfung ob die Operation durchgeführt werden konnte</returns>
+        public bool Visibility(bool visible)
+        {
+            foreach (JumpAndRun.Item.Object o in obstacles)
+            {
+                if (!o.Model.Visibility(visible)) return false;
+            }
+            foreach (JumpAndRun.Item.Object s in scores)
+            {
+                if (!s.Model.Visibility(visible)) return false; 
+            }
+            foreach (JumpAndRun.Item.Object o in objects)
+            {
+                if (!o.Model.Visibility(visible)) return false;
+            }
+            return true;
         }
 
         /// <summary>

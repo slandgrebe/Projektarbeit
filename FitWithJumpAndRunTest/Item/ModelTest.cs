@@ -62,7 +62,7 @@ namespace JumpAndRun
         [TestMethod]
         public void Model_ScaleWithoutId()
         {
-            Assert.AreEqual(false, model2.Scale(2), "head darf nicht Skaliert werden.");
+            Assert.AreEqual(true, model2.Scale(2), "head darf nicht Skaliert werden.");
         }
 
         [TestMethod]
@@ -74,7 +74,7 @@ namespace JumpAndRun
         [TestMethod]
         public void Model_RotateWithoutId()
         {
-            Assert.AreEqual(false, model2.Rotate(2, 2, 2, 2), "head darf nicht gedreht werden.");
+            Assert.AreEqual(true, model2.Rotate(2, 2, 2, 2), "head darf nicht gedreht werden.");
         }
 
         [TestMethod]
@@ -94,7 +94,7 @@ namespace JumpAndRun
         public void Model_AllignmentWithoutId()
         {
             JumpAndRun.Item.Model mod = new JumpAndRun.Item.Model();
-            Assert.AreEqual(false, mod.Alignment(1, 1, 1, 2, 2, 2), "head darf nicht ausgerichtet werden.");
+            Assert.AreEqual(true, mod.Alignment(1, 1, 1, 2, 2, 2), "head darf nicht ausgerichtet werden.");
         }
         
         [TestMethod]
@@ -106,7 +106,7 @@ namespace JumpAndRun
         [TestMethod]
         public void Model_PositionWithoutId()
         {
-            Assert.AreEqual(false, model2.Position(3, 3, 3), "head darf nicht neu positioniert werden.");
+            Assert.AreEqual(true, model2.Position(3, 3, 3), "head darf nicht neu positioniert werden.");
         }
 
         [TestMethod]
@@ -124,7 +124,31 @@ namespace JumpAndRun
         [TestMethod]
         public void Model_AttachWithoutId()
         {
-            Assert.AreEqual(false, model2.AttachToCamera(true), "head darf nicht der Kamera abge-/angehängt.");
+            Assert.AreEqual(true, model2.AttachToCamera(true), "head darf nicht der Kamera abge-/angehängt.");
+        }
+
+        [TestMethod]
+        public void Model_CollisionGroup()
+        {
+            Assert.AreEqual(true, model.CollisionGroup(1), "head wurde nicht der Kollisionsgruppe 1 hinzugefügt.");
+        }
+
+        [TestMethod]
+        public void Model_CollisionGroupWithoutId()
+        {
+            Assert.AreEqual(true, model2.CollisionGroup(1), "head darf nicht zu einer Kollisionsgruppe hinzugefügt werden");
+        }
+
+        [TestMethod]
+        public void Model_Visibility()
+        {
+            Assert.AreEqual(true, model.Visibility(true), "head wurde nicht sichtbar.");
+        }
+
+        [TestMethod]
+        public void Model_VisibilityId()
+        {
+            Assert.AreEqual(true, model2.Visibility(true), "head darf nicht sichtabr gemacht werden");
         }
 
         [TestMethod]

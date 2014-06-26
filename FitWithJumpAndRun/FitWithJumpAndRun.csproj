@@ -86,6 +86,27 @@
     <Compile Include="Sound\Sound.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="data\levels\jungle\models\cocosnut.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\levels\jungle\models\liana.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\levels\jungle\models\mango.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\levels\jungle\segments\segment2.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\models\cocosnut\_1.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\models\liana\Vegetati.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\models\mango\_3.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="data\sound\button\click.mp3">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -98,12 +119,21 @@
     <Content Include="data\sound\menu\background\Tree Frogs And Birds-SoundBible.com-225368035.mp3">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="data\sound\model\collect.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\sound\model\obstacle.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <None Include="App.config" />
     <None Include="ClassDiagram1.cd" />
     <Content Include="data\fonts\SUPERTIK.TTF">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <None Include="data\models\banana\banana.3ds">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="data\models\cocosnut\cocosnut.3ds">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="data\models\finish\finish.3ds">
@@ -115,7 +145,16 @@
     <None Include="data\models\jungle\jungle.3ds">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="data\models\liana\liana.3ds">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="data\models\liana\liana_collision.3ds">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="data\models\limb\limb.3ds">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="data\models\mango\mango.3ds">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="data\models\player\forearm.3ds">
@@ -214,7 +253,7 @@
     <Content Include="data\levels\jungle\models\rail.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="data\levels\jungle\segments\end.xml">
+    <Content Include="data\levels\jungle\end.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="data\sound\music\background_easy.wav">
@@ -229,7 +268,7 @@
     <Content Include="data\levels\jungle\segments\segment1.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="data\levels\jungle\segments\start.xml">
+    <Content Include="data\levels\jungle\start.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="data\levels\test\level.xml">
@@ -325,6 +364,7 @@
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </COMReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

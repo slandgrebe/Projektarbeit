@@ -87,6 +87,7 @@ namespace JumpAndRun
             obj.ModelXmlPath = "/data/levels/jungle/models/banana.xml";
             obj.Deserialize();
             obj.Create();
+            obj.Model.Visibility(true);
             Player player = new Player();
             Data.SetBody();
             player.Scale = 0.5f;
@@ -108,6 +109,7 @@ namespace JumpAndRun
             obj.ModelXmlPath = "/data/levels/jungle/models/banana.xml";
             obj.Deserialize();
             obj.Create();
+            obj.Model.Visibility(true);
             Player player = new Player();
             Data.SetBody();
             player.Scale = 0.5f;
@@ -126,6 +128,7 @@ namespace JumpAndRun
             obj.ModelXmlPath = "/data/levels/jungle/models/banana.xml";
             obj.Deserialize();
             obj.Create();
+            obj.Model.Visibility(true);
             Player player = new Player();
             Data.SetBody();
             player.Scale = 0.5f;

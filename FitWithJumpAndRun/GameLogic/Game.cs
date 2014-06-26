@@ -16,7 +16,7 @@ namespace JumpAndRun.GameLogic
     /// </summary>
     public class Game
     {
-        /// <summary>Instanz des Positionobjektes.</summary>
+        /// <summary>Instanz des Gameobjektes.</summary>
         private static Game instance;
         /// <summary>Beinhaltet die Spielfigur.</summary>
         public Player Player { get; set; }
@@ -26,6 +26,8 @@ namespace JumpAndRun.GameLogic
         public GameStatus GameStatus { get; set; }
         /// <summary>Beinhaltet das GUI während des Spiels.</summary>
         private GameUi gameUi;
+        /// <summary>Beinhaltet die Segmentnummer, in welchem sich der Spieler gerade befindet</summary>
+        private int CurrentSegment;
 
         private double speed = 5;
         private DateTime startTime = DateTime.Now;
@@ -105,6 +107,9 @@ namespace JumpAndRun.GameLogic
             {
                 //Camera.PositionCamera(0, 1.5f, -40 + 4.5f -0.5f);
                 //Camera.ChangeCameraSpeed(0f);
+                CurrentSegment = -1;
+                level.Visibility(true);
+                Player.Visibility(true);
                 Camera.PositionCamera(0, 1.5f, 0);
                 Camera.ChangeCameraSpeed((float)speed);
                 level.playBackgroundMusic();
@@ -140,7 +145,7 @@ namespace JumpAndRun.GameLogic
                         {
                             if (score.Collision(Player, true))
                             {
-                                Player.Score++;
+                                Player.Score += (uint)score.Severity;
                             }
                         }
                     }
@@ -152,7 +157,7 @@ namespace JumpAndRun.GameLogic
                         {
                             if (obstacle.Collision(Player, false))
                             {
-                                Player.Lifes--;
+                                Player.Lifes -= (uint)obstacle.Severity;
                             }
                         }
                     }
@@ -200,6 +205,9 @@ namespace JumpAndRun.GameLogic
             if (Player.Lifes == 0)
             {
                 GameStatus = GameStatus.GameOver;
+                Camera.ChangeCameraSpeed(0);
+                level.Visibility(false);
+                Player.Visibility(false);
             }
         }
 
@@ -211,6 +219,22 @@ namespace JumpAndRun.GameLogic
             if (level.Length - level.RandomlyChosenSegments.Last().Length + 2 < Player.GetPosition() * -1)
             {
                 GameStatus = GameStatus.Successful;
+                level.Visibility(false);
+                Player.Visibility(false);
+            }
+        }
+
+        private void CheckPlayerPosition()
+        {
+            if (CurrentSegment < 0)
+            {
+                // Start Event auslösen
+            }
+            else if (level.Segments[CurrentSegment + 1].StartPosition > Player.GetPosition() * -1)
+            {
+                // End Event auslösen
+                CurrentSegment++;
+                // Start Event auslösen
             }
         }
     }
