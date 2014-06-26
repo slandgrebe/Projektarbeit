@@ -59,7 +59,6 @@ namespace JumpAndRun.GameLogic
         private JumpAndRun.Difficulty difficulty = JumpAndRun.Difficulty.NotSelected;
         /// <summary>Hintergrundmusik Soundobjekt</summary>
         private Sound.Sound BgSound = new Sound.Sound();
-        private List<LevelSegment> list;
 
         /// <summary>
         /// Level Initialisieren
@@ -69,7 +68,7 @@ namespace JumpAndRun.GameLogic
             AllAvailableSegments = new List<LevelSegment>();
             RandomlyChosenSegments = new List<LevelSegment>();
             SegmentsStartEnd = new List<LevelSegment>();
-            list = new List<LevelSegment>();
+            RandomlyChosenSegments = new List<LevelSegment>();
             //SegmentsXmlPath = new List<string>();
             Speed = 5;
         }
@@ -378,7 +377,7 @@ namespace JumpAndRun.GameLogic
         /// <returns>Prüfung ob die Operation durchgeführt werden konnte</returns>
         public bool Visibility(bool visible)
         {
-            foreach (LevelSegment segment in list)
+            foreach (LevelSegment segment in RandomlyChosenSegments)
             {
                 if (!segment.Visibility(visible)) return false;
             }

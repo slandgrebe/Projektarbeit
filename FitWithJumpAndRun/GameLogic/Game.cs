@@ -230,7 +230,7 @@ namespace JumpAndRun.GameLogic
             {
                 // Start Event auslösen
             }
-            else if (level.Segments[CurrentSegment + 1].StartPosition > Player.GetPosition() * -1)
+            else if (level.RandomlyChosenSegments[CurrentSegment + 1].StartPosition > Player.GetPosition() * -1)
             {
                 // End Event auslösen
                 CurrentSegment++;
