@@ -24,8 +24,8 @@ namespace JumpAndRun
         /// <summary>Eigene Instanz</summary>
         private static Run instance;
 
-        /// <summary>Klickgeste überprüfen</summary>
-        private Click click = new Click();
+        /*/// <summary>Klickgeste überprüfen</summary>
+        private Click click = new Click();*/
         /// <summary>Aktueller Modus des Spieles</summary>
         private Modus modus;
 
@@ -104,8 +104,7 @@ namespace JumpAndRun
                 // Schwierigkeitsgrad wählen
                 else if (!CheckDifficultySelection()) continue;
                 // spiel laden
-                else 
-                if (!CheckGameLoading()) continue;
+                else if (!CheckGameLoading()) continue;
                 // spielen
                 else if (!CheckGaming()) continue;
                 // spiel beendet

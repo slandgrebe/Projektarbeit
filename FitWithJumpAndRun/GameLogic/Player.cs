@@ -13,6 +13,7 @@ namespace JumpAndRun.GameLogic
     /// </summary>
     public class Player
     {
+        private static Player instance = null;
         /// <summary>Skalierungsgrad der Spielfigur als Ganzes</summary>
         public float Scale { private get; set; }
         /// <summary>Spielfigur der Kamera anhängen</summary>
@@ -46,10 +47,44 @@ namespace JumpAndRun.GameLogic
         /// <summary>Modelle mit denen die Spielfigur schon Kollidiert ist</summary>
         public List<uint> Colided { get; set; }
 
+        public delegate void Moved(float z);
+        public event Moved MovedEvent;
+        private float zPosition = 0f;
+        public float ZPosition
+        {
+            get
+            {
+                return zPosition;
+            }
+            set
+            {
+                zPosition = value;
+                if (MovedEvent != null)
+                {
+                    MovedEvent(zPosition);
+                }
+            }
+        }
+
+        /// <summary>
+        /// Singleton
+        /// </summary>
+        public static Player Instance
+        {
+            get
+            {
+                if (instance == null)
+                {
+                    instance = new Player();
+                }
+                return instance;
+            }
+        }
+
         /// <summary>
         /// Initialisierung der Spielfigur
         /// </summary>
-        public Player()
+        private Player()
         {
             Head = new Model("data/models/player/head.3ds", false, 1);
             Torso = new Model("data/models/player/torso.3ds", false, 1);

@@ -54,7 +54,7 @@ namespace JumpAndRun.GameLogic
         private Game()
         {
             gameUi = GameUi.Instance;
-            Player = new Player();
+            Player = Player.Instance;
             GameStatus = GameStatus.Start;
         }
 
@@ -161,6 +161,12 @@ namespace JumpAndRun.GameLogic
                             }
                         }
                     }
+
+                    // Position herausfinden
+                    double timePlaying = DateTime.Now.Subtract(startTime).TotalSeconds;
+                    double distance = speed * timePlaying;
+
+                    Player.ZPosition = (float)distance;
 
                     // Neuer Score, Lebensvorrat im GUI anzeigen
                     //////gameUi.Lives = Player.Lives;
