@@ -166,7 +166,7 @@ namespace JumpAndRun.GameLogic
             {
                 segment.Deserialize();
             }
-            }
+        }
 
         /// <summary>
         /// Levelsegmente aus XML erzeugen

@@ -44,7 +44,7 @@ namespace JumpAndRun.GameLogic
         public Model LowerlegRight { get; private set; }
         
         /// <summary>Modelle mit denen die Spielfigur schon Kollidiert ist</summary>
-        public List<uint> Colidet { get; set; }
+        public List<uint> Colided { get; set; }
 
         /// <summary>
         /// Initialisierung der Spielfigur
@@ -62,7 +62,7 @@ namespace JumpAndRun.GameLogic
             LowerlegLeft = new Model("data/models/player/lowerleg.3ds", false, 1);
             LowerlegRight = new Model("data/models/player/lowerleg.3ds", false, 1);
 
-            Colidet = new List<uint>();
+            Colided = new List<uint>();
 
             Scale = 1;
         }

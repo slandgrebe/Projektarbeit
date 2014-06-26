@@ -114,7 +114,8 @@ namespace JumpAndRun.Item
         public void Deserialize()
         {
             FileStream stream;
-            stream = new FileStream(System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location) + ModelXmlPath, FileMode.Open);
+            //stream = new FileStream(System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location) + ModelXmlPath, FileMode.Open);
+            stream = new FileStream(ModelXmlPath, FileMode.Open);
             XmlSerializer serializer = new XmlSerializer(typeof(Model));
             Model = (Model)serializer.Deserialize(stream);
             stream.Close();
@@ -145,9 +146,9 @@ namespace JumpAndRun.Item
 
                 if (model == Model.Id.ToString())
                 {
-                    if (!player.Colidet.Contains(Model.Id))
+                    if (!player.Colided.Contains(Model.Id))
                     {
-                        player.Colidet.Add(Model.Id);
+                        player.Colided.Add(Model.Id);
                         PlaySound();
                         if (dispose) Dispose();
                         Model.CollisionGroup(0);
@@ -165,7 +166,8 @@ namespace JumpAndRun.Item
         {
             if (Model.Sound.Length > 0)
             {
-                SoundCollision.FilePath = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location) + Model.Sound;
+                //SoundCollision.FilePath = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location) + Model.Sound;
+                SoundCollision.FilePath = Model.Sound;
                 if (Model.SoundVolume > 0) SoundCollision.Volume = Model.SoundVolume;
                 SoundCollision.Play();
             }
