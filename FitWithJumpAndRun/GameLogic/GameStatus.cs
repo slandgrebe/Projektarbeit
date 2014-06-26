@@ -11,10 +11,10 @@ namespace JumpAndRun.GameLogic
     /// </summary>
     public enum GameStatus : short
     {
-        Initial = 0,
+        Loading = 0,
         Start = 1,
-        Loadet = 2,
-        Started = 3,
+        LoadingComplete = 2,
+        Playing = 3,
         Successful = 4,
         GameOver = 5
     }

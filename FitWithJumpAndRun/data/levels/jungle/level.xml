@@ -5,7 +5,7 @@
   <SegmentsXmlPath>data/levels/jungle/segments</SegmentsXmlPath>
   <Name>Jungle</Name>
   <Lifes>4</Lifes>
-  <LevelDuration>30</LevelDuration>
+  <LevelDuration>10</LevelDuration>
   <BackgroundMusicEasy>data/sound/music/background_easy.wav</BackgroundMusicEasy>
   <BackgroundMusicEasyVolume>50</BackgroundMusicEasyVolume>
   <BackgroundMusicMedium>data/sound/music/background_medium.wav</BackgroundMusicMedium>

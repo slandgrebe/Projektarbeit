@@ -2,7 +2,7 @@
 <Model xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Path>data/models/mango/mango.3ds</Path>
   <ScalingNormalized>false</ScalingNormalized>
-  <Sound>/data/sound/model/collect.wav</Sound>
+  <Sound>data/sound/model/collect.wav</Sound>
   <SoundVolume>100</SoundVolume>
   <Severit>3</Severit>
 </Model>

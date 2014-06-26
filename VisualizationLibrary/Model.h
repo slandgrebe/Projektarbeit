@@ -160,6 +160,8 @@ namespace visual {
 					return;
 				}
 
+				//Log().info() << "Rotation: " << degrees << " Grad um " << axis.x << "/" << axis.y << "/" << axis.z;
+
 				m_rotationAngle = degrees;
 				m_rotationAxis = axis;
 

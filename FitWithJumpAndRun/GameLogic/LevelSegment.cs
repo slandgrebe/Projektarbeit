@@ -19,13 +19,34 @@ namespace JumpAndRun.GameLogic
         public List<JumpAndRun.Item.Object> scores;
         /// <summary>Liste aller neutralen Objekte</summary>
         public List<JumpAndRun.Item.Object> objects;
-        /// <summary>Länge des Levelsegmentes</summary>
+        /// <summary>Länge des Levelsegmentes (in meter)</summary>
         public float Length { get; set; }
         /// <summary>Schwierigkeitsgrad des Levelsegmentes</summary>
         public int Severity { get; set; }
         /// <summary>Absolute Startposition des Segmentes</summary>
         public float StartPosition { get; set; }
         public string FilePath { get; set; }
+
+        /// <summary>
+        /// Delegate für Entered Event
+        /// </summary>
+        /// <param name="segment">Das auslösende Segment</param>
+        public delegate void Entered(LevelSegment segment);
+        /// <summary>
+        /// Entered Event
+        /// </summary>
+        public event Entered EnteredEvent;
+        /// <summary>
+        /// Delegate für Exited Event
+        /// </summary>
+        /// <param name="segment">Das auslösende Segment</param>
+        public delegate void Exited(LevelSegment segment);
+        /// <summary>
+        /// Exit Event
+        /// </summary>
+        public event Exited ExitedEvent;
+        private enum State { InFront, Inside, Behind };
+        private State state = State.InFront;
 
         /// <summary>
         /// Initialisierung des Levelsegments
@@ -35,6 +56,8 @@ namespace JumpAndRun.GameLogic
             obstacles = new List<JumpAndRun.Item.Object>();
             scores = new List<JumpAndRun.Item.Object>();
             objects = new List<JumpAndRun.Item.Object>();
+
+            Player.Instance.MovedEvent += new Player.Moved(PlayerMoved);
         }
         
         /// <summary>
@@ -151,6 +174,58 @@ namespace JumpAndRun.GameLogic
             {
                 o.Dispose();
             }
+        }
+
+        /// <summary>
+        /// Event Listener für das Player Moved Event
+        /// </summary>
+        /// <param name="z">z Kooridnate des Player</param>
+        public void PlayerMoved(float z)
+        {
+            
+            switch (state)
+            {
+                // bereits passiert
+                case State.Behind:
+                    break;
+                // testen ob betreten
+                case State.InFront:
+                    if (IsInside(z))
+                    {
+                        state = State.Inside;
+                        Console.WriteLine("Entered Segment: " + this.FilePath + " z: " + this.StartPosition);
+                        if (EnteredEvent != null)
+                        {
+                            EnteredEvent(this);
+                        }
+                    }
+                    break;
+                // testen ob verlassen
+                case State.Inside:
+                    if (!IsInside(z))
+                    {
+                        state = State.Behind;
+                        if (ExitedEvent != null)
+                        {
+                            ExitedEvent(this);
+                        }
+                    }
+                    break;
+            }
+        }
+
+        /// <summary>
+        /// Findet heraus, ob die z Koordinate innerhalt dieses Segments ist
+        /// </summary>
+        /// <param name="z">zu prüfende z-Koordinate</param>
+        /// <returns>Resultat</returns>
+        private bool IsInside(float z)
+        {
+            if (z >= StartPosition && z < (StartPosition + Length))
+            {
+                return true;
+            }
+            return false;
         }
     }
 }

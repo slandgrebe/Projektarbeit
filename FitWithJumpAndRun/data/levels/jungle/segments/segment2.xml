@@ -4,18 +4,23 @@
   <Severity>1</Severity>
   <obstacles>
     <Object>
-      <ModelXmlPath>/data/levels/jungle/models/limb.xml</ModelXmlPath>
+      <ModelXmlPath>data/levels/jungle/models/limb.xml</ModelXmlPath>
       <Scale>1</Scale>
-      <PosX>2</PosX>
+      <PosX>-2</PosX>
       <PosY>1</PosY>
       <PosZ>5</PosZ>
-      <RotateHorizontal>0</RotateHorizontal>
+      <RotationAxis>
+        <float>0</float>
+        <float>1</float>
+        <float>0</float>
+      </RotationAxis>
+      <RotationAngle>180</RotationAngle>
       <AttachToCamera>false</AttachToCamera>
     </Object>
   </obstacles>
   <scores>
     <Object>
-      <ModelXmlPath>/data/levels/jungle/models/mango.xml</ModelXmlPath>
+      <ModelXmlPath>data/levels/jungle/models/mango.xml</ModelXmlPath>
       <Scale>0.3</Scale>
       <PosX>0</PosX>
       <PosY>1</PosY>
@@ -25,48 +30,73 @@
   </scores>
   <objects>
     <Object>
-      <ModelXmlPath>/data/levels/jungle/models/floor.xml</ModelXmlPath>
+      <ModelXmlPath>data/levels/jungle/models/floor.xml</ModelXmlPath>
       <Scale>1</Scale>
       <PosX>0</PosX>
       <PosY>-0.1</PosY>
       <PosZ>0</PosZ>
-      <RotateHorizontal>180</RotateHorizontal>
+      <RotationAxis>
+        <float>0</float>
+        <float>1</float>
+        <float>0</float>
+      </RotationAxis>
+      <RotationAngle>180</RotationAngle>
       <AttachToCamera>false</AttachToCamera>
     </Object>
     <Object>
-      <ModelXmlPath>/data/levels/jungle/models/rail.xml</ModelXmlPath>
+      <ModelXmlPath>data/levels/jungle/models/rail.xml</ModelXmlPath>
       <Scale>0.5</Scale>
       <PosX>0</PosX>
       <PosY>0</PosY>
       <PosZ>0</PosZ>
-      <RotateHorizontal>180</RotateHorizontal>
+      <RotationAxis>
+        <float>0</float>
+        <float>1</float>
+        <float>0</float>
+      </RotationAxis>
+      <RotationAngle>180</RotationAngle>
       <AttachToCamera>false</AttachToCamera>
     </Object>
     <Object>
-      <ModelXmlPath>/data/levels/jungle/models/jungle.xml</ModelXmlPath>
+      <ModelXmlPath>data/levels/jungle/models/jungle.xml</ModelXmlPath>
       <Scale>1</Scale>
       <PosX>2</PosX>
       <PosY>-0.1</PosY>
       <PosZ>0</PosZ>
-      <RotateHorizontal>180</RotateHorizontal>
+      <RotationAxis>
+        <float>0</float>
+        <float>1</float>
+        <float>0</float>
+      </RotationAxis>
+      <RotationAngle>180</RotationAngle>
       <AttachToCamera>false</AttachToCamera>
     </Object>
     <Object>
-      <ModelXmlPath>/data/levels/jungle/models/jungle.xml</ModelXmlPath>
+      <ModelXmlPath>data/levels/jungle/models/jungle.xml</ModelXmlPath>
       <Scale>1</Scale>
       <PosX>-2</PosX>
       <PosY>-0.1</PosY>
       <PosZ>0</PosZ>
-      <RotateHorizontal>180</RotateHorizontal>
+      <RotationAxis>
+        <float>0</float>
+        <float>1</float>
+        <float>0</float>
+      </RotationAxis>
+      <RotationAngle>180</RotationAngle>
       <AttachToCamera>false</AttachToCamera>
     </Object>
     <Object>
-      <ModelXmlPath>/data/levels/jungle/models/sky.xml</ModelXmlPath>
+      <ModelXmlPath>data/levels/jungle/models/sky.xml</ModelXmlPath>
       <Scale>1</Scale>
       <PosX>2</PosX>
       <PosY>6</PosY>
       <PosZ>0</PosZ>
-      <RotateHorizontal>180</RotateHorizontal>
+      <RotationAxis>
+        <float>0</float>
+        <float>1</float>
+        <float>0</float>
+      </RotationAxis>
+      <RotationAngle>180</RotationAngle>
       <AttachToCamera>false</AttachToCamera>
     </Object>
   </objects>

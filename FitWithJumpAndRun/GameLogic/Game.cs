@@ -24,76 +24,13 @@ namespace JumpAndRun.GameLogic
         public Level level = null;
         /// <summary>Beinhaltet den aktuellen Spielstatus.</summary>
         public GameStatus GameStatus { get; set; }
-        /// <summary>XML Pfad zum level</summary>
-        public string LevelXmlPath { get; set; }
         /// <summary>Beinhaltet das GUI während des Spiels.</summary>
         private GameUi gameUi;
         /// <summary>Beinhaltet die Segmentnummer, in welchem sich der Spieler gerade befindet</summary>
         private int CurrentSegment;
 
-        /// <summary>
-        /// Initialisiert das Spiel
-        /// </summary>
-        public Game()
-        {
-            gameUi = GameUi.Instance;
-            Player = new Player();
-            GameStatus = GameStatus.Start;
-        }
-
-        /// <summary>
-        /// Ladet das Level, erstellt die Spielfigur
-        /// </summary>
-        public bool Init(Difficulty difficulty)
-        {
-            if (String.IsNullOrEmpty(LevelXmlPath))
-            {
-                return false;
-            }
-
-            GameStatus = GameStatus.Initial;
-
-            string dir = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
-            dir = dir + LevelXmlPath;
-
-            FileStream stream;
-            stream = new FileStream(dir, FileMode.Open);
-            XmlSerializer serializer = new XmlSerializer(typeof(Level));
-            level = (Level)serializer.Deserialize(stream);
-            stream.Close();
-            level.Deserialize();
-            level.Load(difficulty);
-
-            Player.Scale = 0.7f;
-            Player.Attach = true;
-            Player.Score = 0;
-            Player.Lifes = level.Lifes;
-            
-            GameStatus = GameStatus.Loadet;
-
-            return true;
-        }
-
-        /// <summary>
-        /// Startet das Spiel, sofern das Level fertig geladen ist.
-        /// </summary>
-        public void Start()
-        {
-            if (GameStatus == GameStatus.Loadet)
-            {
-                //Camera.PositionCamera(0, 1.5f, -40 + 4.5f -0.5f);
-                //Camera.ChangeCameraSpeed(0f);
-                CurrentSegment = -1;
-                level.Visibility(true);
-                Player.Visibility(true);
-                Camera.PositionCamera(0, 1.5f, 0);
-                Camera.ChangeCameraSpeed(5f);
-                level.playBackgroundMusic();
-                GameStatus = GameStatus.Started;
-
-                GameUi.Instance.Show();
-            }
-        }
+        private double speed = 5;
+        private DateTime startTime = DateTime.Now;
 
         /// <summary>
         /// Stellt sicher, dass diese Klasse nur einmal Instanziert wird.
@@ -112,15 +49,89 @@ namespace JumpAndRun.GameLogic
         }
 
         /// <summary>
+        /// Initialisiert das Spiel
+        /// </summary>
+        private Game()
+        {
+            gameUi = GameUi.Instance;
+            Player = Player.Instance;
+            GameStatus = GameStatus.Start;
+        }
+
+        /// <summary>
+        /// Ladet das Level, erstellt die Spielfigur
+        /// </summary>
+        public bool Load(string levelXmlPath = "data/levels/jungle/level.xml", JumpAndRun.Difficulty difficulty = JumpAndRun.Difficulty.Normal)
+        {
+            /*if (String.IsNullOrEmpty(LevelXmlPath))
+            {
+                return false;
+            }*/
+
+            GameStatus = GameStatus.Loading;
+
+            //string dir = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
+            //dir = dir + LevelXmlPath;
+
+            // Level Objekt deserialisieren und laden
+            FileStream stream;
+            //stream = new FileStream(dir, FileMode.Open);
+            stream = new FileStream(levelXmlPath, FileMode.Open);
+            XmlSerializer serializer = new XmlSerializer(typeof(Level));
+            level = (Level)serializer.Deserialize(stream);
+            stream.Close();
+
+            level.Deserialize();
+            if (!level.Load(difficulty))
+            {
+                return false;
+            }
+
+            // Spieler
+            Player.Scale = 0.7f;
+            Player.Attach = true;
+            Player.Score = 0;
+            Player.Lifes = level.Lifes;
+            
+            GameStatus = GameStatus.LoadingComplete;
+
+            return true;
+        }
+
+        /// <summary>
+        /// Startet das Spiel, sofern das Level fertig geladen ist.
+        /// </summary>
+        public void Start()
+        {
+            if (GameStatus == GameStatus.LoadingComplete)
+            {
+                //Camera.PositionCamera(0, 1.5f, -40 + 4.5f -0.5f);
+                //Camera.ChangeCameraSpeed(0f);
+                CurrentSegment = -1;
+                level.Visibility(true);
+                Player.Visibility(true);
+                Camera.PositionCamera(0, 1.5f, 0);
+                Camera.ChangeCameraSpeed((float)speed);
+                level.playBackgroundMusic();
+                GameStatus = GameStatus.Playing;
+
+                GameUi.Instance.Show();
+
+                startTime = DateTime.Now;
+            }
+        }
+
+
+        /// <summary>
         /// Spiellogik während eines durchlaufs.
         /// </summary>
         public void Update()
         {
             // Wenn das Lvel beendet ist, die Kamera stoppen
-            if(GameStatus != GameStatus.Started){
+            if(GameStatus != GameStatus.Playing){
                 Camera.ChangeCameraSpeed(0);
             }
-            if (GameStatus == GameStatus.Started)
+            if (GameStatus == GameStatus.Playing)
             {
                 if (level != null)
                 {
@@ -128,7 +139,7 @@ namespace JumpAndRun.GameLogic
                     Player.Update();
                     
                     // Score um 1 erhöhen, wenn ein Punkt gesammelt wird
-                    foreach (LevelSegment segment in level.Segments)
+                    foreach (LevelSegment segment in level.RandomlyChosenSegments)
                     {
                         foreach (JumpAndRun.Item.Object score in segment.scores)
                         {
@@ -140,7 +151,7 @@ namespace JumpAndRun.GameLogic
                     }
 
                     // Leben um 1 verringern, wenn ein Hinternis getroffen wird
-                    foreach (LevelSegment segment in level.Segments)
+                    foreach (LevelSegment segment in level.RandomlyChosenSegments)
                     {
                         foreach (JumpAndRun.Item.Object obstacle in segment.obstacles)
                         {
@@ -150,6 +161,12 @@ namespace JumpAndRun.GameLogic
                             }
                         }
                     }
+
+                    // Position herausfinden
+                    double timePlaying = DateTime.Now.Subtract(startTime).TotalSeconds;
+                    double distance = speed * timePlaying;
+
+                    Player.ZPosition = (float)distance;
 
                     // Neuer Score, Lebensvorrat im GUI anzeigen
                     //////gameUi.Lives = Player.Lives;
@@ -176,8 +193,8 @@ namespace JumpAndRun.GameLogic
         public void ResetGame()
         {
             GameUi.Instance.Hide();
-            if (GameStatus == GameStatus.Loadet
-                || GameStatus == GameStatus.Started
+            if (GameStatus == GameStatus.LoadingComplete
+                || GameStatus == GameStatus.Playing
                 || GameStatus == GameStatus.GameOver
                 || GameStatus == GameStatus.Successful)
             {
@@ -205,7 +222,7 @@ namespace JumpAndRun.GameLogic
         /// </summary>
         private void CheckLevelEnd()
         {
-            if (level.Length - level.Segments.Last().Length + 2 < Player.GetPosition() * -1)
+            if (level.Length - level.RandomlyChosenSegments.Last().Length + 2 < Player.GetPosition() * -1)
             {
                 GameStatus = GameStatus.Successful;
                 level.Visibility(false);
@@ -219,7 +236,7 @@ namespace JumpAndRun.GameLogic
             {
                 // Start Event auslösen
             }
-            else if (level.Segments[CurrentSegment + 1].StartPosition > Player.GetPosition() * -1)
+            else if (level.RandomlyChosenSegments[CurrentSegment + 1].StartPosition > Player.GetPosition() * -1)
             {
                 // End Event auslösen
                 CurrentSegment++;

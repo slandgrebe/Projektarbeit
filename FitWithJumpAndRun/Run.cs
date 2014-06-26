@@ -24,8 +24,8 @@ namespace JumpAndRun
         /// <summary>Eigene Instanz</summary>
         private static Run instance;
 
-        /// <summary>Klickgeste überprüfen</summary>
-        private Click click = new Click();
+        /*/// <summary>Klickgeste überprüfen</summary>
+        private Click click = new Click();*/
         /// <summary>Aktueller Modus des Spieles</summary>
         private Modus modus;
 
@@ -74,6 +74,9 @@ namespace JumpAndRun
             ScoreUi.Instance.ButtonClickedEvent += new ScoreUi.ButtonClick(ScoreButtonClicked);
             GameOverUi.Instance.ButtonClickedEvent += new GameOverUi.ButtonClick(GameOverButtonClicked);
 
+            // Zufallszahlen initialisieren
+            RandomNumberGenerator.SetSeedFromSystemTime();
+
             return true;
         }
 
@@ -89,7 +92,7 @@ namespace JumpAndRun
             System.Threading.Thread.Sleep(30);
 
             // Hauptschleife
-            while(Window.IsRunning())
+            while (Window.IsRunning())
             {
                 // senkt die CPU Auslastung drastisch
                 System.Threading.Thread.Sleep(1);
@@ -227,8 +230,8 @@ namespace JumpAndRun
                     backgroundSound.Play();
 
                     // Spiel laden
-                    Game.Instance.LevelXmlPath = "/data/levels/jungle/level.xml";
-                    Game.Instance.Init(difficulty);
+                    string path = "data/levels/jungle/level.xml";
+                    Game.Instance.Load(path);
                 }
 
                 return false;
@@ -244,7 +247,7 @@ namespace JumpAndRun
             Game.Instance.Update();
 
             // Level ist geladen
-            if (Game.Instance.GameStatus == GameStatus.Loadet)
+            if (Game.Instance.GameStatus == GameStatus.LoadingComplete)
                     {
                 if (modus != Modus.Play)
                             {
@@ -258,7 +261,7 @@ namespace JumpAndRun
                 return false;
             }
             // am spielen
-            else if (Game.Instance.GameStatus == GameStatus.Started || Game.Instance.GameStatus == GameStatus.Start)
+            else if (Game.Instance.GameStatus == GameStatus.Playing || Game.Instance.GameStatus == GameStatus.Start)
                             {
                 if (modus != Modus.Play)
                                 {
@@ -367,7 +370,7 @@ namespace JumpAndRun
         {
             int seed = (int)DateTime.Now.Ticks;
             var rand = new Random(seed);
-            var files = System.IO.Directory.GetFiles("data/sound/menu/background", "*.mp3");
+            var files = System.IO.Directory.GetFiles(folder, pattern);
             return files[rand.Next(files.Length)];
         }
 
