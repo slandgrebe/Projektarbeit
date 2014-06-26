@@ -354,7 +354,8 @@ void AssimpModel::updateCollisionModel(long unsigned int frame) {
 	if (m_isVisible && // unsichtbare Objekte müssen nicht geupdated werden
 		(m_modelChanged	|| (m_isAttachedToCamera && frame > collisionModelUpdatedOnFrame))) {
 
-		glm::mat4 mvp1 = this->getTransformedModelMatrix();
+		//glm::mat4 mvp1 = this->getTransformedModelMatrix();
+		glm::mat4 mvp1 = this->getModelViewMatrix();
 
 		std::vector<Triangle> newModel;
 

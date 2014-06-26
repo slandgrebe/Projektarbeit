@@ -135,7 +135,7 @@ namespace visual {
 			virtual void position(glm::vec3 position) {
 				m_positionVector = position;
 
-				m_modelChanged = true;
+				//m_modelChanged = true;
 			};
 
 			/** Liefert die aktuelle Position des Modells zurück

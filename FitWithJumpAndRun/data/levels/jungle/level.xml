@@ -4,7 +4,7 @@
   <EndSegmentXml>data/levels/jungle/end.xml</EndSegmentXml>
   <SegmentsXmlPath>data/levels/jungle/segments</SegmentsXmlPath>
   <Name>Jungle</Name>
-  <Lifes>4</Lifes>
+  <Lifes>100</Lifes>
   <LevelDuration>10</LevelDuration>
   <VisibilityRange>100</VisibilityRange>
   <BackgroundMusicEasy>data/sound/music/background_easy.wav</BackgroundMusicEasy>

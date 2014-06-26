@@ -72,6 +72,9 @@ namespace VisualizationExample
         public extern static bool collisionGroup(uint modelId, uint collisionGroup);
         [DllImport("Visualization.dll")]
         public extern static uint collisionsTextLength();
+        [DllImport("Visualization.dll", EntryPoint = "setModelVisibility")]
+        public extern static bool modelVisibility(uint modelId, bool choice);
+
         [DllImport("Visualization.dll")]
         public extern static bool collisionsText(System.Text.StringBuilder text, int length);
 
@@ -85,6 +88,20 @@ namespace VisualizationExample
             // CAMERA
             positionCamera(0, 0, 0);
             //changeCameraSpeed(1f);
+
+            uint modelId = addModel("data/models/cube.obj");
+            while (!isCreated(modelId)) { }
+            //scale(modelId, 2000f, 2f, 2f);
+            //scalingIsNormalized(modelId, true);
+            //position(modelId, -0.5f, 0f, -2f);
+            //rotate(modelId, -90.0f, 1.0f, 0.0f, 0.0f);
+            //highlightColor(modelId, 1.0f, 0.0f, 0.0f, 1.0f);
+            //isHighlighted(modelId, true);
+            collisionGroup(modelId, 2);
+            modelVisibility(modelId, true);
+
+            Console.ReadLine();
+            rotate(modelId, -90.0f, 1.0f, 0.0f, 0.0f);
 
             /*// ATTACH MODEL TO CAMERA
             uint modelId_attachedToCamera = addModel("data/models/cube.obj");
@@ -108,8 +125,8 @@ namespace VisualizationExample
             highlightColor(modelId_collision, 0.0f, 1.0f, 0.0f, 1.0f);
             isHighlighted(modelId_collision, true);*/
 
-
-            // 20 spieler
+            
+            /*// 20 spieler
             List<uint> list = new List<uint>();
             uint numCubes = 2;
             for (int i = 0; i < numCubes; i++)
@@ -155,7 +172,7 @@ namespace VisualizationExample
                 isHighlighted(modelId, true);
                 collisionGroup(modelId, 2);
             }
-            */
+            
             // 100 bonus
             list.Clear();
             numCubes = 10;
@@ -176,7 +193,7 @@ namespace VisualizationExample
                 highlightColor(modelId, 0.0f, 1.0f, 0.0f, 1.0f);
                 isHighlighted(modelId, true);
                 collisionGroup(modelId, 3);
-            }
+            }*/
 
             float rotation = 0f;
             float x = -2f;
@@ -184,7 +201,7 @@ namespace VisualizationExample
             while (isRunning()) {
                 System.Threading.Thread.Sleep(1); // senkt die CPU Auslastung drastisch
 
-                handleCollisions(0);
+                //handleCollisions(0);
 
                 //rotate(modelId_attachedToCamera, rotation++, 0f, 1f, 0f);
                 
