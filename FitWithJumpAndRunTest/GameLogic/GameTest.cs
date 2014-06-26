@@ -25,8 +25,8 @@ namespace JumpAndRun
         {
             Game game = Game.Instance;
             game.LevelXmlPath = "";
-            Assert.AreEqual(false, game.Init(), "Ohne Pfad darf nicht initialisiert werden.");
-            Assert.AreNotEqual(GameStatus.Loadet, game.GameStatus, "Game Status darf nicht 'loadet' sein.");
+            Assert.AreEqual(false, game.Load(), "Ohne Pfad darf nicht initialisiert werden.");
+            Assert.AreNotEqual(GameStatus.LoadingComplete, game.GameStatus, "Game Status darf nicht 'loadet' sein.");
         }
 
         [TestMethod]
@@ -34,10 +34,10 @@ namespace JumpAndRun
         {
             Game game = Game.Instance;
             game.LevelXmlPath = "/data/levels/test/level.xml";
-            Assert.AreEqual(true, game.Init(), "Das Level konnte nicht initialisiert werden.");
+            Assert.AreEqual(true, game.Load(), "Das Level konnte nicht initialisiert werden.");
             Assert.IsNotNull(game.Player, "Spieler wurde nicht erstellt.");
-            Assert.AreEqual(3, game.level.Segments.Count, "Level wurde nicht deserialisiert.");
-            Assert.AreEqual(GameStatus.Loadet, game.GameStatus, "Game Status ist nicht 'loadet'");
+            Assert.AreEqual(3, game.level.AllAvailableSegments.Count, "Level wurde nicht deserialisiert.");
+            Assert.AreEqual(GameStatus.LoadingComplete, game.GameStatus, "Game Status ist nicht 'loadet'");
         }
 
         [TestMethod]
@@ -45,9 +45,9 @@ namespace JumpAndRun
         {
             Game game = Game.Instance;
             game.LevelXmlPath = "/data/levels/test/level.xml";
-            game.GameStatus = GameStatus.Initial;
+            game.GameStatus = GameStatus.Loading;
             game.Start();
-            Assert.AreNotEqual(GameStatus.Started, game.GameStatus, "Game Status darf nicht 'started' sein.");
+            Assert.AreNotEqual(GameStatus.Playing, game.GameStatus, "Game Status darf nicht 'started' sein.");
         }
 
         [TestMethod]
@@ -55,9 +55,9 @@ namespace JumpAndRun
         {
             Game game = Game.Instance;
             game.LevelXmlPath = "/data/levels/test/level.xml";
-            game.GameStatus = GameStatus.Loadet;
+            game.GameStatus = GameStatus.LoadingComplete;
             game.Start();
-            Assert.AreEqual(GameStatus.Started, game.GameStatus, "Game Status muss 'started' sein.");
+            Assert.AreEqual(GameStatus.Playing, game.GameStatus, "Game Status muss 'started' sein.");
         }
 
         [TestMethod]
@@ -65,9 +65,9 @@ namespace JumpAndRun
         {
             Game game = Game.Instance;
             game.LevelXmlPath = "/data/levels/test/level.xml";
-            game.Init();
+            game.Load();
             game.ResetGame();
-            Assert.AreEqual((System.UInt32)0, game.level.Segments[0].objects[0].Model.Id, "Objekte wurden nicht entfernt.");
+            Assert.AreEqual((System.UInt32)0, game.level.AllAvailableSegments[0].objects[0].Model.Id, "Objekte wurden nicht entfernt.");
             Assert.AreEqual(GameStatus.Start, game.GameStatus, "Game Status muss 'start' sein.");
         }
 
@@ -76,7 +76,7 @@ namespace JumpAndRun
         {
             Game game = Game.Instance;
             game.LevelXmlPath = "/data/levels/test/level.xml";
-            game.Init();
+            game.Load();
             game.Player.Lifes = 0;
             game.Start();
             Data.SetBody();
@@ -89,7 +89,7 @@ namespace JumpAndRun
         {
             Game game = Game.Instance;
             game.LevelXmlPath = "/data/levels/test/level.xml";
-            game.Init();
+            game.Load();
             game.Player.Lifes = 5;
             game.Start();
             Data.SetBody();
@@ -102,7 +102,7 @@ namespace JumpAndRun
         {
             Game game = Game.Instance;
             game.LevelXmlPath = "/data/levels/test/level.xml";
-            game.Init();
+            game.Load();
             game.Start();
             Data.SetBody();
             View.Camera.PositionCamera(0, 1.5f, -50);
@@ -115,7 +115,7 @@ namespace JumpAndRun
         {
             Game game = Game.Instance;
             game.LevelXmlPath = "/data/levels/test/level.xml";
-            game.Init();
+            game.Load();
             game.Start();
             Data.SetBody();
             game.Update();

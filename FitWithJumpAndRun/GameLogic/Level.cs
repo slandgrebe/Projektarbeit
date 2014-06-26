@@ -17,7 +17,11 @@ namespace JumpAndRun.GameLogic
         /// <summary>Name des Levels</summary>
         public string Name { get; set; }
         /// <summary>Liste aller Levelsegmentes dieses Levels</summary>
-        public List<LevelSegment> Segments;
+        private List<LevelSegment> AllAvailableSegments;
+        /// <summary>
+        /// Alle zufällig ausgewählten Segmente für diese Runde
+        /// </summary>
+        public List<LevelSegment> RandomlyChosenSegments;
         /// <summary>Start und Endsegment dieses Levels</summary>
         private List<LevelSegment> SegmentsStartEnd;
         /// <summary>XML Pfad zum Startsegment</summary>
@@ -52,8 +56,7 @@ namespace JumpAndRun.GameLogic
         private int LoadetSegments = 0;
         /// <summary>Anzahl gelöschter</summary>
         private int DisposedSegments = 0;
-        /// <summary>Schwierigkeitsgrad</summary>
-        public int Severity { get; set; }
+        private JumpAndRun.Difficulty difficulty = JumpAndRun.Difficulty.NotSelected;
         /// <summary>Hintergrundmusik Soundobjekt</summary>
         private Sound.Sound BgSound = new Sound.Sound();
 
@@ -62,7 +65,8 @@ namespace JumpAndRun.GameLogic
         /// </summary>
         public Level()
         {
-            Segments = new List<LevelSegment>();
+            AllAvailableSegments = new List<LevelSegment>();
+            RandomlyChosenSegments = new List<LevelSegment>();
             SegmentsStartEnd = new List<LevelSegment>();
             //SegmentsXmlPath = new List<string>();
             Speed = 5;
@@ -73,25 +77,29 @@ namespace JumpAndRun.GameLogic
         /// </summary>
         /// <param name="severity">Schwierigkeitsgrad</param>
         /// <returns>Prüfung ob die Operation durchgeführt werden konnte</returns>
-        public bool Load()
+        public bool Load(JumpAndRun.Difficulty difficulty)
         {
             // min. 1 Segment muss vorhanden sein
-            if (Segments.Count <= 0)
+            if (AllAvailableSegments.Count < 1 || SegmentsStartEnd.Count < 2)
             {
                 return false;
             }
 
-            List<LevelSegment> list = new List<LevelSegment>();
+            this.difficulty = difficulty;
 
             // Zufällig Segmente anhand der Schwierigkeit auswählen
-            list = ChooseRandomSegments(Difficulty.Normal, LevelDuration, Speed);
+            RandomlyChosenSegments = ChooseRandomSegments(difficulty, LevelDuration, Speed);
 
             // ausgewählte Segemente zufällig aneinanderreihen
-            list = ShuffleSegments(SegmentsStartEnd[0], SegmentsStartEnd[1], list);
+            RandomlyChosenSegments = ShuffleSegments(SegmentsStartEnd[0], SegmentsStartEnd[1], RandomlyChosenSegments);
 
-            foreach (LevelSegment segment in list)
+            // Segmente ins Spiel laden
+            foreach (LevelSegment segment in RandomlyChosenSegments)
             {
-                LoadNextSegment(segment);
+                if (!LoadNextSegment(segment))
+                {
+                    return false;
+                }
             }
 
             return true;
@@ -109,48 +117,49 @@ namespace JumpAndRun.GameLogic
             LoadetSegments++;
             return true;*/
 
-            segment.Create(Length);
+            if (!segment.Create(Length))
+            {
+                return false;
+            }
+
             Length += segment.Length;
 
             return true;
         }
 
-        /// <summary>
+        /*/// <summary>
         /// Entfernt das nächste Segment
         /// </summary>
         public void DisposeNextSegment()
         {
-            Segments[DisposedSegments].Dispose();
+            AllAvailableSegments[DisposedSegments].Dispose();
             DisposedSegments++;
-        }
+        }*/
 
         /// <summary>
         /// Level aus der XML erzeugen
         /// </summary>
         public void Deserialize()
         {
+            // Start und Ende Segmente
             SegmentsStartEnd.Add(DeserializeSegment(StartSegmentXml));
             SegmentsStartEnd.Add(DeserializeSegment(EndSegmentXml));
-
-            // alle xml Dateien im Ordner auslesen
-            //string path = "data/levels/jungle/segments";
-            var files = System.IO.Directory.GetFiles(SegmentsXmlPath, "*.xml");
-            foreach (string file in files)
-            {
-                Console.WriteLine(file);
-                Segments.Add(DeserializeSegment(file));
-            }
-            /*foreach (string segmentXmlPath in SegmentsXmlPath)
-            {
-                Segments.Add(DeserializeSegment(segmentXmlPath));
-            }*/
 
             foreach (LevelSegment segment in SegmentsStartEnd)
             {
                 segment.Deserialize();
             }
 
-            foreach (LevelSegment segment in Segments)
+            // Segmente: alle xml Dateien im Ordner auslesen
+            var files = System.IO.Directory.GetFiles(SegmentsXmlPath, "*.xml");
+            foreach (string file in files)
+            {
+                Console.WriteLine(file);
+                AllAvailableSegments.Add(DeserializeSegment(file));
+            }
+
+            // Segmente erstellen
+            foreach (LevelSegment segment in AllAvailableSegments)
             {
                 segment.Deserialize();
             }
@@ -159,7 +168,7 @@ namespace JumpAndRun.GameLogic
         /// <summary>
         /// Levelsegmente aus XML erzeugen
         /// </summary>
-        /// <param name="filePath">Pfad zum XML</param>
+        /// <param name="filePath">Pfad zum XML des Segments</param>
         /// <retunrs>Levelsegment</retunrs>
         private LevelSegment DeserializeSegment(string filePath)
         {
@@ -174,7 +183,7 @@ namespace JumpAndRun.GameLogic
             return ls;
         }
 
-        /// <summary>
+        /*/// <summary>
         /// Gibt ein zufälliges Segment zurück
         /// </summary>
         /// <returns>Levelsegment</returns>
@@ -183,9 +192,9 @@ namespace JumpAndRun.GameLogic
             Random rnd = new Random();
             int i = 0;
 
-            i = rnd.Next(0, Segments.Count);
-            return Segments[i];
-        }
+            i = rnd.Next(0, AllAvailableSegments.Count);
+            return AllAvailableSegments[i];
+        }*/
 
         /// <summary>
         /// Mischelt die Segmente
@@ -196,11 +205,14 @@ namespace JumpAndRun.GameLogic
         {
             List<LevelSegment> randomList = new List<LevelSegment>();
 
+            // Zufallszahl generieren
             Random r = new Random();
             int randomIndex = 0;
 
+            // Start hinzufügen
             randomList.Add(startSegment);
 
+            // Segmente aus der übergebenen Liste zufällig auswählen
             while (segments.Count > 0)
             {
                 randomIndex = r.Next(0, segments.Count);
@@ -208,6 +220,7 @@ namespace JumpAndRun.GameLogic
                 segments.RemoveAt(randomIndex);
             }
 
+            // Ende hinzufügen
             randomList.Add(endSegment);
 
             return randomList;
@@ -224,18 +237,16 @@ namespace JumpAndRun.GameLogic
         {
             Console.WriteLine("new Random Distribution");
             double currentLength = 0; // in meter
-            RandomNumberGenerator.SetSeedFromSystemTime();
 
-            int minDifficulty = Segments.Min(e => e.Severity); // einfachste vorhandene Schwierigkeit
-            int maxDifficulty = Segments.Max(e => e.Severity); // schwerste vorhandene Schwierigkeit
-
+            int minDifficulty = AllAvailableSegments.Min(e => e.Severity); // einfachste vorhandene Schwierigkeit
+            int maxDifficulty = AllAvailableSegments.Max(e => e.Severity); // schwerste vorhandene Schwierigkeit
 
             double nDifficulty = 0; // schwierigkeit auf einer Skala von min - max
             switch (difficulty)
             {
-                case Difficulty.Easy: nDifficulty = Math.Round((double)(maxDifficulty - minDifficulty) / 4) + minDifficulty; break; // 25%
-                case Difficulty.Normal: nDifficulty = Math.Round((double)(maxDifficulty - minDifficulty) / 2) + minDifficulty; break; // 50%
-                case Difficulty.Difficult: nDifficulty = Math.Round((double)(maxDifficulty - minDifficulty) / 4 * 3) + minDifficulty; break; // 75%
+                case JumpAndRun.Difficulty.Easy: nDifficulty = Math.Round((double)(maxDifficulty - minDifficulty) / 4) + minDifficulty; break; // 25%
+                case JumpAndRun.Difficulty.Normal: nDifficulty = Math.Round((double)(maxDifficulty - minDifficulty) / 2) + minDifficulty; break; // 50%
+                case JumpAndRun.Difficulty.Difficult: nDifficulty = Math.Round((double)(maxDifficulty - minDifficulty) / 4 * 3) + minDifficulty; break; // 75%
                 default: nDifficulty = Math.Round((double)(maxDifficulty - minDifficulty) / 2) + minDifficulty; break;
             }
 
@@ -253,9 +264,9 @@ namespace JumpAndRun.GameLogic
                 // Zufallszahl nach Gaussscher Normalverteilung mit nDifficulty als Durchschnitt
                 double d = (int)Math.Round(RandomNumberGenerator.GetNormal(nDifficulty, standardDeviation));
                 
-                // min 1, max 10
-                if (d < 1.0) d = 1;
-                else if (d > 10) d = 10;
+                // min und max kontrollieren
+                if (d < minDifficulty) d = minDifficulty;
+                else if (d > maxDifficulty) d = maxDifficulty;
 
                 // Segment welches dieser Schwierigkeit am ehesten entspricht
                 LevelSegment segment = GetSegmentWithDifficulty(d);
@@ -275,20 +286,26 @@ namespace JumpAndRun.GameLogic
 
             return segmentList;
         }
+
+        /// <summary>
+        /// Wählt aus allen zur Verfügung stehenden Segmenten ein Segement aus, welches der angegebenen Schwierigkeit am ehesten entspricht
+        /// </summary>
+        /// <param name="difficulty">Gewünschte Schwierigkeit</param>
+        /// <returns>ausgewähltes Segment</returns>
         private LevelSegment GetSegmentWithDifficulty(double difficulty)
         {
-            double smallesDifference = 100000;
+            double smallestDifference = 100000;
             List<LevelSegment> list = new List<LevelSegment>();
 
-            foreach (LevelSegment segment in Segments)
+            foreach (LevelSegment segment in AllAvailableSegments)
             {
                 double currentDifference = Math.Abs(difficulty - (double)segment.Severity);
-                if (currentDifference < smallesDifference)
+                if (currentDifference < smallestDifference)
                 {
-                    smallesDifference = currentDifference;
+                    smallestDifference = currentDifference;
                     list.Add(segment);
                 }
-                else if (currentDifference == smallesDifference)
+                else if (currentDifference == smallestDifference)
                 {
                     list.Add(segment);
                 }
@@ -299,30 +316,33 @@ namespace JumpAndRun.GameLogic
             return list[(int)choice]; // Segement zurück liefern
         }
 
-        /// <summary>
+        /*/// <summary>
         /// Hinzufügen eines XML Datei eines Levelsegmentes
         /// </summary>
         /// <param name="path"></param>
-        /*public void AddXmlPath(string path)
+        public void AddXmlPath(string path)
         {
             SegmentsXmlPath.Add(path);
         }*/
 
+        /// <summary>
+        /// Hintergrundmusik abspielen
+        /// </summary>
         public void playBackgroundMusic()
         {
-            switch (Severity.ToString())
+            switch (difficulty)
             {
-                case "1":
+                case JumpAndRun.Difficulty.Easy:
                     //BgSound.FilePath = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location) + BackgroundMusicEasy;
                     BgSound.FilePath = BackgroundMusicEasy;
                     BgSound.Volume = BackgroundMusicEasyVolume;
                     break;
-                case "2":
+                case JumpAndRun.Difficulty.Normal:
                     //BgSound.FilePath = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location) + BackgroundMusicMedium;
                     BgSound.FilePath = BackgroundMusicMedium;
                     BgSound.Volume = BackgroundMusicMediumVolume;
                     break;
-                case "3":
+                case JumpAndRun.Difficulty.Difficult:
                     //BgSound.FilePath = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location) + BackgroundMusicHard;
                     BgSound.FilePath = BackgroundMusicHard;
                     BgSound.Volume = BackgroundMusicHardVolume;
@@ -337,6 +357,9 @@ namespace JumpAndRun.GameLogic
             BgSound.Play();
         }
 
+        /// <summary>
+        /// Hintergrundmusik stoppen
+        /// </summary>
         public void stopBackgroundMusic()
         {
             BgSound.FadeOut(1);
@@ -347,7 +370,7 @@ namespace JumpAndRun.GameLogic
         /// </summary>
         public void Dispose()
         {
-            foreach (LevelSegment segment in Segments)
+            foreach (LevelSegment segment in AllAvailableSegments)
             {
                 segment.Dispose();
             }
