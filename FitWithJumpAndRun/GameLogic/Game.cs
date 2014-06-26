@@ -170,7 +170,7 @@ namespace JumpAndRun.GameLogic
                     Player.ZPosition = (float)distance;
 
                     // Neuer Score, Lebensvorrat im GUI anzeigen
-                    //////gameUi.Lives = Player.Lives;
+                    gameUi.Lifes = Player.Lifes;
                     gameUi.Score = Player.Score;
                     gameUi.Update();
 
