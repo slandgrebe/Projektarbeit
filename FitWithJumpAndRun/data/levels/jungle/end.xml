@@ -8,7 +8,12 @@
       <PosX>0</PosX>
       <PosY>-0.1</PosY>
       <PosZ>0</PosZ>
-      <RotateHorizontal>180</RotateHorizontal>
+      <RotationAxis>
+        <float>0</float>
+        <float>1</float>
+        <float>0</float>
+      </RotationAxis>
+      <RotationAngle>180</RotationAngle>
       <AttachToCamera>false</AttachToCamera>
     </Object>
     <Object>
@@ -17,7 +22,12 @@
       <PosX>0</PosX>
       <PosY>0</PosY>
       <PosZ>0</PosZ>
-      <RotateHorizontal>180</RotateHorizontal>
+      <RotationAxis>
+        <float>0</float>
+        <float>1</float>
+        <float>0</float>
+      </RotationAxis>
+      <RotationAngle>180</RotationAngle>
       <AttachToCamera>false</AttachToCamera>
     </Object>
     <Object>
@@ -26,7 +36,12 @@
       <PosX>2</PosX>
       <PosY>-0.1</PosY>
       <PosZ>0</PosZ>
-      <RotateHorizontal>180</RotateHorizontal>
+      <RotationAxis>
+        <float>0</float>
+        <float>1</float>
+        <float>0</float>
+      </RotationAxis>
+      <RotationAngle>180</RotationAngle>
       <AttachToCamera>false</AttachToCamera>
     </Object>
     <Object>
@@ -35,7 +50,12 @@
       <PosX>-2</PosX>
       <PosY>-0.1</PosY>
       <PosZ>0</PosZ>
-      <RotateHorizontal>180</RotateHorizontal>
+      <RotationAxis>
+        <float>0</float>
+        <float>1</float>
+        <float>0</float>
+      </RotationAxis>
+      <RotationAngle>180</RotationAngle>
       <AttachToCamera>false</AttachToCamera>
     </Object>
     <Object>
@@ -44,7 +64,12 @@
       <PosX>-2</PosX>
       <PosY>-0.1</PosY>
       <PosZ>10</PosZ>
-      <RotateHorizontal>90</RotateHorizontal>
+      <RotationAxis>
+        <float>0</float>
+        <float>1</float>
+        <float>0</float>
+      </RotationAxis>
+      <RotationAngle>90</RotationAngle>
       <AttachToCamera>false</AttachToCamera>
     </Object>
     <Object>
@@ -53,7 +78,12 @@
       <PosX>2</PosX>
       <PosY>6</PosY>
       <PosZ>0</PosZ>
-      <RotateHorizontal>180</RotateHorizontal>
+      <RotationAxis>
+        <float>0</float>
+        <float>1</float>
+        <float>0</float>
+      </RotationAxis>
+      <RotationAngle>180</RotationAngle>
       <AttachToCamera>false</AttachToCamera>
     </Object>
     <Object>

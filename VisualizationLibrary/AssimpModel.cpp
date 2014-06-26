@@ -79,7 +79,6 @@ AssimpModel::Triangle AssimpModel::MeshEntry::getTriangle(unsigned int n) {
 
 AssimpModel::AssimpModel() {
 	collisionModelUpdatedOnFrame = 0;
-	m_isVisible = true; // entfernen!!!
 }
 
 

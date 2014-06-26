@@ -157,7 +157,6 @@ namespace JumpAndRun.GameLogic
             var files = System.IO.Directory.GetFiles(SegmentsXmlPath, "*.xml");
             foreach (string file in files)
             {
-                Console.WriteLine(file);
                 AllAvailableSegments.Add(DeserializeSegment(file));
             }
 
@@ -239,7 +238,6 @@ namespace JumpAndRun.GameLogic
         /// <returns>Liste der ausgewählten Segemente</returns>
         private List<LevelSegment> ChooseRandomSegments(JumpAndRun.Difficulty difficulty, int lengthInSeconds, double speed)
         {
-            Console.WriteLine("new Random Distribution");
             double currentLength = 0; // in meter
 
             int minDifficulty = AllAvailableSegments.Min(e => e.Severity); // einfachste vorhandene Schwierigkeit
