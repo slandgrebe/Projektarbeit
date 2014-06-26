@@ -224,6 +224,12 @@ namespace JumpAndRun.Item
             Id = 0;
         }
 
+        public bool Highlight(float r, float g, float b, float a)
+        {
+            if (!View.Model.HighlightColor(this.Id, r, g, b, a)) return false;
+            return View.Model.IsHighlighted(this.Id, true);
+        }
+
         /// <summary>
         /// Destruktor der Klasse. Entfernt das Modell aus der Ausgabe.
         /// </summary>

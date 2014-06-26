@@ -166,6 +166,12 @@ namespace JumpAndRun.Item
                         player.Colided.Add(Model.Id);
                         PlaySound();
                         if (dispose) Dispose();
+                        else
+                        {
+                            // hervorheben
+                            this.Model.Highlight(1f, 0, 0, 1f);
+                        }
+
                         Model.CollisionGroup(0);
                         return true;
                     }
