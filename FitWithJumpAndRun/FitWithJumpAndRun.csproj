@@ -86,6 +86,9 @@
     <Compile Include="Sound\Sound.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="data\background\ladebildschirm.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="data\levels\jungle\models\cocosnut.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -138,6 +141,9 @@
     <None Include="ClassDiagram1.cd" />
     <Content Include="data\fonts\SUPERTIK.TTF">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\fonts\JAPAB.TTF">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <None Include="data\models\banana\banana.3ds">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

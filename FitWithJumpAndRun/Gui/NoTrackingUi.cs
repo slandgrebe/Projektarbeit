@@ -48,16 +48,16 @@ namespace JumpAndRun.Gui
             //Camera.PositionCamera(0, 0, 0);
             
             // Text erzeugen
-            text = new JumpAndRun.Gui.Elements.Text("data/fonts/arial.ttf");
+            text = new JumpAndRun.Gui.Elements.Text();
             text.setText("Ich kann im Moment keine Person erkennen.");
-            text.Size(60);
+            text.Size(40);
             //text.Color(0.502f, 0.082f, 0.082f, 1f);
             text.Position(0f, 0f);
 
-            hint = new JumpAndRun.Gui.Elements.Text("data/fonts/arial.ttf");
+            hint = new JumpAndRun.Gui.Elements.Text();
             hint.setText("Stell dich etwa 3-5m vor der Kinect hin");
-            hint.Size(60);
-            hint.Color(0.502f, 0.082f, 0.082f, 1f);
+            hint.Size(40);
+            //hint.Color(0.502f, 0.082f, 0.082f, 1f);
             hint.Position(0f, -0.25f);
 
             // GUI nicht anzeigen

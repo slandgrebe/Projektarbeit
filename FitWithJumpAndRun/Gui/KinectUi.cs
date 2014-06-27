@@ -34,7 +34,7 @@ namespace JumpAndRun.Gui
         /// </summary>
         private KinectUi()
         {
-            text = new JumpAndRun.Gui.Elements.Text("data/fonts/arial.ttf");
+            text = new JumpAndRun.Gui.Elements.Text();
             text.setText("Kinect wird gestartet");
             text.Size(50);
         }

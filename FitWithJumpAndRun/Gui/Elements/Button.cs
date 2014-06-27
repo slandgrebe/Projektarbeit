@@ -50,7 +50,7 @@ namespace JumpAndRun.Gui.Elements
         /// Konstruktor
         /// </summary>
         /// <param name="fontFilename">zu verwendende Schriftart</param>
-        public Button(string fontFilename)
+        public Button(string fontFilename = "data/fonts/JAPAB.TTF")
         {
             int buttonTextSize = 40;
             float buttonTextR = 0f, buttonTextG = 0f, buttonTextB = 0f, buttonTextA = 1f;

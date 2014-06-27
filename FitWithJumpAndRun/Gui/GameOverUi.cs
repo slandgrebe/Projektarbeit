@@ -53,12 +53,12 @@ namespace JumpAndRun.Gui
             background.Scale(2, 2);
 
             // Text erzeugen
-            text = new JumpAndRun.Gui.Elements.Text("data/fonts/arial.ttf");
+            text = new JumpAndRun.Gui.Elements.Text();
             text.setText("Game over!");
             text.Position(0, 0.5f);
 
             // Button erzeugen
-            button = new Gui.Elements.Button("data/fonts/arial.ttf");
+            button = new Gui.Elements.Button();
             button.Text("Nochmal");
             button.ClickEvent += new Gui.Elements.Button.Clicked(ButtonClicked);
             

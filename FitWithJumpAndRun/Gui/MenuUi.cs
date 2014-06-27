@@ -63,35 +63,35 @@ namespace JumpAndRun.Gui
             background.Position(0, 0, -0.8f);
 
             // Titel
-            title = new JumpAndRun.Gui.Elements.Text("data/fonts/SUPERTIK.TTF");
-            title.setText("Wie anspruchsvoll darfs denn sein");
-            title.Size(72);
+            title = new JumpAndRun.Gui.Elements.Text();
+            title.setText("Wie anspruchsvoll darfs denn sein?");
+            title.Size(50);
             title.Position(0f, 0.8f);
 
             // Buttons
-            buttonEasy = new Gui.Elements.Button("data/fonts/arial.ttf");
+            buttonEasy = new Gui.Elements.Button();
             buttonEasy.Text("entspannt");
             buttonEasy.Position(0f, 0.3f);
             buttonEasy.ClickEvent += new Gui.Elements.Button.Clicked(ButtonEasyClicked);
 
-            buttonNormal = new Gui.Elements.Button("data/fonts/arial.ttf");
+            buttonNormal = new Gui.Elements.Button();
             buttonNormal.Text("normal");
             buttonNormal.Position(0f, 0f);
             buttonNormal.ClickEvent += new Gui.Elements.Button.Clicked(ButtonNormalClicked);
 
-            buttonDifficult = new Gui.Elements.Button("data/fonts/arial.ttf");
+            buttonDifficult = new Gui.Elements.Button();
             buttonDifficult.Text("anstrengend");
             buttonDifficult.Position(0f, -0.3f);
             buttonDifficult.ClickEvent += new Gui.Elements.Button.Clicked(ButtonDifficultClicked);
 
             // Spielname
-            gameName = new JumpAndRun.Gui.Elements.Text("data/fonts/SUPERTIK.TTF");
+            gameName = new JumpAndRun.Gui.Elements.Text();
             gameName.setText("Dschungel Fitness");
             gameName.Size(72);
             gameName.Position(0f, -0.7f);
 
-            slogan = new JumpAndRun.Gui.Elements.Text("data/fonts/SUPERTIK.TTF");
-            slogan.setText("spielend fit werden");
+            slogan = new JumpAndRun.Gui.Elements.Text();
+            slogan.setText("- spielend fit werden");
             slogan.Size(44);
             slogan.Position(0.2f, -0.9f);
 

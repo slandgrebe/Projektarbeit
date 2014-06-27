@@ -39,14 +39,19 @@ namespace JumpAndRun.Gui
         private LoadingUi()
         {
             // Hintergrund erzeugen
-            background = new JumpAndRun.Gui.Elements.Point("data/background/white.jpg");
+            /*background = new JumpAndRun.Gui.Elements.Point("data/background/white.jpg");
             background.Position(0, 0, -0.8f);
-            background.Scale(2, 2);
+            background.Scale(2, 2);*/
+            // Hintergrund
+            background = new JumpAndRun.Gui.Elements.Point("data/background/ladebildschirm.png");
+            background.Position(0, 0, -0.55f);
 
             // Text erzeugen
-            text = new JumpAndRun.Gui.Elements.Text("data/fonts/arial.ttf");
-            text.setText("Level wird geladen");
-            text.Size(50);
+            text = new JumpAndRun.Gui.Elements.Text();
+            text.setText("Dschungel Trainer wird geladen");
+            text.Size(40);
+            text.Position(0f, -0.7f);
+            text.Color(0.84f, 0.59f, 0.11f, 1f);
 
             // GUI nicht anzeigen
             Hide();

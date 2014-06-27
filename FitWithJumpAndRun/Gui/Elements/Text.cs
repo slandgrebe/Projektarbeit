@@ -31,7 +31,7 @@ namespace JumpAndRun.Gui.Elements
         /// Konstruktor
         /// </summary>
         /// <param name="fontFilename">zu verwendende Schriftart</param>
-        public Text(string fontFilename)
+        public Text(string fontFilename = "data/fonts/JAPAB.TTF")
         {
             modelId = View.Text.AddText(fontFilename);
 
@@ -39,7 +39,7 @@ namespace JumpAndRun.Gui.Elements
             View.Text.String(modelId, "Text");
             View.Text.TextSize(modelId, 36);
             View.Text.Position(modelId, x, y, 0f);
-            View.Text.TextColor(modelId, 0.502f, 0.082f, 0.082f, 1f);
+            View.Text.TextColor(modelId, 0.784f, 0.125f, 0.125f, 1f);
             IsVisible = false;
         }
 

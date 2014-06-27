@@ -42,13 +42,13 @@ namespace JumpAndRun.Gui
         private GameUi()
         {
             // Texte erzeugen
-            life = new JumpAndRun.Gui.Elements.Text("data/fonts/arial.ttf");
-            life.Size(52);
-            life.Position(-0.8f, 0.8f);
+            life = new JumpAndRun.Gui.Elements.Text();
+            life.Size(40);
+            life.Position(-0.7f, 0.8f);
 
-            score = new JumpAndRun.Gui.Elements.Text("data/fonts/arial.ttf");
-            score.Size(52);
-            score.Position(0.8f, 0.8f);
+            score = new JumpAndRun.Gui.Elements.Text();
+            score.Size(40);
+            score.Position(0.7f, 0.8f);
 
             // GUI nicht anzeigen
             Hide();
