@@ -82,9 +82,10 @@ namespace JumpAndRun.Sound
                 {
                     state = SoundState.Play;
 
-            audio.URL = FilePath;
-            audio.controls.play();
-        }
+                    audio.URL = FilePath;
+                    audio.controls.play();
+                    System.Console.WriteLine("audio: " + audio.currentMedia.name);
+                }
             }
             catch (System.Runtime.InteropServices.COMException e)
             {

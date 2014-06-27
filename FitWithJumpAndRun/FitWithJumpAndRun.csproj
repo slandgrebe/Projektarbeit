@@ -442,6 +442,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="data\levels\jungle\segments\backup\" />
+    <Folder Include="data\sound\menu\background\backup\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
