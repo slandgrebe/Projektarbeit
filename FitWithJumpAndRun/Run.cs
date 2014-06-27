@@ -51,9 +51,20 @@ namespace JumpAndRun
 
         private bool Initialize()
         {
+            Program.Log("Run Initialize");
+            
             // Fenster öffnen
-            if (!Window.Init("Dschungel Trainer", false, 1280, 800))
-            //if (!Window.Init("Dschungel Trainer", true, 0, 0))
+            bool fullscreen = true;
+            uint windowWidth = 0;
+            uint windowHeight = 0;
+            // fenstermodus im debugmodus
+            if (Program.state == Program.State.Debug)
+            {
+                fullscreen = false;
+                windowWidth = 1280;
+                windowHeight = 800;
+            }
+            if (!Window.Init("Dschungel Trainer", fullscreen, windowWidth, windowHeight))
             {
                 System.Windows.Forms.MessageBox.Show("Leider kann das Spiel auf deinem Computer nicht gestartet werden. Wahrscheinlich ist die Grafikkarte zu alt.");
                 return false;
