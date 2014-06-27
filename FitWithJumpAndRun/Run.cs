@@ -31,6 +31,8 @@ namespace JumpAndRun
 
         private Difficulty difficulty = Difficulty.NotSelected;
 
+        private bool ButtonTutorialCompleted = false;
+
         private Sound.Sound backgroundSound = null;
 
         /// <summary>
@@ -109,16 +111,18 @@ namespace JumpAndRun
                 // senkt die CPU Auslastung drastisch
                 System.Threading.Thread.Sleep(1);
 
-                /*// Kinect überprüfen
+                // Kinect überprüfen
                 if (!CheckKinect()) continue;
                 // Überprüfen ob eine Person erkannt wird
                 else if (!CheckPersonTracking()) continue;
                 // Programm mit Geste beenden
                 else if (GestureClose.IsTrue()) break;
+                // Button Tutorial
+                else if (!CheckButtonTutorial()) continue;
                 // Schwierigkeitsgrad wählen
                 else if (!CheckDifficultySelection()) continue;
                 // spiel laden
-                else*/ if (!CheckGameLoading()) continue;
+                /*else if (!CheckGameLoading()) continue;
                 // spielen
                 else if (!CheckGaming()) continue;
                 // spiel beendet
@@ -127,18 +131,21 @@ namespace JumpAndRun
                 else
                 {
                     Console.WriteLine("ungueltiger Zustand.");
-                }
+                }*/
             }
 
             // Fenster schliessen
             Window.Close();
         }
 
+        
+
         // Alle GUIs ausblenden
         private void HideAllGuis()
         {
             KinectUi.Instance.Hide();
             NoTrackingUi.Instance.Hide();
+            ButtonTutorialUi.Instance.Hide();
             MenuUi.Instance.Hide();
             LoadingUi.Instance.Hide();
             GameUi.Instance.Hide();
@@ -201,6 +208,26 @@ namespace JumpAndRun
 
             // Kinect ist angeschlossen und Person erkannt: Cursors updaten
             JumpAndRun.Gui.Elements.Cursor.Instance.UpdateCursor();
+
+            return true;
+        }
+
+        // Überprüft ob das Button Tutorial abgeschlossen wurde
+        private bool CheckButtonTutorial()
+        {
+            if (ButtonTutorialCompleted == false)
+            {
+                if (modus != Modus.ButtonTutorial)
+                {
+                    modus = Modus.ButtonTutorial;
+                    Body.Instance.Scale(1f); // warum ist das nötig?
+                    HideAllGuis();
+                    ButtonTutorialUi.Instance.Show();
+                    backgroundSound.Play();
+                }
+
+                return false;
+            }
 
             return true;
         }

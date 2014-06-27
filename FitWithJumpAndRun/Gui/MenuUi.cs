@@ -69,7 +69,7 @@ namespace JumpAndRun.Gui
             title.Position(0f, 0.8f);
 
             // Buttons
-            buttonEasy = new Gui.Elements.Button();
+            buttonEasy = new Gui.Elements.Button("data/fonts/arial.ttf");
             buttonEasy.Text("entspannt");
             buttonEasy.Position(0f, 0.3f);
             buttonEasy.ClickEvent += new Gui.Elements.Button.Clicked(ButtonEasyClicked);
@@ -169,7 +169,7 @@ namespace JumpAndRun.Gui
 
         private void CursorMove(float x, float y) // nur zum testen
         {
-            //buttonEasy.Text(truncate(x, 3) + "/" + truncate(y, 3));
+            buttonEasy.Text(truncate(x, 1) + "/" + truncate(y, 1));
         }
 
         private float truncate(float value, int digits) // nur zum testen

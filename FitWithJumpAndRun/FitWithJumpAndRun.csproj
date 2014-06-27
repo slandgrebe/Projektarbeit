@@ -66,6 +66,7 @@
     <Compile Include="Gui\Elements\Cursor.cs" />
     <Compile Include="Gui\Elements\Point.cs" />
     <Compile Include="Gui\Elements\Text.cs" />
+    <Compile Include="Gui\ButtonTutorialUi.cs" />
     <Compile Include="Gui\KinectUi.cs" />
     <Compile Include="Item\Object.cs" />
     <Compile Include="Gesture\Click.cs" />

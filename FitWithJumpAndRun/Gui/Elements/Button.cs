@@ -146,12 +146,18 @@ namespace JumpAndRun.Gui.Elements
         /// <param name="cursorY">Cursor y Koordinate</param>
         public void CursorMoved(float cursorX, float cursorY)
         {
+            // 0.5
             float width = scaleX;
+            // 0 - 0.5 / 2 = -0.25
             float xMin = x - width / 2;
+            // 0 + 0.5 / 2 = 0.25
             float xMax = x + width / 2;
 
+            // 0.25
             float height = scaleY;
+            // 0 - 0.25 / 2 = -0.125
             float yMin = y - height / 2;
+            // 0 + 0.25 / 2 = 0.125
             float yMax = y + height / 2;
 
             if ((cursorX > xMin && cursorX < xMax) && (cursorY > yMin && cursorY < yMax))
@@ -179,7 +185,10 @@ namespace JumpAndRun.Gui.Elements
         {
             if (IsHovered && IsVisible)
             {
-                ClickEvent();
+                if (ClickEvent != null)
+                {
+                    ClickEvent();
+                }
                 clickSound.Play();
             }
         }
