@@ -5,7 +5,7 @@
   <obstacles>
     <Object>
       <ModelXmlPath>data/levels/jungle/models/limb.xml</ModelXmlPath>
-      <Scale>1</Scale>
+      <Scale>0.8</Scale>
       <PosX>-2</PosX>
       <PosY>1</PosY>
       <PosZ>5</PosZ>
