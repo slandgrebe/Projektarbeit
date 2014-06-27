@@ -117,13 +117,13 @@
     <Content Include="data\levels\jungle\segments\duckenUndWinken.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="data\levels\jungle\segments\allobjects.xml">
+    <Content Include="data\levels\jungle\segments\backup\allobjects.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="data\levels\jungle\segments\slalom.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="data\levels\jungle\segments\segmentTest.xml">
+    <Content Include="data\levels\jungle\segments\backup\segmentTest.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="data\levels\jungle\segments\segment2.xml">
@@ -441,7 +441,6 @@
     </COMReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="data\levels\jungle\segments\backup\" />
     <Folder Include="data\sound\menu\background\backup\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

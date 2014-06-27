@@ -69,7 +69,7 @@ namespace JumpAndRun.Gui
             title.Position(0f, 0.8f);
 
             // Buttons
-            buttonEasy = new Gui.Elements.Button("data/fonts/arial.ttf");
+            buttonEasy = new Gui.Elements.Button();
             buttonEasy.Text("entspannt");
             buttonEasy.Position(0f, 0.3f);
             buttonEasy.ClickEvent += new Gui.Elements.Button.Clicked(ButtonEasyClicked);
@@ -96,7 +96,7 @@ namespace JumpAndRun.Gui
             slogan.Position(0.2f, -0.9f);
 
             // Cursor
-            JumpAndRun.Gui.Elements.Cursor.Instance.MoveEvent += new JumpAndRun.Gui.Elements.Cursor.Move(CursorMove); // nur zum testen
+            //JumpAndRun.Gui.Elements.Cursor.Instance.MoveEvent += new JumpAndRun.Gui.Elements.Cursor.Move(CursorMove); // nur zum testen
 
             // GUI nicht anzeigen
             Hide();
