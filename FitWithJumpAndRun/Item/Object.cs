@@ -16,13 +16,9 @@ namespace JumpAndRun.Item
         /// <summary>XML Pfad zum Objekt</summary>
         public string ModelXmlPath {get; set; }
 
-        /// <summary>
-        /// Rotationsachse: x, y, z
-        /// </summary>
+        /// <summary>Rotationsachse: x, y, z</summary>
         public float[] RotationAxis { get; set; }
-        /// <summary>
-        /// Rotationswinkel in Grad
-        /// </summary>
+        /// <summary>Rotationswinkel in Grad</summary>
         public float RotationAngle { get; set; }
 
         /// <summary>Skalierung des Objekts</summary>
@@ -33,23 +29,11 @@ namespace JumpAndRun.Item
         public float PosY { get; set; }
         /// <summary>Positionierung Z Koordinate des Objekts</summary>
         public float PosZ { get; set; }
-        /// <summary>
-        /// An Kamera anhängen
-        /// </summary>
-        /// <param name="choice"></param>
-        /// <returns></returns>
-        public bool AttachItToCamera(bool choice) 
-        {
-            return this.Model.AttachToCamera(choice);
-        }
-        /// <summary>
-        /// nur für deserializer
-        /// </summary>
+        /// <summary>An Kamera anhängen</summary>
         public bool AttachToCamera { get; set; }
-
         /// <summary>Schwiergikeitsgrad des Objektes</summary>
         public int Severity { get; set; }
-        /// <summary>Beinhaltet das head</summary>
+        /// <summary>Beinhaltet das Modell</summary>
         public Model Model { get; set; }
         /// <summary>Soundobjekt</summary>
         private Sound.Sound SoundCollision = new Sound.Sound();
@@ -141,7 +125,7 @@ namespace JumpAndRun.Item
         /// </summary>
         /// <param name="player">Spielfigur</param>
         /// <param name="dispose">Modell soll nach der Kollision gelöscht werden</param>
-        /// <returns></returns>
+        /// <returns>Kollidiert Ja/Nein</returns>
         public bool Collision(JumpAndRun.GameLogic.Player player, bool dispose)
         {
             // COLLISION DETECTION
@@ -200,11 +184,6 @@ namespace JumpAndRun.Item
         public void Dispose()
         {
             Model.Dispose();
-        }
-
-        public bool Visibility(bool choice)
-        {
-            return this.Model.Visibility(choice);
         }
     }
 }

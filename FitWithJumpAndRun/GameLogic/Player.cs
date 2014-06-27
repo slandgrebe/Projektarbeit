@@ -201,7 +201,7 @@ namespace JumpAndRun.GameLogic
             if (!ThighlegRight.AttachToCamera(Attach)) return false;
             if (!LowerlegLeft.AttachToCamera(Attach)) return false;
             if (!LowerlegRight.AttachToCamera(Attach)) return false;
-            if (!Wagon.AttachItToCamera(Attach)) return false;
+            if (!Wagon.Model.AttachToCamera(Attach)) return false;
             return true;
         }
 
@@ -222,7 +222,7 @@ namespace JumpAndRun.GameLogic
             if (!ThighlegRight.Visibility(visible)) return false;
             if (!LowerlegLeft.Visibility(visible)) return false;
             if (!LowerlegRight.Visibility(visible)) return false;
-            if (!Wagon.Visibility(visible)) return false;
+            if (!Wagon.Model.Visibility(visible)) return false;
             return true;
         }
     }

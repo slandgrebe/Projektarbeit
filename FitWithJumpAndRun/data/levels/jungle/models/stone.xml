@@ -1,9 +1,8 @@
 <?xml version="1.0"?>
 <Model xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <Path>data/models/liana/liana.3ds</Path>
-  <CollisionPath>data/models/liana/liana_collision.3ds</CollisionPath>
-  <ScalingNormalized>false</ScalingNormalized>
+  <Path>data/models/stone/stone.3ds</Path>
+  <ScalingNormalized>true</ScalingNormalized>
   <Sound>data/sound/model/obstacle.wav</Sound>
   <SoundVolume>100</SoundVolume>
-  <Severity>2</Severity>
+  <Severity>1</Severity>
 </Model>
