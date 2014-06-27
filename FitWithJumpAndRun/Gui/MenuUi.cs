@@ -13,7 +13,7 @@ namespace JumpAndRun.Gui
     public class MenuUi
     {
         private static MenuUi instance = null;
-        /// <summary>ID des Hintergrundbildes</summary>
+        /// <summary>Hintergrundbild</summary>
         private JumpAndRun.Gui.Elements.Point background = null;
 
         /// <summary>ID des Cursors</summary>
@@ -59,7 +59,7 @@ namespace JumpAndRun.Gui
         private MenuUi()
         {
             // Hintergrund
-            background = new JumpAndRun.Gui.Elements.Point("data/background/dschungel.png");
+            background = new JumpAndRun.Gui.Elements.Point("data/background/farn.jpg");
             background.Position(0, 0, -0.8f);
 
             // Titel

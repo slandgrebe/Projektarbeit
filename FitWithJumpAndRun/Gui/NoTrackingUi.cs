@@ -42,7 +42,7 @@ namespace JumpAndRun.Gui
         private NoTrackingUi()
         {            
             // Hintergrund erzeugen
-            background = new JumpAndRun.Gui.Elements.Point("data/background/dschungel.png");
+            background = new JumpAndRun.Gui.Elements.Point("data/background/farn.jpg");
             background.Position(0, 0, -0.8f);
 
             //Camera.PositionCamera(0, 0, 0);

@@ -86,6 +86,12 @@
     <Compile Include="Sound\Sound.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="data\background\farn.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\background\hintergrund.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="data\background\ladebildschirm.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -149,16 +155,19 @@
     <Content Include="data\models\stone\Stone_Te.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="data\sound\button\click.mp3">
+    <Content Include="data\sound\menu\background\Background Birds And Insects Of The Rainforest.mp3">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="data\sound\button\hover.mp3">
+    <Content Include="data\sound\menu\background\Daytime Bird Calls And Chatter In The Jungle.mp3">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="data\sound\menu\background\rainforest_ambience-GlorySunz-1938133500.mp3">
+    <Content Include="data\sound\menu\background\Nightfall Ambience In Central American Jungle.mp3">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="data\sound\menu\background\Tree Frogs And Birds-SoundBible.com-225368035.mp3">
+    <Content Include="data\sound\menu\button\click.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\sound\menu\button\hover.mp3">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="data\sound\model\collect.wav">

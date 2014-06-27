@@ -77,9 +77,9 @@ namespace JumpAndRun.Gui.Elements
 
             // sound
             clickSound = new Sound.Sound();
-            clickSound.FilePath = "data/sound/button/click.mp3";
+            clickSound.FilePath = "data/sound/menu/button/click.mp3";
             hoverSound = new Sound.Sound();
-            hoverSound.FilePath = "data/sound/button/hover.mp3";
+            hoverSound.FilePath = "data/sound/menu/button/hover.mp3";
         }
         /// <summary>
         /// Position setzen
