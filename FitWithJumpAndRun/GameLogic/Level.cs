@@ -242,6 +242,13 @@ namespace JumpAndRun.GameLogic
             // Start hinzufügen
             randomList.Add(startSegment);
 
+            // Debug Log
+            Program.Log("Liste vor dem mischeln:");
+            foreach (LevelSegment s in segments)
+            {
+                Program.Log(" " + s.FilePath);
+            }
+
             // Segmente aus der übergebenen Liste zufällig auswählen
             while (segments.Count > 0)
             {
@@ -252,6 +259,14 @@ namespace JumpAndRun.GameLogic
 
             // Ende hinzufügen
             randomList.Add(endSegment);
+
+            // Debug Log
+            Program.Log("Liste nach dem mischeln:");
+            foreach (LevelSegment s in segments)
+            {
+                Program.Log(" " + s.FilePath);
+            }
+            Program.Log("*************************************");
 
             return randomList;
         }
@@ -314,6 +329,7 @@ namespace JumpAndRun.GameLogic
                 }     
             }
 
+            // Debug Log
             Program.Log("****************************************************");
             Program.Log("Level wird zufaellig erstellt.");
             Program.Log("  Schwierigkeitsgrad: " + difficulty.ToString());
