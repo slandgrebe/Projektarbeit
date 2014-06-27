@@ -13,6 +13,8 @@ namespace JumpAndRun.Gui
     {
         private static KinectUi instance = null;
         private JumpAndRun.Gui.Elements.Text text = null;
+        /// <summary>Hintergrundbild</summary>
+        private JumpAndRun.Gui.Elements.Point background = null;
 
         /// <summary>
         /// Singleton
@@ -34,9 +36,13 @@ namespace JumpAndRun.Gui
         /// </summary>
         private KinectUi()
         {
+            background = new JumpAndRun.Gui.Elements.Point("data/background/farn.jpg");
+            background.Position(0, 0, -0.8f);
+
             text = new JumpAndRun.Gui.Elements.Text();
             text.setText("Kinect wird gestartet");
-            text.Size(50);
+            text.Size(60);
+            text.Color(0.784f, 0.125f, 0.125f, 1f); // rot
         }
 
         /// <summary>
@@ -44,6 +50,7 @@ namespace JumpAndRun.Gui
         /// </summary>
         public void Show()
         {
+            background.Show();
             text.Show();
         }
 
@@ -52,6 +59,7 @@ namespace JumpAndRun.Gui
         /// </summary>
         public void Hide()
         {
+            background.Hide();
             text.Hide();
         }
 

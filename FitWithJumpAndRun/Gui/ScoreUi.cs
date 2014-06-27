@@ -57,8 +57,8 @@ namespace JumpAndRun.Gui
             Score = 0;
 
             // Hintergrund erzeugen
-            background = new JumpAndRun.Gui.Elements.Point("data/background/white.jpg");
-            background.Scale(2, 2);
+            background = new JumpAndRun.Gui.Elements.Point("data/background/hintergrund.png");
+            background.Position(0, 0, -0.55f);
 
             // Text erzeugen
             text = new JumpAndRun.Gui.Elements.Text();

@@ -5,16 +5,22 @@
   <obstacles>
     <Object>
       <ModelXmlPath>data/levels/jungle/models/limb.xml</ModelXmlPath>
-      <Scale>1</Scale>
-      <PosX>2</PosX>
+      <Scale>0.8</Scale>
+      <PosX>-2</PosX>
       <PosY>1</PosY>
       <PosZ>5</PosZ>
+      <RotationAxis>
+        <float>0</float>
+        <float>1</float>
+        <float>0</float>
+      </RotationAxis>
+      <RotationAngle>180</RotationAngle>
       <AttachToCamera>false</AttachToCamera>
     </Object>
   </obstacles>
   <scores>
     <Object>
-      <ModelXmlPath>data/levels/jungle/models/banana.xml</ModelXmlPath>
+      <ModelXmlPath>data/levels/jungle/models/mango.xml</ModelXmlPath>
       <Scale>0.3</Scale>
       <PosX>0</PosX>
       <PosY>1</PosY>

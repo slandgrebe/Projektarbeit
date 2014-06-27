@@ -79,6 +79,8 @@ namespace JumpAndRun.GameLogic
         /// <returns>Prüfung ob die Operation durchgeführt werden konnte</returns>
         public bool Load(JumpAndRun.Difficulty difficulty)
         {
+            Program.Log("Load Level: " + this.Name);
+            
             // min. 1 Segment muss vorhanden sein
             if (AllAvailableSegments.Count < 1 || SegmentsStartEnd.Count < 2)
             {
@@ -151,6 +153,8 @@ namespace JumpAndRun.GameLogic
             {
                 s.Visibility(false);
             }
+
+            Program.Log("Segment Exited at Position " + currentPosition + ": " + segment.FilePath);
         }
 
         /// <summary>
@@ -169,6 +173,8 @@ namespace JumpAndRun.GameLogic
             {
                 s.Visibility(true);
             }
+
+            Program.Log("Segment Entered at Position " + segment.StartPosition + ": " + segment.FilePath);
         }
 
         /// <summary>
@@ -236,6 +242,13 @@ namespace JumpAndRun.GameLogic
             // Start hinzufügen
             randomList.Add(startSegment);
 
+            // Debug Log
+            Program.Log("Liste vor dem mischeln:");
+            foreach (LevelSegment s in segments)
+            {
+                Program.Log(" " + s.FilePath);
+            }
+
             // Segmente aus der übergebenen Liste zufällig auswählen
             while (segments.Count > 0)
             {
@@ -246,6 +259,14 @@ namespace JumpAndRun.GameLogic
 
             // Ende hinzufügen
             randomList.Add(endSegment);
+
+            // Debug Log
+            Program.Log("Liste nach dem mischeln:");
+            foreach (LevelSegment s in segments)
+            {
+                Program.Log(" " + s.FilePath);
+            }
+            Program.Log("*************************************");
 
             return randomList;
         }
@@ -267,13 +288,13 @@ namespace JumpAndRun.GameLogic
             double nDifficulty = 0; // schwierigkeit auf einer Skala von min - max
             switch (difficulty)
             {
-                case JumpAndRun.Difficulty.Easy: nDifficulty = Math.Round((double)(maxDifficulty - minDifficulty) / 4) + minDifficulty; break; // 25%
-                case JumpAndRun.Difficulty.Normal: nDifficulty = Math.Round((double)(maxDifficulty - minDifficulty) / 2) + minDifficulty; break; // 50%
-                case JumpAndRun.Difficulty.Difficult: nDifficulty = Math.Round((double)(maxDifficulty - minDifficulty) / 4 * 3) + minDifficulty; break; // 75%
+                case JumpAndRun.Difficulty.Easy: nDifficulty = Math.Round((double)(maxDifficulty - minDifficulty) / 4.0) + minDifficulty; break; // 25%
+                case JumpAndRun.Difficulty.Normal: nDifficulty = Math.Round((double)(maxDifficulty - minDifficulty) / 2.0) + minDifficulty; break; // 50%
+                case JumpAndRun.Difficulty.Difficult: nDifficulty = Math.Round((double)(maxDifficulty - minDifficulty) / 4.0 * 3) + minDifficulty; break; // 75%
                 default: nDifficulty = Math.Round((double)(maxDifficulty - minDifficulty) / 2) + minDifficulty; break;
             }
 
-            double standardDeviation = (maxDifficulty - minDifficulty) / 4; // Standardabweichung
+            double standardDeviation = (maxDifficulty - minDifficulty) / 2; // Standardabweichung
             
             // bei nur einem segment...
             if (standardDeviation <= 0)
@@ -307,6 +328,19 @@ namespace JumpAndRun.GameLogic
                     break;
                 }     
             }
+
+            // Debug Log
+            Program.Log("****************************************************");
+            Program.Log("Level wird zufaellig erstellt.");
+            Program.Log("  Schwierigkeitsgrad: " + difficulty.ToString());
+            Program.Log("  Laenge: " + lengthInSeconds + "s");
+            Program.Log("  Geschwindigkeit: " + speed + "m/s \n");
+
+            Program.Log(" leichtester Abschnitt: " + minDifficulty);
+            Program.Log(" schwerster Abschnitt: " + maxDifficulty);
+            Program.Log(" angestrebter Durchschnittswert: " + nDifficulty + " Standardabweichung: " + standardDeviation);
+            Program.Log(" Durchschnittliche Schwierigkeit: " + (double)(segmentList.Sum(e => e.Severity) / (double)segmentList.Count));
+            Program.Log("****************************************************");
 
             return segmentList;
         }

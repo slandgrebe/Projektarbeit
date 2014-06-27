@@ -66,6 +66,7 @@
     <Compile Include="Gui\Elements\Cursor.cs" />
     <Compile Include="Gui\Elements\Point.cs" />
     <Compile Include="Gui\Elements\Text.cs" />
+    <Compile Include="Gui\ButtonTutorialUi.cs" />
     <Compile Include="Gui\KinectUi.cs" />
     <Compile Include="Item\Object.cs" />
     <Compile Include="Gesture\Click.cs" />
@@ -86,6 +87,12 @@
     <Compile Include="Sound\Sound.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="data\background\farn.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\background\hintergrund.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="data\background\ladebildschirm.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -107,59 +114,19 @@
     <Content Include="data\levels\jungle\models\mango.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="data\levels\jungle\segments\segment_easy_5.xml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="data\levels\jungle\segments\segment_easy_4.xml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="data\levels\jungle\segments\segment_medium_4.xml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="data\levels\jungle\segments\segment_medium_3.xml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="data\levels\jungle\segments\segment_medium_2.xml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="data\levels\jungle\segments\segment_medium_1.xml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="data\levels\jungle\segments\segment_easy_3.xml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="data\levels\jungle\segments\segment_easy_2.xml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="data\levels\jungle\segments\segment_easy_1.xml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="data\levels\jungle\segments\backup\duckenUndWinken.xml">
+    <Content Include="data\levels\jungle\segments\duckenUndWinken.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="data\levels\jungle\segments\backup\allobjects.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <SubType>Designer</SubType>
     </Content>
-    <Content Include="data\levels\jungle\segments\backup\slalom.xml">
+    <Content Include="data\levels\jungle\segments\slalom.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="data\levels\jungle\segments\backup\segmentTest.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="data\levels\jungle\segments\backup\segment2.xml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="data\levels\jungle\segments\segment_hard_1.xml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="data\levels\jungle\segments\segment_hard_2.xml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="data\levels\jungle\segments\segment_hard_3.xml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="data\levels\jungle\segments\segment_hard_4.xml">
+    <Content Include="data\levels\jungle\segments\segment2.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="data\models\cocosnut\_1.jpg">
@@ -189,16 +156,25 @@
     <Content Include="data\models\stone\Stone_Te.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="data\sound\button\click.mp3">
+    <Content Include="data\sound\game\segment\entered\start.mp3">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="data\sound\button\hover.mp3">
+    <Content Include="data\sound\game\segment\entered\success.mp3">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="data\sound\menu\background\rainforest_ambience-GlorySunz-1938133500.mp3">
+    <Content Include="data\sound\menu\background\Background Birds And Insects Of The Rainforest.mp3">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="data\sound\menu\background\Tree Frogs And Birds-SoundBible.com-225368035.mp3">
+    <Content Include="data\sound\menu\background\Daytime Bird Calls And Chatter In The Jungle.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\sound\menu\background\Nightfall Ambience In Central American Jungle.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\sound\menu\button\click.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\sound\menu\button\hover.mp3">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="data\sound\model\collect.wav">
@@ -365,7 +341,7 @@
     <Content Include="data\sound\music\background_medium.wav">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="data\levels\jungle\segments\backup\segment1.xml">
+    <Content Include="data\levels\jungle\segments\segment1.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="data\levels\jungle\start.xml">
@@ -464,7 +440,9 @@
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </COMReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="data\sound\menu\background\backup\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

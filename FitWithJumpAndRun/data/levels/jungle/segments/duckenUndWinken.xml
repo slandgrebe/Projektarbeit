@@ -5,76 +5,51 @@
   <obstacles>
     <Object>
       <ModelXmlPath>data/levels/jungle/models/limb.xml</ModelXmlPath>
-      <Scale>1</Scale>
-      <PosX>-2</PosX>
-      <PosY>3</PosY>
+      <Scale>0.7</Scale>
+      <PosX>2</PosX>
+      <PosY>2.5</PosY>
       <PosZ>1.5</PosZ>
-      <RotateHorizontal>0</RotateHorizontal>
-      <RotateVertical>90</RotateVertical>
       <AttachToCamera>false</AttachToCamera>
       <RotationAxis>
-        <float>0</float>
+        <float>1</float>
         <!-- x -->
-        <float>1</float>
+        <float>0</float>
         <!-- y -->
-        <float>1</float>
+        <float>0</float>
         <!-- z -->
       </RotationAxis>
       <RotationAngle>180</RotationAngle>
     </Object>
     <Object>
       <ModelXmlPath>data/levels/jungle/models/limb.xml</ModelXmlPath>
-      <Scale>1</Scale>
-      <PosX>-2</PosX>
-      <PosY>2.7</PosY>
+      <Scale>0.7</Scale>
+      <PosX>2</PosX>
+      <PosY>2.25</PosY>
       <PosZ>3</PosZ>
-      <RotateHorizontal>0</RotateHorizontal>
-      <RotateVertical>90</RotateVertical>
       <AttachToCamera>false</AttachToCamera>
       <RotationAxis>
-        <float>0</float>
+        <float>1</float>
         <!-- x -->
-        <float>1</float>
+        <float>0</float>
         <!-- y -->
-        <float>1</float>
+        <float>0</float>
         <!-- z -->
       </RotationAxis>
       <RotationAngle>180</RotationAngle>
     </Object>
     <Object>
       <ModelXmlPath>data/levels/jungle/models/limb.xml</ModelXmlPath>
-      <Scale>1</Scale>
-      <PosX>-2</PosX>
-      <PosY>2.3</PosY>
-      <PosZ>4.5</PosZ>
-      <RotateHorizontal>0</RotateHorizontal>
-      <RotateVertical>90</RotateVertical>
-      <AttachToCamera>false</AttachToCamera>
-      <RotationAxis>
-        <float>0</float>
-        <!-- x -->
-        <float>1</float>
-        <!-- y -->
-        <float>1</float>
-        <!-- z -->
-      </RotationAxis>
-      <RotationAngle>180</RotationAngle>
-    </Object>
-    <Object>
-      <ModelXmlPath>data/levels/jungle/models/limb.xml</ModelXmlPath>
-      <Scale>1</Scale>
-      <PosX>-2</PosX>
+      <Scale>0.7</Scale>
+      <PosX>2</PosX>
       <PosY>2</PosY>
-      <PosZ>6</PosZ>
-      <RotateHorizontal>0</RotateHorizontal>
-      <RotateVertical>90</RotateVertical>
+      <PosZ>4.5</PosZ>
       <AttachToCamera>false</AttachToCamera>
       <RotationAxis>
-        <float>0</float>
+        <float>1</float>
         <!-- x -->
-        <float>1</float>
+        <float>0</float>
         <!-- y -->
-        <float>1</float>
+        <float>0</float>
         <!-- z -->
       </RotationAxis>
       <RotationAngle>180</RotationAngle>
@@ -84,7 +59,15 @@
     <Object>
       <ModelXmlPath>data/levels/jungle/models/cocosnut.xml</ModelXmlPath>
       <Scale>1</Scale>
-      <PosX>0</PosX>
+      <PosX>0.5</PosX>
+      <PosY>1</PosY>
+      <PosZ>2.5</PosZ>
+      <AttachToCamera>false</AttachToCamera>
+    </Object>
+    <Object>
+      <ModelXmlPath>data/levels/jungle/models/cocosnut.xml</ModelXmlPath>
+      <Scale>1</Scale>
+      <PosX>-0.25</PosX>
       <PosY>2</PosY>
       <PosZ>9</PosZ>
       <AttachToCamera>false</AttachToCamera>

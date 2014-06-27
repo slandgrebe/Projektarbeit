@@ -15,7 +15,7 @@ namespace JumpAndRun.GameLogic
     {
         private static Player instance = null;
         /// <summary>Skalierungsgrad der Spielfigur als Ganzes</summary>
-        public float Scale { private get; set; }
+        public float Scale { get; set; }
         /// <summary>Spielfigur der Kamera anhängen</summary>
         public bool Attach { private get; set; }
         /// <summary>Aktuell noch verfügbare Leben der Spielfigur</summary>

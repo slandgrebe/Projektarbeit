@@ -39,7 +39,10 @@ namespace JumpAndRun.Gui.Elements
             View.Text.String(modelId, "Text");
             View.Text.TextSize(modelId, 36);
             View.Text.Position(modelId, x, y, 0f);
-            View.Text.TextColor(modelId, 0.784f, 0.125f, 0.125f, 1f);
+            //View.Text.TextColor(modelId, 0.784f, 0.125f, 0.125f, 1f); // rot
+            View.Text.TextColor(modelId, 0.796f, 0.624f, 0.157f, 1f); // kaki
+
+
             IsVisible = false;
         }
 

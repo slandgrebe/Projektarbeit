@@ -13,6 +13,7 @@ namespace JumpAndRun
     {
         KinectMissing = 0,
         NotTracked,
+        ButtonTutorial,
         Menu,
         Loading,
         Play,

@@ -13,7 +13,7 @@ namespace JumpAndRun.Gui
     public class MenuUi
     {
         private static MenuUi instance = null;
-        /// <summary>ID des Hintergrundbildes</summary>
+        /// <summary>Hintergrundbild</summary>
         private JumpAndRun.Gui.Elements.Point background = null;
 
         /// <summary>ID des Cursors</summary>
@@ -59,8 +59,8 @@ namespace JumpAndRun.Gui
         private MenuUi()
         {
             // Hintergrund
-            background = new JumpAndRun.Gui.Elements.Point("data/background/dschungel.png");
-            background.Position(0, 0, -0.8f);
+            background = new JumpAndRun.Gui.Elements.Point("data/background/hintergrund.png");
+            background.Position(0, 0, -0.55f);
 
             // Titel
             title = new JumpAndRun.Gui.Elements.Text();
@@ -96,7 +96,7 @@ namespace JumpAndRun.Gui
             slogan.Position(0.2f, -0.9f);
 
             // Cursor
-            JumpAndRun.Gui.Elements.Cursor.Instance.MoveEvent += new JumpAndRun.Gui.Elements.Cursor.Move(CursorMove); // nur zum testen
+            //JumpAndRun.Gui.Elements.Cursor.Instance.MoveEvent += new JumpAndRun.Gui.Elements.Cursor.Move(CursorMove); // nur zum testen
 
             // GUI nicht anzeigen
             Hide();
@@ -107,7 +107,6 @@ namespace JumpAndRun.Gui
         /// </summary>
         public void ButtonEasyClicked()
         {
-            Console.WriteLine("easy");
             DifficultySelectedEvent(JumpAndRun.Difficulty.Easy);
         }
         /// <summary>
@@ -115,7 +114,6 @@ namespace JumpAndRun.Gui
         /// </summary>
         public void ButtonNormalClicked()
         {
-            Console.WriteLine("normal");
             DifficultySelectedEvent(JumpAndRun.Difficulty.Normal);
         }
         /// <summary>
@@ -123,7 +121,6 @@ namespace JumpAndRun.Gui
         /// </summary>
         public void ButtonDifficultClicked()
         {
-            Console.WriteLine("difficult");
             DifficultySelectedEvent(JumpAndRun.Difficulty.Difficult);
         }
 
@@ -172,7 +169,7 @@ namespace JumpAndRun.Gui
 
         private void CursorMove(float x, float y) // nur zum testen
         {
-            //buttonEasy.Text(truncate(x, 3) + "/" + truncate(y, 3));
+            buttonEasy.Text(truncate(x, 1) + "/" + truncate(y, 1));
         }
 
         private float truncate(float value, int digits) // nur zum testen

@@ -22,7 +22,7 @@ namespace JumpAndRun.Gui.Elements
         /// </summary>
         public float Y { get; private set; }
 
-        private float z = -0.4f; // diesen wert nicht ändern!
+        private float z = -0.2f; // diesen wert nicht ändern!
 
         private float clickZCached = 0f;
         private float clickXCached = 0f;
@@ -31,6 +31,7 @@ namespace JumpAndRun.Gui.Elements
         private float clickXPotentialStart = 0f;
         private float clickYPotentialStart = 0f;
         private DateTime clickTimePotentialStart = DateTime.Now;
+        private DateTime lastClick = DateTime.Now;
 
         /// <summary>
         /// Delegate für das Cursor Bewegungs Event
@@ -73,7 +74,7 @@ namespace JumpAndRun.Gui.Elements
             Y = 0;
 
             cursor = new JumpAndRun.Gui.Elements.Point("data/models/hand/hand-stop-2.jpg");
-            cursor.Scale(0.03f, 0.05f);
+            cursor.Scale(0.01f, 0.02f);
             cursor.Position(X, Y, z);
             cursor.AttachToCamera(true);
         }
@@ -109,23 +110,24 @@ namespace JumpAndRun.Gui.Elements
         /// <param name="y">Y Koordinate</param>
         private void Position(float handX, float handY, float headX, float headY, float shoulderX, float shoulderY)
         {
-            float xMax = (shoulderX - headX) * 2;
-            float yMax = (shoulderY - headY);
+            // Eine Einheit auf der Achse
+            float xUnit = (shoulderX - headX) * 3.333f;
+            float yUnit = (headY - shoulderY) * 3.333f;
 
-            float x = handX - headX;
-            float y = headY - handY;
+            // rechte schulter ist an der position 0/0
+            float xCursor = handX - shoulderX;
+            float yCursor = handY - shoulderY;
 
-            float xRelative = x / xMax - 1;
-            float yRelative = y / yMax + 1;
+            // Kinect Koordinaten in VisualisationLibrary GUI Koordinaten umrechnen
+            X = xCursor * xUnit;
+            Y = yCursor * yUnit;
 
-            X = xRelative;
-            Y = yRelative;
+            //cursor.Position(X / 45.5f *4, Y / 45.5f *4, z);
+            float cursorAmplification = 0.1f /*/ GameLogic.Player.Instance.Scale*/;
+            cursor.Position(X * cursorAmplification, Y * cursorAmplification, z);
 
-
-            cursor.Position(X / 45.5f *4, Y / 45.5f *4, z);
-
-            MoveEvent(X, Y); // event auslösen
-            //MoveEvent(X, Y /10);
+            // event auslösen
+            MoveEvent(X, Y);
         }
 
         private void CheckClick(float handX, float handY, float handZ, float headX, float headY, float headZ, float shoulderX, float shoulderY)
@@ -144,15 +146,24 @@ namespace JumpAndRun.Gui.Elements
 
             if ((clickZCached - zRelative) > 0.05) // mehr als 5% vorwärts
             {
-                if ((clickZPotentialStart - clickZCached) > 0.4) // 50% vorwärts seit dem letzten rückwärts
+                if ((clickZPotentialStart - clickZCached) > 0.6) // 50% vorwärts seit dem letzten rückwärts
                 {
                     if (DateTime.Now.Subtract(clickTimePotentialStart).TotalSeconds < 1.0) // in unter einer sekunde ausgeführt
                     {
                         if ((Math.Abs(clickXPotentialStart - clickXCached) < 0.5) // zuviel in x-Richtung bewegt => kein absichtlicher klick
                             && (Math.Abs(clickYPotentialStart - clickYCached) < 0.5)) // zuviel in y-Richtung bewegt => kein absichtlicher klick
                         {
-                            // we did it!
-                            ClickEvent();
+                            // 1s warten zwischen Klicks
+                            if (DateTime.Now.Subtract(lastClick).TotalSeconds > 1)
+                            {
+                                lastClick = DateTime.Now;
+
+                                // we did it!
+                                if (ClickEvent != null)
+                                {
+                                    ClickEvent();
+                                }
+                            }
                         }
                     }
 
@@ -191,8 +202,7 @@ namespace JumpAndRun.Gui.Elements
         /// </summary>
         public void Show()
         {
-            cursor.Show();
-            //cursor.Position(X, Y, z);         
+            cursor.Show();  
         }
         /// <summary>
         /// Cursor verstecken
@@ -200,7 +210,6 @@ namespace JumpAndRun.Gui.Elements
         public void Hide()
         {
             cursor.Hide();
-            //cursor.Position(X, Y, 1);
         }
     }
 }

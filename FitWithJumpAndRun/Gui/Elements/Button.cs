@@ -39,6 +39,24 @@ namespace JumpAndRun.Gui.Elements
         public bool IsHovered { get; private set; }
 
         /// <summary>
+        /// Delegate für das Entered Event
+        /// </summary>
+        public delegate void Entered();
+        /// <summary>
+        /// Entered Event
+        /// </summary>
+        public event Entered EnteredEvent;
+
+        /// <summary>
+        /// Delegate für das Exited Event
+        /// </summary>
+        public delegate void Exited();
+        /// <summary>
+        /// Exited Event
+        /// </summary>
+        public event Exited ExitedEvent;
+
+        /// <summary>
         /// Delegate für das Click Event
         /// </summary>
         public delegate void Clicked();
@@ -46,6 +64,7 @@ namespace JumpAndRun.Gui.Elements
         /// ClickEvent
         /// </summary>
         public event Clicked ClickEvent;
+
         /// <summary>
         /// Konstruktor
         /// </summary>
@@ -77,9 +96,9 @@ namespace JumpAndRun.Gui.Elements
 
             // sound
             clickSound = new Sound.Sound();
-            clickSound.FilePath = "data/sound/button/click.mp3";
+            clickSound.FilePath = "data/sound/menu/button/click.mp3";
             hoverSound = new Sound.Sound();
-            hoverSound.FilePath = "data/sound/button/hover.mp3";
+            hoverSound.FilePath = "data/sound/menu/button/hover.mp3";
         }
         /// <summary>
         /// Position setzen
@@ -146,12 +165,18 @@ namespace JumpAndRun.Gui.Elements
         /// <param name="cursorY">Cursor y Koordinate</param>
         public void CursorMoved(float cursorX, float cursorY)
         {
+            // 0.5
             float width = scaleX;
+            // 0 - 0.5 / 2 = -0.25
             float xMin = x - width / 2;
+            // 0 + 0.5 / 2 = 0.25
             float xMax = x + width / 2;
 
+            // 0.25
             float height = scaleY;
+            // 0 - 0.25 / 2 = -0.125
             float yMin = y - height / 2;
+            // 0 + 0.25 / 2 = 0.125
             float yMax = y + height / 2;
 
             if ((cursorX > xMin && cursorX < xMax) && (cursorY > yMin && cursorY < yMax))
@@ -161,6 +186,12 @@ namespace JumpAndRun.Gui.Elements
                     Highlight(true);
                     IsHovered = true;
                     hoverSound.Play();
+
+                    // event auslösen
+                    if (EnteredEvent != null)
+                    {
+                        EnteredEvent();
+                    }
                 }
             }
             else
@@ -169,6 +200,12 @@ namespace JumpAndRun.Gui.Elements
                 {
                     Highlight(false);
                     IsHovered = false;
+
+                    // event auslösen
+                    if (ExitedEvent != null)
+                    {
+                        ExitedEvent();
+                    }
                 }
             }
         }
@@ -179,7 +216,10 @@ namespace JumpAndRun.Gui.Elements
         {
             if (IsHovered && IsVisible)
             {
-                ClickEvent();
+                if (ClickEvent != null)
+                {
+                    ClickEvent();
+                }
                 clickSound.Play();
             }
         }

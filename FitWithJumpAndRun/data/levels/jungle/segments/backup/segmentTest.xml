@@ -4,20 +4,18 @@
   <Severity>1</Severity>
   <obstacles>
     <Object>
-      <ModelXmlPath>data/levels/jungle/models/limb.xml</ModelXmlPath>
-      <Scale>2</Scale>
-      <PosX>2</PosX>
-      <PosY>5</PosY>
-      <PosZ>5</PosZ>
-      <RotateHorizontal>0</RotateHorizontal>
-      <RotateVertical>90</RotateVertical>
-      <AttachToCamera>false</AttachToCamera>
+      <ModelXmlPath>data/levels/jungle/models/palm.xml</ModelXmlPath>
+      <Scale>8</Scale>
+      <PosX>-1</PosX>
+      <PosY>0</PosY>
+      <PosZ>7.5</PosZ>
       <RotationAxis>
-        <float>0</float><!-- x -->
-        <float>1</float><!-- y -->
-        <float>1</float><!-- z -->
+        <float>1</float>
+        <float>0</float>
+        <float>0</float>
       </RotationAxis>
-      <RotationAngle>90</RotationAngle>
+      <RotationAngle>-90</RotationAngle>
+      <AttachToCamera>false</AttachToCamera>
     </Object>
   </obstacles>
   <scores>

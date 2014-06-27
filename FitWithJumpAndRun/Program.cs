@@ -19,6 +19,25 @@ namespace JumpAndRun
     class Program
     {
         /// <summary>
+        /// Mögliche Zustände der Applikation (Release, Debug)
+        /// </summary>
+        public enum State { Release, Debug, Trace }
+        /// <summary>
+        /// Zustand der Applikation
+        /// </summary>
+        public static State state = State.Release;
+        /// <summary>
+        /// Log Methode welche die Meldung nur dann schreibt, wenn der Debugmodus aktiviert ist
+        /// </summary>
+        /// <param name="message">zu loggende Nachricht</param>
+        public static void Log(string message) 
+        {
+            if (state == State.Debug)
+            {
+                Console.WriteLine(message);
+            }
+        }
+        /// <summary>
         /// Eintritspunkt des Programmes
         /// </summary>
         /// <param name="args">Eine Liste von Übergabeparametern.</param>
@@ -26,6 +45,21 @@ namespace JumpAndRun
         {
             try
             {
+                if (args.Length > 0)
+                {
+                    if (args[0].Equals("debug"))
+                    {
+                        Program.state = State.Debug;
+                        Log("Debug Modus aktiviert");
+                    }
+                    else if (args[0].Equals("release")) 
+                    {
+                        Program.state = State.Release;
+                        Console.WriteLine("Release Modus aktiviert");
+                        System.Windows.Forms.Cursor.Hide();
+                    }
+                }
+
                 // Programm Starten
                 Run r = Run.Instance;
             }
