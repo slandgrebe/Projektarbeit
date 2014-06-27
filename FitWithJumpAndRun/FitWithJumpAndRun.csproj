@@ -113,19 +113,19 @@
     <Content Include="data\levels\jungle\models\mango.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="data\levels\jungle\segments\backup\duckenUndWinken.xml">
+    <Content Include="data\levels\jungle\segments\duckenUndWinken.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="data\levels\jungle\segments\allobjects.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="data\levels\jungle\segments\backup\slalom.xml">
+    <Content Include="data\levels\jungle\segments\slalom.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="data\levels\jungle\segments\backup\segmentTest.xml">
+    <Content Include="data\levels\jungle\segments\segmentTest.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="data\levels\jungle\segments\backup\segment2.xml">
+    <Content Include="data\levels\jungle\segments\segment2.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="data\models\cocosnut\_1.jpg">
@@ -340,7 +340,7 @@
     <Content Include="data\sound\music\background_medium.wav">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="data\levels\jungle\segments\backup\segment1.xml">
+    <Content Include="data\levels\jungle\segments\segment1.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="data\levels\jungle\start.xml">
@@ -439,7 +439,9 @@
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </COMReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="data\levels\jungle\segments\backup\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

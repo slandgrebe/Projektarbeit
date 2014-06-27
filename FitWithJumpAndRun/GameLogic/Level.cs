@@ -273,13 +273,13 @@ namespace JumpAndRun.GameLogic
             double nDifficulty = 0; // schwierigkeit auf einer Skala von min - max
             switch (difficulty)
             {
-                case JumpAndRun.Difficulty.Easy: nDifficulty = Math.Round((double)(maxDifficulty - minDifficulty) / 4) + minDifficulty; break; // 25%
-                case JumpAndRun.Difficulty.Normal: nDifficulty = Math.Round((double)(maxDifficulty - minDifficulty) / 2) + minDifficulty; break; // 50%
-                case JumpAndRun.Difficulty.Difficult: nDifficulty = Math.Round((double)(maxDifficulty - minDifficulty) / 4 * 3) + minDifficulty; break; // 75%
+                case JumpAndRun.Difficulty.Easy: nDifficulty = Math.Round((double)(maxDifficulty - minDifficulty) / 4.0) + minDifficulty; break; // 25%
+                case JumpAndRun.Difficulty.Normal: nDifficulty = Math.Round((double)(maxDifficulty - minDifficulty) / 2.0) + minDifficulty; break; // 50%
+                case JumpAndRun.Difficulty.Difficult: nDifficulty = Math.Round((double)(maxDifficulty - minDifficulty) / 4.0 * 3) + minDifficulty; break; // 75%
                 default: nDifficulty = Math.Round((double)(maxDifficulty - minDifficulty) / 2) + minDifficulty; break;
             }
 
-            double standardDeviation = (maxDifficulty - minDifficulty) / 4; // Standardabweichung
+            double standardDeviation = (maxDifficulty - minDifficulty) / 2; // Standardabweichung
             
             // bei nur einem segment...
             if (standardDeviation <= 0)
@@ -313,6 +313,18 @@ namespace JumpAndRun.GameLogic
                     break;
                 }     
             }
+
+            Program.Log("****************************************************");
+            Program.Log("Level wird zufaellig erstellt.");
+            Program.Log("  Schwierigkeitsgrad: " + difficulty.ToString());
+            Program.Log("  Laenge: " + lengthInSeconds + "s");
+            Program.Log("  Geschwindigkeit: " + speed + "m/s \n");
+
+            Program.Log(" leichtester Abschnitt: " + minDifficulty);
+            Program.Log(" schwerster Abschnitt: " + maxDifficulty);
+            Program.Log(" angestrebter Durchschnittswert: " + nDifficulty + " Standardabweichung: " + standardDeviation);
+            Program.Log(" Durchschnittliche Schwierigkeit: " + (double)(segmentList.Sum(e => e.Severity) / (double)segmentList.Count));
+            Program.Log("****************************************************");
 
             return segmentList;
         }
