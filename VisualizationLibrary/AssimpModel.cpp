@@ -380,6 +380,7 @@ bool AssimpModel::addCollisionModel(std::string filename) {
 	//Log().ReportingLevel() = logDEBUG;
 	Log().debug() << "addCollisionModel[" << filename << "]";
 
+	std::vector<MeshEntry> meshList;
 	bool returnValue = false;
 
 	Assimp::Importer importer;
@@ -440,6 +441,7 @@ bool AssimpModel::addCollisionModel(std::string filename) {
 			}
 
 			collisionModel = collisionModelOriginal;
+			m_modelChanged = true;
 		}
 
 		returnValue = true;

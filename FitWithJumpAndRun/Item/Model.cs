@@ -48,6 +48,7 @@ namespace JumpAndRun.Item
         {
             ScalingNormalized = false;
             AttachedToCamera = false;
+            CollisionPath = "";
         }
 
         /// <summary>
@@ -59,6 +60,7 @@ namespace JumpAndRun.Item
         {
             Path = path;
             ScalingNormalized = scalingNormalized;
+            CollisionPath = "";
             Create();
             CollisionGroup(group);
         }
@@ -74,6 +76,11 @@ namespace JumpAndRun.Item
             Id = View.Model.AddModel(Path);
             while (!View.Model.IsCreated(Id)) { }
             View.Model.ScalingIsNormalized(Id, ScalingNormalized);
+            if (!CollisionPath.Equals(""))
+            {
+                System.Threading.Thread.Sleep(1000);
+                View.Model.AddCollisionModel(Id, CollisionPath);
+            }
             Visibility(false);
             return true;
         }
