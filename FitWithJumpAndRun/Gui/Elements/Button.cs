@@ -39,6 +39,24 @@ namespace JumpAndRun.Gui.Elements
         public bool IsHovered { get; private set; }
 
         /// <summary>
+        /// Delegate für das Entered Event
+        /// </summary>
+        public delegate void Entered();
+        /// <summary>
+        /// Entered Event
+        /// </summary>
+        public event Entered EnteredEvent;
+
+        /// <summary>
+        /// Delegate für das Exited Event
+        /// </summary>
+        public delegate void Exited();
+        /// <summary>
+        /// Exited Event
+        /// </summary>
+        public event Exited ExitedEvent;
+
+        /// <summary>
         /// Delegate für das Click Event
         /// </summary>
         public delegate void Clicked();
@@ -46,6 +64,7 @@ namespace JumpAndRun.Gui.Elements
         /// ClickEvent
         /// </summary>
         public event Clicked ClickEvent;
+
         /// <summary>
         /// Konstruktor
         /// </summary>
@@ -167,6 +186,12 @@ namespace JumpAndRun.Gui.Elements
                     Highlight(true);
                     IsHovered = true;
                     hoverSound.Play();
+
+                    // event auslösen
+                    if (EnteredEvent != null)
+                    {
+                        EnteredEvent();
+                    }
                 }
             }
             else
@@ -175,6 +200,12 @@ namespace JumpAndRun.Gui.Elements
                 {
                     Highlight(false);
                     IsHovered = false;
+
+                    // event auslösen
+                    if (ExitedEvent != null)
+                    {
+                        ExitedEvent();
+                    }
                 }
             }
         }

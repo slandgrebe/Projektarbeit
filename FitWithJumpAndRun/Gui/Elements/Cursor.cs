@@ -123,7 +123,7 @@ namespace JumpAndRun.Gui.Elements
             Y = yCursor * yUnit;
 
             //cursor.Position(X / 45.5f *4, Y / 45.5f *4, z);
-            float cursorAmplification = 0.1f;
+            float cursorAmplification = 0.1f /*/ GameLogic.Player.Instance.Scale*/;
             cursor.Position(X * cursorAmplification, Y * cursorAmplification, z);
 
             // event auslösen
@@ -146,7 +146,7 @@ namespace JumpAndRun.Gui.Elements
 
             if ((clickZCached - zRelative) > 0.05) // mehr als 5% vorwärts
             {
-                if ((clickZPotentialStart - clickZCached) > 0.4) // 50% vorwärts seit dem letzten rückwärts
+                if ((clickZPotentialStart - clickZCached) > 0.8) // 50% vorwärts seit dem letzten rückwärts
                 {
                     if (DateTime.Now.Subtract(clickTimePotentialStart).TotalSeconds < 1.0) // in unter einer sekunde ausgeführt
                     {

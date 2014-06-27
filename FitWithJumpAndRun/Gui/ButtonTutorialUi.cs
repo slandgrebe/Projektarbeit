@@ -16,10 +16,19 @@ namespace JumpAndRun.Gui
         /// <summary>ID des Hintergrundbildes</summary>
         private JumpAndRun.Gui.Elements.Point background = null;
         /// <summary>obere Text</summary>
-        private JumpAndRun.Gui.Elements.Text textTop = null;
-        private JumpAndRun.Gui.Elements.Text textBottom = null;
+        private JumpAndRun.Gui.Elements.Text textTop1 = null;
+        private JumpAndRun.Gui.Elements.Text textTop2 = null;
+        private JumpAndRun.Gui.Elements.Text textTop3 = null;
+
+        private JumpAndRun.Gui.Elements.Text textBottom1 = null;
+        private JumpAndRun.Gui.Elements.Text textBottom2 = null;
+        private JumpAndRun.Gui.Elements.Text textBottom3 = null;
+
         /// <summary>ID des Buttons</summary>
         private Gui.Elements.Button button = null;
+        private DateTime StartTime = DateTime.Now;
+        private bool HasHovered = false;
+        private bool IsVisible = false;
 
         /// <summary>
         /// Delegate für das Button Click Event
@@ -50,36 +59,80 @@ namespace JumpAndRun.Gui
         private ButtonTutorialUi()
         {
             // Hintergrund erzeugen
-            background = new JumpAndRun.Gui.Elements.Point("data/background/farn.jpg");
-            background.Position(0, 0, -0.8f);
+            background = new JumpAndRun.Gui.Elements.Point("data/background/hintergrund.png");
+            background.Position(0, 0, -0.55f);
 
             // Text erzeugen
-            textTop = new JumpAndRun.Gui.Elements.Text();
-            textTop.setText("Beweg doch einmal deine rechte Hand");
-            textTop.Position(0, 0.8f);
+            textTop1 = new JumpAndRun.Gui.Elements.Text();
+            textTop1.setText("");
+            textTop1.Position(0, 0.85f);
+            textTop1.Size(44);
+            textTop1.Color(0.784f, 0.125f, 0.125f, 1f); // rot
 
-            textBottom = new JumpAndRun.Gui.Elements.Text();
-            textBottom.setText("über den Knopf");
-            textBottom.Position(0, 0.5f);
+            textTop2 = new JumpAndRun.Gui.Elements.Text();
+            textTop2.setText("Beweg doch einmal deine");
+            textTop2.Position(0, 0.65f);
+            textTop2.Size(44);
+
+            textTop3 = new JumpAndRun.Gui.Elements.Text();
+            textTop3.setText("rechte Hand zum Knopf");
+            textTop3.Position(0, 0.45f);
+            textTop3.Size(44);
+
+
+            textBottom1 = new JumpAndRun.Gui.Elements.Text();
+            textBottom1.setText("Siehst du wie er rot geworden ist?");
+            textBottom1.Position(0, -0.45f);
+            textBottom1.Size(44);
+            textBottom1.Color(0.784f, 0.125f, 0.125f, 1f); // rot
+
+            textBottom2 = new JumpAndRun.Gui.Elements.Text();
+            textBottom2.setText("Wenn du gleichzeitig noch deine Hand");
+            textBottom2.Position(0, -0.65f);
+            textBottom2.Size(44);
+
+            textBottom3 = new JumpAndRun.Gui.Elements.Text();
+            textBottom3.setText("nach vorne bewegst, klickst du den Knopf");
+            textBottom3.Position(0, -0.85f);
+            textBottom3.Size(44);
+
 
             // Button erzeugen
             button = new Gui.Elements.Button();
             button.Text("Knopf");
+            button.EnteredEvent += new Gui.Elements.Button.Entered(ButtonEntered);
             button.ClickEvent += new Gui.Elements.Button.Clicked(ButtonClicked);
 
             // Cursor
-            JumpAndRun.Gui.Elements.Cursor.Instance.MoveEvent += new JumpAndRun.Gui.Elements.Cursor.Move(CursorMove); // nur zum testen
+            JumpAndRun.Gui.Elements.Cursor.Instance.MoveEvent += new JumpAndRun.Gui.Elements.Cursor.Move(CursorMove);
 
             // GUI nicht anzeigen
             Hide();
         }
 
+        // zum regelmässigen update
+        private void CursorMove(float x, float y)
+        {
+            //button.Text(truncate(x, 2) + "/" + truncate(y, 2));
+
+            // Hover Text mindestens 2s lang anzeigen
+            if (IsVisible && HasHovered && DateTime.Now.Subtract(StartTime).TotalSeconds > 2)
+            {
+                textBottom1.Show();
+                textBottom2.Show();
+                textBottom3.Show();
+            }
+        }
+
+        public void ButtonEntered()
+        {
+            HasHovered = true;
+        }
         /// <summary>
         /// Listener des Button Click Events
         /// </summary>
         public void ButtonClicked()
         {
-            //DifficultySelectedEvent(JumpAndRun.Difficulty.Easy);
             if (ButtonClickedEvent != null)
             {
                 ButtonClickedEvent();
@@ -98,11 +151,18 @@ namespace JumpAndRun.Gui
             Camera.PositionCamera(0, 0, 0);
 
             background.Show();
-            textTop.Show();
-            textBottom.Show();
+            textTop1.Show();
+            textTop2.Show();
+            textTop3.Show();
             button.Show();
 
             JumpAndRun.Gui.Elements.Cursor.Instance.Show();
+
+            // Starzeit zurücksetzen
+            StartTime = DateTime.Now;
+            HasHovered = false;
+
+            IsVisible = true;
         }
 
         /// <summary>
@@ -111,17 +171,17 @@ namespace JumpAndRun.Gui
         public void Hide()
         {
             background.Hide();
-            textTop.Hide();
-            textBottom.Hide();
+            textTop1.Hide();
+            textTop2.Hide();
+            textTop3.Hide();
+            textBottom1.Hide();
+            textBottom2.Hide();
+            textBottom3.Hide();
             button.Hide();
 
             JumpAndRun.Gui.Elements.Cursor.Instance.Hide();
-        }
 
-        private void CursorMove(float x, float y) // nur zum testen
-        {
-            button.Text(truncate(x, 2) + "/" + truncate(y, 2));
-            JumpAndRun.Gui.Elements.Cursor.Instance.Show();
+            IsVisible = false;
         }
 
         private float truncate(float value, int digits) // nur zum testen

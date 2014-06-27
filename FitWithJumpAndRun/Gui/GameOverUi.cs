@@ -49,8 +49,8 @@ namespace JumpAndRun.Gui
         private GameOverUi()
         {
             // Hintergrund erzeugen
-            background = new JumpAndRun.Gui.Elements.Point("data/background/farn.jpg");
-            background.Position(0, 0, -0.8f);
+            background = new JumpAndRun.Gui.Elements.Point("data/background/hintergrund.png");
+            background.Position(0, 0, -0.55f);
 
             // Text erzeugen
             text = new JumpAndRun.Gui.Elements.Text();

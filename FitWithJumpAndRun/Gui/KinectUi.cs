@@ -36,12 +36,13 @@ namespace JumpAndRun.Gui
         /// </summary>
         private KinectUi()
         {
-            background = new JumpAndRun.Gui.Elements.Point("data/background/hintergrund.png");
-            background.Position(0, 0, -0.55f);
+            background = new JumpAndRun.Gui.Elements.Point("data/background/farn.jpg");
+            background.Position(0, 0, -0.8f);
 
             text = new JumpAndRun.Gui.Elements.Text();
             text.setText("Kinect wird gestartet");
-            text.Size(50);
+            text.Size(60);
+            text.Color(0.784f, 0.125f, 0.125f, 1f); // rot
         }
 
         /// <summary>

@@ -59,8 +59,8 @@ namespace JumpAndRun.Gui
         private MenuUi()
         {
             // Hintergrund
-            background = new JumpAndRun.Gui.Elements.Point("data/background/farn.jpg");
-            background.Position(0, 0, -0.8f);
+            background = new JumpAndRun.Gui.Elements.Point("data/background/hintergrund.png");
+            background.Position(0, 0, -0.55f);
 
             // Titel
             title = new JumpAndRun.Gui.Elements.Text();

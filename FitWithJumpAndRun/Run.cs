@@ -83,7 +83,11 @@ namespace JumpAndRun
             KinectUi.Instance.SetText("Kinect wird gestartet");
             KinectUi.Instance.Show();
 
+            // Spielerskalierung
+            Player.Instance.Scale = 1;
+
             // click events
+            ButtonTutorialUi.Instance.ButtonClickedEvent += new ButtonTutorialUi.ButtonClick(TutorialButtonClicked);
             MenuUi.Instance.DifficultySelectedEvent += new MenuUi.DifficultySelected(DifficultySelected);
             ScoreUi.Instance.ButtonClickedEvent += new ScoreUi.ButtonClick(ScoreButtonClicked);
             GameOverUi.Instance.ButtonClickedEvent += new GameOverUi.ButtonClick(GameOverButtonClicked);
@@ -122,7 +126,7 @@ namespace JumpAndRun
                 // Schwierigkeitsgrad wählen
                 else if (!CheckDifficultySelection()) continue;
                 // spiel laden
-                /*else if (!CheckGameLoading()) continue;
+                else if (!CheckGameLoading()) continue;
                 // spielen
                 else if (!CheckGaming()) continue;
                 // spiel beendet
@@ -131,7 +135,7 @@ namespace JumpAndRun
                 else
                 {
                     Console.WriteLine("ungueltiger Zustand.");
-                }*/
+                }
             }
 
             // Fenster schliessen
@@ -203,6 +207,9 @@ namespace JumpAndRun
                 // Alles zurücksetzen, da keine Person mehr erkannt wird
                 ResetEverything();
 
+                // Tutorial wieder anzeigen, da es möglicherweise eine neue Person ist
+                ButtonTutorialCompleted = false;
+
                 return false;
             }
 
@@ -241,7 +248,7 @@ namespace JumpAndRun
                 if (modus != Modus.Menu) // MenuUi zeigen, falls zuvor in einem anderen Modus gewesen
                 {
                     modus = Modus.Menu;
-                    Body.Instance.Scale(0.1f); // warum ist das nötig?
+                    Body.Instance.Scale(1f); // warum ist das nötig?
                     HideAllGuis();
                     MenuUi.Instance.Show();
                     backgroundSound.Play();
@@ -330,7 +337,7 @@ namespace JumpAndRun
                 if (modus != Modus.Score)
                 {
                     modus = Modus.Score;
-                    Body.Instance.Scale(0.1f);
+                    //Body.Instance.Scale(1f);
                     ScoreUi.Instance.Score = Game.Instance.Player.Score;
                     HideAllGuis();
                     ScoreUi.Instance.Show();
@@ -345,7 +352,7 @@ namespace JumpAndRun
                 if (modus != Modus.GameOver)
                 {
                     modus = Modus.GameOver;
-                    Body.Instance.Scale(0.1f);
+                    Body.Instance.Scale(1f);
                     HideAllGuis();
                     GameOverUi.Instance.Show();
                     backgroundSound.Play();
@@ -369,6 +376,10 @@ namespace JumpAndRun
             }
         }
 
+        public void TutorialButtonClicked()
+        {
+            ButtonTutorialCompleted = true;
+        }
 
         /// <summary>
         /// Event Listener wenn die Schwierigkeit ausgewählt wurde
