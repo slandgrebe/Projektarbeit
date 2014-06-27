@@ -113,7 +113,7 @@ namespace JumpAndRun.GameLogic
                 //Camera.PositionCamera(0, 1.5f, -40 + 4.5f -0.5f);
                 //Camera.ChangeCameraSpeed(0f);
                 CurrentSegment = -1;
-                level.Visibility(false);
+                level.Visibility(true);
                 Player.Visibility(true);
                 Camera.PositionCamera(0, 1.5f, 0);
                 Camera.ChangeCameraSpeed((float)speed);

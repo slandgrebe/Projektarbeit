@@ -79,6 +79,8 @@ namespace JumpAndRun.GameLogic
         /// <returns>Prüfung ob die Operation durchgeführt werden konnte</returns>
         public bool Load(JumpAndRun.Difficulty difficulty)
         {
+            Program.Log("Load Level: " + this.Name);
+            
             // min. 1 Segment muss vorhanden sein
             if (AllAvailableSegments.Count < 1 || SegmentsStartEnd.Count < 2)
             {
@@ -151,6 +153,8 @@ namespace JumpAndRun.GameLogic
             {
                 s.Visibility(false);
             }
+
+            Program.Log("Segment Exited at Position " + currentPosition + ": " + segment.FilePath);
         }
 
         /// <summary>
@@ -169,6 +173,8 @@ namespace JumpAndRun.GameLogic
             {
                 s.Visibility(true);
             }
+
+            Program.Log("Segment Entered at Position " + segment.StartPosition + ": " + segment.FilePath);
         }
 
         /// <summary>

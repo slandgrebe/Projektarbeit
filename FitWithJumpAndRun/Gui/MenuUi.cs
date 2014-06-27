@@ -107,7 +107,6 @@ namespace JumpAndRun.Gui
         /// </summary>
         public void ButtonEasyClicked()
         {
-            Console.WriteLine("easy");
             DifficultySelectedEvent(JumpAndRun.Difficulty.Easy);
         }
         /// <summary>
@@ -115,7 +114,6 @@ namespace JumpAndRun.Gui
         /// </summary>
         public void ButtonNormalClicked()
         {
-            Console.WriteLine("normal");
             DifficultySelectedEvent(JumpAndRun.Difficulty.Normal);
         }
         /// <summary>
@@ -123,7 +121,6 @@ namespace JumpAndRun.Gui
         /// </summary>
         public void ButtonDifficultClicked()
         {
-            Console.WriteLine("difficult");
             DifficultySelectedEvent(JumpAndRun.Difficulty.Difficult);
         }
 

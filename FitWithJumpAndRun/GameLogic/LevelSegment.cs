@@ -26,6 +26,10 @@ namespace JumpAndRun.GameLogic
         /// <summary>Absolute Startposition des Segmentes</summary>
         public float StartPosition { get; set; }
         public string FilePath { get; set; }
+        /// <summary>
+        /// Sound der beim Betreten dieses Segments abgespielt werden soll
+        /// </summary>
+        public string SoundOnEnter { get; set; }
 
         /// <summary>
         /// Delegate für Entered Event
@@ -47,6 +51,7 @@ namespace JumpAndRun.GameLogic
         public event Exited ExitedEvent;
         private enum State { InFront, Inside, Behind };
         private State state = State.InFront;
+        private bool Visible = false;
 
         /// <summary>
         /// Initialisierung des Levelsegments
@@ -58,6 +63,8 @@ namespace JumpAndRun.GameLogic
             objects = new List<JumpAndRun.Item.Object>();
 
             Player.Instance.MovedEvent += new Player.Moved(PlayerMoved);
+
+            SoundOnEnter = "";
         }
         
         /// <summary>
@@ -146,6 +153,7 @@ namespace JumpAndRun.GameLogic
         /// <returns>Prüfung ob die Operation durchgeführt werden konnte</returns>
         public bool Visibility(bool visible)
         {
+            Visible = visible;
             foreach (JumpAndRun.Item.Object o in obstacles)
             {
                 if (!o.Model.Visibility(visible)) return false;
@@ -186,7 +194,11 @@ namespace JumpAndRun.GameLogic
         /// <param name="z">z Kooridnate des Player</param>
         public void PlayerMoved(float z)
         {
-            
+            // Nur relevant, wenn das Segment auch sichtbar ist
+            if (!Visible)
+            {
+                return;
+            }
             switch (state)
             {
                 // bereits passiert
@@ -196,12 +208,7 @@ namespace JumpAndRun.GameLogic
                 case State.InFront:
                     if (IsInside(z))
                     {
-                        state = State.Inside;
-                        Console.WriteLine("Entered Segment: " + this.FilePath + " z: " + this.StartPosition);
-                        if (EnteredEvent != null)
-                        {
-                            EnteredEvent(this);
-                        }
+                        HandleEntered();
                     }
                     break;
                 // testen ob verlassen
@@ -218,8 +225,25 @@ namespace JumpAndRun.GameLogic
             }
         }
 
+        private void HandleEntered()
+        {
+            state = State.Inside;
+            if (EnteredEvent != null)
+            {
+                EnteredEvent(this);
+
+                // Sound abspielen
+                if (!SoundOnEnter.Equals(""))
+                {
+                    Sound.Sound sound = new Sound.Sound();
+                    sound.FilePath = SoundOnEnter;
+                    sound.Play();
+                }
+            }
+        }
+
         /// <summary>
-        /// Findet heraus, ob die z Koordinate innerhalt dieses Segments ist
+        /// Findet heraus, ob die z Koordinate innerhalb dieses Segments ist
         /// </summary>
         /// <param name="z">zu prüfende z-Koordinate</param>
         /// <returns>Resultat</returns>
