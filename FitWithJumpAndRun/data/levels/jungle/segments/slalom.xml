@@ -1,75 +1,161 @@
 <?xml version="1.0"?>
 <LevelSegment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Length>20</Length>
-  <Severity>8</Severity>
+  <Severity>7</Severity>
   <obstacles>
-    <!--<Object>
-      <ModelXmlPath>data/levels/jungle/models/limb.xml</ModelXmlPath>
-      <Scale>2</Scale>
-      <PosX>1.5</PosX>
-      <PosY>6</PosY>
+
+    <Object>
+      <ModelXmlPath>data/levels/jungle/models/stone.xml</ModelXmlPath>
+      <Scale>1</Scale>
+      <PosX>0.5</PosX>
+      <PosY>0.5</PosY>
       <PosZ>2</PosZ>
       <AttachToCamera>false</AttachToCamera>
       <RotationAxis>
-        <float>0</float>
-        <float>0</float>
         <float>1</float>
+        <float>0</float>
+        <float>0</float>
       </RotationAxis>
       <RotationAngle>90</RotationAngle>
     </Object>
     <Object>
-      <ModelXmlPath>data/levels/jungle/models/limb.xml</ModelXmlPath>
-      <Scale>2</Scale>
-      <PosX>-1.5</PosX>
-      <PosY>6</PosY>
-      <PosZ>10</PosZ>
-      <AttachToCamera>false</AttachToCamera>
-      <RotationAxis>
-        <float>0</float>
-        <float>0</float>
-        <float>1</float>
-      </RotationAxis>
-      <RotationAngle>90</RotationAngle>
-    </Object>-->
-    <Object>
-      <ModelXmlPath>data/levels/jungle/models/cocosnut.xml</ModelXmlPath>
-      <Scale>2</Scale>
+      <ModelXmlPath>data/levels/jungle/models/stone.xml</ModelXmlPath>
+      <Scale>1</Scale>
       <PosX>1.5</PosX>
-      <PosY>1.5</PosY>
+      <PosY>0.5</PosY>
       <PosZ>2</PosZ>
       <AttachToCamera>false</AttachToCamera>
       <RotationAxis>
-        <float>0</float>
-        <float>0</float>
         <float>1</float>
+        <float>0</float>
+        <float>0</float>
       </RotationAxis>
-      <RotationAngle>0</RotationAngle>
+      <RotationAngle>90</RotationAngle>
     </Object>
+    
     <Object>
-      <ModelXmlPath>data/levels/jungle/models/cocosnut.xml</ModelXmlPath>
-      <Scale>2</Scale>
-      <PosX>-1.5</PosX>
-      <PosY>1.5</PosY>
-      <PosZ>10</PosZ>
+      <ModelXmlPath>data/levels/jungle/models/stone.xml</ModelXmlPath>
+      <Scale>1</Scale>
+      <PosX>-0.5</PosX>
+      <PosY>0.5</PosY>
+      <PosZ>7</PosZ>
       <AttachToCamera>false</AttachToCamera>
       <RotationAxis>
-        <float>0</float>
-        <float>0</float>
         <float>1</float>
+        <float>0</float>
+        <float>0</float>
       </RotationAxis>
-      <RotationAngle>0</RotationAngle>
+      <RotationAngle>90</RotationAngle>
+    </Object>
+    <Object>
+      <ModelXmlPath>data/levels/jungle/models/stone.xml</ModelXmlPath>
+      <Scale>1</Scale>
+      <PosX>-1.5</PosX>
+      <PosY>0.5</PosY>
+      <PosZ>7</PosZ>
+      <AttachToCamera>false</AttachToCamera>
+      <RotationAxis>
+        <float>1</float>
+        <float>0</float>
+        <float>0</float>
+      </RotationAxis>
+      <RotationAngle>90</RotationAngle>
+    </Object>
+
+    <Object>
+      <ModelXmlPath>data/levels/jungle/models/stone.xml</ModelXmlPath>
+      <Scale>1</Scale>
+      <PosX>0.5</PosX>
+      <PosY>0.5</PosY>
+      <PosZ>12</PosZ>
+      <AttachToCamera>false</AttachToCamera>
+      <RotationAxis>
+        <float>1</float>
+        <float>0</float>
+        <float>0</float>
+      </RotationAxis>
+      <RotationAngle>90</RotationAngle>
+    </Object>
+    <Object>
+      <ModelXmlPath>data/levels/jungle/models/stone.xml</ModelXmlPath>
+      <Scale>1</Scale>
+      <PosX>1.5</PosX>
+      <PosY>0.5</PosY>
+      <PosZ>12</PosZ>
+      <AttachToCamera>false</AttachToCamera>
+      <RotationAxis>
+        <float>1</float>
+        <float>0</float>
+        <float>0</float>
+      </RotationAxis>
+      <RotationAngle>90</RotationAngle>
+    </Object>
+
+    <Object>
+      <ModelXmlPath>data/levels/jungle/models/stone.xml</ModelXmlPath>
+      <Scale>1</Scale>
+      <PosX>-0.5</PosX>
+      <PosY>0.5</PosY>
+      <PosZ>17</PosZ>
+      <AttachToCamera>false</AttachToCamera>
+      <RotationAxis>
+        <float>1</float>
+        <float>0</float>
+        <float>0</float>
+      </RotationAxis>
+      <RotationAngle>90</RotationAngle>
+    </Object>
+    <Object>
+      <ModelXmlPath>data/levels/jungle/models/stone.xml</ModelXmlPath>
+      <Scale>1</Scale>
+      <PosX>-1.5</PosX>
+      <PosY>0.5</PosY>
+      <PosZ>17</PosZ>
+      <AttachToCamera>false</AttachToCamera>
+      <RotationAxis>
+        <float>1</float>
+        <float>0</float>
+        <float>0</float>
+      </RotationAxis>
+      <RotationAngle>90</RotationAngle>
     </Object>
   </obstacles>
+  
   <scores>
     <Object>
       <ModelXmlPath>data/levels/jungle/models/mango.xml</ModelXmlPath>
-      <Scale>0.3</Scale>
-      <PosX>0</PosX>
-      <PosY>1</PosY>
-      <PosZ>2.5</PosZ>
+      <Scale>0.5</Scale>
+      <PosX>0.5</PosX>
+      <PosY>1.5</PosY>
+      <PosZ>2</PosZ>
+      <AttachToCamera>false</AttachToCamera>
+    </Object>
+    <Object>
+      <ModelXmlPath>data/levels/jungle/models/mango.xml</ModelXmlPath>
+      <Scale>0.5</Scale>
+      <PosX>-0.5</PosX>
+      <PosY>1.5</PosY>
+      <PosZ>7</PosZ>
+      <AttachToCamera>false</AttachToCamera>
+    </Object>
+    <Object>
+      <ModelXmlPath>data/levels/jungle/models/mango.xml</ModelXmlPath>
+      <Scale>0.5</Scale>
+      <PosX>0.5</PosX>
+      <PosY>1.5</PosY>
+      <PosZ>12</PosZ>
+      <AttachToCamera>false</AttachToCamera>
+    </Object>
+    <Object>
+      <ModelXmlPath>data/levels/jungle/models/mango.xml</ModelXmlPath>
+      <Scale>0.5</Scale>
+      <PosX>-0.5</PosX>
+      <PosY>1.5</PosY>
+      <PosZ>17</PosZ>
       <AttachToCamera>false</AttachToCamera>
     </Object>
   </scores>
+  
   <objects>
     <Object>
       <ModelXmlPath>data/levels/jungle/models/floor.xml</ModelXmlPath>
@@ -100,7 +186,7 @@
       <AttachToCamera>false</AttachToCamera>
     </Object>
     <Object>
-      <ModelXmlPath>data/levels/jungle/models/rail.xml</ModelXmlPath>
+     <ModelXmlPath>data/levels/jungle/models/rail.xml</ModelXmlPath>
       <Scale>0.5</Scale>
       <PosX>0</PosX>
       <PosY>0</PosY>
