@@ -5,12 +5,12 @@
   <SegmentsXmlPath>data/levels/jungle/segments</SegmentsXmlPath>
   <Name>Jungle</Name>
   <Lifes>100</Lifes>
-  <LevelDuration>10</LevelDuration>
+  <LevelDuration>20</LevelDuration>
   <VisibilityRange>100</VisibilityRange>
   <BackgroundMusicEasy>data/sound/music/dschungelbuch.mp3</BackgroundMusicEasy>
   <BackgroundMusicEasyVolume>100</BackgroundMusicEasyVolume>
   <BackgroundMusicMedium>data/sound/music/background_medium.wav</BackgroundMusicMedium>
-  <BackgroundMusicMediumVolume>50</BackgroundMusicMediumVolume>
+  <BackgroundMusicMediumVolume>20</BackgroundMusicMediumVolume>
   <BackgroundMusicHard>data/sound/music/background_hard.wav</BackgroundMusicHard>
-  <BackgroundMusicHardVolume>50</BackgroundMusicHardVolume>
+  <BackgroundMusicHardVolume>20</BackgroundMusicHardVolume>
 </Level>
