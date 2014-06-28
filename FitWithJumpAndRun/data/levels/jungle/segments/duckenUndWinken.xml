@@ -68,7 +68,7 @@
       <ModelXmlPath>data/levels/jungle/models/cocosnut.xml</ModelXmlPath>
       <Scale>1</Scale>
       <PosX>-0.25</PosX>
-      <PosY>2</PosY>
+      <PosY>1.5</PosY>
       <PosZ>9</PosZ>
       <AttachToCamera>false</AttachToCamera>
     </Object>
