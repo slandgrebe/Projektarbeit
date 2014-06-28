@@ -4,7 +4,7 @@
   <EndSegmentXml>data/levels/jungle/end.xml</EndSegmentXml>
   <SegmentsXmlPath>data/levels/jungle/segments</SegmentsXmlPath>
   <Name>Jungle</Name>
-  <Lifes>100</Lifes>
+  <Lifes>30</Lifes>
   <LevelDuration>20</LevelDuration>
   <VisibilityRange>100</VisibilityRange>
   <BackgroundMusicEasy>data/sound/music/dschungelbuch.mp3</BackgroundMusicEasy>

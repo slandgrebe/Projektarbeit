@@ -84,6 +84,7 @@ namespace JumpAndRun.GameLogic
             // min. 1 Segment muss vorhanden sein
             if (AllAvailableSegments.Count < 1 || SegmentsStartEnd.Count < 2)
             {
+                Program.Log("Keine Segment gefunden");
                 return false;
             }
 
