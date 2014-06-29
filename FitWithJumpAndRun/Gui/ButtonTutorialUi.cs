@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using View;
+using log4net;
+using log4net.Config;
 
 namespace JumpAndRun.Gui
 {
@@ -29,6 +31,9 @@ namespace JumpAndRun.Gui
         private DateTime StartTime = DateTime.Now;
         private bool HasHovered = false;
         private bool IsVisible = false;
+
+        /// <summary>Logger</summary>
+        private static readonly ILog log = LogManager.GetLogger(typeof(ButtonTutorialUi).Name);
 
         /// <summary>
         /// Delegate für das Button Click Event
@@ -138,7 +143,7 @@ namespace JumpAndRun.Gui
                 ButtonClickedEvent();
             }
 
-            Program.Log("Button Tutorial clicked");
+            log.Info("Button Tutorial clicked");
         }
 
         /// <summary>

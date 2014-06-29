@@ -16,6 +16,7 @@ namespace JumpAndRun.Gui.Elements
         private float y = 0f;
         private float z = -1f;
         private bool isVisible = false;
+
         /// <summary>
         /// Sichtbarkeit
         /// </summary>
@@ -60,7 +61,6 @@ namespace JumpAndRun.Gui.Elements
         /// <param name="z">z</param>
         public void Position(float x, float y, float z)
         {
-            //Console.WriteLine("model: " + modelId + " pos: " + x + "/" + y);
             this.x = x;
             this.y = y;
             this.z = z;

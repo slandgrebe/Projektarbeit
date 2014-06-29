@@ -36,7 +36,7 @@ namespace JumpAndRun
         private bool ButtonTutorialCompleted = false;
 
         private Sound.Sound backgroundSound = null;
-
+        /// <summary>Logger</summary>
         private static readonly ILog log = LogManager.GetLogger(typeof(Run).Name);
 
         /// <summary>
@@ -58,8 +58,6 @@ namespace JumpAndRun
         private bool Initialize()
         {
             log.Info("Run Initialize");
-            
-            Program.Log("Run Initialize");
 
             // Fenster öffnen
             bool fullscreen = true;
@@ -140,7 +138,7 @@ namespace JumpAndRun
                 // da stimmt etwas nicht
                 else
                 {
-                    Console.WriteLine("ungueltiger Zustand.");
+                    log.Warn("ungueltiger Zustand.");
                 }
             }
 
@@ -378,7 +376,7 @@ namespace JumpAndRun
                 backgroundSound.FilePath = GetRandomFileFromFolder("data/sound/menu/background", "*.mp3");
                 backgroundSound.Play();
 
-                Program.Log("Hintergrundsound durchgelaufen. Naechster Sound wird gestartet.");
+                log.Info("Hintergrundsound durchgelaufen. Naechster Sound wird gestartet.");
             }
         }
 
@@ -396,7 +394,7 @@ namespace JumpAndRun
             this.difficulty = difficulty;
             modus = Modus.Play;
 
-            Program.Log("Schwierigkeitsgrad ausgewaehlt: " + difficulty.ToString());
+            log.Info("Schwierigkeitsgrad ausgewaehlt: " + difficulty.ToString());
         }
 
         /// <summary>

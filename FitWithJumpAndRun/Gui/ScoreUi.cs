@@ -4,6 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using View;
+using log4net;
+using log4net.Config;
+
 
 namespace JumpAndRun.Gui
 {
@@ -19,6 +22,8 @@ namespace JumpAndRun.Gui
         private JumpAndRun.Gui.Elements.Text text = null;
         /// <summary>ID des Buttons</summary>
         private Gui.Elements.Button button = null;
+        /// <summary>Logger</summary>
+        private static readonly ILog log = LogManager.GetLogger(typeof(ScoreUi).Name);
 
         /// <summary>
         /// Delegate für das Button Click Event
@@ -86,7 +91,7 @@ namespace JumpAndRun.Gui
         /// </summary>
         public void ButtonClicked()
         {
-            Console.WriteLine("score click");
+            log.Info("score click");
             //DifficultySelectedEvent(JumpAndRun.Difficulty.Easy);
             ButtonClickedEvent();
         }
