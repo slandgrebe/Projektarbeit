@@ -228,9 +228,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <None Include="App.config" />
-    <None Include="log4net.config">
+    <Content Include="log4net.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
+    </Content>
     <None Include="ClassDiagram1.cd" />
     <Content Include="data\fonts\SUPERTIK.TTF">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
