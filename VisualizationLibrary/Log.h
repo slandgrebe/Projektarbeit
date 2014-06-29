@@ -7,6 +7,9 @@
 #include <string>
 #include <stdio.h>
 
+#include <GL/glew.h>
+#include <GLFW/glfw3.h>
+
 
 /** Liefert die aktuelle Zeit zurück
 * @author Stefan Landgrebe
@@ -117,6 +120,15 @@ public:
 	* @see ToString()
 	*/
 	static TLogLevel FromString(const std::string& level);
+
+	/** Hilfsfunktion um OpenGL Fehler zu finden
+	* @author Stefan Landgrebe
+	* @param file anzuzeigender Dateiname
+	* @param line anzuzueigende Zeilennummer
+	* @return Errorcode
+	* @see http://www.lighthouse3d.com/cg-topics/error-tracking-in-opengl/
+	*/
+	static int printOglError(char *file, int line);
 protected:
 	std::ostringstream os; /** stringstream welcher für das Schreiben der Logmeldungen verwendet wird */
 private:
@@ -208,7 +220,20 @@ if (level > Log::ReportingLevel()); \
 	else Log().Get(level)
 
 
+// Hilfsfunktion //http://www.lighthouse3d.com/cg-topics/error-tracking-in-opengl/
+#define printOpenGLError() Log::printOglError(__FILE__, __LINE__)
 
+inline int Log::printOglError(char *file, int line) {
+	GLenum glErr;
+	int    retCode = 0;
+
+	glErr = glGetError();
+	if (glErr != GL_NO_ERROR) {
+		Log().debug() << "glError in file " << file << " @ line " << line << ": " << gluErrorString(glErr);
+		retCode = 1;
+	}
+	return retCode;
+}
 
 
 #if defined(WIN32) || defined(_WIN32) || defined(__WIN32__)

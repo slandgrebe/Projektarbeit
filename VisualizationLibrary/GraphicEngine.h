@@ -138,7 +138,7 @@ namespace visual {
 			glm::mat4 getViewOrthographicMatrix();
 
 
-			int printOglError(char *file, int line);
+			//int printOglError(char *file, int line);
 
 		private:
 			bool running;

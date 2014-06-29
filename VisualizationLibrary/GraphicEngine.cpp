@@ -17,7 +17,7 @@
 
 using namespace visual::graphics;
 
-// Hilfsfunktion //http://www.lighthouse3d.com/cg-topics/error-tracking-in-opengl/
+/*// Hilfsfunktion //http://www.lighthouse3d.com/cg-topics/error-tracking-in-opengl/
 #define printOpenGLError() printOglError(__FILE__, __LINE__)
 
 int GraphicEngine::printOglError(char *file, int line) {
@@ -30,7 +30,7 @@ int GraphicEngine::printOglError(char *file, int line) {
 		retCode = 1;
 	}
 	return retCode;
-}
+}*/
 
 
 
@@ -107,7 +107,8 @@ void GraphicEngine::worker(void) {
 	
 	GraphicEngine::getInstance()->running = true;
 
-	GraphicEngine::getInstance()->printOpenGLError();
+	//GraphicEngine::getInstance()->printOpenGLError();
+	printOpenGLError();
 
 	/***************
 		LOOP
@@ -149,18 +150,18 @@ void GraphicEngine::worker(void) {
 		glClearColor(0.3f, 0.5f, 0.9f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-		GraphicEngine::getInstance()->printOpenGLError();
+		printOpenGLError();
 
 		// Draw objects
 		Manager::getInstance()->draw();
 
-		GraphicEngine::getInstance()->printOpenGLError();
+		printOpenGLError();
 
 		// Swap buffers
 		glfwSwapBuffers(window);
 		glfwPollEvents();
 
-		GraphicEngine::getInstance()->printOpenGLError();
+		printOpenGLError();
 
 		// measure time
 		begin = now;
