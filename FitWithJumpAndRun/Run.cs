@@ -9,6 +9,8 @@ using System;
 using JumpAndRun.GameLogic;
 using JumpAndRun.Gesture;
 using JumpAndRun.Gui;
+using log4net;
+using log4net.Config;
 
 namespace JumpAndRun
 {
@@ -35,6 +37,8 @@ namespace JumpAndRun
 
         private Sound.Sound backgroundSound = null;
 
+        private static readonly ILog log = LogManager.GetLogger(typeof(Run).Name);
+
         /// <summary>
         /// Stellt sicher, dass diese Klasse nur einmal Instanziert werden kann.
         /// </summary>
@@ -53,6 +57,8 @@ namespace JumpAndRun
 
         private bool Initialize()
         {
+            log.Info("Run Initialize");
+            
             Program.Log("Run Initialize");
 
             // Fenster öffnen
