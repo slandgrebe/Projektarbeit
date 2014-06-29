@@ -46,7 +46,11 @@ namespace JumpAndRun.Sound
                 if (CreateObject())
                 {
                     _Volume = value;
-                    audio.settings.volume = _Volume;
+                    if (CreateObject())
+                    {
+                        System.Threading.Thread.Sleep(20); // Kann sonst zu exception führen
+                        audio.settings.volume = _Volume;
+                    }
                 }
             }
         }
@@ -57,7 +61,11 @@ namespace JumpAndRun.Sound
             set
             {
                 _Loop = value;
-                audio.settings.setMode("loop", _Loop);
+                if (CreateObject())
+                {
+                    System.Threading.Thread.Sleep(20); // Kann sonst zu exception führen
+                    audio.settings.setMode("loop", _Loop);
+                }
             }
         }
 
@@ -72,9 +80,7 @@ namespace JumpAndRun.Sound
             {
                 if (CreateObject())
                 {
-                    audio.URL = FilePath;
-                    audio.settings.volume = Volume;
-                    audio.PlayStateChange += new WMPLib._WMPOCXEvents_PlayStateChangeEventHandler(Sound_PlayStateChange);
+                    
                 }
             }
             catch (System.Exception e)
@@ -91,6 +97,12 @@ namespace JumpAndRun.Sound
                 try
                 {
                     audio = new WMPLib.WindowsMediaPlayer();
+                    audio.URL = FilePath;
+                    System.Threading.Thread.Sleep(10); // Kann sonst zu exception führen
+                    audio.settings.volume = Volume;
+                    System.Threading.Thread.Sleep(10); // Kann sonst zu exception führen
+                    audio.PlayStateChange += new WMPLib._WMPOCXEvents_PlayStateChangeEventHandler(Sound_PlayStateChange);
+                    
                 }
                 catch (System.Exception e)
                 {
@@ -114,12 +126,11 @@ namespace JumpAndRun.Sound
                 if (state != SoundState.Play)
                 {
                     state = SoundState.Play;
-
+                    
                     if (CreateObject())
                     {
-                            audio.URL = FilePath;
                             audio.controls.play();
-                            log.Debug("audio: " + audio.currentMedia.name);
+                            //log.Debug("audio: " + audio.currentMedia.name);
                     }
                 }
             }
@@ -169,10 +180,10 @@ namespace JumpAndRun.Sound
         {
             if ((WMPLib.WMPPlayState)NewState == WMPLib.WMPPlayState.wmppsStopped)
             {
-                if (SoundFinished != null && state != SoundState.Stop)
+                if (state != SoundState.Stop)
                 {
                     state = SoundState.Finished;
-                    SoundFinished(this);
+                    if (SoundFinished != null) SoundFinished(this);
                 }
             }
         }
