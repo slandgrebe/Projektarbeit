@@ -84,20 +84,20 @@ namespace JumpAndRun.Gui
             textBottom1 = new JumpAndRun.Gui.Elements.TextWithBackground();
             textBottom1.setText("Siehst du wie er rot geworden ist?");
             textBottom1.Position(0, -0.45f);
-            textBottom1.Size(40);
+            textBottom1.Size(36);
             textBottom1.Color(0.784f, 0.125f, 0.125f, 1f); // rot
 
             textBottom2 = new JumpAndRun.Gui.Elements.TextWithBackground();
             textBottom2.setText("Wenn du gleichzeitig noch deine Hand");
             textBottom2.Position(0, -0.65f);
             textBottom2.Color(0.796f, 0.624f, 0.157f, 1f); // kaki
-            textBottom2.Size(40);
+            textBottom2.Size(36);
 
             textBottom3 = new JumpAndRun.Gui.Elements.TextWithBackground();
             textBottom3.setText("nach vorne bewegst, klickst du den Knopf");
             textBottom3.Position(0, -0.85f);
             textBottom3.Color(0.796f, 0.624f, 0.157f, 1f); // kaki
-            textBottom3.Size(40);
+            textBottom3.Size(36);
 
 
             // Button erzeugen

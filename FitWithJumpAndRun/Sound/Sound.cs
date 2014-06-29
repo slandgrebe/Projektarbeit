@@ -50,14 +50,14 @@ namespace JumpAndRun.Sound
                     try
                     {
                         System.Threading.Thread.Sleep(20); // Kann sonst zu exception führen
-                    audio.settings.volume = _Volume;
-                }
+                        audio.settings.volume = _Volume;
+                    }
                     catch (System.Exception e)
                     {
                         log.Error("Beim Versuch die Lautstaerke zu erhoehen ist ein Fehler aufgetreten. Datei: " + this.FilePath);
                     }
+                }
             }
-        }
         }
         /// <summary>Wiedergabe wiederholen</summary>
         public bool Loop
@@ -69,9 +69,9 @@ namespace JumpAndRun.Sound
                 if (CreateObject())
                 {
                     System.Threading.Thread.Sleep(20); // Kann sonst zu exception führen
-                audio.settings.setMode("loop", _Loop);
+                    audio.settings.setMode("loop", _Loop);
+                }
             }
-        }
         }
 
         /// <summary>
@@ -85,7 +85,7 @@ namespace JumpAndRun.Sound
             {
                 if (CreateObject())
                 {
-                    
+
                 }
             }
             catch (System.Exception e)
@@ -107,7 +107,7 @@ namespace JumpAndRun.Sound
                     audio.settings.volume = Volume;
                     System.Threading.Thread.Sleep(10); // Kann sonst zu exception führen
                     audio.PlayStateChange += new WMPLib._WMPOCXEvents_PlayStateChangeEventHandler(Sound_PlayStateChange);
-                    
+
                 }
                 catch (System.Exception e)
                 {
@@ -134,8 +134,8 @@ namespace JumpAndRun.Sound
 
                     if (CreateObject())
                     {
-                            audio.controls.play();
-                            //log.Debug("audio: " + audio.currentMedia.name);
+                        audio.controls.play();
+                        //log.Debug("audio: " + audio.currentMedia.name);
                     }
                 }
             }
@@ -160,12 +160,12 @@ namespace JumpAndRun.Sound
             {
                 try
                 {
-                audio.controls.stop();
-            }
+                    audio.controls.stop();
+                }
                 catch (System.Exception e)
                 {
                     log.Error("Fehler beim stoppen eines Sounds: " + this.FilePath);
-        }
+                }
             }
         }
 

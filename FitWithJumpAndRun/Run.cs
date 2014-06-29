@@ -157,14 +157,33 @@ namespace JumpAndRun
         // Alle GUIs ausblenden
         private void HideAllGuis()
         {
+            log.Trace("Hide All Guis");
+
+            log.Trace("Hide KinectUi");
             KinectUi.Instance.Hide();
+
+            log.Trace("Hide NoTrackingUi");
             NoTrackingUi.Instance.Hide();
+
+            log.Trace("Hide ButtonTutorialUi");
             ButtonTutorialUi.Instance.Hide();
+
+            log.Trace("Hide MenuUi");
             MenuUi.Instance.Hide();
+
+            log.Trace("Hide LoadingUi");
             LoadingUi.Instance.Hide();
+
+            log.Trace("Hide GameUi");
             GameUi.Instance.Hide();
+
+            log.Trace("Hide GameOverUi");
             GameOverUi.Instance.Hide();
+
+            log.Trace("Hide ScoreUi");
             ScoreUi.Instance.Hide();
+
+            log.Trace("Hide All Guis fertig");
         }
 
         // prüfen ob Kinect angeschlossen ist
