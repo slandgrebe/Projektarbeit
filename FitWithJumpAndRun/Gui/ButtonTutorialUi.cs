@@ -141,7 +141,7 @@ namespace JumpAndRun.Gui
                 ButtonClickedEvent();
             }
 
-            log.Info("Button Tutorial clicked");
+            log.Debug("Button Tutorial clicked");
         }
 
         /// <summary>

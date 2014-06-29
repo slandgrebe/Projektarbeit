@@ -142,6 +142,7 @@ void Manager::remove(GLuint modelId) {
 	std::map<GLuint, visual::gui::Text*>::iterator textIterator = textList.find(modelId);
 	std::map<GLuint, visual::gui::Button*>::iterator buttonIterator = buttonList.find(modelId);
 
+	m_mutex.lock();
 	if (modelIterator != assimpModelList.end()) {
 		model::AssimpModel* model = modelIterator->second;
 
@@ -182,6 +183,7 @@ void Manager::remove(GLuint modelId) {
 	else {
 		Log().warning() << "Model mit der ID '" << modelId << "' konnte nicht entfernt werden";
 	}
+	m_mutex.unlock();
 }
 
 
@@ -589,6 +591,7 @@ bool Manager::addCollisionModel(GLuint modelId, std::string filename) {
 	return false;
 }
 bool Manager::collisionGroup(GLuint modelId, unsigned int newCollisionGroup) {
+	m_mutex.lock();
 	if (assimpModelList.find(modelId) != assimpModelList.end()) {
 		model::AssimpModel* model = assimpModelList.find(modelId)->second;
 
@@ -634,17 +637,20 @@ bool Manager::collisionGroup(GLuint modelId, unsigned int newCollisionGroup) {
 
 			model->collisionGroup(newCollisionGroup);
 		}
-
+		m_mutex.unlock();
 		return true;
 	}
 	else {
 		Log().error() << "Das Model mit der modelId '" << modelId << "' konnte waehrend dem Versuch dessen Kollisionsgruppe zu setzen nicht gefunden werden oder es handelt sich dabei nicht um ein 3D Modell.";
 	}
 
+	m_mutex.unlock();
 	return false;
 }
 
 void Manager::doCollisionDetection(long unsigned int frame) {
+	Log().trace() << "start Manager doCollisionDetection";
+	
 	clock_t begin = clock();
 	
 	// 21;35
@@ -653,22 +659,28 @@ void Manager::doCollisionDetection(long unsigned int frame) {
 	GLuint collisionWithObstacle = 0;
 	GLuint collisionWithBonus = 0;
 
+	Log().trace() << "Collision Model neu berechnen";
 	// collison Model aller Models der Collision group collisionGroupPlayer neu berechnen
 	clock_t begin2 = clock();
-	for (std::list<GLuint>::const_iterator itPlayer = collisionGroupPlayer.begin(), end = collisionGroupPlayer.end(); itPlayer != end; ++itPlayer) {
+	/*for (std::list<GLuint>::const_iterator itPlayer = collisionGroupPlayer.begin(), end = collisionGroupPlayer.end(); itPlayer != end; ++itPlayer) {
 		model::AssimpModel* player = assimpModelList[*itPlayer];
 		player->updateCollisionModel(frame);
-	}
+	}*/
 	//Log().info() << "update all player models(" << collisionGroupPlayer.size() << ") " << float(clock() - begin2) << "ms. " << this->m_collisions;
 
 	begin2 = clock();
+	m_mutex.lock();
 	for (std::map<GLuint, model::AssimpModel*>::const_iterator itModel = assimpModelList.begin(), end = assimpModelList.end(); itModel != end; ++itModel) {
 		model::AssimpModel* model = itModel->second;
 		model->updateCollisionModel(frame);
 	}
+	m_mutex.unlock();
 	//Log().info() << "update all models(" << assimpModelList.size() << ") " << float(clock() - begin2) << "ms. " << this->m_collisions;
 	//Log().info() << "1 Collision Detection in " << float(clock() - begin) << "ms. " << this->m_collisions;
+	
 	// kollision mit hindernis suchen
+	Log().trace() << "Kollisionen mit Hindernis suchen";
+	m_mutex.lock();
 	for (std::list<GLuint>::const_iterator itPlayer = collisionGroupPlayer.begin(), endPlayer = collisionGroupPlayer.end(); itPlayer != endPlayer; ++itPlayer) {
 		model::AssimpModel* player = assimpModelList[*itPlayer];
 
@@ -677,6 +689,8 @@ void Manager::doCollisionDetection(long unsigned int frame) {
 
 			if (player->doesIntersect(obstacle, frame)) { // exaktere prüfung
 				collisionWithObstacle = *itObstacles;
+
+				Log().trace() << "Kollision mit Hindernis gefunden";
 				break;
 			}
 		}
@@ -685,9 +699,12 @@ void Manager::doCollisionDetection(long unsigned int frame) {
 			break;
 		}
 	}
+	m_mutex.unlock();
 	//Log().info() << "2 Collision Detection in " << float(clock() - begin) << "ms. " << this->m_collisions;
 
 	// kollision mit bonus suchen
+	m_mutex.lock();
+	Log().trace() << "Kollision mit Bonus suchen";
 	for (std::list<GLuint>::const_iterator itPlayer = collisionGroupPlayer.begin(), endPlayer = collisionGroupPlayer.end(); itPlayer != endPlayer; ++itPlayer) {
 		model::AssimpModel* player = assimpModelList[*itPlayer];
 
@@ -697,6 +714,7 @@ void Manager::doCollisionDetection(long unsigned int frame) {
 			if (player->doesIntersect(bonus, frame)) { // exaktere prüfung
 				collisionWithBonus = *itBonus;
 				//Log().info() << *itPlayer << " " << *itBonus;
+				Log().trace() << "Kollision mit Bonus gefunden";
 				break;
 			}
 		}
@@ -705,9 +723,11 @@ void Manager::doCollisionDetection(long unsigned int frame) {
 			break;
 		}
 	}
+	m_mutex.unlock();
 	//Log().info() << "3 Collision Detection in " << float(clock() - begin) << "ms. " << this->m_collisions;
 
 	// collision text generieren
+	Log().trace() << "Kollisionstext generieren";
 	if (collisionWithObstacle != 0) {
 		collisions << collisionWithObstacle;
 	}
@@ -723,6 +743,7 @@ void Manager::doCollisionDetection(long unsigned int frame) {
 		Log().info() << "Collision detected: " << collisions.str();
 	}
 	//Log().info() << "Collision Detection in " << float(clock() - begin) << "ms. " << this->m_collisions;
+	Log().trace() << "end Manager doCollisionDetection";
 }
 unsigned int Manager::collisionsTextLength(void) {
 	m_collisionsCache = m_collisions;
@@ -739,6 +760,7 @@ void Manager::draw(void) {
 	}
 	
 	// Modelle zeichnen
+	m_mutex.lock();
 	std::map<GLuint, model::AssimpModel*>::iterator it;
 	for (it = assimpModelList.begin(); it != assimpModelList.end(); it++) {
 		model::AssimpModel* model = (*it).second;
@@ -768,4 +790,6 @@ void Manager::draw(void) {
 		gui::Button* button = (*it4).second;
 		button->draw();
 	}
+
+	m_mutex.unlock();
 }

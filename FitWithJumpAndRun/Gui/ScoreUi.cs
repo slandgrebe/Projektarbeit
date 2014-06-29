@@ -143,7 +143,7 @@ namespace JumpAndRun.Gui
         /// </summary>
         public void ButtonClicked()
         {
-            log.Info("score click");
+            log.Debug("score click");
             //DifficultySelectedEvent(JumpAndRun.Difficulty.Easy);
             ButtonClickedEvent();
         }

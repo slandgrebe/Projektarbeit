@@ -81,7 +81,7 @@ namespace JumpAndRun.Gui
         /// </summary>
         public void ButtonClicked()
         {
-            log.Info("game over click");
+            log.Debug("game over click");
             //DifficultySelectedEvent(JumpAndRun.Difficulty.Easy);
             ButtonClickedEvent();
         }

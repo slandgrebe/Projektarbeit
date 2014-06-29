@@ -59,7 +59,7 @@ namespace JumpAndRun
 
                 if (state == State.Debug)
                 {
-                    ((log4net.Repository.Hierarchy.Hierarchy)LogManager.GetRepository()).Root.Level = Level.All;
+                    ((log4net.Repository.Hierarchy.Hierarchy)LogManager.GetRepository()).Root.Level = Level.Info;
                 }
                 else if (state == State.Release)
                 {
