@@ -17,6 +17,16 @@ namespace JumpAndRun.Gui
         private JumpAndRun.Gui.Elements.Point background = null;
         /// <summary>ID des Textes</summary>
         private JumpAndRun.Gui.Elements.TextWithBackground text = null;
+        private JumpAndRun.Gui.Elements.Button button = null;
+
+        /// <summary>
+        /// Delegate für Button Click
+        /// </summary>
+        public delegate void ButtonClick();
+        /// <summary>
+        /// Button Click Event
+        /// </summary>
+        public event ButtonClick ButtonClickedEvent;
 
         /// <summary>
         /// Singleton
@@ -38,10 +48,6 @@ namespace JumpAndRun.Gui
         /// </summary>
         private LoadingUi()
         {
-            // Hintergrund erzeugen
-            /*background = new JumpAndRun.Gui.Elements.Point("data/background/white.jpg");
-            background.Position(0, 0, -0.8f);
-            background.Scale(2, 2);*/
             // Hintergrund
             background = new JumpAndRun.Gui.Elements.Point("data/background/ladebildschirm.png");
             background.Position(0, 0, -0.55f);
@@ -49,10 +55,15 @@ namespace JumpAndRun.Gui
 
             // Text erzeugen
             text = new JumpAndRun.Gui.Elements.TextWithBackground();
-            text.setText("Dschungel Trainer wird geladen");
             text.Size(40);
             text.Position(0f, -0.7f);
             text.Color(0.84f, 0.59f, 0.11f, 1f);
+
+            // Button
+            button = new JumpAndRun.Gui.Elements.Button();
+            button.Text("Start");
+            button.Position(0f, 0f);
+            button.ClickEvent += new JumpAndRun.Gui.Elements.Button.Clicked(ButtonClicked);
 
             // GUI nicht anzeigen
             Hide();
@@ -68,7 +79,9 @@ namespace JumpAndRun.Gui
             Camera.PositionCamera(0, 0, 0);
 
             background.Show();
+            text.setText("Dschungel Trainer wird geladen");
             text.Show();
+            button.Hide();
         }
 
         /// <summary>
@@ -78,6 +91,23 @@ namespace JumpAndRun.Gui
         {
             background.Hide();
             text.Hide();
+            button.Hide();
+            JumpAndRun.Gui.Elements.Cursor.Instance.Hide();
+        }
+
+        /// <summary>
+        /// Button Click Event Listener
+        /// </summary>
+        public void ButtonClicked()
+        {
+            ButtonClickedEvent();
+        }
+
+        public void LoadingComplete()
+        {
+            text.setText("Spiel geladen");
+            button.Show();
+            JumpAndRun.Gui.Elements.Cursor.Instance.Show();
         }
     }
 }

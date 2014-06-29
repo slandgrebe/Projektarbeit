@@ -74,7 +74,7 @@ namespace JumpAndRun.Gui.Elements
             Y = 0;
 
             cursor = new JumpAndRun.Gui.Elements.Point("data/models/hand/hand.png");
-            cursor.Scale(0.01f, 0.02f);
+            cursor.Scale(0.02f, 0.02f);
             cursor.Position(X, Y, z);
             cursor.AttachToCamera(true);
         }

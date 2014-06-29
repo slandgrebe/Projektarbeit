@@ -16,6 +16,7 @@ namespace JumpAndRun
         ButtonTutorial,
         Menu,
         Loading,
+        LoadingComplete,
         Play,
         GameOver,
         Score

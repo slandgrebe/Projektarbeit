@@ -32,6 +32,7 @@ namespace JumpAndRun
         private Difficulty difficulty = Difficulty.NotSelected;
 
         private bool ButtonTutorialCompleted = false;
+        private bool ButtonLoadingClicked = false;
 
         private Sound.Sound backgroundSound = null;
 
@@ -94,6 +95,7 @@ namespace JumpAndRun
             // click events
             ButtonTutorialUi.Instance.ButtonClickedEvent += new ButtonTutorialUi.ButtonClick(TutorialButtonClicked);
             MenuUi.Instance.DifficultySelectedEvent += new MenuUi.DifficultySelected(DifficultySelected);
+            LoadingUi.Instance.ButtonClickedEvent += new LoadingUi.ButtonClick(LoadingButtonClicked);
             ScoreUi.Instance.ButtonClickedEvent += new ScoreUi.ButtonClick(ScoreButtonClicked);
             GameOverUi.Instance.ButtonClickedEvent += new GameOverUi.ButtonClick(GameOverButtonClicked);
 
@@ -147,7 +149,7 @@ namespace JumpAndRun
             Window.Close();
         }
 
-        
+
 
         // Alle GUIs ausblenden
         private void HideAllGuis()
@@ -268,22 +270,38 @@ namespace JumpAndRun
         // Überprüfen ob das Spiel geladen ist
         private bool CheckGameLoading()
         {
-            // Spiel muss geladen werden
-            if (Game.Instance.GameStatus == GameStatus.Start) // GameStatus.Initial???
+            // Button auf Lade Bildschirm noch nicht geklickt
+            if (!ButtonLoadingClicked)
             {
-                if (modus != Modus.Loading)
+                // Spiel muss geladen werden
+                if (Game.Instance.GameStatus == GameStatus.Start) // GameStatus.Initial???
                 {
-                    modus = Modus.Loading;
-                    HideAllGuis();
-                    LoadingUi.Instance.Show();
-                    backgroundSound.Play();
+                    if (modus != Modus.Loading)
+                    {
+                        modus = Modus.Loading;
+                        HideAllGuis();
+                        LoadingUi.Instance.Show();
+                        backgroundSound.Play();
 
-                    // Spiel laden
-                    string path = "data/levels/jungle/level.xml";
-                    Game.Instance.Load(path, difficulty);
+                        // Spiel laden
+                        string path = "data/levels/jungle/level.xml";
+                        Game.Instance.Load(path, difficulty);
+                    }
+
+                    return false;
                 }
+                // Level ist geladen
+                else if (Game.Instance.GameStatus == GameStatus.LoadingComplete)
+                {
+                    if (modus != Modus.LoadingComplete)
+                    {
+                        modus = Modus.LoadingComplete;
+                        // Button anzeigen
+                        LoadingUi.Instance.LoadingComplete();
+                    }
 
-                return false;
+                    return false;
+                }
             }
 
             return true;
@@ -303,19 +321,21 @@ namespace JumpAndRun
                     modus = Modus.Play;
                     HideAllGuis();
                     backgroundSound.Stop();
+                    Game.Instance.Start();
                 }
-
-                Game.Instance.Start();
 
                 return false;
             }
             // am spielen
-            else if (Game.Instance.GameStatus == GameStatus.Playing || Game.Instance.GameStatus == GameStatus.Start)
+            else if (Game.Instance.GameStatus == GameStatus.Playing /*|| Game.Instance.GameStatus == GameStatus.Start*/)
             {
                 if (modus != Modus.Play)
                 {
+                    Program.Log("Seltsamer Zustand: Run > CheckGaming()");
                     modus = Modus.Play;
+                    HideAllGuis();
                     backgroundSound.Stop();
+                    Game.Instance.Start();
                 }
 
                 return false;
@@ -369,7 +389,10 @@ namespace JumpAndRun
             return true;
         }
 
-        // Event Listener wenn ein Sound zu ende ist
+        /// <summary>
+        /// Event Listener wenn ein Sound zu ende ist
+        /// </summary>
+        /// <param name="sound">Der beendete Sound</param>
         public void SoundFinished(Sound.Sound sound)
         {
             if (sound.Equals(backgroundSound))
@@ -404,6 +427,14 @@ namespace JumpAndRun
         public void GameOverButtonClicked()
         {
             ResetEverything();
+        }
+
+        /// <summary>
+        /// Button auf dem Ladebildschirm wurde geklickt
+        /// </summary>
+        public void LoadingButtonClicked()
+        {
+            ButtonLoadingClicked = true;
         }
         /// <summary>
         /// Event Listener wenn auf dem Siegbildschirm der Button geklickt wird
