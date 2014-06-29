@@ -36,7 +36,7 @@ namespace JumpAndRun.Item
         /// <summary>Beinhaltet das Modell</summary>
         public Model Model { get; set; }
         /// <summary>Soundobjekt</summary>
-        private Sound.Sound SoundCollision = new Sound.Sound();
+        private Sound.Sound SoundCollision = null;
 
         /// <summary>
         /// Initialisierung des Objektes.
@@ -172,7 +172,7 @@ namespace JumpAndRun.Item
             if (Model.Sound.Length > 0)
             {
                 //SoundCollision.FilePath = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location) + Model.Sound;
-                SoundCollision.FilePath = Model.Sound;
+                SoundCollision = new Sound.Sound(Model.Sound);
                 if (Model.SoundVolume > 0) SoundCollision.Volume = Model.SoundVolume;
                 SoundCollision.Play();
             }

@@ -241,8 +241,7 @@ namespace JumpAndRun.GameLogic
                 // Sound abspielen
                 if (!SoundOnEnter.Equals(""))
                 {
-                    Sound.Sound sound = new Sound.Sound();
-                    sound.FilePath = SoundOnEnter;
+                    Sound.Sound sound = new Sound.Sound(SoundOnEnter);
                     sound.Play();
                 }
             }

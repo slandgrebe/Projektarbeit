@@ -34,8 +34,8 @@ namespace JumpAndRun.Gui.Elements
             }
         }
 
-        private Sound.Sound clickSound = null;
-        private Sound.Sound hoverSound = null;
+        private static Sound.Sound clickSound = new Sound.Sound("data/sound/menu/button/click.mp3");
+        private static Sound.Sound hoverSound = new Sound.Sound("data/sound/menu/button/hover.mp3");
         public bool IsHovered { get; private set; }
 
         /// <summary>
@@ -95,10 +95,8 @@ namespace JumpAndRun.Gui.Elements
             JumpAndRun.Gui.Elements.Cursor.Instance.ClickEvent += new JumpAndRun.Gui.Elements.Cursor.Click(CursorClicked);
 
             // sound
-            clickSound = new Sound.Sound();
-            clickSound.FilePath = "data/sound/menu/button/click.mp3";
-            hoverSound = new Sound.Sound();
-            hoverSound.FilePath = "data/sound/menu/button/hover.mp3";
+            //clickSound = new Sound.Sound("data/sound/menu/button/click.mp3");
+            //hoverSound = new Sound.Sound("data/sound/menu/button/hover.mp3");
         }
         /// <summary>
         /// Position setzen

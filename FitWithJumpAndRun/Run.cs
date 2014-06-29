@@ -83,8 +83,7 @@ namespace JumpAndRun
             }
 
             // sound
-            backgroundSound = new Sound.Sound();
-            backgroundSound.FilePath = GetRandomFileFromFolder("data/sound/menu/background", "*.mp3");
+            backgroundSound = new Sound.Sound(GetRandomFileFromFolder("data/sound/menu/background", "*.mp3"));
             backgroundSound.Volume = 50;
             backgroundSound.SoundFinished += new Sound.Sound.SoundFinishedEventHandler(SoundFinished);
 
@@ -335,7 +334,7 @@ namespace JumpAndRun
             {
                 if (modus != Modus.Play)
                 {
-                    Program.Log("Seltsamer Zustand: Run > CheckGaming()");
+                    log.Debug("Seltsamer Zustand: Run > CheckGaming()");
                     modus = Modus.Play;
                     HideAllGuis();
                     backgroundSound.Stop();

@@ -102,8 +102,7 @@ namespace JumpAndRun.GameLogic
             Player.Gains = 0;
             Player.Penalties = 0;
 
-            Sound.Sound sound = new Sound.Sound();
-            sound.FilePath = "data/sound/menu/Bing.mp3";
+            Sound.Sound sound = new Sound.Sound("data/sound/menu/Bing.mp3");
             sound.Play();
 
             // Levelende abfangen

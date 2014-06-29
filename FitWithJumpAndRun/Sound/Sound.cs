@@ -28,7 +28,7 @@ namespace JumpAndRun.Sound
         private SoundState state = SoundState.None;
 
         /// <summary>Windows Media Player Objekt</summary>
-        private WMPLib.WindowsMediaPlayer audio = new WMPLib.WindowsMediaPlayer();
+        private WMPLib.WindowsMediaPlayer audio = null;
         /// <summary>Dateipfad zur Audiodatei</summary>
         public string FilePath { get; set; }
         /// <summary>Wiedergabelautstärke</summary>
@@ -43,8 +43,11 @@ namespace JumpAndRun.Sound
             get { return _Volume; }
             set
             {
-                _Volume = value;
-                audio.settings.volume = _Volume;
+                if (CreateObject())
+                {
+                    _Volume = value;
+                    audio.settings.volume = _Volume;
+                }
             }
         }
         /// <summary>Wiedergabe wiederholen</summary>
@@ -61,17 +64,42 @@ namespace JumpAndRun.Sound
         /// <summary>
         /// Sound erstellen
         /// </summary>
-        public Sound()
+        public Sound(string file)
         {
+            FilePath = file;
+            log.Debug("Neuer Sound wird erstellt: " + FilePath);
             try
             {
-                audio.settings.volume = Volume;
-                audio.PlayStateChange += new WMPLib._WMPOCXEvents_PlayStateChangeEventHandler(Sound_PlayStateChange);
+                if (CreateObject())
+                {
+                    audio.URL = FilePath;
+                    audio.settings.volume = Volume;
+                    audio.PlayStateChange += new WMPLib._WMPOCXEvents_PlayStateChangeEventHandler(Sound_PlayStateChange);
+                }
             }
             catch (System.Exception e)
             {
                 log.Error("Sounderror: " + FilePath);
+                log.Error(e.ToString());
             }
+        }
+
+        private bool CreateObject()
+        {
+            if (audio == null)
+            {
+                try
+                {
+                    audio = new WMPLib.WindowsMediaPlayer();
+                }
+                catch (System.Exception e)
+                {
+                    log.Error("Beim Versuch ein Audio Objekt zu erzeugen ist eine Ausnahme aufgetreten: \n " + e.ToString());
+                    return false;
+                }
+            }
+
+            return true;
         }
 
         /// <summary>
@@ -87,9 +115,12 @@ namespace JumpAndRun.Sound
                 {
                     state = SoundState.Play;
 
-                    audio.URL = FilePath;
-                    audio.controls.play();
-                    log.Info("audio: " + audio.currentMedia.name);
+                    if (CreateObject())
+                    {
+                            audio.URL = FilePath;
+                            audio.controls.play();
+                            log.Debug("audio: " + audio.currentMedia.name);
+                    }
                 }
             }
             catch (System.Runtime.InteropServices.COMException e)
@@ -105,7 +136,10 @@ namespace JumpAndRun.Sound
         {
             state = SoundState.Stop;
 
-            audio.controls.stop();
+            if (CreateObject())
+            {
+                audio.controls.stop();
+            }
         }
 
         /// <summary>

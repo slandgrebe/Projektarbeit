@@ -59,7 +59,7 @@ namespace JumpAndRun.GameLogic
         /// <summary>Schwierigkeitsgrad des Levels</summary>
         private JumpAndRun.Difficulty difficulty = JumpAndRun.Difficulty.NotSelected;
         /// <summary>Hintergrundmusik Soundobjekt</summary>
-        private Sound.Sound BgSound = new Sound.Sound();
+        private Sound.Sound BgSound = null;
         /// <summary>Logger</summary>
         private static readonly ILog log = LogManager.GetLogger(typeof(Level).Name);
 
@@ -442,22 +442,22 @@ namespace JumpAndRun.GameLogic
             {
                 case JumpAndRun.Difficulty.Easy:
                     //BgSound.FilePath = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location) + BackgroundMusicEasy;
-                    BgSound.FilePath = BackgroundMusicEasy;
+                    BgSound = new Sound.Sound(BackgroundMusicEasy);
                     BgSound.Volume = BackgroundMusicEasyVolume;
                     break;
                 case JumpAndRun.Difficulty.Normal:
                     //BgSound.FilePath = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location) + BackgroundMusicMedium;
-                    BgSound.FilePath = BackgroundMusicMedium;
+                    BgSound = new Sound.Sound(BackgroundMusicMedium);
                     BgSound.Volume = BackgroundMusicMediumVolume;
                     break;
                 case JumpAndRun.Difficulty.Difficult:
                     //BgSound.FilePath = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location) + BackgroundMusicHard;
-                    BgSound.FilePath = BackgroundMusicHard;
+                    BgSound = new Sound.Sound(BackgroundMusicHard);
                     BgSound.Volume = BackgroundMusicHardVolume;
                     break;
                 default:
                     //BgSound.FilePath = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location) + BackgroundMusicHard;
-                    BgSound.FilePath = BackgroundMusicHard;
+                    BgSound = new Sound.Sound(BackgroundMusicHard);
                     BgSound.Volume = BackgroundMusicHardVolume;
                     break;
             }
