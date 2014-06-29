@@ -18,7 +18,7 @@ namespace JumpAndRun.Gui
         /// <summary>ID des Hintergrundbildes</summary>
         private JumpAndRun.Gui.Elements.Point background = null;
         /// <summary>ID des Textes</summary>
-        private JumpAndRun.Gui.Elements.Text text = null;
+        private JumpAndRun.Gui.Elements.TextWithBackground text = null;
         /// <summary>ID des Buttons</summary>
         private Gui.Elements.Button button = null;
         /// <summary>Logger</summary>
@@ -58,7 +58,7 @@ namespace JumpAndRun.Gui
             background.Scale(1.333f, 1f);
 
             // Text erzeugen
-            text = new JumpAndRun.Gui.Elements.Text();
+            text = new JumpAndRun.Gui.Elements.TextWithBackground();
             text.setText("Game over!");
             text.Position(0, 0.5f);
 

@@ -71,7 +71,7 @@ namespace JumpAndRun.Gui.Elements
         /// <param name="fontFilename">zu verwendende Schriftart</param>
         public Button(string fontFilename = "data/fonts/JAPAB.TTF")
         {
-            int buttonTextSize = 40;
+            int buttonTextSize = 32;
             float buttonTextR = 0f, buttonTextG = 0f, buttonTextB = 0f, buttonTextA = 1f;
             float buttonR = 0.667f, buttonG = 0.478f, buttonB = 0.224f, buttonA = 1f;
 
@@ -125,7 +125,7 @@ namespace JumpAndRun.Gui.Elements
         /// </summary>
         public void Show()
         {
-            View.Model.Position(modelId, x, y, 0f);
+            //View.Model.Position(modelId, x, y, 0f);
             if (!IsVisible)
             {
                 IsVisible = true;
@@ -136,7 +136,7 @@ namespace JumpAndRun.Gui.Elements
         /// </summary>
         public void Hide()
         {
-            View.Model.Position(modelId, -100f, 0f, 0f);
+            //View.Model.Position(modelId, -100f, 0f, 0f);
             if (IsVisible)
             {
                 IsVisible = false; 
@@ -222,6 +222,11 @@ namespace JumpAndRun.Gui.Elements
                 }
                 clickSound.Play();
             }
+        }
+
+        public void TextSize(int points)
+        {
+            View.Text.TextSize(modelId, points);
         }
     }
 }

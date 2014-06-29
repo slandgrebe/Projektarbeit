@@ -18,13 +18,12 @@ namespace JumpAndRun.Gui
         /// <summary>ID des Hintergrundbildes</summary>
         private JumpAndRun.Gui.Elements.Point background = null;
         /// <summary>obere Text</summary>
-        private JumpAndRun.Gui.Elements.Text textTop1 = null;
-        private JumpAndRun.Gui.Elements.Text textTop2 = null;
-        private JumpAndRun.Gui.Elements.Text textTop3 = null;
+        private JumpAndRun.Gui.Elements.TextWithBackground textTop2 = null;
+        private JumpAndRun.Gui.Elements.TextWithBackground textTop3 = null;
 
-        private JumpAndRun.Gui.Elements.Text textBottom1 = null;
-        private JumpAndRun.Gui.Elements.Text textBottom2 = null;
-        private JumpAndRun.Gui.Elements.Text textBottom3 = null;
+        private JumpAndRun.Gui.Elements.TextWithBackground textBottom1 = null;
+        private JumpAndRun.Gui.Elements.TextWithBackground textBottom2 = null;
+        private JumpAndRun.Gui.Elements.TextWithBackground textBottom3 = null;
 
         /// <summary>ID des Buttons</summary>
         private Gui.Elements.Button button = null;
@@ -69,38 +68,36 @@ namespace JumpAndRun.Gui
             background.Scale(1.333f, 1f);
 
             // Text erzeugen
-            textTop1 = new JumpAndRun.Gui.Elements.Text();
-            textTop1.setText("");
-            textTop1.Position(0, 0.85f);
-            textTop1.Size(44);
-            textTop1.Color(0.784f, 0.125f, 0.125f, 1f); // rot
-
-            textTop2 = new JumpAndRun.Gui.Elements.Text();
+            textTop2 = new JumpAndRun.Gui.Elements.TextWithBackground();
             textTop2.setText("Beweg doch einmal deine");
             textTop2.Position(0, 0.65f);
+            textTop2.Color(0.796f, 0.624f, 0.157f, 1f); // kaki
             textTop2.Size(44);
 
-            textTop3 = new JumpAndRun.Gui.Elements.Text();
+            textTop3 = new JumpAndRun.Gui.Elements.TextWithBackground();
             textTop3.setText("rechte Hand zum Knopf");
             textTop3.Position(0, 0.45f);
+            textTop3.Color(0.796f, 0.624f, 0.157f, 1f); // kaki
             textTop3.Size(44);
 
 
-            textBottom1 = new JumpAndRun.Gui.Elements.Text();
+            textBottom1 = new JumpAndRun.Gui.Elements.TextWithBackground();
             textBottom1.setText("Siehst du wie er rot geworden ist?");
             textBottom1.Position(0, -0.45f);
-            textBottom1.Size(44);
+            textBottom1.Size(40);
             textBottom1.Color(0.784f, 0.125f, 0.125f, 1f); // rot
 
-            textBottom2 = new JumpAndRun.Gui.Elements.Text();
+            textBottom2 = new JumpAndRun.Gui.Elements.TextWithBackground();
             textBottom2.setText("Wenn du gleichzeitig noch deine Hand");
             textBottom2.Position(0, -0.65f);
-            textBottom2.Size(44);
+            textBottom2.Color(0.796f, 0.624f, 0.157f, 1f); // kaki
+            textBottom2.Size(40);
 
-            textBottom3 = new JumpAndRun.Gui.Elements.Text();
+            textBottom3 = new JumpAndRun.Gui.Elements.TextWithBackground();
             textBottom3.setText("nach vorne bewegst, klickst du den Knopf");
             textBottom3.Position(0, -0.85f);
-            textBottom3.Size(44);
+            textBottom3.Color(0.796f, 0.624f, 0.157f, 1f); // kaki
+            textBottom3.Size(40);
 
 
             // Button erzeugen
@@ -157,7 +154,6 @@ namespace JumpAndRun.Gui
             Camera.PositionCamera(0, 0, 0);
 
             background.Show();
-            textTop1.Show();
             textTop2.Show();
             textTop3.Show();
             button.Show();
@@ -177,7 +173,6 @@ namespace JumpAndRun.Gui
         public void Hide()
         {
             background.Hide();
-            textTop1.Hide();
             textTop2.Hide();
             textTop3.Hide();
             textBottom1.Hide();

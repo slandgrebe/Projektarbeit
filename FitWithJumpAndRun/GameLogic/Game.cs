@@ -28,8 +28,8 @@ namespace JumpAndRun.GameLogic
         public GameStatus GameStatus { get; set; }
         /// <summary>Beinhaltet das GUI während des Spiels.</summary>
         private GameUi gameUi;
-        /// <summary>Beinhaltet die Segmentnummer, in welchem sich der Spieler gerade befindet</summary>
-        private int CurrentSegment;
+        /*/// <summary>Beinhaltet die Segmentnummer, in welchem sich der Spieler gerade befindet</summary>
+        private int CurrentSegment;*/
         /// <summary>Kamerageschwindigkeit  in m/s</summary>
         private double speed = 5;
         /// <summary>Startzeit bei Levelbeginn</summary>
@@ -99,9 +99,16 @@ namespace JumpAndRun.GameLogic
             // Spieler
             Player.Scale = 0.7f;
             Player.Attach = true;
-            Player.Score = 0;
-            Player.Lifes = level.Lifes;
-            
+            Player.Gains = 0;
+            Player.Penalties = 0;
+
+            Sound.Sound sound = new Sound.Sound();
+            sound.FilePath = "data/sound/menu/Bing.mp3";
+            sound.Play();
+
+            // Levelende abfangen
+            level.LevelFinishedEvent += new Level.LevelFinished(LevelHasFinished);
+
             GameStatus = GameStatus.LoadingComplete;
 
             return true;
@@ -116,7 +123,7 @@ namespace JumpAndRun.GameLogic
             {
                 //Camera.PositionCamera(0, 1.5f, -40 + 4.5f -0.5f);
                 //Camera.ChangeCameraSpeed(0f);
-                CurrentSegment = -1;
+                //CurrentSegment = -1;
                 level.Visibility(true);
                 Player.Visibility(true);
                 Camera.PositionCamera(0, 1.5f, 0);
@@ -136,10 +143,14 @@ namespace JumpAndRun.GameLogic
         /// </summary>
         public void Update()
         {
-            // Wenn das Lvel beendet ist, die Kamera stoppen
-            if(GameStatus != GameStatus.Playing){
+            // Wenn das Level beendet ist, die Kamera stoppen
+            /*if(GameStatus != GameStatus.Playing){
                 Camera.ChangeCameraSpeed(0);
             }
+
+            // Prüfen ob der Spieler Game Over ist
+            CheckGameOver();*/
+
             if (GameStatus == GameStatus.Playing)
             {
                 if (level != null)
@@ -154,19 +165,19 @@ namespace JumpAndRun.GameLogic
                         {
                             if (score.Collision(Player, true))
                             {
-                                Player.Score += (uint)score.Severity;
+                                Player.Gains += (uint)score.Severity;
                             }
                         }
                     }
 
-                    // Leben um 1 verringern, wenn ein Hinternis getroffen wird
+                    // Leben um 1 verringern, wenn ein Hindernis getroffen wird
                     foreach (LevelSegment segment in level.RandomlyChosenSegments)
                     {
                         foreach (JumpAndRun.Item.Object obstacle in segment.obstacles)
                         {
                             if (obstacle.Collision(Player, false))
                             {
-                                Player.Lifes -= (uint)obstacle.Severity;
+                                Player.Penalties += (uint)obstacle.Severity;
                             }
                         }
                     }
@@ -178,22 +189,18 @@ namespace JumpAndRun.GameLogic
                     Player.ZPosition = (float)distance;
 
                     // Neuer Score, Lebensvorrat im GUI anzeigen
-                    gameUi.Lifes = Player.Lifes;
-                    gameUi.Score = Player.Score;
+                    gameUi.Penalty = Player.Lifes;
+                    gameUi.Advantage = Player.Gains;
                     gameUi.Update();
-
-                    // Prüfen ob das Ziel erreicht wurde
-                    CheckLevelEnd();
-
-                    // Prüfen ob der Spieler Game Over ist
-                    CheckGameOver();
-
-                    if (GameStatus == GameStatus.GameOver || GameStatus == GameStatus.Successful)
-                    {
-                        level.stopBackgroundMusic();
-                    }
                 }
-            } 
+            }
+            else if (GameStatus == GameStatus.GameOver || GameStatus == GameStatus.Successful)
+            {
+                level.Visibility(false);
+                Player.Visibility(false);
+                Camera.ChangeCameraSpeed(0);
+                level.stopBackgroundMusic();
+            }
         }
 
         /// <summary>
@@ -213,6 +220,14 @@ namespace JumpAndRun.GameLogic
         }
 
         /// <summary>
+        /// Fängt das Level Finished Event ab
+        /// </summary>
+        public void LevelHasFinished()
+        {
+            GameStatus = GameStatus.Successful;
+        }
+
+        /*/// <summary>
         /// Überprüft ob der Spieler Game Over ist
         /// </summary>
         private void CheckGameOver()
@@ -222,8 +237,7 @@ namespace JumpAndRun.GameLogic
                 log.Info("GAME OVER!");
                 GameStatus = GameStatus.GameOver;
                 Camera.ChangeCameraSpeed(0);
-                level.Visibility(false);
-                Player.Visibility(false);
+                
             }
         }
 
@@ -239,6 +253,6 @@ namespace JumpAndRun.GameLogic
                 level.Visibility(false);
                 Player.Visibility(false);
             }
-        }
+        }*/
     }
 }

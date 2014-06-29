@@ -14,13 +14,13 @@ namespace JumpAndRun.Gui
     {
         private static GameUi instance = null;
         /// <summary>ID des Textes für die Lebensanzeigen</summary>
-        private JumpAndRun.Gui.Elements.Text life = null;
+        private JumpAndRun.Gui.Elements.Text penalty = null;
         /// <summary>ID des Textes für die erreichten Punkte</summary>
-        private JumpAndRun.Gui.Elements.Text score = null;
-        /// <summary>Aktuelle anzahl Leben</summary>
-        public uint Lifes { get; set; }
-        /// <summary>Aktuell gesammelte Punkte</summary>
-        public uint Score { get; set; }
+        private JumpAndRun.Gui.Elements.Text advantage = null;
+        /// <summary>Aktuelle Anzahl Strafpunkte</summary>
+        public uint Penalty { get; set; }
+        /// <summary>Aktuell gesammelte Pluspunkte</summary>
+        public uint Advantage { get; set; }
 
         /// <summary>
         /// Singleton
@@ -42,13 +42,13 @@ namespace JumpAndRun.Gui
         private GameUi()
         {
             // Texte erzeugen
-            life = new JumpAndRun.Gui.Elements.Text();
-            life.Size(40);
-            life.Position(-0.7f, 0.8f);
+            penalty = new JumpAndRun.Gui.Elements.Text();
+            penalty.Size(40);
+            penalty.Position(-0.7f, 0.8f);
 
-            score = new JumpAndRun.Gui.Elements.Text();
-            score.Size(40);
-            score.Position(0.7f, 0.8f);
+            advantage = new JumpAndRun.Gui.Elements.Text();
+            advantage.Size(40);
+            advantage.Position(0.7f, 0.8f);
 
             // GUI nicht anzeigen
             Hide();
@@ -59,8 +59,8 @@ namespace JumpAndRun.Gui
         /// </summary>
         public void Update()
         {
-            life.setText("Leben: " + Lifes);
-            score.setText("Punkte: " + Score);
+            penalty.setText("Strafe: " + Penalty);
+            advantage.setText("Punkte: " + Advantage);
         }
 
         /// <summary>
@@ -68,8 +68,8 @@ namespace JumpAndRun.Gui
         /// </summary>
         public void Show()
         {
-            life.Show();
-            score.Show();
+            penalty.Show();
+            advantage.Show();
         }
 
         /// <summary>
@@ -77,8 +77,8 @@ namespace JumpAndRun.Gui
         /// </summary>
         public void Hide()
         {
-            life.Hide();
-            score.Hide();
+            penalty.Hide();
+            advantage.Hide();
         }
     }
 }

@@ -64,6 +64,16 @@ namespace JumpAndRun.GameLogic
         private static readonly ILog log = LogManager.GetLogger(typeof(Level).Name);
 
         /// <summary>
+        /// Delegate für das Difficulty Selected Event
+        /// </summary>
+        /// <param name="difficulty">Schwierigkeitsgrad</param>
+        public delegate void LevelFinished();
+        /// <summary>
+        /// Difficulty Selected Event
+        /// </summary>
+        public event LevelFinished LevelFinishedEvent;
+
+        /// <summary>
         /// Level Initialisieren
         /// </summary>
         public Level()
@@ -168,6 +178,15 @@ namespace JumpAndRun.GameLogic
         /// <param name="segment">Sgment welches betreten wird</param>
         public void SegmentEntered(LevelSegment segment)
         {
+            // Endsegment
+            if (segment.Equals(this.SegmentsStartEnd[1]))
+            {
+                if (LevelFinishedEvent != null)
+                {
+                    LevelFinishedEvent();
+                }
+            }
+            
             // segment ausblenden, sieht man sowieso nicht mehr
             segment.Visibility(true);
 

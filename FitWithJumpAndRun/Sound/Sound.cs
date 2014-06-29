@@ -114,12 +114,15 @@ namespace JumpAndRun.Sound
         /// <param name="time">Zeit in Sekunden</param>
         public void FadeOut(int time = 1)
         {
-            int sleep = (time * 1000) / Volume;
-
-            while (Volume > 0)
+            if (Volume > 0)
             {
-                System.Threading.Thread.Sleep(sleep);
-                Volume--;
+                int sleep = (time * 1000) / Volume;
+
+                while (Volume > 0)
+                {
+                    System.Threading.Thread.Sleep(sleep);
+                    Volume--;
+                }
             }
             Stop();
         }
