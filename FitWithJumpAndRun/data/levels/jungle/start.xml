@@ -1,6 +1,7 @@
 <?xml version="1.0"?>
 <LevelSegment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Length>20</Length>
+  <SoundOnEnter>data/sound/game/segment/entered/start.mp3</SoundOnEnter>
   <objects>
     <Object>
       <ModelXmlPath>data/levels/jungle/models/floor.xml</ModelXmlPath>

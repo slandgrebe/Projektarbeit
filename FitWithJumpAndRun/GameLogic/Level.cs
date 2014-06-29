@@ -295,7 +295,7 @@ namespace JumpAndRun.GameLogic
                 default: nDifficulty = Math.Round((double)(maxDifficulty - minDifficulty) / 2) + minDifficulty; break;
             }
 
-            double standardDeviation = (maxDifficulty - minDifficulty) / 2; // Standardabweichung
+            double standardDeviation = (maxDifficulty - minDifficulty) * 0.3; // Standardabweichung
             
             // bei nur einem segment...
             if (standardDeviation <= 0)
@@ -330,8 +330,34 @@ namespace JumpAndRun.GameLogic
                 }     
             }
 
-            // Debug Log
-            Program.Log("****************************************************");
+            List<double> l1 = new List<double>();
+            List<double> l2 = new List<double>();
+            List<double> l3 = new List<double>();
+
+
+            for (int i = 0; i < 100; i++)
+            {
+                double d = RandomNumberGenerator.GetNormal(3, 0.6);
+                if (d < 1.5)
+                {
+                    l1.Add(d);
+                }
+                else if (d > 2.5)
+                {
+                    l3.Add(d);
+                }
+                else
+                {
+                    l2.Add(d);
+                }
+            }
+
+            Console.WriteLine("l1: " + l1.Count);
+            Console.WriteLine("l2: " + l2.Count);
+            Console.WriteLine("l3: " + l3.Count);
+
+                // Debug Log
+                Program.Log("****************************************************");
             Program.Log("Level wird zufaellig erstellt.");
             Program.Log("  Schwierigkeitsgrad: " + difficulty.ToString());
             Program.Log("  Laenge: " + lengthInSeconds + "s");
