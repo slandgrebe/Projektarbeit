@@ -49,14 +49,15 @@ namespace JumpAndRun.Sound
                     _Volume = value;
                     try
                     {
-                        audio.settings.volume = _Volume;
-                    }
+                        System.Threading.Thread.Sleep(20); // Kann sonst zu exception führen
+                    audio.settings.volume = _Volume;
+                }
                     catch (System.Exception e)
                     {
                         log.Error("Beim Versuch die Lautstaerke zu erhoehen ist ein Fehler aufgetreten. Datei: " + this.FilePath);
                     }
-                }
             }
+        }
         }
         /// <summary>Wiedergabe wiederholen</summary>
         public bool Loop
@@ -65,8 +66,12 @@ namespace JumpAndRun.Sound
             set
             {
                 _Loop = value;
+                if (CreateObject())
+                {
+                    System.Threading.Thread.Sleep(20); // Kann sonst zu exception führen
                 audio.settings.setMode("loop", _Loop);
             }
+        }
         }
 
         /// <summary>
@@ -80,9 +85,7 @@ namespace JumpAndRun.Sound
             {
                 if (CreateObject())
                 {
-                    audio.URL = FilePath;
-                    audio.settings.volume = Volume;
-                    audio.PlayStateChange += new WMPLib._WMPOCXEvents_PlayStateChangeEventHandler(Sound_PlayStateChange);
+                    
                 }
             }
             catch (System.Exception e)
@@ -99,6 +102,12 @@ namespace JumpAndRun.Sound
                 try
                 {
                     audio = new WMPLib.WindowsMediaPlayer();
+                    audio.URL = FilePath;
+                    System.Threading.Thread.Sleep(10); // Kann sonst zu exception führen
+                    audio.settings.volume = Volume;
+                    System.Threading.Thread.Sleep(10); // Kann sonst zu exception führen
+                    audio.PlayStateChange += new WMPLib._WMPOCXEvents_PlayStateChangeEventHandler(Sound_PlayStateChange);
+                    
                 }
                 catch (System.Exception e)
                 {
@@ -125,9 +134,8 @@ namespace JumpAndRun.Sound
 
                     if (CreateObject())
                     {
-                            audio.URL = FilePath;
                             audio.controls.play();
-                            log.Debug("audio: " + audio.currentMedia.name);
+                            //log.Debug("audio: " + audio.currentMedia.name);
                     }
                 }
             }
@@ -152,12 +160,12 @@ namespace JumpAndRun.Sound
             {
                 try
                 {
-                    audio.controls.stop();
-                }
+                audio.controls.stop();
+            }
                 catch (System.Exception e)
                 {
                     log.Error("Fehler beim stoppen eines Sounds: " + this.FilePath);
-                }
+        }
             }
         }
 
@@ -189,10 +197,10 @@ namespace JumpAndRun.Sound
         {
             if ((WMPLib.WMPPlayState)NewState == WMPLib.WMPPlayState.wmppsStopped)
             {
-                if (SoundFinished != null && state != SoundState.Stop)
+                if (state != SoundState.Stop)
                 {
                     state = SoundState.Finished;
-                    SoundFinished(this);
+                    if (SoundFinished != null) SoundFinished(this);
                 }
             }
         }
