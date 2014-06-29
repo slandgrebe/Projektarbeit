@@ -21,7 +21,9 @@ namespace JumpAndRun.GameLogic
         /// <summary>Aktuell noch verfügbare Leben der Spielfigur</summary>
         public uint Lifes { get; set; }
         /// <summary>Aktueller Punktestand der Spielfigur</summary>
-        public uint Score { get; set; }
+        public uint Gains { get; set; }
+        /// <summary>Aktueller Abzug der Spielfigur</summary>
+        public uint Penalties { get; set; }
 
         /// <summary>Modell des Kopfes</summary>
         public Model Head { get; private set; }

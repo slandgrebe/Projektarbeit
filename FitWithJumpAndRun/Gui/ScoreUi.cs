@@ -13,11 +13,19 @@ namespace JumpAndRun.Gui
     public class ScoreUi
     {
         private static ScoreUi instance = null;
-        /// <summary>ID des Hintergrundbildes</summary>
+        /// <summary>Hintergrundbild</summary>
         private JumpAndRun.Gui.Elements.Point background = null;
-        /// <summary>ID des Textes</summary>
-        private JumpAndRun.Gui.Elements.TextWithBackground text = null;
-        /// <summary>ID des Buttons</summary>
+        /// <summary>Abzug Text</summary>
+        private JumpAndRun.Gui.Elements.TextWithBackground penalties = null;
+        /// <summary>
+        /// Bonus Text
+        /// </summary>
+        private JumpAndRun.Gui.Elements.TextWithBackground gains = null;
+        /// <summary>
+        /// Resultat Text
+        /// </summary>
+        private JumpAndRun.Gui.Elements.TextWithBackground score = null;
+        /// <summary>Button</summary>
         private Gui.Elements.Button button = null;
 
         /// <summary>
@@ -29,10 +37,43 @@ namespace JumpAndRun.Gui
         /// </summary>
         public event ButtonClick ButtonClickedEvent;
 
+        private uint _Penalties = 0;
+        private uint _Gains = 0;
+        private int Score = 0;
         /// <summary>
-        /// Anzuzeigende Punktzahl
+        /// Anzuzeigende Abzüge
         /// </summary>
-        public uint Score { get; set; }
+        public uint Penalties
+        {
+            get
+            {
+                return _Penalties;
+            }
+            set
+            {
+                _Penalties = value;
+                RecalculatePoints();
+            }
+        }
+        /// <summary>
+        /// Anzuzeigender Bonus
+        /// </summary>
+        public uint Gains
+        {
+            get
+            {
+                return _Gains;
+            }
+            set
+            {
+                _Gains = value;
+                RecalculatePoints();
+            }
+        }
+        private void RecalculatePoints()
+        {
+            Score = (int)Gains - (int)Penalties;
+        }
 
         /// <summary>
         /// Singleton
@@ -62,11 +103,21 @@ namespace JumpAndRun.Gui
             background.Scale(1.333f, 1f);
 
             // Text erzeugen
-            text = new JumpAndRun.Gui.Elements.TextWithBackground();
-            text.setText("Punkte: " + Score);
-            text.Size(50);
-            text.Position(0, 0.5f);
+            gains = new JumpAndRun.Gui.Elements.TextWithBackground();
+            gains.setText("Punkte: " + Gains);
+            gains.Size(50);
+            gains.Position(0, 0.8f);
 
+            penalties = new JumpAndRun.Gui.Elements.TextWithBackground();
+            penalties.setText("Abzug: " + Penalties);
+            penalties.Size(50);
+            penalties.Position(0, 0.6f);
+
+            score = new JumpAndRun.Gui.Elements.TextWithBackground();
+            score.setText("Resultat: " + Score);
+            score.Size(50);
+            score.Position(0, 0.3f);
+            
             // Button erzeugen
             button = new Gui.Elements.Button();
             button.Text("Nochmal");
@@ -87,7 +138,7 @@ namespace JumpAndRun.Gui
         /// </summary>
         public void ButtonClicked()
         {
-            Console.WriteLine("score click");
+            Program.Log("score click");
             //DifficultySelectedEvent(JumpAndRun.Difficulty.Easy);
             ButtonClickedEvent();
         }
@@ -101,9 +152,18 @@ namespace JumpAndRun.Gui
             Camera.ChangeCameraSpeed(0);
             Camera.PositionCamera(0, 0, 0);
 
+            // Texte updaten
+            gains.setText("Punkte: " + Gains);
+            penalties.setText("Abzug: " + Penalties);
+            score.setText("Resultat: " + Score);
+
+            // anzeigen
             background.Show();
-            text.Show();
-            text.setText("Punkte: " + Score);
+
+            gains.Show();
+            penalties.Show();
+            score.Show();
+            
             button.Show();
 
             JumpAndRun.Gui.Elements.Cursor.Instance.Show();
@@ -115,7 +175,9 @@ namespace JumpAndRun.Gui
         public void Hide()
         {
             background.Hide();
-            text.Hide();
+            gains.Hide();
+            penalties.Hide();
+            score.Hide();
             button.Hide();
 
             JumpAndRun.Gui.Elements.Cursor.Instance.Hide();

@@ -362,8 +362,9 @@ namespace JumpAndRun
                 if (modus != Modus.Score)
                 {
                     modus = Modus.Score;
-                    //Body.Instance.Scale(1f);
-                    ScoreUi.Instance.Score = Game.Instance.Player.Score;
+                    Body.Instance.Scale(1f);
+                    ScoreUi.Instance.Gains = Game.Instance.Player.Gains;
+                    ScoreUi.Instance.Penalties = Game.Instance.Player.Penalties;
                     HideAllGuis();
                     ScoreUi.Instance.Show();
                     backgroundSound.Play();
