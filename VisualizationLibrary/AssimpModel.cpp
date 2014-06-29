@@ -128,7 +128,7 @@ bool AssimpModel::loadModel(const std::string filename) {
 	glBindVertexArray(0);
 
 	
-	visual::graphics::GraphicEngine::getInstance()->printOglError(__FILE__, __LINE__);
+	printOpenGLError();
 
 	// collision cube
 	glm::vec3 frontBottomLeft(xMin, yMin, zMax);
@@ -140,7 +140,7 @@ bool AssimpModel::loadModel(const std::string filename) {
 	glm::vec3 backTopRight(xMax, yMax, zMin);
 	glm::vec3 backTopLeft(xMin, yMax, zMin);
 	
-	visual::graphics::GraphicEngine::getInstance()->printOglError(__FILE__, __LINE__);
+	printOpenGLError();
 
 	// vorne
 	collisionModelOriginal.push_back(Triangle(frontBottomLeft, frontBottomRight, frontTopRight)); // vorne unten rechts
@@ -163,7 +163,7 @@ bool AssimpModel::loadModel(const std::string filename) {
 	
 	collisionModel = collisionModelOriginal; // original behalten wegen mehrfacher mvp anwendung
 
-	visual::graphics::GraphicEngine::getInstance()->printOglError(__FILE__, __LINE__);
+	printOpenGLError();
 	
 	return returnValue;
 }

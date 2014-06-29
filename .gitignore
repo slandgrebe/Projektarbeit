@@ -489,3 +489,301 @@ $RECYCLE.BIN/
 /Deployment/Projektarbeit_Debug/data/sound/music/background_easy.wav
 /Deployment/Projektarbeit_Debug/data/sound/music/background_hard.wav
 /Deployment/Projektarbeit_Debug/data/sound/music/background_medium.wav
+/_Debug/VisualizationExample.exe.config
+/_Debug/Assimp32.dll
+/_Debug/Controller.exe
+/_Debug/Controller.exe.config
+/_Debug/Controller.vshost.exe
+/_Debug/Controller.vshost.exe.config
+/_Debug/Controller.vshost.exe.manifest
+/_Debug/ControllerTest.dll
+/_Debug/data/background/dschungel.png
+/_Debug/data/background/dschungel2.png
+/_Debug/data/background/farn.jpg
+/_Debug/data/background/hintergrund.png
+/_Debug/data/background/ladebildschirm.png
+/_Debug/data/background/white.jpg
+/_Debug/data/fonts/arial.ttf
+/_Debug/data/fonts/JAPAB.TTF
+/_Debug/data/fonts/KBZipaDeeDooDah.ttf
+/_Debug/data/fonts/MADAVE.TTF
+/_Debug/data/fonts/SUPERTIK.TTF
+/_Debug/data/fonts/trench100free.otf
+/_Debug/data/levels/jungle/end.xml
+/_Debug/data/levels/jungle/level.xml
+/_Debug/data/levels/jungle/models/banana.xml
+/_Debug/data/levels/jungle/models/cocosnut.xml
+/_Debug/data/levels/jungle/models/fern.xml
+/_Debug/data/levels/jungle/models/finish.xml
+/_Debug/data/levels/jungle/models/floor.xml
+/_Debug/data/levels/jungle/models/jungle.xml
+/_Debug/data/levels/jungle/models/liana.xml
+/_Debug/data/levels/jungle/models/limb.xml
+/_Debug/data/levels/jungle/models/mango.xml
+/_Debug/data/levels/jungle/models/palm.xml
+/_Debug/data/levels/jungle/models/rail.xml
+/_Debug/data/levels/jungle/models/sky.xml
+/_Debug/data/levels/jungle/models/start.xml
+/_Debug/data/levels/jungle/models/stone.xml
+/_Debug/data/levels/jungle/models/wagon.xml
+/_Debug/data/levels/jungle/segments/duckenUndWinken.xml
+/_Debug/data/levels/jungle/segments/segment1.xml
+/_Debug/data/levels/jungle/segments/segment2.xml
+/_Debug/data/levels/jungle/segments/slalom.xml
+/_Debug/data/levels/jungle/start.xml
+/_Debug/data/levels/jungleTest/end.xml
+/_Debug/data/levels/jungleTest/level.xml
+/_Debug/data/levels/jungleTest/models/banana.xml
+/_Debug/data/levels/jungleTest/models/cocosnut.xml
+/_Debug/data/levels/jungleTest/models/finish.xml
+/_Debug/data/levels/jungleTest/models/floor.xml
+/_Debug/data/levels/jungleTest/models/jungle.xml
+/_Debug/data/levels/jungleTest/models/liana.xml
+/_Debug/data/levels/jungleTest/models/limb.xml
+/_Debug/data/levels/jungleTest/models/mango.xml
+/_Debug/data/levels/jungleTest/models/rail.xml
+/_Debug/data/levels/jungleTest/models/sky.xml
+/_Debug/data/levels/jungleTest/models/start.xml
+/_Debug/data/levels/jungleTest/models/wagon.xml
+/_Debug/data/levels/jungleTest/segments/segment1.xml
+/_Debug/data/levels/jungleTest/segments/segment2.xml
+/_Debug/data/levels/jungleTest/segments/segmentTest.xml
+/_Debug/data/levels/jungleTest/start.xml
+/_Debug/data/levels/test/level.xml
+/_Debug/data/levels/test/models/banana.xml
+/_Debug/data/levels/test/models/floor.xml
+/_Debug/data/levels/test/models/limb.xml
+/_Debug/data/levels/test/models/wagon.xml
+/_Debug/data/levels/test/segments/end.xml
+/_Debug/data/levels/test/segments/segment1.xml
+/_Debug/data/levels/test/segments/start.xml
+/_Debug/data/models/banana/banana.3ds
+/_Debug/data/models/banana/Banana.jpg
+/_Debug/data/models/banana/Stiel.jpg
+/_Debug/data/models/cocosnut/_1.jpg
+/_Debug/data/models/cocosnut/cocosnut.3ds
+/_Debug/data/models/fern/_1.png
+/_Debug/data/models/fern/_2.png
+/_Debug/data/models/fern/fern.3ds
+/_Debug/data/models/finish/4_2.jpg
+/_Debug/data/models/finish/finish.3ds
+/_Debug/data/models/finish/Wood__Fl.jpg
+/_Debug/data/models/floor/floor.3ds
+/_Debug/data/models/floor/Vegetati.jpg
+/_Debug/data/models/hand/hand-stop-2.jpg
+/_Debug/data/models/jungle/_1.jpg
+/_Debug/data/models/jungle/jungle.3ds
+/_Debug/data/models/liana/liana.3ds
+/_Debug/data/models/liana/liana_collision.3ds
+/_Debug/data/models/liana/Vegetati.jpg
+/_Debug/data/models/limb/limb.3ds
+/_Debug/data/models/limb/Vegetati.jpg
+/_Debug/data/models/mango/_3.jpg
+/_Debug/data/models/mango/mango.3ds
+/_Debug/data/models/palm/palm.3ds
+/_Debug/data/models/palm/palm_collide.3ds
+/_Debug/data/models/palm/Travel01.jpg
+/_Debug/data/models/palm/travel02.png
+/_Debug/data/models/palm/Traveler.jpg
+/_Debug/data/models/player/_1.jpg
+/_Debug/data/models/player/_2.jpg
+/_Debug/data/models/player/_4.jpg
+/_Debug/data/models/player/_5.jpg
+/_Debug/data/models/player/forearm.3ds
+/_Debug/data/models/player/head.3ds
+/_Debug/data/models/player/lowerleg.3ds
+/_Debug/data/models/player/thighleg.3ds
+/_Debug/data/models/player/torso.3ds
+/_Debug/data/models/player/upperarm.3ds
+/_Debug/data/models/rail/_1.jpg
+/_Debug/data/models/rail/rail.3ds
+/_Debug/data/models/shuttle/SpaceShuttleOrbiter.3ds
+/_Debug/data/models/shuttle/spstob_1.bmp
+/_Debug/data/models/shuttle/spstob_2.bmp
+/_Debug/data/models/shuttle/spstob_3.bmp
+/_Debug/data/models/shuttle/spstob_4.bmp
+/_Debug/data/models/shuttle/spstob_e.bmp
+/_Debug/data/models/sky/_2.jpg
+/_Debug/data/models/sky/sky.3ds
+/_Debug/data/models/start/_Wood__F.jpg
+/_Debug/data/models/start/4.jpg
+/_Debug/data/models/start/start.3ds
+/_Debug/data/models/stone/stone.3ds
+/_Debug/data/models/stone/Stone_Te.jpg
+/_Debug/data/models/wagon/_Metal_S.jpg
+/_Debug/data/models/wagon/Metal_Se.jpg
+/_Debug/data/models/wagon/wagon.3ds
+/_Debug/data/models/wagon/Wood__Fl.jpg
+/_Debug/data/shader/colored.fragmentshader
+/_Debug/data/shader/colored.vertexshader
+/_Debug/data/shader/SimpleFragmentShader.fragmentshader
+/_Debug/data/shader/SimpleVertexShader.vertexshader
+/_Debug/data/shader/text.fragmentshader
+/_Debug/data/shader/text.vertexshader
+/_Debug/data/sound/game/segment/entered/start.mp3
+/_Debug/data/sound/game/segment/entered/success.mp3
+/_Debug/data/sound/menu/background/Background Birds And Insects Of The Rainforest.mp3
+/_Debug/data/sound/menu/background/Daytime Bird Calls And Chatter In The Jungle.mp3
+/_Debug/data/sound/menu/background/Nightfall Ambience In Central American Jungle.mp3
+/_Debug/data/sound/menu/button/click.mp3
+/_Debug/data/sound/menu/button/hover.mp3
+/_Debug/data/sound/model/collect.wav
+/_Debug/data/sound/model/obstacle.wav
+/_Debug/data/sound/music/background_easy.wav
+/_Debug/data/sound/music/background_hard.wav
+/_Debug/data/sound/music/background_medium.wav
+/_Debug/data/sound/music/dschungelbuch.mp3
+/_Debug/data/textures/fallback.png
+/_Debug/data/textures/red.jpg
+/_Debug/data/textures/sample.png
+/_Debug/data/textures/test.png
+/_Debug/FitWithJumpAndRun.exe
+/_Debug/FitWithJumpAndRun.exe - Shortcut.lnk
+/_Debug/FitWithJumpAndRun.exe.config
+/_Debug/FitWithJumpAndRun.vshost.exe
+/_Debug/FitWithJumpAndRun.vshost.exe.config
+/_Debug/Model.dll
+/_Debug/ModelTest.dll
+/_Debug/MotionDetection.dll
+/_Debug/Resource Files/Background/white.jpg
+/_Debug/Resource Files/Levels/Jungle/Level.xml
+/_Debug/Resource Files/Levels/Jungle/Models/Banana.xml
+/_Debug/Resource Files/Levels/Jungle/Models/Floor.xml
+/_Debug/Resource Files/Levels/Jungle/Models/Jungle.xml
+/_Debug/Resource Files/Levels/Jungle/Models/Limb.xml
+/_Debug/Resource Files/Levels/Jungle/Models/Rail.xml
+/_Debug/Resource Files/Levels/Jungle/Models/Sky.xml
+/_Debug/Resource Files/Levels/Jungle/Models/Wagon.xml
+/_Debug/Resource Files/Levels/Jungle/Segments/Start.xml
+/_Debug/Resource Files/Models/Banana/banana.3ds
+/_Debug/Resource Files/Models/Banana/Banana.jpg
+/_Debug/Resource Files/Models/Banana/Stiel.jpg
+/_Debug/Resource Files/Models/Floor/Floor.3ds
+/_Debug/Resource Files/Models/Floor/Vegetati.jpg
+/_Debug/Resource Files/Models/Hand/hand-stop-2.jpg
+/_Debug/Resource Files/Models/Jungle/_1.jpg
+/_Debug/Resource Files/Models/Jungle/Jungle.3ds
+/_Debug/Resource Files/Models/Limb/Limb.3ds
+/_Debug/Resource Files/Models/Limb/Vegetati.jpg
+/_Debug/Resource Files/Models/Player/_1.jpg
+/_Debug/Resource Files/Models/Player/_2.jpg
+/_Debug/Resource Files/Models/Player/_4.jpg
+/_Debug/Resource Files/Models/Player/_5.jpg
+/_Debug/Resource Files/Models/Player/ForeArm.3ds
+/_Debug/Resource Files/Models/Player/Head.3ds
+/_Debug/Resource Files/Models/Player/LowerLeg.3ds
+/_Debug/Resource Files/Models/Player/ThighLeg.3ds
+/_Debug/Resource Files/Models/Player/Torso.3ds
+/_Debug/Resource Files/Models/Player/UpperArm.3ds
+/_Debug/Resource Files/Models/Rail/_1.jpg
+/_Debug/Resource Files/Models/Rail/Rail.3ds
+/_Debug/Resource Files/Models/Sky/_2.jpg
+/_Debug/Resource Files/Models/Sky/Sky.3ds
+/_Debug/Resource Files/Models/Wagon/_Metal_S.jpg
+/_Debug/Resource Files/Models/Wagon/Metal_Se.jpg
+/_Debug/Resource Files/Models/Wagon/Wagon.3ds
+/_Debug/Resource Files/Models/Wagon/Wood__Fl.jpg
+/_Debug/View.dll
+/_Debug/Visualization.bsc
+/_Debug/Visualization.dll
+/_Debug/Visualization.exp
+/_Debug/Visualization.lib
+/_Debug/VisualizationExample.application
+/_Debug/VisualizationExample.exe
+/_Debug/VisualizationExample.exe.manifest
+/_Debug/VisualizationExample.vshost.application
+/_Debug/VisualizationExample.vshost.exe
+/_Debug/VisualizationExample.vshost.exe.config
+/_Debug/VisualizationExample.vshost.exe.manifest
+/_Debug/VisualizationLibraryTest.exe
+/_Debug/VisualizationLibraryTest.exe.config
+/_Debug/VisualizationLibraryTest.vshost.exe
+/_Debug/VisualizationLibraryTest.vshost.exe.config
+/_Debug/VisualizationLibraryTest.vshost.exe.manifest
+/Deployment/Projektarbeit/data/background/dschungel.png
+/Deployment/Projektarbeit/data/background/farn.jpg
+/Deployment/Projektarbeit/data/background/hintergrund.png
+/Deployment/Projektarbeit/data/background/ladebildschirm.png
+/Deployment/Projektarbeit/data/fonts/JAPAB.TTF
+/Deployment/Projektarbeit/data/fonts/SUPERTIK.TTF
+/Deployment/Projektarbeit/data/levels/jungle/end.xml
+/Deployment/Projektarbeit/data/levels/jungle/models/cocosnut.xml
+/Deployment/Projektarbeit/data/levels/jungle/models/fern.xml
+/Deployment/Projektarbeit/data/levels/jungle/models/liana.xml
+/Deployment/Projektarbeit/data/levels/jungle/models/mango.xml
+/Deployment/Projektarbeit/data/levels/jungle/models/palm.xml
+/Deployment/Projektarbeit/data/levels/jungle/models/stone.xml
+/Deployment/Projektarbeit/data/levels/jungle/segments/duckenUndWinken.xml
+/Deployment/Projektarbeit/data/levels/jungle/segments/segment2.xml
+/Deployment/Projektarbeit/data/levels/jungle/segments/slalom.xml
+/Deployment/Projektarbeit/data/levels/jungle/start.xml
+/Deployment/Projektarbeit/data/models/cocosnut/_1.jpg
+/Deployment/Projektarbeit/data/models/cocosnut/cocosnut.3ds
+/Deployment/Projektarbeit/data/models/fern/_1.png
+/Deployment/Projektarbeit/data/models/fern/_2.png
+/Deployment/Projektarbeit/data/models/fern/fern.3ds
+/Deployment/Projektarbeit/data/models/liana/liana.3ds
+/Deployment/Projektarbeit/data/models/liana/liana_collision.3ds
+/Deployment/Projektarbeit/data/models/liana/Vegetati.jpg
+/Deployment/Projektarbeit/data/models/mango/_3.jpg
+/Deployment/Projektarbeit/data/models/mango/mango.3ds
+/Deployment/Projektarbeit/data/models/palm/palm.3ds
+/Deployment/Projektarbeit/data/models/palm/palm_collide.3ds
+/Deployment/Projektarbeit/data/models/palm/Travel01.jpg
+/Deployment/Projektarbeit/data/models/palm/travel02.png
+/Deployment/Projektarbeit/data/models/palm/Traveler.jpg
+/Deployment/Projektarbeit/data/models/stone/stone.3ds
+/Deployment/Projektarbeit/data/models/stone/Stone_Te.jpg
+/Deployment/Projektarbeit/data/sound/game/segment/entered/start.mp3
+/Deployment/Projektarbeit/data/sound/game/segment/entered/success.mp3
+/Deployment/Projektarbeit/data/sound/menu/background/Background Birds And Insects Of The Rainforest.mp3
+/Deployment/Projektarbeit/data/sound/menu/background/Daytime Bird Calls And Chatter In The Jungle.mp3
+/Deployment/Projektarbeit/data/sound/menu/background/Nightfall Ambience In Central American Jungle.mp3
+/Deployment/Projektarbeit/data/sound/menu/button/click.mp3
+/Deployment/Projektarbeit/data/sound/menu/button/hover.mp3
+/Deployment/Projektarbeit/data/sound/model/collect.wav
+/Deployment/Projektarbeit/data/sound/model/obstacle.wav
+/Deployment/Projektarbeit/data/sound/music/background_easy.wav
+/Deployment/Projektarbeit/data/sound/music/background_hard.wav
+/Deployment/Projektarbeit/data/sound/music/background_medium.wav
+/Deployment/Projektarbeit/data/sound/music/dschungelbuch.mp3
+/Deployment/Projektarbeit_Debug/data/background/farn.jpg
+/Deployment/Projektarbeit_Debug/data/background/hintergrund.png
+/Deployment/Projektarbeit_Debug/data/background/ladebildschirm.png
+/Deployment/Projektarbeit_Debug/data/fonts/JAPAB.TTF
+/Deployment/Projektarbeit_Debug/data/levels/jungle/models/fern.xml
+/Deployment/Projektarbeit_Debug/data/levels/jungle/models/palm.xml
+/Deployment/Projektarbeit_Debug/data/levels/jungle/models/stone.xml
+/Deployment/Projektarbeit_Debug/data/levels/jungle/segments/duckenUndWinken.xml
+/Deployment/Projektarbeit_Debug/data/levels/jungle/segments/slalom.xml
+/Deployment/Projektarbeit_Debug/data/models/fern/_1.png
+/Deployment/Projektarbeit_Debug/data/models/fern/_2.png
+/Deployment/Projektarbeit_Debug/data/models/fern/fern.3ds
+/Deployment/Projektarbeit_Debug/data/models/palm/palm.3ds
+/Deployment/Projektarbeit_Debug/data/models/palm/palm_collide.3ds
+/Deployment/Projektarbeit_Debug/data/models/palm/Travel01.jpg
+/Deployment/Projektarbeit_Debug/data/models/palm/travel02.png
+/Deployment/Projektarbeit_Debug/data/models/palm/Traveler.jpg
+/Deployment/Projektarbeit_Debug/data/models/stone/stone.3ds
+/Deployment/Projektarbeit_Debug/data/models/stone/Stone_Te.jpg
+/Deployment/Projektarbeit_Debug/data/sound/game/segment/entered/start.mp3
+/Deployment/Projektarbeit_Debug/data/sound/game/segment/entered/success.mp3
+/Deployment/Projektarbeit_Debug/data/sound/menu/background/Background Birds And Insects Of The Rainforest.mp3
+/Deployment/Projektarbeit_Debug/data/sound/menu/background/Daytime Bird Calls And Chatter In The Jungle.mp3
+/Deployment/Projektarbeit_Debug/data/sound/menu/background/Nightfall Ambience In Central American Jungle.mp3
+/Deployment/Projektarbeit_Debug/data/sound/menu/button/click.mp3
+/Deployment/Projektarbeit_Debug/data/sound/menu/button/hover.mp3
+/Deployment/Projektarbeit_Debug/data/sound/music/dschungelbuch.mp3
+/Deployment/Projektarbeit_Debug/data/levels/jungle/segments/segment_hard_3.xml
+/Deployment/Projektarbeit_Debug/data/levels/jungle/segments/segment_easy_1.xml
+/Deployment/Projektarbeit_Debug/data/levels/jungle/segments/segment_easy_2.xml
+/Deployment/Projektarbeit_Debug/data/levels/jungle/segments/segment_easy_3.xml
+/Deployment/Projektarbeit_Debug/data/levels/jungle/segments/segment_easy_4.xml
+/Deployment/Projektarbeit_Debug/data/levels/jungle/segments/segment_easy_5.xml
+/Deployment/Projektarbeit_Debug/data/levels/jungle/segments/segment_hard_1.xml
+/Deployment/Projektarbeit_Debug/data/levels/jungle/segments/segment_hard_2.xml
+/Deployment/Projektarbeit_Debug/data/levels/jungle/segments/segment_hard_4.xml
+/Deployment/Projektarbeit_Debug/data/levels/jungle/segments/segment_medium_1.xml
+/Deployment/Projektarbeit_Debug/data/levels/jungle/segments/segment_medium_2.xml
+/Deployment/Projektarbeit_Debug/data/levels/jungle/segments/segment_medium_3.xml
+/Deployment/Projektarbeit_Debug/data/levels/jungle/segments/segment_medium_4.xml
