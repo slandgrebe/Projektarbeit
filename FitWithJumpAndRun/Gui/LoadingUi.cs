@@ -45,6 +45,7 @@ namespace JumpAndRun.Gui
             // Hintergrund
             background = new JumpAndRun.Gui.Elements.Point("data/background/ladebildschirm.png");
             background.Position(0, 0, -0.55f);
+            background.Scale(1.333f, 1f);
 
             // Text erzeugen
             text = new JumpAndRun.Gui.Elements.Text();
