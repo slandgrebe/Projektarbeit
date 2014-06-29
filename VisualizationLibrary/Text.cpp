@@ -29,7 +29,7 @@ Text::~Text() {
 }
 
 void Text::setText(const std::string text) {
-	Log().debug() << "Wechsle Text von '" << m_text << "' zu '" << text << "'." ;
+	//Log().debug() << "Wechsle Text von '" << m_text << "' zu '" << text << "'." ;
 	m_text = text;
 }
 void Text::setPosition(const float x, const float y) {

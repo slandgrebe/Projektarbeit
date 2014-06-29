@@ -9,6 +9,7 @@
 #include <map>
 #include <mutex>
 #include <list>
+#include <mutex>
 
 /** Der visual Namespace behinhaltet das ganze Projekt (ausgenommen des API)
 * @author Stefan Landgrebe

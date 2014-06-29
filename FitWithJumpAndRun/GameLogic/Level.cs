@@ -52,10 +52,10 @@ namespace JumpAndRun.GameLogic
         public int BackgroundMusicHardVolume { get; set; }
         /// <summary>Sichtweite (max. 100m, danach werden die Objekte von der Bibliothek nicht mehr gezeichnet)</summary>
         public float VisibilityRange { get; set; }
-        /// <summary>Anzahl geladener Segmente</summary>
+        /*/// <summary>Anzahl geladener Segmente</summary>
         private int LoadetSegments = 0;
         /// <summary>Anzahl gelöschter</summary>
-        private int DisposedSegments = 0;
+        private int DisposedSegments = 0;*/
         /// <summary>Schwierigkeitsgrad des Levels</summary>
         private JumpAndRun.Difficulty difficulty = JumpAndRun.Difficulty.NotSelected;
         /// <summary>Hintergrundmusik Soundobjekt</summary>
@@ -169,7 +169,7 @@ namespace JumpAndRun.GameLogic
                 s.Visibility(false);
             }
 
-            log.Info("Segment Exited at Position " + currentPosition + ": " + segment.FilePath);
+            log.Debug("Segment Exited at Position " + currentPosition + ": " + segment.FilePath);
         }
 
         /// <summary>
@@ -198,7 +198,7 @@ namespace JumpAndRun.GameLogic
                 s.Visibility(true);
             }
 
-            log.Info("Segment Entered at Position " + segment.StartPosition + ": " + segment.FilePath);
+            log.Debug("Segment Entered at Position " + segment.StartPosition + ": " + segment.FilePath);
         }
 
         /// <summary>
@@ -267,7 +267,7 @@ namespace JumpAndRun.GameLogic
             randomList.Add(startSegment);
 
             // Debug Log
-            log.Info("Liste vor dem mischeln:");
+            log.Debug("Liste vor dem mischeln:");
             foreach (LevelSegment s in segments)
             {
                 log.Debug(" " + s.FilePath);

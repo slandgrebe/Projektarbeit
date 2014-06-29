@@ -58,7 +58,7 @@ namespace JumpAndRun
 
         private bool Initialize()
         {
-            log.Info("Run Initialize");
+            log.Debug("Run Initialize");
 
             // Fenster öffnen
             bool fullscreen = true;

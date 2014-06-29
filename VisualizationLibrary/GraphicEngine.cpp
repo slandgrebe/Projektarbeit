@@ -135,6 +135,8 @@ void GraphicEngine::worker(void) {
 	long unsigned int frame = 0;
 
 	while (!glfwWindowShouldClose(window)) {
+		
+		Log().trace() << "Klick auf Escape Taste pruefen";
 		timeDifference = (float)(now - begin) / 1000.0f;
 
 		if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS) {
@@ -143,33 +145,40 @@ void GraphicEngine::worker(void) {
 		}
 
 		// camera
+		Log().trace() << "View Projection Matrix neu berechnen";
 		GraphicEngine::getInstance()->m_camera->advance(timeDifference);
 		GraphicEngine::getInstance()->viewProjectionMatrix = GraphicEngine::getInstance()->projectionMatrix * GraphicEngine::getInstance()->m_camera->getViewMatrix();
 
 		// create new objects
+		Log().trace() << "Queue abarbeiten";
 		GraphicEngine::getInstance()->processQueue();
 
 		// collision detection
+		Log().trace() << "Kollisionserkennung durchfuehren";
 		Manager::getInstance()->doCollisionDetection(frame);
 
 		// Clear the screen to black
+		Log().trace() << "Buffer zuruecksetzen";
 		glClearColor(0.3f, 0.5f, 0.9f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 		printOpenGLError();
 
 		// Draw objects
+		Log().trace() << "Szene neuzeichnen";
 		Manager::getInstance()->draw();
 
 		printOpenGLError();
 
 		// Swap buffers
+		Log().trace() << "Buffer wechseln und Events abfragen";
 		glfwSwapBuffers(window);
 		glfwPollEvents();
 
 		printOpenGLError();
 
 		// measure time
+		Log().trace() << "Zeitmessung";
 		begin = now;
 		now = clock();
 		//Log().info() << "Bild gezeichnet in " << float(now - begin) << "ms. Das entspricht " << CLOCKS_PER_SEC / (now - begin) << " FPS." ;

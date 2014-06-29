@@ -124,7 +124,7 @@ namespace JumpAndRun.Item
         /// Überprüft, ob das Objekt mit der Spielfigur Kollidiert
         /// </summary>
         /// <param name="player">Spielfigur</param>
-        /// <param name="dispose">Modell soll nach der Kollision gelöscht werden</param>
+        /// <param name="dispose">Modell soll nach der Kollision versteckt werden</param>
         /// <returns>Kollidiert Ja/Nein</returns>
         public bool Collision(JumpAndRun.GameLogic.Player player, bool dispose)
         {
@@ -149,7 +149,7 @@ namespace JumpAndRun.Item
                     {
                         player.Colided.Add(Model.Id);
                         PlaySound();
-                        if (dispose) Dispose();
+                        if (dispose) this.Dispose();
                         else
                         {
                             // hervorheben
