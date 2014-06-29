@@ -214,6 +214,7 @@ namespace JumpAndRun.GameLogic
                 || GameStatus == GameStatus.Successful)
             {
                 level.Dispose();
+                level.stopBackgroundMusic();
             }
             GameStatus = GameStatus.Start;
         }
