@@ -170,6 +170,8 @@ namespace JumpAndRun
         // prüfen ob Kinect angeschlossen ist
         private bool CheckKinect()
         {
+            log.Trace("CheckKinect");
+            
             if (sensor == null)
             {
                 modus = Modus.KinectMissing;
@@ -203,6 +205,8 @@ namespace JumpAndRun
         // prüfen ob eine Person von der Kinect erkannt wird
         private bool CheckPersonTracking()
         {
+            log.Trace("CheckPersonTracking");
+
             // Überprüfen ob eine Person erkannt wird
             if (!Body.Instance.IsTracked)
             {
@@ -232,6 +236,8 @@ namespace JumpAndRun
         // Überprüft ob das Button Tutorial abgeschlossen wurde
         private bool CheckButtonTutorial()
         {
+            log.Trace("CheckButtonTutorial");
+
             if (ButtonTutorialCompleted == false)
             {
                 if (modus != Modus.ButtonTutorial)
@@ -252,20 +258,31 @@ namespace JumpAndRun
         // überprüfen ob eine Schwierigkeit ausgewählt wurde
         private bool CheckDifficultySelection()
         {
+            log.Trace("CheckDifficultySelection");
+
             // Schwierigkeitsgrad wählen
             if (difficulty == Difficulty.NotSelected)
             {
+                log.Trace("CheckDifficultySelection 1");
                 if (modus != Modus.Menu) // MenuUi zeigen, falls zuvor in einem anderen Modus gewesen
                 {
+                    log.Trace("CheckDifficultySelection 2");
                     modus = Modus.Menu;
+                    log.Trace("CheckDifficultySelection 3");
                     Body.Instance.Scale(1f); // warum ist das nötig?
+                    log.Trace("CheckDifficultySelection 4");
                     HideAllGuis();
+                    log.Trace("CheckDifficultySelection 5");
                     MenuUi.Instance.Show();
+                    log.Trace("CheckDifficultySelection 6");
                     backgroundSound.Play();
+                    log.Trace("CheckDifficultySelection 7");
                 }
+                log.Trace("CheckDifficultySelection 8");
 
                 return false;
             }
+            log.Trace("CheckDifficultySelection 9");
 
             return true;
         }
@@ -273,6 +290,8 @@ namespace JumpAndRun
         // Überprüfen ob das Spiel geladen ist
         private bool CheckGameLoading()
         {
+            log.Trace("CheckGameLoading");
+
             // Button auf Lade Bildschirm noch nicht geklickt
             if (!ButtonLoadingClicked)
             {
@@ -313,6 +332,8 @@ namespace JumpAndRun
         // Überprüfen ob das Spiel am laufen ist
         private bool CheckGaming()
         {
+            log.Trace("CheckGaming");
+
             // Darstellung des Spiels updaten
             Game.Instance.Update();
 
@@ -359,6 +380,8 @@ namespace JumpAndRun
         // Überprüfen ob der Spieler noch den Endbildschirm bestaunt
         private bool CheckFinishedGame()
         {
+            log.Trace("CheckFinishedGame");
+
             // Spiel erfolgreich beendet
             if (Game.Instance.GameStatus == GameStatus.Successful)
             {

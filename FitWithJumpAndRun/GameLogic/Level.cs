@@ -470,7 +470,7 @@ namespace JumpAndRun.GameLogic
         /// </summary>
         public void stopBackgroundMusic()
         {
-            BgSound.FadeOut(1);
+            BgSound.Stop();
         }
 
         /// <summary>

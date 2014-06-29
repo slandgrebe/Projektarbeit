@@ -35,6 +35,7 @@ namespace JumpAndRun.Sound
         private int _Volume = 100;
         /// <summary>Wiergabe wiederholen</summary>
         private bool _Loop;
+        private System.DateTime FadeOutTime = System.DateTime.Now;
         /// <summary>Logger</summary>
         private static readonly ILog log = LogManager.GetLogger(typeof(Sound).Name);
         /// <summary>Wiedergabelautstärke</summary>
@@ -46,7 +47,14 @@ namespace JumpAndRun.Sound
                 if (CreateObject())
                 {
                     _Volume = value;
-                    audio.settings.volume = _Volume;
+                    try
+                    {
+                        audio.settings.volume = _Volume;
+                    }
+                    catch (System.Exception e)
+                    {
+                        log.Error("Beim Versuch die Lautstaerke zu erhoehen ist ein Fehler aufgetreten. Datei: " + this.FilePath);
+                    }
                 }
             }
         }
@@ -127,6 +135,10 @@ namespace JumpAndRun.Sound
             {
                 log.Error("Sound Play Excpetion: " + e);
             }
+            catch (System.Exception e)
+            {
+                log.Error("Fehler beim starten eines Sounds: " + this.FilePath);
+            }
         }
 
         /// <summary>
@@ -138,11 +150,18 @@ namespace JumpAndRun.Sound
 
             if (CreateObject())
             {
-                audio.controls.stop();
+                try
+                {
+                    audio.controls.stop();
+                }
+                catch (System.Exception e)
+                {
+                    log.Error("Fehler beim stoppen eines Sounds: " + this.FilePath);
+                }
             }
         }
 
-        /// <summary>
+        /*/// <summary>
         /// Sound langsam ausklingen lassen
         /// </summary>
         /// <param name="time">Zeit in Sekunden</param>
@@ -152,14 +171,15 @@ namespace JumpAndRun.Sound
             {
                 int sleep = (time * 1000) / Volume;
 
+
                 while (Volume > 0)
                 {
-                    System.Threading.Thread.Sleep(sleep);
+                    //System.Threading.Thread.Sleep(sleep);
                     Volume--;
                 }
             }
             Stop();
-        }
+        }*/
 
         /// <summary>
         /// Abfangen wenn Sound zu Ende gelaufen ist

@@ -73,6 +73,7 @@
     <Compile Include="Gui\Elements\Text.cs" />
     <Compile Include="Gui\ButtonTutorialUi.cs" />
     <Compile Include="Gui\KinectUi.cs" />
+    <Compile Include="ILogExtensions.cs" />
     <Compile Include="Item\Object.cs" />
     <Compile Include="Gesture\Click.cs" />
     <Compile Include="Gesture\GestureClose.cs" />

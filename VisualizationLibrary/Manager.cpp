@@ -740,7 +740,7 @@ void Manager::doCollisionDetection(long unsigned int frame) {
 
 	this->m_collisions = collisions.str();
 	if (collisions.str().length() > 0) {
-		Log().info() << "Collision detected: " << collisions.str();
+		Log().debug() << "Collision detected: " << collisions.str();
 	}
 	//Log().info() << "Collision Detection in " << float(clock() - begin) << "ms. " << this->m_collisions;
 	Log().trace() << "end Manager doCollisionDetection";
