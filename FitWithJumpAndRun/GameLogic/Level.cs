@@ -496,6 +496,15 @@ namespace JumpAndRun.GameLogic
             {
                 segment.Dispose();
             }
+            AllAvailableSegments.Clear();
+            log.Debug("AllAvailableSegments entfernt");
+
+            foreach (LevelSegment segment in RandomlyChosenSegments)
+            {
+                segment.Dispose();
+            }
+            RandomlyChosenSegments.Clear();
+            log.Debug("RandomlyChosenSegments entfernt");
         }
     }
 }

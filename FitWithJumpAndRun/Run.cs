@@ -404,7 +404,7 @@ namespace JumpAndRun
                 backgroundSound.FilePath = GetRandomFileFromFolder("data/sound/menu/background", "*.mp3");
                 backgroundSound.Play();
 
-                log.Info("Hintergrundsound durchgelaufen. Naechster Sound wird gestartet.");
+                log.Debug("Hintergrundsound durchgelaufen. Naechster Sound wird gestartet.");
             }
         }
 
@@ -420,9 +420,15 @@ namespace JumpAndRun
         public void DifficultySelected(Difficulty difficulty)
         {
             this.difficulty = difficulty;
-            modus = Modus.Play;
+            log.Debug("Schwierigkeitsgrad ausgewaehlt: " + difficulty.ToString());
+        }
 
-            log.Info("Schwierigkeitsgrad ausgewaehlt: " + difficulty.ToString());
+        /// <summary>
+        /// Button auf dem Ladebildschirm wurde geklickt
+        /// </summary>
+        public void LoadingButtonClicked()
+        {
+            ButtonLoadingClicked = true;
         }
 
         /// <summary>
@@ -433,13 +439,6 @@ namespace JumpAndRun
             ResetEverything();
         }
 
-        /// <summary>
-        /// Button auf dem Ladebildschirm wurde geklickt
-        /// </summary>
-        public void LoadingButtonClicked()
-        {
-            ButtonLoadingClicked = true;
-        }
         /// <summary>
         /// Event Listener wenn auf dem Siegbildschirm der Button geklickt wird
         /// </summary>
@@ -454,6 +453,7 @@ namespace JumpAndRun
         {
             modus = Modus.NotTracked;
             difficulty = Difficulty.NotSelected;
+            ButtonLoadingClicked = false;
             Game.Instance.ResetGame();
         }
 
