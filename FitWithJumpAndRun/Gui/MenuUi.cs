@@ -19,15 +19,15 @@ namespace JumpAndRun.Gui
         /// <summary>ID des Cursors</summary>
         //private View.Point cursor = null;
 
-        private JumpAndRun.Gui.Elements.Text title = null;
+        private JumpAndRun.Gui.Elements.TextWithBackground title = null;
 
         /// <summary>Buttons</summary>
         private Gui.Elements.Button buttonEasy = null;
         private Gui.Elements.Button buttonNormal = null;
         private Gui.Elements.Button buttonDifficult = null;
 
-        private JumpAndRun.Gui.Elements.Text gameName = null;
-        private JumpAndRun.Gui.Elements.Text slogan = null;
+        private JumpAndRun.Gui.Elements.TextWithBackground gameName = null;
+        private JumpAndRun.Gui.Elements.TextWithBackground slogan = null;
 
         /// <summary>
         /// Delegate für das Difficulty Selected Event
@@ -64,9 +64,9 @@ namespace JumpAndRun.Gui
             background.Scale(1.333f, 1f);
 
             // Titel
-            title = new JumpAndRun.Gui.Elements.Text();
+            title = new JumpAndRun.Gui.Elements.TextWithBackground();
             title.setText("Wie anspruchsvoll darfs denn sein?");
-            title.Size(50);
+            title.Size(40);
             title.Position(0f, 0.8f);
 
             // Buttons
@@ -86,14 +86,14 @@ namespace JumpAndRun.Gui
             buttonDifficult.ClickEvent += new Gui.Elements.Button.Clicked(ButtonDifficultClicked);
 
             // Spielname
-            gameName = new JumpAndRun.Gui.Elements.Text();
+            gameName = new JumpAndRun.Gui.Elements.TextWithBackground();
             gameName.setText("Dschungel Fitness");
-            gameName.Size(72);
+            gameName.Size(52);
             gameName.Position(0f, -0.7f);
 
-            slogan = new JumpAndRun.Gui.Elements.Text();
+            slogan = new JumpAndRun.Gui.Elements.TextWithBackground();
             slogan.setText("- spielend fit werden");
-            slogan.Size(44);
+            slogan.Size(40);
             slogan.Position(0.2f, -0.9f);
 
             // Cursor

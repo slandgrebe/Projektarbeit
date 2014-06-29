@@ -62,6 +62,7 @@
     <Compile Include="GameLogic\GameStatus.cs" />
     <Compile Include="GameLogic\LevelSegment.cs" />
     <Compile Include="GameLogic\RandomNumberGenerator.cs" />
+    <Compile Include="Gui\Elements\TextWithBackground.cs" />
     <Compile Include="Gui\Elements\Button.cs" />
     <Compile Include="Gui\Elements\Cursor.cs" />
     <Compile Include="Gui\Elements\Point.cs" />
@@ -178,6 +179,9 @@
     <Content Include="data\models\fern\_2.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="data\models\hand\hand.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="data\models\liana\Vegetati.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -232,6 +236,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="data\fonts\JAPAB.TTF">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\fonts\fedra-sans--light.ttf">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <None Include="data\models\banana\banana.3ds">
