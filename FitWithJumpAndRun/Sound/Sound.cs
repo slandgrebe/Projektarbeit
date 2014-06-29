@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;*/
+using log4net;
+using log4net.Config;
+
 
 namespace JumpAndRun.Sound
 {
@@ -32,6 +35,8 @@ namespace JumpAndRun.Sound
         private int _Volume = 100;
         /// <summary>Wiergabe wiederholen</summary>
         private bool _Loop;
+        /// <summary>Logger</summary>
+        private static readonly ILog log = LogManager.GetLogger(typeof(Sound).Name);
         /// <summary>Wiedergabelautstärke</summary>
         public int Volume
         {
@@ -65,7 +70,7 @@ namespace JumpAndRun.Sound
             }
             catch (System.Exception e)
             {
-                System.Console.WriteLine("Sounderror: " + FilePath);
+                log.Error("Sounderror: " + FilePath);
             }
         }
 
@@ -84,12 +89,12 @@ namespace JumpAndRun.Sound
 
                     audio.URL = FilePath;
                     audio.controls.play();
-                    System.Console.WriteLine("audio: " + audio.currentMedia.name);
+                    log.Info("audio: " + audio.currentMedia.name);
                 }
             }
             catch (System.Runtime.InteropServices.COMException e)
             {
-                //System.Console.WriteLine("Sound Play Excpetion: " + e);
+                log.Error("Sound Play Excpetion: " + e);
             }
         }
 

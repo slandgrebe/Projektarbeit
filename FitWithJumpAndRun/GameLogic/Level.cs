@@ -6,6 +6,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 using System.Xml.Serialization;
+using log4net;
+using log4net.Config;
 
 namespace JumpAndRun.GameLogic
 {
@@ -58,6 +60,8 @@ namespace JumpAndRun.GameLogic
         private JumpAndRun.Difficulty difficulty = JumpAndRun.Difficulty.NotSelected;
         /// <summary>Hintergrundmusik Soundobjekt</summary>
         private Sound.Sound BgSound = new Sound.Sound();
+        /// <summary>Logger</summary>
+        private static readonly ILog log = LogManager.GetLogger(typeof(Level).Name);
 
         /// <summary>
         /// Level Initialisieren
@@ -79,12 +83,12 @@ namespace JumpAndRun.GameLogic
         /// <returns>Prüfung ob die Operation durchgeführt werden konnte</returns>
         public bool Load(JumpAndRun.Difficulty difficulty)
         {
-            Program.Log("Load Level: " + this.Name);
+            log.Info("Load Level: " + this.Name);
             
             // min. 1 Segment muss vorhanden sein
             if (AllAvailableSegments.Count < 1 || SegmentsStartEnd.Count < 2)
             {
-                Program.Log("Keine Segment gefunden");
+                log.Warn("Keine Segment gefunden");
                 return false;
             }
 
@@ -155,7 +159,7 @@ namespace JumpAndRun.GameLogic
                 s.Visibility(false);
             }
 
-            Program.Log("Segment Exited at Position " + currentPosition + ": " + segment.FilePath);
+            log.Info("Segment Exited at Position " + currentPosition + ": " + segment.FilePath);
         }
 
         /// <summary>
@@ -175,7 +179,7 @@ namespace JumpAndRun.GameLogic
                 s.Visibility(true);
             }
 
-            Program.Log("Segment Entered at Position " + segment.StartPosition + ": " + segment.FilePath);
+            log.Info("Segment Entered at Position " + segment.StartPosition + ": " + segment.FilePath);
         }
 
         /// <summary>
@@ -244,10 +248,10 @@ namespace JumpAndRun.GameLogic
             randomList.Add(startSegment);
 
             // Debug Log
-            Program.Log("Liste vor dem mischeln:");
+            log.Info("Liste vor dem mischeln:");
             foreach (LevelSegment s in segments)
             {
-                Program.Log(" " + s.FilePath);
+                log.Debug(" " + s.FilePath);
             }
 
             // Segmente aus der übergebenen Liste zufällig auswählen
@@ -262,12 +266,12 @@ namespace JumpAndRun.GameLogic
             randomList.Add(endSegment);
 
             // Debug Log
-            Program.Log("Liste nach dem mischeln:");
+            log.Debug("Liste nach dem mischeln:");
             foreach (LevelSegment s in segments)
             {
-                Program.Log(" " + s.FilePath);
+                log.Debug(" " + s.FilePath);
             }
-            Program.Log("*************************************");
+            log.Debug("*************************************");
 
             return randomList;
         }
@@ -330,10 +334,10 @@ namespace JumpAndRun.GameLogic
                 }     
             }
 
+            /*
             List<double> l1 = new List<double>();
             List<double> l2 = new List<double>();
             List<double> l3 = new List<double>();
-
 
             for (int i = 0; i < 100; i++)
             {
@@ -352,22 +356,22 @@ namespace JumpAndRun.GameLogic
                 }
             }
 
-            Console.WriteLine("l1: " + l1.Count);
-            Console.WriteLine("l2: " + l2.Count);
-            Console.WriteLine("l3: " + l3.Count);
+            log.Debug("l1: " + l1.Count);
+            log.Debug("l2: " + l2.Count);
+            log.Debug("l3: " + l3.Count);
+            */
 
-                // Debug Log
-                Program.Log("****************************************************");
-            Program.Log("Level wird zufaellig erstellt.");
-            Program.Log("  Schwierigkeitsgrad: " + difficulty.ToString());
-            Program.Log("  Laenge: " + lengthInSeconds + "s");
-            Program.Log("  Geschwindigkeit: " + speed + "m/s \n");
-
-            Program.Log(" leichtester Abschnitt: " + minDifficulty);
-            Program.Log(" schwerster Abschnitt: " + maxDifficulty);
-            Program.Log(" angestrebter Durchschnittswert: " + nDifficulty + " Standardabweichung: " + standardDeviation);
-            Program.Log(" Durchschnittliche Schwierigkeit: " + (double)(segmentList.Sum(e => e.Severity) / (double)segmentList.Count));
-            Program.Log("****************************************************");
+            // Debug Log
+            log.Debug("****************************************************");
+            log.Debug("Level wird zufaellig erstellt.");
+            log.Debug("  Schwierigkeitsgrad: " + difficulty.ToString());
+            log.Debug("  Laenge: " + lengthInSeconds + "s");
+            log.Debug("  Geschwindigkeit: " + speed + "m/s \n");
+            log.Debug(" leichtester Abschnitt: " + minDifficulty);
+            log.Debug(" schwerster Abschnitt: " + maxDifficulty);
+            log.Debug(" angestrebter Durchschnittswert: " + nDifficulty + " Standardabweichung: " + standardDeviation);
+            log.Debug(" Durchschnittliche Schwierigkeit: " + (double)(segmentList.Sum(e => e.Severity) / (double)segmentList.Count));
+            log.Debug("****************************************************");
 
             return segmentList;
         }

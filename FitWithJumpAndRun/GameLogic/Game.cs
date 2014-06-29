@@ -8,6 +8,8 @@ using System.IO;
 using System.Xml.Serialization;
 using View;
 using JumpAndRun.Gui;
+using log4net;
+using log4net.Config;
 
 namespace JumpAndRun.GameLogic
 {
@@ -32,6 +34,8 @@ namespace JumpAndRun.GameLogic
         private double speed = 5;
         /// <summary>Startzeit bei Levelbeginn</summary>
         private DateTime startTime = DateTime.Now;
+        /// <summary>Logger</summary>
+        private static readonly ILog log = LogManager.GetLogger(typeof(Game).Name);
 
         /// <summary>
         /// Stellt sicher, dass diese Klasse nur einmal Instanziert wird.
@@ -215,6 +219,7 @@ namespace JumpAndRun.GameLogic
         {
             if (Player.Lifes == 0)
             {
+                log.Info("GAME OVER!");
                 GameStatus = GameStatus.GameOver;
                 Camera.ChangeCameraSpeed(0);
                 level.Visibility(false);
@@ -229,6 +234,7 @@ namespace JumpAndRun.GameLogic
         {
             if (level.Length - level.RandomlyChosenSegments.Last().Length + 2 < Player.GetPosition() * -1)
             {
+                log.Info("Spiel beendet");
                 GameStatus = GameStatus.Successful;
                 level.Visibility(false);
                 Player.Visibility(false);

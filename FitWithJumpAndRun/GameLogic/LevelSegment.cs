@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 using System.Xml.Serialization;
+using log4net;
+using log4net.Config;
 
 namespace JumpAndRun.GameLogic
 {
@@ -52,6 +54,8 @@ namespace JumpAndRun.GameLogic
         private enum State { InFront, Inside, Behind };
         private State state = State.InFront;
         private bool Visible = false;
+        /// <summary>Logger</summary>
+        private static readonly ILog log = LogManager.GetLogger(typeof(LevelSegment).Name);
 
         /// <summary>
         /// Initialisierung des Levelsegments
@@ -174,6 +178,7 @@ namespace JumpAndRun.GameLogic
         /// </summary>
         public void Dispose()
         {
+            log.Debug("Segment entfernen");
             foreach (JumpAndRun.Item.Object o in obstacles)
             {
                 o.Dispose();
@@ -186,6 +191,7 @@ namespace JumpAndRun.GameLogic
             {
                 o.Dispose();
             }
+            log.Debug("Segment entfernt");
         }
 
         /// <summary>

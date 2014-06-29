@@ -9,6 +9,8 @@ using System;
 using JumpAndRun.GameLogic;
 using JumpAndRun.Gesture;
 using JumpAndRun.Gui;
+using log4net;
+using log4net.Config;
 
 namespace JumpAndRun
 {
@@ -34,6 +36,8 @@ namespace JumpAndRun
         private bool ButtonTutorialCompleted = false;
 
         private Sound.Sound backgroundSound = null;
+        /// <summary>Logger</summary>
+        private static readonly ILog log = LogManager.GetLogger(typeof(Run).Name);
 
         /// <summary>
         /// Stellt sicher, dass diese Klasse nur einmal Instanziert werden kann.
@@ -53,7 +57,7 @@ namespace JumpAndRun
 
         private bool Initialize()
         {
-            Program.Log("Run Initialize");
+            log.Info("Run Initialize");
 
             // Fenster öffnen
             bool fullscreen = true;
@@ -139,7 +143,7 @@ namespace JumpAndRun
                 // da stimmt etwas nicht
                 else
                 {
-                    Console.WriteLine("ungueltiger Zustand.");
+                    log.Warn("ungueltiger Zustand.");
                 }
             }
 
@@ -377,7 +381,7 @@ namespace JumpAndRun
                 backgroundSound.FilePath = GetRandomFileFromFolder("data/sound/menu/background", "*.mp3");
                 backgroundSound.Play();
 
-                Program.Log("Hintergrundsound durchgelaufen. Naechster Sound wird gestartet.");
+                log.Info("Hintergrundsound durchgelaufen. Naechster Sound wird gestartet.");
             }
         }
 
@@ -395,7 +399,7 @@ namespace JumpAndRun
             this.difficulty = difficulty;
             modus = Modus.Play;
 
-            Program.Log("Schwierigkeitsgrad ausgewaehlt: " + difficulty.ToString());
+            log.Info("Schwierigkeitsgrad ausgewaehlt: " + difficulty.ToString());
         }
 
         /// <summary>

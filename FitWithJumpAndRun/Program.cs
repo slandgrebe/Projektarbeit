@@ -5,6 +5,10 @@ using System.Text;
 using System.Threading.Tasks;
 using MotionDetection;
 using View;
+using log4net;
+using log4net.Config;
+using log4net.Appender;
+using log4net.Core;
 
 /// \mainpage
 /// @author Tobias Karth
@@ -26,17 +30,10 @@ namespace JumpAndRun
         /// Zustand der Applikation
         /// </summary>
         public static State state = State.Debug;
-        /// <summary>
-        /// Log Methode welche die Meldung nur dann schreibt, wenn der Debugmodus aktiviert ist
-        /// </summary>
-        /// <param name="message">zu loggende Nachricht</param>
-        public static void Log(string message) 
-        {
-            if (state == State.Debug)
-            {
-                Console.WriteLine(message);
-            }
-        }
+        /// <summary>Logger</summary>
+        private static readonly ILog log = LogManager.GetLogger(typeof(Program).Name);
+        private RollingFileAppender appender = new RollingFileAppender();
+
         /// <summary>
         /// Eintritspunkt des Programmes
         /// </summary>
@@ -50,14 +47,23 @@ namespace JumpAndRun
                     if (args[0].Equals("debug"))
                     {
                         Program.state = State.Debug;
-                        Log("Debug Modus aktiviert");
+                        log.Info("Debug Modus aktiviert");
                     }
                     else if (args[0].Equals("release")) 
                     {
                         Program.state = State.Release;
-                        Console.WriteLine("Release Modus aktiviert");
+                        log.Info("Release Modus aktiviert");
                         System.Windows.Forms.Cursor.Hide();
                     }
+                }
+
+                if (state == State.Debug)
+                {
+                    ((log4net.Repository.Hierarchy.Hierarchy)LogManager.GetRepository()).Root.Level = Level.All;
+                }
+                else if (state == State.Release)
+                {
+                    ((log4net.Repository.Hierarchy.Hierarchy)LogManager.GetRepository()).Root.Level = Level.Warn;
                 }
 
                 // Programm Starten
@@ -65,7 +71,7 @@ namespace JumpAndRun
             }
             catch (Exception e)
             {
-                Console.WriteLine(e);
+                log.Fatal(e);
                 Console.ReadLine();
             }
         }
