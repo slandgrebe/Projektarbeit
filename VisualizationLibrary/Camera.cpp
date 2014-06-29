@@ -57,7 +57,10 @@ void Camera::advance(float time) {
 
 	// bewegen
 	float distance = m_speed * time;
+
+	//glm::vec3 horizontalDirection = glm::vec3(direction.x, 0, direction.z);
 	m_position = m_position + glm::normalize(direction) * distance;
+	//m_position = m_position + glm::normalize(horizontalDirection) * distance;
 	
 	// Camera Matrix
 	viewMatrix = glm::lookAt(

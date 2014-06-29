@@ -38,6 +38,7 @@ namespace JumpAndRun.Gui
         {
             background = new JumpAndRun.Gui.Elements.Point("data/background/farn.jpg");
             background.Position(0, 0, -0.8f);
+            background.Scale(1.333f, 1f);
 
             text = new JumpAndRun.Gui.Elements.Text();
             text.setText("Kinect wird gestartet");

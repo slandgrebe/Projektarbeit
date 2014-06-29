@@ -59,12 +59,17 @@ namespace JumpAndRun
             bool fullscreen = true;
             uint windowWidth = 0;
             uint windowHeight = 0;
+
+            // immer selbe auflösung
+            windowWidth = 1024;
+            windowHeight = 768;
+
             // fenstermodus im debugmodus
             if (Program.state == Program.State.Debug)
             {
                 fullscreen = false;
-                windowWidth = 1280;
-                windowHeight = 800;
+                windowWidth = 1024;
+                windowHeight = 768;
             }
             if (!Window.Init("Dschungel Trainer", fullscreen, windowWidth, windowHeight))
             {
@@ -99,7 +104,7 @@ namespace JumpAndRun
         }
 
         /// <summary>
-        /// Abhandeln eines Frames.
+        /// Hauptschleife
         /// </summary>
         private Run()
         {

@@ -25,7 +25,7 @@ namespace JumpAndRun
         /// <summary>
         /// Zustand der Applikation
         /// </summary>
-        public static State state = State.Release;
+        public static State state = State.Debug;
         /// <summary>
         /// Log Methode welche die Meldung nur dann schreibt, wenn der Debugmodus aktiviert ist
         /// </summary>

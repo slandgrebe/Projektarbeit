@@ -49,19 +49,26 @@ GraphicEngine* GraphicEngine::getInstance() {
 
 GraphicEngine::GraphicEngine() {
 	m_camera = new Camera;
-	projectionMatrix = glm::perspective(60.0f, (float)width/height, 0.1f, 100.0f);
+	width = 640;
+	height = 480;
+
+	//projectionMatrix = glm::perspective(60.0f, (float)width/height, 0.1f, 100.0f);
+	projectionMatrix = calculateProjectionMatrix(width, height);
 	orthographicMatrix = glm::ortho(-1.0f, 1.0f, -1.0f, 1.0f, -5.0f, 5.0f);
 	viewOrthographicMatrix = orthographicMatrix;
 
 	running = false;
 	title = "Projektarbeit";
 	fullscreen = false;
-	width = 640;
-	height = 480;
+	
 }
 
 GraphicEngine::~GraphicEngine() {
 	delete m_camera;
+}
+
+glm::mat4 GraphicEngine::calculateProjectionMatrix(int width, int height) {
+	return glm::perspective(60.0f, (float)width / height, 0.1f, 100.0f);
 }
 
 bool GraphicEngine::init(std::string windowTitle, bool fullscreen, unsigned int windowWidth, unsigned int windowHeight) {
@@ -69,12 +76,11 @@ bool GraphicEngine::init(std::string windowTitle, bool fullscreen, unsigned int 
 		return false;
 	}
 
-
 	title = windowTitle;
 	this->fullscreen = fullscreen;
 	width = windowWidth;
 	height = windowHeight;
-	
+
 	std::async(worker);
 
 	return true;
@@ -107,7 +113,6 @@ void GraphicEngine::worker(void) {
 	
 	GraphicEngine::getInstance()->running = true;
 
-	//GraphicEngine::getInstance()->printOpenGLError();
 	printOpenGLError();
 
 	/***************
@@ -121,6 +126,7 @@ void GraphicEngine::worker(void) {
 
 	glEnable(GL_BLEND);
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+	printOpenGLError();
 
 	// measure time
 	clock_t begin = clock();
@@ -292,6 +298,9 @@ int GraphicEngine::createWindow() {
 	if (height == 0) {
 		height = mode->height;
 	}
+
+	// Projection Matrix neu berechnen, um allfällige änderung des Seitenverältnis zu berücksichtigen
+	projectionMatrix = calculateProjectionMatrix(width, height);
 
 	// OpenGL Kontext erstellen und Fenster öffnen
 	if (fullscreen) window = glfwCreateWindow(width, height, title.c_str(), glfwGetPrimaryMonitor(), 0);

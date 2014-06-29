@@ -177,6 +177,8 @@ namespace visual {
 
 			int createWindow();
 			int createOpenGLContext(void);
+
+			glm::mat4 calculateProjectionMatrix(int width, int height);
 		};
 	}
 }
