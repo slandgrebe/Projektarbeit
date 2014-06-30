@@ -9,7 +9,7 @@ namespace JumpAndRun
     /// <summary>
     /// Enum für den Programmmodus
     /// </summary>
-    public enum Modus : short
+    public enum Modus2 : short
     {
         KinectMissing = 0,
         NotTracked,

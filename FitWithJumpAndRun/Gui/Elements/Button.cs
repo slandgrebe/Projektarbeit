@@ -165,6 +165,11 @@ namespace JumpAndRun.Gui.Elements
         /// <param name="cursorY">Cursor y Koordinate</param>
         public void CursorMoved(float cursorX, float cursorY)
         {
+            if (!IsVisible)
+            {
+                return;
+            }
+
             // 0.5
             float width = scaleX;
             // 0 - 0.5 / 2 = -0.25
