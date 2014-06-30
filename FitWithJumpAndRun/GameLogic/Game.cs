@@ -213,8 +213,8 @@ namespace JumpAndRun.GameLogic
                 || GameStatus == GameStatus.GameOver
                 || GameStatus == GameStatus.Successful)
             {
-                level.Dispose();
                 level.stopBackgroundMusic();
+                level.Dispose();
             }
             GameStatus = GameStatus.Start;
         }

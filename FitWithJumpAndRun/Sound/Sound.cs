@@ -161,6 +161,7 @@ namespace JumpAndRun.Sound
             {
                 try
                 {
+                    System.Threading.Thread.Sleep(20); // Kann sonst zu exception führen
                     audio.controls.stop();
                 }
                 catch (System.Exception e)
