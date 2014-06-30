@@ -105,7 +105,7 @@ namespace JumpAndRun.Gui
 
         public void LoadingComplete()
         {
-            text.setText("Spiel geladen");
+            text.setText("Dschungel Trainer bereit");
             button.Show();
             JumpAndRun.Gui.Elements.Cursor.Instance.Show();
         }

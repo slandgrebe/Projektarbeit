@@ -59,7 +59,7 @@ namespace JumpAndRun.Gui
         /// </summary>
         public void Update()
         {
-            penalty.setText("Strafe: " + Penalty);
+            penalty.setText("Abzug: " + Penalty);
             advantage.setText("Punkte: " + Advantage);
         }
 

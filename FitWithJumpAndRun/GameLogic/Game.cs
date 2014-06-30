@@ -188,7 +188,7 @@ namespace JumpAndRun.GameLogic
                     Player.ZPosition = (float)distance;
 
                     // Neuer Score, Lebensvorrat im GUI anzeigen
-                    gameUi.Penalty = Player.Lifes;
+                    gameUi.Penalty = Player.Penalties;
                     gameUi.Advantage = Player.Gains;
                     gameUi.Update();
                 }
