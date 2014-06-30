@@ -16,14 +16,17 @@ namespace VisualizationLibraryTest
             Utility.CheckCreation(id, 1);
             Utility.CheckCreation(id2, 1);
 
+            Library.setModelVisibility(id, true);
+            Library.setModelVisibility(id2, true);
+
             Library.scalingIsNormalized(id, true);
             Library.scalingIsNormalized(id2, true);
 
             Library.scale(id, 1, 1, 1);
             Library.scale(id2, 1, 1, 1);
 
-            Library.position(id, 0, 0, -5);
-            Library.position(id2, 0, 0, -5);
+            Library.position(id, 0, 0, 0);
+            Library.position(id2, 0, 0, 0);
 
             System.Threading.Thread.Sleep(100); // Zeit lassen um min. 1 neues Bild zu zeichnen
 
@@ -50,14 +53,17 @@ namespace VisualizationLibraryTest
             Utility.CheckCreation(id, 1);
             Utility.CheckCreation(id2, 1);
 
+            Library.setModelVisibility(id, true);
+            Library.setModelVisibility(id2, true);
+
             Library.scalingIsNormalized(id, true);
             Library.scalingIsNormalized(id2, true);
 
             Library.scale(id, 1, 1, 1);
             Library.scale(id2, 1, 1, 1);
 
-            Library.position(id, 0, 0, -5);
-            Library.position(id2, 0, 0, -5);
+            Library.position(id, 0, 0, 0);
+            Library.position(id2, 0, 0, 0);
 
             Library.collisionGroup(id, 1);
             Library.collisionGroup(id2, 2);
@@ -86,6 +92,9 @@ namespace VisualizationLibraryTest
 
             Utility.CheckCreation(id, 1);
             Utility.CheckCreation(id2, 1);
+
+            Library.setModelVisibility(id, true);
+            Library.setModelVisibility(id2, true);
 
             Library.scalingIsNormalized(id, true);
             Library.scalingIsNormalized(id2, true);
@@ -128,6 +137,9 @@ namespace VisualizationLibraryTest
             Utility.CheckCreation(id, 1);
             Utility.CheckCreation(id2, 1);
 
+            Library.setModelVisibility(id, true);
+            Library.setModelVisibility(id2, true);
+
             Library.scalingIsNormalized(id, true);
             Library.scalingIsNormalized(id2, true);
 
@@ -162,14 +174,17 @@ namespace VisualizationLibraryTest
             Utility.CheckCreation(id, 1);
             Utility.CheckCreation(id2, 1);
 
+            Library.setModelVisibility(id, true);
+            Library.setModelVisibility(id2, true);
+
             Library.scalingIsNormalized(id, true);
             Library.scalingIsNormalized(id2, true);
 
             Library.scale(id, 1, 1, 1);
             Library.scale(id2, 1, 1, 1);
 
-            Library.position(id, 0.3f, 0, -5);
-            Library.position(id2, 0.3f, 0, -5);
+            Library.position(id, 0.24f, 0, -5);
+            Library.position(id2, -0.25f, 0, -5);
 
             Library.collisionGroup(id, 1);
             Library.collisionGroup(id2, 2);
@@ -199,6 +214,9 @@ namespace VisualizationLibraryTest
 
             Utility.CheckCreation(id, 1);
             Utility.CheckCreation(id2, 1);
+
+            Library.setModelVisibility(id, true);
+            Library.setModelVisibility(id2, true);
 
             Library.scalingIsNormalized(id, true);
             Library.scalingIsNormalized(id2, true);
