@@ -17,6 +17,8 @@ namespace JumpAndRun.Gui.Elements
         private float scaleX = 0.5f;
         private float scaleY = 0.25f;
         private string text = "Text";
+        /// <summary>Logger</summary>
+        private static readonly ILog log = LogManager.GetLogger(typeof(Run).Name);
         private bool isVisible = false;
         /// <summary>
         /// Sichtbarkeit
@@ -216,6 +218,7 @@ namespace JumpAndRun.Gui.Elements
             {
                 if (ClickEvent != null)
                 {
+                    log.Debug("Button Clicked");
                     ClickEvent();
                 }
                 clickSound.Play();

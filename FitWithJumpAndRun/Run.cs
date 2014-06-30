@@ -130,7 +130,7 @@ namespace JumpAndRun
                 // Überprüfen ob eine Person erkannt wird
                 else if (!CheckPersonTracking()) continue;
                 // Programm mit Geste beenden
-                else if (GestureClose.IsTrue()) break;
+                //else if (GestureClose.IsTrue()) break;
                 // Button Tutorial
                 else if (!CheckButtonTutorial()) continue;
                 // Schwierigkeitsgrad wählen
