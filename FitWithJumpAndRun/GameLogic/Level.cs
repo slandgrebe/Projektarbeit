@@ -304,6 +304,8 @@ namespace JumpAndRun.GameLogic
         /// <returns>Liste der ausgewählten Segemente</returns>
         private List<LevelSegment> ChooseRandomSegments(JumpAndRun.Difficulty difficulty, int lengthInSeconds, double speed)
         {
+
+            difficulty = JumpAndRun.Difficulty.Difficult;
             double currentLength = 0; // in meter
 
             int minDifficulty = AllAvailableSegments.Min(e => e.Severity); // einfachste vorhandene Schwierigkeit
@@ -411,6 +413,7 @@ namespace JumpAndRun.GameLogic
                 if (currentDifference < smallestDifference)
                 {
                     smallestDifference = currentDifference;
+                    list.Clear();
                     list.Add(segment);
                 }
                 else if (currentDifference == smallestDifference)

@@ -136,47 +136,47 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="data\levels\jungle\segments\test\segmentTest.xml" />
-    <Content Include="data\levels\jungle\segments\backup\slalom.xml">
+    <Content Include="data\levels\jungle\segments\slalom.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="data\levels\jungle\segments\backup\segment_easy_1.xml">
+    <Content Include="data\levels\jungle\segments\segment_easy_1.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="data\levels\jungle\segments\backup\segment_easy_2.xml">
+    <Content Include="data\levels\jungle\segments\segment_easy_2.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="data\levels\jungle\segments\backup\segment_easy_3.xml">
+    <Content Include="data\levels\jungle\segments\segment_easy_3.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="data\levels\jungle\segments\backup\segment_easy_4.xml">
+    <Content Include="data\levels\jungle\segments\segment_easy_4.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="data\levels\jungle\segments\backup\segment_easy_5.xml">
+    <Content Include="data\levels\jungle\segments\segment_easy_5.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="data\levels\jungle\segments\backup\segment_hard_1.xml">
+    <Content Include="data\levels\jungle\segments\segment_hard_1.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="data\levels\jungle\segments\backup\segment_hard_2.xml">
+    <Content Include="data\levels\jungle\segments\segment_hard_2.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="data\levels\jungle\segments\backup\segment_hard_3.xml">
+    <Content Include="data\levels\jungle\segments\segment_hard_3.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="data\levels\jungle\segments\backup\segment_hard_4.xml">
+    <Content Include="data\levels\jungle\segments\segment_hard_4.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="data\levels\jungle\segments\backup\segment_medium_1.xml">
+    <Content Include="data\levels\jungle\segments\segment_medium_1.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="data\levels\jungle\segments\backup\segment_medium_2.xml">
+    <Content Include="data\levels\jungle\segments\segment_medium_2.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="data\levels\jungle\segments\backup\segment_medium_3.xml">
+    <Content Include="data\levels\jungle\segments\segment_medium_3.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="data\levels\jungle\segments\backup\segment_medium_4.xml">
+    <Content Include="data\levels\jungle\segments\segment_medium_4.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="data\models\cocosnut\_1.jpg">
@@ -509,6 +509,7 @@
     </COMReference>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="data\levels\jungle\segments\backup\" />
     <Folder Include="data\sound\menu\background\backup\" />
   </ItemGroup>
   <ItemGroup>

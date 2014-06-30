@@ -18,7 +18,7 @@ namespace JumpAndRun.Gui.Elements
         private float scaleY = 0.25f;
         private string text = "Text";
         /// <summary>Logger</summary>
-        private static readonly ILog log = LogManager.GetLogger(typeof(Run).Name);
+        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(typeof(Run).Name);
         private bool isVisible = false;
         /// <summary>
         /// Sichtbarkeit

@@ -126,7 +126,7 @@ namespace JumpAndRun
                 System.Threading.Thread.Sleep(1);
 
                 // Kinect überprüfen
-                if (!CheckKinect()) continue;
+                /*if (!CheckKinect()) continue;
                 // Überprüfen ob eine Person erkannt wird
                 else if (!CheckPersonTracking()) continue;
                 // Programm mit Geste beenden
@@ -136,7 +136,7 @@ namespace JumpAndRun
                 // Schwierigkeitsgrad wählen
                 else if (!CheckDifficultySelection()) continue;
                 // spiel laden
-                else if (!CheckGameLoading()) continue;
+                else */if (!CheckGameLoading()) continue;
                 // spielen
                 else if (!CheckGaming()) continue;
                 // spiel beendet
