@@ -102,6 +102,7 @@ namespace JumpAndRun.Sound
                 try
                 {
                     audio = new WMPLib.WindowsMediaPlayer();
+                    audio.settings.autoStart = false;
                     audio.URL = FilePath;
                     System.Threading.Thread.Sleep(10); // Kann sonst zu exception führen
                     audio.settings.volume = Volume;

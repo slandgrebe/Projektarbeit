@@ -42,7 +42,7 @@ namespace JumpAndRun.Gui
 
             text = new JumpAndRun.Gui.Elements.TextWithBackground();
             text.setText("Kinect wird gestartet");
-            text.Size(60);
+            text.Size(44);
             //text.TextColor(0.784f, 0.125f, 0.125f, 1f); // rot
         }
 

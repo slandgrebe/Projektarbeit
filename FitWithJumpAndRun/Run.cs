@@ -464,7 +464,7 @@ namespace JumpAndRun
                 backgroundSound.FilePath = GetRandomFileFromFolder("data/sound/menu/background", "*.mp3");
                 backgroundSound.Play();
 
-                log.Debug("Hintergrundsound durchgelaufen. Naechster Sound wird gestartet.");
+                log.Debug("Hintergrundsound durchgelaufen. Naechster Sound wird gestartet: " + backgroundSound.FilePath);
             }
         }
 

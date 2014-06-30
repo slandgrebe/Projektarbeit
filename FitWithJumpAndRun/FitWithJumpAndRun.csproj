@@ -84,7 +84,6 @@
     <Compile Include="Gui\MenuUi.cs" />
     <Compile Include="Gui\NoTrackingUi.cs" />
     <Compile Include="Gui\ScoreUi.cs" />
-    <Compile Include="Modus.cs" />
     <Compile Include="Item\Model.cs" />
     <Compile Include="Run.cs" />
     <Compile Include="GameLogic\Player.cs" />
