@@ -71,7 +71,7 @@ namespace JumpAndRun.Gui.Elements
         private Cursor()
         {
             X = 0;
-            Y = 0;
+            Y = -1;
 
             cursor = new JumpAndRun.Gui.Elements.Point("data/models/hand/hand.png");
             cursor.Scale(0.02f, 0.02f);

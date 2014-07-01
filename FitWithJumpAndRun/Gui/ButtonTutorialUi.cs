@@ -89,13 +89,13 @@ namespace JumpAndRun.Gui
 
             textBottom2 = new JumpAndRun.Gui.Elements.TextWithBackground();
             textBottom2.setText("Wenn du gleichzeitig noch deine Hand");
-            textBottom2.Position(0, -0.65f);
+            textBottom2.Position(0, -0.6f);
             textBottom2.Color(0.796f, 0.624f, 0.157f, 1f); // kaki
             textBottom2.Size(36);
 
             textBottom3 = new JumpAndRun.Gui.Elements.TextWithBackground();
             textBottom3.setText("nach vorne bewegst, klickst du den Knopf");
-            textBottom3.Position(0, -0.85f);
+            textBottom3.Position(0, -0.75f);
             textBottom3.Color(0.796f, 0.624f, 0.157f, 1f); // kaki
             textBottom3.Size(36);
 
