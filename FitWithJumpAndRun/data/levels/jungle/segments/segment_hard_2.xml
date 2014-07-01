@@ -4,6 +4,20 @@
   <Severity>8</Severity>
   <obstacles>
     <Object>
+      <ModelXmlPath>data/levels/jungle/models/stone.xml</ModelXmlPath>
+      <Scale>2</Scale>
+      <PosX>-1</PosX>
+      <PosY>0</PosY>
+      <PosZ>2</PosZ>
+      <RotationAxis>
+        <float>1</float>
+        <float>0</float>
+        <float>0</float>
+      </RotationAxis>
+      <RotationAngle>-90</RotationAngle>
+      <AttachToCamera>false</AttachToCamera>
+    </Object>
+    <Object>
       <ModelXmlPath>data/levels/jungle/models/limb.xml</ModelXmlPath>
       <Scale>1</Scale>
       <PosX>-2.5</PosX>
@@ -77,20 +91,6 @@
         <float>0</float>
       </RotationAxis>
       <RotationAngle>90</RotationAngle>
-      <AttachToCamera>false</AttachToCamera>
-    </Object>
-    <Object>
-      <ModelXmlPath>data/levels/jungle/models/stone.xml</ModelXmlPath>
-      <Scale>2</Scale>
-      <PosX>-1</PosX>
-      <PosY>0</PosY>
-      <PosZ>2</PosZ>
-      <RotationAxis>
-        <float>1</float>
-        <float>0</float>
-        <float>0</float>
-      </RotationAxis>
-      <RotationAngle>-90</RotationAngle>
       <AttachToCamera>false</AttachToCamera>
     </Object>
     <Object>

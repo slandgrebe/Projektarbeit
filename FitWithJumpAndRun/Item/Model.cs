@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using log4net;
+using log4net.Config;
 
 namespace JumpAndRun.Item
 {
@@ -29,6 +31,8 @@ namespace JumpAndRun.Item
         /// An Kamera angehängt
         /// </summary>
         private bool AttachedToCamera = false;
+        /// <summary>Logger</summary>
+        private static readonly ILog log = LogManager.GetLogger(typeof(Run).Name);
         /// <summary>
         /// Hängt ein Modell an die Kamera an. Dies hat zur Folge, dass dieses Objekt relativ zur Kamera positioniert wird.
         /// </summary>
@@ -76,9 +80,10 @@ namespace JumpAndRun.Item
             Id = View.Model.AddModel(Path);
             while (!View.Model.IsCreated(Id)) { }
             View.Model.ScalingIsNormalized(Id, ScalingNormalized);
-            if (!CollisionPath.Equals(""))
+            if (!string.IsNullOrEmpty(CollisionPath))
             {
                 System.Threading.Thread.Sleep(1000);
+                log.Debug("kollisionsmodell: " + CollisionPath);
                 View.Model.AddCollisionModel(Id, CollisionPath);
             }
             Visibility(false);
