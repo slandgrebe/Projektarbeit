@@ -4,5 +4,5 @@
   <ScalingNormalized>true</ScalingNormalized>
   <Sound>data/sound/model/obstacle.wav</Sound>
   <SoundVolume>100</SoundVolume>
-  <Severity>1</Severity>
+  <Severity>3</Severity>
 </Model>
