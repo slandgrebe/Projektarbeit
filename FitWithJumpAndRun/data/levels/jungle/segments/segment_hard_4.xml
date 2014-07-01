@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <LevelSegment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Length>20</Length>
-  <Severity>8</Severity>
+  <Severity>9</Severity>
   <obstacles>
     <Object>
       <ModelXmlPath>data/levels/jungle/models/limb.xml</ModelXmlPath>

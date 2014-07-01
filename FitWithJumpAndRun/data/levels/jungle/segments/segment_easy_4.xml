@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <LevelSegment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Length>10</Length>
-  <Severity>2</Severity>
+  <Severity>3</Severity>
   <obstacles>
     <Object>
       <ModelXmlPath>data/levels/jungle/models/limb.xml</ModelXmlPath>
@@ -9,6 +9,20 @@
       <PosX>4.5</PosX>
       <PosY>0.5</PosY>
       <PosZ>7.5</PosZ>
+      <AttachToCamera>false</AttachToCamera>
+    </Object>
+    <Object>
+      <ModelXmlPath>data/levels/jungle/models/stone.xml</ModelXmlPath>
+      <Scale>2</Scale>
+      <PosX>-1</PosX>
+      <PosY>0</PosY>
+      <PosZ>2.5</PosZ>
+      <RotationAxis>
+        <float>1</float>
+        <float>0</float>
+        <float>0</float>
+      </RotationAxis>
+      <RotationAngle>-90</RotationAngle>
       <AttachToCamera>false</AttachToCamera>
     </Object>
   </obstacles>
@@ -37,20 +51,6 @@
     </Object>
   </scores>
   <objects>
-    <Object>
-      <ModelXmlPath>data/levels/jungle/models/stone.xml</ModelXmlPath>
-      <Scale>2</Scale>
-      <PosX>-1</PosX>
-      <PosY>0</PosY>
-      <PosZ>5</PosZ>
-      <RotationAxis>
-        <float>1</float>
-        <float>0</float>
-        <float>0</float>
-      </RotationAxis>
-      <RotationAngle>-90</RotationAngle>
-      <AttachToCamera>false</AttachToCamera>
-    </Object>
     <Object>
       <ModelXmlPath>data/levels/jungle/models/fern.xml</ModelXmlPath>
       <Scale>4</Scale>
