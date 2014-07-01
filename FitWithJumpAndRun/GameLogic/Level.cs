@@ -285,8 +285,9 @@ namespace JumpAndRun.GameLogic
             randomList.Add(endSegment);
 
             // Debug Log
+            log.Debug("");
             log.Debug("Liste nach dem mischeln:");
-            foreach (LevelSegment s in segments)
+            foreach (LevelSegment s in randomList)
             {
                 log.Debug(" " + s.FilePath);
             }
