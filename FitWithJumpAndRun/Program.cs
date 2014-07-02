@@ -29,7 +29,7 @@ namespace JumpAndRun
         /// <summary>
         /// Zustand der Applikation
         /// </summary>
-        public static State state = State.Debug;
+        public static State state = State.Release;
         /// <summary>Logger</summary>
         private static readonly ILog log = LogManager.GetLogger(typeof(Program).Name);
         private RollingFileAppender appender = new RollingFileAppender();
@@ -55,6 +55,11 @@ namespace JumpAndRun
                         log.Info("Release Modus aktiviert");
                         System.Windows.Forms.Cursor.Hide();
                     }
+                    else if (args[0].Equals("trace"))
+                    {
+                        Program.state = State.Trace;
+                        log.Info("Trace Modus aktiviert");
+                    }
                 }
 
                 if (state == State.Debug)
@@ -63,8 +68,13 @@ namespace JumpAndRun
                 }
                 else if (state == State.Release)
                 {
-                    ((log4net.Repository.Hierarchy.Hierarchy)LogManager.GetRepository()).Root.Level = Level.Warn;
+                    ((log4net.Repository.Hierarchy.Hierarchy)LogManager.GetRepository()).Root.Level = Level.Info;
                 }
+                else if (state == State.Trace)
+                {
+                    ((log4net.Repository.Hierarchy.Hierarchy)LogManager.GetRepository()).Root.Level = Level.Trace;
+                }
+
 
                 // Programm Starten
                 Run r = Run.Instance;
