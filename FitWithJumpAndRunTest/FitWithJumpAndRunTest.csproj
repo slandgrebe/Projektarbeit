@@ -57,12 +57,6 @@
     <Compile Include="GameLogic\LevelTest.cs" />
     <Compile Include="Gesture\ClickTest.cs" />
     <Compile Include="Gesture\GestureCloseTest.cs" />
-    <Compile Include="Gui\ScoreUiTest.cs" />
-    <Compile Include="Gui\NoTrackingUiTest.cs" />
-    <Compile Include="Gui\MenuUiTest.cs" />
-    <Compile Include="Gui\LoadingUiTest.cs" />
-    <Compile Include="Gui\GameUiTest.cs" />
-    <Compile Include="Gui\GameOverUiTest.cs" />
     <Compile Include="Item\ModelTest.cs" />
     <Compile Include="Item\ObjectTest.cs" />
     <Compile Include="GameLogic\PlayerTest.cs" />

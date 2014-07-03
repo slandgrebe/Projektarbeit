@@ -15,7 +15,7 @@ namespace JumpAndRun
         public void MyClassInitialize()
         {
             View.Window.Init("test", false, 100, 100);
-            player = new Player();
+            player = Player.Instance;
         }
 
         [TestCleanup]
