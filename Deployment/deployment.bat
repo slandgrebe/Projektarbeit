@@ -36,13 +36,14 @@ rmdir %0\..\%target%\
 :dateien kopieren
 mkdir %0\..\%target%
 
-:COPY %0\..\..\%source%\Visualization.dll %0\..\%target%\ /Y
-COPY %0\..\..\Debug\Visualization.dll %0\..\%target%\ /Y
-COPY %0\..\..\%source%\FitWithJumpAndRun.exe %0\..\%target%\ /Y
+COPY %0\..\..\%source%\Visualization.dll %0\..\%target%\ /Y
+:COPY %0\..\..\Debug\Visualization.dll %0\..\%target%\ /Y
+COPY "%0\..\..\%source%\Dschungel Trainer.exe" %0\..\%target%\ /Y
 :COPY %0\..\..\%source%\VisualizationExample.exe %0\..\%target%\ /Y
 COPY %0\..\..\%source%\MotionDetection.dll %0\..\%target%\ /Y
 COPY %0\..\..\%source%\View.dll %0\..\%target%\ /Y
 COPY %0\..\..\%source%\Assimp32.dll %0\..\%target%\ /Y
+COPY %0\..\..\%source%\log4net.dll %0\..\%target%\ /Y
 
 mkdir %0\..\%target%\data
 XCOPY %0\..\..\%source%\data %0\..\%target%\data /S /Y
