@@ -47,7 +47,7 @@ namespace JumpAndRun
             Assert.AreEqual(1, ls.objects.Count, "Objekt wurde nicht hinzugefügt.");
         }
 
-        [TestMethod]
+        /*[TestMethod]
         public void LevelSegment_Create()
         {
             LevelSegment ls = new LevelSegment();
@@ -139,6 +139,6 @@ namespace JumpAndRun
             Assert.AreEqual((System.UInt32)0, ls.obstacles[0].Model.Id, "Hinternis wurde nicht deserialisiert.");
             Assert.AreEqual((System.UInt32)0, ls.scores[0].Model.Id, "Score wurde nicht deserialisiert.");
             Assert.AreEqual((System.UInt32)0, ls.objects[0].Model.Id, "Objekt wurde nicht deserialisiert.");
-        }
+        }*/
     }
 }

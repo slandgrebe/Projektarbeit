@@ -21,7 +21,7 @@ namespace JumpAndRun
             View.Window.Close();
         }
         
-        [TestMethod]
+        /*[TestMethod]
         public void Level_AddXmlPath()
         {
             Level level = new Level();
@@ -73,6 +73,6 @@ namespace JumpAndRun
             Assert.AreNotEqual((System.UInt32)0, level.AllAvailableSegments[0].objects[0].Model.Id, "Objekt wurde nicht entfernt.");
             level.Dispose();
             Assert.AreEqual((System.UInt32)0, level.AllAvailableSegments[0].objects[0].Model.Id, "Objekt wurde nicht entfernt.");
-        }
+        }*/
     }
 }
