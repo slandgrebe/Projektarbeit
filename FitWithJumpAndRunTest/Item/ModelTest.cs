@@ -46,13 +46,6 @@ namespace JumpAndRun
             Assert.AreEqual(false, mod.Create(), "head darf ohne Pfad nicht erstellt werden");
         }
 
-        /*[TestMethod]
-        public void Model_CreateWithId()
-        {
-            JumpAndRun.Item.Model mod = new JumpAndRun.Item.Model("data/models/cube.obj", true);
-            Assert.AreEqual(false, mod.Create(), "head darf nicht ein zweites mal erstellt werden.");
-        }*/
-
         [TestMethod]
         public void Model_Scale()
         {
