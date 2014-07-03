@@ -155,53 +155,91 @@ $(document).ready(function(){initNavTree('_assimp_model_8h_source.html','');});
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;                }</div>
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;            };</div>
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;            <span class="keyword">struct </span>MeshEntry {</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;                MeshEntry();</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;                ~MeshEntry();</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;                <span class="keywordtype">void</span> <a class="code" href="_visualization_8h.html#ade07ba16370a72e8e522557f0797c316">init</a>(<span class="keyword">const</span> std::vector&lt;Vertex&gt;&amp; vertices,</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;                    <span class="keyword">const</span> std::vector&lt;unsigned int&gt;&amp; indices);</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;            <span class="keyword">struct </span>Triangle {</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;                Triangle(glm::vec3 a, glm::vec3 b, glm::vec3 c) {</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;                    this-&gt;a = a;</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;                    this-&gt;b = b;</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;                    this-&gt;c = c;</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;                }</div>
 <div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;                GLuint vertexBufferId;</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;                GLuint indexBufferId;</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;                <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> numIndices;</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;                <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> materialIndex;</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;            };  </div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;            std::vector&lt;MeshEntry&gt; meshList;</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;            std::vector&lt;TextureSoil*&gt; textureList;</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;                glm::vec3 a;</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;                glm::vec3 b;</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;                glm::vec3 c;</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;            };</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;            <span class="keyword">struct </span>MeshEntry {</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;                MeshEntry();</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;                ~MeshEntry();</div>
 <div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;            <a class="code" href="classvisual_1_1model_1_1_assimp_model.html#a29f932eb1969f6ba6c21f7b740322740">AssimpModel</a>();</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;            <a class="code" href="classvisual_1_1model_1_1_assimp_model.html#a2e331ac1e5b947f8059041708f81977b">~AssimpModel</a>();</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;            <span class="keywordtype">bool</span> <a class="code" href="classvisual_1_1model_1_1_assimp_model.html#abe95ff7da2fb6c8817ee43e1765a1968">loadModel</a>(<span class="keyword">const</span> std::string filename);</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;            <span class="keywordtype">void</span> <a class="code" href="classvisual_1_1model_1_1_assimp_model.html#a20e9bce930948ff94fbd426cab0862b9">draw</a>(<span class="keywordtype">void</span>);</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;        };</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;    }</div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;}</div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;                <span class="keywordtype">void</span> <a class="code" href="_visualization_8h.html#ade07ba16370a72e8e522557f0797c316">init</a>(<span class="keyword">const</span> std::vector&lt;Vertex&gt;&amp; vertices,</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;                    <span class="keyword">const</span> std::vector&lt;unsigned int&gt;&amp; indices);</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;                GLuint vertexBufferId;</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;                GLuint indexBufferId;</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;                <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> numIndices;</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;                <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> materialIndex;</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;                </div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;                <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> numTriangles; </div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;                std::vector&lt;Triangle&gt; triangles;</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;                Triangle getTriangle(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> n);</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;            };  </div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;            std::vector&lt;MeshEntry&gt; meshList;</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;            std::vector&lt;TextureSoil*&gt; textureList;</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;            <span class="comment">// Collision Detection</span></div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;            <span class="keywordtype">float</span> xMax = 0;</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;            <span class="keywordtype">float</span> xMin = 0;</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;            <span class="keywordtype">float</span> yMax = 0;</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;            <span class="keywordtype">float</span> yMin = 0;</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;            <span class="keywordtype">float</span> zMax = 0;</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;            <span class="keywordtype">float</span> zMin = 0;</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;            std::vector&lt;Triangle&gt; collisionModelOriginal;</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;            std::vector&lt;Triangle&gt; collisionModel;</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;            </div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;            <span class="keywordtype">long</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> collisionModelUpdatedOnFrame;</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;        <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;            <a class="code" href="classvisual_1_1model_1_1_assimp_model.html#a29f932eb1969f6ba6c21f7b740322740">AssimpModel</a>();</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;            <a class="code" href="classvisual_1_1model_1_1_assimp_model.html#a2e331ac1e5b947f8059041708f81977b">~AssimpModel</a>();</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;            <span class="keywordtype">bool</span> <a class="code" href="classvisual_1_1model_1_1_assimp_model.html#abe95ff7da2fb6c8817ee43e1765a1968">loadModel</a>(<span class="keyword">const</span> std::string filename);</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;            <span class="keywordtype">bool</span> <a class="code" href="classvisual_1_1model_1_1_assimp_model.html#ac97b9ae42be84dc2de76b0243b033c10">addCollisionModel</a>(<span class="keyword">const</span> std::string filename);</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;            <span class="keywordtype">void</span> <a class="code" href="classvisual_1_1model_1_1_assimp_model.html#a2c5956bd726b75d01b8287e2211fa41e">updateCollisionModel</a>(<span class="keywordtype">long</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> frame);</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;            <span class="keywordtype">bool</span> <a class="code" href="classvisual_1_1model_1_1_assimp_model.html#a84afffc07991ce381d036ece67587022">doesIntersect</a>(<a class="code" href="classvisual_1_1model_1_1_assimp_model.html">AssimpModel</a>* other, <span class="keywordtype">long</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> frame);</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;            <span class="keywordtype">void</span> <a class="code" href="classvisual_1_1model_1_1_assimp_model.html#a20e9bce930948ff94fbd426cab0862b9">draw</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;        };</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;    }</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;}</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="ttc" id="_model_8h_html"><div class="ttname"><a href="_model_8h.html">Model.h</a></div></div>
-<div class="ttc" id="classvisual_1_1model_1_1_assimp_model_html_a2e331ac1e5b947f8059041708f81977b"><div class="ttname"><a href="classvisual_1_1model_1_1_assimp_model.html#a2e331ac1e5b947f8059041708f81977b">visual::model::AssimpModel::~AssimpModel</a></div><div class="ttdeci">~AssimpModel()</div><div class="ttdef"><b>Definition:</b> <a href="_assimp_model_8cpp_source.html#l00052">AssimpModel.cpp:52</a></div></div>
-<div class="ttc" id="classvisual_1_1model_1_1_assimp_model_html_abe95ff7da2fb6c8817ee43e1765a1968"><div class="ttname"><a href="classvisual_1_1model_1_1_assimp_model.html#abe95ff7da2fb6c8817ee43e1765a1968">visual::model::AssimpModel::loadModel</a></div><div class="ttdeci">bool loadModel(const std::string filename)</div><div class="ttdef"><b>Definition:</b> <a href="_assimp_model_8cpp_source.html#l00057">AssimpModel.cpp:57</a></div></div>
+<div class="ttc" id="classvisual_1_1model_1_1_assimp_model_html_a2e331ac1e5b947f8059041708f81977b"><div class="ttname"><a href="classvisual_1_1model_1_1_assimp_model.html#a2e331ac1e5b947f8059041708f81977b">visual::model::AssimpModel::~AssimpModel</a></div><div class="ttdeci">~AssimpModel()</div><div class="ttdef"><b>Definition:</b> <a href="_assimp_model_8cpp_source.html#l00085">AssimpModel.cpp:85</a></div></div>
+<div class="ttc" id="classvisual_1_1model_1_1_assimp_model_html_ac97b9ae42be84dc2de76b0243b033c10"><div class="ttname"><a href="classvisual_1_1model_1_1_assimp_model.html#ac97b9ae42be84dc2de76b0243b033c10">visual::model::AssimpModel::addCollisionModel</a></div><div class="ttdeci">bool addCollisionModel(const std::string filename)</div><div class="ttdef"><b>Definition:</b> <a href="_assimp_model_8cpp_source.html#l00379">AssimpModel.cpp:379</a></div></div>
+<div class="ttc" id="classvisual_1_1model_1_1_assimp_model_html_a84afffc07991ce381d036ece67587022"><div class="ttname"><a href="classvisual_1_1model_1_1_assimp_model.html#a84afffc07991ce381d036ece67587022">visual::model::AssimpModel::doesIntersect</a></div><div class="ttdeci">bool doesIntersect(AssimpModel *other, long unsigned int frame)</div><div class="ttdef"><b>Definition:</b> <a href="_assimp_model_8cpp_source.html#l00308">AssimpModel.cpp:308</a></div></div>
+<div class="ttc" id="classvisual_1_1model_1_1_assimp_model_html_a2c5956bd726b75d01b8287e2211fa41e"><div class="ttname"><a href="classvisual_1_1model_1_1_assimp_model.html#a2c5956bd726b75d01b8287e2211fa41e">visual::model::AssimpModel::updateCollisionModel</a></div><div class="ttdeci">void updateCollisionModel(long unsigned int frame)</div><div class="ttdef"><b>Definition:</b> <a href="_assimp_model_8cpp_source.html#l00353">AssimpModel.cpp:353</a></div></div>
+<div class="ttc" id="classvisual_1_1model_1_1_assimp_model_html_abe95ff7da2fb6c8817ee43e1765a1968"><div class="ttname"><a href="classvisual_1_1model_1_1_assimp_model.html#abe95ff7da2fb6c8817ee43e1765a1968">visual::model::AssimpModel::loadModel</a></div><div class="ttdeci">bool loadModel(const std::string filename)</div><div class="ttdef"><b>Definition:</b> <a href="_assimp_model_8cpp_source.html#l00090">AssimpModel.cpp:90</a></div></div>
 <div class="ttc" id="_texture_soil_8h_html"><div class="ttname"><a href="_texture_soil_8h.html">TextureSoil.h</a></div></div>
-<div class="ttc" id="classvisual_1_1model_1_1_assimp_model_html_a29f932eb1969f6ba6c21f7b740322740"><div class="ttname"><a href="classvisual_1_1model_1_1_assimp_model.html#a29f932eb1969f6ba6c21f7b740322740">visual::model::AssimpModel::AssimpModel</a></div><div class="ttdeci">AssimpModel()</div><div class="ttdef"><b>Definition:</b> <a href="_assimp_model_8cpp_source.html#l00049">AssimpModel.cpp:49</a></div></div>
+<div class="ttc" id="classvisual_1_1model_1_1_assimp_model_html_a29f932eb1969f6ba6c21f7b740322740"><div class="ttname"><a href="classvisual_1_1model_1_1_assimp_model.html#a29f932eb1969f6ba6c21f7b740322740">visual::model::AssimpModel::AssimpModel</a></div><div class="ttdeci">AssimpModel()</div><div class="ttdef"><b>Definition:</b> <a href="_assimp_model_8cpp_source.html#l00080">AssimpModel.cpp:80</a></div></div>
 <div class="ttc" id="classvisual_1_1model_1_1_assimp_model_html"><div class="ttname"><a href="classvisual_1_1model_1_1_assimp_model.html">visual::model::AssimpModel</a></div><div class="ttdef"><b>Definition:</b> <a href="_assimp_model_8h_source.html#l00033">AssimpModel.h:33</a></div></div>
 <div class="ttc" id="_visualization_8h_html_ade07ba16370a72e8e522557f0797c316"><div class="ttname"><a href="_visualization_8h.html#ade07ba16370a72e8e522557f0797c316">init</a></div><div class="ttdeci">DLL_API int APIENTRY init(const char *windowTitle, bool fullscreen, unsigned int windowWidth, unsigned int windowHeight)</div><div class="ttdef"><b>Definition:</b> <a href="_visualization_impl_8h_source.html#l00019">VisualizationImpl.h:19</a></div></div>
 <div class="ttc" id="classvisual_1_1model_1_1_model_html"><div class="ttname"><a href="classvisual_1_1model_1_1_model.html">visual::model::Model</a></div><div class="ttdef"><b>Definition:</b> <a href="_model_8h_source.html#l00033">Model.h:33</a></div></div>
-<div class="ttc" id="classvisual_1_1model_1_1_model_html_acfabe08842ca514fc818fc5d300e48a0"><div class="ttname"><a href="classvisual_1_1model_1_1_model.html#acfabe08842ca514fc818fc5d300e48a0">visual::model::Model::position</a></div><div class="ttdeci">virtual glm::vec3 position(void)</div><div class="ttdef"><b>Definition:</b> <a href="_model_8h_source.html#l00136">Model.h:136</a></div></div>
-<div class="ttc" id="classvisual_1_1model_1_1_assimp_model_html_a20e9bce930948ff94fbd426cab0862b9"><div class="ttname"><a href="classvisual_1_1model_1_1_assimp_model.html#a20e9bce930948ff94fbd426cab0862b9">visual::model::AssimpModel::draw</a></div><div class="ttdeci">void draw(void)</div><div class="ttdef"><b>Definition:</b> <a href="_assimp_model_8cpp_source.html#l00225">AssimpModel.cpp:225</a></div></div>
+<div class="ttc" id="classvisual_1_1model_1_1_model_html_acfabe08842ca514fc818fc5d300e48a0"><div class="ttname"><a href="classvisual_1_1model_1_1_model.html#acfabe08842ca514fc818fc5d300e48a0">visual::model::Model::position</a></div><div class="ttdeci">virtual glm::vec3 position(void)</div><div class="ttdef"><b>Definition:</b> <a href="_model_8h_source.html#l00145">Model.h:145</a></div></div>
+<div class="ttc" id="classvisual_1_1model_1_1_assimp_model_html_a20e9bce930948ff94fbd426cab0862b9"><div class="ttname"><a href="classvisual_1_1model_1_1_assimp_model.html#a20e9bce930948ff94fbd426cab0862b9">visual::model::AssimpModel::draw</a></div><div class="ttdeci">void draw(void)</div><div class="ttdef"><b>Definition:</b> <a href="_assimp_model_8cpp_source.html#l00456">AssimpModel.cpp:456</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_d092fe6f644d08052abf42c12a28702c.html">VisualizationLibrary</a></li><li class="navelem"><a class="el" href="_assimp_model_8h.html">AssimpModel.h</a></li>
-    <li class="footer">Erzeugt am Son Apr 20 2014 17:01:10 für Projektarbeit - VisualizationLibrary von
+    <li class="footer">Erzeugt am Don Jul 3 2014 15:48:09 für Projektarbeit - VisualizationLibrary von
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

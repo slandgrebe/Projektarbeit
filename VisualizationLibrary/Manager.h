@@ -309,6 +309,13 @@ namespace visual {
 		*/
 		void doCollisionDetection(long unsigned int frame);
 
+		/** Setzt das Kollisionsmodell
+		* Dieses Modell wird für die Kollisionserkennung verwendet.
+		* @author Stefan Landgrebe
+		* @param modelId ID des Modells
+		* @param path Pfad zum Kollisionsmodell
+		* @return Prüfung ob die Operation durchgeführt werden konnte
+		*/
 		bool addCollisionModel(GLuint modelId, std::string path);
 
 		/** Setzt die Kollisionsgruppe von diesem Modell
@@ -318,6 +325,7 @@ namespace visual {
 		* Gruppe 2: Hindernisse\n
 		* Gruppe 3: Bonus
 		* @author Stefan Landgrebe
+		* @param modelId ID des Modells
 		* @param collisionGroup Kollisionsgruppe
 		* @return Prüfung ob die Operation durchgeführt werden konnte
 		*/

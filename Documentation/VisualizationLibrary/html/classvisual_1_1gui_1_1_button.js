@@ -11,5 +11,7 @@ var classvisual_1_1gui_1_1_button =
     [ "setHighlightColor", "classvisual_1_1gui_1_1_button.html#a16d095525f84f743cac1ab0891165229", null ],
     [ "setText", "classvisual_1_1gui_1_1_button.html#a127e2c9382ff14435f785c84dc405b37", null ],
     [ "setTextColor", "classvisual_1_1gui_1_1_button.html#afacde5ffbf6fa7c17c266406fb4747e5", null ],
-    [ "setTextSize", "classvisual_1_1gui_1_1_button.html#a74ef202b5839b3c15605fd28be06d547", null ]
+    [ "setTextSize", "classvisual_1_1gui_1_1_button.html#a74ef202b5839b3c15605fd28be06d547", null ],
+    [ "visible", "classvisual_1_1gui_1_1_button.html#a0ffce31f57f3b74653d211c4a1412e52", null ],
+    [ "visible", "classvisual_1_1gui_1_1_button.html#aef3dd300617befb9044a9e14ab838aa5", null ]
 ];

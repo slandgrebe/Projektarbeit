@@ -164,6 +164,12 @@ $(document).ready(function(){initNavTree('index.html','');});
 <tr>
 <td>Modell an die Kamera anhängen <br/>
  (Nur Model und Point) </td><td><a class="el" href="_visualization_impl_8h.html#a7091eeab7f122059f102e0a2bc96b855">attachToCamera</a> </td></tr>
+<tr>
+<td>Sichtbarkeit setzen <br/>
+ </td><td><a class="el" href="_visualization_impl_8h.html#ae5c5cc777ec44f0d5ed116b4bf68fc01">setModelVisibility</a> </td></tr>
+<tr>
+<td>Sichtbarkeit prüfen <br/>
+ </td><td><a class="el" href="_visualization_impl_8h.html#a9ce55b78adea708925261532248d31d9">getModelVisibility</a> </td></tr>
 </table>
 <p><br/>
  </p>
@@ -181,6 +187,12 @@ $(document).ready(function(){initNavTree('index.html','');});
 <td>Farbe des Textes ändern </td><td><a class="el" href="_visualization_impl_8h.html#a977dbaa0062420794e8cf0e4ddc99194">textColor</a> </td></tr>
 <tr>
 <td>Entfernung des Textelements </td><td><a class="el" href="_visualization_impl_8h.html#a9c9096ce7ce4afbb333266a6ddcca9d1">dispose</a> </td></tr>
+<tr>
+<td>Sichtbarkeit setzen <br/>
+ </td><td><a class="el" href="_visualization_impl_8h.html#ae5c5cc777ec44f0d5ed116b4bf68fc01">setModelVisibility</a> </td></tr>
+<tr>
+<td>Sichtbarkeit prüfen <br/>
+ </td><td><a class="el" href="_visualization_impl_8h.html#a9ce55b78adea708925261532248d31d9">getModelVisibility</a> </td></tr>
 </table>
 <p><br/>
  </p>
@@ -205,20 +217,27 @@ Bei der Kollisionserkennung wird das Resultat als Text gespeichert. <br/>
 Mit der <a class="el" href="_visualization_impl_8h.html#a28d55e6f6b8af143d419ebe3a822c82e">collisionsTextLength</a> Funktion kann die Länge des Textes abgefragt werden, bevor mit der <a class="el" href="_visualization_impl_8h.html#a6ef14e96b16ac4008df9ed908487bdb2">collisionsText</a> Funktion der Text ausgelesen wird. <br/>
 <br/>
 Der Text hat folgendes Format <br/>
-<b>Format:</b> 1:2,3;2:1;3:1;4: <br/>
-<b>Bedeutung:</b></p>
+<b>Format:</b> 23;121 <br/>
+<b>Bedeutung:</b> Die Objekte mit der ModelId 23 und 121 hatten eine Kollision<br/>
+<br/>
+Des weiteren müssen die Objekte in sogenannte Kollisionsgruppen eingeteilt werden. Objekte welche in der selben Gruppe sind, werden nicht miteinander verglichen. Zudem wird für die beiden Gruppen Hindernisse und Bonus nur der jeweils erste Treffer geliefert.<br/>
+</p>
 <ul>
-<li>Objekt mit der ID 1 kollidiert mit Objekt 2 und 3 <br/>
+<li>Gruppe 0: Ambiente (wird ignoriert)<br/>
 </li>
-<li>Objekt 2 kollidiert mit Objekt 1 <br/>
+<li>Gruppe 1: Spieler<br/>
 </li>
-<li>Objekt 3 kollidiert mit Objekt 1 <br/>
+<li>Gruppe 2: Hindernisse<br/>
 </li>
-<li>Objekt 4 kollidiert mit nichts. <br/>
+<li>Gruppe 3: Bonus<br/>
 <br/>
 <table class="doxtable">
 <tr>
 <th>Beschreibung </th><th>Dokumentation  </th></tr>
+<tr>
+<td>Separates Kollisionsmodell verwenden </td><td><a class="el" href="_visualization_impl_8h.html#a4fea77ed8b300586cd1eedcbf6acc2e8">addCollisionModel</a> </td></tr>
+<tr>
+<td>Kollisionsgruppe setzen </td><td><a class="el" href="_visualization_impl_8h.html#a11a265bc46a23a014a38c7f8e3f67271">collisionGroup</a> </td></tr>
 <tr>
 <td>Länge des Textes der Kollisionserkennung </td><td><a class="el" href="_visualization_impl_8h.html#a28d55e6f6b8af143d419ebe3a822c82e">collisionsTextLength</a> </td></tr>
 <tr>
@@ -234,7 +253,7 @@ Der Text hat folgendes Format <br/>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Erzeugt am Son Apr 20 2014 17:01:11 für Projektarbeit - VisualizationLibrary von
+    <li class="footer">Erzeugt am Don Jul 3 2014 15:48:09 für Projektarbeit - VisualizationLibrary von
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

@@ -186,85 +186,91 @@ $(document).ready(function(){initNavTree('_colored_square_8cpp_source.html','');
 <div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;</div>
 <div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;</div>
 <div class="line"><a name="l00081"></a><span class="lineno"><a class="line" href="classvisual_1_1model_1_1_colored_square.html#aa9219355279d66614680888ab5d5c42b">   81</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classvisual_1_1model_1_1_colored_square.html#aa9219355279d66614680888ab5d5c42b">ColoredSquare::draw</a>(<span class="keywordtype">void</span>) {</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    glBindVertexArray(vertexArrayId);</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    <span class="comment">// shader</span></div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    <a class="code" href="classvisual_1_1model_1_1_model.html#a74b5538f07c52ca06e7e84f8dbc9af40">shaderProgram</a>.<a class="code" href="classvisual_1_1graphics_1_1_shader_program.html#ad7fdc266c094be41afeb37fc265a4f17">use</a>();</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    <span class="comment">// unsichtbare Objekte müssen nicht geladen werden</span></div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    <span class="keywordflow">if</span> (!<a class="code" href="classvisual_1_1model_1_1_model.html#af7e3a4875b335706b710b6316d6c036b">m_isVisible</a>) {</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;        <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    }</div>
 <div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    <span class="comment">// positions</span></div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    GLint posAttrib = <a class="code" href="classvisual_1_1model_1_1_model.html#a74b5538f07c52ca06e7e84f8dbc9af40">shaderProgram</a>.<a class="code" href="classvisual_1_1graphics_1_1_shader_program.html#a3d7826fa79290b01c3857954dbc2a941">getAttribute</a>(<span class="stringliteral">&quot;position&quot;</span>);</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    glEnableVertexAttribArray(posAttrib);</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    glBindBuffer(GL_ARRAY_BUFFER, vertexBufferId);</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    glVertexAttribPointer(</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;        posAttrib,          <span class="comment">// layout Attribut im Vertex Shader</span></div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;        3,                  <span class="comment">// Grösse</span></div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;        GL_FLOAT,           <span class="comment">// Datentyp</span></div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;        GL_FALSE,           <span class="comment">// normalisiert?</span></div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;        0,                  <span class="comment">// Stride</span></div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;        (<span class="keywordtype">void</span>*)0            <span class="comment">// Offset</span></div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;        );</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    <span class="comment">// colors</span></div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;    <span class="comment">/*GLint colAttrib = shaderProgram-&gt;getAttribute(&quot;color&quot;);</span></div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;<span class="comment">    glEnableVertexAttribArray(colAttrib);</span></div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;<span class="comment">    glBindBuffer(GL_ARRAY_BUFFER, vertexBufferId);</span></div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;<span class="comment">    glVertexAttribPointer(</span></div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;<span class="comment">        colAttrib,          // layout Attribut im Vertex Shader</span></div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;<span class="comment">        3,                  // Grösse</span></div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;<span class="comment">        GL_FLOAT,           // Datentyp</span></div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;<span class="comment">        GL_FALSE,           // normalisiert?</span></div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;<span class="comment">        sizeof(GLfloat) * 6,// Stride</span></div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;<span class="comment">        (const GLvoid*)12   // Offset</span></div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;<span class="comment">        );*/</span></div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;</div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;    <span class="comment">// color</span></div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;    GLint colorAttribute = <a class="code" href="classvisual_1_1model_1_1_model.html#a74b5538f07c52ca06e7e84f8dbc9af40">shaderProgram</a>.<a class="code" href="classvisual_1_1graphics_1_1_shader_program.html#a25b1620289e542355c01c0903b9488ad">getUniform</a>(<span class="stringliteral">&quot;color&quot;</span>);</div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;    GLfloat r = 0.0f, g = 0.5f, b = 0.5f, a = 1.0f; <span class="comment">// standard: aquamarin</span></div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="classvisual_1_1model_1_1_model.html#afc9f68f6e4bf97e7e1125deffc686c22">m_isHighlighted</a>) {</div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;        r = <a class="code" href="classvisual_1_1model_1_1_model.html#a353ab65e6e0d6baa69e7963cc0e581ab">highlightColor</a>.r;</div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;        g = <a class="code" href="classvisual_1_1model_1_1_model.html#a353ab65e6e0d6baa69e7963cc0e581ab">highlightColor</a>.g;</div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;        b = <a class="code" href="classvisual_1_1model_1_1_model.html#a353ab65e6e0d6baa69e7963cc0e581ab">highlightColor</a>.b;</div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;        a = <a class="code" href="classvisual_1_1model_1_1_model.html#a353ab65e6e0d6baa69e7963cc0e581ab">highlightColor</a>.a;</div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;    }</div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;    glUniform4f(colorAttribute, r, g, b, a);</div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;</div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;    <span class="comment">// transformations</span></div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;    GLint uniMvp = <a class="code" href="classvisual_1_1model_1_1_model.html#a74b5538f07c52ca06e7e84f8dbc9af40">shaderProgram</a>.<a class="code" href="classvisual_1_1graphics_1_1_shader_program.html#a25b1620289e542355c01c0903b9488ad">getUniform</a>(<span class="stringliteral">&quot;mvp&quot;</span>);</div>
-<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;    <span class="comment">//glm::mat4 mvp = getModelViewMatrix();</span></div>
-<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;    glm::mat4 mvp = <a class="code" href="classvisual_1_1model_1_1_model.html#a6394c98337670f55e7c25a6aa685a16d">getOrthographicModelViewMatrix</a>();</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    glBindVertexArray(vertexArrayId);</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    <span class="comment">// shader</span></div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    <a class="code" href="classvisual_1_1model_1_1_model.html#a74b5538f07c52ca06e7e84f8dbc9af40">shaderProgram</a>.<a class="code" href="classvisual_1_1graphics_1_1_shader_program.html#ad7fdc266c094be41afeb37fc265a4f17">use</a>();</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    <span class="comment">// positions</span></div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    GLint posAttrib = <a class="code" href="classvisual_1_1model_1_1_model.html#a74b5538f07c52ca06e7e84f8dbc9af40">shaderProgram</a>.<a class="code" href="classvisual_1_1graphics_1_1_shader_program.html#a3d7826fa79290b01c3857954dbc2a941">getAttribute</a>(<span class="stringliteral">&quot;position&quot;</span>);</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    glEnableVertexAttribArray(posAttrib);</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    glBindBuffer(GL_ARRAY_BUFFER, vertexBufferId);</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    glVertexAttribPointer(</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;        posAttrib,          <span class="comment">// layout Attribut im Vertex Shader</span></div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;        3,                  <span class="comment">// Grösse</span></div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;        GL_FLOAT,           <span class="comment">// Datentyp</span></div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;        GL_FALSE,           <span class="comment">// normalisiert?</span></div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;        0,                  <span class="comment">// Stride</span></div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;        (<span class="keywordtype">void</span>*)0            <span class="comment">// Offset</span></div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;        );</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;    <span class="comment">// colors</span></div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;    <span class="comment">/*GLint colAttrib = shaderProgram-&gt;getAttribute(&quot;color&quot;);</span></div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;<span class="comment">    glEnableVertexAttribArray(colAttrib);</span></div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;<span class="comment">    glBindBuffer(GL_ARRAY_BUFFER, vertexBufferId);</span></div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;<span class="comment">    glVertexAttribPointer(</span></div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;<span class="comment">        colAttrib,          // layout Attribut im Vertex Shader</span></div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;<span class="comment">        3,                  // Grösse</span></div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;<span class="comment">        GL_FLOAT,           // Datentyp</span></div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;<span class="comment">        GL_FALSE,           // normalisiert?</span></div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;<span class="comment">        sizeof(GLfloat) * 6,// Stride</span></div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;<span class="comment">        (const GLvoid*)12   // Offset</span></div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;<span class="comment">        );*/</span></div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;    <span class="comment">// color</span></div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;    GLint colorAttribute = <a class="code" href="classvisual_1_1model_1_1_model.html#a74b5538f07c52ca06e7e84f8dbc9af40">shaderProgram</a>.<a class="code" href="classvisual_1_1graphics_1_1_shader_program.html#a25b1620289e542355c01c0903b9488ad">getUniform</a>(<span class="stringliteral">&quot;color&quot;</span>);</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;    GLfloat r = 0.0f, g = 0.5f, b = 0.5f, a = 1.0f; <span class="comment">// standard: aquamarin</span></div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="classvisual_1_1model_1_1_model.html#afc9f68f6e4bf97e7e1125deffc686c22">m_isHighlighted</a>) {</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;        r = <a class="code" href="classvisual_1_1model_1_1_model.html#a353ab65e6e0d6baa69e7963cc0e581ab">highlightColor</a>.r;</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;        g = <a class="code" href="classvisual_1_1model_1_1_model.html#a353ab65e6e0d6baa69e7963cc0e581ab">highlightColor</a>.g;</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;        b = <a class="code" href="classvisual_1_1model_1_1_model.html#a353ab65e6e0d6baa69e7963cc0e581ab">highlightColor</a>.b;</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;        a = <a class="code" href="classvisual_1_1model_1_1_model.html#a353ab65e6e0d6baa69e7963cc0e581ab">highlightColor</a>.a;</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;    }</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;    glUniform4f(colorAttribute, r, g, b, a);</div>
 <div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;</div>
-<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;</div>
-<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;    glUniformMatrix4fv(uniMvp, 1, GL_FALSE, glm::value_ptr(mvp));</div>
-<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;</div>
-<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;    <span class="comment">// Effektives zeichnen des Modells</span></div>
-<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;    glDrawArrays(GL_TRIANGLES, 0, 6); <span class="comment">// Dreiecke zeichnen, ab Vertex 0, 3 vertices</span></div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;    <span class="comment">// transformations</span></div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;    GLint uniMvp = <a class="code" href="classvisual_1_1model_1_1_model.html#a74b5538f07c52ca06e7e84f8dbc9af40">shaderProgram</a>.<a class="code" href="classvisual_1_1graphics_1_1_shader_program.html#a25b1620289e542355c01c0903b9488ad">getUniform</a>(<span class="stringliteral">&quot;mvp&quot;</span>);</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;    <span class="comment">//glm::mat4 mvp = getModelViewMatrix();</span></div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;    glm::mat4 mvp = <a class="code" href="classvisual_1_1model_1_1_model.html#a6394c98337670f55e7c25a6aa685a16d">getOrthographicModelViewMatrix</a>();</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;</div>
 <div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;</div>
-<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;    <span class="comment">// Vertex Shader Attribute Array deaktivieren</span></div>
-<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;    glDisableVertexAttribArray(posAttrib);</div>
-<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;    <span class="comment">//glDisableVertexAttribArray(colAttrib);</span></div>
-<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;</div>
-<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;    glBindVertexArray(0);</div>
-<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;}</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;    glUniformMatrix4fv(uniMvp, 1, GL_FALSE, glm::value_ptr(mvp));</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;    <span class="comment">// Effektives zeichnen des Modells</span></div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;    glDrawArrays(GL_TRIANGLES, 0, 6); <span class="comment">// Dreiecke zeichnen, ab Vertex 0, 3 vertices</span></div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;    <span class="comment">// Vertex Shader Attribute Array deaktivieren</span></div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;    glDisableVertexAttribArray(posAttrib);</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;    <span class="comment">//glDisableVertexAttribArray(colAttrib);</span></div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;    glBindVertexArray(0);</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;}</div>
 <div class="ttc" id="classvisual_1_1graphics_1_1_shader_program_html_a3d7826fa79290b01c3857954dbc2a941"><div class="ttname"><a href="classvisual_1_1graphics_1_1_shader_program.html#a3d7826fa79290b01c3857954dbc2a941">visual::graphics::ShaderProgram::getAttribute</a></div><div class="ttdeci">GLuint getAttribute(std::string name)</div><div class="ttdef"><b>Definition:</b> <a href="_shader_program_8h_source.html#l00074">ShaderProgram.h:74</a></div></div>
-<div class="ttc" id="classvisual_1_1model_1_1_model_html_a74b5538f07c52ca06e7e84f8dbc9af40"><div class="ttname"><a href="classvisual_1_1model_1_1_model.html#a74b5538f07c52ca06e7e84f8dbc9af40">visual::model::Model::shaderProgram</a></div><div class="ttdeci">graphics::ShaderProgram shaderProgram</div><div class="ttdef"><b>Definition:</b> <a href="_model_8h_source.html#l00050">Model.h:50</a></div></div>
+<div class="ttc" id="classvisual_1_1model_1_1_model_html_af7e3a4875b335706b710b6316d6c036b"><div class="ttname"><a href="classvisual_1_1model_1_1_model.html#af7e3a4875b335706b710b6316d6c036b">visual::model::Model::m_isVisible</a></div><div class="ttdeci">bool m_isVisible</div><div class="ttdef"><b>Definition:</b> <a href="_model_8h_source.html#l00052">Model.h:52</a></div></div>
+<div class="ttc" id="classvisual_1_1model_1_1_model_html_a74b5538f07c52ca06e7e84f8dbc9af40"><div class="ttname"><a href="classvisual_1_1model_1_1_model.html#a74b5538f07c52ca06e7e84f8dbc9af40">visual::model::Model::shaderProgram</a></div><div class="ttdeci">graphics::ShaderProgram shaderProgram</div><div class="ttdef"><b>Definition:</b> <a href="_model_8h_source.html#l00054">Model.h:54</a></div></div>
 <div class="ttc" id="_graphic_engine_8h_html"><div class="ttname"><a href="_graphic_engine_8h.html">GraphicEngine.h</a></div></div>
-<div class="ttc" id="class_log_html_aef7936d0fd59e391abd42f967be091f8"><div class="ttname"><a href="class_log.html#aef7936d0fd59e391abd42f967be091f8">Log::debug</a></div><div class="ttdeci">std::ostringstream &amp; debug()</div><div class="ttdef"><b>Definition:</b> <a href="_log_8h_source.html#l00155">Log.h:155</a></div></div>
-<div class="ttc" id="classvisual_1_1model_1_1_model_html_a0c1e62fa405b7f1b8fd2e2d3fb13abd5"><div class="ttname"><a href="classvisual_1_1model_1_1_model.html#a0c1e62fa405b7f1b8fd2e2d3fb13abd5">visual::model::Model::m_scalingNormalizationFactor</a></div><div class="ttdeci">float m_scalingNormalizationFactor</div><div class="ttdef"><b>Definition:</b> <a href="_model_8h_source.html#l00036">Model.h:36</a></div></div>
+<div class="ttc" id="class_log_html_aef7936d0fd59e391abd42f967be091f8"><div class="ttname"><a href="class_log.html#aef7936d0fd59e391abd42f967be091f8">Log::debug</a></div><div class="ttdeci">std::ostringstream &amp; debug()</div><div class="ttdef"><b>Definition:</b> <a href="_log_8h_source.html#l00168">Log.h:168</a></div></div>
+<div class="ttc" id="classvisual_1_1model_1_1_model_html_a0c1e62fa405b7f1b8fd2e2d3fb13abd5"><div class="ttname"><a href="classvisual_1_1model_1_1_model.html#a0c1e62fa405b7f1b8fd2e2d3fb13abd5">visual::model::Model::m_scalingNormalizationFactor</a></div><div class="ttdeci">float m_scalingNormalizationFactor</div><div class="ttdef"><b>Definition:</b> <a href="_model_8h_source.html#l00037">Model.h:37</a></div></div>
 <div class="ttc" id="classvisual_1_1graphics_1_1_shader_program_html_a25b1620289e542355c01c0903b9488ad"><div class="ttname"><a href="classvisual_1_1graphics_1_1_shader_program.html#a25b1620289e542355c01c0903b9488ad">visual::graphics::ShaderProgram::getUniform</a></div><div class="ttdeci">GLuint getUniform(std::string name)</div><div class="ttdef"><b>Definition:</b> <a href="_shader_program_8h_source.html#l00081">ShaderProgram.h:81</a></div></div>
 <div class="ttc" id="classvisual_1_1model_1_1_colored_square_html_aaa4f8f89f28a7268e39d9fb806b5b971"><div class="ttname"><a href="classvisual_1_1model_1_1_colored_square.html#aaa4f8f89f28a7268e39d9fb806b5b971">visual::model::ColoredSquare::~ColoredSquare</a></div><div class="ttdeci">~ColoredSquare()</div><div class="ttdef"><b>Definition:</b> <a href="_colored_square_8cpp_source.html#l00010">ColoredSquare.cpp:10</a></div></div>
-<div class="ttc" id="classvisual_1_1model_1_1_model_html_a407144223933b287ea0496e508f0f5dc"><div class="ttname"><a href="classvisual_1_1model_1_1_model.html#a407144223933b287ea0496e508f0f5dc">visual::model::Model::m_scalingVector</a></div><div class="ttdeci">glm::vec3 m_scalingVector</div><div class="ttdef"><b>Definition:</b> <a href="_model_8h_source.html#l00042">Model.h:42</a></div></div>
+<div class="ttc" id="classvisual_1_1model_1_1_model_html_a407144223933b287ea0496e508f0f5dc"><div class="ttname"><a href="classvisual_1_1model_1_1_model.html#a407144223933b287ea0496e508f0f5dc">visual::model::Model::m_scalingVector</a></div><div class="ttdeci">glm::vec3 m_scalingVector</div><div class="ttdef"><b>Definition:</b> <a href="_model_8h_source.html#l00043">Model.h:43</a></div></div>
 <div class="ttc" id="stdafx_8h_html"><div class="ttname"><a href="stdafx_8h.html">stdafx.h</a></div></div>
 <div class="ttc" id="classvisual_1_1model_1_1_colored_square_html_ad81638b45a87f1cdd1db33e36e9a736d"><div class="ttname"><a href="classvisual_1_1model_1_1_colored_square.html#ad81638b45a87f1cdd1db33e36e9a736d">visual::model::ColoredSquare::loadModel</a></div><div class="ttdeci">bool loadModel(void)</div><div class="ttdef"><b>Definition:</b> <a href="_colored_square_8cpp_source.html#l00018">ColoredSquare.cpp:18</a></div></div>
 <div class="ttc" id="classvisual_1_1model_1_1_colored_square_html_af3831a13f446737b64f5b73f46458eb4"><div class="ttname"><a href="classvisual_1_1model_1_1_colored_square.html#af3831a13f446737b64f5b73f46458eb4">visual::model::ColoredSquare::ColoredSquare</a></div><div class="ttdeci">ColoredSquare()</div><div class="ttdef"><b>Definition:</b> <a href="_colored_square_8cpp_source.html#l00008">ColoredSquare.cpp:8</a></div></div>
 <div class="ttc" id="classvisual_1_1graphics_1_1_shader_program_html_a433a6bea9c19cb020eac63d8c7d49150"><div class="ttname"><a href="classvisual_1_1graphics_1_1_shader_program.html#a433a6bea9c19cb020eac63d8c7d49150">visual::graphics::ShaderProgram::createShaderProgram</a></div><div class="ttdeci">GLuint createShaderProgram(const GLuint vertexShaderId, const GLuint fragmentShaderId)</div><div class="ttdef"><b>Definition:</b> <a href="_shader_program_8cpp_source.html#l00074">ShaderProgram.cpp:74</a></div></div>
 <div class="ttc" id="classvisual_1_1graphics_1_1_shader_program_html_ad7fdc266c094be41afeb37fc265a4f17"><div class="ttname"><a href="classvisual_1_1graphics_1_1_shader_program.html#ad7fdc266c094be41afeb37fc265a4f17">visual::graphics::ShaderProgram::use</a></div><div class="ttdeci">void use(void)</div><div class="ttdef"><b>Definition:</b> <a href="_shader_program_8h_source.html#l00067">ShaderProgram.h:67</a></div></div>
-<div class="ttc" id="classvisual_1_1model_1_1_model_html_a541fb35799a5dba89296d556e676ae3b"><div class="ttname"><a href="classvisual_1_1model_1_1_model.html#a541fb35799a5dba89296d556e676ae3b">visual::model::Model::m_boundingSphereRadius</a></div><div class="ttdeci">float m_boundingSphereRadius</div><div class="ttdef"><b>Definition:</b> <a href="_model_8h_source.html#l00035">Model.h:35</a></div></div>
-<div class="ttc" id="classvisual_1_1model_1_1_model_html_abd9ccc000a9c124b4389e67771cf87db"><div class="ttname"><a href="classvisual_1_1model_1_1_model.html#abd9ccc000a9c124b4389e67771cf87db">visual::model::Model::scale</a></div><div class="ttdeci">virtual glm::vec3 scale(void)</div><div class="ttdef"><b>Definition:</b> <a href="_model_8h_source.html#l00188">Model.h:188</a></div></div>
-<div class="ttc" id="classvisual_1_1model_1_1_model_html_a6394c98337670f55e7c25a6aa685a16d"><div class="ttname"><a href="classvisual_1_1model_1_1_model.html#a6394c98337670f55e7c25a6aa685a16d">visual::model::Model::getOrthographicModelViewMatrix</a></div><div class="ttdeci">virtual glm::mat4 getOrthographicModelViewMatrix(void)</div><div class="ttdef"><b>Definition:</b> <a href="_model_8h_source.html#l00209">Model.h:209</a></div></div>
-<div class="ttc" id="class_log_html"><div class="ttname"><a href="class_log.html">Log</a></div><div class="ttdef"><b>Definition:</b> <a href="_log_8h_source.html#l00038">Log.h:38</a></div></div>
-<div class="ttc" id="classvisual_1_1model_1_1_model_html_afc9f68f6e4bf97e7e1125deffc686c22"><div class="ttname"><a href="classvisual_1_1model_1_1_model.html#afc9f68f6e4bf97e7e1125deffc686c22">visual::model::Model::m_isHighlighted</a></div><div class="ttdeci">bool m_isHighlighted</div><div class="ttdef"><b>Definition:</b> <a href="_model_8h_source.html#l00046">Model.h:46</a></div></div>
+<div class="ttc" id="classvisual_1_1model_1_1_model_html_a541fb35799a5dba89296d556e676ae3b"><div class="ttname"><a href="classvisual_1_1model_1_1_model.html#a541fb35799a5dba89296d556e676ae3b">visual::model::Model::m_boundingSphereRadius</a></div><div class="ttdeci">float m_boundingSphereRadius</div><div class="ttdef"><b>Definition:</b> <a href="_model_8h_source.html#l00036">Model.h:36</a></div></div>
+<div class="ttc" id="classvisual_1_1model_1_1_model_html_abd9ccc000a9c124b4389e67771cf87db"><div class="ttname"><a href="classvisual_1_1model_1_1_model.html#abd9ccc000a9c124b4389e67771cf87db">visual::model::Model::scale</a></div><div class="ttdeci">virtual glm::vec3 scale(void)</div><div class="ttdef"><b>Definition:</b> <a href="_model_8h_source.html#l00206">Model.h:206</a></div></div>
+<div class="ttc" id="classvisual_1_1model_1_1_model_html_a6394c98337670f55e7c25a6aa685a16d"><div class="ttname"><a href="classvisual_1_1model_1_1_model.html#a6394c98337670f55e7c25a6aa685a16d">visual::model::Model::getOrthographicModelViewMatrix</a></div><div class="ttdeci">virtual glm::mat4 getOrthographicModelViewMatrix(void)</div><div class="ttdef"><b>Definition:</b> <a href="_model_8h_source.html#l00227">Model.h:227</a></div></div>
+<div class="ttc" id="class_log_html"><div class="ttname"><a href="class_log.html">Log</a></div><div class="ttdef"><b>Definition:</b> <a href="_log_8h_source.html#l00042">Log.h:42</a></div></div>
+<div class="ttc" id="classvisual_1_1model_1_1_model_html_afc9f68f6e4bf97e7e1125deffc686c22"><div class="ttname"><a href="classvisual_1_1model_1_1_model.html#afc9f68f6e4bf97e7e1125deffc686c22">visual::model::Model::m_isHighlighted</a></div><div class="ttdeci">bool m_isHighlighted</div><div class="ttdef"><b>Definition:</b> <a href="_model_8h_source.html#l00047">Model.h:47</a></div></div>
 <div class="ttc" id="classvisual_1_1model_1_1_colored_square_html_aa9219355279d66614680888ab5d5c42b"><div class="ttname"><a href="classvisual_1_1model_1_1_colored_square.html#aa9219355279d66614680888ab5d5c42b">visual::model::ColoredSquare::draw</a></div><div class="ttdeci">virtual void draw(void)</div><div class="ttdef"><b>Definition:</b> <a href="_colored_square_8cpp_source.html#l00081">ColoredSquare.cpp:81</a></div></div>
-<div class="ttc" id="classvisual_1_1model_1_1_model_html_a353ab65e6e0d6baa69e7963cc0e581ab"><div class="ttname"><a href="classvisual_1_1model_1_1_model.html#a353ab65e6e0d6baa69e7963cc0e581ab">visual::model::Model::highlightColor</a></div><div class="ttdeci">glm::vec4 highlightColor</div><div class="ttdef"><b>Definition:</b> <a href="_model_8h_source.html#l00045">Model.h:45</a></div></div>
+<div class="ttc" id="classvisual_1_1model_1_1_model_html_a353ab65e6e0d6baa69e7963cc0e581ab"><div class="ttname"><a href="classvisual_1_1model_1_1_model.html#a353ab65e6e0d6baa69e7963cc0e581ab">visual::model::Model::highlightColor</a></div><div class="ttdeci">glm::vec4 highlightColor</div><div class="ttdef"><b>Definition:</b> <a href="_model_8h_source.html#l00046">Model.h:46</a></div></div>
 <div class="ttc" id="_colored_square_8h_html"><div class="ttname"><a href="_colored_square_8h.html">ColoredSquare.h</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
@@ -272,7 +278,7 @@ $(document).ready(function(){initNavTree('_colored_square_8cpp_source.html','');
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_d092fe6f644d08052abf42c12a28702c.html">VisualizationLibrary</a></li><li class="navelem"><a class="el" href="_colored_square_8cpp.html">ColoredSquare.cpp</a></li>
-    <li class="footer">Erzeugt am Son Apr 20 2014 17:01:10 fÃ¼r Projektarbeit - VisualizationLibrary von
+    <li class="footer">Erzeugt am Don Jul 3 2014 15:48:09 fÃ¼r Projektarbeit - VisualizationLibrary von
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

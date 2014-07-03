@@ -5,6 +5,7 @@ var hierarchy =
     [ "visual::graphics::GraphicEngine", "classvisual_1_1graphics_1_1_graphic_engine.html", null ],
     [ "Log", "class_log.html", null ],
     [ "visual::Manager", "classvisual_1_1_manager.html", null ],
+    [ "visual::math::Math", "classvisual_1_1math_1_1_math.html", null ],
     [ "visual::model::Model", "classvisual_1_1model_1_1_model.html", [
       [ "visual::model::AssimpModel", "classvisual_1_1model_1_1_assimp_model.html", null ],
       [ "visual::model::ColoredSquare", "classvisual_1_1model_1_1_colored_square.html", null ],

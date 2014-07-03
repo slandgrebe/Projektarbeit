@@ -114,6 +114,8 @@ $(document).ready(function(){initNavTree('_log_8h.html','');});
 <div class="textblock"><code>#include &lt;sstream&gt;</code><br/>
 <code>#include &lt;string&gt;</code><br/>
 <code>#include &lt;stdio.h&gt;</code><br/>
+<code>#include &lt;GL/glew.h&gt;</code><br/>
+<code>#include &lt;GLFW/glfw3.h&gt;</code><br/>
 <code>#include &lt;sys/time.h&gt;</code><br/>
 </div>
 <p><a href="_log_8h_source.html">gehe zum Quellcode dieser Datei</a></p>
@@ -127,6 +129,8 @@ Klassen</h2></td></tr>
 Makrodefinitionen</h2></td></tr>
 <tr class="memitem:aba7b09d6e8fbe414c23705ad24dde6ff"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_log_8h.html#aba7b09d6e8fbe414c23705ad24dde6ff">LOG</a>(level)</td></tr>
 <tr class="separator:aba7b09d6e8fbe414c23705ad24dde6ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8d1150723e04dad82d703a87acab96a8"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_log_8h.html#a8d1150723e04dad82d703a87acab96a8">printOpenGLError</a>()&#160;&#160;&#160;<a class="el" href="class_log.html#affe11703c70d2dc9fdfdc95cc71b475a">Log::printOglError</a>(__FILE__, __LINE__)</td></tr>
+<tr class="separator:a8d1150723e04dad82d703a87acab96a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
 Typdefinitionen</h2></td></tr>
@@ -169,11 +173,28 @@ Funktionen</h2></td></tr>
 </div><div class="memdoc">
 <b>Wert:</b><div class="fragment"><div class="line"><span class="keywordflow">if</span> (level &gt; <a class="code" href="class_log.html#aa4cfe92eb1c066161b1b06dfa2e8dc55">Log::ReportingLevel</a>()); \</div>
 <div class="line">    else <a class="code" href="class_log.html">Log</a>().<a class="code" href="class_log.html#ac7c72c3bee646547c78a38286d88c202">Get</a>(level)</div>
-<div class="ttc" id="class_log_html_ac7c72c3bee646547c78a38286d88c202"><div class="ttname"><a href="class_log.html#ac7c72c3bee646547c78a38286d88c202">Log::Get</a></div><div class="ttdeci">std::ostringstream &amp; Get(TLogLevel level=logINFO)</div><div class="ttdef"><b>Definition:</b> <a href="_log_8h_source.html#l00132">Log.h:132</a></div></div>
-<div class="ttc" id="class_log_html_aa4cfe92eb1c066161b1b06dfa2e8dc55"><div class="ttname"><a href="class_log.html#aa4cfe92eb1c066161b1b06dfa2e8dc55">Log::ReportingLevel</a></div><div class="ttdeci">static TLogLevel &amp; ReportingLevel()</div><div class="ttdef"><b>Definition:</b> <a href="_log_8h_source.html#l00171">Log.h:171</a></div></div>
-<div class="ttc" id="class_log_html"><div class="ttname"><a href="class_log.html">Log</a></div><div class="ttdef"><b>Definition:</b> <a href="_log_8h_source.html#l00038">Log.h:38</a></div></div>
+<div class="ttc" id="class_log_html_ac7c72c3bee646547c78a38286d88c202"><div class="ttname"><a href="class_log.html#ac7c72c3bee646547c78a38286d88c202">Log::Get</a></div><div class="ttdeci">std::ostringstream &amp; Get(TLogLevel level=logINFO)</div><div class="ttdef"><b>Definition:</b> <a href="_log_8h_source.html#l00145">Log.h:145</a></div></div>
+<div class="ttc" id="class_log_html_aa4cfe92eb1c066161b1b06dfa2e8dc55"><div class="ttname"><a href="class_log.html#aa4cfe92eb1c066161b1b06dfa2e8dc55">Log::ReportingLevel</a></div><div class="ttdeci">static TLogLevel &amp; ReportingLevel()</div><div class="ttdef"><b>Definition:</b> <a href="_log_8h_source.html#l00184">Log.h:184</a></div></div>
+<div class="ttc" id="class_log_html"><div class="ttname"><a href="class_log.html">Log</a></div><div class="ttdef"><b>Definition:</b> <a href="_log_8h_source.html#l00042">Log.h:42</a></div></div>
 </div><!-- fragment -->
-<p>Definiert in Zeile <a class="el" href="_log_8h_source.html#l00205">205</a> der Datei <a class="el" href="_log_8h_source.html">Log.h</a>.</p>
+<p>Definiert in Zeile <a class="el" href="_log_8h_source.html#l00218">218</a> der Datei <a class="el" href="_log_8h_source.html">Log.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a8d1150723e04dad82d703a87acab96a8"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define printOpenGLError</td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td>&#160;&#160;&#160;<a class="el" href="class_log.html#affe11703c70d2dc9fdfdc95cc71b475a">Log::printOglError</a>(__FILE__, __LINE__)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definiert in Zeile <a class="el" href="_log_8h_source.html#l00224">224</a> der Datei <a class="el" href="_log_8h_source.html">Log.h</a>.</p>
 
 </div>
 </div>
@@ -188,7 +209,7 @@ Funktionen</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definiert in Zeile <a class="el" href="_log_8h_source.html#l00203">203</a> der Datei <a class="el" href="_log_8h_source.html">Log.h</a>.</p>
+<p>Definiert in Zeile <a class="el" href="_log_8h_source.html#l00216">216</a> der Datei <a class="el" href="_log_8h_source.html">Log.h</a>.</p>
 
 </div>
 </div>
@@ -239,7 +260,7 @@ Funktionen</h2></td></tr>
 </td></tr>
 </table>
 
-<p>Definiert in Zeile <a class="el" href="_log_8h_source.html#l00029">29</a> der Datei <a class="el" href="_log_8h_source.html">Log.h</a>.</p>
+<p>Definiert in Zeile <a class="el" href="_log_8h_source.html#l00033">33</a> der Datei <a class="el" href="_log_8h_source.html">Log.h</a>.</p>
 
 </div>
 </div>
@@ -268,7 +289,7 @@ Funktionen</h2></td></tr>
 <dl class="section author"><dt>Autor</dt><dd>Stefan Landgrebe </dd></dl>
 <dl class="section return"><dt>Rückgabe</dt><dd>Text mit der aktuelle Zeit </dd></dl>
 
-<p>Definiert in Zeile <a class="el" href="_log_8h_source.html#l00232">232</a> der Datei <a class="el" href="_log_8h_source.html">Log.h</a>.</p>
+<p>Definiert in Zeile <a class="el" href="_log_8h_source.html#l00262">262</a> der Datei <a class="el" href="_log_8h_source.html">Log.h</a>.</p>
 
 </div>
 </div>
@@ -278,7 +299,7 @@ Funktionen</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_d092fe6f644d08052abf42c12a28702c.html">VisualizationLibrary</a></li><li class="navelem"><a class="el" href="_log_8h.html">Log.h</a></li>
-    <li class="footer">Erzeugt am Son Apr 20 2014 17:01:11 für Projektarbeit - VisualizationLibrary von
+    <li class="footer">Erzeugt am Don Jul 3 2014 15:48:09 für Projektarbeit - VisualizationLibrary von
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

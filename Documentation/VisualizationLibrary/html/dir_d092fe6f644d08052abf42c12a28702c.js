@@ -26,6 +26,10 @@ var dir_d092fe6f644d08052abf42c12a28702c =
     [ "Manager.h", "_manager_8h.html", [
       [ "Manager", "classvisual_1_1_manager.html", "classvisual_1_1_manager" ]
     ] ],
+    [ "Math.cpp", "_math_8cpp.html", null ],
+    [ "Math.h", "_math_8h.html", [
+      [ "Math", "classvisual_1_1math_1_1_math.html", null ]
+    ] ],
     [ "Model.h", "_model_8h.html", [
       [ "Model", "classvisual_1_1model_1_1_model.html", "classvisual_1_1model_1_1_model" ]
     ] ],

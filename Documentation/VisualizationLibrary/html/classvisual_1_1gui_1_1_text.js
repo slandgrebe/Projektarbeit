@@ -8,5 +8,7 @@ var classvisual_1_1gui_1_1_text =
     [ "setColor", "classvisual_1_1gui_1_1_text.html#a16c0f5c67ae5939fa4010824da662635", null ],
     [ "setPosition", "classvisual_1_1gui_1_1_text.html#a2998d8f699544dd9c10e1f90986d30c6", null ],
     [ "setSize", "classvisual_1_1gui_1_1_text.html#a32405c9f6b422af27c0f283aff2590a3", null ],
-    [ "setText", "classvisual_1_1gui_1_1_text.html#ae74a8e040b8f9de03f1a3ecba3e9420d", null ]
+    [ "setText", "classvisual_1_1gui_1_1_text.html#ae74a8e040b8f9de03f1a3ecba3e9420d", null ],
+    [ "visible", "classvisual_1_1gui_1_1_text.html#ab6ab35872857c19435cfc5d655cc7dd0", null ],
+    [ "visible", "classvisual_1_1gui_1_1_text.html#a823950ed2a6e496e171149e7627660ea", null ]
 ];

@@ -1,8 +1,11 @@
 var searchData=
 [
   ['m_5fboundingsphereradius',['m_boundingSphereRadius',['../classvisual_1_1model_1_1_model.html#a541fb35799a5dba89296d556e676ae3b',1,'visual::model::Model']]],
+  ['m_5fcollisiongroup',['m_collisionGroup',['../classvisual_1_1model_1_1_model.html#a501cb190ddd7686524da843715834471',1,'visual::model::Model']]],
   ['m_5fisattachedtocamera',['m_isAttachedToCamera',['../classvisual_1_1model_1_1_model.html#ada75516a79533523227f4ac3849977f1',1,'visual::model::Model']]],
   ['m_5fishighlighted',['m_isHighlighted',['../classvisual_1_1model_1_1_model.html#afc9f68f6e4bf97e7e1125deffc686c22',1,'visual::model::Model']]],
+  ['m_5fisvisible',['m_isVisible',['../classvisual_1_1model_1_1_model.html#af7e3a4875b335706b710b6316d6c036b',1,'visual::model::Model']]],
+  ['m_5fmodelchanged',['m_modelChanged',['../classvisual_1_1model_1_1_model.html#a17011369614e026a27b58a887704abfd',1,'visual::model::Model']]],
   ['m_5fmodelmatrix',['m_modelMatrix',['../classvisual_1_1model_1_1_model.html#aa6949317cb8686491bc6d45db36e4b82',1,'visual::model::Model']]],
   ['m_5fpositionvector',['m_positionVector',['../classvisual_1_1model_1_1_model.html#a88c7a7a528009c44fcd717d10d33cb76',1,'visual::model::Model']]],
   ['m_5frotationangle',['m_rotationAngle',['../classvisual_1_1model_1_1_model.html#ab043a0dda81677b660369acd28e9b565',1,'visual::model::Model']]],
@@ -13,8 +16,12 @@ var searchData=
   ['manager',['Manager',['../classvisual_1_1_manager.html',1,'visual']]],
   ['manager_2ecpp',['Manager.cpp',['../_manager_8cpp.html',1,'']]],
   ['manager_2eh',['Manager.h',['../_manager_8h.html',1,'']]],
-  ['model',['Model',['../classvisual_1_1model_1_1_model.html#ac2c4a30d143da3235ffad5feefd13531',1,'visual::model::Model']]],
+  ['math',['Math',['../classvisual_1_1math_1_1_math.html',1,'visual::math']]],
+  ['math_2ecpp',['Math.cpp',['../_math_8cpp.html',1,'']]],
+  ['math_2eh',['Math.h',['../_math_8h.html',1,'']]],
   ['model',['Model',['../classvisual_1_1model_1_1_model.html',1,'visual::model']]],
+  ['model',['Model',['../classvisual_1_1model_1_1_model.html#ac2c4a30d143da3235ffad5feefd13531',1,'visual::model::Model']]],
   ['model_2eh',['Model.h',['../_model_8h.html',1,'']]],
-  ['modelposition',['modelPosition',['../classvisual_1_1_manager.html#a4ac7d570925587a2608ca4b101425c97',1,'visual::Manager']]]
+  ['modelposition',['modelPosition',['../classvisual_1_1_manager.html#a4ac7d570925587a2608ca4b101425c97',1,'visual::Manager']]],
+  ['modelvisibility',['modelVisibility',['../classvisual_1_1_manager.html#a6b7744725d2562605563f3aedb2a8dee',1,'visual::Manager::modelVisibility(GLuint modelId, bool choice)'],['../classvisual_1_1_manager.html#abaacc42d61b2c0e1aa21fc4a85b0b241',1,'visual::Manager::modelVisibility(GLuint modelId)']]]
 ];

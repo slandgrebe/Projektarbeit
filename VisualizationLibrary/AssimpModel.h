@@ -122,14 +122,24 @@ namespace visual {
 			*/
 			bool loadModel(const std::string filename);
 
-
+			/** Setzt das Kollisionsmodell
+			* Dieses Modell wird für die Kollisionserkennung verwendet.
+			* @author Stefan Landgrebe
+			* @param filename Pfad zum Kollisionsmodell
+			* @return Prüfung ob die Operation durchgeführt werden konnte
+			*/
 			bool addCollisionModel(const std::string filename);
 
+			/** aktualisiert das Kollisionsmodell
+			* @author Stefan Landgrebe
+			* @param frame Nummer des zu zeichnenden Bildes, zur Unterscheidung ob es noch das selbe Bild ist
+			*/
 			void updateCollisionModel(long unsigned int frame);
 
 			/** Prüft ob dieses Modell ein anderes schneidet.
 			* @author Stefan Landgrebe
 			* @param other das andere Modell
+			* @param frame Nummer des zu zeichnenden Bildes, zur Unterscheidung ob es noch das selbe Bild ist
 			* @return True wenn es min. 1 Schnittpunkt gibt.
 			*/
 			bool doesIntersect(AssimpModel* other, long unsigned int frame);

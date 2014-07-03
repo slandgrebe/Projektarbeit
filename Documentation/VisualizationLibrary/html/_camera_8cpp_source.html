@@ -107,7 +107,7 @@ $(document).ready(function(){initNavTree('_camera_8cpp_source.html','');});
 <div class="contents">
 <a href="_camera_8cpp.html">gehe zur Dokumentation dieser Datei</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="stdafx_8h.html">stdafx.h</a>&quot;</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_camera_8h.html">Camera.h</a>&quot;</span></div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &lt;math.h&gt;</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="_math_8h.html">math.h</a>&gt;</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;glm/gtc/matrix_transform.hpp&gt;</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;</div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &lt;iostream&gt;</span></div>
@@ -164,23 +164,27 @@ $(document).ready(function(){initNavTree('_camera_8cpp_source.html','');});
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;</div>
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <span class="comment">// bewegen</span></div>
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <span class="keywordtype">float</span> distance = m_speed * time;</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    m_position = m_position + glm::normalize(direction) * distance;</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    </div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <span class="comment">// Camera Matrix</span></div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    viewMatrix = glm::lookAt(</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        m_position,</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        m_position + direction,</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        up</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    );</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;}</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="keywordtype">float</span> Camera::degreesToRadian(<span class="keywordtype">float</span> degrees) {</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    <span class="keywordtype">float</span> pi = (float)(atan(1) * 4);</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    <span class="keywordflow">return</span> pi * degrees / 180;</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;}</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <span class="comment">//glm::vec3 horizontalDirection = glm::vec3(direction.x, 0, direction.z);</span></div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    m_position = m_position + glm::normalize(direction) * distance;</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <span class="comment">//m_position = m_position + glm::normalize(horizontalDirection) * distance;</span></div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    </div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <span class="comment">// Camera Matrix</span></div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    viewMatrix = glm::lookAt(</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        m_position,</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        m_position + direction,</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        up</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    );</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;}</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;<span class="keywordtype">float</span> Camera::degreesToRadian(<span class="keywordtype">float</span> degrees) {</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    <span class="keywordtype">float</span> pi = (float)(atan(1) * 4);</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    <span class="keywordflow">return</span> pi * degrees / 180;</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;}</div>
 <div class="ttc" id="classvisual_1_1graphics_1_1_camera_html_a6fdf46b0d32515d3591fda1bcf9a4294"><div class="ttname"><a href="classvisual_1_1graphics_1_1_camera.html#a6fdf46b0d32515d3591fda1bcf9a4294">visual::graphics::Camera::tilt</a></div><div class="ttdeci">void tilt(float degrees)</div><div class="ttdef"><b>Definition:</b> <a href="_camera_8cpp_source.html#l00029">Camera.cpp:29</a></div></div>
 <div class="ttc" id="_visualization_8h_html_ab7ef3ae59da17b0f42783b4119efad69"><div class="ttname"><a href="_visualization_8h.html#ab7ef3ae59da17b0f42783b4119efad69">position</a></div><div class="ttdeci">DLL_API int APIENTRY position(const unsigned int modelId, const float x, const float y, const float z)</div><div class="ttdef"><b>Definition:</b> <a href="_visualization_impl_8h_source.html#l00053">VisualizationImpl.h:53</a></div></div>
 <div class="ttc" id="stdafx_8h_html"><div class="ttname"><a href="stdafx_8h.html">stdafx.h</a></div></div>
+<div class="ttc" id="_math_8h_html"><div class="ttname"><a href="_math_8h.html">Math.h</a></div></div>
 <div class="ttc" id="classvisual_1_1graphics_1_1_camera_html_a01f94c3543f56ede7af49dc778f19331"><div class="ttname"><a href="classvisual_1_1graphics_1_1_camera.html#a01f94c3543f56ede7af49dc778f19331">visual::graphics::Camera::Camera</a></div><div class="ttdeci">Camera()</div><div class="ttdef"><b>Definition:</b> <a href="_camera_8cpp_source.html#l00010">Camera.cpp:10</a></div></div>
 <div class="ttc" id="classvisual_1_1graphics_1_1_camera_html_ab1a877d11ef570f36a4f46a5769c0b4a"><div class="ttname"><a href="classvisual_1_1graphics_1_1_camera.html#ab1a877d11ef570f36a4f46a5769c0b4a">visual::graphics::Camera::position</a></div><div class="ttdeci">glm::vec3 position(void)</div><div class="ttdef"><b>Definition:</b> <a href="_camera_8cpp_source.html#l00023">Camera.cpp:23</a></div></div>
 <div class="ttc" id="classvisual_1_1graphics_1_1_camera_html_a5569ca5967e01d3344fbf6aba36d9820"><div class="ttname"><a href="classvisual_1_1graphics_1_1_camera.html#a5569ca5967e01d3344fbf6aba36d9820">visual::graphics::Camera::getViewMatrix</a></div><div class="ttdeci">glm::mat4 getViewMatrix()</div><div class="ttdef"><b>Definition:</b> <a href="_camera_8cpp_source.html#l00036">Camera.cpp:36</a></div></div>
@@ -195,7 +199,7 @@ $(document).ready(function(){initNavTree('_camera_8cpp_source.html','');});
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_d092fe6f644d08052abf42c12a28702c.html">VisualizationLibrary</a></li><li class="navelem"><a class="el" href="_camera_8cpp.html">Camera.cpp</a></li>
-    <li class="footer">Erzeugt am Son Apr 20 2014 17:01:10 für Projektarbeit - VisualizationLibrary von
+    <li class="footer">Erzeugt am Don Jul 3 2014 15:48:09 für Projektarbeit - VisualizationLibrary von
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

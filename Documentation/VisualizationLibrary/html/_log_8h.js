@@ -2,6 +2,7 @@ var _log_8h =
 [
     [ "Log", "class_log.html", "class_log" ],
     [ "LOG", "_log_8h.html#aba7b09d6e8fbe414c23705ad24dde6ff", null ],
+    [ "printOpenGLError", "_log_8h.html#a8d1150723e04dad82d703a87acab96a8", null ],
     [ "FILELog", "_log_8h.html#afc237585be59cde1efb44ab6f7e0e7d5", null ],
     [ "TLogLevel", "_log_8h.html#a2341a2a7c04d08eb40d2cb0b18b0b778", [
       [ "logOFF", "_log_8h.html#a2341a2a7c04d08eb40d2cb0b18b0b778ad7458b401e37af39fd7af100db7407a5", null ],

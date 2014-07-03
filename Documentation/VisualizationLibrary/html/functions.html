@@ -99,6 +99,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Suchen');
       <li><a href="#index_s"><span>s</span></a></li>
       <li><a href="#index_t"><span>t</span></a></li>
       <li><a href="#index_u"><span>u</span></a></li>
+      <li><a href="#index_v"><span>v</span></a></li>
       <li><a href="#index_w"><span>w</span></a></li>
       <li class="current"><a href="#index_~"><span>~</span></a></li>
     </ul>
@@ -138,6 +139,10 @@ $(document).ready(function(){initNavTree('functions.html','');});
 <h3><a class="anchor" id="index_a"></a>- a -</h3><ul>
 <li>addButton()
 : <a class="el" href="classvisual_1_1_manager.html#a2f176f2366f0cd3782a53b4124d45b4e">visual::Manager</a>
+</li>
+<li>addCollisionModel()
+: <a class="el" href="classvisual_1_1_manager.html#a235765cd22ae1d61899e058eae59db54">visual::Manager</a>
+, <a class="el" href="classvisual_1_1model_1_1_assimp_model.html#ac97b9ae42be84dc2de76b0243b033c10">visual::model::AssimpModel</a>
 </li>
 <li>addModel()
 : <a class="el" href="classvisual_1_1_manager.html#a9376c5fba7eb53ba360231c409794992">visual::Manager</a>
@@ -206,6 +211,10 @@ $(document).ready(function(){initNavTree('functions.html','');});
 : <a class="el" href="classvisual_1_1graphics_1_1_graphic_engine.html#a98121a5867e29eb5ca87ffadf18c5551">visual::graphics::GraphicEngine</a>
 , <a class="el" href="classvisual_1_1_manager.html#a13bda921ba6807ea9b6717b2e6b5b3fd">visual::Manager</a>
 </li>
+<li>collisionGroup()
+: <a class="el" href="classvisual_1_1_manager.html#af773df85496ebf4387f648c33658feab">visual::Manager</a>
+, <a class="el" href="classvisual_1_1model_1_1_model.html#a3e3f9e7fa8badd2d57fca9bc462c5bb8">visual::model::Model</a>
+</li>
 <li>collisionsText()
 : <a class="el" href="classvisual_1_1_manager.html#a0d9165ccde8a3e2faacba134032deaf7">visual::Manager</a>
 </li>
@@ -219,7 +228,7 @@ $(document).ready(function(){initNavTree('functions.html','');});
 : <a class="el" href="classvisual_1_1graphics_1_1_shader_program.html#a98b00c9f91a1c953baa1f69661fd057c">visual::graphics::ShaderProgram</a>
 </li>
 <li>createShaderProgram()
-: <a class="el" href="classvisual_1_1graphics_1_1_shader_program.html#a3d647e8678d80e2eaaa7380c9ae93a1c">visual::graphics::ShaderProgram</a>
+: <a class="el" href="classvisual_1_1graphics_1_1_shader_program.html#a433a6bea9c19cb020eac63d8c7d49150">visual::graphics::ShaderProgram</a>
 </li>
 </ul>
 
@@ -235,10 +244,16 @@ $(document).ready(function(){initNavTree('functions.html','');});
 : <a class="el" href="classvisual_1_1_manager.html#a0c62f26820d9a53e414ac2305c76a1c6">visual::Manager</a>
 </li>
 <li>doCollisionDetection()
-: <a class="el" href="classvisual_1_1_manager.html#ab979837a457344d4d4f09fb40e4af795">visual::Manager</a>
+: <a class="el" href="classvisual_1_1_manager.html#a40c8e1f35b51d62bbeaf4d84b49b9797">visual::Manager</a>
+</li>
+<li>doesIntersect()
+: <a class="el" href="classvisual_1_1model_1_1_assimp_model.html#a84afffc07991ce381d036ece67587022">visual::model::AssimpModel</a>
 </li>
 <li>doSomething()
 : <a class="el" href="classvisual_1_1_manager.html#a8a1d4d5d8ab50354987c09bb38054db3">visual::Manager</a>
+</li>
+<li>doTrianglesIntersect()
+: <a class="el" href="classvisual_1_1math_1_1_math.html#a1024eeec57f4fa955b3a30258b1a1d43">visual::math::Math</a>
 </li>
 <li>draw()
 : <a class="el" href="classvisual_1_1gui_1_1_button.html#a0380207dc9e4edcd0272207a39c7cdeb">visual::gui::Button</a>
@@ -367,6 +382,9 @@ $(document).ready(function(){initNavTree('functions.html','');});
 <li>isModelHighlighted()
 : <a class="el" href="classvisual_1_1_manager.html#aca24f480ad78e99ad1f1e7800b519d50">visual::Manager</a>
 </li>
+<li>isPointOnSegment()
+: <a class="el" href="classvisual_1_1math_1_1_math.html#a368e2e6fc5cf6f1e0b940d3d45618270">visual::math::Math</a>
+</li>
 <li>isRunning()
 : <a class="el" href="classvisual_1_1graphics_1_1_graphic_engine.html#aaf44d64c1dbf313694aa371a90d138cb">visual::graphics::GraphicEngine</a>
 , <a class="el" href="classvisual_1_1_manager.html#aa734cccb964e8d63bae12103889ebf71">visual::Manager</a>
@@ -402,11 +420,20 @@ $(document).ready(function(){initNavTree('functions.html','');});
 <li>m_boundingSphereRadius
 : <a class="el" href="classvisual_1_1model_1_1_model.html#a541fb35799a5dba89296d556e676ae3b">visual::model::Model</a>
 </li>
+<li>m_collisionGroup
+: <a class="el" href="classvisual_1_1model_1_1_model.html#a501cb190ddd7686524da843715834471">visual::model::Model</a>
+</li>
 <li>m_isAttachedToCamera
 : <a class="el" href="classvisual_1_1model_1_1_model.html#ada75516a79533523227f4ac3849977f1">visual::model::Model</a>
 </li>
 <li>m_isHighlighted
 : <a class="el" href="classvisual_1_1model_1_1_model.html#afc9f68f6e4bf97e7e1125deffc686c22">visual::model::Model</a>
+</li>
+<li>m_isVisible
+: <a class="el" href="classvisual_1_1model_1_1_model.html#af7e3a4875b335706b710b6316d6c036b">visual::model::Model</a>
+</li>
+<li>m_modelChanged
+: <a class="el" href="classvisual_1_1model_1_1_model.html#a17011369614e026a27b58a887704abfd">visual::model::Model</a>
 </li>
 <li>m_modelMatrix
 : <a class="el" href="classvisual_1_1model_1_1_model.html#aa6949317cb8686491bc6d45db36e4b82">visual::model::Model</a>
@@ -435,6 +462,9 @@ $(document).ready(function(){initNavTree('functions.html','');});
 <li>modelPosition()
 : <a class="el" href="classvisual_1_1_manager.html#a4ac7d570925587a2608ca4b101425c97">visual::Manager</a>
 </li>
+<li>modelVisibility()
+: <a class="el" href="classvisual_1_1_manager.html#a6b7744725d2562605563f3aedb2a8dee">visual::Manager</a>
+</li>
 </ul>
 
 
@@ -448,7 +478,7 @@ $(document).ready(function(){initNavTree('functions.html','');});
 <h3><a class="anchor" id="index_p"></a>- p -</h3><ul>
 <li>position()
 : <a class="el" href="classvisual_1_1graphics_1_1_camera.html#aa91b07181806432f909d17123fe965be">visual::graphics::Camera</a>
-, <a class="el" href="classvisual_1_1gui_1_1_button.html#a499481c8fa5889739004960fac79b049">visual::gui::Button</a>
+, <a class="el" href="classvisual_1_1gui_1_1_button.html#a81cb3659e12f4b2e402d7286156d5f37">visual::gui::Button</a>
 , <a class="el" href="classvisual_1_1model_1_1_model.html#a1db9e50b2ac6496b9ddaa6f92c15c91b">visual::model::Model</a>
 </li>
 <li>positionCamera()
@@ -456,6 +486,9 @@ $(document).ready(function(){initNavTree('functions.html','');});
 </li>
 <li>positionModel()
 : <a class="el" href="classvisual_1_1_manager.html#a4f91b1b716b1bd12b36129dd631a9fb7">visual::Manager</a>
+</li>
+<li>printOglError()
+: <a class="el" href="class_log.html#affe11703c70d2dc9fdfdc95cc71b475a">Log</a>
 </li>
 </ul>
 
@@ -497,6 +530,12 @@ $(document).ready(function(){initNavTree('functions.html','');});
 <li>scalingIsNormalized()
 : <a class="el" href="classvisual_1_1_manager.html#a023c4a9f7592db47bcf586c1ec41c638">visual::Manager</a>
 , <a class="el" href="classvisual_1_1model_1_1_model.html#a2350840c1d7d30c9a042bbce66fc66c9">visual::model::Model</a>
+</li>
+<li>segmentIntersection()
+: <a class="el" href="classvisual_1_1math_1_1_math.html#a5e83906762afe133983d078795c229ed">visual::math::Math</a>
+</li>
+<li>segmentIntersectsTriangle()
+: <a class="el" href="classvisual_1_1math_1_1_math.html#a786ca38b2d4d172bf11f511df37b0b15">visual::math::Math</a>
 </li>
 <li>setColor()
 : <a class="el" href="classvisual_1_1gui_1_1_text.html#a16c0f5c67ae5939fa4010824da662635">visual::gui::Text</a>
@@ -562,8 +601,20 @@ $(document).ready(function(){initNavTree('functions.html','');});
 
 
 <h3><a class="anchor" id="index_u"></a>- u -</h3><ul>
+<li>updateCollisionModel()
+: <a class="el" href="classvisual_1_1model_1_1_assimp_model.html#a2c5956bd726b75d01b8287e2211fa41e">visual::model::AssimpModel</a>
+</li>
 <li>use()
 : <a class="el" href="classvisual_1_1graphics_1_1_shader_program.html#ad7fdc266c094be41afeb37fc265a4f17">visual::graphics::ShaderProgram</a>
+</li>
+</ul>
+
+
+<h3><a class="anchor" id="index_v"></a>- v -</h3><ul>
+<li>visible()
+: <a class="el" href="classvisual_1_1gui_1_1_button.html#a0ffce31f57f3b74653d211c4a1412e52">visual::gui::Button</a>
+, <a class="el" href="classvisual_1_1gui_1_1_text.html#a823950ed2a6e496e171149e7627660ea">visual::gui::Text</a>
+, <a class="el" href="classvisual_1_1model_1_1_model.html#aa29d9940fc4de878d4c537aec93e693d">visual::model::Model</a>
 </li>
 </ul>
 
@@ -612,7 +663,7 @@ $(document).ready(function(){initNavTree('functions.html','');});
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Erzeugt am Son Apr 20 2014 17:01:11 für Projektarbeit - VisualizationLibrary von
+    <li class="footer">Erzeugt am Don Jul 3 2014 15:48:10 für Projektarbeit - VisualizationLibrary von
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

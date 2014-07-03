@@ -5,5 +5,6 @@ var searchData=
   ['positionmodel',['positionModel',['../classvisual_1_1_manager.html#a4f91b1b716b1bd12b36129dd631a9fb7',1,'visual::Manager']]],
   ['positionx',['positionX',['../_visualization_8h.html#abdf09a8f74f11984e7ee08c81ab04db1',1,'positionX(const unsigned int modelId):&#160;VisualizationImpl.h'],['../_visualization_impl_8h.html#abdf09a8f74f11984e7ee08c81ab04db1',1,'positionX(const unsigned int modelId):&#160;VisualizationImpl.h']]],
   ['positiony',['positionY',['../_visualization_8h.html#a7b508ca51801157f8440f9f9daff4020',1,'positionY(const unsigned int modelId):&#160;VisualizationImpl.h'],['../_visualization_impl_8h.html#a7b508ca51801157f8440f9f9daff4020',1,'positionY(const unsigned int modelId):&#160;VisualizationImpl.h']]],
-  ['positionz',['positionZ',['../_visualization_8h.html#a864eed4eced8a3b956006c59370c7fcb',1,'positionZ(const unsigned int modelId):&#160;VisualizationImpl.h'],['../_visualization_impl_8h.html#a864eed4eced8a3b956006c59370c7fcb',1,'positionZ(const unsigned int modelId):&#160;VisualizationImpl.h']]]
+  ['positionz',['positionZ',['../_visualization_8h.html#a864eed4eced8a3b956006c59370c7fcb',1,'positionZ(const unsigned int modelId):&#160;VisualizationImpl.h'],['../_visualization_impl_8h.html#a864eed4eced8a3b956006c59370c7fcb',1,'positionZ(const unsigned int modelId):&#160;VisualizationImpl.h']]],
+  ['printoglerror',['printOglError',['../class_log.html#affe11703c70d2dc9fdfdc95cc71b475a',1,'Log']]]
 ];
