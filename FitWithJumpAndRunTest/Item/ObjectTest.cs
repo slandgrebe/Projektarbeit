@@ -39,11 +39,11 @@ namespace JumpAndRun
             Assert.AreEqual(false, obj.Create(), "Objekt darf nicht erstellt werden können.");
         }
 
-        /*[TestMethod]
+        [TestMethod]
         public void Object_Deserialize()
         {
             JumpAndRun.Item.Object obj = new JumpAndRun.Item.Object();
-            obj.ModelXmlPath = "/data/levels/jungle/models/banana.xml";
+            obj.ModelXmlPath = "data/levels/jungle/models/banana.xml";
             obj.Deserialize();
             Assert.AreEqual("data/models/banana/banana.3ds", obj.Model.Path, "Objekt wurde nicht deserialisiert.");
         }
@@ -52,7 +52,7 @@ namespace JumpAndRun
         public void Object_DeserializeCreate()
         {
             JumpAndRun.Item.Object obj = new JumpAndRun.Item.Object();
-            obj.ModelXmlPath = "/data/levels/jungle/models/banana.xml";
+            obj.ModelXmlPath = "data/levels/jungle/models/banana.xml";
             obj.Deserialize();
             obj.PosZ = 2;
             Assert.AreEqual(true, obj.Create(), "Objekt wurde nicht deserialisiert.");
@@ -63,7 +63,7 @@ namespace JumpAndRun
         public void Object_DeserializeCreateZPosition()
         {
             JumpAndRun.Item.Object obj = new JumpAndRun.Item.Object();
-            obj.ModelXmlPath = "/data/levels/jungle/models/banana.xml";
+            obj.ModelXmlPath = "data/levels/jungle/models/banana.xml";
             obj.Deserialize();
             obj.PosZ = 2;
             Assert.AreEqual(true, obj.Create(10), "Objekt wurde nicht deserialisiert.");
@@ -74,20 +74,23 @@ namespace JumpAndRun
         public void Object_Dispose()
         {
             JumpAndRun.Item.Object obj = new JumpAndRun.Item.Object();
-            obj.ModelXmlPath = "/data/levels/jungle/models/banana.xml";
+            obj.ModelXmlPath = "data/levels/jungle/models/banana.xml";
             obj.Deserialize();
             obj.Create();
             obj.Dispose();
             Assert.AreEqual((System.UInt32)0, obj.Model.Id, "head wurde nicht gelöscht.");
         }
 
-        [TestMethod]
+        /*[TestMethod]
         public void Object_CollisionFalse(){
             JumpAndRun.Item.Object obj = new JumpAndRun.Item.Object();
-            obj.ModelXmlPath = "/data/levels/jungle/models/banana.xml";
+            obj.ModelXmlPath = "data/levels/jungle/models/banana.xml";
             obj.Deserialize();
             obj.Create();
             obj.Model.Visibility(true);
+            obj.Model.Position(100, 100, 100);
+            obj.Model.CollisionGroup(3);
+
             Player player = Player.Instance;
             Data.SetBody();
             player.Scale = 0.5f;
@@ -95,10 +98,11 @@ namespace JumpAndRun
             player.Update();
             Data.SetBody();
             player.Update();
-            obj.Model.Position(100, 100, 100);
             View.Camera.PositionCamera(200, 200, 200);
             Data.SetBody();
+            player.Visibility(true);
             player.Update();
+
             Assert.AreEqual(true, obj.Collision(player, false), "Keine Kolision erwartet.");
         }
 
@@ -106,7 +110,7 @@ namespace JumpAndRun
         public void Object_CollisionTrue()
         {
             JumpAndRun.Item.Object obj = new JumpAndRun.Item.Object();
-            obj.ModelXmlPath = "/data/levels/jungle/models/banana.xml";
+            obj.ModelXmlPath = "data/levels/jungle/models/banana.xml";
             obj.Deserialize();
             obj.Create();
             obj.Model.Visibility(true);
@@ -125,7 +129,7 @@ namespace JumpAndRun
         public void Object_CollisionTrueWithDispose()
         {
             JumpAndRun.Item.Object obj = new JumpAndRun.Item.Object();
-            obj.ModelXmlPath = "/data/levels/jungle/models/banana.xml";
+            obj.ModelXmlPath = "data/levels/jungle/models/banana.xml";
             obj.Deserialize();
             obj.Create();
             obj.Model.Visibility(true);

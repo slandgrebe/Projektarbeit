@@ -71,10 +71,10 @@ namespace JumpAndRun.GameLogic
         /// <returns>Prüfung ob das Level geladen werden konnte</returns>
         public bool Load(string levelXmlPath = "data/levels/jungle/level.xml", JumpAndRun.Difficulty difficulty = JumpAndRun.Difficulty.Normal)
         {
-            /*if (String.IsNullOrEmpty(LevelXmlPath))
+            if (String.IsNullOrEmpty(levelXmlPath))
             {
                 return false;
-            }*/
+            }
 
             GameStatus = GameStatus.Loading;
 

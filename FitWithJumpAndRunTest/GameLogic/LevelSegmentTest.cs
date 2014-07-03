@@ -47,19 +47,19 @@ namespace JumpAndRun
             Assert.AreEqual(1, ls.objects.Count, "Objekt wurde nicht hinzugefügt.");
         }
 
-        /*[TestMethod]
+        [TestMethod]
         public void LevelSegment_Create()
         {
             LevelSegment ls = new LevelSegment();
 
             JumpAndRun.Item.Object obstacle = new JumpAndRun.Item.Object();
-            obstacle.ModelXmlPath = "/data/levels/jungle/models/banana.xml";
+            obstacle.ModelXmlPath = "data/levels/jungle/models/banana.xml";
             obstacle.Deserialize();
             JumpAndRun.Item.Object score = new JumpAndRun.Item.Object();
-            score.ModelXmlPath = "/data/levels/jungle/models/banana.xml";
+            score.ModelXmlPath = "data/levels/jungle/models/banana.xml";
             score.Deserialize();
             JumpAndRun.Item.Object obj = new JumpAndRun.Item.Object();
-            obj.ModelXmlPath = "/data/levels/jungle/models/banana.xml";
+            obj.ModelXmlPath = "data/levels/jungle/models/banana.xml";
             obj.Deserialize();
 
             ls.AddObstacle(obstacle);
@@ -75,11 +75,11 @@ namespace JumpAndRun
             LevelSegment ls = new LevelSegment();
             JumpAndRun.Item.Object obstacle = new JumpAndRun.Item.Object();
 
-            obstacle.ModelXmlPath = "/data/levels/jungle/models/banana.xml";
+            obstacle.ModelXmlPath = "data/levels/jungle/models/banana.xml";
             JumpAndRun.Item.Object score = new JumpAndRun.Item.Object();
-            score.ModelXmlPath = "/data/levels/jungle/models/banana.xml";
+            score.ModelXmlPath = "data/levels/jungle/models/banana.xml";
             JumpAndRun.Item.Object obj = new JumpAndRun.Item.Object();
-            obj.ModelXmlPath = "/data/levels/jungle/models/banana.xml";
+            obj.ModelXmlPath = "data/levels/jungle/models/banana.xml";
 
             ls.AddObstacle(obstacle);
             ls.AddScore(score);
@@ -98,13 +98,13 @@ namespace JumpAndRun
             LevelSegment ls = new LevelSegment();
 
             JumpAndRun.Item.Object obstacle = new JumpAndRun.Item.Object();
-            obstacle.ModelXmlPath = "/data/levels/jungle/models/banana.xml";
+            obstacle.ModelXmlPath = "data/levels/jungle/models/banana.xml";
             obstacle.Deserialize();
             JumpAndRun.Item.Object score = new JumpAndRun.Item.Object();
-            score.ModelXmlPath = "/data/levels/jungle/models/banana.xml";
+            score.ModelXmlPath = "data/levels/jungle/models/banana.xml";
             score.Deserialize();
             JumpAndRun.Item.Object obj = new JumpAndRun.Item.Object();
-            obj.ModelXmlPath = "/data/levels/jungle/models/banana.xml";
+            obj.ModelXmlPath = "data/levels/jungle/models/banana.xml";
             obj.Deserialize();
 
             ls.AddObstacle(obstacle);
@@ -122,11 +122,11 @@ namespace JumpAndRun
             LevelSegment ls = new LevelSegment();
             JumpAndRun.Item.Object obstacle = new JumpAndRun.Item.Object();
 
-            obstacle.ModelXmlPath = "/data/levels/jungle/models/banana.xml";
+            obstacle.ModelXmlPath = "data/levels/jungle/models/banana.xml";
             JumpAndRun.Item.Object score = new JumpAndRun.Item.Object();
-            score.ModelXmlPath = "/data/levels/jungle/models/banana.xml";
+            score.ModelXmlPath = "data/levels/jungle/models/banana.xml";
             JumpAndRun.Item.Object obj = new JumpAndRun.Item.Object();
-            obj.ModelXmlPath = "/data/levels/jungle/models/banana.xml";
+            obj.ModelXmlPath = "data/levels/jungle/models/banana.xml";
 
             ls.AddObstacle(obstacle);
             ls.AddScore(score);
@@ -139,6 +139,6 @@ namespace JumpAndRun
             Assert.AreEqual((System.UInt32)0, ls.obstacles[0].Model.Id, "Hinternis wurde nicht deserialisiert.");
             Assert.AreEqual((System.UInt32)0, ls.scores[0].Model.Id, "Score wurde nicht deserialisiert.");
             Assert.AreEqual((System.UInt32)0, ls.objects[0].Model.Id, "Objekt wurde nicht deserialisiert.");
-        }*/
+        }
     }
 }
