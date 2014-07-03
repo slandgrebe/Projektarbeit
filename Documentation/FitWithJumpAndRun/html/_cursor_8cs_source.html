@@ -1,0 +1,301 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.7"/>
+<title>Diplomarbeit - Fit With Jump &amp; Run: C:/Users/tobia_000/Source/Repos/Projektarbeit/FitWithJumpAndRun/Gui/Elements/Cursor.cs Quellcode</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+  $(window).load(resizeHeight);
+</script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">Diplomarbeit - Fit With Jump &amp; Run
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Erzeugt von Doxygen 1.8.7 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Suchen');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Hauptseite</span></a></li>
+      <li><a href="namespaces.html"><span>Pakete</span></a></li>
+      <li><a href="annotated.html"><span>Klassen</span></a></li>
+      <li class="current"><a href="files.html"><span>Dateien</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Suchen" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Auflistung&#160;der&#160;Dateien</span></a></li>
+    </ul>
+  </div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('_cursor_8cs_source.html','');});
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Alle</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Klassen</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namensbereiche</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Funktionen</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variablen</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Aufzählungen</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Propertys</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Ereignisse</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">Cursor.cs</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="keyword">using</span> System;</div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="keyword">using</span> System.Collections.Generic;</div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="keyword">using</span> System.Linq;</div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="keyword">using</span> System.Text;</div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="keyword">using</span> System.Threading.Tasks;</div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;</div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="keyword">namespace </span>JumpAndRun.Gui.Elements</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;{</div>
+<div class="line"><a name="l00012"></a><span class="lineno"><a class="line" href="class_jump_and_run_1_1_gui_1_1_elements_1_1_cursor.html">   12</a></span>&#160;    <span class="keyword">public</span> <span class="keyword">class </span><a class="code" href="class_jump_and_run_1_1_gui_1_1_elements_1_1_cursor.html">Cursor</a></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    {</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;        <span class="keyword">private</span> <span class="keyword">static</span> <a class="code" href="class_jump_and_run_1_1_gui_1_1_elements_1_1_cursor.html">Cursor</a> instance = null;</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;        <span class="keyword">private</span> <a class="code" href="class_jump_and_run_1_1_gui_1_1_elements_1_1_point.html">JumpAndRun.Gui.Elements.Point</a> cursor = null;</div>
+<div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="class_jump_and_run_1_1_gui_1_1_elements_1_1_cursor.html#acd5d2aa9505c2d0bc346593f74b9f2ba">   19</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">float</span> X { <span class="keyword">get</span>; <span class="keyword">private</span> set; }</div>
+<div class="line"><a name="l00023"></a><span class="lineno"><a class="line" href="class_jump_and_run_1_1_gui_1_1_elements_1_1_cursor.html#a5d45d4c6dc4238c4c9778ceea0f9cafe">   23</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">float</span> Y { <span class="keyword">get</span>; <span class="keyword">private</span> set; }</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;        <span class="keyword">private</span> <span class="keywordtype">float</span> z = -0.2f; <span class="comment">// diesen wert nicht ändern!</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        <span class="keyword">private</span> <span class="keywordtype">float</span> clickZCached = 0f;</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;        <span class="keyword">private</span> <span class="keywordtype">float</span> clickXCached = 0f;</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;        <span class="keyword">private</span> <span class="keywordtype">float</span> clickYCached = 0f;</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        <span class="keyword">private</span> <span class="keywordtype">float</span> clickZPotentialStart = 0f;</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;        <span class="keyword">private</span> <span class="keywordtype">float</span> clickXPotentialStart = 0f;</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        <span class="keyword">private</span> <span class="keywordtype">float</span> clickYPotentialStart = 0f;</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        <span class="keyword">private</span> DateTime clickTimePotentialStart = DateTime.Now;</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        <span class="keyword">private</span> DateTime lastClick = DateTime.Now;</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        <span class="keyword">public</span> delegate <span class="keywordtype">void</span> Move(<span class="keywordtype">float</span> x, <span class="keywordtype">float</span> y);</div>
+<div class="line"><a name="l00045"></a><span class="lineno"><a class="line" href="class_jump_and_run_1_1_gui_1_1_elements_1_1_cursor.html#aeb58346e91cf403fb3cc3d229120c785">   45</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">event</span> Move <a class="code" href="class_jump_and_run_1_1_gui_1_1_elements_1_1_cursor.html#aeb58346e91cf403fb3cc3d229120c785">MoveEvent</a>;</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        <span class="keyword">public</span> delegate <span class="keywordtype">void</span> Click();</div>
+<div class="line"><a name="l00054"></a><span class="lineno"><a class="line" href="class_jump_and_run_1_1_gui_1_1_elements_1_1_cursor.html#a2e1adb2c05cc7ed394651c498a69cdf7">   54</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">event</span> Click <a class="code" href="class_jump_and_run_1_1_gui_1_1_elements_1_1_cursor.html#a2e1adb2c05cc7ed394651c498a69cdf7">ClickEvent</a>;</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <a class="code" href="class_jump_and_run_1_1_gui_1_1_elements_1_1_cursor.html">Cursor</a> Instance</div>
+<div class="line"><a name="l00060"></a><span class="lineno"><a class="line" href="class_jump_and_run_1_1_gui_1_1_elements_1_1_cursor.html#adc22f58791430e33d5fc71d14ba1c7ed">   60</a></span>&#160;        {</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;            <span class="keyword">get</span></div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;            {</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;                <span class="keywordflow">if</span> (instance == null)</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;                {</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;                    instance = <span class="keyword">new</span> <a class="code" href="class_jump_and_run_1_1_gui_1_1_elements_1_1_cursor.html">Cursor</a>();</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;                }</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;                <span class="keywordflow">return</span> instance;</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;            }</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        }</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        </div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        <span class="keyword">private</span> <a class="code" href="class_jump_and_run_1_1_gui_1_1_elements_1_1_cursor.html">Cursor</a>()</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        {</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;            X = 0;</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;            Y = -1;</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;            cursor = <span class="keyword">new</span> <a class="code" href="class_jump_and_run_1_1_gui_1_1_elements_1_1_point.html">JumpAndRun.Gui.Elements.Point</a>(<span class="stringliteral">&quot;data/models/hand/hand.png&quot;</span>);</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;            cursor.Scale(0.02f, 0.02f);</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;            cursor.Position(X, Y, z);</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;            cursor.AttachToCamera(<span class="keyword">true</span>);</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;        }</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;</div>
+<div class="line"><a name="l00085"></a><span class="lineno"><a class="line" href="class_jump_and_run_1_1_gui_1_1_elements_1_1_cursor.html#a9f9d0077c2251cd751a1e66b7aefaeac">   85</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="class_jump_and_run_1_1_gui_1_1_elements_1_1_cursor.html#a9f9d0077c2251cd751a1e66b7aefaeac">UpdateCursor</a>()</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;        {</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;            <span class="comment">// nur updaten, wenn der Cursor auch angezeigt wird</span></div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;            <span class="keywordflow">if</span> (cursor.IsVisible)</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;            {</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;                <span class="comment">// Position des Cursors updaten und events auslösen</span></div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;                UpdateCursor(MotionDetection.Body.Instance.HandRight.X,</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;                    MotionDetection.Body.Instance.HandRight.Y,</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;                    MotionDetection.Body.Instance.HandRight.Z,</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;                    MotionDetection.Body.Instance.Head.X,</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;                    MotionDetection.Body.Instance.Head.Y,</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;                    MotionDetection.Body.Instance.Head.Z,</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;                    MotionDetection.Body.Instance.ShoulderRight.X,</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;                    MotionDetection.Body.Instance.ShoulderRight.Y);</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;            }</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;        }</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;        <span class="keyword">private</span> <span class="keywordtype">void</span> UpdateCursor(<span class="keywordtype">float</span> handX, <span class="keywordtype">float</span> handY, <span class="keywordtype">float</span> handZ, <span class="keywordtype">float</span> headX, <span class="keywordtype">float</span> headY, <span class="keywordtype">float</span> headZ, <span class="keywordtype">float</span> shoulderX, <span class="keywordtype">float</span> shoulderY)</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;        {</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;                Position(handX, handY, headX, headY, shoulderX, shoulderY);</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;                CheckClick(handX, handY, handZ, headX, headY, headZ, shoulderX, shoulderY);</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;        }</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;        <span class="keyword">private</span> <span class="keywordtype">void</span> Position(<span class="keywordtype">float</span> handX, <span class="keywordtype">float</span> handY, <span class="keywordtype">float</span> headX, <span class="keywordtype">float</span> headY, <span class="keywordtype">float</span> shoulderX, <span class="keywordtype">float</span> shoulderY)</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;        {</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;            <span class="comment">// Eine Einheit auf der Achse</span></div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;            <span class="keywordtype">float</span> xUnit = (shoulderX - headX) * 3.333f;</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;            <span class="keywordtype">float</span> yUnit = (headY - shoulderY) * 3.333f;</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;            <span class="comment">// rechte schulter ist an der position 0/0</span></div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;            <span class="keywordtype">float</span> xCursor = handX - shoulderX;</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;            <span class="keywordtype">float</span> yCursor = handY - shoulderY;</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;            <span class="comment">// Kinect Koordinaten in VisualisationLibrary GUI Koordinaten umrechnen</span></div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;            X = xCursor * xUnit;</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;            Y = yCursor * yUnit;</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;            <span class="comment">//cursor.Position(X / 45.5f *4, Y / 45.5f *4, z);</span></div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;            <span class="keywordtype">float</span> cursorAmplification = 0.1f <span class="comment">/*/ GameLogic.Player.Instance.Scale*/</span>;</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;            cursor.Position(X * cursorAmplification, Y * cursorAmplification, z);</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;            <span class="comment">// event auslösen</span></div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;            MoveEvent(X, Y);</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;        }</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;        <span class="keyword">private</span> <span class="keywordtype">void</span> CheckClick(<span class="keywordtype">float</span> handX, <span class="keywordtype">float</span> handY, <span class="keywordtype">float</span> handZ, <span class="keywordtype">float</span> headX, <span class="keywordtype">float</span> headY, <span class="keywordtype">float</span> headZ, <span class="keywordtype">float</span> shoulderX, <span class="keywordtype">float</span> shoulderY)</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;        {</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;            <span class="keywordtype">float</span> zMax = (shoulderX - headX);</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;            <span class="keywordtype">float</span> zAbsolute = handZ - headZ;</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;            <span class="keywordtype">float</span> zRelative = zAbsolute / zMax / 2;</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;            <span class="keywordtype">float</span> xMax = (shoulderX - headX) * 2;</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;            <span class="keywordtype">float</span> xAbolute = handX - headX;</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;            <span class="keywordtype">float</span> xRelative = xAbolute / xMax - 1;</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;            <span class="keywordtype">float</span> yMax = (shoulderY - headY);</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;            <span class="keywordtype">float</span> yAbsolute = headY - handY;</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;            <span class="keywordtype">float</span> yRelative = yAbsolute / yMax + 1;</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;            <span class="keywordflow">if</span> ((clickZCached - zRelative) &gt; 0.05) <span class="comment">// mehr als 5% vorwärts</span></div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;            {</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;                <span class="keywordflow">if</span> ((clickZPotentialStart - clickZCached) &gt; 0.6) <span class="comment">// 50% vorwärts seit dem letzten rückwärts</span></div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;                {</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;                    <span class="keywordflow">if</span> (DateTime.Now.Subtract(clickTimePotentialStart).TotalSeconds &lt; 1.0) <span class="comment">// in unter einer sekunde ausgeführt</span></div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;                    {</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;                        <span class="keywordflow">if</span> ((Math.Abs(clickXPotentialStart - clickXCached) &lt; 0.5) <span class="comment">// zuviel in x-Richtung bewegt =&gt; kein absichtlicher klick</span></div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;                            &amp;&amp; (Math.Abs(clickYPotentialStart - clickYCached) &lt; 0.5)) <span class="comment">// zuviel in y-Richtung bewegt =&gt; kein absichtlicher klick</span></div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;                        {</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;                            <span class="comment">// 1s warten zwischen Klicks</span></div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;                            <span class="keywordflow">if</span> (DateTime.Now.Subtract(lastClick).TotalSeconds &gt; 1)</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;                            {</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;                                lastClick = DateTime.Now;</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;                                <span class="comment">// we did it!</span></div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;                                <span class="keywordflow">if</span> (ClickEvent != null)</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;                                {</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;                                    ClickEvent();</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;                                }</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;                            }</div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;                        }</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;                    }</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;                    <span class="comment">// reset</span></div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;                    clickXPotentialStart = clickXCached;</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;                    clickYPotentialStart = clickYCached;</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;                    clickZPotentialStart = clickZCached;</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;                    clickTimePotentialStart = DateTime.Now;</div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;                }</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;                <span class="keywordflow">else</span> <span class="keywordflow">if</span> (clickZCached == clickZPotentialStart) <span class="comment">// noch keine potentielle geste erkannt =&gt; möglicher start</span></div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;                {</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;                    clickTimePotentialStart = DateTime.Now;</div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;                }</div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;                clickXCached = xRelative;</div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;                clickYCached = yRelative;</div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;                clickZCached = zRelative;</div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;                <span class="comment">//ClickEvent(&quot;vorwärts &quot; + zCached);</span></div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;            }</div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;            <span class="keywordflow">else</span> <span class="keywordflow">if</span> ((clickZCached - zRelative) &lt; -0.05) <span class="comment">// mehr als 5% rückwärts</span></div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;            {</div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;                clickXCached = xRelative;</div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;                clickYCached = yRelative;</div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;                clickZCached = zRelative;</div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;</div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;                clickXPotentialStart = clickXCached;</div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;                clickYPotentialStart = clickYCached;</div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;                clickZPotentialStart = clickZCached;</div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;</div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;                clickTimePotentialStart = DateTime.Now;</div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;                <span class="comment">//ClickEvent(&quot;rückwärts &quot; + zCached);</span></div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;            }</div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;        }</div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;</div>
+<div class="line"><a name="l00203"></a><span class="lineno"><a class="line" href="class_jump_and_run_1_1_gui_1_1_elements_1_1_cursor.html#a71f926074b82518c1f34e99ef79b21e6">  203</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="class_jump_and_run_1_1_gui_1_1_elements_1_1_cursor.html#a71f926074b82518c1f34e99ef79b21e6">Show</a>()</div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;        {</div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;            cursor.Show();  </div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;        }</div>
+<div class="line"><a name="l00210"></a><span class="lineno"><a class="line" href="class_jump_and_run_1_1_gui_1_1_elements_1_1_cursor.html#a4e780253ac18ac2e6945d555567d1680">  210</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="class_jump_and_run_1_1_gui_1_1_elements_1_1_cursor.html#a4e780253ac18ac2e6945d555567d1680">Hide</a>()</div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;        {</div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;            cursor.Hide();</div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;        }</div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;    }</div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;}</div>
+<div class="ttc" id="class_jump_and_run_1_1_gui_1_1_elements_1_1_point_html"><div class="ttname"><a href="class_jump_and_run_1_1_gui_1_1_elements_1_1_point.html">JumpAndRun.Gui.Elements.Point</a></div><div class="ttdoc">Abstraktion des Point Objekts der Visualization Library </div><div class="ttdef"><b>Definition:</b> <a href="_point_8cs_source.html#l00012">Point.cs:12</a></div></div>
+<div class="ttc" id="class_jump_and_run_1_1_gui_1_1_elements_1_1_cursor_html"><div class="ttname"><a href="class_jump_and_run_1_1_gui_1_1_elements_1_1_cursor.html">JumpAndRun.Gui.Elements.Cursor</a></div><div class="ttdoc">Cursor Klasse </div><div class="ttdef"><b>Definition:</b> <a href="_cursor_8cs_source.html#l00012">Cursor.cs:12</a></div></div>
+<div class="ttc" id="class_jump_and_run_1_1_gui_1_1_elements_1_1_cursor_html_a71f926074b82518c1f34e99ef79b21e6"><div class="ttname"><a href="class_jump_and_run_1_1_gui_1_1_elements_1_1_cursor.html#a71f926074b82518c1f34e99ef79b21e6">JumpAndRun.Gui.Elements.Cursor.Show</a></div><div class="ttdeci">void Show()</div><div class="ttdoc">Cursor anzeigen </div><div class="ttdef"><b>Definition:</b> <a href="_cursor_8cs_source.html#l00203">Cursor.cs:203</a></div></div>
+<div class="ttc" id="class_jump_and_run_1_1_gui_1_1_elements_1_1_cursor_html_a4e780253ac18ac2e6945d555567d1680"><div class="ttname"><a href="class_jump_and_run_1_1_gui_1_1_elements_1_1_cursor.html#a4e780253ac18ac2e6945d555567d1680">JumpAndRun.Gui.Elements.Cursor.Hide</a></div><div class="ttdeci">void Hide()</div><div class="ttdoc">Cursor verstecken </div><div class="ttdef"><b>Definition:</b> <a href="_cursor_8cs_source.html#l00210">Cursor.cs:210</a></div></div>
+<div class="ttc" id="class_jump_and_run_1_1_gui_1_1_elements_1_1_cursor_html_a9f9d0077c2251cd751a1e66b7aefaeac"><div class="ttname"><a href="class_jump_and_run_1_1_gui_1_1_elements_1_1_cursor.html#a9f9d0077c2251cd751a1e66b7aefaeac">JumpAndRun.Gui.Elements.Cursor.UpdateCursor</a></div><div class="ttdeci">void UpdateCursor()</div><div class="ttdoc">Setzt den Cursor neu anhand der ermittelten Personenerkennungsdaten </div><div class="ttdef"><b>Definition:</b> <a href="_cursor_8cs_source.html#l00085">Cursor.cs:85</a></div></div>
+<div class="ttc" id="class_jump_and_run_1_1_gui_1_1_elements_1_1_cursor_html_aeb58346e91cf403fb3cc3d229120c785"><div class="ttname"><a href="class_jump_and_run_1_1_gui_1_1_elements_1_1_cursor.html#aeb58346e91cf403fb3cc3d229120c785">JumpAndRun.Gui.Elements.Cursor.MoveEvent</a></div><div class="ttdeci">Move MoveEvent</div><div class="ttdoc">Cursor Bewegungs Event </div><div class="ttdef"><b>Definition:</b> <a href="_cursor_8cs_source.html#l00045">Cursor.cs:45</a></div></div>
+<div class="ttc" id="class_jump_and_run_1_1_gui_1_1_elements_1_1_cursor_html_a2e1adb2c05cc7ed394651c498a69cdf7"><div class="ttname"><a href="class_jump_and_run_1_1_gui_1_1_elements_1_1_cursor.html#a2e1adb2c05cc7ed394651c498a69cdf7">JumpAndRun.Gui.Elements.Cursor.ClickEvent</a></div><div class="ttdeci">Click ClickEvent</div><div class="ttdoc">Klick Event </div><div class="ttdef"><b>Definition:</b> <a href="_cursor_8cs_source.html#l00054">Cursor.cs:54</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_d522931ffa1371640980b621734a4381.html">Users</a></li><li class="navelem"><a class="el" href="dir_ee9150285018950e593a39a0287cb66d.html">tobia_000</a></li><li class="navelem"><a class="el" href="dir_49f3583bccffc0221460bf678b37c780.html">Source</a></li><li class="navelem"><a class="el" href="dir_84c2d60010dc4c2ca1ca3d08d7a62cd7.html">Repos</a></li><li class="navelem"><a class="el" href="dir_1953f73452d11faf4a1e5e102adb04e1.html">Projektarbeit</a></li><li class="navelem"><a class="el" href="dir_4f1fd2e5f831264e4e563a45d281423c.html">FitWithJumpAndRun</a></li><li class="navelem"><a class="el" href="dir_8b0d4b62e2f773c323ce2da766a717bb.html">Gui</a></li><li class="navelem"><a class="el" href="dir_4781e42d0cbe7def225e94fd897e9e6f.html">Elements</a></li><li class="navelem"><b>Cursor.cs</b></li>
+    <li class="footer">Erzeugt am Don Jul 3 2014 14:26:20 für Diplomarbeit - Fit With Jump &amp; Run von
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.7 </li>
+  </ul>
+</div>
+</body>
+</html>

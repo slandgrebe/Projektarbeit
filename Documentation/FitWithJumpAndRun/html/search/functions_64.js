@@ -1,5 +1,0 @@
-var searchData=
-[
-  ['deserialize',['Deserialize',['../class_jump_and_run_1_1_game_logic_1_1_level.html#a0de8bc3a41e3c8f93540286e23cc2051',1,'JumpAndRun.GameLogic.Level.Deserialize()'],['../class_jump_and_run_1_1_game_logic_1_1_level_segment.html#a1f4a7699f1285c03e3fe329c6dd4c2e4',1,'JumpAndRun.GameLogic.LevelSegment.Deserialize()'],['../class_jump_and_run_1_1_item_1_1_object.html#a989c1ab64c100e75ddb8b849005574fd',1,'JumpAndRun.Item.Object.Deserialize()']]],
-  ['dispose',['Dispose',['../class_jump_and_run_1_1_game_logic_1_1_level.html#a03f1317239c627d7ac40528138e8e095',1,'JumpAndRun.GameLogic.Level.Dispose()'],['../class_jump_and_run_1_1_game_logic_1_1_level_segment.html#aee22bf2cb6f038f8473625f88136a450',1,'JumpAndRun.GameLogic.LevelSegment.Dispose()'],['../class_jump_and_run_1_1_item_1_1_model.html#ab3de19e5c135dcf8063786270cc66ee9',1,'JumpAndRun.Item.Model.Dispose()'],['../class_jump_and_run_1_1_item_1_1_model.html#a733f2e8ad290519e2972362d177d85cf',1,'JumpAndRun.Item.Model.Dispose(bool disposing)'],['../class_jump_and_run_1_1_item_1_1_object.html#a19d47bdf4dd82ff5fbc0576f64835d8d',1,'JumpAndRun.Item.Object.Dispose()']]]
-];

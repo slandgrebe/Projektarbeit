@@ -1,9 +1,0 @@
-digraph "C:/Users/tobia_000/Documents/Visual Studio 2013/Projects/Projektarbeit/FitWithJumpAndRun/obj/Release" {
-  compound=true
-  node [ fontsize="10", fontname="Helvetica"];
-  edge [ labelfontsize="10", labelfontname="Helvetica"];
-  subgraph clusterdir_2be71cf14e9ece703e345645d026face {
-    graph [ bgcolor="#ddddee", pencolor="black", label="obj" fontname="Helvetica", fontsize="10", URL="dir_2be71cf14e9ece703e345645d026face.html"]
-  dir_95d02fb69e44639a3c51198d1134923c [shape=box, label="Release", style="filled", fillcolor="#eeeeff", pencolor="black", URL="dir_95d02fb69e44639a3c51198d1134923c.html"];
-  }
-}

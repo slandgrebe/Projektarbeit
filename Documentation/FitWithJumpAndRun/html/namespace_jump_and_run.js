@@ -4,6 +4,7 @@ var namespace_jump_and_run =
     [ "Gesture", "namespace_jump_and_run_1_1_gesture.html", "namespace_jump_and_run_1_1_gesture" ],
     [ "Gui", "namespace_jump_and_run_1_1_gui.html", "namespace_jump_and_run_1_1_gui" ],
     [ "Item", "namespace_jump_and_run_1_1_item.html", "namespace_jump_and_run_1_1_item" ],
+    [ "Sound", "namespace_jump_and_run_1_1_sound.html", "namespace_jump_and_run_1_1_sound" ],
     [ "Program", "class_jump_and_run_1_1_program.html", "class_jump_and_run_1_1_program" ],
     [ "Run", "class_jump_and_run_1_1_run.html", "class_jump_and_run_1_1_run" ]
 ];

@@ -13,6 +13,8 @@ var class_jump_and_run_1_1_item_1_1_object =
     [ "PosX", "class_jump_and_run_1_1_item_1_1_object.html#a11526ab666f7f9ccdcaadfc730180db6", null ],
     [ "PosY", "class_jump_and_run_1_1_item_1_1_object.html#a0d4d10e06d373dbf530d698c852d0920", null ],
     [ "PosZ", "class_jump_and_run_1_1_item_1_1_object.html#a1a6683a1066176d9c4cf1b744b5670d2", null ],
-    [ "RotateHorizontal", "class_jump_and_run_1_1_item_1_1_object.html#a3c7c5e4c14128d5152a50a83b8761454", null ],
-    [ "Scale", "class_jump_and_run_1_1_item_1_1_object.html#ab41558dc4be6bb04dec7abfeb075a71e", null ]
+    [ "RotationAngle", "class_jump_and_run_1_1_item_1_1_object.html#a25243a1fd536998b0d7f92ab42cb326a", null ],
+    [ "RotationAxis", "class_jump_and_run_1_1_item_1_1_object.html#a504dbd6e338b080d519de32981764a42", null ],
+    [ "Scale", "class_jump_and_run_1_1_item_1_1_object.html#ab41558dc4be6bb04dec7abfeb075a71e", null ],
+    [ "Severity", "class_jump_and_run_1_1_item_1_1_object.html#a00e7da4b5c0f9f7cb4b61d2a6965a429", null ]
 ];
