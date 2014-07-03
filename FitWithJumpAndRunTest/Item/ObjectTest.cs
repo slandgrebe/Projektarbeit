@@ -81,6 +81,7 @@ namespace JumpAndRun
             Assert.AreEqual((System.UInt32)0, obj.Model.Id, "head wurde nicht gelöscht.");
         }
 
+        // tests müssen angepasst werden
         /*[TestMethod]
         public void Object_CollisionFalse(){
             JumpAndRun.Item.Object obj = new JumpAndRun.Item.Object();
