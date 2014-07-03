@@ -83,10 +83,6 @@ namespace JumpAndRun
             uint windowWidth = 0;
             uint windowHeight = 0;
 
-            // immer selbe auflösung
-            windowWidth = 1024;
-            windowHeight = 768;
-
             // fenstermodus im debugmodus
             if (Program.state == Program.State.Debug)
             {

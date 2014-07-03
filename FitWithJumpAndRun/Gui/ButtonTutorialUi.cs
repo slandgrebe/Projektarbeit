@@ -64,7 +64,7 @@ namespace JumpAndRun.Gui
         {
             // Hintergrund erzeugen
             background = new JumpAndRun.Gui.Elements.Point("data/background/hintergrund.png");
-            background.Position(0, 0, -0.55f);
+            background.Position(0, 0, -0.4f);
             background.Scale(1.333f, 1f);
 
             // Text erzeugen

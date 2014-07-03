@@ -21,7 +21,7 @@ GOTO START
 
 :Release
 set source=Release
-set target=Projektarbeit
+set target="Dschungel Trainer"
 
 GOTO START
 

@@ -60,7 +60,7 @@ namespace JumpAndRun.Gui
         {
             // Hintergrund
             background = new JumpAndRun.Gui.Elements.Point("data/background/hintergrund.png");
-            background.Position(0, 0, -0.55f);
+            background.Position(0, 0, -0.4f);
             background.Scale(1.333f, 1f);
 
             // Titel
@@ -87,12 +87,12 @@ namespace JumpAndRun.Gui
 
             // Spielname
             gameName = new JumpAndRun.Gui.Elements.TextWithBackground();
-            gameName.setText("Dschungel Fitness");
+            gameName.setText("Dschungel Trainer");
             gameName.Size(52);
             gameName.Position(0f, -0.7f);
 
             slogan = new JumpAndRun.Gui.Elements.TextWithBackground();
-            slogan.setText("- spielend fit werden");
+            slogan.setText("spielend fit werden");
             slogan.Size(40);
             slogan.Position(0.2f, -0.9f);
 

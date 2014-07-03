@@ -75,7 +75,6 @@ namespace JumpAndRun
                     ((log4net.Repository.Hierarchy.Hierarchy)LogManager.GetRepository()).Root.Level = Level.Trace;
                 }
 
-
                 // Programm Starten
                 Run r = Run.Instance;
             }

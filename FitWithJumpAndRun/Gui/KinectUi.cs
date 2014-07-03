@@ -37,7 +37,7 @@ namespace JumpAndRun.Gui
         private KinectUi()
         {
             background = new JumpAndRun.Gui.Elements.Point("data/background/farn.jpg");
-            background.Position(0, 0, -0.8f);
+            background.Position(0, 0, -0.6f);
             background.Scale(1.333f, 1f);
 
             text = new JumpAndRun.Gui.Elements.TextWithBackground();
