@@ -1,9 +1,0 @@
-digraph "C:/Users/tobia_000/Documents/Visual Studio 2013/Projects/Projektarbeit/FitWithJumpAndRun/GameLogic" {
-  compound=true
-  node [ fontsize="10", fontname="Helvetica"];
-  edge [ labelfontsize="10", labelfontname="Helvetica"];
-  subgraph clusterdir_f506e0a0abdbf7b12d5e747e67133751 {
-    graph [ bgcolor="#ddddee", pencolor="black", label="FitWithJumpAndRun" fontname="Helvetica", fontsize="10", URL="dir_f506e0a0abdbf7b12d5e747e67133751.html"]
-  dir_64c8cacb2e9bac68add618cca24f3d38 [shape=box, label="GameLogic", style="filled", fillcolor="#eeeeff", pencolor="black", URL="dir_64c8cacb2e9bac68add618cca24f3d38.html"];
-  }
-}
