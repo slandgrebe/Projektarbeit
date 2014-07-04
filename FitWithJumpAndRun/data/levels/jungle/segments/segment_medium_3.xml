@@ -46,7 +46,7 @@
       <Scale>0.3</Scale>
       <PosX>-0.5</PosX>
       <PosY>0.5</PosY>
-      <PosZ>7.5</PosZ>
+      <PosZ>2.5</PosZ>
       <AttachToCamera>false</AttachToCamera>
     </Object>
   </scores>

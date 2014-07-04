@@ -4,12 +4,12 @@
   <EndSegmentXml>data/levels/jungle/end.xml</EndSegmentXml>
   <SegmentsXmlPath>data/levels/jungle/segments</SegmentsXmlPath>
   <Name>Jungle</Name>
-  <LevelDuration>30</LevelDuration>
+  <LevelDuration>15</LevelDuration>
   <VisibilityRange>100</VisibilityRange>
   <BackgroundMusicEasy>data/sound/music/dschungelbuch.mp3</BackgroundMusicEasy>
   <BackgroundMusicEasyVolume>100</BackgroundMusicEasyVolume>
   <BackgroundMusicMedium>data/sound/music/bright side of life.mp3</BackgroundMusicMedium>
-  <BackgroundMusicMediumVolume>20</BackgroundMusicMediumVolume>
+  <BackgroundMusicMediumVolume>100</BackgroundMusicMediumVolume>
   <BackgroundMusicHard>data/sound/music/background_hard.wav</BackgroundMusicHard>
   <BackgroundMusicHardVolume>20</BackgroundMusicHardVolume>
 </Level>

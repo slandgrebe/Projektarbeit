@@ -124,7 +124,7 @@
   <scores>
     <Object>
       <ModelXmlPath>data/levels/jungle/models/mango.xml</ModelXmlPath>
-      <Scale>0.5</Scale>
+      <Scale>1</Scale>
       <PosX>0.5</PosX>
       <PosY>1.5</PosY>
       <PosZ>2</PosZ>
@@ -132,7 +132,7 @@
     </Object>
     <Object>
       <ModelXmlPath>data/levels/jungle/models/mango.xml</ModelXmlPath>
-      <Scale>0.5</Scale>
+      <Scale>1</Scale>
       <PosX>-0.5</PosX>
       <PosY>1.5</PosY>
       <PosZ>7</PosZ>
@@ -140,7 +140,7 @@
     </Object>
     <Object>
       <ModelXmlPath>data/levels/jungle/models/mango.xml</ModelXmlPath>
-      <Scale>0.5</Scale>
+      <Scale>1</Scale>
       <PosX>0.5</PosX>
       <PosY>1.5</PosY>
       <PosZ>12</PosZ>
@@ -148,7 +148,7 @@
     </Object>
     <Object>
       <ModelXmlPath>data/levels/jungle/models/mango.xml</ModelXmlPath>
-      <Scale>0.5</Scale>
+      <Scale>1</Scale>
       <PosX>-0.5</PosX>
       <PosY>1.5</PosY>
       <PosZ>17</PosZ>
